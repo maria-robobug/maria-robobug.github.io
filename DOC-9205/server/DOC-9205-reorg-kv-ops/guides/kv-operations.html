@@ -4520,17 +4520,40 @@ The command line clients also provide a quick and streamlined interface for simp
 </ul>
 </div>
 <div class="paragraph">
-<p>The following examples use the CLI interface to demonstrate the basic CRUD operations.</p>
+<p>The following examples demonstrate the basic CRUD operations.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="creating-documents"><a class="anchor" href="#creating-documents"></a>Creating documents</h2>
+<h2 id="creating-documents"><a class="anchor" href="#creating-documents"></a>Creating Documents</h2>
 <div class="sectionbody">
 <div class="paragraph">
+<p>Creating a document means inserting new data into the database.
+The example below shows you how to insert a document with ID <code>airport-123</code>.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_cbc"></a>cbc</p>
+</li>
+<li>
+<p><a id="tabset1_net"></a>.NET</p>
+</li>
+<li>
+<p><a id="tabset1_java"></a>Java</p>
+</li>
+<li>
+<p><a id="tabset1_node-js"></a>Node.js</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_cbc">
+<div class="paragraph">
 <p>Create the document <em>airport-123.json</em>.
-It can be anywhere on your file system:</p>
+It can be anywhere on your file system (i.e. /tmp):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4563,25 +4586,119 @@ It can be anywhere on your file system:</p>
 <div class="paragraph">
 <p><code>airport-123</code> is the document’s ID, which is redirected (<code>&lt;</code>) to the <code class="cmd">cbc</code> command’s standard input.</p>
 </div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_net">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/hello-world/examples/KvHelloWorldDefault.csx#L25-L37">// Call the InsertAsync() method on the collection object to insert the document.
+await collection.InsertAsync("airport-123", new
+{
+	id = 123,
+	airportname = "Santa Clara",
+	city = "Santa Clara",
+	country = "United States",
+	faa = "SCC",
+	geo = new { alt = 62, lat = -121.928407, lon = 37.368792 },
+	icao = "LFAX",
+	type = "airport",
+	tz = "America/Los_Angeles"
+});</code></pre>
+</div>
+</div>
 <div class="paragraph">
-<p>For more examples, see <a href="create-data.html" class="page">Create Data</a>.</p>
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_java">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldDefault.java#L40-L58">// Use the Couchbase JsonObject class to create a document.
+JsonObject geoDocument = JsonObject.create()
+    .put("alt", 62)
+    .put("lat", -121.928407)
+    .put("lon", 37.368792);
+
+JsonObject airportDocument = JsonObject.create()
+    .put("id", 123)
+    .put("airportname", "Santa Clara")
+    .put("city", "Santa Clara")
+    .put("country", "United States")
+    .put("faa", "SCC")
+    .put("geo", geoDocument)
+    .put("icao", "LFAX")
+    .put("type", "airport")
+    .put("tz", "America/Los_Angeles");
+
+// Call the insert() method on the collection object to insert the document.
+collection.insert("airport-123", airportDocument);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_node-js">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-default.js#L13-L24">// Call the insert() function on the collection object to insert the document.
+await collection.insert('airport-123', {
+  id: 123,
+  airportname: 'Santa Clara',
+  city: 'Santa Clara',
+  country: 'United States',
+  faa: 'SCC',
+  geo: { alt: 62, lat: -121.928407, lon: 37.368792 },
+  icao: 'LFAX',
+  type: 'airport',
+  tz: 'America/Los_Angeles',
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="create-data.html" class="page">Create Data</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reading-documents"><a class="anchor" href="#reading-documents"></a>Reading documents</h2>
+<h2 id="reading-documents"><a class="anchor" href="#reading-documents"></a>Reading Documents</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Documents can be retrieved using their IDs.
 Retrieving a document by ID is extremely fast.
 The following query takes about 1 millisecond.</p>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_cbc"></a>cbc</p>
+</li>
+<li>
+<p><a id="tabset2_net"></a>.NET</p>
+</li>
+<li>
+<p><a id="tabset2_java"></a>Java</p>
+</li>
+<li>
+<p><a id="tabset2_node-js"></a>Node.js</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_cbc">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L9">cbc cat -u Administrator -P password -U couchbase://localhost/travel-sample airport-123</code></pre>
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Result</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/airport-123.json">{
 	"id": 123,
@@ -4600,17 +4717,75 @@ The following query takes about 1 millisecond.</p>
 }</code></pre>
 </div>
 </div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_net">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/hello-world/examples/KvHelloWorldDefault.csx#L44-L45">// Call the GetAsync() method on the collection object to read the document.
+await collection.GetAsync("airport-123");</code></pre>
+</div>
+</div>
 <div class="paragraph">
-<p>For more examples, see <a href="read-data.html" class="page">Read Data</a>.</p>
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_java">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldDefault.java#L71-L72">// Call the get() method on the collection object to read the document.
+collection.get("airport-123");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_node-js">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-default.js#L29-L30">// Call the get() function on the collection object to retrieve the document.
+await collection.get('airport-123')</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="read-data.html" class="page">Read Data</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="updating-documents"><a class="anchor" href="#updating-documents"></a>Updating documents</h2>
+<h2 id="updating-documents"><a class="anchor" href="#updating-documents"></a>Updating Documents</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Updating a document means changing the existing document.
-For example, take the file above and edit the <code>country</code> field:</p>
+<p>Updating a document means changing the existing data with different or new values.
+The example below shows how to update the <code>country</code> field from the <code>airport-123</code> document.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset3_cbc"></a>cbc</p>
+</li>
+<li>
+<p><a id="tabset3_net"></a>.NET</p>
+</li>
+<li>
+<p><a id="tabset3_java"></a>Java</p>
+</li>
+<li>
+<p><a id="tabset3_node-js"></a>Node.js</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_cbc">
+<div class="paragraph">
+<p>Take the file from the previous section and edit the <code>country</code> field:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -4628,24 +4803,163 @@ For example, take the file above and edit the <code>country</code> field:</p>
 	--mode replace airport-123 &lt;./tmp/airport-123.json</code></pre>
 </div>
 </div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_net">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/hello-world/examples/KvHelloWorldDefault.csx#L52-L63">// Call the ReplaceAsync() method on the collection object to replace the document.
+await collection.ReplaceAsync("airport-123", new {
+	id = 123,
+	airportname = "Santa Clara",
+	city = "Santa Clara",
+	country = "US", // Change the country to US
+	faa = "SCC",
+	geo = new { alt = 62, lat = -121.928407, lon = 37.368792 },
+	icao = "LFAX",
+	type = "airport",
+	tz = "America/Los_Angeles"
+});</code></pre>
+</div>
+</div>
 <div class="paragraph">
-<p>For more examples, see <a href="update-data.html" class="page">Update Data</a>.</p>
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_java">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldDefault.java#L83-L101">// Create the document we want to replace our existing data with.
+JsonObject geoDocument = JsonObject.create()
+    .put("alt", 62)
+    .put("lat", -121.928407)
+    .put("lon", 37.368792);
+
+JsonObject newAirportDocument = JsonObject.create()
+    .put("id", 123)
+    .put("airportname", "Santa Clara")
+    .put("city", "Santa Clara")
+    .put("country", "US") // Change country to US
+    .put("faa", "SCC")
+    .put("geo", geoDocument)
+    .put("icao", "LFAX")
+    .put("type", "airport")
+    .put("tz", "America/Los_Angeles");
+
+// Call the replace() method on the collection object to replace the document.
+collection.replace("airport-123", newAirportDocument);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_node-js">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-default.js#L35-L46">// Call the upsert() function on the collection object to update the document.
+await collection.replace('airport-123', {
+  id: 123,
+  airportname: 'Santa Clara',
+  city: 'Santa Clara',
+  country: 'US', // Change the country to US
+  faa: 'SCC',
+  geo: { alt: 62, lat: -121.928407, lon: 37.368792 },
+  icao: 'LFAX',
+  type: 'airport',
+  tz: 'America/Los_Angeles',
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="update-data.html" class="page">Update Data</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="deleting-documents"><a class="anchor" href="#deleting-documents"></a>Deleting documents</h2>
+<h2 id="deleting-documents"><a class="anchor" href="#deleting-documents"></a>Deleting Documents</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This example shows how to delete the document with the ID <code>airport-123</code>.</p>
+<p>When data is no longer required we can perform a delete operation to permanently remove a document.
+In this example we delete the document with ID <code>airport-123</code>.</p>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset4_cbc"></a>cbc</p>
+</li>
+<li>
+<p><a id="tabset4_net"></a>.NET</p>
+</li>
+<li>
+<p><a id="tabset4_java"></a>Java</p>
+</li>
+<li>
+<p><a id="tabset4_node-js"></a>Node.js</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset4_cbc">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L18">cbc rm -u Administrator -P password -U couchbase://localhost/travel-sample airport-123</code></pre>
 </div>
 </div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_net">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/hello-world/examples/KvHelloWorldDefault.csx#L70-L71">// Call the RemoveAsync() method on the collection object to delete the document.
+await collection.RemoveAsync("airport-123");</code></pre>
+</div>
+</div>
 <div class="paragraph">
-<p>For more examples, see <a href="delete-data.html" class="page">Delete Data</a>.</p>
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_java">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldDefault.java#L112-L113">// Call the remove() method on the collection object to remove the document.
+collection.remove("airport-123");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_node-js">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-default.js#L51-L62">// Call the remove() function on the collection object to delete the document.
+await collection.remove('airport-123', {
+  id: 123,
+  airportname: 'Santa Clara',
+  city: 'Santa Clara',
+  country: 'US', // Change the country to US
+  faa: 'SCC',
+  geo: { alt: 62, lat: -121.928407, lon: 37.368792 },
+  icao: 'LFAX',
+  type: 'airport',
+  tz: 'America/Los_Angeles',
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="delete-data.html" class="page">Delete Data</a>.</p>
 </div>
 </div>
 </div>

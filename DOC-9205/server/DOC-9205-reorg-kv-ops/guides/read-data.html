@@ -4476,7 +4476,7 @@ The Data Service allows you to retrieve a full document when you need to fetch a
 <h2 id="full-documents"><a class="anchor" href="#full-documents"></a>Full Documents</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To read a full document you can perform a simple <code>get</code> operation.</p>
+<p>To read a single document in Couchbase you can perform a <code>get</code> operation.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -4546,7 +4546,7 @@ If the document cannot be found, <code>cbc</code> will return a <code>LCB_ERR_DO
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world.js#L59-L64">  // Call the get() function on the collection object to retrieve the document.
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L59-L64">  // Call the get() function on the collection object to retrieve the document.
   var getResult = await collection.get('airport-123')
 
   // Print some result metadata to the console.
@@ -4569,7 +4569,7 @@ If the document cannot be found, <code>cbc</code> will return a <code>LCB_ERR_DO
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world.js#L69-L77">  // Call the get() function on the collection object to retrieve the document.
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L69-L77">  // Call the get() function on the collection object to retrieve the document.
   getResult = await collection.get('airport-456', {
     withExpiry: true,
   })
@@ -4686,7 +4686,7 @@ If the path cannot be found, <code>cbc-subdoc</code> will return a <code>LCB_ERR
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world.js#L82-L86">  getResult = await collection.lookupIn('airport_1254', [
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L82-L86">  getResult = await collection.lookupIn('airport_1254', [
     couchbase.LookupInSpec.get('geo'),
   ])
   console.log('CAS:', getResult.cas)
