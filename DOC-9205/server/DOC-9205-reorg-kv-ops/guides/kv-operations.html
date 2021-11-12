@@ -5003,18 +5003,8 @@ collection.remove("airport-123");</code></pre>
 <div class="tab-pane" aria-labelledby="tabset4_node-js">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-default.js#L51-L62">// Call the remove() function on the collection object to delete the document.
-await collection.remove('airport-123', {
-  id: 123,
-  airportname: 'Santa Clara',
-  city: 'Santa Clara',
-  country: 'US', // Change the country to US
-  faa: 'SCC',
-  geo: { alt: 62, lat: -121.928407, lon: 37.368792 },
-  icao: 'LFAX',
-  type: 'airport',
-  tz: 'America/Los_Angeles',
-})</code></pre>
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-default.js#L51-L52">// Call the remove() function on the collection object to delete the document.
+await collection.remove('airport-123')</code></pre>
 </div>
 </div>
 <div class="paragraph">
