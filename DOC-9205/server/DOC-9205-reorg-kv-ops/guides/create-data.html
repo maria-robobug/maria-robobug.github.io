@@ -4582,8 +4582,7 @@ If the document already exists, Couchbase will return a <code>LCB_ERR_DOCUMENT_E
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L13-L27">  // Call the insert() function on the collection object to insert the document.
-  var insertResult = await collection.insert('airport-123', {
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L13-L26">  var insertResult = await collection.insert('airport-123', {
     id: 123,
     airportname: 'Santa Clara',
     city: 'Santa Clara',
@@ -4608,7 +4607,7 @@ If the document already exists, Couchbase will return a <code>LCB_ERR_DOCUMENT_E
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L48-L54">  // Insert a document with an expiry time option of 60 seconds.
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L47-L53">  // Insert a document with an expiry time option of 60 seconds.
   insertResult = await collection.insert('airport-456', document, {
     expiry: 60,
   })

@@ -4546,8 +4546,7 @@ If the document cannot be found, <code>cbc</code> will return a <code>LCB_ERR_DO
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L59-L64">  // Call the get() function on the collection object to retrieve the document.
-  var getResult = await collection.get('airport-123')
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L58-L62">  var getResult = await collection.get('airport-123')
 
   // Print some result metadata to the console.
   console.log('CAS:', getResult.cas)
@@ -4569,8 +4568,7 @@ If the document cannot be found, <code>cbc</code> will return a <code>LCB_ERR_DO
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L69-L77">  // Call the get() function on the collection object to retrieve the document.
-  getResult = await collection.get('airport-456', {
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L67-L74">  getResult = await collection.get('airport-456', {
     withExpiry: true,
   })
 
@@ -4686,7 +4684,7 @@ If the path cannot be found, <code>cbc-subdoc</code> will return a <code>LCB_ERR
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L82-L86">  getResult = await collection.lookupIn('airport_1254', [
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L79-L83">  getResult = await collection.lookupIn('airport_1254', [
     couchbase.LookupInSpec.get('geo'),
   ])
   console.log('CAS:', getResult.cas)
