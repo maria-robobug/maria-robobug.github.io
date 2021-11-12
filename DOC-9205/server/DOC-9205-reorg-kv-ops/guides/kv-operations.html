@@ -4547,6 +4547,9 @@ The example below shows you how to insert a document with ID <code>airport-123</
 <li>
 <p><a id="tabset1_node-js"></a>Node.js</p>
 </li>
+<li>
+<p><a id="tabset1_python"></a>Python</p>
+</li>
 </ul>
 </div>
 <div class="content">
@@ -4658,6 +4661,27 @@ await collection.insert('airport-123', {
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 </div>
+<div class="tab-pane" aria-labelledby="tabset1_python">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_default.py#L12-L23"># Call the insert() function on the collection object to insert the document.
+collection.insert("airport-123", {
+    "id": 123,
+    "airportname": "Santa Clara",
+    "city": "Santa Clara",
+    "country": "United States",
+    "faa": "SCC",
+    "geo": {"alt": 62, "lat": -121.928407, "lon": 37.368792},
+    "icao": "LFAX",
+    "type": "airport",
+    "tz": "America/Los_Angeles",
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -4687,6 +4711,9 @@ The following query takes about 1 millisecond.</p>
 </li>
 <li>
 <p><a id="tabset2_node-js"></a>Node.js</p>
+</li>
+<li>
+<p><a id="tabset2_python"></a>Python</p>
 </li>
 </ul>
 </div>
@@ -4751,6 +4778,17 @@ await collection.get('airport-123')</code></pre>
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 </div>
+<div class="tab-pane" aria-labelledby="tabset2_python">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_default.py#L28-L29"># Call the get() function on the collection object to retrieve the document.
+collection.get("airport-123")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -4779,6 +4817,9 @@ The example below shows how to update the <code>country</code> field from the <c
 </li>
 <li>
 <p><a id="tabset3_node-js"></a>Node.js</p>
+</li>
+<li>
+<p><a id="tabset3_python"></a>Python</p>
 </li>
 </ul>
 </div>
@@ -4856,7 +4897,7 @@ collection.replace("airport-123", newAirportDocument);</code></pre>
 <div class="tab-pane" aria-labelledby="tabset3_node-js">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-default.js#L35-L46">// Call the upsert() function on the collection object to update the document.
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-default.js#L35-L46">// Call the replace() function on the collection object to update the document.
 await collection.replace('airport-123', {
   id: 123,
   airportname: 'Santa Clara',
@@ -4867,6 +4908,27 @@ await collection.replace('airport-123', {
   icao: 'LFAX',
   type: 'airport',
   tz: 'America/Los_Angeles',
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_python">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_default.py#L34-L45"># Call the replace() function on the collection object to update the document.
+collection.replace("airport-123", {
+    "id": 123,
+    "airportname": "Santa Clara",
+    "city": "Santa Clara",
+    "country": "US",  # Change the country to US
+    "faa": "SCC",
+    "geo": {"alt": 62, "lat": -121.928407, "lon": 37.368792},
+    "icao": "LFAX",
+    "type": "airport",
+    "tz": "America/Los_Angeles",
 })</code></pre>
 </div>
 </div>
@@ -4902,6 +4964,9 @@ In this example we delete the document with ID <code>airport-123</code>.</p>
 </li>
 <li>
 <p><a id="tabset4_node-js"></a>Node.js</p>
+</li>
+<li>
+<p><a id="tabset4_python"></a>Python</p>
 </li>
 </ul>
 </div>
@@ -4950,6 +5015,17 @@ await collection.remove('airport-123', {
   type: 'airport',
   tz: 'America/Los_Angeles',
 })</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_python">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_default.py#L50-L51"># Call the remove() function on the collection object to delete the document.
+collection.remove("airport-123")</code></pre>
 </div>
 </div>
 <div class="paragraph">
