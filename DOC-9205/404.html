@@ -7,7 +7,7 @@
 <title>Page Not Found | Couchbase Docs (Local)</title>
 <link rel="stylesheet" href="/DOC-9205/_/css/site.css">
 <script src="/DOC-9205/_/js/vendor/jquery.js"></script>
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.4">
 <link rel="icon" href="/DOC-9205/_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="status-404">
@@ -59,6 +59,11 @@
                     </a>
                   </li>
                   <li class="nav-item">
+                    <a class="nav-link" href="/DOC-9205/cloud-native-database/DOC-9421/index.html">
+                      Cloud-Native
+                    </a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-link" href="/DOC-9205/home/sdk.html">
                       SDKs
                     </a>
@@ -103,31 +108,33 @@ If you typed the URL of this page manually, please double check that you entered
 ;(function (pathname, returnLink) {
   if (!returnLink) return
   var startPages = [
-    { name: "dotnet-sdk", title: ".NET SDK", url: "/DOC-9205/dotnet-sdk/3.2/hello-world/overview.html", prefix: "/DOC-9205/dotnet-sdk" },
-    { name: "dotnet-sdk", title: ".NET SDK", version: "3.2", url: "/DOC-9205/dotnet-sdk/3.2/hello-world/overview.html", prefix: "/DOC-9205/dotnet-sdk/3.2" },
+    { name: "dotnet-sdk", title: ".NET SDK", url: "/DOC-9205/dotnet-sdk/DOC-9205/hello-world/overview.html", prefix: "/DOC-9205/dotnet-sdk" },
+    { name: "dotnet-sdk", title: ".NET SDK", version: "DOC-9205", url: "/DOC-9205/dotnet-sdk/DOC-9205/hello-world/overview.html", prefix: "/DOC-9205/dotnet-sdk/DOC-9205" },
     { name: "c-sdk", title: "C SDK", url: "/DOC-9205/c-sdk/3.2/hello-world/overview.html", prefix: "/DOC-9205/c-sdk" },
     { name: "c-sdk", title: "C SDK", version: "3.2", url: "/DOC-9205/c-sdk/3.2/hello-world/overview.html", prefix: "/DOC-9205/c-sdk/3.2" },
+    { name: "cloud-native-database", title: "Cloud-Native Database", url: "/DOC-9205/cloud-native-database/DOC-9421/index.html", prefix: "/DOC-9205/cloud-native-database" },
+    { name: "cloud-native-database", title: "Cloud-Native Database", version: "DOC-9421", url: "/DOC-9205/cloud-native-database/DOC-9421/index.html", prefix: "/DOC-9205/cloud-native-database/DOC-9421" },
+    { name: "cmos", title: "Couchbase Monitoring and Observability Stack", url: "/DOC-9205/cmos/DOC-9421/index.html", prefix: "/DOC-9205/cmos" },
+    { name: "cmos", title: "Couchbase Monitoring and Observability Stack", version: "DOC-9421", url: "/DOC-9205/cmos/DOC-9421/index.html", prefix: "/DOC-9205/cmos/DOC-9421" },
+    { name: "server", title: "Couchbase Server", url: "/DOC-9205/server/7.0-reorg/introduction/intro.html", prefix: "/DOC-9205/server" },
+    { name: "server", title: "Couchbase Server", version: "7.0-reorg", url: "/DOC-9205/server/7.0-reorg/introduction/intro.html", prefix: "/DOC-9205/server/7.0-reorg" },
     { name: "go-sdk", title: "Go SDK", url: "/DOC-9205/go-sdk/2.3/hello-world/overview.html", prefix: "/DOC-9205/go-sdk" },
     { name: "go-sdk", title: "Go SDK", version: "2.3", url: "/DOC-9205/go-sdk/2.3/hello-world/overview.html", prefix: "/DOC-9205/go-sdk/2.3" },
     { name: "home", title: "Home", url: "/DOC-9205/home/index.html", prefix: "/DOC-9205/home" },
-    { name: "java-sdk", title: "Java SDK", url: "/DOC-9205/java-sdk/3.2/hello-world/overview.html", prefix: "/DOC-9205/java-sdk" },
-    { name: "java-sdk", title: "Java SDK", version: "3.2", url: "/DOC-9205/java-sdk/3.2/hello-world/overview.html", prefix: "/DOC-9205/java-sdk/3.2" },
+    { name: "java-sdk", title: "Java SDK", url: "/DOC-9205/java-sdk/DOC-9205/hello-world/overview.html", prefix: "/DOC-9205/java-sdk" },
+    { name: "java-sdk", title: "Java SDK", version: "DOC-9205", url: "/DOC-9205/java-sdk/DOC-9205/hello-world/overview.html", prefix: "/DOC-9205/java-sdk/DOC-9205" },
     { name: "nodejs-sdk", title: "Node.js SDK", url: "/DOC-9205/nodejs-sdk/DOC-9205/hello-world/overview.html", prefix: "/DOC-9205/nodejs-sdk" },
     { name: "nodejs-sdk", title: "Node.js SDK", version: "DOC-9205", url: "/DOC-9205/nodejs-sdk/DOC-9205/hello-world/overview.html", prefix: "/DOC-9205/nodejs-sdk/DOC-9205" },
     { name: "php-sdk", title: "PHP SDK", url: "/DOC-9205/php-sdk/3.2/hello-world/overview.html", prefix: "/DOC-9205/php-sdk" },
     { name: "php-sdk", title: "PHP SDK", version: "3.2", url: "/DOC-9205/php-sdk/3.2/hello-world/overview.html", prefix: "/DOC-9205/php-sdk/3.2" },
-    { name: "python-sdk", title: "Python SDK", url: "/DOC-9205/python-sdk/3.2/hello-world/overview.html", prefix: "/DOC-9205/python-sdk" },
-    { name: "python-sdk", title: "Python SDK", version: "3.2", url: "/DOC-9205/python-sdk/3.2/hello-world/overview.html", prefix: "/DOC-9205/python-sdk/3.2" },
+    { name: "python-sdk", title: "Python SDK", url: "/DOC-9205/python-sdk/DOC-9205/hello-world/overview.html", prefix: "/DOC-9205/python-sdk" },
+    { name: "python-sdk", title: "Python SDK", version: "DOC-9205", url: "/DOC-9205/python-sdk/DOC-9205/hello-world/overview.html", prefix: "/DOC-9205/python-sdk/DOC-9205" },
     { name: "ruby-sdk", title: "Ruby SDK", url: "/DOC-9205/ruby-sdk/3.2/hello-world/overview.html", prefix: "/DOC-9205/ruby-sdk" },
     { name: "ruby-sdk", title: "Ruby SDK", version: "3.2", url: "/DOC-9205/ruby-sdk/3.2/hello-world/overview.html", prefix: "/DOC-9205/ruby-sdk/3.2" },
     { name: "scala-sdk", title: "Scala SDK", url: "/DOC-9205/scala-sdk/1.2/hello-world/overview.html", prefix: "/DOC-9205/scala-sdk" },
     { name: "scala-sdk", title: "Scala SDK", version: "1.2", url: "/DOC-9205/scala-sdk/1.2/hello-world/overview.html", prefix: "/DOC-9205/scala-sdk/1.2" },
     { name: "sdk", title: "sdk", url: "/DOC-9205/sdk/7.0/index.html", prefix: "/DOC-9205/sdk" },
     { name: "sdk", title: "sdk", version: "7.0", url: "/DOC-9205/sdk/7.0/index.html", prefix: "/DOC-9205/sdk/7.0" },
-    { name: "server", title: "server", url: "/DOC-9205/server/7.0/index.html", prefix: "/DOC-9205/server" },
-    { name: "server", title: "Couchbase Server", version: "DOC-9205-reorg-kv-ops", url: "/DOC-9205/server/DOC-9205-reorg-kv-ops/introduction/intro.html", prefix: "/DOC-9205/server/DOC-9205-reorg-kv-ops" },
-    { name: "server", title: "server", version: "7.0", url: "/DOC-9205/server/7.0/index.html", prefix: "/DOC-9205/server/7.0" },
-    { name: "server", title: "server", version: "6.0", url: "/DOC-9205/server/6.0/index.html", prefix: "/DOC-9205/server/6.0" },
     { name: "tutorials", title: "Tutorials", url: "/DOC-9205/tutorials/index.html", prefix: "/DOC-9205/tutorials" },
   ].reduce(function (accum, it) {
     var prefix = it.prefix
