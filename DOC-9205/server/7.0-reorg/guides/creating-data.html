@@ -1009,6 +1009,11 @@
     <a class="menu_title menu_link" href="deleting-data.html">Deleting Data</a>
   </span>
 </li>
+<li class="menu_list" data-depth="2">
+  <span class="menu_line">
+    <a class="menu_title menu_link" href="bulk-operations.html">Bulk Operations</a>
+  </span>
+</li>
 </ul>
 </li>
 <li class="menu_list is-parent closed" data-depth="1">
@@ -4738,8 +4743,8 @@ If the document already exists, the SDK will return a <code>DocumentExistsExcept
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L13-L43">// Create a document object.
-var document = {
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L14-L44">// Create a document object.
+const document = {
   id: 123,
   name: 'Medway Youth Hostel',
   address: 'Capstone Road, ME7 3JE',
@@ -4765,7 +4770,7 @@ var document = {
 }
 
 // Insert the document in the hotel collection.
-var insertResult = await hotelCollection.insert('hotel-123', document)
+const insertResult = await hotelCollection.insert('hotel-123', document)
 
 // Print the result's CAS metadata to the console.
 console.log('CAS:', insertResult.cas)</code></pre>
@@ -5041,7 +5046,7 @@ System.out.println("CAS:" + insertResult.cas());</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L48-L67">document = {
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L51-L70">document = {
   id: 456,
   title: 'Ardèche',
   name: 'La Pradella',
@@ -5055,7 +5060,7 @@ System.out.println("CAS:" + insertResult.cas());</code></pre>
 }
 
 // Insert the document with an expiry time option of 60 seconds.
-insertResult = await hotelCollection.insert('hotel-456', document, {
+const insertResult = await hotelCollection.insert('hotel-456', document, {
   expiry: 60,
 })
 
@@ -5083,7 +5088,7 @@ console.log('CAS:', insertResult.cas)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_scoped.py#L50-L68">document = {
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_scoped.py#L52-L70">document = {
     "id": 456,
     "title": "Ardèche",
     "name": "La Pradella",

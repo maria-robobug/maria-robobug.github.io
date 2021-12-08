@@ -1007,6 +1007,11 @@
     <a class="menu_title menu_link" href="deleting-data.html">Deleting Data</a>
   </span>
 </li>
+<li class="menu_list" data-depth="2">
+  <span class="menu_line">
+    <a class="menu_title menu_link" href="bulk-operations.html">Bulk Operations</a>
+  </span>
+</li>
 </ul>
 </li>
 <li class="menu_list is-parent closed" data-depth="1">
@@ -4686,7 +4691,7 @@ await collection.insert('airport-123', {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_default.py#L12-L23"># Call the insert() function on the collection object to insert the document.
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_default.py#L10-L21"># Call the insert() function on the collection object to insert the document.
 collection.insert("airport-123", {
     "id": 123,
     "airportname": "Santa Clara",
@@ -4820,7 +4825,7 @@ await collection.get('airport-123')</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_default.py#L28-L29"># Call the get() function on the collection object to retrieve the document.
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_default.py#L26-L27"># Call the get() function on the collection object to retrieve the document.
 collection.get("airport-123")</code></pre>
 </div>
 </div>
@@ -4970,7 +4975,7 @@ await collection.replace('airport-123', {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_default.py#L34-L45"># Call the replace() function on the collection object to update the document.
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_default.py#L32-L43"># Call the replace() function on the collection object to update the document.
 collection.replace("airport-123", {
     "id": 123,
     "airportname": "Santa Clara",
@@ -5083,7 +5088,7 @@ await collection.remove('airport-123')</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_default.py#L50-L51"># Call the remove() function on the collection object to delete the document.
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_default.py#L48-L49"># Call the remove() function on the collection object to delete the document.
 collection.remove("airport-123")</code></pre>
 </div>
 </div>
@@ -5095,6 +5100,15 @@ collection.remove("airport-123")</code></pre>
 </div>
 <div class="paragraph">
 <p>For more information, see <a href="deleting-data.html" class="xref page">Deleting Data</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="bulk-operations"><a class="anchor" href="#bulk-operations"></a>Bulk Operations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With Couchbase Server you can also perform CRUD bulk operations on documents.<br>
+To learn more see <a href="bulk-operations.html" class="xref page">Bulk Operations</a>.</p>
 </div>
 </div>
 </div>

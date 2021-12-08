@@ -4,16 +4,23 @@
 <meta charset="utf-8">
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Document Archival | Couchbase Docs (Local)</title>
+<title>Bulk Operations | Couchbase Docs (Local)</title>
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
-<meta name="description" content="Create a JavaScript Function that contains an &lt;strong&gt;OnUpdate&lt;/strong&gt; handler, which when a document in an existing collection is about to expire, a perfect copy is created in a different collection.">
+<meta name="description" content="How to perform bulk CRUD operations in Couchbase.">
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
+        <link rel="prev" href="deleting-data.html">
+        <link rel="next" href="query.html">
 
+
+
+                    <link rel="prev" href="deleting-data.html">
+
+        
 
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
-<meta name="page-url" content="/server/7.0-reorg/eventing/eventing-examples-docarchive.html">
+<meta name="page-url" content="/server/7.0-reorg/guides/bulk-operations.html">
 <meta name="generator" content="Antora 3.0.0-beta.4">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
@@ -971,38 +978,38 @@
 <ul class="menu_row">
 <li class="menu_list" data-depth="1">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="../guides/intro.html">Overview</a>
+    <a class="menu_title menu_link" href="intro.html">Overview</a>
   </span>
 </li>
 <li class="menu_list is-parent closed" data-depth="1">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="../guides/kv-operations.html">Key Value Operations</a>
+    <a class="menu_title menu_link" href="kv-operations.html">Key Value Operations</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list" data-depth="2">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="../guides/creating-data.html">Creating Data</a>
+    <a class="menu_title menu_link" href="creating-data.html">Creating Data</a>
   </span>
 </li>
 <li class="menu_list" data-depth="2">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="../guides/reading-data.html">Reading Data</a>
+    <a class="menu_title menu_link" href="reading-data.html">Reading Data</a>
   </span>
 </li>
 <li class="menu_list" data-depth="2">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="../guides/updating-data.html">Updating Data</a>
+    <a class="menu_title menu_link" href="updating-data.html">Updating Data</a>
   </span>
 </li>
 <li class="menu_list" data-depth="2">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="../guides/deleting-data.html">Deleting Data</a>
+    <a class="menu_title menu_link" href="deleting-data.html">Deleting Data</a>
   </span>
 </li>
-<li class="menu_list" data-depth="2">
+<li class="menu_list is-current-page" data-depth="2">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="../guides/bulk-operations.html">Bulk Operations</a>
+    <a class="menu_title menu_link is-current-page" href="bulk-operations.html">Bulk Operations</a>
   </span>
 </li>
 </ul>
@@ -1010,7 +1017,7 @@
 <li class="menu_list is-parent closed" data-depth="1">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="../guides/query.html">Query</a>
+    <a class="menu_title menu_link" href="query.html">Query</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list is-parent closed" data-depth="2">
@@ -1021,22 +1028,22 @@
 <ul class="menu_row">
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="../guides/select.html">Selecting Data</a>
+    <a class="menu_title menu_link" href="select.html">Selecting Data</a>
   </span>
 </li>
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="../guides/join.html">Querying Across Relationships</a>
+    <a class="menu_title menu_link" href="join.html">Querying Across Relationships</a>
   </span>
 </li>
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="../guides/nest-unnest.html">Deep Traversal for Nested Documents</a>
+    <a class="menu_title menu_link" href="nest-unnest.html">Deep Traversal for Nested Documents</a>
   </span>
 </li>
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="../guides/group-agg.html">Grouping and Aggregation</a>
+    <a class="menu_title menu_link" href="group-agg.html">Grouping and Aggregation</a>
   </span>
 </li>
 </ul>
@@ -1059,17 +1066,17 @@
 <ul class="menu_row">
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="../guides/insert.html">Inserting Data</a>
+    <a class="menu_title menu_link" href="insert.html">Inserting Data</a>
   </span>
 </li>
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="../guides/update.html">Updating Data</a>
+    <a class="menu_title menu_link" href="update.html">Updating Data</a>
   </span>
 </li>
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="../guides/delete.html">Deleting Data</a>
+    <a class="menu_title menu_link" href="delete.html">Deleting Data</a>
   </span>
 </li>
 </ul>
@@ -2210,96 +2217,96 @@
 <li class="menu_list is-parent closed" data-depth="1">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="eventing-overview.html">Eventing</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-overview.html">Eventing</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list" data-depth="2">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-Terminologies.html">Terminology</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-Terminologies.html">Terminology</a>
   </span>
 </li>
 <li class="menu_list is-parent closed" data-depth="2">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="eventing-language-constructs.html">Language Constructs</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-language-constructs.html">Language Constructs</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-advanced-bucket-accessors.html">Advanced Bucket Accessors</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-advanced-bucket-accessors.html">Advanced Bucket Accessors</a>
   </span>
 </li>
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-timers.html">Timers</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-timers.html">Timers</a>
   </span>
 </li>
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-curl-spec.html">cURL</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-curl-spec.html">cURL</a>
   </span>
 </li>
 </ul>
 </li>
 <li class="menu_list" data-depth="2">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-lifecycle.html">Eventing Lifecycle</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-lifecycle.html">Eventing Lifecycle</a>
   </span>
 </li>
 <li class="menu_list" data-depth="2">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-buckets-to-collections.html">Buckets vs Collections</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-buckets-to-collections.html">Buckets vs Collections</a>
   </span>
 </li>
 <li class="menu_list is-parent closed" data-depth="2">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="eventing-examples.html">Examples: Using the Eventing Service</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-examples.html">Examples: Using the Eventing Service</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-example-data-enrichment.html">Data Enrichment</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-example-data-enrichment.html">Data Enrichment</a>
   </span>
 </li>
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-examples-cascade-delete.html">Cascade Delete</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-examples-cascade-delete.html">Cascade Delete</a>
   </span>
 </li>
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-examples-docexpiry.html">Document Expiry</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-examples-docexpiry.html">Document Expiry</a>
   </span>
 </li>
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-examples-delete-v-expiry.html">Delete v Expiry</a>
-  </span>
-</li>
-<li class="menu_list is-current-page" data-depth="3">
-  <span class="menu_line">
-    <a class="menu_title menu_link is-current-page" href="eventing-examples-docarchive.html">Document Archival</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-examples-delete-v-expiry.html">Delete v Expiry</a>
   </span>
 </li>
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-examples-cancel-overwrite-timer.html">Cancel or Overwrite Timer</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-examples-docarchive.html">Document Archival</a>
   </span>
 </li>
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-examples-recurring-timer.html">Recurring Timer</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-examples-cancel-overwrite-timer.html">Cancel or Overwrite Timer</a>
   </span>
 </li>
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-examples-rest-via-curl-get.html">External REST via cURL GET</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-examples-recurring-timer.html">Recurring Timer</a>
   </span>
 </li>
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-examples-high-risk.html">Risk Assessment</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-examples-rest-via-curl-get.html">External REST via cURL GET</a>
+  </span>
+</li>
+<li class="menu_list" data-depth="3">
+  <span class="menu_line">
+    <a class="menu_title menu_link" href="../eventing/eventing-examples-high-risk.html">Risk Assessment</a>
   </span>
 </li>
 </ul>
@@ -2307,73 +2314,73 @@
 <li class="menu_list is-parent closed" data-depth="2">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="eventing-examples.html#examples-scriptlets">Examples: Terse Scriptlets</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-examples.html#examples-scriptlets">Examples: Terse Scriptlets</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list is-parent closed" data-depth="3">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="eventing-examples.html#examples-scriptlets-kv">Basic KV Handlers</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-examples.html#examples-scriptlets-kv">Basic KV Handlers</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-basicBucketOps.html">basicBucketOps</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-basicBucketOps.html">basicBucketOps</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-curl-get.html">basicCurlGet</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-curl-get.html">basicCurlGet</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-curl-post.html">basicCurlPost</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-curl-post.html">basicCurlPost</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-simpleTimer.html">simpleTimer</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-simpleTimer.html">simpleTimer</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-cascadeKvDeleteWithDoc.html">cascadeKvDeleteWithDoc</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-cascadeKvDeleteWithDoc.html">cascadeKvDeleteWithDoc</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-redactSharedData.html">redactSharedData</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-redactSharedData.html">redactSharedData</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-simpleFlatten.html">simpleFlatten</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-simpleFlatten.html">simpleFlatten</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-fixEmailDomains.html">fixEmailDomains</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-fixEmailDomains.html">fixEmailDomains</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-keepLastN.html">keepLastN</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-keepLastN.html">keepLastN</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-docControlledSelfExpiry.html">docControlledSelfExpiry</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-docControlledSelfExpiry.html">docControlledSelfExpiry</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-shippingNotifier.html">shippingNotifier</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-shippingNotifier.html">shippingNotifier</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-ConvertBucketToCollections.html">ConvertBucketToCollections</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-ConvertBucketToCollections.html">ConvertBucketToCollections</a>
   </span>
 </li>
 </ul>
@@ -2381,17 +2388,17 @@
 <li class="menu_list is-parent closed" data-depth="3">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="eventing-examples.html#examples-scriptlets-n1ql">Basic N1QL Handlers</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-examples.html#examples-scriptlets-n1ql">Basic N1QL Handlers</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-basicN1qlSelectStmt.html">basicN1qlSelectStmt</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-basicN1qlSelectStmt.html">basicN1qlSelectStmt</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-basicN1qlPreparedSelectStmt.html">basicN1qlPreparedSelectStmt</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-basicN1qlPreparedSelectStmt.html">basicN1qlPreparedSelectStmt</a>
   </span>
 </li>
 </ul>
@@ -2399,47 +2406,47 @@
 <li class="menu_list is-parent closed" data-depth="3">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="eventing-examples.html#examples-scriptlets-generic">Generic Manipulation Handlers</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-examples.html#examples-scriptlets-generic">Generic Manipulation Handlers</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-dateToEpochConversion.html">dateToEpochConversion</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-dateToEpochConversion.html">dateToEpochConversion</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-deepCloneAndModify.html">deepCloneAndModify</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-deepCloneAndModify.html">deepCloneAndModify</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-removeObjectStubs.html">removeObjectStubs</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-removeObjectStubs.html">removeObjectStubs</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-removeNullsAndEmptys.html">removeNullsAndEmptys</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-removeNullsAndEmptys.html">removeNullsAndEmptys</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-genericRename.html">genericRename</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-genericRename.html">genericRename</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-genericFlatten.html">genericFlatten</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-genericFlatten.html">genericFlatten</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-convertXMLtoJSON.html">convertXMLtoJSON</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-convertXMLtoJSON.html">convertXMLtoJSON</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-convertAdvXMLtoJSON.html">convertAdvXMLtoJSON</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-convertAdvXMLtoJSON.html">convertAdvXMLtoJSON</a>
   </span>
 </li>
 </ul>
@@ -2447,52 +2454,52 @@
 <li class="menu_list is-parent closed" data-depth="3">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="eventing-examples.html#examples-scriptlets-advanced-accessors">Advanced Accessor Handlers</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-examples.html#examples-scriptlets-advanced-accessors">Advanced Accessor Handlers</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-advancedGetOp.html">advancedGetOp</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-advancedGetOp.html">advancedGetOp</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-advancedInsertOp.html">advancedInsertOp</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-advancedInsertOp.html">advancedInsertOp</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-advancedUpsertOp.html">advancedUpsertOp</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-advancedUpsertOp.html">advancedUpsertOp</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-advancedReplaceOp.html">advancedReplaceOp</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-advancedReplaceOp.html">advancedReplaceOp</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-advancedDeleteOp.html">advancedDeleteOp</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-advancedDeleteOp.html">advancedDeleteOp</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-advancedIncrementOp.html">advancedIncrementOp</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-advancedIncrementOp.html">advancedIncrementOp</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-advancedDecrementOp.html">advancedDecrementOp</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-advancedDecrementOp.html">advancedDecrementOp</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-advanced-keepLastN.html">advancedKeepLastN</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-advanced-keepLastN.html">advancedKeepLastN</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-advanced-docControlledSelfExpiry.html">advanced-DocControlledSelfExpiry</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-advanced-docControlledSelfExpiry.html">advanced-DocControlledSelfExpiry</a>
   </span>
 </li>
 </ul>
@@ -2500,17 +2507,17 @@
 <li class="menu_list is-parent closed" data-depth="3">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="eventing-examples.html#examples-scriptlets-binary-documents">Binary Document Support</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-examples.html#examples-scriptlets-binary-documents">Binary Document Support</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-basicBinaryKV.html">basicBinaryKV</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-basicBinaryKV.html">basicBinaryKV</a>
   </span>
 </li>
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-advancedBinaryKV.html">advancedBinaryKV</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-advancedBinaryKV.html">advancedBinaryKV</a>
   </span>
 </li>
 </ul>
@@ -2518,12 +2525,12 @@
 <li class="menu_list is-parent closed" data-depth="3">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="eventing-examples.html#examples-scriptlets-performance">Performance Handlers</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-examples.html#examples-scriptlets-performance">Performance Handlers</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list" data-depth="4">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-handler-fasterToLocalString.html">fasterToLocalString</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-handler-fasterToLocalString.html">fasterToLocalString</a>
   </span>
 </li>
 </ul>
@@ -2532,22 +2539,22 @@
 </li>
 <li class="menu_list" data-depth="2">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-debugging-and-diagnosability.html">Debugging and Diagnosability</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-debugging-and-diagnosability.html">Debugging and Diagnosability</a>
   </span>
 </li>
 <li class="menu_list" data-depth="2">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-statistics.html">Statistics</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-statistics.html">Statistics</a>
   </span>
 </li>
 <li class="menu_list" data-depth="2">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="troubleshooting-best-practices.html">Troubleshooting and Best Practices</a>
+    <a class="menu_title menu_link" href="../eventing/troubleshooting-best-practices.html">Troubleshooting and Best Practices</a>
   </span>
 </li>
 <li class="menu_list" data-depth="2">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-faq.html">Frequently Asked Questions</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-faq.html">Frequently Asked Questions</a>
   </span>
 </li>
 </ul>
@@ -3862,7 +3869,7 @@
 </li>
 <li class="menu_list" data-depth="3">
   <span class="menu_line">
-    <a class="menu_title menu_link" href="eventing-api.html">Eventing Service API</a>
+    <a class="menu_title menu_link" href="../eventing/eventing-api.html">Eventing Service API</a>
   </span>
 </li>
 <li class="menu_list is-parent closed" data-depth="3">
@@ -4378,7 +4385,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/eventing/pages/eventing-examples-docarchive.adoc" title="Edit Page" target="_blank" rel="noopener">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/pages/bulk-operations.adoc" title="Edit Page" target="_blank" rel="noopener">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -4437,378 +4444,914 @@
 <nav class="crumbs" aria-label="breadcrumbs">
 <ul>
 <li class="crumb"><a href="../introduction/intro.html">Couchbase Server</a></li>
-<li class="crumb">Developer Information</li>
-<li class="crumb"><a href="eventing-overview.html">Eventing</a></li>
-<li class="crumb"><a href="eventing-examples.html">Examples: Using the Eventing Service</a></li>
-<li class="crumb"><a href="eventing-examples-docarchive.html">Document Archival</a></li>
+<li class="crumb">Developer Guides</li>
+<li class="crumb"><a href="kv-operations.html">Key Value Operations</a></li>
+<li class="crumb"><a href="bulk-operations.html">Bulk Operations</a></li>
 </ul>
 </nav>
 </div>
 <article class="doc">
 <div class="page-heading-title">
-<h1 class="page">Document Archival</h1>
-<div class="labels">
-<ul>
-<li class="edition"><a href="https://www.couchbase.com/products/editions">Enterprise Edition</a></li>
-</ul>
-</div>
+<h1 class="page">Bulk Operations</h1>
 </div>
 <div class="contributor-list-box">
 <span class="last-commit-date" id="commitdate">    </span>
 <ul id="contributorList"></ul>
 <span  id="otherContributor"> + </span>
-</div><div class="paragraph">
-<p><strong>Goal</strong>: Create a JavaScript Function that contains an <strong>OnUpdate</strong> handler, which when a document in an existing collection is about to expire, a perfect copy is created in a different collection.</p>
+</div><div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
+<blockquote>
+How to perform bulk CRUD operations in Couchbase.
+</blockquote>
 </div>
 <div class="paragraph">
-<p>This example, <strong>Document Archival</strong> is very similar to the <strong>Document Expiry</strong> example.  However the goal here is to
-create a robust archiving function and as such this example has a few  important differences.</p>
+<p>Performing bulk operations with Couchbase Server can be done in several ways, depending on the SDK or command line tool used to perform them.
+In the following sections you will find some basic examples of how to perform bulk CRUD
+operations on Couchbase documents.</p>
 </div>
-<div class="ulist">
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-multiple-documents"><a class="anchor" href="#creating-multiple-documents"></a>Creating Multiple Documents</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create multiple documents in Couchbase perform a bulk <code>insert</code> operation.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
 <ul>
 <li>
-<p>We will archive a perfect copy to the target collection.</p>
+<p><a id="tabset1_net"></a>.NET</p>
 </li>
 <li>
-<p>The edge case ignored for brevity in <strong>Document Expiry</strong> for receiving a mutation a document within
-the 120 second window prior to expiration is covered (in this case we don&#8217;t need a timer).</p>
+<p><a id="tabset1_java"></a>Java</p>
 </li>
 <li>
-<p>The edge case ignored for brevity in <strong>Document Expiry</strong> for a missing source document when we
-trigger our callback is now caught and it is logged as an error.</p>
+<p><a id="tabset1_node-js"></a>Node.js</p>
 </li>
 <li>
-<p>No logging except for an error case of a missing document when we are archiving.</p>
-</li>
-<li>
-<p>We will not rely on a Couchbase SDK, but rather on an expiry set on the source collecton where all documents
-will have an expiration of 10 minutes from the time of their first mutation or creation.</p>
+<p><a id="tabset1_python"></a>Python</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><strong>Implementation</strong>: Create a JavaScript Function that contains an <strong>OnUpdate</strong> handler, which runs whenever a document is created (or mutated). The handler calls a timer routine, which executes a callback function, two minutes prior to any document’s established expiration. This function will archive an identical document with the same key, in a specified target bucket. The original document in the source bucket is not changed (and will be deleted automatically according to the bucket’s expiration time).</p>
-</div>
-<div class="paragraph">
-<p><strong>Preparations</strong>:</p>
-</div>
-<div class="paragraph">
-<p>For this example, two (2) buckets <strong>'bulk'</strong> and <strong>'rr100'</strong> are required where the later is intended to be 100% resident.
-Create the buckets with a minimum size of 100MB. However the bucket <strong>'bulk'</strong> will need a "Bucket Max Time-To-Live" set to 600 (details below).
-For information on buckets, see <a href="../manage/manage-buckets/create-bucket.html" class="xref page">Create a Bucket</a>.
-Within the buckets we need three (3) keyspaces <strong>'bulk.data.source'</strong>, <strong>'bulk.data.target'</strong>, and <strong>'rr100.eventing.metadata'</strong>
-(we loosely follow this <a href="eventing-buckets-to-collections.html#single-tenancy" class="xref page">organization</a>).</p>
-</div>
-<div class="paragraph">
-<p>The collection <strong>'bulk.data.source'</strong> will have a 'Bucket Max Time-To-Live' or TTL of 600 seconds.
-If this collection already exists drop the collection and recreate it with the needed TTL.</p>
-</div>
-<div class="paragraph">
-<p><em>If you run a version of Couchbase prior to 7.0 you can just create the buckets <strong>'source'</strong>, <strong>'target'</strong>, and <strong>'metadata'</strong> and run this example.  Furthermore if your cluster was subsequently upgraded from say 6.6.2 to 7.0 your data would be moved to <strong>'source._default._default'</strong>, <strong>'target._default._default'</strong>, and <strong>'metadata._default._default'</strong> and your Eventing Function would be seamlessly upgraded to use the new keyspaces and continue to run correctly.</em></p>
-</div>
-<div class="paragraph">
-<p>For complete details on how to set up your keyspaces refer to <a href="../manage/manage-buckets/create-bucket.html" class="xref page">creating buckets</a> and
-<a href="../manage/manage-scopes-and-collections/manage-scopes-and-collections.html" class="xref page">creating scopes and collections</a>.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The Eventing Storage keyspace, in this case <strong>'rr100.eventing.metadata'</strong>, is for the sole use of the Eventing system, do not add, modify, or delete documents from it.  In addition do not drop or flush or delete the containing bucket (or delete this collection) while you have any deployed Eventing functions. In a single tenancy deployment this collection can be shared with other Eventing functions.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p><strong>Procedure</strong>:</p>
-</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_net">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>If you don’t already have the bucket <strong>travel-sample</strong>' listed in the <strong>Couchbase Web Console</strong> &gt; <strong>Buckets</strong> page you can load this document set as follows:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Access the <strong>Couchbase Web Console</strong> &gt; <strong>Settings</strong> page</p>
+<p>Create some structured JSON documents to insert.</p>
 </li>
 <li>
-<p>Select the <strong>Sample Buckets</strong> in the upper right banner.</p>
+<p>Initialize a list of <code>IMutationResult</code> tasks.</p>
 </li>
 <li>
-<p>Check <strong>travel-sample</strong> checkbox.</p>
+<p>Perform an <code>insert</code> operation on each document and store the result in the tasks list.</p>
 </li>
 <li>
-<p>Click <strong>Load Sample Data</strong>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Verify your Buckets you should have three (3) total and verfiy <strong>'bulk.data.source'</strong> has a TTL of 600 seconds.</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/docarchive_00_bsettings.png" alt="docarchive 00 bsettings" width="100%">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Click <strong>Scopes &amp; Collections</strong> on the left, Click the scope <strong>data</strong> on the right to expand it to show the collections.
-When you created the collection <strong>'bulk.data.source'</strong> it should have had a 'Bucket Max Time-To-Live' or TTL of 600 seconds.
-If you didn&#8217;t then drop the collection and recreate it with the needed TTL of 600.</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/docarchive_01_bsettings.png" alt="docarchive 01 bsettings" width="100%">
-</div>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>From the <strong>Couchbase Web Console</strong> &gt; <strong>Eventing</strong> page, click <strong>ADD FUNCTION</strong>, to add a new Function.
-The <strong>ADD FUNCTION</strong> dialog appears.</p>
-</li>
-<li>
-<p>In the <strong>ADD FUNCTION</strong> dialog, for individual Function elements provide the below information:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>For the <strong>Listen To Location</strong> drop-down, select <strong>bulk</strong>, <strong>data</strong>, <strong>source</strong> as the keyspace.</p>
-</li>
-<li>
-<p>For the <strong>Eventing Storage</strong> drop-down, select <strong>rr100</strong>, <strong>eventing</strong>, <strong>metadata</strong> as the keyspace.</p>
-</li>
-<li>
-<p>Enter <strong>archive_before_expiry</strong> as the name of the Function you are creating in the <strong>Function Name</strong> text-box.</p>
-</li>
-<li>
-<p>Leave the "Deployment Feed Boundary" as Everything.</p>
-</li>
-<li>
-<p>[Optional Step] Enter text <strong>Function that archives all documents in a collection from a collection in a bucket with a TTL set</strong>, in the <strong>Description</strong> text-box.</p>
-</li>
-<li>
-<p>For the <strong>Settings</strong> option, use the default values.</p>
-</li>
-<li>
-<p>For the <strong>Bindings</strong> option, add two bindings.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>For the first binding, select "bucket alias", specify <strong>src</strong> as the "alias name" of the collection,
-select <strong>bulk</strong>, <strong>data</strong>, <strong>source</strong> as the associated keyspace, and select "read only" for the access mode.</p>
-</li>
-<li>
-<p>For the second binding, select "bucket alias", specify <strong>tgt</strong> as the "alias name" of the collection,
-select <strong>bulk</strong>, <strong>data</strong>, <strong>target</strong> as the associated keyspace, and select "read and write" for the access mode.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>After configuring your settings the <strong>ADD FUNCTION</strong> dialog should look like this:</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/docarchive_01_fsettings.png" alt="docarchive 01 fsettings" width="484">
-</div>
-</div>
-</li>
-<li>
-<p>After providing all the required information in the <strong>ADD FUNCTION</strong> dialog, click <strong>Next: Add Code</strong>.
-The <strong>archive_before_expiry</strong> dialog appears.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>The <strong>archive_before_expiry</strong> dialog initially contains a placeholder code block.
-You will substitute your actual <strong>archive_before_expiry code</strong> in this block.</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/docarchive_02_editor_with_default.png" alt="docarchive 02 editor with default" width="100%">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Copy the following Function, and paste it in the placeholder code block of <strong>archive_before_expiry</strong> dialog.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">function OnUpdate(doc, meta) {
-    // Only process for those documents that have a non-zero TTL
-    if (meta.expiration == 0 ) return;
-    // Note JavaScript Data() is in ms. and meta.expiration is in sec.
-    if (new Date().getTime()/1000 &gt; (meta.expiration - 120)) {
-        // We are within 120 seconds of expiry just copy it now
-        // create a new document with the same ID but in the target collection
-        // log('OnUpdate: copy src to tgt for DocId:', meta.id);
-        tgt[meta.id] = doc;
-    } else {
-        // Compute 120 seconds prior from the TTL, note JavaScript Date() takes ms.
-        var twoMinsPrior = new Date((meta.expiration - 120) * 1000);
-        // Create a timer with a context to run in the future 120 before the expiry
-        // log('OnUpdate: create Timer '+meta.expiration+' - 120, for  DocId:',  meta.id);
-        createTimer(DocTimerCallback, twoMinsPrior , meta.id, meta.id);
-    }
-}
-function DocTimerCallback(context) {
-    // context is just our key to the document that will expire in 120 sec.
-    var doc = src[context];
-    if (doc) {
-        // create a new document with the same ID but in the target collection
-        // log('DocTimerCallback: copy src to tgt for DocId:', context);
-        tgt[context] = doc;
-    } else {
-        log('DocTimerCallback: issue missing value for DocId:', context);
-    }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>After pasting, the screen appears as displayed below:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/docarchive_03_editor_with_code.png" alt="docarchive 03 editor with code" width="100%">
-</div>
-</div>
-</li>
-<li>
-<p>Click <strong>Save and Return</strong>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>From the <strong>Eventing</strong> screen, click the <strong>archive_before_expiry</strong> function to select it, then click <strong>Deploy</strong>.</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/docarchive_03a_deploy.png" alt="docarchive 03a deploy" width="100%">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>In the <strong>Confirm Deploy Function</strong> Click <strong>Deploy Function</strong>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>The Eventing function is deployed and starts running within a few seconds. From this point, the defined Function is executed on all existing documents and on subsequent mutations.</p>
-</li>
-<li>
-<p>From the <strong>Couchbase Web Console</strong> &gt; <strong>Query</strong> page we will seed some data :</p>
-<div class="ulist">
-<ul>
-<li>
-<p>We use the NIQL Query Editor locate a large set of data in <code>travel-sample</code></p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">SELECT COUNT(*) FROM `travel-sample`.`_default`.`_default` where type = 'airport'</code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>We use the NIQL Query Editor to insert 1,968 items from <code>travel-sample</code>.<code>_default</code>.<code>_default</code> of type = "airport" into our <code>bulk</code>.<code>data</code>.<code>source</code> collection.</p>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">INSERT INTO `bulk`.`data`.`source`(KEY _k, VALUE _v)
-    SELECT META().id _k, _v FROM `travel-sample`.`_default`.`_default` _v WHERE type="airport";</code></pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Now switch to the access the <strong>Couchbase Web Console</strong> &gt; <strong>Eventing</strong> page. Expand the function <strong>archive_before_expiry</strong> and not the count under successes (1,968)</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/docarchive_cnta.png" alt="docarchive cnta" width="100%">
-</div>
-</div>
-</li>
-<li>
-<p>Now switch to the access the <strong>Couchbase Web Console</strong> &gt; <strong>Buckets</strong> page. The Buckets in the UI the <code>rr100</code>.<code>eventing</code>.<code>metadata</code>
-collection will have 1280 documents related to the Eventing function and an additional 2 x 1,968 (ctx+alm) + 256 (root) additional documents related to the active timers.
-The key thing is that you should see 1,968 documents in the <code>bulk</code>.<code>data</code>.<code>source</code> collection (inserted via our N1QL query).</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/docarchive_04_buckets.png" alt="docarchive 04 buckets" width="100%">
-</div>
-</div>
-</li>
-<li>
-<p>Now wait a a bit over eight (8) minutes, look at the Buckets in the UI again you will see 1,968 documents in the 'source' bucket
-and 1,968 documents in the 'target bucket'.</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/docarchive_05_buckets.png" alt="docarchive 05 buckets" width="100%">
-</div>
-</div>
-<div class="paragraph">
-<p>The details under Bucket "bulk" scope "data" show that we have archived the 1,968 documents from the "source" collection to the "target" collection:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/docarchive_07_preexpired.png" alt="docarchive 07 preexpired" width="100%">
-</div>
-</div>
-</li>
-<li>
-<p>Now switch to the access the <strong>Couchbase Web Console</strong> &gt; <strong>Eventing</strong> page. Expand the function <strong>archive_before_expiry</strong> and not the count under successes (3,936)</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/docarchive_cntb.png" alt="docarchive cntb" width="100%">
-</div>
-</div>
-</li>
-<li>
-<p>Wait a few more minutes (a bit more than two minutes) past the 120 second window, then check the documents within the
-<code>bulk</code>.<code>data</code>.<code>source</code> collection, you will find that none of the documents will be accessible as they have expired due to the enclosing bucket&#8217;s defined TTL.</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If you don’t actually try to access the documents in the <code>bulk</code>.<code>data</code>.<code>source</code> collection the UI may still indicate they still exist until the expiry pager removes the tombstone for the deleted or expired documents (or an attempt to access them is made).
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/docarchive_06_buckets.png" alt="docarchive 06 buckets" width="100%">
-</div>
-</div>
-<div class="paragraph">
-<p>The details under Bucket "bulk" scope "data" show that the 1,968 archived documents remain in the "target" collection but the orginal documents in the "source" collection have expired:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/docarchive_08_expired.png" alt="docarchive 08 expired" width="100%">
-</div>
-</div>
+<p>Wait for all the tasks to complete before accessing the results.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p><strong>Cleanup</strong>:</p>
+<p>The example below inserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">var documents = new[]
+{
+	new { id = "user_111", email = "tom_the_cat@gmail.com"},
+	new { id = "user_222", email = "jerry_mouse@gmail.com"},
+	new { id = "user_333", email = "mickey_mouse@gmail.com"}
+};
+
+// Collection of things that will complete in the future.
+var tasks = new List&lt;Task&lt;IMutationResult&gt;&gt;();
+
+// Create tasks to be executed concurrently.
+foreach (var document in documents)
+{
+	Console.WriteLine($"Inserting document: {document.id}");
+	var task = usersCollection.InsertAsync(document.id, document);
+	tasks.Add(task);
+}
+
+// Wait until all of the tasks have completed.
+await Task.WhenAll(tasks);
+
+// Iterate task list to get results.
+foreach (var task in tasks)
+	Console.WriteLine($"CAS: {task.Result.Cas}");</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Go to the Eventing portion of the UI and undeploy the Function <strong>archive_before_expiry</strong>, this will remove the 1280 documents for each function from the 'rr100.eventing.metadata' collection (in the Bucket view of the UI). Remember you may only delete the 'rr100.eventing.metadata' keyspace if there are no deployed Eventing Functions.  The collection <strong>'bulk.data.source'</strong> has a 'Bucket Max Time-To-Live' or TTL of 600 seconds so drop this collection to prevent issues running other examples.</p>
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_java">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create some structured JSON documents to insert.</p>
+</li>
+<li>
+<p>Using the <code>reactor.core.publisher.Flux</code> reactive library, call the <code>fromIterable()</code> method to perform multiple insert operations.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Now flush the 'bulk' bucket if you plan to run other examples (you may need to Edit the bucket 'bulk' and enable the flush capability).</p>
+<p>The example below inserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
-</article>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">JsonObject user1 = JsonObject.create().put("id", "user_111").put("email", "tom_the_cat@gmail.com");
+JsonObject user2 = JsonObject.create().put("id", "user_222").put("email", "jerry_mouse@gmail.com");
+JsonObject user3 = JsonObject.create().put("id", "user_333").put("email", "mickey_mouse@gmail.com");
+
+List&lt;JsonDocument&gt; documents = new ArrayList&lt;&gt;();
+documents.add(new JsonDocument("user_111", user1));
+documents.add(new JsonDocument("user_222", user2));
+documents.add(new JsonDocument("user_333", user3));
+
+// Iterate over a list of documents to insert.
+List&lt;MutationResult&gt; results = Flux.fromIterable(documents)
+    .flatMap(document -&gt; reactiveCollection.insert(
+        document.getId(), document.getContent()
+      )
+    )
+    .collectList()
+    .block(); // Wait until all operations have completed.
+
+// Print all the results.
+for (MutationResult result : results) {
+  System.out.println("CAS: " + result.cas());
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+A <code>JsonDocument</code> class is used to supplement the example.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvBulkHelloWorld.java#L116-L137">class JsonDocument {
+  private final String id;
+  private final JsonObject content;
+
+  public JsonDocument(String id, JsonObject content) {
+    this.id = id;
+    this.content = content;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public JsonObject getContent() {
+    return content;
+  }
+
+  @Override
+  public String toString() {
+    return "JsonDocument{id='" + id + "', content=" + content + "}";
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_node-js">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create some structured JSON documents to insert.</p>
+</li>
+<li>
+<p>Perform an <code>insert</code> operation on each document and wait for all the promises to complete before accessing the results.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The example below inserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-bulk-hello-world.js">const users = [
+  { id: 'user_111', email: 'tom_the_cat@gmail.com' },
+  { id: 'user_222', email: 'jerry_mouse@gmail.com' },
+  { id: 'user_333', email: 'mickey_mouse@gmail.com' },
+]
+// Wait for all the insert operations to complete and store the results.
+const insertResults = await Promise.all(
+  users.map((user) =&gt; {
+    console.log(`Inserting document: ${user.id}`)
+    return usersCollection.insert(user.id, user)
+  })
+)
+
+// Iterate the results and print the CAS metadata.
+insertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_python">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a dictionary of structured JSON documents.</p>
+</li>
+<li>
+<p>Pass the dictionary to the <code>insert_multi()</code> function. This will insert all the documents in the database.</p>
+</li>
+<li>
+<p>A dictionary of <code>MutationResult</code> objects is returned.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The example below inserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_bulk_hello_world.py">documents = {
+    "user_111": {"id": "user_111", "email": "tom_the_cat@gmail.com"},
+    "user_222": {"id": "user_222", "email": "jerry_mouse@gmail.com"},
+    "user_333": {"id": "user_333", "email": "mickey_mouse@gmail.com"}
+}
+# Insert some documents in the users collection.
+insert_results = users_collection.insert_multi(documents)
+
+# Print each document's CAS metadata to the console.
+for key in documents:
+    print("Inserted Document:", key)
+    print("CAS:", insert_results[key].cas)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reading-multiple-documents"><a class="anchor" href="#reading-multiple-documents"></a>Reading Multiple Documents</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To read multiple documents in Couchbase perform a bulk <code>get</code> operation.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_cbc"></a>cbc</p>
+</li>
+<li>
+<p><a id="tabset2_net"></a>.NET</p>
+</li>
+<li>
+<p><a id="tabset2_java"></a>Java</p>
+</li>
+<li>
+<p><a id="tabset2_node-js"></a>Node.js</p>
+</li>
+<li>
+<p><a id="tabset2_python"></a>Python</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_cbc">
+<div class="paragraph">
+<p>Use the <code>cbc cat</code> command to retrieve multiple documents by their IDs.</p>
+</div>
+<div class="paragraph">
+<p>The example below fetches multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L64-L67">cbc cat -u Administrator -P password -U couchbase://localhost/travel-sample \
+	--scope='tenant_agent_00' \
+	--collection='users' \
+	0 1</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Result</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">0                    CAS=0x16be2392ca2e0000, Flags=0x0, Size=904, Datatype=0x01(JSON)
+{
+  "name": "Keon Hoppe",
+  "addresses": [
+    {
+      "type": "home",
+      "address": "222 Sauer Neck",
+      "city": "London",
+      "country": "United Kingdom"
+    },
+  ],
+  ...
+}
+1                    CAS=0x16be2392c9870000, Flags=0x0, Size=697, Datatype=0x01(JSON)
+{
+  "name": "Rigoberto Bernier",
+  "addresses": [
+    {
+      "type": "home",
+      "address": "0622 Adams Mills",
+      "city": "Manchester",
+      "country": "United Kingdom"
+    }
+  ],
+  ...
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_net">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initialize a list of <code>IGetResult</code> tasks.</p>
+</li>
+<li>
+<p>Perform a <code>get</code> operation on each document and store the results in the tasks list.</p>
+</li>
+<li>
+<p>Wait for all the tasks to complete before accessing the results.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The example below fetches multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">var documents = new[]
+{
+	new { id = "user_111", email = "tom_the_cat@gmail.com"},
+	new { id = "user_222", email = "jerry_mouse@gmail.com"},
+	new { id = "user_333", email = "mickey_mouse@gmail.com"}
+};
+
+// Collection of things that will complete in the future.
+var tasks = new List&lt;Task&lt;IGetResult&gt;&gt;();
+
+// Create tasks to be executed concurrently.
+foreach (var document in documents)
+{
+	Console.WriteLine($"Getting document: {document.id}");
+	var task = usersCollection.GetAsync(document.id);
+	tasks.Add(task);
+}
+
+// Wait until all of the tasks have completed.
+await Task.WhenAll(tasks);
+
+// Iterate task list to get results.
+foreach (var task in tasks)
+	Console.WriteLine($"Document: {task.Result.ContentAs&lt;dynamic&gt;()}");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_java">
+<div class="paragraph">
+<p>Using the <code>reactor.core.publisher.Flux</code> reactive library, call the <code>fromIterable()</code> method to perform multiple <code>get</code> operations.</p>
+</div>
+<div class="paragraph">
+<p>The example below fetches multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">JsonObject user1 = JsonObject.create().put("id", "user_111").put("email", "tom_the_cat@gmail.com");
+JsonObject user2 = JsonObject.create().put("id", "user_222").put("email", "jerry_mouse@gmail.com");
+JsonObject user3 = JsonObject.create().put("id", "user_333").put("email", "mickey_mouse@gmail.com");
+
+List&lt;JsonDocument&gt; documents = new ArrayList&lt;&gt;();
+documents.add(new JsonDocument("user_111", user1));
+documents.add(new JsonDocument("user_222", user2));
+documents.add(new JsonDocument("user_333", user3));
+
+// Iterate over a list of documents to fetch.
+List&lt;GetResult&gt; results = Flux.fromIterable(documents)
+    .flatMap(document -&gt; reactiveCollection.get(document.getId()))
+    .collectList()
+    .block(); // Wait until all operations have completed.
+
+// Print all the results.
+for (GetResult result : results) {
+  JsonObject document = result.contentAsObject();
+  System.out.println("Document: "  + document);
+  System.out.println("CAS: " + result.cas());
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_node-js">
+<div class="paragraph">
+<p>Perform a <code>get</code> operation on each document and wait for all the promises to complete before accessing the results.</p>
+</div>
+<div class="paragraph">
+<p>The example below fetches multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-bulk-hello-world.js">const users = [
+  { id: 'user_111', email: 'tom_the_cat@gmail.com' },
+  { id: 'user_222', email: 'jerry_mouse@gmail.com' },
+  { id: 'user_333', email: 'mickey_mouse@gmail.com' },
+]
+// Wait for all the get operations to complete and store the results.
+const getResults = await Promise.all(
+  users.map((user) =&gt; {
+    console.log(`Getting document: ${user.id}`)
+    return usersCollection.get(user.id, user)
+  })
+)
+
+// Iterate the results and print the CAS metadata.
+getResults.forEach((result) =&gt; console.log('Document:', result.content))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_python">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Pass the document IDs to fetch to the <code>get_multi()</code> function. This will fetch the documents from the database.</p>
+</li>
+<li>
+<p>A dictionary of <code>GetResult</code> objects is returned.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The example below fetches multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_bulk_hello_world.py">documents = {
+    "user_111": {"id": "user_111", "email": "tom_the_cat@gmail.com"},
+    "user_222": {"id": "user_222", "email": "jerry_mouse@gmail.com"},
+    "user_333": {"id": "user_333", "email": "mickey_mouse@gmail.com"}
+}
+# Get some documents from the users collection.
+get_results = users_collection.get_multi(documents.keys())
+
+# Print each document's CAS metadata to the console.
+for key in documents:
+    print("Fetched Document:", key)
+    print("CAS:", get_results[key].cas)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="updating-multiple-documents"><a class="anchor" href="#updating-multiple-documents"></a>Updating Multiple Documents</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To update multiple documents in Couchbase perform a bulk <code>upsert</code> or <code>replace</code> operation.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset3_net"></a>.NET</p>
+</li>
+<li>
+<p><a id="tabset3_java"></a>Java</p>
+</li>
+<li>
+<p><a id="tabset3_node-js"></a>Node.js</p>
+</li>
+<li>
+<p><a id="tabset3_python"></a>Python</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_net">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add new data to update some existing JSON documents.</p>
+</li>
+<li>
+<p>Initialize a list of <code>IMutationResult</code> tasks.</p>
+</li>
+<li>
+<p>Perform an <code>upsert</code> or <code>replace</code> operation on each document and store the results in the tasks list.</p>
+</li>
+<li>
+<p>Wait for all the tasks to complete before accessing the results.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The example below inserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">var documents = new[]
+{
+	new { id = "user_111", email = "tom_the_cat@gmail.com"},
+	new { id = "user_222", email = "jerry_mouse@gmail.com"},
+	new { id = "user_333", email = "mickey_mouse@gmail.com"}
+};
+
+// Collection of things that will complete in the future.
+var tasks = new List&lt;Task&lt;IMutationResult&gt;&gt;();
+
+// Create tasks to be executed concurrently.
+foreach (var document in documents)
+{
+	Console.WriteLine($"Inserting document: {document.id}");
+	var task = usersCollection.InsertAsync(document.id, document);
+	tasks.Add(task);
+}
+
+// Wait until all of the tasks have completed.
+await Task.WhenAll(tasks);
+
+// Iterate task list to get results.
+foreach (var task in tasks)
+	Console.WriteLine($"CAS: {task.Result.Cas}");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_java">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add new data to update some existing JSON documents.</p>
+</li>
+<li>
+<p>Using the <code>reactor.core.publisher.Flux</code> reactive library, call the <code>fromIterable()</code> method to perform multiple <code>upsert</code> or <code>replace</code> operations.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The example below upserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">JsonObject user1 = JsonObject.create().put("id", "user_111").put("email", "tom_the_cat@gmail.com");
+JsonObject user2 = JsonObject.create().put("id", "user_222").put("email", "jerry_mouse@gmail.com");
+JsonObject user3 = JsonObject.create().put("id", "user_333").put("email", "mickey_mouse@gmail.com");
+
+List&lt;JsonDocument&gt; documents = new ArrayList&lt;&gt;();
+documents.add(new JsonDocument("user_111", user1));
+documents.add(new JsonDocument("user_222", user2));
+documents.add(new JsonDocument("user_333", user3));
+
+JsonObject newUser1 = JsonObject.create().put("id", "user_111").put("email", "tom@gmail.com");
+JsonObject newUser2 = JsonObject.create().put("id", "user_222").put("email", "jerry@gmail.com");
+JsonObject newUser3 = JsonObject.create().put("id", "user_333").put("email", "mickey@gmail.com");
+
+List&lt;JsonDocument&gt; newDocuments = new ArrayList&lt;&gt;();
+newDocuments.add(new JsonDocument("user_111", newUser1));
+newDocuments.add(new JsonDocument("user_222", newUser2));
+newDocuments.add(new JsonDocument("user_333", newUser3));
+
+// Iterate over a list of documents to upsert.
+List&lt;MutationResult&gt; results = Flux.fromIterable(newDocuments)
+    .flatMap(newDocument -&gt; reactiveCollection.upsert(
+        newDocument.getId(), newDocument.getContent()
+      )
+    )
+    .collectList()
+    .block(); // Wait until all operations have completed.
+
+// Print all the results.
+for (MutationResult result : results) {
+  System.out.println("CAS: " + result.cas());
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_node-js">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add new data to update some existing JSON documents.</p>
+</li>
+<li>
+<p>Perform an <code>upsert</code> operation on each document and wait for all the promises to complete before accessing the results.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The example below upserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-bulk-hello-world.js">const users = [
+  { id: 'user_111', email: 'tom_the_cat@gmail.com' },
+  { id: 'user_222', email: 'jerry_mouse@gmail.com' },
+  { id: 'user_333', email: 'mickey_mouse@gmail.com' },
+]
+const newUsers = [
+  { id: 'user_111', email: 'tom@gmail.com' },
+  { id: 'user_222', email: 'jerry@gmail.com' },
+  { id: 'user_333', email: 'mickey@gmail.com' },
+]
+
+// Wait for all the upsert operations to complete and store the results.
+const upsertResults = await Promise.all(
+  newUsers.map((newUser) =&gt; {
+    console.log(`Upserting document: ${newUser.id}`)
+    return usersCollection.upsert(newUser.id, newUser)
+  })
+)
+
+// Iterate the results and print the CAS metadata.
+upsertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset3_python">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add new data to update some existing JSON documents.</p>
+</li>
+<li>
+<p>Pass the new document data to <code>upsert_multi()</code>. This will update all the documents in the database.</p>
+</li>
+<li>
+<p>A dictionary of <code>MutationResult</code> objects is returned.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The example below upserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_bulk_hello_world.py">documents = {
+    "user_111": {"id": "user_111", "email": "tom_the_cat@gmail.com"},
+    "user_222": {"id": "user_222", "email": "jerry_mouse@gmail.com"},
+    "user_333": {"id": "user_333", "email": "mickey_mouse@gmail.com"}
+}
+# Upsert some documents in the users collection.
+upsert_results = users_collection.upsert_multi(documents)
+
+# Print each document's CAS metadata to the console.
+for key in documents:
+    print("Upserted Document:", key)
+    print("CAS:", upsert_results[key].cas)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deleting-multiple-documents"><a class="anchor" href="#deleting-multiple-documents"></a>Deleting Multiple Documents</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To delete multiple documents in Couchbase perform a bulk <code>remove</code> operation.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset4_net"></a>.NET</p>
+</li>
+<li>
+<p><a id="tabset4_java"></a>Java</p>
+</li>
+<li>
+<p><a id="tabset4_node-js"></a>Node.js</p>
+</li>
+<li>
+<p><a id="tabset4_python"></a>Python</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset4_net">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initialize a list of tasks.</p>
+</li>
+<li>
+<p>Perform a <code>remove</code> operation on each document and store the results in the tasks list.</p>
+</li>
+<li>
+<p>Wait for all the tasks to complete.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The example below deletes multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">var documents = new[]
+{
+	new { id = "user_111", email = "tom_the_cat@gmail.com"},
+	new { id = "user_222", email = "jerry_mouse@gmail.com"},
+	new { id = "user_333", email = "mickey_mouse@gmail.com"}
+};
+
+// Collection of things that will complete in the future.
+var tasks = new List&lt;Task&gt;();
+
+// Create tasks to be executed concurrently.
+foreach (var document in documents)
+{
+	Console.WriteLine($"Removing document: {document.id}");
+	var task = usersCollection.RemoveAsync(document.id);
+	tasks.Add(task);
+}
+
+// Wait until all of the tasks have completed.
+// NOTE: RemoveAsync returns void, so no need to loop through each task.
+await Task.WhenAll(tasks);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_java">
+<div class="paragraph">
+<p>Using the <code>reactor.core.publisher.Flux</code> reactive library, call the <code>fromIterable()</code> method to perform multiple <code>remove</code> operations.</p>
+</div>
+<div class="paragraph">
+<p>The example below deletes multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">JsonObject user1 = JsonObject.create().put("id", "user_111").put("email", "tom_the_cat@gmail.com");
+JsonObject user2 = JsonObject.create().put("id", "user_222").put("email", "jerry_mouse@gmail.com");
+JsonObject user3 = JsonObject.create().put("id", "user_333").put("email", "mickey_mouse@gmail.com");
+
+List&lt;JsonDocument&gt; documents = new ArrayList&lt;&gt;();
+documents.add(new JsonDocument("user_111", user1));
+documents.add(new JsonDocument("user_222", user2));
+documents.add(new JsonDocument("user_333", user3));
+
+// Iterate over a list of documents to remove.
+List&lt;MutationResult&gt; results = Flux.fromIterable(documents)
+    .flatMap(document -&gt; reactiveCollection.remove(document.getId()))
+    .collectList()
+    .block(); // Wait until all operations have completed.
+
+// Print all the results.
+for (MutationResult result : results) {
+  System.out.println("CAS: " + result.cas());
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_node-js">
+<div class="paragraph">
+<p>Perform a <code>get</code> operation on each document and wait for all the promises to complete before accessing the results.</p>
+</div>
+<div class="paragraph">
+<p>The example below deletes multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-bulk-hello-world.js">const users = [
+  { id: 'user_111', email: 'tom_the_cat@gmail.com' },
+  { id: 'user_222', email: 'jerry_mouse@gmail.com' },
+  { id: 'user_333', email: 'mickey_mouse@gmail.com' },
+]
+// Wait for all the remove operations to complete and store the results.
+const removeResults = await Promise.all(
+  users.map((user) =&gt; {
+    console.log(`Removing document: ${user.id}`)
+    return usersCollection.remove(user.id, user)
+  })
+)
+
+// Iterate the results and print the CAS metadata.
+removeResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset4_python">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Pass the document IDs to fetch to the <code>get_multi()</code> function. This will fetch the documents from the database.</p>
+</li>
+<li>
+<p>A dictionary of <code>GetResult</code> objects is returned.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The example below deletes multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_bulk_hello_world.py">documents = {
+    "user_111": {"id": "user_111", "email": "tom_the_cat@gmail.com"},
+    "user_222": {"id": "user_222", "email": "jerry_mouse@gmail.com"},
+    "user_333": {"id": "user_333", "email": "mickey_mouse@gmail.com"}
+}
+# Remove some documents from the users collection.
+remove_results = users_collection.remove_multi(documents.keys())
+
+# Print each document's CAS metadata to the console.
+for key in documents:
+    print("Removed Document:", key)
+    print("CAS:", remove_results[key].cas)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="related-links"><a class="anchor" href="#related-links"></a>Related Links</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Bulk Operations with SDKs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../../c-sdk/3.2/howtos/concurrent-async-apis.html" class="xref page">C</a>
+| <a href="../../../dotnet-sdk/DOC-9205/howtos/concurrent-async-apis.html" class="xref page">.NET</a>
+| <a href="../../../go-sdk/2.3/howtos/concurrent-async-apis.html" class="xref page">Go</a>
+| <a href="../../../java-sdk/DOC-9205/howtos/concurrent-async-apis.html" class="xref page">Java</a>
+| <a href="../../../nodejs-sdk/DOC-9205/howtos/concurrent-async-apis.html" class="xref page">Node.js</a>
+| <a href="../../../php-sdk/3.2/howtos/concurrent-async-apis.html" class="xref page">PHP</a>
+| <a href="../../../python-sdk/DOC-9205/howtos/concurrent-async-apis.html" class="xref page">Python</a>
+| <a href="../../../ruby-sdk/3.2/howtos/concurrent-async-apis.html" class="xref page">Ruby</a>
+| <a href="../../../scala-sdk/1.2/howtos/concurrent-async-apis.html" class="xref page">Scala</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+        <nav class="pagination">
+
+                    <span class="prev"><a href="deleting-data.html">Deleting Data</a></span>
+
+
+                <span>&nbsp;</span>
+            </nav>
+        </article>
 </main>
 </div>
 <footer class="footer">
