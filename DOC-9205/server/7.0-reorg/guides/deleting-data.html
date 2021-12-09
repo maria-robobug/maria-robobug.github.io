@@ -4555,7 +4555,7 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L205-L206">MutationResult removeResult = hotelCollection.remove("hotel-123");
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L179-L180">MutationResult removeResult = hotelCollection.remove("hotel-123");
 System.out.println("CAS:" + removeResult.cas());</code></pre>
 </div>
 </div>
@@ -4735,7 +4735,7 @@ Console.WriteLine($"Cas: {mutateInResult.Cas}");</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoundException</code> error.
+If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundException</code> error.
 </td>
 </tr>
 </table>
@@ -4760,7 +4760,7 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L194-L198">List&lt;MutateInSpec&gt; specs = new ArrayList&lt;&gt;();
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L168-L172">List&lt;MutateInSpec&gt; specs = new ArrayList&lt;&gt;();
 specs.add(MutateInSpec.remove("url"));
 
 MutateInResult mutateInResult = hotelCollection.mutateIn("hotel-123", specs);
@@ -4774,7 +4774,7 @@ System.out.println("CAS:" + mutateInResult.cas());</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoundException</code> error.
+If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundException</code> error.
 </td>
 </tr>
 </table>
@@ -4812,7 +4812,7 @@ console.log('CAS:', mutateInResult.cas)</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoundError</code> error.
+If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundError</code> error.
 </td>
 </tr>
 </table>
@@ -4839,7 +4839,7 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_scoped.py#L173-L176">mutate_in_result = hotel_collection.mutate_in(
-    "hotel-123", [subdocument.remove("url")]
+    "hotel-123", [subdocument.remove("ur")]
 )
 print("CAS:", mutate_in_result.cas)</code></pre>
 </div>
@@ -4851,7 +4851,7 @@ print("CAS:", mutate_in_result.cas)</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoundException</code> error.
+If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundException</code> error.
 </td>
 </tr>
 </table>
@@ -4874,7 +4874,7 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <ul>
 <li>
 <p><a href="../../../c-sdk/3.2/howtos/kv-operations.html" class="xref page">C</a>
-| <a href="../../../dotnet-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">.NET</a>
+| <a href="../../../dotnet-sdk/3.2/howtos/kv-operations.html" class="xref page">.NET</a>
 | <a href="../../../go-sdk/2.3/howtos/kv-operations.html" class="xref page">Go</a>
 | <a href="../../../java-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Java</a>
 | <a href="../../../nodejs-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Node.js</a>
@@ -4892,7 +4892,7 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <ul>
 <li>
 <p><a href="../../../c-sdk/3.2/howtos/subdocument-operations.html" class="xref page">C</a>
-| <a href="../../../dotnet-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">.NET</a>
+| <a href="../../../dotnet-sdk/3.2/howtos/subdocument-operations.html" class="xref page">.NET</a>
 | <a href="../../../go-sdk/2.3/howtos/subdocument-operations.html" class="xref page">Go</a>
 | <a href="../../../java-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Java</a>
 | <a href="../../../nodejs-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Node.js</a>

@@ -4616,7 +4616,7 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L93-L96">GetResult getResult = hotelCollection.get("hotel-123");
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L77-L80">GetResult getResult = hotelCollection.get("hotel-123");
 
 // Print the result's CAS metadata to the console.
 System.out.println("CAS:" + getResult.cas());</code></pre>
@@ -4840,9 +4840,8 @@ Console.WriteLine($"Expiry: {getResult.ExpiryTime}");</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L103-L110">GetResult getResult = hotelCollection.get("hotel-123", 
-    GetOptions.getOptions().withExpiry(true)
-);
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L87-L93">GetResult getResult =
+    hotelCollection.get("hotel-123", GetOptions.getOptions().withExpiry(true));
 
 // Print the result's CAS metadata to the console.
 System.out.println("CAS:" + getResult.cas());
@@ -5052,7 +5051,7 @@ Console.WriteLine($"Geo: {lookupInResult.ContentAs&lt;JObject&gt;(0)}");</code><
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L117-L122">List&lt;LookupInSpec&gt; specs = new ArrayList&lt;&gt;();
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L100-L105">List&lt;LookupInSpec&gt; specs = new ArrayList&lt;&gt;();
 specs.add(LookupInSpec.get("geo"));
 
 LookupInResult lookupInResult = hotelCollection.lookupIn("hotel-123", specs);
@@ -5158,7 +5157,7 @@ If the document path can&#8217;t be found, the SDK will return a <code>PathNotFo
 <ul>
 <li>
 <p><a href="../../../c-sdk/3.2/howtos/kv-operations.html" class="xref page">C</a>
-| <a href="../../../dotnet-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">.NET</a>
+| <a href="../../../dotnet-sdk/3.2/howtos/kv-operations.html" class="xref page">.NET</a>
 | <a href="../../../go-sdk/2.3/howtos/kv-operations.html" class="xref page">Go</a>
 | <a href="../../../java-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Java</a>
 | <a href="../../../nodejs-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Node.js</a>
@@ -5176,7 +5175,7 @@ If the document path can&#8217;t be found, the SDK will return a <code>PathNotFo
 <ul>
 <li>
 <p><a href="../../../c-sdk/3.2/howtos/subdocument-operations.html" class="xref page">C</a>
-| <a href="../../../dotnet-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">.NET</a>
+| <a href="../../../dotnet-sdk/3.2/howtos/subdocument-operations.html" class="xref page">.NET</a>
 | <a href="../../../go-sdk/2.3/howtos/subdocument-operations.html" class="xref page">Go</a>
 | <a href="../../../java-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Java</a>
 | <a href="../../../nodejs-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Node.js</a>

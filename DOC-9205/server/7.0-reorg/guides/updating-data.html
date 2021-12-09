@@ -4591,7 +4591,7 @@ If it doesn&#8217;t exist, Couchbase will simply create a new document.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L172-L176">// Update or create a document in the hotel collection.
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L146-L150">// Update or create a document in the hotel collection.
 MutationResult upsertResult = hotelCollection.upsert("hotel-123", document);
 
 // Print the result's CAS metadata to the console.
@@ -4815,7 +4815,7 @@ To ensure data has not been modified before executing the <code>replace</code> o
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L129-L153">// Fetch an existing hotel document
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L112-L132">// Fetch an existing hotel document
 GetResult getResult = hotelCollection.get("hotel-123");
 JsonObject existingDoc = getResult.contentAsObject();
 
@@ -4824,19 +4824,15 @@ Long currentCas = getResult.cas();
 System.out.println("Current CAS:" + currentCas);
 
 // Add a new review to the reviews array.
-existingDoc.getArray("reviews").add(JsonObject.create()
-    .put("content", "This hotel was cozy, conveniently located and clean.")
-    .put("author", "Carmella O'Keefe")
-    .put("date", DateTimeFormatter.ISO_INSTANT.format(Instant.now())
-  )
-);
+existingDoc.getArray("reviews")
+    .add(JsonObject.create()
+        .put("content", "This hotel was cozy, conveniently located and clean.")
+        .put("author", "Carmella O'Keefe")
+        .put("date", DateTimeFormatter.ISO_INSTANT.format(Instant.now())));
 
-// Update the document with new data and pass the current CAS value. 
-MutationResult replaceResult = hotelCollection.replace(
-    "hotel-123",
-    existingDoc,
-    ReplaceOptions.replaceOptions().cas(currentCas)
-);
+// Update the document with new data and pass the current CAS value.
+MutationResult replaceResult = hotelCollection.replace("hotel-123", existingDoc,
+    ReplaceOptions.replaceOptions().cas(currentCas));
 
 // Print the new CAS value.
 System.out.println("New CAS:" + replaceResult.cas());</code></pre>
@@ -5081,7 +5077,7 @@ Console.WriteLine($"Cas: {mutateInResult.Cas}");</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L183-L187">List&lt;MutateInSpec&gt; specs = new ArrayList&lt;&gt;();
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L157-L161">List&lt;MutateInSpec&gt; specs = new ArrayList&lt;&gt;();
 specs.add(MutateInSpec.upsert("pets_ok", true));
 
 MutateInResult mutateInResult = hotelCollection.mutateIn("hotel-123", specs);
@@ -5159,7 +5155,7 @@ print("CAS:", mutate_in_result.cas)</code></pre>
 <ul>
 <li>
 <p><a href="../../../c-sdk/3.2/howtos/kv-operations.html" class="xref page">C</a>
-| <a href="../../../dotnet-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">.NET</a>
+| <a href="../../../dotnet-sdk/3.2/howtos/kv-operations.html" class="xref page">.NET</a>
 | <a href="../../../go-sdk/2.3/howtos/kv-operations.html" class="xref page">Go</a>
 | <a href="../../../java-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Java</a>
 | <a href="../../../nodejs-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Node.js</a>
@@ -5177,7 +5173,7 @@ print("CAS:", mutate_in_result.cas)</code></pre>
 <ul>
 <li>
 <p><a href="../../../c-sdk/3.2/howtos/subdocument-operations.html" class="xref page">C</a>
-| <a href="../../../dotnet-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">.NET</a>
+| <a href="../../../dotnet-sdk/3.2/howtos/subdocument-operations.html" class="xref page">.NET</a>
 | <a href="../../../go-sdk/2.3/howtos/subdocument-operations.html" class="xref page">Go</a>
 | <a href="../../../java-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Java</a>
 | <a href="../../../nodejs-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Node.js</a>

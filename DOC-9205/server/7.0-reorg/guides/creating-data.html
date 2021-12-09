@@ -4677,10 +4677,9 @@ If the document already exists, the SDK will return a <code>DocumentExistsExcept
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L31-L59">// Create the document object.
-JsonObject geo = JsonObject.create()
-    .put("lat", 51.35785)
-    .put("lon", 0.55818).put("accuracy", "RANGE_INTERPOLATED");
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L31-L52">// Create the document object.
+JsonObject geo = JsonObject.create().put("lat", 51.35785).put("lon", 0.55818).put("accuracy",
+    "RANGE_INTERPOLATED");
 
 JsonArray reviews = JsonArray.create();
 reviews.add(JsonObject.create()
@@ -4688,18 +4687,12 @@ reviews.add(JsonObject.create()
     .put("author", "Ozella Sipes")
     .put("date", DateTimeFormatter.ISO_INSTANT.format(Instant.now())));
 
-JsonObject document = JsonObject.create()
-    .put("id", "hotel-123")
-    .put("name", "Medway Youth Hostel")
-    .put("address", "Capstone Road, ME7 3JE")
-    .put("url", "http://www.yha.org.uk")
-    .put("geo", geo)
-    .put("country", "United Kingdom")
-    .put("city", "Medway")
-    .put("state", (String) null)
-    .put("reviews", reviews)
-    .put("vacancy", true)
-    .put("description", "40 bed summer hostel about 3 miles from Gillingham.");
+JsonObject document =
+    JsonObject.create().put("id", "hotel-123").put("name", "Medway Youth Hostel")
+        .put("address", "Capstone Road, ME7 3JE").put("url", "http://www.yha.org.uk")
+        .put("geo", geo).put("country", "United Kingdom").put("city", "Medway")
+        .put("state", (String) null).put("reviews", reviews).put("vacancy", true)
+        .put("description", "40 bed summer hostel about 3 miles from Gillingham.");
 
 // Insert the document in the hotel collection.
 MutationResult insertResult = hotelCollection.insert("hotel-123", document);
@@ -5003,24 +4996,15 @@ Console.WriteLine($"CAS: {insertResult.Cas}");</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L66-L86">JsonObject document = JsonObject.create()
-    .put("id", 456)
-    .put("title", "Ardèche")
-    .put("name", "La Pradella")
-    .put("address", "rue du village, 07290 Preaux, France")
-    .put("phone", "+33 4 75 32 08 52")
-    .put("url", "http://www.lapradella.fr")
-    .put("country", "France")
-    .put("city", "Preaux")
-    .put("state", "Rhône-Alpes")
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L59-L70">JsonObject document = JsonObject.create().put("id", 456).put("title", "Ardèche")
+    .put("name", "La Pradella").put("address", "rue du village, 07290 Preaux, France")
+    .put("phone", "+33 4 75 32 08 52").put("url", "http://www.lapradella.fr")
+    .put("country", "France").put("city", "Preaux").put("state", "Rhône-Alpes")
     .put("vacancy", false);
 
 // Insert the document with an expiry time option of 60 seconds.
-MutationResult insertResult = hotelCollection.insert(
-  "hotel-456",
-  document,
-  InsertOptions.insertOptions().expiry(Duration.ofSeconds(2))
-);
+MutationResult insertResult = hotelCollection.insert("hotel-456", document,
+    InsertOptions.insertOptions().expiry(Duration.ofSeconds(2)));
 
 // Print the result's CAS metadata to the console.
 System.out.println("CAS:" + insertResult.cas());</code></pre>
@@ -5128,7 +5112,7 @@ print("CAS:", insert_result.cas)</code></pre>
 <ul>
 <li>
 <p><a href="../../../c-sdk/3.2/howtos/kv-operations.html" class="xref page">C</a>
-| <a href="../../../dotnet-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">.NET</a>
+| <a href="../../../dotnet-sdk/3.2/howtos/kv-operations.html" class="xref page">.NET</a>
 | <a href="../../../go-sdk/2.3/howtos/kv-operations.html" class="xref page">Go</a>
 | <a href="../../../java-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Java</a>
 | <a href="../../../nodejs-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Node.js</a>
