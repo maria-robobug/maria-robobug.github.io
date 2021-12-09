@@ -4839,7 +4839,7 @@ If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundError</
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/hello-world/examples/kv_hello_world_scoped.py#L173-L176">mutate_in_result = hotel_collection.mutate_in(
-    "hotel-123", [subdocument.remove("ur")]
+    "hotel-123", [subdocument.remove("url")]
 )
 print("CAS:", mutate_in_result.cas)</code></pre>
 </div>
