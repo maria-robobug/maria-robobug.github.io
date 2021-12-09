@@ -4676,6 +4676,22 @@ insertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 <li>
 <p>Pass the dictionary to the <code>insert_multi()</code> function. This will insert all the documents in the database.</p>
 </li>
+</ol>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<code>CBCollection.insert_multi</code> is a <a href="../../../python-sdk/DOC-9205/project-docs/compatibility.html#interface-stability" class="xref page">volatile</a> API call that is still in flux and may likely be changed.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>A dictionary of <code>MutationResult</code> objects is returned.</p>
 </li>
@@ -4901,8 +4917,24 @@ getResults.forEach((result) =&gt; console.log('Document:', result.content))</cod
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Pass the document IDs to fetch to the <code>get_multi()</code> function. This will fetch the documents from the database.</p>
+<p>Pass some document IDs to fetch to the <code>get_multi()</code> function. This will fetch the documents from the database.</p>
 </li>
+</ol>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<code>CBCollection.get_multi</code> is a <a href="../../../python-sdk/DOC-9205/project-docs/compatibility.html#interface-stability" class="xref page">volatile</a> API call that is still in flux and may likely be changed.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>A dictionary of <code>GetResult</code> objects is returned.</p>
 </li>
@@ -5116,6 +5148,22 @@ upsertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 <li>
 <p>Pass the new document data to <code>upsert_multi()</code>. This will update all the documents in the database.</p>
 </li>
+</ol>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<code>CBCollection.upsert_multi</code> is a <a href="../../../python-sdk/DOC-9205/project-docs/compatibility.html#interface-stability" class="xref page">volatile</a> API call that is still in flux and may likely be changed.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>A dictionary of <code>MutationResult</code> objects is returned.</p>
 </li>
@@ -5254,7 +5302,7 @@ for (MutationResult result : results) {
 </div>
 <div class="tab-pane" aria-labelledby="tabset4_node-js">
 <div class="paragraph">
-<p>Perform a <code>get</code> operation on each document and wait for all the promises to complete before accessing the results.</p>
+<p>Perform a <code>remove</code> operation on each document and wait for all the promises to complete before accessing the results.</p>
 </div>
 <div class="paragraph">
 <p>The example below deletes multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
@@ -5286,10 +5334,26 @@ removeResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Pass the document IDs to fetch to the <code>get_multi()</code> function. This will fetch the documents from the database.</p>
+<p>Pass some document IDs to remove to the <code>remove_multi()</code> function. This will delete the documents from the database.</p>
 </li>
+</ol>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<code>CBCollection.remove_multi</code> is a <a href="../../../python-sdk/DOC-9205/project-docs/compatibility.html#interface-stability" class="xref page">volatile</a> API call that is still in flux and may likely be changed.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>A dictionary of <code>GetResult</code> objects is returned.</p>
+<p>A dictionary of <code>MutationResult</code> objects is returned.</p>
 </li>
 </ol>
 </div>
