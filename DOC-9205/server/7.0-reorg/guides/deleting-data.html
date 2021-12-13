@@ -986,7 +986,7 @@
 <li class="menu_list is-parent closed" data-depth="1">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="kv-operations.html">Key Value Operations</a>
+    <a class="menu_title menu_link" href="kv-operations.html">Key-Value Operations</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list" data-depth="2">
@@ -4447,7 +4447,7 @@
 <ul>
 <li class="crumb"><a href="../introduction/intro.html">Couchbase Server</a></li>
 <li class="crumb">Developer Guides</li>
-<li class="crumb"><a href="kv-operations.html">Key Value Operations</a></li>
+<li class="crumb"><a href="kv-operations.html">Key-Value Operations</a></li>
 <li class="crumb"><a href="deleting-data.html">Deleting Data</a></li>
 </ul>
 </nav>
@@ -4467,8 +4467,37 @@
 How to delete documents in Couchbase.
 </blockquote>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>In situations where data is no longer needed, Couchbase Server provides a <code>remove</code> operation to delete a document from the database permanently.</p>
+<p>In situations where data is no longer needed, Couchbase Server provides a remove operation to delete a document from the database permanently.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../../c-sdk/3.2/hello-world/cbc.html" class="xref page">Command Line Clients</a></p>
+</li>
+<li>
+<p><a href="../../../home/sdk.html" class="xref page">SDK Clients</a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Please note that the examples in this guide will alter the data in your sample buckets.
+To restore your sample data, remove and reinstall the <code>travel-sample</code> bucket.
+Refer to <a href="../manage/manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a> for details.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -4476,7 +4505,7 @@ How to delete documents in Couchbase.
 <h2 id="deleting-a-document"><a class="anchor" href="#deleting-a-document"></a>Deleting a Document</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To delete a document from the database perform a <code>remove</code> operation.</p>
+<p>To delete a specific field within a document, perform a <em>Sub-Document</em> remove operation.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -4508,7 +4537,7 @@ How to delete documents in Couchbase.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L18">cbc rm -u Administrator -P password -U couchbase://localhost/travel-sample airport-123</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -4516,6 +4545,9 @@ How to delete documents in Couchbase.
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">airport-123          Deleted</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-c-client/md_doc_cbc.html" target="_blank" rel="noopener">cbc(1)</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_net">
@@ -4545,6 +4577,9 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_java">
 <div class="paragraph">
@@ -4555,7 +4590,7 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L179-L180">MutationResult removeResult = hotelCollection.remove("hotel-123");
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L205-L206">MutationResult removeResult = hotelCollection.remove("hotel-123");
 System.out.println("CAS:" + removeResult.cas());</code></pre>
 </div>
 </div>
@@ -4573,6 +4608,9 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 </div>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_node-js">
@@ -4603,6 +4641,9 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_python">
 <div class="paragraph">
@@ -4632,6 +4673,9 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -4641,7 +4685,7 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <h2 id="deleting-a-sub-document"><a class="anchor" href="#deleting-a-sub-document"></a>Deleting a Sub-Document</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To delete a specific field within a document you can perform a <em>Sub-Document</em> <code>remove</code> operation.</p>
+<p>To delete a specific field within a document you can perform a <em>Sub-Document</em> remove operation.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -4671,8 +4715,10 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <p>Connect to the <code>cbc-subdoc</code> interactive shell.</p>
 </li>
 <li>
-<p>Use the <code>remove</code> command to delete a field from a document.
-Pass the field to remove with the <code>--path</code> argument.</p>
+<p>Use the <code>remove</code> command to delete a field from a document.</p>
+</li>
+<li>
+<p>Pass the field to remove with the <code>--path</code> argument.</p>
 </li>
 </ol>
 </div>
@@ -4704,16 +4750,21 @@ If the path cannot be found, <code>cbc-subdoc</code> will return a <code>LCB_ERR
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-c-client/md_doc_cbc.html" target="_blank" rel="noopener">cbc-subdoc(1)</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_net">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To remove a specific field inside a document, call the <code>MutateInAsync()</code> method, which takes a document ID and an IEnumerable containing <code>MutateInSpec</code> objects.
-<code>MutateInSpec</code> represents the sub-operation to be performed within the lookup.</p>
+<p>Call the <code>MutateInAsync()</code> method, which takes a document ID and an IEnumerable containing <code>MutateInSpec</code> objects.</p>
 </li>
 <li>
-<p>A <code>MutateInResult</code> object is returned containing the result and metadata relevant to the sub-document update operation.</p>
+<p>Use a <code>MutateInSpec</code> object to specify the sub-operation to be performed within the lookup.</p>
+</li>
+<li>
+<p>A <code>MutateInResult</code> object is returned containing the result and metadata relevant to the sub-document remove operation.</p>
 </li>
 </ol>
 </div>
@@ -4743,24 +4794,30 @@ If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundExcepti
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_java">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To remove a specific field inside a document, call the <code>mutateIn()</code> method, which takes a document ID and an array of <code>MutateInSpec</code> objects. <code>MutateInSpec</code> represents the sub-operation to be performed within the lookup.</p>
+<p>Call the <code>mutateIn()</code> method, which takes a document ID and an array of <code>MutateInSpec</code> objects.</p>
 </li>
 <li>
-<p>A <code>MutateInResult</code> object is returned containing the result and metadata relevant to the sub-document update operation.</p>
+<p>Use a <code>MutateInSpec</code> object to specify the sub-operation to be performed within the lookup.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A <code>MutateInResult</code> object is returned, containing the result and metadata relevant to the sub-document remove operation.</p>
 </div>
 <div class="paragraph">
 <p>The example below deletes the <code>url</code> field from document <code>hotel-123</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L168-L172">List&lt;MutateInSpec&gt; specs = new ArrayList&lt;&gt;();
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L194-L198">List&lt;MutateInSpec&gt; specs = new ArrayList&lt;&gt;();
 specs.add(MutateInSpec.remove("url"));
 
 MutateInResult mutateInResult = hotelCollection.mutateIn("hotel-123", specs);
@@ -4782,17 +4839,23 @@ If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundExcepti
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_node-js">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To remove a specific field inside a document, call the <code>mutateIn()</code> method, which takes a document ID and an array of <code>MutateInSpec</code> objects. <code>MutateInSpec</code> represents the sub-operation to be performed within the lookup.</p>
+<p>Call the <code>mutateIn()</code> method, which takes a document ID and an array of <code>MutateInSpec</code> objects.</p>
 </li>
 <li>
-<p>A <code>MutateInResult</code> object is returned containing the result and metadata relevant to the sub-document update operation.</p>
+<p>Use a <code>MutateInSpec</code> object to specify the sub-operation to be performed within the lookup.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A <code>MutateInResult</code> object is returned, containing the result and metadata relevant to the sub-document remove operation.</p>
 </div>
 <div class="paragraph">
 <p>The example below deletes the <code>url</code> field from document <code>hotel-123</code>.</p>
@@ -4820,18 +4883,23 @@ If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundError</
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_python">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To remove a specific field inside a document, call the <code>lookup_in()</code> function, which takes a document ID and a list of <code>MutateInSpec</code> objects.
-<code>MutateInSpec</code> represents the sub-operation to be performed within the lookup.</p>
+<p>Call the <code>lookup_in()</code> function, which takes a document ID and a list of <code>MutateInSpec</code> objects.</p>
 </li>
 <li>
-<p>A <code>MutateInResult</code> object is returned containing the result and metadata relevant to the sub-document get operation.</p>
+<p>Use a <code>MutateInSpec</code> object to specify the sub-operation to be performed within the lookup.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A <code>MutateInResult</code> object is returned, containing the result and metadata relevant to the sub-document remove operation.</p>
 </div>
 <div class="paragraph">
 <p>The example below deletes the <code>url</code> field from document <code>hotel-123</code>.</p>
@@ -4859,6 +4927,9 @@ If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundExcepti
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -4868,13 +4939,13 @@ If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundExcepti
 <h2 id="related-links"><a class="anchor" href="#related-links"></a>Related Links</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Key Value Operations with SDKs:</p>
+<p>Key-Value Operations with SDKs:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><a href="../../../c-sdk/3.2/howtos/kv-operations.html" class="xref page">C</a>
-| <a href="../../../dotnet-sdk/3.2/howtos/kv-operations.html" class="xref page">.NET</a>
+| <a href="../../../dotnet-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">.NET</a>
 | <a href="../../../go-sdk/2.3/howtos/kv-operations.html" class="xref page">Go</a>
 | <a href="../../../java-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Java</a>
 | <a href="../../../nodejs-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Node.js</a>
@@ -4892,7 +4963,7 @@ If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundExcepti
 <ul>
 <li>
 <p><a href="../../../c-sdk/3.2/howtos/subdocument-operations.html" class="xref page">C</a>
-| <a href="../../../dotnet-sdk/3.2/howtos/subdocument-operations.html" class="xref page">.NET</a>
+| <a href="../../../dotnet-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">.NET</a>
 | <a href="../../../go-sdk/2.3/howtos/subdocument-operations.html" class="xref page">Go</a>
 | <a href="../../../java-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Java</a>
 | <a href="../../../nodejs-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Node.js</a>

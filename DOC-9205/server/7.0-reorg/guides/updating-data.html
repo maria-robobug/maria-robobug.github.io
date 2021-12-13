@@ -986,7 +986,7 @@
 <li class="menu_list is-parent closed" data-depth="1">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="kv-operations.html">Key Value Operations</a>
+    <a class="menu_title menu_link" href="kv-operations.html">Key-Value Operations</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list" data-depth="2">
@@ -4447,7 +4447,7 @@
 <ul>
 <li class="crumb"><a href="../introduction/intro.html">Couchbase Server</a></li>
 <li class="crumb">Developer Guides</li>
-<li class="crumb"><a href="kv-operations.html">Key Value Operations</a></li>
+<li class="crumb"><a href="kv-operations.html">Key-Value Operations</a></li>
 <li class="crumb"><a href="updating-data.html">Updating Data</a></li>
 </ul>
 </nav>
@@ -4467,20 +4467,36 @@
 How to update documents in Couchbase.
 </blockquote>
 </div>
-<div class="paragraph">
-<p>Couchbase Server allows you to update data within a document by ID using either an <code>upsert</code> or a <code>replace</code> operation.
-An <code>upsert</code> operation will update or create a full document with the given data.
-A <code>replace</code> operation, on the other hand, will only replace a document if it exists within the database.</p>
 </div>
-<div class="admonitionblock tip">
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Couchbase Server allows you to update data within a document by ID using either an upsert or a replace operation.
+An upsert operation will update or create a full document with the given data.
+A replace operation, on the other hand, will only replace a document if it exists within the database.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../../c-sdk/3.2/hello-world/cbc.html" class="xref page">Command Line Clients</a></p>
+</li>
+<li>
+<p><a href="../../../home/sdk.html" class="xref page">SDK Clients</a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Both operations will completely replace a full document.
-If you wish to update only certain <em>paths</em> within a document then we recommend performing a <em>Sub-Document</em> operation.
+Please note that the examples in this guide will alter the data in your sample buckets.
+To restore your sample data, remove and reinstall the <code>travel-sample</code> bucket.
+Refer to <a href="../manage/manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a> for details.
 </td>
 </tr>
 </table>
@@ -4491,7 +4507,7 @@ If you wish to update only certain <em>paths</em> within a document then we reco
 <h2 id="upserting-a-document"><a class="anchor" href="#upserting-a-document"></a>Upserting a Document</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To update/create a document in the database perform an <code>upsert</code> operation.</p>
+<p>To update a document, or create the document if it doesn&#8217;t exist, perform an upsert operation.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -4518,7 +4534,7 @@ If you wish to update only certain <em>paths</em> within a document then we reco
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Update a JSON document with some new data.</p>
+<p>Create a JSON document containing the updated data.</p>
 </li>
 <li>
 <p>Use the <code>cbc create</code> command with <code>--mode upsert</code> to update/create a document.</p>
@@ -4526,27 +4542,30 @@ If you wish to update only certain <em>paths</em> within a document then we reco
 </ol>
 </div>
 <div class="paragraph">
-<p>The example below adds a new entry to the <code>reviews</code> array in document <code>hotel-123</code>.</p>
+<p>The example below updates the existing document <code>hotel-123</code>.</p>
+</div>
+<div class="paragraph">
+<p>It is assumed that the updated file <code>hotel-123.json</code> already exists in the <code>tmp</code> directory:</p>
 </div>
 <div class="listingblock">
-<div class="title">airport-123</div>
+<div class="title">hotel-123</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-// ...
-  "reviews": [
-// ...
-    {
-      "date": "2021-12-02T19:42:04.719604Z",
-      "author": "Carmella O'Keefe",
-      "content": "This hotel was cozy, conveniently located and clean."
-    }
-  ],
+  "id": 123,
+  "name": "Medway Youth Hostel",
+  "address": "Capstone Road, ME7 3JE",
+  "url": "http://www.yha.org.uk",
+  "country": "United Kingdom",
+  "city": "Medway",
+  "state": null,
+  "vacancy": true,
+  "description": "40 bed summer hostel about 3 miles from Gillingham."
 }</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L50-L53">cbc create -u Administrator -P password -U couchbase://localhost/travel-sample \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L32-L35">cbc create -u Administrator -P password -U couchbase://localhost/travel-sample \
 	--scope='inventory' \
 	--collection='hotel' \
 	--mode upsert hotel-123 &lt;./tmp/hotel-123.json</code></pre>
@@ -4559,6 +4578,9 @@ If you wish to update only certain <em>paths</em> within a document then we reco
                      SYNCTOKEN=500,228620113724555,292</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-c-client/md_doc_cbc.html" target="_blank" rel="noopener">cbc(1)</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_net">
 <div class="paragraph">
@@ -4566,7 +4588,7 @@ If you wish to update only certain <em>paths</em> within a document then we reco
 If it doesn&#8217;t exist, Couchbase will simply create a new document.</p>
 </div>
 <div class="paragraph">
-<p>The example below adds a new entry to the <code>reviews</code> array in document <code>hotel-123</code>.</p>
+<p>The example below updates the existing document <code>hotel-123</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4580,6 +4602,9 @@ Console.WriteLine($"Cas: {upsertResult.Cas}");</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_java">
 <div class="paragraph">
@@ -4587,11 +4612,11 @@ Console.WriteLine($"Cas: {upsertResult.Cas}");</code></pre>
 If it doesn&#8217;t exist, Couchbase will simply create a new document.</p>
 </div>
 <div class="paragraph">
-<p>The example below adds a new entry to the <code>reviews</code> array in document <code>hotel-123</code>.</p>
+<p>The example below updates the existing document <code>hotel-123</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L146-L150">// Update or create a document in the hotel collection.
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L172-L176">// Update or create a document in the hotel collection.
 MutationResult upsertResult = hotelCollection.upsert("hotel-123", document);
 
 // Print the result's CAS metadata to the console.
@@ -4601,6 +4626,9 @@ System.out.println("CAS:" + upsertResult.cas());</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_node-js">
 <div class="paragraph">
@@ -4608,7 +4636,7 @@ System.out.println("CAS:" + upsertResult.cas());</code></pre>
 If it doesn&#8217;t exist, Couchbase will simply create a new document.</p>
 </div>
 <div class="paragraph">
-<p>The example below adds a new entry to the <code>reviews</code> array in document <code>hotel-123</code>.</p>
+<p>The example below updates the existing document <code>hotel-123</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4622,6 +4650,9 @@ console.log('CAS:', upsertResult.cas)</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_python">
 <div class="paragraph">
@@ -4629,7 +4660,7 @@ console.log('CAS:', upsertResult.cas)</code></pre>
 If it doesn&#8217;t exist, Couchbase will simply create a new document.</p>
 </div>
 <div class="paragraph">
-<p>The example below adds a new entry to the <code>reviews</code> array in document <code>hotel-123</code>.</p>
+<p>The example below updates the existing document <code>hotel-123</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4643,6 +4674,9 @@ print("CAS:", upsert_result.cas)</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -4652,7 +4686,7 @@ print("CAS:", upsert_result.cas)</code></pre>
 <h2 id="replacing-a-document"><a class="anchor" href="#replacing-a-document"></a>Replacing a Document</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To update an existing document perform a <code>replace</code> operation.</p>
+<p>To update a document that already exists, perform a replace operation.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -4690,24 +4724,41 @@ print("CAS:", upsert_result.cas)</code></pre>
 <p>The example below adds a new entry to the <code>reviews</code> array in document <code>hotel-123</code>.</p>
 </div>
 <div class="listingblock">
-<div class="title">airport-123</div>
+<div class="title">hotel-123</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-// ...
+  "id": 123,
+  "name": "Medway Youth Hostel",
+  "address": "Capstone Road, ME7 3JE",
+  "url": "http://www.yha.org.uk",
+  "geo": {
+    "lat": 51.35785,
+    "lon": 0.55818,
+    "accuracy": "RANGE_INTERPOLATED"
+  },
+  "country": "United Kingdom",
+  "city": "Medway",
+  "state": null,
   "reviews": [
-// ...
     {
-      "date": "2021-12-02T19:42:04.719604Z",
+      "content": "This was our 2nd trip here and we enjoyed it more than last year.",
+      "author": "Ozella Sipes",
+      "date": "2021-12-13T17:38:02.935Z"
+    },
+    {
+      "content": "This hotel was cozy, conveniently located and clean.",
       "author": "Carmella O'Keefe",
-      "content": "This hotel was cozy, conveniently located and clean."
+      "date": "2021-12-13T17:38:02.974Z"
     }
   ],
+  "vacancy": true,
+  "description": "40 bed summer hostel about 3 miles from Gillingham."
 }</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L57-L60">cbc create -u Administrator -P password -U couchbase://localhost/travel-sample \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L39-L42">cbc create -u Administrator -P password -U couchbase://localhost/travel-sample \
 	--scope='inventory' \
 	--collection='hotel' \
 	--mode replace hotel-123 &lt;./tmp/hotel-123.json</code></pre>
@@ -4732,6 +4783,9 @@ If the document cannot be found, <code class="cmd">cbc</code> will return a <cod
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-c-client/md_doc_cbc.html" target="_blank" rel="noopener">cbc(1)</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_net">
 <div class="olist arabic">
@@ -4741,12 +4795,12 @@ If the document cannot be found, <code class="cmd">cbc</code> will return a <cod
 </li>
 <li>
 <p>Use the <code>ReplaceAsync()</code> function to update a document in Couchbase.
-To ensure data has not been modified before executing the <code>replace</code> operation, pass the document&#8217;s <code>CAS</code> value to the method.</p>
-</li>
-<li>
-<p>A new <code>CAS</code> value is provided in the returned <code>MutationResult</code> object.</p>
+To ensure data has not been modified before executing the replace operation, pass the document&#8217;s <code>CAS</code> value to the method.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A new <code>CAS</code> value is provided in the returned <code>MutationResult</code> object.</p>
 </div>
 <div class="paragraph">
 <p>The example below adds a new entry to the <code>reviews</code> array in document <code>hotel-123</code>.</p>
@@ -4794,6 +4848,9 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_java">
 <div class="olist arabic">
@@ -4803,19 +4860,19 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 </li>
 <li>
 <p>Use the <code>replace()</code> method to update a document in Couchbase
-To ensure data has not been modified before executing the <code>replace</code> operation, pass the document&#8217;s <code>CAS</code> value to the method.</p>
-</li>
-<li>
-<p>A new <code>CAS</code> value is provided in the returned <code>MutationResult</code> object.</p>
+To ensure data has not been modified before executing the replace operation, pass the document&#8217;s <code>CAS</code> value to the method.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A new <code>CAS</code> value is provided in the returned <code>MutationResult</code> object.</p>
 </div>
 <div class="paragraph">
 <p>The example below adds a new entry to the <code>reviews</code> array in document <code>hotel-123</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L112-L132">// Fetch an existing hotel document
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L129-L153">// Fetch an existing hotel document
 GetResult getResult = hotelCollection.get("hotel-123");
 JsonObject existingDoc = getResult.contentAsObject();
 
@@ -4824,15 +4881,19 @@ Long currentCas = getResult.cas();
 System.out.println("Current CAS:" + currentCas);
 
 // Add a new review to the reviews array.
-existingDoc.getArray("reviews")
-    .add(JsonObject.create()
-        .put("content", "This hotel was cozy, conveniently located and clean.")
-        .put("author", "Carmella O'Keefe")
-        .put("date", DateTimeFormatter.ISO_INSTANT.format(Instant.now())));
+existingDoc.getArray("reviews").add(JsonObject.create()
+    .put("content", "This hotel was cozy, conveniently located and clean.")
+    .put("author", "Carmella O'Keefe")
+    .put("date", DateTimeFormatter.ISO_INSTANT.format(Instant.now())
+  )
+);
 
-// Update the document with new data and pass the current CAS value.
-MutationResult replaceResult = hotelCollection.replace("hotel-123", existingDoc,
-    ReplaceOptions.replaceOptions().cas(currentCas));
+// Update the document with new data and pass the current CAS value. 
+MutationResult replaceResult = hotelCollection.replace(
+    "hotel-123",
+    existingDoc,
+    ReplaceOptions.replaceOptions().cas(currentCas)
+);
 
 // Print the new CAS value.
 System.out.println("New CAS:" + replaceResult.cas());</code></pre>
@@ -4853,6 +4914,9 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_node-js">
 <div class="olist arabic">
@@ -4862,12 +4926,12 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 </li>
 <li>
 <p>Use the <code>replace()</code> function to update a document in Couchbase.
-To ensure data has not been modified before executing the <code>replace</code> operation, pass the document&#8217;s <code>CAS</code> value to the method.</p>
-</li>
-<li>
-<p>A new <code>CAS</code> value is provided in the returned <code>MutationResult</code> object.</p>
+To ensure data has not been modified before executing the replace operation, pass the document&#8217;s <code>CAS</code> value to the method.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A new <code>CAS</code> value is provided in the returned <code>MutationResult</code> object.</p>
 </div>
 <div class="paragraph">
 <p>The example below adds a new entry to the <code>reviews</code> array in document <code>hotel-123</code>.</p>
@@ -4914,6 +4978,9 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_python">
 <div class="olist arabic">
@@ -4923,12 +4990,12 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 </li>
 <li>
 <p>Use the <code>replace()</code> function to update a document in Couchbase.
-To ensure data has not been modified before executing the <code>replace</code> operation, pass the document&#8217;s <code>CAS</code> value to the method.</p>
-</li>
-<li>
-<p>A new <code>CAS</code> value is provided in the returned <code>MutationResult</code> object.</p>
+To ensure data has not been modified before executing the replace operation, pass the document&#8217;s <code>CAS</code> value to the method.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A new <code>CAS</code> value is provided in the returned <code>MutationResult</code> object.</p>
 </div>
 <div class="paragraph">
 <p>The example below adds a new entry to the <code>reviews</code> array in document <code>hotel-123</code>.</p>
@@ -4972,6 +5039,9 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -4981,8 +5051,8 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <h2 id="updating-a-sub-document"><a class="anchor" href="#updating-a-sub-document"></a>Updating a Sub-Document</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To update a specific path within a document you can perform a <em>Sub-Document</em> operation.
-You can use either a Sub-Document <code>upsert</code> or <code>replace</code> operation depending on what is required for your application.</p>
+<p>To change a specific field inside a document, you can perform a <em>Sub-Document</em> operation.
+You can use either a Sub-Document upsert or replace operation depending on what is required for your application.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -5012,8 +5082,10 @@ You can use either a Sub-Document <code>upsert</code> or <code>replace</code> op
 <p>Connect to the <code>cbc-subdoc</code> interactive shell.</p>
 </li>
 <li>
-<p>Use the <code>dict-upsert</code> command to update/add a field in a document, or use the <code>replace</code> command if you require the field to exist.
-Pass the field to update/add and its value with the <code>--path</code> argument.</p>
+<p>Use the <code>dict-upsert</code> command to update/add a field in a document, or use the <code>replace</code> command if you require the field to exist.</p>
+</li>
+<li>
+<p>Pass the field to update/add and its value with the <code>--path</code> argument.</p>
 </li>
 </ol>
 </div>
@@ -5033,18 +5105,23 @@ subdoc&gt; dict-upsert airport_1254 --path pets_ok=true</code></pre>
 0. Size=0, RC=LCB_SUCCESS (0)</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-c-client/md_doc_cbc.html" target="_blank" rel="noopener">cbc-subdoc(1)</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_net">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To change a specific field inside a document, call the <code>MutateInAsync()</code> method, which takes a document ID and an IEnumerable containing <code>MutateInSpec</code> objects.
-<code>MutateInSpec</code> represents the sub-operation to be performed within the lookup.</p>
+<p>Call the <code>MutateInAsync()</code> method, which takes a document ID and an IEnumerable containing <code>MutateInSpec</code> objects.</p>
 </li>
 <li>
-<p>A <code>MutateInResult</code> object is returned containing the result and metadata relevant to the sub-document update operation.</p>
+<p>Use a <code>MutateInSpec</code> object to specify the sub-operation to be performed within the lookup.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A <code>MutateInResult</code> object is returned, containing the result and metadata relevant to the sub-document update operation.</p>
 </div>
 <div class="paragraph">
 <p>The example below upserts a <code>pets_ok</code> field in document <code>hotel-123</code> and sets the value to true.</p>
@@ -5060,24 +5137,30 @@ Console.WriteLine($"Cas: {mutateInResult.Cas}");</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_java">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To change a specific field inside a document, call the <code>mutateIn()</code> method, which takes a document ID and an array of <code>MutateInSpec</code> objects. <code>MutateInSpec</code> represents the sub-operation to be performed within the lookup.</p>
+<p>Call the <code>mutateIn()</code> method, which takes a document ID and an array of <code>MutateInSpec</code> objects.</p>
 </li>
 <li>
-<p>A <code>MutateInResult</code> object is returned containing the result and metadata relevant to the sub-document update operation.</p>
+<p>Use a <code>MutateInSpec</code> object to specify the sub-operation to be performed within the lookup.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A <code>MutateInResult</code> object is returned, containing the result and metadata relevant to the sub-document update operation.</p>
 </div>
 <div class="paragraph">
 <p>The example below upserts a <code>pets_ok</code> field in document <code>hotel-123</code> and sets the value to true.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L157-L161">List&lt;MutateInSpec&gt; specs = new ArrayList&lt;&gt;();
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L183-L187">List&lt;MutateInSpec&gt; specs = new ArrayList&lt;&gt;();
 specs.add(MutateInSpec.upsert("pets_ok", true));
 
 MutateInResult mutateInResult = hotelCollection.mutateIn("hotel-123", specs);
@@ -5087,17 +5170,23 @@ System.out.println("CAS:" + mutateInResult.cas());</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_node-js">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To change a specific field inside a document, call the <code>mutateIn()</code> method, which takes a document ID and an array of <code>MutateInSpec</code> objects. <code>MutateInSpec</code> represents the sub-operation to be performed within the lookup.</p>
+<p>Call the <code>mutateIn()</code> method, which takes a document ID and an array of <code>MutateInSpec</code> objects.</p>
 </li>
 <li>
-<p>A <code>MutateInResult</code> object is returned containing the result and metadata relevant to the sub-document update operation.</p>
+<p>Use a <code>MutateInSpec</code> object to specify the sub-operation to be performed within the lookup.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A <code>MutateInResult</code> object is returned, containing the result and metadata relevant to the sub-document update operation.</p>
 </div>
 <div class="paragraph">
 <p>The example below upserts a <code>pets_ok</code> field in document <code>hotel-123</code> and sets the value to true.</p>
@@ -5113,18 +5202,23 @@ console.log('CAS:', mutateInResult.cas)</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_python">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To change a specific field inside a document, call the <code>lookup_in()</code> function, which takes a document ID and a list of <code>MutateInSpec</code> objects.
-<code>MutateInSpec</code> represents the sub-operation to be performed within the lookup.</p>
+<p>Call the <code>mutate_in()</code> function, which takes a document ID and a list of <code>MutateInSpec</code> objects.</p>
 </li>
 <li>
-<p>A <code>MutateInResult</code> object is returned containing the result and metadata relevant to the sub-document get operation.</p>
+<p>Use a <code>MutateInSpec</code> object to specify the sub-operation to be performed within the lookup.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A <code>MutateInResult</code> object is returned, containing the result and metadata relevant to the sub-document get operation.</p>
 </div>
 <div class="paragraph">
 <p>The example below upserts a <code>pets_ok</code> field in document <code>hotel-123</code> and sets the value to true.</p>
@@ -5140,6 +5234,9 @@ print("CAS:", mutate_in_result.cas)</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -5149,13 +5246,13 @@ print("CAS:", mutate_in_result.cas)</code></pre>
 <h2 id="related-links"><a class="anchor" href="#related-links"></a>Related Links</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Key Value Operations with SDKs:</p>
+<p>Key-Value Operations with SDKs:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><a href="../../../c-sdk/3.2/howtos/kv-operations.html" class="xref page">C</a>
-| <a href="../../../dotnet-sdk/3.2/howtos/kv-operations.html" class="xref page">.NET</a>
+| <a href="../../../dotnet-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">.NET</a>
 | <a href="../../../go-sdk/2.3/howtos/kv-operations.html" class="xref page">Go</a>
 | <a href="../../../java-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Java</a>
 | <a href="../../../nodejs-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Node.js</a>
@@ -5173,7 +5270,7 @@ print("CAS:", mutate_in_result.cas)</code></pre>
 <ul>
 <li>
 <p><a href="../../../c-sdk/3.2/howtos/subdocument-operations.html" class="xref page">C</a>
-| <a href="../../../dotnet-sdk/3.2/howtos/subdocument-operations.html" class="xref page">.NET</a>
+| <a href="../../../dotnet-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">.NET</a>
 | <a href="../../../go-sdk/2.3/howtos/subdocument-operations.html" class="xref page">Go</a>
 | <a href="../../../java-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Java</a>
 | <a href="../../../nodejs-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Node.js</a>

@@ -984,7 +984,7 @@
 <li class="menu_list is-parent closed" data-depth="1">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="kv-operations.html">Key Value Operations</a>
+    <a class="menu_title menu_link" href="kv-operations.html">Key-Value Operations</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list" data-depth="2">
@@ -4445,7 +4445,7 @@
 <ul>
 <li class="crumb"><a href="../introduction/intro.html">Couchbase Server</a></li>
 <li class="crumb">Developer Guides</li>
-<li class="crumb"><a href="kv-operations.html">Key Value Operations</a></li>
+<li class="crumb"><a href="kv-operations.html">Key-Value Operations</a></li>
 <li class="crumb"><a href="bulk-operations.html">Bulk Operations</a></li>
 </ul>
 </nav>
@@ -4465,10 +4465,38 @@
 How to perform bulk CRUD operations in Couchbase.
 </blockquote>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Performing bulk operations with Couchbase Server can be done in several ways, depending on the SDK or command line tool used to perform them.
-In the following sections you will find some basic examples of how to perform bulk CRUD
-operations on Couchbase documents.</p>
+This guide contains basic procedures for performing bulk CRUD operations on Couchbase documents.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../../c-sdk/3.2/hello-world/cbc.html" class="xref page">Command Line Clients</a></p>
+</li>
+<li>
+<p><a href="../../../home/sdk.html" class="xref page">SDK Clients</a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Please note that the examples in this guide will alter the data in your sample buckets.
+To restore your sample data, remove and reinstall the <code>travel-sample</code> bucket.
+Refer to <a href="../manage/manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a> for details.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -4476,7 +4504,7 @@ operations on Couchbase documents.</p>
 <h2 id="creating-multiple-documents"><a class="anchor" href="#creating-multiple-documents"></a>Creating Multiple Documents</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To create multiple documents in Couchbase perform a bulk <code>insert</code> operation.</p>
+<p>To create multiple documents in Couchbase perform a bulk insert operation.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -4506,7 +4534,7 @@ operations on Couchbase documents.</p>
 <p>Initialize a list of <code>IMutationResult</code> tasks.</p>
 </li>
 <li>
-<p>Perform an <code>insert</code> operation on each document and store the result in the tasks list.</p>
+<p>Perform an insert operation on each document and store the result in the tasks list.</p>
 </li>
 <li>
 <p>Wait for all the tasks to complete before accessing the results.</p>
@@ -4514,7 +4542,7 @@ operations on Couchbase documents.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>The example below inserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below inserts multiple JSON documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4547,6 +4575,9 @@ foreach (var task in tasks)
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_java">
 <div class="olist arabic">
@@ -4560,7 +4591,7 @@ foreach (var task in tasks)
 </ol>
 </div>
 <div class="paragraph">
-<p>The example below inserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below inserts multiple JSON documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4629,6 +4660,9 @@ A <code>JsonDocument</code> class is used to supplement the example.
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a> and <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html">Project Reactor</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_node-js">
 <div class="olist arabic">
@@ -4637,12 +4671,12 @@ A <code>JsonDocument</code> class is used to supplement the example.
 <p>Create some structured JSON documents to insert.</p>
 </li>
 <li>
-<p>Perform an <code>insert</code> operation on each document and wait for all the promises to complete before accessing the results.</p>
+<p>Perform an insert operation on each document and wait for all the promises to complete before accessing the results.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>The example below inserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below inserts multiple JSON documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4666,6 +4700,9 @@ insertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_python">
 <div class="olist arabic">
@@ -4676,10 +4713,10 @@ insertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 <li>
 <p>Pass the dictionary to the <code>insert_multi()</code> function. This will insert all the documents in the database.</p>
 </li>
-<li>
-<p>A dictionary of <code>MutationResult</code> objects is returned.</p>
-</li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A dictionary of <code>MutationResult</code> objects is returned.</p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -4694,7 +4731,7 @@ insertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 </table>
 </div>
 <div class="paragraph">
-<p>The example below inserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below inserts multiple JSON documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4714,6 +4751,9 @@ for key in documents:
 </div>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
 </div>
 </div>
 </div>
@@ -4752,11 +4792,11 @@ for key in documents:
 <p>Use the <code>cbc cat</code> command to retrieve multiple documents by their IDs.</p>
 </div>
 <div class="paragraph">
-<p>The example below fetches multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below fetches multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L64-L67">cbc cat -u Administrator -P password -U couchbase://localhost/travel-sample \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L46-L49">cbc cat -u Administrator -P password -U couchbase://localhost/travel-sample \
 	--scope='tenant_agent_00' \
 	--collection='users' \
 	0 1</code></pre>
@@ -4793,6 +4833,9 @@ for key in documents:
 }</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-c-client/md_doc_cbc.html" target="_blank" rel="noopener">cbc(1)</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_net">
 <div class="olist arabic">
@@ -4809,7 +4852,7 @@ for key in documents:
 </ol>
 </div>
 <div class="paragraph">
-<p>The example below fetches multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below fetches multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4842,13 +4885,16 @@ foreach (var task in tasks)
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_java">
 <div class="paragraph">
 <p>Using the <code>reactor.core.publisher.Flux</code> reactive library, call the <code>fromIterable()</code> method to perform multiple <code>get</code> operations.</p>
 </div>
 <div class="paragraph">
-<p>The example below fetches multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below fetches multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4878,13 +4924,16 @@ for (GetResult result : results) {
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a> and <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html">Project Reactor</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_node-js">
 <div class="paragraph">
 <p>Perform a <code>get</code> operation on each document and wait for all the promises to complete before accessing the results.</p>
 </div>
 <div class="paragraph">
-<p>The example below fetches multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below fetches multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4908,17 +4957,16 @@ getResults.forEach((result) =&gt; console.log('Document:', result.content))</cod
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_python">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
+<div class="paragraph">
 <p>Pass some document IDs to fetch to the <code>get_multi()</code> function. This will fetch the documents from the database.</p>
-</li>
-<li>
+</div>
+<div class="paragraph">
 <p>A dictionary of <code>GetResult</code> objects is returned.</p>
-</li>
-</ol>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -4933,7 +4981,7 @@ getResults.forEach((result) =&gt; console.log('Document:', result.content))</cod
 </table>
 </div>
 <div class="paragraph">
-<p>The example below fetches multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below fetches multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4954,6 +5002,9 @@ for key in documents:
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -4963,7 +5014,7 @@ for key in documents:
 <h2 id="updating-multiple-documents"><a class="anchor" href="#updating-multiple-documents"></a>Updating Multiple Documents</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To update multiple documents in Couchbase perform a bulk <code>upsert</code> or <code>replace</code> operation.</p>
+<p>To update multiple documents in Couchbase perform a bulk upsert or replace operation.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -4993,7 +5044,7 @@ for key in documents:
 <p>Initialize a list of <code>IMutationResult</code> tasks.</p>
 </li>
 <li>
-<p>Perform an <code>upsert</code> or <code>replace</code> operation on each document and store the results in the tasks list.</p>
+<p>Perform an upsert or replace operation on each document and store the results in the tasks list.</p>
 </li>
 <li>
 <p>Wait for all the tasks to complete before accessing the results.</p>
@@ -5001,7 +5052,7 @@ for key in documents:
 </ol>
 </div>
 <div class="paragraph">
-<p>The example below inserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below inserts multiple JSON documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5034,6 +5085,9 @@ foreach (var task in tasks)
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_java">
 <div class="olist arabic">
@@ -5042,12 +5096,12 @@ foreach (var task in tasks)
 <p>Add new data to update some existing JSON documents.</p>
 </li>
 <li>
-<p>Using the <code>reactor.core.publisher.Flux</code> reactive library, call the <code>fromIterable()</code> method to perform multiple <code>upsert</code> or <code>replace</code> operations.</p>
+<p>Using the <code>reactor.core.publisher.Flux</code> reactive library, call the <code>fromIterable()</code> method to perform multiple upsert or replace operations.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>The example below upserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below upserts multiple JSON documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5087,6 +5141,9 @@ for (MutationResult result : results) {
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a> and <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html">Project Reactor</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_node-js">
 <div class="olist arabic">
@@ -5095,12 +5152,12 @@ for (MutationResult result : results) {
 <p>Add new data to update some existing JSON documents.</p>
 </li>
 <li>
-<p>Perform an <code>upsert</code> operation on each document and wait for all the promises to complete before accessing the results.</p>
+<p>Perform an upsert operation on each document and wait for all the promises to complete before accessing the results.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>The example below upserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below upserts multiple JSON documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5130,6 +5187,9 @@ upsertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_python">
 <div class="olist arabic">
@@ -5140,10 +5200,10 @@ upsertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 <li>
 <p>Pass the new document data to <code>upsert_multi()</code>. This will update all the documents in the database.</p>
 </li>
-<li>
-<p>A dictionary of <code>MutationResult</code> objects is returned.</p>
-</li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A dictionary of <code>MutationResult</code> objects is returned.</p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -5158,7 +5218,7 @@ upsertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 </table>
 </div>
 <div class="paragraph">
-<p>The example below upserts multiple json documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below upserts multiple JSON documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5179,6 +5239,9 @@ for key in documents:
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -5188,7 +5251,7 @@ for key in documents:
 <h2 id="deleting-multiple-documents"><a class="anchor" href="#deleting-multiple-documents"></a>Deleting Multiple Documents</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To delete multiple documents in Couchbase perform a bulk <code>remove</code> operation.</p>
+<p>To delete multiple documents in Couchbase perform a bulk remove operation.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -5215,7 +5278,7 @@ for key in documents:
 <p>Initialize a list of tasks.</p>
 </li>
 <li>
-<p>Perform a <code>remove</code> operation on each document and store the results in the tasks list.</p>
+<p>Perform a remove operation on each document and store the results in the tasks list.</p>
 </li>
 <li>
 <p>Wait for all the tasks to complete.</p>
@@ -5223,7 +5286,7 @@ for key in documents:
 </ol>
 </div>
 <div class="paragraph">
-<p>The example below deletes multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below deletes multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5253,13 +5316,16 @@ await Task.WhenAll(tasks);</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset4_java">
 <div class="paragraph">
-<p>Using the <code>reactor.core.publisher.Flux</code> reactive library, call the <code>fromIterable()</code> method to perform multiple <code>remove</code> operations.</p>
+<p>Using the <code>reactor.core.publisher.Flux</code> reactive library, call the <code>fromIterable()</code> method to perform multiple remove operations.</p>
 </div>
 <div class="paragraph">
-<p>The example below deletes multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below deletes multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5287,13 +5353,16 @@ for (MutationResult result : results) {
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a> and <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html">Project Reactor</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset4_node-js">
 <div class="paragraph">
-<p>Perform a <code>remove</code> operation on each document and wait for all the promises to complete before accessing the results.</p>
+<p>Perform a remove operation on each document and wait for all the promises to complete before accessing the results.</p>
 </div>
 <div class="paragraph">
-<p>The example below deletes multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below deletes multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5317,17 +5386,16 @@ removeResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset4_python">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Pass some document IDs to remove to the <code>remove_multi()</code> function. This will delete the documents from the database.</p>
-</li>
-<li>
+<div class="paragraph">
+<p>Pass the document IDs to remove to the <code>remove_multi()</code> function. This will delete the documents from the database.</p>
+</div>
+<div class="paragraph">
 <p>A dictionary of <code>MutationResult</code> objects is returned.</p>
-</li>
-</ol>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -5342,7 +5410,7 @@ removeResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 </table>
 </div>
 <div class="paragraph">
-<p>The example below deletes multiple json documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
+<p>The example below deletes multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5363,6 +5431,9 @@ for key in documents:
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -5378,7 +5449,7 @@ for key in documents:
 <ul>
 <li>
 <p><a href="../../../c-sdk/3.2/howtos/concurrent-async-apis.html" class="xref page">C</a>
-| <a href="../../../dotnet-sdk/3.2/howtos/concurrent-async-apis.html" class="xref page">.NET</a>
+| <a href="../../../dotnet-sdk/DOC-9205/howtos/concurrent-async-apis.html" class="xref page">.NET</a>
 | <a href="../../../go-sdk/2.3/howtos/concurrent-async-apis.html" class="xref page">Go</a>
 | <a href="../../../java-sdk/DOC-9205/howtos/concurrent-async-apis.html" class="xref page">Java</a>
 | <a href="../../../nodejs-sdk/DOC-9205/howtos/concurrent-async-apis.html" class="xref page">Node.js</a>

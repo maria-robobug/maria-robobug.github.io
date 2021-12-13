@@ -986,7 +986,7 @@
 <li class="menu_list is-parent closed" data-depth="1">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="kv-operations.html">Key Value Operations</a>
+    <a class="menu_title menu_link" href="kv-operations.html">Key-Value Operations</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list is-current-page" data-depth="2">
@@ -4447,7 +4447,7 @@
 <ul>
 <li class="crumb"><a href="../introduction/intro.html">Couchbase Server</a></li>
 <li class="crumb">Developer Guides</li>
-<li class="crumb"><a href="kv-operations.html">Key Value Operations</a></li>
+<li class="crumb"><a href="kv-operations.html">Key-Value Operations</a></li>
 <li class="crumb"><a href="creating-data.html">Creating Data</a></li>
 </ul>
 </nav>
@@ -4467,6 +4467,11 @@
 How to create documents in Couchbase.
 </blockquote>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Couchbase stores its <a href="../learn/data/data.html" class="xref page">data</a> as either JSON or Binary <em>documents</em> with unique IDs (primary keys) by which they can be located.</p>
 </div>
@@ -4474,14 +4479,26 @@ How to create documents in Couchbase.
 <p>Documents are organized and grouped in <em>buckets</em> using <a href="#tutorials:buckets-scopes-and-collections.adoc" class="xref unresolved">scopes and collections</a>.
 If a scope or collection is not provided when creating a document, Couchbase will automatically store data in the <code>_default</code> collection or <code>_default</code> scope.</p>
 </div>
-<div class="admonitionblock tip">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../../c-sdk/3.2/hello-world/cbc.html" class="xref page">Command Line Clients</a></p>
+</li>
+<li>
+<p><a href="../../../home/sdk.html" class="xref page">SDK Clients</a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-We highly recommend that you provide user-defined scopes and collections to logically group your data.
+Please note that the examples in this guide will alter the data in your sample buckets.
+To restore your sample data, remove and reinstall the <code>travel-sample</code> bucket.
+Refer to <a href="../manage/manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a> for details.
 </td>
 </tr>
 </table>
@@ -4492,7 +4509,7 @@ We highly recommend that you provide user-defined scopes and collections to logi
 <h2 id="inserting-a-document"><a class="anchor" href="#inserting-a-document"></a>Inserting a Document</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To create a single document in Couchbase perform an <code>insert</code> operation.</p>
+<p>To create a single document in Couchbase, perform an insert operation.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -4532,6 +4549,9 @@ We highly recommend that you provide user-defined scopes and collections to logi
 <div class="paragraph">
 <p>The example below inserts a new JSON document in the <code>travel-sample.inventory.hotel</code> keyspace.</p>
 </div>
+<div class="paragraph">
+<p>It is assumed that the file <code>hotel-123.json</code> already exists in the <code>tmp</code> directory:</p>
+</div>
 <div class="listingblock">
 <div class="title">hotel-123.json</div>
 <div class="content">
@@ -4562,7 +4582,7 @@ We highly recommend that you provide user-defined scopes and collections to logi
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L22-L25">cbc create -u Administrator -P password -U couchbase://localhost/travel-sample \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L4-L7">cbc create -u Administrator -P password -U couchbase://localhost/travel-sample \
 	--scope='inventory' \
 	--collection='hotel' \
 	--mode insert hotel-123 &lt;./tmp/hotel-123.json</code></pre>
@@ -4586,6 +4606,9 @@ If the document already exists, <code class="cmd">cbc</code> will return a <code
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-c-client/md_doc_cbc.html" target="_blank" rel="noopener">cbc(1)</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_net">
@@ -4657,6 +4680,9 @@ If the document already exists, the SDK will return a <code>DocumentExistsExcept
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_java">
 <div class="olist arabic">
@@ -4677,9 +4703,10 @@ If the document already exists, the SDK will return a <code>DocumentExistsExcept
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L31-L52">// Create the document object.
-JsonObject geo = JsonObject.create().put("lat", 51.35785).put("lon", 0.55818).put("accuracy",
-    "RANGE_INTERPOLATED");
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L31-L59">// Create the document object.
+JsonObject geo = JsonObject.create()
+    .put("lat", 51.35785)
+    .put("lon", 0.55818).put("accuracy", "RANGE_INTERPOLATED");
 
 JsonArray reviews = JsonArray.create();
 reviews.add(JsonObject.create()
@@ -4687,12 +4714,18 @@ reviews.add(JsonObject.create()
     .put("author", "Ozella Sipes")
     .put("date", DateTimeFormatter.ISO_INSTANT.format(Instant.now())));
 
-JsonObject document =
-    JsonObject.create().put("id", "hotel-123").put("name", "Medway Youth Hostel")
-        .put("address", "Capstone Road, ME7 3JE").put("url", "http://www.yha.org.uk")
-        .put("geo", geo).put("country", "United Kingdom").put("city", "Medway")
-        .put("state", (String) null).put("reviews", reviews).put("vacancy", true)
-        .put("description", "40 bed summer hostel about 3 miles from Gillingham.");
+JsonObject document = JsonObject.create()
+    .put("id", "hotel-123")
+    .put("name", "Medway Youth Hostel")
+    .put("address", "Capstone Road, ME7 3JE")
+    .put("url", "http://www.yha.org.uk")
+    .put("geo", geo)
+    .put("country", "United Kingdom")
+    .put("city", "Medway")
+    .put("state", (String) null)
+    .put("reviews", reviews)
+    .put("vacancy", true)
+    .put("description", "40 bed summer hostel about 3 miles from Gillingham.");
 
 // Insert the document in the hotel collection.
 MutationResult insertResult = hotelCollection.insert("hotel-123", document);
@@ -4715,6 +4748,9 @@ If the document already exists, the SDK will return a <code>DocumentExistsExcept
 </div>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_node-js">
@@ -4784,6 +4820,9 @@ If the document already exists, the SDK will return a <code>DocumentExistsError<
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_python">
 <div class="olist arabic">
@@ -4851,6 +4890,9 @@ If the document already exists, the SDK will return a <code>DocumentExistsExcept
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -4862,7 +4904,7 @@ This unique value allows the database to protect against concurrent updates to t
 <div class="sect2">
 <h3 id="inserting-with-options"><a class="anchor" href="#inserting-with-options"></a>Inserting with Options</h3>
 <div class="paragraph">
-<p>It is also possible to add <code>options</code> to an insert operation.</p>
+<p>To specify further parameters for the inserted document, such as expiry, add the options to the insert operation.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -4895,12 +4937,15 @@ This unique value allows the database to protect against concurrent updates to t
 <p>Pass the <code>--scope</code> and <code>--collection</code> parameters to specify the keyspace in which to store the document.</p>
 </li>
 <li>
-<p>Pass an option, <code>--expiry</code>, and use <code>&lt;</code> to specify the JSON document to insert</p>
+<p>Pass any required options, such as --expiry`, and use <code>&lt;</code> to specify the JSON document to insert.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
 <p>The example below inserts a new JSON document and sets it to expire after 60 seconds. The document will be automatically deleted once expired.</p>
+</div>
+<div class="paragraph">
+<p>It is assumed that the file <code>hotel-456.json</code> already exists in the <code>tmp</code> directory:</p>
 </div>
 <div class="listingblock">
 <div class="title">hotel-456.json</div>
@@ -4921,7 +4966,7 @@ This unique value allows the database to protect against concurrent updates to t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L29-L33">cbc create -u Administrator -P password -U couchbase://localhost/travel-sample \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L11-L15">cbc create -u Administrator -P password -U couchbase://localhost/travel-sample \
 	--scope='inventory' \
 	--collection='hotel' \
 	--mode insert hotel-456 \
@@ -4934,6 +4979,9 @@ This unique value allows the database to protect against concurrent updates to t
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">hotel-456          Stored. CAS=0x16b5dc9223f30000
                    SYNCTOKEN=733,211618429638288,95</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-c-client/md_doc_cbc.html" target="_blank" rel="noopener">cbc(1)</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_net">
@@ -4979,6 +5027,9 @@ Console.WriteLine($"CAS: {insertResult.Cas}");</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_java">
 <div class="olist arabic">
@@ -4996,15 +5047,24 @@ Console.WriteLine($"CAS: {insertResult.Cas}");</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L59-L70">JsonObject document = JsonObject.create().put("id", 456).put("title", "Ardèche")
-    .put("name", "La Pradella").put("address", "rue du village, 07290 Preaux, France")
-    .put("phone", "+33 4 75 32 08 52").put("url", "http://www.lapradella.fr")
-    .put("country", "France").put("city", "Preaux").put("state", "Rhône-Alpes")
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L66-L86">JsonObject document = JsonObject.create()
+    .put("id", 456)
+    .put("title", "Ardèche")
+    .put("name", "La Pradella")
+    .put("address", "rue du village, 07290 Preaux, France")
+    .put("phone", "+33 4 75 32 08 52")
+    .put("url", "http://www.lapradella.fr")
+    .put("country", "France")
+    .put("city", "Preaux")
+    .put("state", "Rhône-Alpes")
     .put("vacancy", false);
 
 // Insert the document with an expiry time option of 60 seconds.
-MutationResult insertResult = hotelCollection.insert("hotel-456", document,
-    InsertOptions.insertOptions().expiry(Duration.ofSeconds(2)));
+MutationResult insertResult = hotelCollection.insert(
+  "hotel-456",
+  document,
+  InsertOptions.insertOptions().expiry(Duration.ofSeconds(2))
+);
 
 // Print the result's CAS metadata to the console.
 System.out.println("CAS:" + insertResult.cas());</code></pre>
@@ -5012,6 +5072,9 @@ System.out.println("CAS:" + insertResult.cas());</code></pre>
 </div>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
+</div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_node-js">
@@ -5055,6 +5118,9 @@ console.log('CAS:', insertResult.cas)</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_python">
 <div class="olist arabic">
@@ -5096,6 +5162,9 @@ print("CAS:", insert_result.cas)</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -5106,13 +5175,13 @@ print("CAS:", insert_result.cas)</code></pre>
 <h2 id="related-links"><a class="anchor" href="#related-links"></a>Related Links</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Key Value Operations with SDKs:</p>
+<p>Key-Value Operations with SDKs:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><a href="../../../c-sdk/3.2/howtos/kv-operations.html" class="xref page">C</a>
-| <a href="../../../dotnet-sdk/3.2/howtos/kv-operations.html" class="xref page">.NET</a>
+| <a href="../../../dotnet-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">.NET</a>
 | <a href="../../../go-sdk/2.3/howtos/kv-operations.html" class="xref page">Go</a>
 | <a href="../../../java-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Java</a>
 | <a href="../../../nodejs-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Node.js</a>
@@ -5128,7 +5197,7 @@ print("CAS:", insert_result.cas)</code></pre>
 
         <nav class="pagination">
 
-                    <span class="prev"><a href="kv-operations.html">Key Value Operations</a></span>
+                    <span class="prev"><a href="kv-operations.html">Key-Value Operations</a></span>
 
 
                     <span class="next"><a href="reading-data.html">Reading Data</a></span>

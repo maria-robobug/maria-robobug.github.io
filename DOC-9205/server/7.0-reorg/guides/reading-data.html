@@ -986,7 +986,7 @@
 <li class="menu_list is-parent closed" data-depth="1">
   <span class="menu_line">
     <span class="in-toggle"></span>
-    <a class="menu_title menu_link" href="kv-operations.html">Key Value Operations</a>
+    <a class="menu_title menu_link" href="kv-operations.html">Key-Value Operations</a>
   </span>
 <ul class="menu_row">
 <li class="menu_list" data-depth="2">
@@ -4447,7 +4447,7 @@
 <ul>
 <li class="crumb"><a href="../introduction/intro.html">Couchbase Server</a></li>
 <li class="crumb">Developer Guides</li>
-<li class="crumb"><a href="kv-operations.html">Key Value Operations</a></li>
+<li class="crumb"><a href="kv-operations.html">Key-Value Operations</a></li>
 <li class="crumb"><a href="reading-data.html">Reading Data</a></li>
 </ul>
 </nav>
@@ -4467,10 +4467,39 @@
 How to read documents in Couchbase.
 </blockquote>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Retrieving documents by ID is the fastest and simplest way to read <a href="../learn/data/data.html" class="xref page">data</a> in Couchbase.
-The <a href="../learn/services-and-indexes/services/data-service.html" class="xref page">Key Value (KV) or Data Service</a> allows you to retrieve a full document when you need to fetch all of the data stored.
+The <a href="../learn/services-and-indexes/services/data-service.html" class="xref page">Key-Value (KV) or Data Service</a> allows you to retrieve a full document when you need to fetch all of the data stored.
 However, in instances where this can be costly and unnecessary, Couchbase also provides access to specific <em>paths</em> within a document.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../../../c-sdk/3.2/hello-world/cbc.html" class="xref page">Command Line Clients</a></p>
+</li>
+<li>
+<p><a href="../../../home/sdk.html" class="xref page">SDK Clients</a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Please note that the examples in this guide will alter the data in your sample buckets.
+To restore your sample data, remove and reinstall the <code>travel-sample</code> bucket.
+Refer to <a href="../manage/manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a> for details.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -4478,7 +4507,7 @@ However, in instances where this can be costly and unnecessary, Couchbase also p
 <h2 id="reading-a-document"><a class="anchor" href="#reading-a-document"></a>Reading a Document</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To read a single document in Couchbase perform a <code>get</code> operation.</p>
+<p>To read a single document in Couchbase, perform a get operation.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -4510,7 +4539,7 @@ However, in instances where this can be costly and unnecessary, Couchbase also p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L37-L39">cbc cat hotel-123 -u Administrator -P password -U couchbase://localhost/travel-sample \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L19-L21">cbc cat hotel-123 -u Administrator -P password -U couchbase://localhost/travel-sample \
 	--scope='inventory' \
 	--collection='hotel'</code></pre>
 </div>
@@ -4560,17 +4589,16 @@ If the document cannot be found, <code class="cmd">cbc</code> will return a <cod
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-c-client/md_doc_cbc.html" target="_blank" rel="noopener">cbc(1)</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_net">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
+<div class="paragraph">
 <p>Use the <code>GetAsync()</code> method to retrieve a document by ID from the <code>travel-sample.inventory.hotel</code> keyspace.</p>
-</li>
-<li>
+</div>
+<div class="paragraph">
 <p>A <code>GetResult</code> object is returned, which includes the <code>content</code>, <code>cas</code> value, and other valuable metadata.</p>
-</li>
-</ol>
 </div>
 <div class="paragraph">
 <p>The example below retrieves document <code>hotel-123</code> from the <code>travel-sample.inventory.hotel</code> keyspace.</p>
@@ -4599,24 +4627,23 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_java">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
+<div class="paragraph">
 <p>Use the <code>get()</code> method to retrieve a document by ID from the <code>travel-sample.inventory.hotel</code> keyspace.</p>
-</li>
-<li>
+</div>
+<div class="paragraph">
 <p>A <code>GetResult</code> object is returned, which includes the <code>content</code>, <code>cas</code> value, and other valuable metadata.</p>
-</li>
-</ol>
 </div>
 <div class="paragraph">
 <p>The example below retrieves document <code>hotel-123</code> from the <code>travel-sample.inventory.hotel</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L77-L80">GetResult getResult = hotelCollection.get("hotel-123");
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L93-L96">GetResult getResult = hotelCollection.get("hotel-123");
 
 // Print the result's CAS metadata to the console.
 System.out.println("CAS:" + getResult.cas());</code></pre>
@@ -4637,17 +4664,16 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_node-js">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
+<div class="paragraph">
 <p>Use the <code>get()</code> function to retrieve a document by ID from the <code>travel-sample.inventory.hotel</code> keyspace.</p>
-</li>
-<li>
+</div>
+<div class="paragraph">
 <p>A <code>GetResult</code> promise is returned, which includes the <code>content</code>, <code>cas</code> value, and other valuable metadata.</p>
-</li>
-</ol>
 </div>
 <div class="paragraph">
 <p>The example below retrieves document <code>hotel-123</code> from the <code>travel-sample.inventory.hotel</code> keyspace.</p>
@@ -4676,17 +4702,16 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_python">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
+<div class="paragraph">
 <p>Use the <code>get()</code> function to retrieve a document by ID from the <code>travel-sample.inventory.hotel</code> keyspace.</p>
-</li>
-<li>
+</div>
+<div class="paragraph">
 <p>A <code>GetResult</code> object is returned, which includes the <code>content</code>, <code>cas</code> value, and other valuable metadata.</p>
-</li>
-</ol>
 </div>
 <div class="paragraph">
 <p>The example below retrieves document <code>hotel-123</code> from the <code>travel-sample.inventory.hotel</code> keyspace.</p>
@@ -4715,13 +4740,16 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="reading-with-options"><a class="anchor" href="#reading-with-options"></a>Reading with Options</h3>
 <div class="paragraph">
-<p>It is also possible to add <code>options</code> to a get operation.</p>
+<p>To specify further parameters, such as expiry, add options to the get operation.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -4746,14 +4774,14 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <div class="content">
 <div class="tab-pane" aria-labelledby="tabset2_cbc">
 <div class="paragraph">
-<p>Use the <code>cbc cat</code> command to retrieve a document by ID and pass some options.</p>
+<p>Use the <code>cbc cat</code> command to retrieve a document by ID and pass options as required.</p>
 </div>
 <div class="paragraph">
 <p>The example below uses an <code>--expiry</code> option for the <code>cat</code> command which adds an expiry of 60 seconds to the <code>hotel-123</code> document.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L43-L46">cbc cat hotel-123 -u Administrator -P password -U couchbase://localhost/travel-sample \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L25-L28">cbc cat hotel-123 -u Administrator -P password -U couchbase://localhost/travel-sample \
 	--scope='inventory' \
 	--collection='hotel' \
 	--expiry=60</code></pre>
@@ -4792,17 +4820,16 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <div class="paragraph">
 <p>The output has been prettified for readability.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-c-client/md_doc_cbc.html" target="_blank" rel="noopener">cbc(1)</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_net">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Pass an <code>Expiry()</code> option to the <code>GetAsync()</code> method when retrieving a document.</p>
-</li>
-<li>
-<p>A <code>GetResult</code> object is returned, which includes the <code>content</code>, <code>cas</code> value, and <code>expiry</code> metadata.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>Pass any required options to the <code>GetAsync()</code> method when retrieving a document.</p>
+</div>
+<div class="paragraph">
+<p>A <code>GetResult</code> object is returned, which may include extra metadata, depending on the options passed.</p>
 </div>
 <div class="paragraph">
 <p>The example below retrieves a document <code>hotel-123</code> with additional expiry metadata.</p>
@@ -4823,25 +4850,25 @@ Console.WriteLine($"Expiry: {getResult.ExpiryTime}");</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_java">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Pass a <code>withExpiry(true)</code> option to the <code>GetAsync()</code> method when retrieving a document.</p>
-</li>
-<li>
-<p>A <code>GetResult</code> object is returned, which includes the <code>content</code>, <code>cas</code> value, and <code>expiry</code> metadata.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>Pass any required options to the <code>get()</code> method when retrieving a document.</p>
+</div>
+<div class="paragraph">
+<p>A <code>GetResult</code> object is returned, which may include extra metadata, depending on the options passed.</p>
 </div>
 <div class="paragraph">
 <p>The example below retrieves a document <code>hotel-123</code> with additional expiry metadata.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L87-L93">GetResult getResult =
-    hotelCollection.get("hotel-123", GetOptions.getOptions().withExpiry(true));
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L103-L110">GetResult getResult = hotelCollection.get("hotel-123", 
+    GetOptions.getOptions().withExpiry(true)
+);
 
 // Print the result's CAS metadata to the console.
 System.out.println("CAS:" + getResult.cas());
@@ -4852,17 +4879,16 @@ System.out.println("Expiry:" + getResult.expiryTime());</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_node-js">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Pass a <code>withExpiry: true</code> option to the <code>GetAsync()</code> method when retrieving a document.</p>
-</li>
-<li>
-<p>A <code>GetResult</code> promise is returned, which includes the <code>content</code>, <code>cas</code> value, and <code>expiry</code> metadata.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>Pass any required options to the <code>get()</code> method when retrieving a document.</p>
+</div>
+<div class="paragraph">
+<p>A <code>GetResult</code> object is returned, which may include extra metadata, depending on the options passed.</p>
 </div>
 <div class="paragraph">
 <p>The example below retrieves a document <code>hotel-123</code> with additional expiry metadata.</p>
@@ -4882,17 +4908,16 @@ console.log('Expiry time:', getResult.expiryTime)</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_python">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Pass a <code>with_expiry=True</code> option to the <code>GetAsync()</code> method when retrieving a document.</p>
-</li>
-<li>
-<p>A <code>GetResult</code> object is returned, which includes the <code>content</code>, <code>cas</code> value, and <code>expiry</code> metadata.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>Pass any required options to the <code>get()</code> method when retrieving a document.</p>
+</div>
+<div class="paragraph">
+<p>A <code>GetResult</code> object is returned, which may include extra metadata, depending on the options passed.</p>
 </div>
 <div class="paragraph">
 <p>The example below retrieves a document <code>hotel-123</code> with additional expiry metadata.</p>
@@ -4912,6 +4937,9 @@ print("Expiry time: {}".format(get_result.expiryTime))</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -4927,7 +4955,7 @@ Reading full documents to access a field or two is not ideal and could cause per
 Instead, a better practice would be to access specific paths, or <em>sub-documents</em>, to perform more efficient read operations.</p>
 </div>
 <div class="paragraph">
-<p>To read specific fields or document paths you can perform a sub-document <code>get</code> operation.</p>
+<p>To fetch a specific field inside a document, you can perform a sub-document get operation.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -4956,10 +4984,10 @@ Instead, a better practice would be to access specific paths, or <em>sub-documen
 <li>
 <p>Connect to the <code>cbc-subdoc</code> interactive shell.</p>
 </li>
-<li>
-<p>Use the <code>get</code> command to access specific fields in a JSON document with the <code>--path</code> argument.</p>
-</li>
 </ol>
+</div>
+<div class="paragraph">
+<p>Use the <code>get</code> command to access specific fields in a JSON document with the <code>--path</code> argument.</p>
 </div>
 <div class="paragraph">
 <p>The example below fetches the <code>geo</code> data from the <code>airport_1254</code> document.</p>
@@ -5004,18 +5032,23 @@ If the path cannot be found, <code>cbc-subdoc</code> will return a <code>LCB_ERR
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-c-client/md_doc_cbc.html" target="_blank" rel="noopener">cbc-subdoc(1)</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_net">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To fetch a specific field inside a document, call the <code>LookupInAsync()</code> method, which takes a document ID and an IEnumerable containing <code>LookUpInSpec</code> objects.
-<code>LookUpInSpec</code> represents the sub-operation to be performed within the lookup.</p>
+<p>Call the <code>LookupInAsync()</code> method, which takes a document ID and an IEnumerable containing <code>LookUpInSpec</code> objects.</p>
 </li>
 <li>
-<p>A <code>LookupInResult</code> object is returned containing the result and metadata relevant to the sub-document get operation.</p>
+<p>Use the <code>LookUpInSpec</code> object to specify the sub-operation to be performed within the lookup.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A <code>LookupInResult</code> object is returned, containing the result and metadata relevant to the sub-document get operation.</p>
 </div>
 <div class="paragraph">
 <p>The example below fetches the <code>geo</code> data from the <code>hotel-123</code> document.</p>
@@ -5033,25 +5066,30 @@ Console.WriteLine($"Geo: {lookupInResult.ContentAs&lt;JObject&gt;(0)}");</code><
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_java">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To fetch a specific field inside a document, call the <code>lookupIn()</code> method, which takes a document ID and an array of <code>LookUpInSpec</code> objects.
-<code>LookUpInSpec</code> represents the sub-operation to be performed within the lookup.</p>
+<p>Call the <code>lookupIn()</code> method, which takes a document ID and an array of <code>LookUpInSpec</code> objects.</p>
 </li>
 <li>
-<p>A <code>LookupInResult</code> object is returned containing the result and metadata relevant to the sub-document get operation.</p>
+<p>Use the <code>LookUpInSpec</code> object to specify the sub-operation to be performed within the lookup.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A <code>LookupInResult</code> object is returned, containing the result and metadata relevant to the sub-document get operation.</p>
 </div>
 <div class="paragraph">
 <p>The example below fetches the <code>geo</code> data from the <code>hotel-123</code> document.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L100-L105">List&lt;LookupInSpec&gt; specs = new ArrayList&lt;&gt;();
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L117-L122">List&lt;LookupInSpec&gt; specs = new ArrayList&lt;&gt;();
 specs.add(LookupInSpec.get("geo"));
 
 LookupInResult lookupInResult = hotelCollection.lookupIn("hotel-123", specs);
@@ -5074,18 +5112,23 @@ If the document path can&#8217;t be found, the SDK will return a <code>PathNotFo
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_node-js">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To fetch a specific field inside a document, call the <code>lookupIn()</code> function, which takes a document ID and an array of <code>LookUpInSpec</code> objects.
-<code>LookUpInSpec</code> represents the sub-operation to be performed within the lookup.</p>
+<p>Call the <code>lookupIn()</code> function, which takes a document ID and an array of <code>LookUpInSpec</code> objects.</p>
 </li>
 <li>
-<p>A <code>LookupInResult</code> promise is returned containing the result and metadata relevant to the sub-document get operation.</p>
+<p>Use the <code>LookUpInSpec</code> object to specify the sub-operation to be performed within the lookup.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A <code>LookupInResult</code> promise is returned containing the result and metadata relevant to the sub-document get operation.</p>
 </div>
 <div class="paragraph">
 <p>The example below fetches the <code>geo</code> data from the <code>hotel-123</code> document.</p>
@@ -5102,18 +5145,23 @@ console.log('Geo:', lookupInResult.content[0].value)</code></pre>
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+</div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_python">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To fetch a specific field inside a document, call the <code>lookup_in()</code> function, which takes a document ID and a list of <code>LookUpInSpec</code> objects.
-<code>LookUpInSpec</code> represents the sub-operation to be performed within the lookup.</p>
+<p>Call the <code>lookup_in()</code> function, which takes a document ID and a list of <code>LookUpInSpec</code> objects.</p>
 </li>
 <li>
-<p>A <code>LookupInResult</code> object is returned containing the result and metadata relevant to the sub-document get operation.</p>
+<p>Use the <code>LookUpInSpec</code> object to represent the sub-operation to be performed within the lookup.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>A <code>LookupInResult</code> object is returned containing the result and metadata relevant to the sub-document get operation.</p>
 </div>
 <div class="paragraph">
 <p>The example below fetches the <code>geo</code> data from the <code>hotel-123</code> document.</p>
@@ -5142,6 +5190,9 @@ If the document path can&#8217;t be found, the SDK will return a <code>PathNotFo
 <div class="paragraph">
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
+<div class="paragraph">
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -5151,13 +5202,13 @@ If the document path can&#8217;t be found, the SDK will return a <code>PathNotFo
 <h2 id="related-links"><a class="anchor" href="#related-links"></a>Related Links</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Key Value Operations with SDKs:</p>
+<p>Key-Value Operations with SDKs:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><a href="../../../c-sdk/3.2/howtos/kv-operations.html" class="xref page">C</a>
-| <a href="../../../dotnet-sdk/3.2/howtos/kv-operations.html" class="xref page">.NET</a>
+| <a href="../../../dotnet-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">.NET</a>
 | <a href="../../../go-sdk/2.3/howtos/kv-operations.html" class="xref page">Go</a>
 | <a href="../../../java-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Java</a>
 | <a href="../../../nodejs-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Node.js</a>
@@ -5175,7 +5226,7 @@ If the document path can&#8217;t be found, the SDK will return a <code>PathNotFo
 <ul>
 <li>
 <p><a href="../../../c-sdk/3.2/howtos/subdocument-operations.html" class="xref page">C</a>
-| <a href="../../../dotnet-sdk/3.2/howtos/subdocument-operations.html" class="xref page">.NET</a>
+| <a href="../../../dotnet-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">.NET</a>
 | <a href="../../../go-sdk/2.3/howtos/subdocument-operations.html" class="xref page">Go</a>
 | <a href="../../../java-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Java</a>
 | <a href="../../../nodejs-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Node.js</a>
