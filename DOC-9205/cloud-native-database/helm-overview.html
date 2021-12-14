@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="cloud-native-database">
 <meta name="dcterms.identifier" content="master">
 <meta name="page-url" content="/cloud-native-database/helm-overview.html">
-<meta name="generator" content="Antora 3.0.0-beta.4">
+<meta name="generator" content="Antora 3.0.0-alpha.5">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -177,6 +177,11 @@
 <li class="menu_list" data-depth="1">
   <span class="menu_line">
     <a class="menu_title menu_link" href="prometheus-overview.html">Couchbase Prometheus Exporter</a>
+  </span>
+</li>
+<li class="menu_list" data-depth="1">
+  <span class="menu_line">
+    <a class="menu_title menu_link" href="../cmos/current/index.html">Couchbase Monitoring and Observability Stack</a>
   </span>
 </li>
 </ul>
@@ -351,7 +356,7 @@ Within a single Kubernetes cluster you can install multiple releases each with a
 </div>
 <div class="paragraph">
 <p>Couchbase provides official Helm charts that deploy various aspects of a Couchbase system.
-The main <a href="https://github.com/couchbase-partners/helm-charts" target="_blank" rel="noopener">Couchbase chart</a> is used to install the <a href="#operator::overview.adoc" class="xref unresolved">Couchbase Autonomous Operator</a> along with a managed configuration that can deploy a full Couchbase cluster and optionally <a href="#sync-gateway::index.adoc" class="xref unresolved">Couchbase Sync Gateway</a> as well.
+The main <a href="https://github.com/couchbase-partners/helm-charts" target="_blank" rel="noopener">Couchbase chart</a> is used to install the <a href="#operator::overview.adoc" class="page unresolved">Couchbase Autonomous Operator</a> along with a managed configuration that can deploy a full Couchbase cluster and optionally <a href="#sync-gateway::index.adoc" class="page unresolved">Couchbase Sync Gateway</a> as well.
 The chart can be used to deploy the whole system or just individual components, so a system could be built up in stages by deploying the Autonomous Operator, then a number of Couchbase clusters, and then maybe an instance of Sync Gateway.</p>
 </div>
 </div>
@@ -382,10 +387,10 @@ The chart can be used to deploy the whole system or just individual components, 
 </div>
 <div class="paragraph">
 <p>Installing the default chart provides a quick way to try out using the Autonomous Operator for managing Couchbase Server on Kubernetes platforms.
-Once you become familiar with the default installation, you can move on to <a href="#operator::helm-setup-guide.adoc#custom-installation" class="xref unresolved">customizing the chart</a>.</p>
+Once you become familiar with the default installation, you can move on to <a href="#operator::helm-setup-guide.adoc#custom-installation" class="page unresolved">customizing the chart</a>.</p>
 </div>
 <div class="paragraph">
-<p>The Couchbase Operator chart supports full customization of <a href="#operator::helm-couchbase-config.adoc" class="xref unresolved">all the parameters</a> available to the Autonomous Operator.
+<p>The Couchbase Operator chart supports full customization of <a href="#operator::helm-couchbase-config.adoc" class="page unresolved">all the parameters</a> available to the Autonomous Operator.
 A set of curated defaults is provided to get a cluster up and running with minimal effort but maximum security and performance.</p>
 </div>
 <div class="paragraph">
@@ -396,13 +401,13 @@ Instead of creating secrets first, then deploying the Couchbase cluster, this pr
 <div class="title">Links</div>
 <ul>
 <li>
-<p><strong>Manage</strong>: <a href="#operator::helm-setup-guide.adoc" class="xref unresolved">operator::helm-setup-guide.adoc</a></p>
+<p><strong>Manage</strong>: <a href="#operator::helm-setup-guide.adoc" class="page unresolved">operator::helm-setup-guide.adoc</a></p>
 </li>
 <li>
-<p><strong>Manage</strong>: <a href="#operator::helm-managing-guide.adoc" class="xref unresolved">operator::helm-managing-guide.adoc</a></p>
+<p><strong>Manage</strong>: <a href="#operator::helm-managing-guide.adoc" class="page unresolved">operator::helm-managing-guide.adoc</a></p>
 </li>
 <li>
-<p><strong>Reference</strong>: <a href="#operator::helm-couchbase-config.adoc" class="xref unresolved">operator::helm-couchbase-config.adoc</a></p>
+<p><strong>Reference</strong>: <a href="#operator::helm-couchbase-config.adoc" class="page unresolved">operator::helm-couchbase-config.adoc</a></p>
 </li>
 </ul>
 </div>

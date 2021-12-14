@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="cloud-native-database">
 <meta name="dcterms.identifier" content="master">
 <meta name="page-url" content="/cloud-native-database/istio-overview.html">
-<meta name="generator" content="Antora 3.0.0-beta.4">
+<meta name="generator" content="Antora 3.0.0-alpha.5">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -177,6 +177,11 @@
 <li class="menu_list" data-depth="1">
   <span class="menu_line">
     <a class="menu_title menu_link" href="prometheus-overview.html">Couchbase Prometheus Exporter</a>
+  </span>
+</li>
+<li class="menu_list" data-depth="1">
+  <span class="menu_line">
+    <a class="menu_title menu_link" href="../cmos/current/index.html">Couchbase Monitoring and Observability Stack</a>
   </span>
 </li>
 </ul>
@@ -349,8 +354,8 @@ A service mesh can, transparent to your services, add security, observability, t
 <h2 id="get-started"><a class="anchor" href="#get-started"></a>Get Started</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Istio compatibility is maintained by <a href="#operator::overview.adoc" class="xref unresolved">Couchbase Autonomous Operator</a> via the <a href="#operator::resource/couchbasecluster.adoc" class="xref unresolved"><code>CouchbaseCluster</code></a> custom resource specification (it is disabled by default).
-Specifically, Istio can be specified in the <a href="#operator::resource/couchbasecluster.adoc#couchbaseclusters-spec-networking-networkplatform" class="xref unresolved"><code>couchbaseclusters.spec.networking.networkPlatform</code></a> field.</p>
+<p>Istio compatibility is maintained by <a href="#operator::overview.adoc" class="page unresolved">Couchbase Autonomous Operator</a> via the <a href="#operator::resource/couchbasecluster.adoc" class="page unresolved"><code>CouchbaseCluster</code></a> custom resource specification (it is disabled by default).
+Specifically, Istio can be specified in the <a href="#operator::resource/couchbasecluster.adoc#couchbaseclusters-spec-networking-networkplatform" class="page unresolved"><code>couchbaseclusters.spec.networking.networkPlatform</code></a> field.</p>
 </div>
 <div class="paragraph">
 <p>To determine your specific Istio configuration needs beyond enabling support with the Autonomous Operator, look to primary documentation from your Kubernetes provider or OpenShift.
@@ -360,7 +365,7 @@ The <a href="https://istio.io/latest/docs/" target="_blank" rel="noopener">Istio
 <div class="title">Links</div>
 <ul>
 <li>
-<p><a href="#operator::concept-kubernetes-networking.adoc#service-mesh-support" class="xref unresolved">Autonomous Operator Service Mesh Support</a></p>
+<p><a href="#operator::concept-kubernetes-networking.adoc#service-mesh-support" class="page unresolved">Autonomous Operator Service Mesh Support</a></p>
 </li>
 </ul>
 </div>

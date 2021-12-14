@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="cloud-native-database">
 <meta name="dcterms.identifier" content="master">
 <meta name="page-url" content="/cloud-native-database/index.html">
-<meta name="generator" content="Antora 3.0.0-beta.4">
+<meta name="generator" content="Antora 3.0.0-alpha.5">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="landing-page">
@@ -179,6 +179,11 @@
     <a class="menu_title menu_link" href="prometheus-overview.html">Couchbase Prometheus Exporter</a>
   </span>
 </li>
+<li class="menu_list" data-depth="1">
+  <span class="menu_line">
+    <a class="menu_title menu_link" href="../cmos/current/index.html">Couchbase Monitoring and Observability Stack</a>
+  </span>
+</li>
 </ul>
 </li>
 <li class="menu_list is-parent closed" data-depth="0">
@@ -341,7 +346,7 @@ Containers, service meshes, microservices, immutable infrastructure, and declara
 The Autonomous Operator is a pre-requisite to be able to use the cloud-native integrations.</p>
 </div>
 <div class="paragraph">
-<p><a href="#operator::overview.adoc" class="xref unresolved">Couchbase Autonomous Operator</a></p>
+<p><a href="#operator::overview.adoc" class="page unresolved">Couchbase Autonomous Operator</a></p>
 </div>
 <div class="paragraph">
 <p><br></p>
@@ -355,7 +360,7 @@ The Autonomous Operator is a pre-requisite to be able to use the cloud-native in
 With Couchbase Exporter for Prometheus, users can standardize and centralize their monitoring with Prometheus and Grafana for visualization.</p>
 </div>
 <div class="paragraph">
-<p><a href="prometheus-overview.html" class="xref page">Couchbase Prometheus Exporter</a></p>
+<p><a href="prometheus-overview.html" class="page">Couchbase Prometheus Exporter</a></p>
 </div>
 </div>
 <div class="sect5 column">
@@ -366,7 +371,17 @@ With Couchbase Exporter for Prometheus, users can standardize and centralize the
 It&#8217;s the preferred choice for containerized environments like Kubernetes. Logs can be forwarded from multiple Couchbase clusters to a centralized logging solution with a standard structure.</p>
 </div>
 <div class="paragraph">
-<p><a href="fluent-bit-overview.html" class="xref page">Fluent Bit</a></p>
+<p><a href="fluent-bit-overview.html" class="page">Fluent Bit</a></p>
+</div>
+</div>
+<div class="sect5 column">
+<h6></h6>
+<div class="paragraph content">
+<div class="title">Couchbase Monitoring and Observability Stack</div>
+<p>The Couchbase Monitoring and Observability Stack (CMOS) is a simple, out-of-the-box solution based on industry standard tooling to observe the state of your Couchbase cluster.</p>
+</div>
+<div class="paragraph">
+<p><a href="../cmos/current/index.html" class="page">Couchbase Monitoring and Observability Stack</a></p>
 </div>
 </div>
 <div class="sect5 column">
@@ -383,7 +398,7 @@ The main chart can be used to deploy the whole system or just individual compone
 <p><br></p>
 </div>
 <div class="paragraph">
-<p><a href="helm-overview.html" class="xref page">Couchbase Helm Charts</a></p>
+<p><a href="helm-overview.html" class="page">Couchbase Helm Charts</a></p>
 </div>
 </div>
 <div class="sect5 column">
@@ -395,7 +410,7 @@ This separation of cluster-scope and namespace-scope provides robust brokered se
 Couchbase Service Broker provides a mechanism that allows platform engineers to easily curate a marketplace of services that can be consumed by applications running across many Kubernetes clusters by building on top of the diverse ecosystem of services available today, no matter what platform they’re running on (AKS, EKS, GKE, or On-prem).</p>
 </div>
 <div class="paragraph">
-<p><a href="#service-broker::index.adoc" class="xref unresolved">service-broker::index.adoc</a></p>
+<p><a href="#service-broker::index.adoc" class="page unresolved">service-broker::index.adoc</a></p>
 </div>
 </div>
 <div class="sect5 column">
@@ -406,7 +421,7 @@ Couchbase Service Broker provides a mechanism that allows platform engineers to 
 A service mesh can, transparent to your services, add security, observability, traffic management, and other capabilities.</p>
 </div>
 <div class="paragraph">
-<p><a href="istio-overview.html" class="xref page">Istio</a></p>
+<p><a href="istio-overview.html" class="page">Istio</a></p>
 </div>
 </div>
 <div class="sect5 column">
@@ -416,7 +431,7 @@ A service mesh can, transparent to your services, add security, observability, t
 <p>Couchbase Autonomous Operator supports Container Network Interface (CNI), which  consists of a specification and libraries for writing plugins to configure network interfaces in Linux containers, along with a number of supported plugins.</p>
 </div>
 <div class="paragraph">
-<p><a href="container-network-interface-overview.html" class="xref page">Container Network Interface</a></p>
+<p><a href="container-network-interface-overview.html" class="page">Container Network Interface</a></p>
 </div>
 </div>
 <div class="sect5 column">
@@ -427,7 +442,7 @@ A service mesh can, transparent to your services, add security, observability, t
 Even stateless microservices have some dependency on persistent data stores where the data persists beyond the container, pod, or host.  The Couchbase Autonomous Operator supports persistent volumes for Couchbase Server deployments.</p>
 </div>
 <div class="paragraph">
-<p><a href="persistent-volumes-overview.html" class="xref page">Persistent Volumes</a></p>
+<p><a href="persistent-volumes-overview.html" class="page">Persistent Volumes</a></p>
 </div>
 </div>
 <div class="sect5 column">
@@ -438,7 +453,7 @@ Even stateless microservices have some dependency on persistent data stores wher
 The Couchbase Autonomous Operator supports CoreDNS.</p>
 </div>
 <div class="paragraph">
-<p><a href="coredns-overview.html" class="xref page">CoreDNS</a></p>
+<p><a href="coredns-overview.html" class="page">CoreDNS</a></p>
 </div>
 </div>
 <div class="sect5 column">
@@ -448,7 +463,7 @@ The Couchbase Autonomous Operator supports CoreDNS.</p>
 <p>The Couchbase Autonomous Operator is compatible with, and runs on, several popular Kubernetes platforms such as  Microsoft Azure Kubernetes Service, AWS Elastic Kubernetes Service, Google Kubernetes Engine.</p>
 </div>
 <div class="paragraph">
-<p><a href="kubernetes-platforms-overview.html" class="xref page">Certified Kubernetes Platforms</a></p>
+<p><a href="kubernetes-platforms-overview.html" class="page">Certified Kubernetes Platforms</a></p>
 </div>
 </div>
 </div>

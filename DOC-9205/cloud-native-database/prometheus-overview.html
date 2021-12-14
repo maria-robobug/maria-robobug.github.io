@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="cloud-native-database">
 <meta name="dcterms.identifier" content="master">
 <meta name="page-url" content="/cloud-native-database/prometheus-overview.html">
-<meta name="generator" content="Antora 3.0.0-beta.4">
+<meta name="generator" content="Antora 3.0.0-alpha.5">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -179,6 +179,11 @@
     <a class="menu_title menu_link is-current-page" href="prometheus-overview.html">Couchbase Prometheus Exporter</a>
   </span>
 </li>
+<li class="menu_list" data-depth="1">
+  <span class="menu_line">
+    <a class="menu_title menu_link" href="../cmos/current/index.html">Couchbase Monitoring and Observability Stack</a>
+  </span>
+</li>
 </ul>
 </li>
 <li class="menu_list is-parent closed" data-depth="0">
@@ -335,7 +340,7 @@ The Couchbase Prometheus Exporter can be used to provide cloud-native metrics co
 As a <a href="https://www.cncf.io/announcements/2018/08/09/prometheus-graduates/" target="_blank" rel="noopener">graduated project</a> of the Cloud Native Computing Foundation, it has become the de facto standard for metrics collection and alert generation on cloud platforms.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="#operator::overview.adoc" class="xref unresolved">Couchbase Autonomous Operator</a> can optionally manage a sidecar container that can provide detailed metrics to Prometheus about the health of a Couchbase cluster.</p>
+<p>The <a href="#operator::overview.adoc" class="page unresolved">Couchbase Autonomous Operator</a> can optionally manage a sidecar container that can provide detailed metrics to Prometheus about the health of a Couchbase cluster.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -344,7 +349,7 @@ As a <a href="https://www.cncf.io/announcements/2018/08/09/prometheus-graduates/
 </div>
 <div class="paragraph">
 <p>Prometheus provides significant visibility into the health and operation of a Couchbase cluster.
-Metrics can be used to develop alerts for system issues, identify maintenance windows and other valuable business intelligence insights, as well as provide the basis for <a href="#operator::concept-couchbase-autoscaling.adoc" class="xref unresolved">auto-scaling Couchbase clusters</a>.</p>
+Metrics can be used to develop alerts for system issues, identify maintenance windows and other valuable business intelligence insights, as well as provide the basis for <a href="#operator::concept-couchbase-autoscaling.adoc" class="page unresolved">auto-scaling Couchbase clusters</a>.</p>
 </div>
 </div>
 </div>
@@ -352,8 +357,8 @@ Metrics can be used to develop alerts for system issues, identify maintenance wi
 <h2 id="get-started"><a class="anchor" href="#get-started"></a>Get Started</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Couchbase Prometheus Exporter is managed by the <a href="#operator::overview.adoc" class="xref unresolved">Couchbase Autonomous Operator</a>.
-Prometheus metrics collection can be enabled via the <a href="#operator::resource/couchbasecluster.adoc" class="xref unresolved"><code>CouchbaseCluster</code></a> custom resource specification (it is disabled by default).
+<p>The Couchbase Prometheus Exporter is managed by the <a href="#operator::overview.adoc" class="page unresolved">Couchbase Autonomous Operator</a>.
+Prometheus metrics collection can be enabled via the <a href="#operator::resource/couchbasecluster.adoc" class="page unresolved"><code>CouchbaseCluster</code></a> custom resource specification (it is disabled by default).
 When enabled, the Autonomous Operator automatically deploys the Couchbase-supplied <a href="https://hub.docker.com/r/couchbase/exporter" target="_blank" rel="noopener">exporter container image</a>.
 Active metrics can then be collected from each Couchbase Server pod.</p>
 </div>
@@ -361,10 +366,10 @@ Active metrics can then be collected from each Couchbase Server pod.</p>
 <div class="title">Links</div>
 <ul>
 <li>
-<p><strong>Manage</strong>: <a href="#operator::howto-prometheus.adoc" class="xref unresolved">operator::howto-prometheus.adoc</a></p>
+<p><strong>Manage</strong>: <a href="#operator::howto-prometheus.adoc" class="page unresolved">operator::howto-prometheus.adoc</a></p>
 </li>
 <li>
-<p><strong>Tutorial</strong>: <a href="#operator::tutorial-prometheus.adoc" class="xref unresolved">operator::tutorial-prometheus.adoc</a></p>
+<p><strong>Tutorial</strong>: <a href="#operator::tutorial-prometheus.adoc" class="page unresolved">operator::tutorial-prometheus.adoc</a></p>
 </li>
 </ul>
 </div>
