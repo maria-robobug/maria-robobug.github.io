@@ -73,7 +73,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../../cloud-native-database/DOC-9421/index.html">
+                    <a class="nav-link" href="../../../cloud-native-database/index.html">
                       Cloud-Native
                     </a>
                   </li>
@@ -4541,6 +4541,7 @@ Refer to <a href="../manage/manage-settings/install-sample-buckets.html" class="
 </li>
 </ol>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below inserts multiple JSON documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
@@ -4576,7 +4577,7 @@ foreach (var task in tasks)
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html" target="_blank" rel="noopener">CollectionExtensions</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_java">
@@ -4661,7 +4662,7 @@ A <code>JsonDocument</code> class is used to supplement the example.
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a> and <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html">Project Reactor</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html" target="_blank" rel="noopener">Collection</a> and <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html" target="_blank" rel="noopener">Project Reactor</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_node-js">
@@ -4675,6 +4676,7 @@ A <code>JsonDocument</code> class is used to supplement the example.
 </li>
 </ol>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below inserts multiple JSON documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
@@ -4701,7 +4703,7 @@ insertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html" target="_blank" rel="noopener">Collection</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_python">
@@ -4730,6 +4732,7 @@ insertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 </tr>
 </table>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below inserts multiple JSON documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
@@ -4753,7 +4756,7 @@ for key in documents:
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object" target="_blank" rel="noopener">Collection</a>.</p>
 </div>
 </div>
 </div>
@@ -4791,12 +4794,13 @@ for key in documents:
 <div class="paragraph">
 <p>Use the <code>cbc cat</code> command to retrieve multiple documents by their IDs.</p>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below fetches multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L46-L49">cbc cat -u Administrator -P password -U couchbase://localhost/travel-sample \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L50-L53">cbc cat -u Administrator -P password -U couchbase://localhost/travel-sample \
 	--scope='tenant_agent_00' \
 	--collection='users' \
 	0 1</code></pre>
@@ -4851,6 +4855,7 @@ for key in documents:
 </li>
 </ol>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below fetches multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
@@ -4886,13 +4891,14 @@ foreach (var task in tasks)
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html" target="_blank" rel="noopener">CollectionExtensions</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_java">
 <div class="paragraph">
 <p>Using the <code>reactor.core.publisher.Flux</code> reactive library, call the <code>fromIterable()</code> method to perform multiple <code>get</code> operations.</p>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below fetches multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
@@ -4925,13 +4931,14 @@ for (GetResult result : results) {
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a> and <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html">Project Reactor</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html" target="_blank" rel="noopener">Collection</a> and <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html" target="_blank" rel="noopener">Project Reactor</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_node-js">
 <div class="paragraph">
 <p>Perform a <code>get</code> operation on each document and wait for all the promises to complete before accessing the results.</p>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below fetches multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
@@ -4958,7 +4965,7 @@ getResults.forEach((result) =&gt; console.log('Document:', result.content))</cod
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html" target="_blank" rel="noopener">Collection</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_python">
@@ -4980,6 +4987,7 @@ getResults.forEach((result) =&gt; console.log('Document:', result.content))</cod
 </tr>
 </table>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below fetches multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
@@ -5003,7 +5011,7 @@ for key in documents:
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object" target="_blank" rel="noopener">Collection</a>.</p>
 </div>
 </div>
 </div>
@@ -5051,6 +5059,7 @@ for key in documents:
 </li>
 </ol>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below inserts multiple JSON documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
@@ -5086,7 +5095,7 @@ foreach (var task in tasks)
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html" target="_blank" rel="noopener">CollectionExtensions</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_java">
@@ -5100,6 +5109,7 @@ foreach (var task in tasks)
 </li>
 </ol>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below upserts multiple JSON documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
@@ -5142,7 +5152,7 @@ for (MutationResult result : results) {
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a> and <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html">Project Reactor</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html" target="_blank" rel="noopener">Collection</a> and <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html" target="_blank" rel="noopener">Project Reactor</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_node-js">
@@ -5156,6 +5166,7 @@ for (MutationResult result : results) {
 </li>
 </ol>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below upserts multiple JSON documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
@@ -5188,7 +5199,7 @@ upsertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html" target="_blank" rel="noopener">Collection</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_python">
@@ -5217,6 +5228,7 @@ upsertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 </tr>
 </table>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below upserts multiple JSON documents in the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
@@ -5240,7 +5252,7 @@ for key in documents:
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object" target="_blank" rel="noopener">Collection</a>.</p>
 </div>
 </div>
 </div>
@@ -5285,6 +5297,7 @@ for key in documents:
 </li>
 </ol>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below deletes multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
@@ -5317,13 +5330,14 @@ await Task.WhenAll(tasks);</code></pre>
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html" target="_blank" rel="noopener">CollectionExtensions</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset4_java">
 <div class="paragraph">
 <p>Using the <code>reactor.core.publisher.Flux</code> reactive library, call the <code>fromIterable()</code> method to perform multiple remove operations.</p>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below deletes multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
@@ -5354,13 +5368,14 @@ for (MutationResult result : results) {
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a> and <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html">Project Reactor</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html" target="_blank" rel="noopener">Collection</a> and <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html" target="_blank" rel="noopener">Project Reactor</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset4_node-js">
 <div class="paragraph">
 <p>Perform a remove operation on each document and wait for all the promises to complete before accessing the results.</p>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below deletes multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
@@ -5387,7 +5402,7 @@ removeResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html" target="_blank" rel="noopener">Collection</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset4_python">
@@ -5409,6 +5424,7 @@ removeResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pr
 </tr>
 </table>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below deletes multiple JSON documents from the <code>travel-sample.tenant_agent_00.users</code> keyspace.</p>
 </div>
@@ -5432,7 +5448,7 @@ for key in documents:
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object" target="_blank" rel="noopener">Collection</a>.</p>
 </div>
 </div>
 </div>

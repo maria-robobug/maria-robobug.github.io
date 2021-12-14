@@ -75,7 +75,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../../cloud-native-database/DOC-9421/index.html">
+                    <a class="nav-link" href="../../../cloud-native-database/index.html">
                       Cloud-Native
                     </a>
                   </li>
@@ -4532,18 +4532,19 @@ Refer to <a href="../manage/manage-settings/install-sample-buckets.html" class="
 <div class="paragraph">
 <p>Use the <code>cbc rm</code> command to delete a document from the database.</p>
 </div>
+<hr>
 <div class="paragraph">
-<p>The example below deletes document <code>airport-123</code> from the database.</p>
+<p>The example below deletes document <code>airport_1254</code> from the database.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell"></code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L46">cbc rm -u Administrator -P password -U couchbase://localhost/travel-sample airport_1254</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Result</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">airport-123          Deleted</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">airport_1254          Deleted</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4554,6 +4555,7 @@ Refer to <a href="../manage/manage-settings/install-sample-buckets.html" class="
 <div class="paragraph">
 <p>Use the <code>RemoveAsync()</code> method to delete a document from the database.</p>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below deletes document <code>hotel-123</code> from the database.</p>
 </div>
@@ -4578,13 +4580,14 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html" target="_blank" rel="noopener">CollectionExtensions</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_java">
 <div class="paragraph">
 <p>Use the <code>remove()</code> method to delete a document from the database.</p>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below deletes document <code>hotel-123</code> from the database.</p>
 </div>
@@ -4610,13 +4613,14 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html" target="_blank" rel="noopener">Collection</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_node-js">
 <div class="paragraph">
 <p>Use the <code>remove()</code> function to delete a document from the database.</p>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below deletes document <code>hotel-123</code> from the database.</p>
 </div>
@@ -4642,13 +4646,14 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html" target="_blank" rel="noopener">Collection</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_python">
 <div class="paragraph">
 <p>Use the <code>remove()</code> function to delete a document from the database.</p>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below deletes document <code>hotel-123</code> from the database.</p>
 </div>
@@ -4674,7 +4679,7 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object" target="_blank" rel="noopener">Collection</a>.</p>
 </div>
 </div>
 </div>
@@ -4722,6 +4727,7 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 </li>
 </ol>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below deletes the <code>url</code> field from document <code>hotel-123</code>.</p>
 </div>
@@ -4763,11 +4769,12 @@ If the path cannot be found, <code>cbc-subdoc</code> will return a <code>LCB_ERR
 <li>
 <p>Use a <code>MutateInSpec</code> object to specify the sub-operation to be performed within the lookup.</p>
 </li>
-<li>
-<p>A <code>MutateInResult</code> object is returned containing the result and metadata relevant to the sub-document remove operation.</p>
-</li>
 </ol>
 </div>
+<div class="paragraph">
+<p>A <code>MutateInResult</code> object is returned containing the result and metadata relevant to the sub-document remove operation.</p>
+</div>
+<hr>
 <div class="paragraph">
 <p>The example below deletes the <code>url</code> field from document <code>hotel-123</code>.</p>
 </div>
@@ -4795,7 +4802,7 @@ If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundExcepti
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html">CollectionExtensions</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.CollectionExtensions.html" target="_blank" rel="noopener">CollectionExtensions</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_java">
@@ -4812,6 +4819,7 @@ If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundExcepti
 <div class="paragraph">
 <p>A <code>MutateInResult</code> object is returned, containing the result and metadata relevant to the sub-document remove operation.</p>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below deletes the <code>url</code> field from document <code>hotel-123</code>.</p>
 </div>
@@ -4840,7 +4848,7 @@ If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundExcepti
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html">Collection</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/Collection.html" target="_blank" rel="noopener">Collection</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_node-js">
@@ -4857,6 +4865,7 @@ If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundExcepti
 <div class="paragraph">
 <p>A <code>MutateInResult</code> object is returned, containing the result and metadata relevant to the sub-document remove operation.</p>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below deletes the <code>url</code> field from document <code>hotel-123</code>.</p>
 </div>
@@ -4884,7 +4893,7 @@ If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundError</
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html">Collection</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/classes/Collection.html" target="_blank" rel="noopener">Collection</a>.</p>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_python">
@@ -4901,6 +4910,7 @@ If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundError</
 <div class="paragraph">
 <p>A <code>MutateInResult</code> object is returned, containing the result and metadata relevant to the sub-document remove operation.</p>
 </div>
+<hr>
 <div class="paragraph">
 <p>The example below deletes the <code>url</code> field from document <code>hotel-123</code>.</p>
 </div>
@@ -4928,7 +4938,7 @@ If the path doesn&#8217;t exist, the SDK will return a <code>PathNotFoundExcepti
 <p>Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> to view this code in context.</p>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">Collection</a>.</p>
+<p>For further details, refer to <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object" target="_blank" rel="noopener">Collection</a>.</p>
 </div>
 </div>
 </div>
