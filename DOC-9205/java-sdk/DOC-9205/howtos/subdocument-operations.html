@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="java-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/java-sdk/DOC-9205/howtos/subdocument-operations.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3696,7 +3696,7 @@ Sub-Document operations can be used to efficiently access and change parts of do
 </td>
 <td class="content">
 The Sub-Document operations described on this page are for <em>Key-Value</em> requests only: they are not related to Sub-Document N1QL queries.
-(Sub-Document N1QL queries are explained in the section <a href="n1ql-queries-with-sdk.html" class="page">Querying with N1QL</a>.)
+(Sub-Document N1QL queries are explained in the section <a href="n1ql-queries-with-sdk.html" class="xref page">Querying with N1QL</a>.)
 </td>
 </tr>
 </table>
@@ -4097,7 +4097,7 @@ If the value does not exist, the operation will create it (and its parents, if <
 Full-document counters will use normal C semantics for overflow (in which the overflow value is carried over above 0), and will silently fail on underflow, setting the value to 0 instead.</p>
 </li>
 <li>
-<p>Sub-Document counter operations can operate on any numeric value within a document, while <a href="kv-operations.html#atomic-counters" class="page">full-document counter operations</a> require a specially formatted counter document with only the counter value.</p>
+<p>Sub-Document counter operations can operate on any numeric value within a document, while <a href="kv-operations.html#atomic-counters" class="xref page">full-document counter operations</a> require a specially formatted counter document with only the counter value.</p>
 </li>
 </ul>
 </div>
@@ -4207,7 +4207,7 @@ thread2.start();</code></pre>
 For example, two concurrent <em>arrayAppend</em> operations to the same array will both succeed, never overwriting the other.</p>
 </div>
 <div class="paragraph">
-<p>So in some cases the application will not need to supply a <a href="concurrent-document-mutations.html" class="page">CAS</a> value to protect
+<p>So in some cases the application will not need to supply a <a href="concurrent-document-mutations.html" class="xref page">CAS</a> value to protect
 against concurrent modifications.</p>
 </div>
 <div class="paragraph">
@@ -4226,7 +4226,7 @@ MutationResult result = collection.mutateIn("hotel_1368", Collections.singletonL
 <h2 id="durability"><a class="anchor" href="#durability"></a>Durability</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Couchbase’s <a href="../concept-docs/durability-replication-failure-considerations.html#older-server-versions" class="page">traditional 'client verified' durability</a>, using <code>PersistTo</code> and <code>ReplicateTo</code>, is still available, particularly for talking to Couchbase Server 7.0 and earlier:</p>
+<p>Couchbase’s <a href="../concept-docs/durability-replication-failure-considerations.html#older-server-versions" class="xref page">traditional 'client verified' durability</a>, using <code>PersistTo</code> and <code>ReplicateTo</code>, is still available, particularly for talking to Couchbase Server 7.0 and earlier:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4236,7 +4236,7 @@ MutationResult result = collection.mutateIn("hotel_1368", Collections.singletonL
 </div>
 </div>
 <div class="paragraph">
-<p>In Couchbase Server 7.0 and up, this is built upon with <a href="../concept-docs/durability-replication-failure-considerations.html#durable-writes" class="page">Durable Writes</a>, which uses the concept of majority to indicate the number of configured Data Service nodes to which commitment is required:</p>
+<p>In Couchbase Server 7.0 and up, this is built upon with <a href="../concept-docs/durability-replication-failure-considerations.html#durable-writes" class="xref page">Durable Writes</a>, which uses the concept of majority to indicate the number of configured Data Service nodes to which commitment is required:</p>
 </div>
 <div class="listingblock">
 <div class="content">

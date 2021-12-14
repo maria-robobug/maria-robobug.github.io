@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/install/migration.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4460,7 +4460,7 @@ You cannot change the conflict resolution mode to the <em>Timestamp-based Confli
 </div>
 <div class="paragraph">
 <p>If you wish to enable the timestamp-based conflict resolution for your existing data, then you must migrate your data to version 4.6.0 cluster using the <code>cbbackupmgr</code> tool.
-To learn more about the tool, See <a href="../manage/manage-backup-and-restore/manage-backup-and-restore.html" class="page">Backup and Restore</a>.</p>
+To learn more about the tool, See <a href="../manage/manage-backup-and-restore/manage-backup-and-restore.html" class="xref page">Backup and Restore</a>.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -4475,7 +4475,7 @@ This is a one time migration and the bucket must be switched to a new conflict r
 </table>
 </div>
 <div class="paragraph">
-<p>To understand more about timestamp-based Conflict Resolution, see <a href="../learn/clusters-and-availability/xdcr-conflict-resolution.html#timestamp-based-conflict-resolution" class="page">Timestamp-Based Conflict Resolution</a>.</p>
+<p>To understand more about timestamp-based Conflict Resolution, see <a href="../learn/clusters-and-availability/xdcr-conflict-resolution.html#timestamp-based-conflict-resolution" class="xref page">Timestamp-Based Conflict Resolution</a>.</p>
 </div>
 <div class="paragraph">
 <p>Here are two scenarios:</p>
@@ -4506,7 +4506,7 @@ This is a one time migration and the bucket must be switched to a new conflict r
 <td class="content">
 Allow <em>enough tim</em>e for the replication queues to drain.
 Check the <strong>outbound XDCR mutation</strong> statistics to confirm.
-For instructions, see <a href="../manage/monitor/monitor-intro.html#outgoing_xdcr_stats" class="page">Monitoring Outgoing XDCR</a>.
+For instructions, see <a href="../manage/monitor/monitor-intro.html#outgoing_xdcr_stats" class="xref page">Monitoring Outgoing XDCR</a>.
 </td>
 </tr>
 </table>
@@ -4515,25 +4515,25 @@ For instructions, see <a href="../manage/monitor/monitor-intro.html#outgoing_xdc
 <li>
 <p>Stop and delete Replication stream to Cluster 2 (Bucket A’).
 For instructions, see
-<a href="../manage/manage-xdcr/xdcr-management-overview.html" class="page">XDCR Management Overview</a>.</p>
+<a href="../manage/manage-xdcr/xdcr-management-overview.html" class="xref page">XDCR Management Overview</a>.</p>
 </li>
 <li>
 <p>Run the <code>cbbackupmgr</code> tool to back up the entire bucket’s (Bucket A) data.
-For instructions, see  <a href="../backup-restore/enterprise-backup-restore.html" class="page">Backup</a>.</p>
+For instructions, see  <a href="../backup-restore/enterprise-backup-restore.html" class="xref page">Backup</a>.</p>
 </li>
 <li>
 <p>Delete Bucket A from Cluster 1.
 For instructions, see
-<a href="../manage/manage-buckets/delete-bucket.html" class="page">Delete a Bucket</a>.</p>
+<a href="../manage/manage-buckets/delete-bucket.html" class="xref page">Delete a Bucket</a>.</p>
 </li>
 <li>
 <p>Upgrade Cluster 1 to Couchbase Server version 4.6.0.
-For instructions, see <a href="upgrade.html" class="page">Upgrading Couchbase Server</a>.</p>
+For instructions, see <a href="upgrade.html" class="xref page">Upgrading Couchbase Server</a>.</p>
 </li>
 <li>
 <p>Create a new Bucket B with the conflict resolution type as <strong>Timestamp</strong> selected.
 For instructions, see
-<a href="../manage/manage-buckets/create-bucket.html" class="page">Create a Bucket</a>.</p>
+<a href="../manage/manage-buckets/create-bucket.html" class="xref page">Create a Bucket</a>.</p>
 </li>
 <li>
 <p>Run the <code>cbbackupmgr</code> tool to restore data.
@@ -4552,7 +4552,7 @@ This is required since the conflict resolution types of the source and destinati
 </li>
 <li>
 <p>Create a new unidirectional replication for Bucket B.
-See <a href="../manage/manage-xdcr/xdcr-management-overview.html" class="page">XDCR Management Overview</a>.</p>
+See <a href="../manage/manage-xdcr/xdcr-management-overview.html" class="xref page">XDCR Management Overview</a>.</p>
 </li>
 </ol>
 </div>
@@ -4573,7 +4573,7 @@ See <a href="../manage/manage-xdcr/xdcr-management-overview.html" class="page">X
 Note: Allow <em>enough time</em> for the replication queues to drain.
 Check the <strong>outbound XDCR mutation</strong> statistics to confirm.
 For instructions, see
-<a href="../manage/monitor/monitor-intro.html#outgoing_xdcr_stats" class="page">Monitoring Outgoing XDCR</a>.
+<a href="../manage/monitor/monitor-intro.html#outgoing_xdcr_stats" class="xref page">Monitoring Outgoing XDCR</a>.
 </td>
 </tr>
 </table>
@@ -4582,25 +4582,25 @@ For instructions, see
 <li>
 <p>Stop and delete replication to both clusters.
 For instructions, see
-<a href="../manage/manage-xdcr/xdcr-management-overview.html" class="page">XDCR Management Overview</a>.</p>
+<a href="../manage/manage-xdcr/xdcr-management-overview.html" class="xref page">XDCR Management Overview</a>.</p>
 </li>
 <li>
 <p>Run the <code>cbbackupmgr</code> tool to backup the entire bucket data on both clusters.
 For instructions, see
-<a href="../backup-restore/enterprise-backup-restore.html" class="page">Backup</a>.</p>
+<a href="../backup-restore/enterprise-backup-restore.html" class="xref page">Backup</a>.</p>
 </li>
 <li>
 <p>Delete the Bucket A from Cluster 1 and Bucket A’ from Cluster 2.
 For instructions, see
-<a href="../manage/manage-buckets/delete-bucket.html" class="page">Delete a Bucket</a>.</p>
+<a href="../manage/manage-buckets/delete-bucket.html" class="xref page">Delete a Bucket</a>.</p>
 </li>
 <li>
 <p>Upgrade both clusters to Couchbase Server version 4.6.0.
-For instructions, see <a href="upgrade.html" class="page">Upgrading Couchbase Server</a>.</p>
+For instructions, see <a href="upgrade.html" class="xref page">Upgrading Couchbase Server</a>.</p>
 </li>
 <li>
 <p>Create new buckets on both clusters with the conflict resolution type as <strong>Timestamp</strong> selected.
-For instructions, see <a href="../manage/manage-buckets/create-bucket.html" class="page">Create a Bucket</a>.</p>
+For instructions, see <a href="../manage/manage-buckets/create-bucket.html" class="xref page">Create a Bucket</a>.</p>
 </li>
 <li>
 <p>Run the <code>cbbackupmgr</code> tool to restore data.
@@ -4611,7 +4611,7 @@ This is required because the conflict resolution types of the source and destina
 <li>
 <p>Once the restore operation is completed on both clusters, create replication streams both ways from Cluster 1 and Cluster 2.
 See
-<a href="../manage/manage-xdcr/xdcr-management-overview.html" class="page">XDCR Management Overview</a>.</p>
+<a href="../manage/manage-xdcr/xdcr-management-overview.html" class="xref page">XDCR Management Overview</a>.</p>
 </li>
 </ol>
 </div>

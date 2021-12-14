@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/rest-api/rest-cluster-rebalance.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4483,7 +4483,7 @@ The <em>cluster map</em> is correspondingly updated and distributed to clients.
 The process occurs while the cluster continues to service requests for data.</p>
 </div>
 <div class="paragraph">
-<p>A conceptual overview of nodes, and how they are combined into clusters, is provided in <a href="../learn/clusters-and-availability/nodes.html" class="page">Nodes</a>.</p>
+<p>A conceptual overview of nodes, and how they are combined into clusters, is provided in <a href="../learn/clusters-and-availability/nodes.html" class="xref page">Nodes</a>.</p>
 </div>
 </div>
 </div>
@@ -4518,7 +4518,7 @@ The value is a list containing all nodes to be ejected.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>For information on rebalance, see <a href="../learn/clusters-and-availability/rebalance.html" class="page">Rebalance</a>.</p>
+<p>For information on rebalance, see <a href="../learn/clusters-and-availability/rebalance.html" class="xref page">Rebalance</a>.</p>
 </div>
 </div>
 </div>
@@ -4553,7 +4553,7 @@ The value is a list containing all nodes to be ejected.</p>
 <p>The following examples demonstrate how to determine which nodes are currently in the cluster; how to rebalance after a hard failover; how to rebalance in order to eject a node from the cluster; and how to re-add an ejected node to a cluster.</p>
 </div>
 <div class="paragraph">
-<p>For information on how to retrieve status on an ongoing rebalance, see <a href="rest-get-rebalance-progress.html" class="page">Getting Rebalance Progress</a> and <a href="rest-get-cluster-tasks.html" class="page">Getting Cluster Tasks</a>.</p>
+<p>For information on how to retrieve status on an ongoing rebalance, see <a href="rest-get-rebalance-progress.html" class="xref page">Getting Rebalance Progress</a> and <a href="rest-get-cluster-tasks.html" class="xref page">Getting Cluster Tasks</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="return-cluster-nodes"><a class="anchor" href="#return-cluster-nodes"></a>Return Cluster Nodes</h3>
@@ -4578,7 +4578,7 @@ http://10.143.190.101:8091/pools/default | jq '.' | grep hostname</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For more information on this method and URI, see <a href="rest-cluster-details.html" class="page">Viewing Cluster Details</a>.</p>
+<p>For more information on this method and URI, see <a href="rest-cluster-details.html" class="xref page">Viewing Cluster Details</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4590,8 +4590,8 @@ This means that data continues to be served, but is in an <em>imbalanced state</
 This requires rebalance.</p>
 </div>
 <div class="paragraph">
-<p>For detailed conceptual information, see <a href="../learn/clusters-and-availability/hard-failover.html" class="page">Hard Failover</a>.
-For information on performing a hard failover, see <a href="rest-node-failover.html" class="page">Failing over Nodes</a>.</p>
+<p>For detailed conceptual information, see <a href="../learn/clusters-and-availability/hard-failover.html" class="xref page">Hard Failover</a>.
+For information on performing a hard failover, see <a href="rest-node-failover.html" class="xref page">Failing over Nodes</a>.</p>
 </div>
 <div class="paragraph">
 <p>To perform the rebalance, specify all cluster-nodes in the value for the <code>knownNodes</code> parameter, including the one or ones to which hard failover is known to have been applied:</p>
@@ -4664,7 +4664,7 @@ Include the new node in the <code>knownNodes</code> node-list.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>For more information on this method and URI, see <a href="rest-cluster-addnodes.html" class="page">Adding Nodes to Clusters</a>.</p>
+<p>For more information on this method and URI, see <a href="rest-cluster-addnodes.html" class="xref page">Adding Nodes to Clusters</a>.</p>
 </div>
 <div class="paragraph">
 <p>Next, the added node is rebalanced into the cluster.
@@ -4771,14 +4771,14 @@ Since index compaction is therefore not performed while vBuckets are being moved
 <h2 id="see-also"><a class="anchor" href="#see-also"></a>See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For conceptual information on rebalance, see <a href="../learn/clusters-and-availability/rebalance.html" class="page">Rebalance</a>.
-For information on how to retrieve status on an ongoing rebalance, see <a href="rest-get-rebalance-progress.html" class="page">Getting Rebalance Progress</a> and <a href="rest-get-cluster-tasks.html" class="page">Getting Cluster Tasks</a>.</p>
+<p>For conceptual information on rebalance, see <a href="../learn/clusters-and-availability/rebalance.html" class="xref page">Rebalance</a>.
+For information on how to retrieve status on an ongoing rebalance, see <a href="rest-get-rebalance-progress.html" class="xref page">Getting Rebalance Progress</a> and <a href="rest-get-cluster-tasks.html" class="xref page">Getting Cluster Tasks</a>.</p>
 </div>
 <div class="paragraph">
-<p>For conceptual information on hard failover, see <a href="../learn/clusters-and-availability/hard-failover.html" class="page">Hard Failover</a>.
-For information on performing a hard failover with the REST API, see <a href="rest-node-failover.html" class="page">Failing over Nodes</a>.
-For information on retrieving details of a cluster, including its current nodes, see <a href="rest-cluster-details.html" class="page">Viewing Cluster Details</a>.
-For information on obtaining and reading <em>rebalance reports</em>, see the <a href="../rebalance-reference/rebalance-reference.html" class="page">Rebalance Reference</a>.</p>
+<p>For conceptual information on hard failover, see <a href="../learn/clusters-and-availability/hard-failover.html" class="xref page">Hard Failover</a>.
+For information on performing a hard failover with the REST API, see <a href="rest-node-failover.html" class="xref page">Failing over Nodes</a>.
+For information on retrieving details of a cluster, including its current nodes, see <a href="rest-cluster-details.html" class="xref page">Viewing Cluster Details</a>.
+For information on obtaining and reading <em>rebalance reports</em>, see the <a href="../rebalance-reference/rebalance-reference.html" class="xref page">Rebalance Reference</a>.</p>
 </div>
 </div>
 </div>

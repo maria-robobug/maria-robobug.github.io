@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/eventing/eventing-debugging-and-diagnosability.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4877,10 +4877,10 @@ In earlier versions 6.5.0, 6.5.1, and 6.6.0 users might experience bug MB-41508 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><a href="../install/install-intro.html" class="page">Install Couchbase Server</a>.</p>
+<p><a href="../install/install-intro.html" class="xref page">Install Couchbase Server</a>.</p>
 </li>
 <li>
-<p><a href="../install/startup-shutdown.html" class="page">Stop the Couchbase Server service</a>.</p>
+<p><a href="../install/startup-shutdown.html" class="xref page">Stop the Couchbase Server service</a>.</p>
 </li>
 <li>
 <p>Edit the <strong>/opt/couchbase/etc/couchbase/static_config</strong> file to add the new eventing_debug_port and the new port-number information. For example, to change the Eventing debugging port from 9140 to 9444, you would add the following line (enclosed in braces and terminated by a period):</p>
@@ -4894,12 +4894,12 @@ In earlier versions 6.5.0, 6.5.1, and 6.6.0 users might experience bug MB-41508 
 <p>If Couchbase Server was previously configured, you&#8217;ll need to delete the <strong>/opt/couchbase/var/lib/couchbase/config/config.dat</strong> file to remove the old configuration.</p>
 </li>
 <li>
-<p><a href="../install/startup-shutdown.html" class="page">Start Couchbase Server</a>.</p>
+<p><a href="../install/startup-shutdown.html" class="xref page">Start Couchbase Server</a>.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>For detailed information on the modifying <strong>ns_server</strong> port mappings, refer to <a href="../install/install-ports.html#map-custom-ports" class="page">Custom Port Mapping</a>.</p>
+<p>For detailed information on the modifying <strong>ns_server</strong> port mappings, refer to <a href="../install/install-ports.html#map-custom-ports" class="xref page">Custom Port Mapping</a>.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -4974,7 +4974,7 @@ An end user cannot write a message (via their JavaScript in a Function handler) 
 </table>
 <div class="paragraph">
 <p>The <strong>eventing.log</strong> contains redactable user data and the log is collected using the <strong>cbcollect_info</strong> tool.
-For log rotation, refer to <a href="../manage/manage-logging/manage-logging.html#log-file-rotation" class="page">Log File Rotation</a>.</p>
+For log rotation, refer to <a href="../manage/manage-logging/manage-logging.html#log-file-rotation" class="xref page">Log File Rotation</a>.</p>
 </div>
 <div class="paragraph">
 <p>The available logging levels are: <em>Info, Error, Warning, Debug, and Trace (Info is the default since version 6.0)</em>.
@@ -5237,7 +5237,7 @@ Log redaction is applicable only for System logs and not for Application logs.
 </table>
 </div>
 <div class="paragraph">
-<p>For details, see <a href="../manage/manage-logging/manage-logging.html#understanding_redaction" class="page">Understanding Redaction</a>.</p>
+<p>For details, see <a href="../manage/manage-logging/manage-logging.html#understanding_redaction" class="xref page">Understanding Redaction</a>.</p>
 </div>
 </div>
 </div>

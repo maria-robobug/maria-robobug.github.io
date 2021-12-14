@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/settings/query-settings.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4948,8 +4948,8 @@ For example, if the node-level <code>timeout</code> is set to 500, then the requ
 <h2 id="cluster-level-query-settings"><a class="anchor" href="#cluster-level-query-settings"></a>Cluster-Level Query Settings</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To set a cluster-level query setting, use the <a href="../rest-api/rest-cluster-query-settings.html" class="page">Query Settings REST API</a> (<code>/settings/querySettings</code> endpoint) with a cURL statement, or the <a href="../manage/manage-settings/general-settings.html#query-settings" class="page">Advanced Query Settings</a> in the Couchbase Web Console.
-You can also set all of the cluster-level query settings, except for the CURL() access list settings, using the <a href="#cli:cbcli/couchbase-cli-setting-query.adoc" class="page unresolved">setting-query</a> command.</p>
+<p>To set a cluster-level query setting, use the <a href="../rest-api/rest-cluster-query-settings.html" class="xref page">Query Settings REST API</a> (<code>/settings/querySettings</code> endpoint) with a cURL statement, or the <a href="../manage/manage-settings/general-settings.html#query-settings" class="xref page">Advanced Query Settings</a> in the Couchbase Web Console.
+You can also set all of the cluster-level query settings, except for the CURL() access list settings, using the <a href="#cli:cbcli/couchbase-cli-setting-query.adoc" class="xref unresolved">setting-query</a> command.</p>
 </div>
 <div class="paragraph">
 <p>The table below contains details of all cluster-level query settings.</p>
@@ -4968,7 +4968,7 @@ Unresolved include directive in modules/settings/pages/query-settings.adoc - inc
 <h2 id="service-level-query-settings"><a class="anchor" href="#service-level-query-settings"></a>Node-Level Query Settings</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To set a node-level query setting, use the <a href="../n1ql/n1ql-rest-api/admin.html" class="page">Admin REST API</a> (<code>/admin/settings</code> endpoint) with a cURL statement.</p>
+<p>To set a node-level query setting, use the <a href="../n1ql/n1ql-rest-api/admin.html" class="xref page">Admin REST API</a> (<code>/admin/settings</code> endpoint) with a cURL statement.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5061,7 +5061,7 @@ For example:</p>
 <h2 id="section_nnj_sjk_k1b"><a class="anchor" href="#section_nnj_sjk_k1b"></a>Request-Level Parameters</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To set a request-level parameter, use the <a href="../n1ql/n1ql-rest-api/index.html" class="page">N1QL REST API</a> (<code>/query/service</code> endpoint) with a cURL statement, or the <a href="../tools/cbq-shell.html" class="page">cbq</a> command, or a client program.</p>
+<p>To set a request-level parameter, use the <a href="../n1ql/n1ql-rest-api/index.html" class="xref page">N1QL REST API</a> (<code>/query/service</code> endpoint) with a cURL statement, or the <a href="../tools/cbq-shell.html" class="xref page">cbq</a> command, or a client program.</p>
 </div>
 <div class="paragraph">
 <p>While <code>cbq</code> is a sandbox to test code on your local machine, your production query settings are set with the cURL commands on your server.</p>
@@ -5123,7 +5123,7 @@ Positional parameters apply to <code>prepared</code> also.
 <em>Optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>Specifies the collection where the <a href="../learn/data/transactions.html#additional-storage-use" class="page">active transaction record</a> (ATR) is stored.
+<p>Specifies the collection where the <a href="../learn/data/transactions.html#additional-storage-use" class="xref page">active transaction record</a> (ATR) is stored.
 The collection must be present.
 If not specified, the ATR is stored in the default collection in the default scope in the bucket containing the first mutated document within the transaction.</p>
 </div>
@@ -5155,7 +5155,7 @@ The request-level parameter overrides the node-level setting.</p>
 This saves you from having to make two separate requests in cases where you want to prepare a statement and execute it immediately.</p>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="../n1ql/n1ql-language-reference/prepare.html#auto-execute" class="page">Auto-Execute</a> for more information.</p>
+<p>Refer to <a href="../n1ql/n1ql-language-reference/prepare.html#auto-execute" class="xref page">Auto-Execute</a> for more information.</p>
 </div>
 <div class="paragraph">
 <div class="title">Default</div>
@@ -5367,7 +5367,7 @@ $ curl http://localhost:8093/query/service -u user:pword -d 'statement=select * 
 <em>Optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>The level of <a href="../learn/data/durability.html" class="page">durability</a> for mutations produced by the request.</p>
+<p>The level of <a href="../learn/data/durability.html" class="xref page">durability</a> for mutations produced by the request.</p>
 </div>
 <div class="paragraph">
 <p>If the request contains a <code>BEGIN TRANSACTION</code> statement, or a DML statement with the <a href="#tximplicit">tximplicit</a> parameter set to <code>true</code>, the durability level is specified for all mutations within that transaction.
@@ -5647,7 +5647,7 @@ $ curl http://localhost:8093/query/service -u user:pword -d 'statement=select * 
 <em>Optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>Specifies the total number of <a href="../learn/data/transactions.html#additional-storage-use" class="page">active transaction records</a>.
+<p>Specifies the total number of <a href="../learn/data/transactions.html#additional-storage-use" class="xref page">active transaction records</a>.
 Must be a positive integer.</p>
 </div>
 <div class="paragraph">
@@ -6551,7 +6551,7 @@ If a qualified full-text index is available, it is selected for the query.
 If none of the available full-text indexes are qualified, the available GSI indexes are considered instead.</p>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="../n1ql/n1ql-language-reference/flex-indexes.html" class="page">Flex Indexes</a> for more information.</p>
+<p>Refer to <a href="../n1ql/n1ql-language-reference/flex-indexes.html" class="xref page">Flex Indexes</a> for more information.</p>
 </div>
 <div class="paragraph">
 <div class="title">Default</div>
@@ -6745,16 +6745,16 @@ Positional Parameters can also be specified in a statement using <strong>?</stro
 <h2 id="related-links"><a class="anchor" href="#related-links"></a>Related Links</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more details about the N1QL REST API, refer to <a href="../n1ql/n1ql-rest-api/index.html" class="page">N1QL REST API</a>.</p>
+<p>For more details about the N1QL REST API, refer to <a href="../n1ql/n1ql-rest-api/index.html" class="xref page">N1QL REST API</a>.</p>
 </div>
 <div class="paragraph">
-<p>For more details about the Admin REST API, refer to <a href="../n1ql/n1ql-rest-api/admin.html" class="page">Admin REST API</a>.</p>
+<p>For more details about the Admin REST API, refer to <a href="../n1ql/n1ql-rest-api/admin.html" class="xref page">Admin REST API</a>.</p>
 </div>
 <div class="paragraph">
-<p>For more details about the Query Settings API, refer to <a href="../rest-api/rest-cluster-query-settings.html" class="page">Cluster Query Settings API</a>.</p>
+<p>For more details about the Query Settings API, refer to <a href="../rest-api/rest-cluster-query-settings.html" class="xref page">Cluster Query Settings API</a>.</p>
 </div>
 <div class="paragraph">
-<p>For more details about API content and settings, refer to <a href="../rest-api/rest-intro.html" class="page">REST API reference</a>.</p>
+<p>For more details about API content and settings, refer to <a href="../rest-api/rest-intro.html" class="xref page">REST API reference</a>.</p>
 </div>
 </div>
 </div>

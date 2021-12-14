@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/xdcr-reference/xdcr-filtering-expressions.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4491,10 +4491,10 @@ Additionally, relationships between expressions are listed in in BNF (<em>Backus
 </div>
 <div class="paragraph">
 <p>Note that most examples assume the <code>travel-sample</code> bucket to be the source of the filtered replication.
-For information on installing this bucket, see <a href="../manage/manage-settings/install-sample-buckets.html" class="page">Install Sample Buckets</a>.</p>
+For information on installing this bucket, see <a href="../manage/manage-settings/install-sample-buckets.html" class="xref page">Install Sample Buckets</a>.</p>
 </div>
 <div class="paragraph">
-<p>XDCR Advanced Filtering can be managed by means of Couchbase Web Console (see <a href="../manage/manage-xdcr/filter-xdcr-replication.html" class="page">Filter a Replication</a>), the CLI (see <a href="#cli:cbcli/couchbase-cli-xdcr-replicate.adoc" class="page unresolved">xdcr-replicate</a>), and the REST API (see <a href="../rest-api/rest-xdcr-create-replication.html" class="page">Creating XDCR Replications</a>).</p>
+<p>XDCR Advanced Filtering can be managed by means of Couchbase Web Console (see <a href="../manage/manage-xdcr/filter-xdcr-replication.html" class="xref page">Filter a Replication</a>), the CLI (see <a href="#cli:cbcli/couchbase-cli-xdcr-replicate.adoc" class="xref unresolved">xdcr-replicate</a>), and the REST API (see <a href="../rest-api/rest-xdcr-create-replication.html" class="xref page">Creating XDCR Replications</a>).</p>
 </div>
 </div>
 </div>
@@ -4587,7 +4587,7 @@ If an extended attribute were fully defined &#8212; for example, a <code>color</
 </div>
 </div>
 <div class="paragraph">
-<p>For information on extended attributes, see <a href="../learn/data/extended-attributes-fundamentals.html" class="page">Extended Attributes</a>.</p>
+<p>For information on extended attributes, see <a href="../learn/data/extended-attributes-fundamentals.html" class="xref page">Extended Attributes</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4640,7 +4640,7 @@ For example, the following expression uses <em>positive</em> lookahead to specif
 </div>
 </div>
 <div class="paragraph">
-<p>For information on the expression <code>^</code>, see <a href="xdcr-regular-expressions.html" class="page">XDCR Regular Expressions</a>.</p>
+<p>For information on the expression <code>^</code>, see <a href="xdcr-regular-expressions.html" class="xref page">XDCR Regular Expressions</a>.</p>
 </div>
 <div class="paragraph">
 <p>Alternatively, <em>negative</em> lookahead might be used to specify that the metadata <em>id</em> that begins with <code>air</code> should <em>not</em> be followed by the character <code>l</code>; thereby returning documents whose metadata <em>id</em> value is <code>airport</code>, but not <code>airline</code>:</p>
@@ -4658,13 +4658,13 @@ For example, the following expression uses <em>positive</em> lookahead to specif
 Note, however, that N1QL does not support forward lookahead.</p>
 </div>
 <div class="paragraph">
-<p>N1QL supports a number of pattern-matching functions in addition to <code>REGEXP_CONTAINS</code>: see <a href="../n1ql/n1ql-language-reference/patternmatchingfun.html" class="page">Pattern-matching Functions</a>.</p>
+<p>N1QL supports a number of pattern-matching functions in addition to <code>REGEXP_CONTAINS</code>: see <a href="../n1ql/n1ql-language-reference/patternmatchingfun.html" class="xref page">Pattern-matching Functions</a>.</p>
 </div>
 <div class="paragraph">
 <p><code>META</code> is one of a group of <em>reserved words</em> used by XDCR Advanced Filtering.
 For details, <a href="#reserved-words">Reserved Words</a>, below.
 <code>META</code> is also one of a larger group of reserved words used by N1QL.
-For details, see the page for N1QL <a href="../n1ql/n1ql-language-reference/reservedwords.html" class="page">Reserved Words</a>.
+For details, see the page for N1QL <a href="../n1ql/n1ql-language-reference/reservedwords.html" class="xref page">Reserved Words</a>.
 Note that in N1QL, <code>META</code> provides access to a wider range of extended attributes.</p>
 </div>
 </div>
@@ -4712,7 +4712,7 @@ This would therefore include <code>airline_10</code>:</p>
 <div class="paragraph">
 <p>XDCR Advanced Filtering provides the single Collection Operator, <code>EXISTS</code>; which determines whether or not a specified field exists in the body of a document.
 N1QL uses <code>EXISTS</code> on subclauses; and provides a variety of additional Collection Operators.
-For details, see the N1QL page for <a href="../n1ql/n1ql-language-reference/collectionops.html" class="page">Collection Operators</a>.</p>
+For details, see the N1QL page for <a href="../n1ql/n1ql-language-reference/collectionops.html" class="xref page">Collection Operators</a>.</p>
 </div>
 </div>
 </div>
@@ -4788,7 +4788,7 @@ For details, see <a href="#reserved-words">Reserved Words</a>, below.</p>
 <h3 id="xdcr-logical-operators-comparison-with-n1ql"><a class="anchor" href="#xdcr-logical-operators-comparison-with-n1ql"></a>XDCR Logical Operators: Comparison with N1QL</h3>
 <div class="paragraph">
 <p>N1QL provides the same Logical Operators as does XDCR Advanced Filtering.
-For details, see the N1QL page for <a href="../n1ql/n1ql-language-reference/logicalops.html" class="page">Logical Operators</a>.</p>
+For details, see the N1QL page for <a href="../n1ql/n1ql-language-reference/logicalops.html" class="xref page">Logical Operators</a>.</p>
 </div>
 </div>
 </div>
@@ -4928,7 +4928,7 @@ For details, see <a href="#reserved-words">Reserved Words</a>, below.</p>
 <h3 id="xdcr-comparison-operators-comparison-with-n1ql"><a class="anchor" href="#xdcr-comparison-operators-comparison-with-n1ql"></a>XDCR Comparison Operators: Comparison with N1QL</h3>
 <div class="paragraph">
 <p>The Comparison Operators provided by XDCR Advanced Filtering are a subset of those provided by N1QL.
-For details, see the N1QL page for <a href="../n1ql/n1ql-language-reference/comparisonops.html" class="page">Comparison Operators</a>.</p>
+For details, see the N1QL page for <a href="../n1ql/n1ql-language-reference/comparisonops.html" class="xref page">Comparison Operators</a>.</p>
 </div>
 </div>
 </div>
@@ -5036,7 +5036,7 @@ Note that the Field Selection Operator was used to specify the metadata <code>id
 <p>The Field Selection Operator is used in N1QL with additional functionality: <em>nested expressions</em> support is provided.
 The Element Selection Operator is also used in N1QL with additional functionality: negative indexing of arrays and the <code>*</code> operator are supported.
 N1QL also provides <em>array slicing</em> that allows the building of sub-slices of arrays.
-For information, see the N1QL page for <a href="../n1ql/n1ql-language-reference/nestedops.html" class="page">Nested Operators and Expressions</a>.</p>
+For information, see the N1QL page for <a href="../n1ql/n1ql-language-reference/nestedops.html" class="xref page">Nested Operators and Expressions</a>.</p>
 </div>
 </div>
 </div>
@@ -5088,7 +5088,7 @@ Divide left value by right value and return the remainder.</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>For additional details on syntax and return values, see the N1QL page for <a href="../n1ql/n1ql-language-reference/arithmetic.html" class="page">Arithmetic Operators</a>.</p>
+<p>For additional details on syntax and return values, see the N1QL page for <a href="../n1ql/n1ql-language-reference/arithmetic.html" class="xref page">Arithmetic Operators</a>.</p>
 </div>
 <div class="paragraph">
 <p>For example, the following filtering expression provides a successful match on documents whose <code>country</code> value is <code>United States</code> and whose <code>id</code> is an integer value that returns a value of less than or equal to <code>3</code>, when modulo <code>7</code> is applied:</p>
@@ -5102,7 +5102,7 @@ Divide left value by right value and return the remainder.</p>
 <h3 id="xdcr-arithmetic-operators-comparison-with-n1ql"><a class="anchor" href="#xdcr-arithmetic-operators-comparison-with-n1ql"></a>XDCR Arithmetic Operators: Comparison with N1QL</h3>
 <div class="paragraph">
 <p>N1QL provides the same arithmetic operators, with the same semantics and return values.
-See the N1QL page for <a href="../n1ql/n1ql-language-reference/arithmetic.html" class="page">Arithmetic Operators</a>.</p>
+See the N1QL page for <a href="../n1ql/n1ql-language-reference/arithmetic.html" class="xref page">Arithmetic Operators</a>.</p>
 </div>
 </div>
 </div>
@@ -5129,7 +5129,7 @@ However, the following N1QL Number Functions do <em>not</em> apply to XDCR Advan
 </ul>
 </div>
 <div class="paragraph">
-<p>For information on all other functions, see the N1QL page for <a href="../n1ql/n1ql-language-reference/numericfun.html" class="page">Number Functions</a>.</p>
+<p>For information on all other functions, see the N1QL page for <a href="../n1ql/n1ql-language-reference/numericfun.html" class="xref page">Number Functions</a>.</p>
 </div>
 </div>
 </div>
@@ -5201,7 +5201,7 @@ If created, the following hypothetical document provides a successful match:</p>
 <h3 id="xdcr-date-operators-comparison-with-n1ql"><a class="anchor" href="#xdcr-date-operators-comparison-with-n1ql"></a>XDCR Date Operators: Comparison with N1QL</h3>
 <div class="paragraph">
 <p>N1QL date functions are <em>not</em> supported by XDCR Advanced Filtering.
-For information on N1QL date functions, see the N1QL page for <a href="../n1ql/n1ql-language-reference/datefun.html" class="page">Date Functions</a>.</p>
+For information on N1QL date functions, see the N1QL page for <a href="../n1ql/n1ql-language-reference/datefun.html" class="xref page">Date Functions</a>.</p>
 </div>
 </div>
 </div>

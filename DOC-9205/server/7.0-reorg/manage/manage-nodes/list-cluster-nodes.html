@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-nodes/list-cluster-nodes.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4481,7 +4481,7 @@ and the <a href="#list-nodes-with-the-rest-api">REST API</a> respectively.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>A two-node cluster already exists; as at the conclusion of <a href="join-cluster-and-rebalance.html" class="page">Join a Cluster and Rebalance</a>.</p>
+<p>A two-node cluster already exists; as at the conclusion of <a href="join-cluster-and-rebalance.html" class="xref page">Join a Cluster and Rebalance</a>.</p>
 </li>
 <li>
 <p>The cluster has the Full Administrator username of <code>Administrator</code>, and password of <code>password</code>.</p>
@@ -4520,17 +4520,17 @@ Each row provides the following details:</p>
 <p><strong>name</strong>: The name of the node. In this case, each node is named after its IP address.</p>
 </li>
 <li>
-<p><strong>group</strong>: The <em>Group</em> occupied by the node. For information, see <a href="../../learn/clusters-and-availability/groups.html" class="page">Server Group Awareness</a>.</p>
+<p><strong>group</strong>: The <em>Group</em> occupied by the node. For information, see <a href="../../learn/clusters-and-availability/groups.html" class="xref page">Server Group Awareness</a>.</p>
 </li>
 <li>
-<p><strong>services</strong>: The <em>services</em> running on the node. For information, see <a href="../../learn/services-and-indexes/services/services.html" class="page">Services</a>.</p>
+<p><strong>services</strong>: The <em>services</em> running on the node. For information, see <a href="../../learn/services-and-indexes/services/services.html" class="xref page">Services</a>.</p>
 </li>
 <li>
 <p><strong>CPU</strong>: The percentage of available CPU resources currently occupied.</p>
 </li>
 <li>
 <p><strong>RAM</strong>: The percentage of available RAM currently occupied.
-For information on Couchbase memory-management, see <a href="../../learn/buckets-memory-and-storage/memory.html" class="page">Memory</a>.</p>
+For information on Couchbase memory-management, see <a href="../../learn/buckets-memory-and-storage/memory.html" class="xref page">Memory</a>.</p>
 </li>
 <li>
 <p><strong>swap</strong>: The percentage of available swap space in use.</p>
@@ -4541,7 +4541,7 @@ For information on Couchbase memory-management, see <a href="../../learn/buckets
 <li>
 <p><strong>items</strong>: The number of <em>active</em> and <em>replica</em> items currently on the node, in thousands.
 If the figure is <code>15.2 K/15.8 K</code>, this indicates that 15.2 K items are in active vBuckets on the node, and 15.8 in replica.
-For information on vBuckets, see <a href="../../learn/buckets-memory-and-storage/vbuckets.html" class="page">vBuckets</a>.</p>
+For information on vBuckets, see <a href="../../learn/buckets-memory-and-storage/vbuckets.html" class="xref page">vBuckets</a>.</p>
 </li>
 </ul>
 </div>
@@ -4576,7 +4576,7 @@ The row expands vertically, as follows:</p>
 The <strong>Statistics</strong> screen is displayed.
 This provides statistics related to each of the buckets on the cluster.
 These include  information on the <strong>Active Data Size</strong>, <strong>Data Total Disk Size</strong>, and <strong>Data Fragmentation</strong>.
-For more information, see <a href="../monitor/monitor-intro.html" class="page">Monitor with the UI</a>.</p>
+For more information, see <a href="../monitor/monitor-intro.html" class="xref page">Monitor with the UI</a>.</p>
 </li>
 </ol>
 </div>
@@ -4635,8 +4635,8 @@ The output is as follows:</p>
 <p>Thus, the command returns a list of IP addresses and Couchbase Web Console port numbers.</p>
 </div>
 <div class="paragraph">
-<p>For more information, see the command reference for <a href="#cli:cbcli/couchbase-cli-server-list.adoc" class="page unresolved">server-list</a> and
-<a href="#cli:cbcli/couchbase-cli-host-list.adoc" class="page unresolved">host-list</a>.</p>
+<p>For more information, see the command reference for <a href="#cli:cbcli/couchbase-cli-server-list.adoc" class="xref unresolved">server-list</a> and
+<a href="#cli:cbcli/couchbase-cli-host-list.adoc" class="xref unresolved">host-list</a>.</p>
 </div>
 </div>
 </div>
@@ -4673,7 +4673,7 @@ http://10.142.181.101:8091/pools/default | jq '.' | grep hostname</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For more information, see <a href="../../rest-api/rest-cluster-get.html" class="page">Retrieving Cluster Information</a>.</p>
+<p>For more information, see <a href="../../rest-api/rest-cluster-get.html" class="xref page">Retrieving Cluster Information</a>.</p>
 </div>
 </div>
 </div>
@@ -4681,7 +4681,7 @@ http://10.142.181.101:8091/pools/default | jq '.' | grep hostname</pre>
 <h2 id="next-steps-after-list-nodes"><a class="anchor" href="#next-steps-after-list-nodes"></a>Next Steps</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Now that you have built a cluster and examined the nodes it contains, learn details on how to <a href="remove-node-and-rebalance.html" class="page">Remove a Node and Rebalance</a>.</p>
+<p>Now that you have built a cluster and examined the nodes it contains, learn details on how to <a href="remove-node-and-rebalance.html" class="xref page">Remove a Node and Rebalance</a>.</p>
 </div>
 </div>
 </div>

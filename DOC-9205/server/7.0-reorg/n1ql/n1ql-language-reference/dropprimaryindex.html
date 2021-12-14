@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/dropprimaryindex.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4478,7 +4478,7 @@ Named primary indexes that are created using CREATE PRIMARY INDEX can only be dr
 <h5 id="rbac-privileges" class="discrete">RBAC Privileges</h5>
 <div class="paragraph">
 <p>User executing the DROP PRIMARY INDEX statement must have the <em>Query Manage Index</em> privilege granted on the keyspace.
-For more details about user roles, see <a href="../../learn/security/roles.html" class="page">Roles</a>.</p>
+For more details about user roles, see <a href="../../learn/security/roles.html" class="xref page">Roles</a>.</p>
 </div>
 </div>
 </div>
@@ -4537,28 +4537,28 @@ Refer to the examples below.
 </div>
 <div class="paragraph">
 <p>If the keyspace is a named collection, or the default collection in the default scope within a bucket, the keyspace reference may be a keyspace path.
-In this case, the <a href="../n1ql-intro/sysinfo.html#query-context" class="page">query context</a> should not be set.</p>
+In this case, the <a href="../n1ql-intro/sysinfo.html#query-context" class="xref page">query context</a> should not be set.</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">namespace</dt>
 <dd>
-<p>(Optional) An <a href="identifiers.html" class="page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">namespace</a> of the keyspace.
+<p>(Optional) An <a href="identifiers.html" class="xref page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">namespace</a> of the keyspace.
 Currently, only the <code>default</code> namespace is available.
 If the namespace name is omitted, the default namespace in the current session is used.</p>
 </dd>
 <dt class="hdlist1">bucket</dt>
 <dd>
-<p>(Required) An <a href="identifiers.html" class="page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">bucket name</a> of the keyspace.</p>
+<p>(Required) An <a href="identifiers.html" class="xref page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">bucket name</a> of the keyspace.</p>
 </dd>
 <dt class="hdlist1">scope</dt>
 <dd>
-<p>(Optional) An <a href="identifiers.html" class="page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">scope name</a> of the keyspace.
+<p>(Optional) An <a href="identifiers.html" class="xref page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">scope name</a> of the keyspace.
 If omitted, the bucket&#8217;s default scope is used.</p>
 </dd>
 <dt class="hdlist1">collection</dt>
 <dd>
-<p>(Optional) An <a href="identifiers.html" class="page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection name</a> of the keyspace.
+<p>(Optional) An <a href="identifiers.html" class="xref page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection name</a> of the keyspace.
 If omitted, the default collection in the bucket&#8217;s default scope is used.</p>
 </dd>
 </dl>
@@ -4588,13 +4588,13 @@ If omitted, the default collection in the bucket&#8217;s default scope is used.<
 </div>
 <div class="paragraph">
 <p>Alternatively, if the keyspace is a named collection, the keyspace reference may be just the collection name with no path.
-In this case, you must set the <a href="../n1ql-intro/sysinfo.html#query-context" class="page">query context</a> to indicate the required namespace, bucket, and scope.</p>
+In this case, you must set the <a href="../n1ql-intro/sysinfo.html#query-context" class="xref page">query context</a> to indicate the required namespace, bucket, and scope.</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">collection</dt>
 <dd>
-<p>(Required) An <a href="identifiers.html" class="page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection name</a> of the keyspace.</p>
+<p>(Required) An <a href="identifiers.html" class="xref page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection name</a> of the keyspace.</p>
 </dd>
 </dl>
 </div>

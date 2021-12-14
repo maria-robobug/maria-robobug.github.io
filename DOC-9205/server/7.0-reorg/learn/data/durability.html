@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/data/durability.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4478,7 +4478,7 @@ If commitment was not possible, Couchbase Server notifies the client of failure;
 <p>Couchbase Server supports durability for up to <em>two</em> replicas: it <em>does not</em> support durability for <em>three</em> replicas.</p>
 </div>
 <div class="paragraph">
-<p>Durability is used by <a href="transactions.html" class="page">Transactions</a>, which support the <em>atomicity</em> of mutations across multiple documents.</p>
+<p>Durability is used by <a href="transactions.html" class="xref page">Transactions</a>, which support the <em>atomicity</em> of mutations across multiple documents.</p>
 </div>
 <div class="paragraph">
 <p>Durability requirements can be specified by a client, assigned to a bucket, or both.
@@ -4758,7 +4758,7 @@ The durable-write process is likewise uninterrupted by rebalance, and continues 
 <div class="sectionbody">
 <div class="paragraph">
 <p>The performance of durable writes may be optimized by the appropriate allocation of <em>writer</em> threads.
-See <a href="../buckets-memory-and-storage/storage.html#threading" class="page">Threading</a> for conceptual information, and <a href="../../manage/manage-settings/general-settings.html#data-settings" class="page">Data Settings</a> for practical steps.</p>
+See <a href="../buckets-memory-and-storage/storage.html#threading" class="xref page">Threading</a> for conceptual information, and <a href="../../manage/manage-settings/general-settings.html#data-settings" class="xref page">Data Settings</a> for practical steps.</p>
 </div>
 </div>
 </div>
@@ -4782,7 +4782,7 @@ If a durable write is attempted on a bucket that has been configured with three 
 <div class="sect2">
 <h3 id="protection-guarantees-and-automatic-failover"><a class="anchor" href="#protection-guarantees-and-automatic-failover"></a>Protection Guarantees and Automatic Failover</h3>
 <div class="paragraph">
-<p><a href="../clusters-and-availability/automatic-failover.html" class="page">Automatic Failover</a> removes a non-responsive node from the cluster automatically, following an administrator-configured timeout.
+<p><a href="../clusters-and-availability/automatic-failover.html" class="xref page">Automatic Failover</a> removes a non-responsive node from the cluster automatically, following an administrator-configured timeout.
 Active vBuckets thereby lost are replaced by the promotion of replica vBuckets, on the surviving nodes.
 A maximum of three sequential automatic failovers can be configured to occur.</p>
 </div>

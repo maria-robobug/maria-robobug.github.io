@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="python-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/python-sdk/DOC-9205/concept-docs/documents.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3681,7 +3681,7 @@ Couchbase supports CRUD operations, various data structures, and binary document
 <h2 id="document"><a class="anchor" href="#document"></a>Document</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A <em>document</em> refers to an entry in the database (other databases may refer to the same concept as a <a href="#7.0@server:learn:data/document-data-model.adoc#couchbase-server-and-json-the-benefits" class="page unresolved"><em>row</em></a>).
+<p>A <em>document</em> refers to an entry in the database (other databases may refer to the same concept as a <a href="#7.0@server:learn:data/document-data-model.adoc#couchbase-server-and-json-the-benefits" class="xref unresolved"><em>row</em></a>).
 A document has an ID (<em>primary key</em> in other databases), which is unique to the document and by which it can be located.
 The document also has a value which contains the actual application data.</p>
 </div>
@@ -3717,7 +3717,7 @@ Unlike some other database, Couchbase does not automatically generate IDs for yo
 </div>
 <div class="paragraph">
 <p>The <strong>document value</strong> contains the actual application data; for example, a <em>product</em> document may contain information about the price and description.
-Documents are usually (<a href="nonjson.html" class="page">but not always</a>) stored as JSON on the server.
+Documents are usually (<a href="nonjson.html" class="xref page">but not always</a>) stored as JSON on the server.
 Because JSON is a structured format, it can be subsequently searched and queried.</p>
 </div>
 <div class="listingblock">
@@ -3804,7 +3804,7 @@ object get(string doc_id) {
 </div>
 </div>
 <div class="paragraph">
-<p>You can also use <a href="n1ql-query.html" class="page">N1QL Queries</a> and <a href="full-text-search-overview.html" class="page">Full Text Search</a> to access documents by means other than their IDs, however these query operations Couchbase eventually translate into primitive key-value operations, and exist as separate services outside the data store.</p>
+<p>You can also use <a href="n1ql-query.html" class="xref page">N1QL Queries</a> and <a href="full-text-search-overview.html" class="xref page">Full Text Search</a> to access documents by means other than their IDs, however these query operations Couchbase eventually translate into primitive key-value operations, and exist as separate services outside the data store.</p>
 </div>
 </div>
 </div>
@@ -3816,7 +3816,7 @@ object get(string doc_id) {
 When using a storage operation, the <em>full content</em> of the document is replaced with a new value.</p>
 </div>
 <div class="paragraph">
-<p>The following example shows a document being stored using the <a href="#webui-cli-access.adoc#cli-access" class="page unresolved"><code>cbc</code></a> utility.
+<p>The following example shows a document being stored using the <a href="#webui-cli-access.adoc#cli-access" class="xref unresolved"><code>cbc</code></a> utility.
 The ID of the document is <code>docid</code> and its value is JSON containing a single field (<code>json</code>) with the value of <code>value</code>.</p>
 </div>
 <div class="listingblock">
@@ -3841,7 +3841,7 @@ See <a href="#expiry">Expiry</a> for more information on expiration.</p>
 <p>CAS value to protect against concurrent updates to the same document.</p>
 </li>
 <li>
-<p><a href="durability-replication-failure-considerations.html" class="page">Durability Requirements</a></p>
+<p><a href="durability-replication-failure-considerations.html" class="xref page">Durability Requirements</a></p>
 </li>
 </ul>
 </div>
@@ -3853,7 +3853,7 @@ See <a href="#expiry">Expiry</a> for more information on expiration.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If you wish to only modify certain parts of a document, you can use <a href="subdocument-operations.html" class="page">sub-document</a> operations which operate on specific subsets of documents:</p>
+<p>If you wish to only modify certain parts of a document, you can use <a href="subdocument-operations.html" class="xref page">sub-document</a> operations which operate on specific subsets of documents:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3861,7 +3861,7 @@ See <a href="#expiry">Expiry</a> for more information on expiration.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>or <a href="#7.0@server:n1ql:n1ql-language-reference/update.adoc" class="page unresolved">N1QL UPDATE</a> to update documents based on specific query criteria:</p>
+<p>or <a href="#7.0@server:n1ql:n1ql-language-reference/update.adoc" class="xref unresolved">N1QL UPDATE</a> to update documents based on specific query criteria:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3879,7 +3879,7 @@ See <a href="#expiry">Expiry</a> for more information on expiration.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section discusses retrieving documents using their IDs, or primary keys.
-Documents can also be accessed using secondary lookups via <a href="n1ql-query.html" class="page">N1QL queries</a> and <a href="../howtos/view-queries-with-sdk.html" class="page">MapReduce Views</a>.
+Documents can also be accessed using secondary lookups via <a href="n1ql-query.html" class="xref page">N1QL queries</a> and <a href="../howtos/view-queries-with-sdk.html" class="xref page">MapReduce Views</a>.
 Primary key lookups are performed using the key-value API, which simplifies use and increases performance (as applications may interact with the KV store directly, rather than a secondary index or query processor).</p>
 </div>
 <div class="paragraph">
@@ -3903,7 +3903,7 @@ docid                CAS=0x8234c3c0f213, Flags=0x0. Size=16
 <div class="paragraph">
 <p>Once a document is retrieved, it is accessible in the native format by which it was stored; meaning that if you stored the document as a list, it is now available as a list again.
 The SDK will automatically deserialize the document from its stored format (usually JSON) to a native language type.
-It is possible to store and retrieve non-JSON documents as well, using a <a href="nonjson.html" class="page">transcoder</a>.</p>
+It is possible to store and retrieve non-JSON documents as well, using a <a href="nonjson.html" class="xref page">transcoder</a>.</p>
 </div>
 <div class="paragraph">
 <p>You can also modify a document&#8217;s expiration time while retrieving it; this is known as <em>get-and-touch</em> and allows you to keep temporary data alive while retrieving it in one atomic and efficient operation.</p>
@@ -3927,7 +3927,7 @@ Lookups may be done either by comparing the <code>META(from-term).id</code> or b
 </div>
 </div>
 <div class="paragraph">
-<p>You can also retrieve <em>parts</em> of documents using <a href="subdocument-operations.html" class="page">sub-document operations</a>, by specifying one or more sections of the document to be retrieved</p>
+<p>You can also retrieve <em>parts</em> of documents using <a href="subdocument-operations.html" class="xref page">sub-document operations</a>, by specifying one or more sections of the document to be retrieved</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3940,7 +3940,7 @@ Lookups may be done either by comparing the <code>META(from-term).id</code> or b
 <h2 id="counters"><a class="anchor" href="#counters"></a>Counters</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can atomically increment or decrement the numerical value of special counter document&#8201;&#8212;&#8201;examples can be found in the <a href="../howtos/kv-operations.html#atomic-counters" class="page">practical K-V Howto document</a>.</p>
+<p>You can atomically increment or decrement the numerical value of special counter document&#8201;&#8212;&#8201;examples can be found in the <a href="../howtos/kv-operations.html#atomic-counters" class="xref page">practical K-V Howto document</a>.</p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -3991,7 +3991,7 @@ Many SDKs will limit the <em>delta</em> argument to the value of a <em>signed</e
 <p><a href="#expiry">Expiration</a> times can also be specified when using counter operations.</p>
 </div>
 <div class="paragraph">
-<p><a href="../howtos/concurrent-document-mutations.html" class="page">CAS</a> values are not used with counter operations since counter operations are atomic.
+<p><a href="../howtos/concurrent-document-mutations.html" class="xref page">CAS</a> values are not used with counter operations since counter operations are atomic.
 The intent of the counter operation is to simply increment the current server-side value of the document.
 If you wish to only increment the document if it is at a certain value, then you may use a normal <code>upsert</code> function with CAS:</p>
 </div>
@@ -4004,8 +4004,8 @@ if should_increment_value(value):
 </div>
 </div>
 <div class="paragraph">
-<p>You can also use <a href="subdocument-operations.html" class="page">sub-document counter operations</a> to increment numeric values <em>within</em> a document containing other content.
-An example can be found in the <a href="../howtos/subdocument-operations.html#counters-and-numeric-fields" class="page">practical sub-doc page</a>.</p>
+<p>You can also use <a href="subdocument-operations.html" class="xref page">sub-document counter operations</a> to increment numeric values <em>within</em> a document containing other content.
+An example can be found in the <a href="../howtos/subdocument-operations.html#counters-and-numeric-fields" class="xref page">practical sub-doc page</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="use-cases"><a class="anchor" href="#use-cases"></a>Use Cases</h3>
@@ -4126,7 +4126,7 @@ The <em>expiry pager</em> is a routine internal process which scans the database
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Although the API only sets expiry values <em>per document</em>, it is possible that elsewhere in the server, an expiry value is being set for <a href="#7.0@server:learn:buckets-memory-and-storage/expiration.adoc" class="page unresolved">every document in a bucket^</a>.
+Although the API only sets expiry values <em>per document</em>, it is possible that elsewhere in the server, an expiry value is being set for <a href="#7.0@server:learn:buckets-memory-and-storage/expiration.adoc" class="xref unresolved">every document in a bucket^</a>.
 Should this be the case, the document TTL may be reduced, and the document may become unavailable to the app sooner than expected.
 </td>
 </tr>

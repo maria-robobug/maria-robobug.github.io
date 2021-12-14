@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/advisor.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4478,7 +4478,7 @@ For clarity, each usage is listed separately on this page.</p>
 <h3 id="description"><a class="anchor" href="#description"></a>Description</h3>
 <div class="paragraph">
 <p>When used with a string argument, the function invokes the index advisor for a single N1QL query.
-The index advisor works with <a href="selectintro.html" class="page">SELECT</a>, <a href="update.html" class="page">UPDATE</a>, <a href="delete.html" class="page">DELETE</a>, or <a href="merge.html" class="page">MERGE</a> queries.</p>
+The index advisor works with <a href="selectintro.html" class="xref page">SELECT</a>, <a href="update.html" class="xref page">UPDATE</a>, <a href="delete.html" class="xref page">DELETE</a>, or <a href="merge.html" class="xref page">MERGE</a> queries.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4711,7 +4711,7 @@ No covering indexes are recommended.</p>
 <h3 id="description-2"><a class="anchor" href="#description-2"></a>Description</h3>
 <div class="paragraph">
 <p>When used with an array argument, the function invokes the index advisor for multiple N1QL queries.
-The index advisor works with <a href="selectintro.html" class="page">SELECT</a>, <a href="update.html" class="page">UPDATE</a>, <a href="delete.html" class="page">DELETE</a>, or <a href="merge.html" class="page">MERGE</a> queries.</p>
+The index advisor works with <a href="selectintro.html" class="xref page">SELECT</a>, <a href="update.html" class="xref page">UPDATE</a>, <a href="delete.html" class="xref page">DELETE</a>, or <a href="merge.html" class="xref page">MERGE</a> queries.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4794,7 +4794,7 @@ The index advisor works with <a href="selectintro.html" class="page">SELECT</a>,
 <div class="title">Example 3. Get index advice for recent completed requests</div>
 <div class="content">
 <div class="paragraph">
-<p>This example uses a subquery to get an array of statements from the <a href="../../manage/monitor/monitoring-n1ql-query.html#sys-completed-req" class="page">system:completed_requests</a> catalog.</p>
+<p>This example uses a subquery to get an array of statements from the <a href="../../manage/monitor/monitoring-n1ql-query.html#sys-completed-req" class="xref page">system:completed_requests</a> catalog.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4923,7 +4923,7 @@ Valid time units are <code>ns</code> (nanoseconds), <code>us</code> (microsecond
 <dt class="hdlist1">query_count</dt>
 <dd>
 <p>[Optional] An integer specifying the maximum number of queries to be collected for analysis by the index advisor.
-If omitted, the default setting is the same as the service-level <a href="../../settings/query-settings.html#completed-limit" class="page">completed-limit</a> setting.
+If omitted, the default setting is the same as the service-level <a href="../../settings/query-settings.html#completed-limit" class="xref page">completed-limit</a> setting.
 You can change the service-level <code>completed-limit</code> setting to change the default for this property.</p>
 </dd>
 </dl>
@@ -5005,7 +5005,7 @@ All completed queries taking longer than 0 seconds will be collected.</p>
 <h3 id="description-4"><a class="anchor" href="#description-4"></a>Description</h3>
 <div class="paragraph">
 <p>When used with a <code>list_obj</code> object argument, the function can be used to list index advisor sessions.
-Each index advisor session is stored as a scheduled task in the <a href="../../manage/monitor/monitoring-n1ql-query.html#sys-tasks-cache" class="page">system:tasks_cache</a> catalog.</p>
+Each index advisor session is stored as a scheduled task in the <a href="../../manage/monitor/monitoring-n1ql-query.html#sys-tasks-cache" class="xref page">system:tasks_cache</a> catalog.</p>
 </div>
 </div>
 <div class="sect2">
@@ -5465,7 +5465,7 @@ In this case, the session is stopped, and the session is removed from the tasks 
 <h3 id="description-7"><a class="anchor" href="#description-7"></a>Description</h3>
 <div class="paragraph">
 <p>When used with a <code>get_obj</code> object argument, the function can be used to get the results of a completed index advisor session.
-The index advisor is invoked for any collected <a href="selectintro.html" class="page">SELECT</a>, <a href="update.html" class="page">UPDATE</a>, <a href="delete.html" class="page">DELETE</a>, or <a href="merge.html" class="page">MERGE</a> queries.</p>
+The index advisor is invoked for any collected <a href="selectintro.html" class="xref page">SELECT</a>, <a href="update.html" class="xref page">UPDATE</a>, <a href="delete.html" class="xref page">DELETE</a>, or <a href="merge.html" class="xref page">MERGE</a> queries.</p>
 </div>
 </div>
 <div class="sect2">
@@ -5638,13 +5638,13 @@ The index advisor is invoked for any collected <a href="selectintro.html" class=
 <div class="ulist">
 <ul>
 <li>
-<p>The <a href="advise.html" class="page">ADVISE</a> statement&#8201;&#8212;&#8201;also describes the index advisor <a href="advise.html#recommendation-rules" class="page">recommendation rules</a></p>
+<p>The <a href="advise.html" class="xref page">ADVISE</a> statement&#8201;&#8212;&#8201;also describes the index advisor <a href="advise.html#recommendation-rules" class="xref page">recommendation rules</a></p>
 </li>
 <li>
-<p>The <a href="../../tools/query-workbench.html#index-advisor" class="page">Index Advisor</a> in the Query Workbench</p>
+<p>The <a href="../../tools/query-workbench.html#index-advisor" class="xref page">Index Advisor</a> in the Query Workbench</p>
 </li>
 <li>
-<p>The <a href="../../manage/monitor/monitoring-n1ql-query.html#sys-tasks-cache" class="page">system:tasks_cache</a> catalog</p>
+<p>The <a href="../../manage/monitor/monitoring-n1ql-query.html#sys-tasks-cache" class="xref page">system:tasks_cache</a> catalog</p>
 </li>
 </ul>
 </div>

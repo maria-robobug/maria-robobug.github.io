@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/security/authentication-overview.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4497,12 +4497,12 @@ If no match is achieved, the user is denied access.</p>
 This is typically achieved by means of a <em>username</em> and <em>password</em>.</p>
 </div>
 <div class="paragraph">
-<p>The <em>Full Administrator</em> username and password are established during initialization of Couchbase Server: see <a href="../../manage/manage-nodes/create-cluster.html" class="page">Create a Cluster</a> for details.</p>
+<p>The <em>Full Administrator</em> username and password are established during initialization of Couchbase Server: see <a href="../../manage/manage-nodes/create-cluster.html" class="xref page">Create a Cluster</a> for details.</p>
 </div>
 <div class="paragraph">
 <p>Subsequently, additional users can be added to the cluster as <em>local</em> users: each is at that time assigned a unique <em>username</em>, and a unique <em>password</em>.
-Passwords can be changed by means of the password-reset tool, <a href="#cli:cbcli/couchbase-cli-reset-admin-password.adoc" class="page unresolved">reset-admin-password</a>; or by Couchbase Web Console, as described in <a href="../../manage/manage-security/manage-users-and-roles.html#editing-users-and-groups" class="page">Editing Users and Groups</a>.
-For best practices for password-definition, and restrictions on username-design, see <a href="usernames-and-passwords.html" class="page">Usernames and Passwords</a>.</p>
+Passwords can be changed by means of the password-reset tool, <a href="#cli:cbcli/couchbase-cli-reset-admin-password.adoc" class="xref unresolved">reset-admin-password</a>; or by Couchbase Web Console, as described in <a href="../../manage/manage-security/manage-users-and-roles.html#editing-users-and-groups" class="xref page">Editing Users and Groups</a>.
+For best practices for password-definition, and restrictions on username-design, see <a href="usernames-and-passwords.html" class="xref page">Usernames and Passwords</a>.</p>
 </div>
 <div class="paragraph">
 <p>Users can also be added to the cluster as <em>external</em> users, for whom no password need be specified; since the external user is to be authenticated externally.</p>
@@ -4514,7 +4514,7 @@ For best practices for password-definition, and restrictions on username-design,
 </div>
 <div class="paragraph">
 <p>Optionally, Couchbase Web Console can be configured for <em>secure access</em>, at <code>https://localhost:18091</code>; so that the username and password are passed in encrypted form.
-For information, see <a href="../../manage/manage-security/manage-console-access.html" class="page">Manage Console Access</a>.</p>
+For information, see <a href="../../manage/manage-security/manage-console-access.html" class="xref page">Manage Console Access</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4572,8 +4572,8 @@ This ensures that only approved users, machines, or endpoints are authenticated.
 The certificate includes information such as the name of the entity it identifies, an expiration date, the name of the CA that issued the certificate, and the digital signature of the issuing CA.</p>
 </div>
 <div class="paragraph">
-<p>For a complete overview of Couchbase Server&#8217;s certificate-handling mechanisms, see <a href="certificates.html" class="page">Certificates</a>.
-For practical steps required to set up client and server certificates, see <a href="../../manage/manage-security/manage-certificates.html" class="page">Manage Certificates</a></p>
+<p>For a complete overview of Couchbase Server&#8217;s certificate-handling mechanisms, see <a href="certificates.html" class="xref page">Certificates</a>.
+For practical steps required to set up client and server certificates, see <a href="../../manage/manage-security/manage-certificates.html" class="xref page">Manage Certificates</a></p>
 </div>
 </div>
 </div>
@@ -4604,11 +4604,11 @@ A user can be a member of any number of groups.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Note that by means of <em>LDAP Group Support</em>, the roles assigned to a Couchbase-Server user-group can be inherited by users not defined on Couchbase Server; as described in <a href="authentication-domains.html" class="page">Authentication Domains</a>.</p>
+<p>Note that by means of <em>LDAP Group Support</em>, the roles assigned to a Couchbase-Server user-group can be inherited by users not defined on Couchbase Server; as described in <a href="authentication-domains.html" class="xref page">Authentication Domains</a>.</p>
 </div>
 <div class="paragraph">
 <p>See
-<a href="../../manage/manage-security/manage-users-and-roles.html" class="page">Manage Users, Groups, and Roles</a>, for details on creating users and groups, and assigning roles.</p>
+<a href="../../manage/manage-security/manage-users-and-roles.html" class="xref page">Manage Users, Groups, and Roles</a>, for details on creating users and groups, and assigning roles.</p>
 </div>
 </div>
 </div>
@@ -4619,7 +4619,7 @@ A user can be a member of any number of groups.</p>
 <p>Couchbase Server assigns each user to one of two <em>authentication domains</em>; which are <em>local</em> and <em>external</em>.
 The <em>local</em> domain contains users defined locally, on Couchbase Server.
 The <em>external</em> domain contains users defined externally, either on an LDAP server, or on Linux systems that are accessed by means of <em>PAM</em>.
-For a complete overview, see <a href="authentication-domains.html" class="page">Authentication Domains</a>.</p>
+For a complete overview, see <a href="authentication-domains.html" class="xref page">Authentication Domains</a>.</p>
 </div>
 </div>
 </div>

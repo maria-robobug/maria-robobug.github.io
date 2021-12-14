@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-backup-and-restore/manage-backup-and-restore.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4472,7 +4472,7 @@ Couchbase Server allows one or more buckets, and selected subsets of their data,
 This can be configured by means of the <strong>Backup</strong> UI provided by Couchbase Web Console.</p>
 </li>
 <li>
-<p>The <a href="#backup-restore:cbbackupmgr.adoc" class="page unresolved">cbbackupmgr</a> CLI utility.</p>
+<p>The <a href="#backup-restore:cbbackupmgr.adoc" class="xref unresolved">cbbackupmgr</a> CLI utility.</p>
 </li>
 </ul>
 </div>
@@ -4480,11 +4480,11 @@ This can be configured by means of the <strong>Backup</strong> UI provided by Co
 <p>The technology that underlies the Backup Service includes that provided by <code>cbbackupmgr</code>: note, however, that <code>cbbackupmgr</code> and the Backup Service differ, in terms of the features they offer (as described below, in <a href="#the-backup-service-and-cbbackupmgr">The Backup Service and cbbackupmgr</a>).</p>
 </div>
 <div class="paragraph">
-<p>Note that two additional tools, <a href="#cli:cbtools/cbbackup.adoc" class="page unresolved">cbbackup</a> and <a href="#cli:cbtools/cbrestore.adoc" class="page unresolved">cbrestore</a>, continue to be available in Couchbase Server 7.0: however, both are deprecated.</p>
+<p>Note that two additional tools, <a href="#cli:cbtools/cbbackup.adoc" class="xref unresolved">cbbackup</a> and <a href="#cli:cbtools/cbrestore.adoc" class="xref unresolved">cbrestore</a>, continue to be available in Couchbase Server 7.0: however, both are deprecated.</p>
 </div>
 <div class="paragraph">
-<p>Detailed information on <code>cbbackupmgr</code> is provided in <a href="#backup-restore:cbbackupmgr.adoc" class="page unresolved">cbbackupmgr</a>.
-An overview of the Backup Service is provided in <a href="../../learn/services-and-indexes/services/backup-service.html" class="page">Backup Service</a>.</p>
+<p>Detailed information on <code>cbbackupmgr</code> is provided in <a href="#backup-restore:cbbackupmgr.adoc" class="xref unresolved">cbbackupmgr</a>.
+An overview of the Backup Service is provided in <a href="../../learn/services-and-indexes/services/backup-service.html" class="xref page">Backup Service</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="the-backup-service-and-cbbackupmgr"><a class="anchor" href="#the-backup-service-and-cbbackupmgr"></a>The Backup Service and cbbackupmgr</h3>
@@ -4501,7 +4501,7 @@ For use of <code>cbbackupmgr</code>, the Full Admin or the Data Backup &amp; Res
 </div>
 <div class="paragraph">
 <p>The Backup Service &#8212; which can be configured by means of the <strong>Backup</strong> facility of Couchbase Web Console, the Couchbase CLI, and the REST API &#8212; allows backup, restore, and archiving to be configured for the local cluster; and also permits restore to be configured for a remote cluster.
-By contrast, <code>cbbackupmgr</code> allows backup, restore, and archiving each to be configured either for the local or for a remote cluster: all available options are listed in <a href="../../backup-restore/enterprise-backup-restore.html##version-compatibility" class="page">Version Compatibility</a>.</p>
+By contrast, <code>cbbackupmgr</code> allows backup, restore, and archiving each to be configured either for the local or for a remote cluster: all available options are listed in <a href="../../backup-restore/enterprise-backup-restore.html##version-compatibility" class="xref page">Version Compatibility</a>.</p>
 </div>
 <div class="paragraph">
 <p>Whereas <code>cbbackupmgr</code> performs a specific backup or merge when executed, the Backup Service can be <em>scheduled</em>; so that backups and periodic merges are ongoing.
@@ -4521,8 +4521,8 @@ Both use the same backup archive structure; allow the contents of backups to be 
 However, whereas in EE, <code>cbbackupmgr</code> allows backup and restore to be performed with reference to buckets, scopes, and collections; in CE, <code>cbbackupmgr</code> allows backup and restore to be performed with reference to buckets only.</p>
 </div>
 <div class="paragraph">
-<p>For detailed information on how <code>cbbackupmgr</code> works (including a detailed description of incremental backup), see the <a href="#backup-restore:cbbackupmgr.adoc#discussion" class="page unresolved">Discussion</a> provided on the page for <a href="#backup-restore:cbbackupmgr.adoc" class="page unresolved">cbbackupmgr</a>.
-The page for <a href="#backup-restore:cbbackupmgr.adoc" class="page unresolved">cbbackupmgr</a> also provides a synopsis of the command, and a description of its basic options.</p>
+<p>For detailed information on how <code>cbbackupmgr</code> works (including a detailed description of incremental backup), see the <a href="#backup-restore:cbbackupmgr.adoc#discussion" class="xref unresolved">Discussion</a> provided on the page for <a href="#backup-restore:cbbackupmgr.adoc" class="xref unresolved">cbbackupmgr</a>.
+The page for <a href="#backup-restore:cbbackupmgr.adoc" class="xref unresolved">cbbackupmgr</a> also provides a synopsis of the command, and a description of its basic options.</p>
 </div>
 <div class="paragraph">
 <p>The remainder of the current page describes how to configure and use the Backup Service, using Couchbase Web Console.</p>
@@ -4535,11 +4535,11 @@ The page for <a href="#backup-restore:cbbackupmgr.adoc" class="page unresolved">
 <div class="sectionbody">
 <div class="paragraph">
 <p>For backup, restore, and other related tasks to be scheduled and performed, the Backup Service must be running on an assigned node.
-The service (as is the case with all other Couchbase services) can be assigned either when a node is initially provisioned as a one-node cluster (as described in <a href="../manage-nodes/create-cluster.html" class="page">Create a Cluster</a>), or when a node is added to an existing cluster (as described in <a href="../manage-nodes/add-node-and-rebalance.html" class="page">Add a Node and Rebalance</a>).
+The service (as is the case with all other Couchbase services) can be assigned either when a node is initially provisioned as a one-node cluster (as described in <a href="../manage-nodes/create-cluster.html" class="xref page">Create a Cluster</a>), or when a node is added to an existing cluster (as described in <a href="../manage-nodes/add-node-and-rebalance.html" class="xref page">Add a Node and Rebalance</a>).
 Provided that at least one node runs the Backup Service, data for the entire cluster can be backed up, restored, and archived.
 Locations to be used for saving data must be accessible to all cluster-nodes that are running the Backup Service.
 Note also that Couchbase Server must have <em>read</em> and <em>write</em> access to the location.
-On Linux, therefore, for a filesystem location, use the <code>chgrp</code> command to set the group ID of the folder to <code>couchbase</code>; unless a <em>non-root installation</em> has been performed, in which case set the group ID either to the username of the current user, or to a group of which the current user is a member &#8212; see <a href="../../install/non-root.html" class="page">Non-Root Install and Upgrade</a>, for more information.</p>
+On Linux, therefore, for a filesystem location, use the <code>chgrp</code> command to set the group ID of the folder to <code>couchbase</code>; unless a <em>non-root installation</em> has been performed, in which case set the group ID either to the username of the current user, or to a group of which the current user is a member &#8212; see <a href="../../install/non-root.html" class="xref page">Non-Root Install and Upgrade</a>, for more information.</p>
 </div>
 </div>
 </div>
@@ -4586,7 +4586,7 @@ This section describes how task-definition and scheduling can be accomplished.
 Note that for any given repository, the Backup Service performs one task at a time; with each task maintaining a lock on the repository.
 Therefore, the administrator-defined interval between tasks should always be sufficient to allow each task to run to completion.
 If a new task is scheduled to start while a previously started task is still running, the new task cannot run.
-For information, see <a href="../../learn/services-and-indexes/services/backup-service.html#avoiding-task-overlap" class="page">Avoiding Task Overlap</a>.</p>
+For information, see <a href="../../learn/services-and-indexes/services/backup-service.html#avoiding-task-overlap" class="xref page">Avoiding Task Overlap</a>.</p>
 </div>
 <div class="paragraph">
 <p>To schedule one or more backups, proceed as follows:</p>
@@ -4780,7 +4780,7 @@ If the default selection, <strong>All buckets</strong>, is used, data from all b
 </div>
 <div class="paragraph">
 <p>Use the control at the right-hand side of the field, to select a bucket.
-For the current example, the sample bucket <code>travel-sample</code> is assumed to have been installed (see <a href="../manage-settings/install-sample-buckets.html" class="page">Sample Buckets</a>); and will be specified in this field.</p>
+For the current example, the sample bucket <code>travel-sample</code> is assumed to have been installed (see <a href="../manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a>); and will be specified in this field.</p>
 </div>
 <div class="paragraph">
 <p>The value for <strong>Storage Locations</strong> can be specified as <strong>Filesystem</strong> (the default) or <strong>Cloud</strong>.
@@ -5129,7 +5129,7 @@ This section describes how task-definition and scheduling for merges can be acco
 Note that for any given repository, the Backup Service performs one task at a time; with each task maintaining a lock on the repository.
 Therefore, the administrator-defined interval between tasks should always be sufficient to allow each task to run to completion.
 If a new task is scheduled to start while a previously started task is still running, the new task cannot run.
-For information, see <a href="../../learn/services-and-indexes/services/backup-service.html#avoiding-task-overlap" class="page">Avoiding Task Overlap</a>.</p>
+For information, see <a href="../../learn/services-and-indexes/services/backup-service.html#avoiding-task-overlap" class="xref page">Avoiding Task Overlap</a>.</p>
 </div>
 <div class="paragraph">
 <p>Proceed as follows, noting that the initial steps (for adding a repository, creating a new plan, and adding a backup task to the plan) are the same as those described in <a href="#schedule-backups">Schedule Backups</a>, above.</p>
@@ -5150,7 +5150,7 @@ Then, specify the <strong>Services</strong> whose data should be backed up.</p>
 <li>
 <p>Left-click on <strong>Add Task</strong>, and add a <strong>Backup</strong> task.
 For example:</p>
-<div class="imageblock text-left">
+<div class="imageblock text-left unresolved">
 <div class="content">
 <img src="manage-backup-restore/backUpTaskForMerging.png" alt="backUpTaskForMerging" width="420">
 </div>
@@ -5174,7 +5174,7 @@ An offset end of <strong>2</strong> indicates that each merge will end with back
 If backups were not made every day during the specified period, as many as can be found will be merged.</p>
 </div>
 <div class="paragraph">
-<p>Note that a detailed, diagrammatic explanation of <strong>Merge Offset Start</strong> and <strong>Merge Offset End</strong> is provided in <a href="../../learn/services-and-indexes/services/backup-service.html#specifying-merge-offsets" class="page">Specifying Merge Offsets</a>.</p>
+<p>Note that a detailed, diagrammatic explanation of <strong>Merge Offset Start</strong> and <strong>Merge Offset End</strong> is provided in <a href="../../learn/services-and-indexes/services/backup-service.html#specifying-merge-offsets" class="xref page">Specifying Merge Offsets</a>.</p>
 </div>
 <div class="paragraph">
 <p>Left-click on the <strong>Next</strong> button:</p>
@@ -5371,7 +5371,7 @@ For example, if backups to be restored were made when the cluster had four bucke
 To specify a scope within a bucket, use the syntax <em>bucket-name</em>.<em>scope-name</em>.
 To specify a collection within a scope within a bucket, use the syntax <em>bucket-name</em>.<em>scope-name</em>.<em>collection-name</em>.
 For example, entering <code>bucket1.scope1</code> in the <strong>Include Data</strong> field would ensure that only data from the scope <code>scope1</code> within <code>bucket1</code> is restored; while entering <code>bucket2.scope1.collection1</code> in the <strong>Exclude Data</strong> field would ensure that data from <code>collection1</code>, within <code>scope1</code> in <code>bucket2</code>, is <em>not</em> be restored.
-(For an overview of scopes and collections, see <a href="../../learn/data/scopes-and-collections.html" class="page">Scopes and Collections</a>.)</p>
+(For an overview of scopes and collections, see <a href="../../learn/data/scopes-and-collections.html" class="xref page">Scopes and Collections</a>.)</p>
 </div>
 <div class="paragraph">
 <p>Check the <strong>Force Updates</strong> field to ensure that data restored from the specified backup  overwrites the current values on the cluster when the current values are the more recent.
@@ -5803,7 +5803,7 @@ For example, <code>us-east-1</code>, <code>us-west-2</code>.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The Backup Service can be configured and used by means of the REST API.
-For reference pages on each supported endpoint, see <a href="../../rest-api/backup-rest-api.html" class="page">Backup Service API</a>.</p>
+For reference pages on each supported endpoint, see <a href="../../rest-api/backup-rest-api.html" class="xref page">Backup Service API</a>.</p>
 </div>
 </div>
 </div>

@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="nodejs-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/nodejs-sdk/DOC-9205/hello-world/start-using-sdk.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3672,7 +3672,7 @@ The Couchbase Node.js SDK enables you to interact with a Couchbase Server cluste
 </blockquote>
 </div>
 <div class="paragraph">
-<p>The Couchbase Node.js SDK 3.<em>x</em> is a complete rewrite of the API, reducing the number of overloads to present a simplified surface area, and adding support for Couchbase Server features like <a href="../concept-docs/collections.html" class="page">Collections and Scopes</a> (available from Couchbase Server 7.0).</p>
+<p>The Couchbase Node.js SDK 3.<em>x</em> is a complete rewrite of the API, reducing the number of overloads to present a simplified surface area, and adding support for Couchbase Server features like <a href="../concept-docs/collections.html" class="xref page">Collections and Scopes</a> (available from Couchbase Server 7.0).</p>
 </div>
 <div class="paragraph">
 <p>The 3.x SDK also brings in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">promises</a>, to reduce the complexity of asynchronous javascript in client applications, as well as extending the management APIs and bringing better debugging and logging options</p>
@@ -3737,7 +3737,7 @@ The Couchbase Node.js SDK enables you to interact with a Couchbase Server cluste
 <p>Note: This will download the latest Couchbase Node.js SDK, and add a dependency to your <code>package.json</code>.</p>
 </div>
 <div class="paragraph">
-<p>Information on new features, fixes, known issues, as well as information on how to install older release versions is in the <a href="../project-docs/sdk-release-notes.html" class="page">release notes</a>.</p>
+<p>Information on new features, fixes, known issues, as well as information on how to install older release versions is in the <a href="../project-docs/sdk-release-notes.html" class="xref page">release notes</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="typescript-support"><a class="anchor" href="#typescript-support"></a>TypeScript Support</h3>
@@ -3852,7 +3852,7 @@ async function main() {
 <p>If you are connecting to <a href="https://docs.couchbase.com/cloud/index.html">Couchbase Capella</a> rather than a local Couchbase Server, see the <a href="#cloud-connections">Cloud section</a>, below.</p>
 </div>
 <div class="paragraph">
-<p>Couchbase uses <a href="#{version-server}@server:learn:security/roles.adoc" class="page unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
+<p>Couchbase uses <a href="#{version-server}@server:learn:security/roles.adoc" class="xref unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
 For the sake of this example, we are connecting to Couchbase using the <em>Full Admin</em> role created during the installation of our Couchbase Server.
 Since we are running this locally, we are using the Couchbase alias for localhost.</p>
 </div>
@@ -3890,7 +3890,7 @@ const bucket: Bucket = cluster.bucket('travel-sample')</code></pre>
 <p>If you are not working with the <code>travel-sample</code> data bucket, substitute <em>travel-sample</em> with your <em>bucket-name</em>.</p>
 </div>
 <div class="paragraph">
-<p>The 3.2 SDK is ready for the introduction of <a href="../concept-docs/collections.html" class="page">Collections</a> in the <a href="#{version-server}@server:introduction:whats-new.adoc#whats-new-server-700" class="page unresolved">7.0 release</a> of the Couchbase Data Platform.
+<p>The 3.2 SDK is ready for the introduction of <a href="../concept-docs/collections.html" class="xref page">Collections</a> in the <a href="#{version-server}@server:introduction:whats-new.adoc#whats-new-server-700" class="xref unresolved">7.0 release</a> of the Couchbase Data Platform.
 The latest release, Couchbase Server 7.0, brings Collections, allowing Documents to be grouped by purpose or theme, according to specified <em>Scope</em>.</p>
 </div>
 <div class="tabset is-loading">
@@ -4149,7 +4149,7 @@ const collection_default: Collection = bucket.defaultCollection()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>KV Operations are described in detail on the <a href="../howtos/kv-operations.html" class="page">KV Operations page</a>.</p>
+<p>KV Operations are described in detail on the <a href="../howtos/kv-operations.html" class="xref page">KV Operations page</a>.</p>
 </div>
 <div class="paragraph">
 <p>Now, we can simply call the <code>getAirlineByKey</code> function passing in our valid document key <code>airline_8091</code> and close our <code>main</code> function:</p>
@@ -4528,13 +4528,13 @@ go()</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="page">Constrained Network Environments</a>,</p>
+<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="xref page">Constrained Network Environments</a>,</p>
 </li>
 <li>
-<p><a href="../project-docs/compatibility.html#network-requirements" class="page">Network Requirements</a>,</p>
+<p><a href="../project-docs/compatibility.html#network-requirements" class="xref page">Network Requirements</a>,</p>
 </li>
 <li>
-<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="page">Troubleshooting Guide</a>.</p>
+<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="xref page">Troubleshooting Guide</a>.</p>
 </li>
 </ul>
 </div>
@@ -4547,10 +4547,10 @@ go()</code></pre>
 <p>The API reference is generated for each release and the latest can be found <a href="http://docs.couchbase.com/sdk-api/couchbase-node-client/">here</a>.</p>
 </div>
 <div class="paragraph">
-<p>Links to each release are to be found in the <a href="../project-docs/sdk-release-notes.html" class="page">individual release notes</a>.</p>
+<p>Links to each release are to be found in the <a href="../project-docs/sdk-release-notes.html" class="xref page">individual release notes</a>.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="../project-docs/migrating-sdk-code-to-3.n.html" class="page">Migrating from SDK2 to 3 page</a> highlights the main differences to be aware of when migrating your code.</p>
+<p>The <a href="../project-docs/migrating-sdk-code-to-3.n.html" class="xref page">Migrating from SDK2 to 3 page</a> highlights the main differences to be aware of when migrating your code.</p>
 </div>
 <div class="paragraph">
 <p>Couchbase welcomes community contributions to the Node.js SDK.

@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/services-and-indexes/indexes/index-replication.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4481,7 +4481,7 @@ This ensures:</p>
 </div>
 <div class="paragraph">
 <p>Index-replicas can be created with the N1QL <code>CREATE INDEX</code> statement.
-Note that whenever a given number of index-replicas is specified for creation, the number must be less than the number of cluster-nodes currently running the <a href="../services/index-service.html" class="page">Index Service</a>.
+Note that whenever a given number of index-replicas is specified for creation, the number must be less than the number of cluster-nodes currently running the <a href="../services/index-service.html" class="xref page">Index Service</a>.
 If it is not, the index creation fails.
 Note also that if, following creation of the maximum number of copies, the number of nodes running the Index Service decreases, Couchbase Server progressively assigns replacement index-replicas to any and all Index-Service nodes subsequently be added to the cluster, until the required number of index-replicas again exists for each replicated index.</p>
 </div>
@@ -4543,8 +4543,8 @@ Note that this call only succeeds if the cluster contains enough Index Service n
 </ul>
 </div>
 <div class="paragraph">
-<p>You can change index replication settings via the <a href="../../../manage/manage-settings/general-settings.html#index-storage-mode" class="page">UI</a> or the <a href="../../../manage/manage-settings/general-settings.html#index-settings-via-rest" class="page">REST API</a>.
-For further information on using N1QL, refer to <a href="../../../n1ql/query.html" class="page">Query Fundamentals</a>.</p>
+<p>You can change index replication settings via the <a href="../../../manage/manage-settings/general-settings.html#index-storage-mode" class="xref page">UI</a> or the <a href="../../../manage/manage-settings/general-settings.html#index-settings-via-rest" class="xref page">REST API</a>.
+For further information on using N1QL, refer to <a href="../../../n1ql/query.html" class="xref page">Query Fundamentals</a>.</p>
 </div>
 </div>
 </div>
@@ -4574,7 +4574,7 @@ For further information on using N1QL, refer to <a href="../../../n1ql/query.htm
 </ul>
 </div>
 <div class="paragraph">
-<p>For detailed information, refer to <a href="../../../n1ql/n1ql-language-reference/index-partitioning.html" class="page">Index Partitioning</a>.</p>
+<p>For detailed information, refer to <a href="../../../n1ql/n1ql-language-reference/index-partitioning.html" class="xref page">Index Partitioning</a>.</p>
 </div>
 </div>
 </div>
@@ -4604,7 +4604,7 @@ If index-maintenance is running behind, the query waits for it to catch up.</p>
 <p>For N1QL, the default consistency is <code>not_bounded</code>.</p>
 </div>
 <div class="paragraph">
-<p>You can specify the scan consistency via the <a href="../../../tools/query-workbench.html#query-preferences" class="page">run-time preferences</a> in the Query Workbench, or by setting the <a href="../../../settings/query-settings.html#scan_consistency" class="page">scan_consistency</a> request-level parameter.</p>
+<p>You can specify the scan consistency via the <a href="../../../tools/query-workbench.html#query-preferences" class="xref page">run-time preferences</a> in the Query Workbench, or by setting the <a href="../../../settings/query-settings.html#scan_consistency" class="xref page">scan_consistency</a> request-level parameter.</p>
 </div>
 </div>
 </div>
@@ -4617,7 +4617,7 @@ In cases where recovery requires an Index-Service node to be restarted, the node
 </div>
 <div class="paragraph">
 <p>By default, two index snapshots are stored on disk.
-You can change index snapshot settings via the <a href="../../../manage/manage-settings/general-settings.html#index-storage-settings-via-cli" class="page">CLI</a> or the <a href="../../../manage/manage-settings/general-settings.html#index-settings-via-rest" class="page">REST API</a>.</p>
+You can change index snapshot settings via the <a href="../../../manage/manage-settings/general-settings.html#index-storage-settings-via-cli" class="xref page">CLI</a> or the <a href="../../../manage/manage-settings/general-settings.html#index-settings-via-rest" class="xref page">REST API</a>.</p>
 </div>
 </div>
 </div>
@@ -4625,16 +4625,16 @@ You can change index snapshot settings via the <a href="../../../manage/manage-s
 <h2 id="index-rollback"><a class="anchor" href="#index-rollback"></a>Index Rollback</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The index service also maintains a <a href="../../clusters-and-availability/intra-cluster-replication.html#database-change-protocol" class="page">DCP failover log</a>.
+<p>The index service also maintains a <a href="../../clusters-and-availability/intra-cluster-replication.html#database-change-protocol" class="xref page">DCP failover log</a>.
 If necessary, the data service can request the index service to return to a specified rollback point and update its history.</p>
 </div>
 <div class="paragraph">
-<p>You can change index rollback settings via the <a href="../../../manage/manage-settings/general-settings.html#index-storage-settings-via-cli" class="page">CLI</a> or the <a href="../../../manage/manage-settings/general-settings.html#index-settings-via-rest" class="page">REST API</a>.</p>
+<p>You can change index rollback settings via the <a href="../../../manage/manage-settings/general-settings.html#index-storage-settings-via-cli" class="xref page">CLI</a> or the <a href="../../../manage/manage-settings/general-settings.html#index-settings-via-rest" class="xref page">REST API</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="index-rollback-after-failover"><a class="anchor" href="#index-rollback-after-failover"></a>Index Rollback After Failover</h3>
 <div class="paragraph">
-<p>When a data node <a href="../../clusters-and-availability/failover.html" class="page">fails over</a>, a replica data node is promoted to active.
+<p>When a data node <a href="../../clusters-and-availability/failover.html" class="xref page">fails over</a>, a replica data node is promoted to active.
 If the index service has more recent data than the new active data node, the data node issues a rollback request to the index service.</p>
 </div>
 <div class="paragraph">

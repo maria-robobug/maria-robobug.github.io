@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/install/upgrade-cluster-offline.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4498,7 +4498,7 @@ A command of the following form can be used:</p>
 </li>
 <li>
 <p>Back up the cluster&#8217;s user-data.
-Backup can be performed either with <a href="../backup-restore/enterprise-backup-restore.html" class="page">cbbackupmgr</a> or with the <a href="../learn/services-and-indexes/services/backup-service.html" class="page">Backup Service</a>; and should be a <em>full</em> (rather than an incremental) backup.</p>
+Backup can be performed either with <a href="../backup-restore/enterprise-backup-restore.html" class="xref page">cbbackupmgr</a> or with the <a href="../learn/services-and-indexes/services/backup-service.html" class="xref page">Backup Service</a>; and should be a <em>full</em> (rather than an incremental) backup.</p>
 <div class="paragraph">
 <p>For example, to use <code>cbbackupmgr</code> to configure an archive and repository for the backup, a command of the following form should be entered:</p>
 </div>
@@ -4524,12 +4524,12 @@ The <code>REPO_NAME</code> is the name of the repository that will be associated
 The <code>--full-backup</code> flag ensures that the backup is indeed a <em>full</em> backup.</p>
 </div>
 <div class="paragraph">
-<p>For the equivalent procedure as performed by the Backup Service, see <a href="../manage/manage-backup-and-restore/manage-backup-and-restore.html#run-an-immediate-backup" class="page">Run an Immediate Backup</a>.</p>
+<p>For the equivalent procedure as performed by the Backup Service, see <a href="../manage/manage-backup-and-restore/manage-backup-and-restore.html#run-an-immediate-backup" class="xref page">Run an Immediate Backup</a>.</p>
 </div>
 </li>
 <li>
 <p>Disable auto-failover (to prevent auto-failover from occuring when individual nodes stop communicating with the rest of the cluster, during their upgrade).
-Disablement is performed by means of Couchbase-Server <a href="../manage/manage-settings/general-settings.html" class="page">General Settings</a>, using the UI, the CLI, or the REST API.
+Disablement is performed by means of Couchbase-Server <a href="../manage/manage-settings/general-settings.html" class="xref page">General Settings</a>, using the UI, the CLI, or the REST API.
 Disablement needs to be performed only once, on one node.</p>
 <div class="paragraph">
 <p>For example, to disable auto-failover by means of the CLI, enter a command of the following form:</p>

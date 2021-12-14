@@ -23,7 +23,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/guides/reading-data.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4473,8 +4473,8 @@ How to read documents in Couchbase.
 <h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Retrieving documents by ID is the fastest and simplest way to read <a href="../learn/data/data.html" class="page">data</a> in Couchbase.
-The <a href="../learn/services-and-indexes/services/data-service.html" class="page">Key-Value (KV) or Data Service</a> allows you to retrieve a full document when you need to fetch all of the data stored.
+<p>Retrieving documents by ID is the fastest and simplest way to read <a href="../learn/data/data.html" class="xref page">data</a> in Couchbase.
+The <a href="../learn/services-and-indexes/services/data-service.html" class="xref page">Key-Value (KV) or Data Service</a> allows you to retrieve a full document when you need to fetch all of the data stored.
 However, in instances where this can be costly and unnecessary, Couchbase also provides access to specific <em>paths</em> within a document.</p>
 </div>
 <div class="paragraph">
@@ -4483,10 +4483,10 @@ However, in instances where this can be costly and unnecessary, Couchbase also p
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/hello-world/cbc.html" class="page">Command Line Clients</a></p>
+<p><a href="../../../c-sdk/3.2/hello-world/cbc.html" class="xref page">Command Line Clients</a></p>
 </li>
 <li>
-<p><a href="../../../home/sdk.html" class="page">SDK Clients</a></p>
+<p><a href="../../../home/sdk.html" class="xref page">SDK Clients</a></p>
 </li>
 </ul>
 </div>
@@ -4499,7 +4499,7 @@ However, in instances where this can be costly and unnecessary, Couchbase also p
 <td class="content">
 Please note that the examples in this guide will alter the data in your sample buckets.
 To restore your sample data, remove and reinstall the <code>travel-sample</code> bucket.
-Refer to <a href="../manage/manage-settings/install-sample-buckets.html" class="page">Sample Buckets</a> for details.
+Refer to <a href="../manage/manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a> for details.
 </td>
 </tr>
 </table>
@@ -4997,10 +4997,10 @@ Instead, a better practice would be to access specific paths, or <em>sub-documen
 <li>
 <p>Connect to the <code>cbc-subdoc</code> interactive shell.</p>
 </li>
-</ol>
-</div>
-<div class="paragraph">
+<li>
 <p>Use the <code>get</code> command to access specific fields in a JSON document with the <code>--path</code> argument.</p>
+</li>
+</ol>
 </div>
 <hr>
 <div class="paragraph">
@@ -5225,15 +5225,15 @@ If the document path can&#8217;t be found, the SDK will return a <code>PathNotFo
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/howtos/kv-operations.html" class="page">C</a>
-| <a href="../../../dotnet-sdk/DOC-9205/howtos/kv-operations.html" class="page">.NET</a>
-| <a href="../../../go-sdk/2.3/howtos/kv-operations.html" class="page">Go</a>
-| <a href="../../../java-sdk/DOC-9205/howtos/kv-operations.html" class="page">Java</a>
-| <a href="../../../nodejs-sdk/DOC-9205/howtos/kv-operations.html" class="page">Node.js</a>
-| <a href="../../../php-sdk/3.2/howtos/kv-operations.html" class="page">PHP</a>
-| <a href="../../../python-sdk/DOC-9205/howtos/kv-operations.html" class="page">Python</a>
-| <a href="../../../ruby-sdk/3.2/howtos/kv-operations.html" class="page">Ruby</a>
-| <a href="../../../scala-sdk/1.2/howtos/kv-operations.html" class="page">Scala</a></p>
+<p><a href="../../../c-sdk/3.2/howtos/kv-operations.html" class="xref page">C</a>
+| <a href="../../../dotnet-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">.NET</a>
+| <a href="../../../go-sdk/2.3/howtos/kv-operations.html" class="xref page">Go</a>
+| <a href="../../../java-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Java</a>
+| <a href="../../../nodejs-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Node.js</a>
+| <a href="../../../php-sdk/3.2/howtos/kv-operations.html" class="xref page">PHP</a>
+| <a href="../../../python-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Python</a>
+| <a href="../../../ruby-sdk/3.2/howtos/kv-operations.html" class="xref page">Ruby</a>
+| <a href="../../../scala-sdk/1.2/howtos/kv-operations.html" class="xref page">Scala</a></p>
 </li>
 </ul>
 </div>
@@ -5243,15 +5243,15 @@ If the document path can&#8217;t be found, the SDK will return a <code>PathNotFo
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/howtos/subdocument-operations.html" class="page">C</a>
-| <a href="../../../dotnet-sdk/DOC-9205/howtos/subdocument-operations.html" class="page">.NET</a>
-| <a href="../../../go-sdk/2.3/howtos/subdocument-operations.html" class="page">Go</a>
-| <a href="../../../java-sdk/DOC-9205/howtos/subdocument-operations.html" class="page">Java</a>
-| <a href="../../../nodejs-sdk/DOC-9205/howtos/subdocument-operations.html" class="page">Node.js</a>
-| <a href="../../../php-sdk/3.2/howtos/subdocument-operations.html" class="page">PHP</a>
-| <a href="../../../python-sdk/DOC-9205/howtos/subdocument-operations.html" class="page">Python</a>
-| <a href="../../../ruby-sdk/3.2/howtos/subdocument-operations.html" class="page">Ruby</a>
-| <a href="../../../scala-sdk/1.2/howtos/subdocument-operations.html" class="page">Scala</a></p>
+<p><a href="../../../c-sdk/3.2/howtos/subdocument-operations.html" class="xref page">C</a>
+| <a href="../../../dotnet-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">.NET</a>
+| <a href="../../../go-sdk/2.3/howtos/subdocument-operations.html" class="xref page">Go</a>
+| <a href="../../../java-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Java</a>
+| <a href="../../../nodejs-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Node.js</a>
+| <a href="../../../php-sdk/3.2/howtos/subdocument-operations.html" class="xref page">PHP</a>
+| <a href="../../../python-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Python</a>
+| <a href="../../../ruby-sdk/3.2/howtos/subdocument-operations.html" class="xref page">Ruby</a>
+| <a href="../../../scala-sdk/1.2/howtos/subdocument-operations.html" class="xref page">Scala</a></p>
 </li>
 </ul>
 </div>

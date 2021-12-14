@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="python-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/python-sdk/DOC-9205/project-docs/migrating-sdk-code-to-3.n.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3693,7 +3693,7 @@ The new API is built on years of hands-on experience with the current SDK as wel
 <div class="paragraph">
 <p>Before this guide dives into the language-specific technical component of the migration, it is important to understand the high level changes first.
 As a migration guide, this document assumes you are familiar with the previous generation of the SDK and does not re-introducing SDK 2.0 concepts.
-We recommend familiarizing yourself with the new SDK first by reading at least the <a href="../hello-world/start-using-sdk.html" class="page">getting started guide</a>, and browsing through the other chapters a little.</p>
+We recommend familiarizing yourself with the new SDK first by reading at least the <a href="../hello-world/start-using-sdk.html" class="xref page">getting started guide</a>, and browsing through the other chapters a little.</p>
 </div>
 <div class="sect2">
 <h3 id="terminology"><a class="anchor" href="#terminology"></a>Terminology</h3>
@@ -3701,7 +3701,7 @@ We recommend familiarizing yourself with the new SDK first by reading at least t
 <p>The concept of a <code>Cluster</code> and a <code>Bucket</code> remain the same, but a fundamental new layer is introduced into the API: <code>Collections</code> and their <code>Scopes</code>.
 Collections are logical data containers inside a Couchbase bucket that let you group similar data just like a <em>Table</em> does in a relational database&#8201;&#8212;&#8201;although documents inside a collection do not need to have the same structure.
 Scopes allow the grouping of collections into a namespace, which is very usfeul when you have multilpe tenants acessing the same bucket.
-Couchbase Server includes support for collections as a <a href="#6.5@server:developer-preview:preview-mode.adoc" class="page unresolved">developer preview</a> in version 6.5, and as a first class concept of the programming model from <a href="#7.0@server:learn:data/scopes-and-collections.adoc" class="page unresolved">version 7.0.</a></p>
+Couchbase Server includes support for collections as a <a href="#6.5@server:developer-preview:preview-mode.adoc" class="xref unresolved">developer preview</a> in version 6.5, and as a first class concept of the programming model from <a href="#7.0@server:learn:data/scopes-and-collections.adoc" class="xref unresolved">version 7.0.</a></p>
 </div>
 <div class="paragraph">
 <p>Note that the SDKs include the feature from SDK 3.0, to allow easier migration.</p>
@@ -3777,7 +3777,7 @@ First, installation and configuration are covered, then we talk about exception 
 <h3 id="installation-and-configuration"><a class="anchor" href="#installation-and-configuration"></a>Installation and Configuration</h3>
 <div class="paragraph">
 <p>The Python SDK 3.x is available for download from the same resources as the previous generation. Builds can be found on PyPi.
-Please see the <a href="sdk-release-notes.html" class="page">Release Notes</a> for up-to-date information.</p>
+Please see the <a href="sdk-release-notes.html" class="xref page">Release Notes</a> for up-to-date information.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -3868,7 +3868,7 @@ collection.timeout=5</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The default settings can still be customized through either the connection string or <a href="../ref/client-settings.html" class="page">system properties</a>.
+<p>The default settings can still be customized through either the connection string or <a href="../ref/client-settings.html" class="xref page">system properties</a>.
 The SDK has elaborate reflection logic in place to parse "flat" string values and apply them to the builder, which means that you can now configure more properties than in SDK 2.
 Note that the property paths have changed.</p>
 </div>
@@ -3885,7 +3885,7 @@ collection.compression = COMPRESS_INOUT</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>See the <a href="../ref/client-settings.html" class="page">configuration section</a> for full specifics.</p>
+<p>See the <a href="../ref/client-settings.html" class="xref page">configuration section</a> for full specifics.</p>
 </div>
 <div class="paragraph">
 <p>At the end of this guide you&#8217;ll find a <a href="#configurations-options-reference">reference</a> that describes the SDK 2 environment options and their SDK 3 equivalents where applicable.</p>

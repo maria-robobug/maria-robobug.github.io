@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/services-and-indexes/indexes/indexing-and-query-perf.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4474,12 +4474,12 @@ This topic provides an overview of the types of index that you can create using 
 </div>
 <div class="paragraph">
 <p>During cluster installation, you can choose the type of index storage you&#8217;d like to use in the cluster.
-For more details, refer to <a href="storage-modes.html" class="page">Index Storage Settings</a>.</p>
+For more details, refer to <a href="storage-modes.html" class="xref page">Index Storage Settings</a>.</p>
 </div>
 <div class="paragraph">
 <p>The examples in this topic use the travel-sample dataset which is shipped with Couchbase Server.
 Ensure that you&#8217;ve installed the travel-sample bucket.
-For instructions on how to install the sample bucket, see <a href="../../../manage/manage-settings/install-sample-buckets.html" class="page">Sample Buckets</a>.</p>
+For instructions on how to install the sample bucket, see <a href="../../../manage/manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a>.</p>
 </div>
 <div class="paragraph">
 <p>Couchbase Server is a distributed database that supports flexible data model using JSON.
@@ -4556,9 +4556,9 @@ Use the primary index for full keyspace scans (primary scans) when the query doe
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-A primary index does not index any <a href="../../data/transactions.html#additional-storage-use" class="page">transaction records</a> that may be stored in a keyspace.
+A primary index does not index any <a href="../../data/transactions.html#additional-storage-use" class="xref page">transaction records</a> that may be stored in a keyspace.
 This means that if you are counting the number of documents in a keyspace, you may see slightly different results, depending on whether you are using a primary index or not.
-Refer to <a href="../../../n1ql/n1ql-language-reference/aggregatefun.html" class="page">Aggregate Functions</a> and <a href="../../../tools/query-workbench.html#bucket-analyzer" class="page">Viewing the Data Insights</a>.
+Refer to <a href="../../../n1ql/n1ql-language-reference/aggregatefun.html" class="xref page">Aggregate Functions</a> and <a href="../../../tools/query-workbench.html#bucket-analyzer" class="xref page">Viewing the Data Insights</a>.
 </td>
 </tr>
 </table>
@@ -5052,7 +5052,7 @@ To store all elements of an array in an index, do not use the DISTINCT modifier 
 </div>
 </div>
 <div class="paragraph">
-<p>For further details and examples, refer to <a href="../../../n1ql/n1ql-language-reference/indexing-arrays.html" class="page">Array Indexing</a>.</p>
+<p>For further details and examples, refer to <a href="../../../n1ql/n1ql-language-reference/indexing-arrays.html" class="xref page">Array Indexing</a>.</p>
 </div>
 </div>
 </div>
@@ -5189,7 +5189,7 @@ If it does, the query engine skips retrieving the whole document from the data n
 This is a performance optimization to keep in mind when designing your indexes.</p>
 </div>
 <div class="paragraph">
-<p>For further details and examples, refer to <a href="../../../n1ql/n1ql-language-reference/covering-indexes.html" class="page">Covering Indexes</a>.</p>
+<p>For further details and examples, refer to <a href="../../../n1ql/n1ql-language-reference/covering-indexes.html" class="xref page">Covering Indexes</a>.</p>
 </div>
 </div>
 </div>

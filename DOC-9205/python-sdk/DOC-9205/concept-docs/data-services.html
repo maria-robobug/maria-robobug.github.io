@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="python-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/python-sdk/DOC-9205/concept-docs/data-services.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3683,25 +3683,25 @@ the Couchbase SDKs abstract away many of the differences&#8201;&#8212;&#8201;off
 <div class="title">Couchbase Data Services</div>
 <ul>
 <li>
-<p><a href="../howtos/kv-operations.html" class="page">KV Operations</a></p>
+<p><a href="../howtos/kv-operations.html" class="xref page">KV Operations</a></p>
 </li>
 <li>
-<p><a href="../howtos/subdocument-operations.html" class="page">Sub-Document API</a></p>
+<p><a href="../howtos/subdocument-operations.html" class="xref page">Sub-Document API</a></p>
 </li>
 <li>
-<p><a href="analytics-for-sdk-users.html" class="page">Couchbase Analytics Service (CBAS)</a></p>
+<p><a href="analytics-for-sdk-users.html" class="xref page">Couchbase Analytics Service (CBAS)</a></p>
 </li>
 <li>
-<p><a href="n1ql-query.html" class="page">Query Service</a></p>
+<p><a href="n1ql-query.html" class="xref page">Query Service</a></p>
 </li>
 <li>
-<p><a href="full-text-search-overview.html" class="page">Full Text Search</a></p>
+<p><a href="full-text-search-overview.html" class="xref page">Full Text Search</a></p>
 </li>
 <li>
-<p><a href="understanding-views.html" class="page">MapReduce Views</a></p>
+<p><a href="understanding-views.html" class="xref page">MapReduce Views</a></p>
 </li>
 <li>
-<p><a href="#7.0@server:connectors:intro.adoc" class="page unresolved">Connectors</a></p>
+<p><a href="#7.0@server:connectors:intro.adoc" class="xref unresolved">Connectors</a></p>
 </li>
 </ul>
 </div>
@@ -3726,7 +3726,7 @@ The binary protocol used is far quicker than streaming JSON.</p>
 <div class="sect2">
 <h3 id="long-running-queries-big-data"><a class="anchor" href="#long-running-queries-big-data"></a>Long Running Queries &amp; Big Data</h3>
 <div class="paragraph">
-<p><a href="#7.0@server:learn:services-and-indexes/services/analytics-service.adoc" class="page unresolved">Couchbase Analytics Service (CBAS)</a> performs well on huge datasets, with complex aggregations, and uses the first commercial implementation of SQL++&#8201;&#8212;&#8201;<em>N1QL for Analytics</em>&#8201;&#8212;&#8201;which gives a similar query experience to our SQL-like N1QL language.
+<p><a href="#7.0@server:learn:services-and-indexes/services/analytics-service.adoc" class="xref unresolved">Couchbase Analytics Service (CBAS)</a> performs well on huge datasets, with complex aggregations, and uses the first commercial implementation of SQL++&#8201;&#8212;&#8201;<em>N1QL for Analytics</em>&#8201;&#8212;&#8201;which gives a similar query experience to our SQL-like N1QL language.
 CBAS supports workloads involving only SELECT (not INSERT or UPDATE), and uses local secondary indexes.
 Scalable performance comes from multi-node partitioned-parallel join, sort, aggregate, and grouped aggregate operators, and multiple storage devices (vbuckets over several nodes).</p>
 </div>
@@ -3776,11 +3776,11 @@ For phrase matching, over free-form text, or matching over word stems, FTS is a 
 </div>
 <div class="paragraph">
 <p>There are more concepts to learn, as FTS offers a very flexible service.
-In particular, care should be taken over building indexes, to stop them becoming unnecessarily large&#8201;&#8212;&#8201;see our <a href="#7.0@server:fts:full-text-intro.adoc" class="page unresolved">FTS documentation</a>.
+In particular, care should be taken over building indexes, to stop them becoming unnecessarily large&#8201;&#8212;&#8201;see our <a href="#7.0@server:fts:full-text-intro.adoc" class="xref unresolved">FTS documentation</a>.
 Once again, the SDK abstracts away much of the complexity from deeply nested queries, and the interface is similar to our Query Service.</p>
 </div>
 <div class="paragraph">
-<p>From Couchbase Server 6.5, <a href="#7.0@server:n1ql:n1ql-language-reference/searchfun.adoc" class="page unresolved">Search Functions</a> allow the use of FTS <em>within</em> N1QL queries.</p>
+<p>From Couchbase Server 6.5, <a href="#7.0@server:n1ql:n1ql-language-reference/searchfun.adoc" class="xref unresolved">Search Functions</a> allow the use of FTS <em>within</em> N1QL queries.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3798,7 +3798,7 @@ It’s a powerful and flexible way of querying, retrieving, and updating data, u
 <h3 id="lowest-latency"><a class="anchor" href="#lowest-latency"></a>Lowest Latency</h3>
 <div class="paragraph">
 <p>Streaming in a distributed system is complex, and thus we do not make our internal streams and changes feed directly available.
-However, it is exposed through use of our <a href="#2.4@spark-connector::index.adoc" class="page unresolved">Spark</a> or <a href="#3.4@kafka-connector::index.adoc" class="page unresolved">Kafka</a> connectors, which give you a high level API to our low level primitives.</p>
+However, it is exposed through use of our <a href="#2.4@spark-connector::index.adoc" class="xref unresolved">Spark</a> or <a href="#3.4@kafka-connector::index.adoc" class="xref unresolved">Kafka</a> connectors, which give you a high level API to our low level primitives.</p>
 </div>
 </div>
 </div>

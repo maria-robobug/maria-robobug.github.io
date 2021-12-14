@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-settings/general-settings.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4585,7 +4585,7 @@ No identifiable information (such as bucket names, bucket data, design-document 
 <h3 id="node-availability"><a class="anchor" href="#node-availability"></a>Node Availability</h3>
 <div class="paragraph">
 <p>The options in the <strong>Node Availability</strong> panel control whether and how <strong>Automatic Failover</strong> is applied.
-For detailed information on policy and constraints, see <a href="../../learn/clusters-and-availability/automatic-failover.html" class="page">Automatic Failover</a>.</p>
+For detailed information on policy and constraints, see <a href="../../learn/clusters-and-availability/automatic-failover.html" class="xref page">Automatic Failover</a>.</p>
 </div>
 <div class="paragraph">
 <p>The panel appears as follows:</p>
@@ -4615,12 +4615,12 @@ This checkbox can only be checked if <strong>Enable auto-failover after</strong>
 <li>
 <p><strong>Enable auto-failover of server groups</strong>: Server-group failover is enabled.
 This checkbox (which can only be checked if <strong>Enable auto-failover after <em>x</em> seconds for up to <em>y</em> event</strong> has also been checked) should only be checked if three or more server groups have been established, and capacity is available to absorb the combined load of all potentially failed-over groups.
-For information on groups, see <a href="../../learn/clusters-and-availability/groups.html" class="page">Server Group Awareness</a>.</p>
+For information on groups, see <a href="../../learn/clusters-and-availability/groups.html" class="xref page">Server Group Awareness</a>.</p>
 </li>
 <li>
 <p><strong>Can abort rebalance</strong>. Whether a rebalance, in progress at the time the node become unresponsive, can be aborted; in order to perform the auto-failover.
 This option is selected by default.
-For further information, see <a href="../../learn/clusters-and-availability/automatic-failover.html#auto-failover-during-rebalance" class="page">Auto-Failover During Rebalance</a>.</p>
+For further information, see <a href="../../learn/clusters-and-availability/automatic-failover.html#auto-failover-during-rebalance" class="xref page">Auto-Failover During Rebalance</a>.</p>
 </li>
 </ul>
 </div>
@@ -4635,7 +4635,7 @@ Note, however, that this may leave the cluster in an unbalanced state, requiring
 <div class="paragraph">
 <p>Couchbase Server provides <em>durability</em>, which ensures the greatest likelihood of data-writes surviving unexpected anomalies, such as node-outages.
 The auto-failover maximum should be established to support guarantees of durability.
-See <a href="../../learn/data/durability.html" class="page">Durability</a>, for information.</p>
+See <a href="../../learn/data/durability.html" class="xref page">Durability</a>, for information.</p>
 </div>
 </div>
 </div>
@@ -4643,7 +4643,7 @@ See <a href="../../learn/data/durability.html" class="page">Durability</a>, for 
 <h3 id="rebalance-settings"><a class="anchor" href="#rebalance-settings"></a>Rebalance Settings</h3>
 <div class="paragraph">
 <p><em>Rebalance</em> redistributes data, indexes, event processing, and query processing among available nodes.
-For an overview, see <a href="../../learn/clusters-and-availability/rebalance.html" class="page">Rebalance</a>.
+For an overview, see <a href="../../learn/clusters-and-availability/rebalance.html" class="xref page">Rebalance</a>.
 Fully open, the panel appears as follows:</p>
 </div>
 <div class="imageblock text-center">
@@ -4660,12 +4660,12 @@ The specifiable, <em>maximum number of seconds</em> must be in the range of 5 to
 <div class="paragraph">
 <p>Note that this option should <em>not</em> be enabled if the cluster is managed by <em>Couchbase Autonomous Operator</em>, or if custom scripts are already being used to trigger rebalance.
 Note also that no administrative tasks should be attempted when rebalance-retries are pending.
-However, pending rebalance-retries can be cancelled: see <a href="../manage-nodes/add-node-and-rebalance.html#automated-rebalance-failure-handling" class="page">Automated Rebalance-Failure Handling</a>, for information.</p>
+However, pending rebalance-retries can be cancelled: see <a href="../manage-nodes/add-node-and-rebalance.html#automated-rebalance-failure-handling" class="xref page">Automated Rebalance-Failure Handling</a>, for information.</p>
 </div>
 <div class="paragraph">
 <p>The <strong>Max moves per node during rebalance</strong> option establishes the maximum number of concurrent vBucket moves permitted on every individual node.
 The minimum value for the parameter is <code>1</code>, the maximum <code>64</code>, the default <code>4</code>.
-For information, see <a href="../../learn/clusters-and-availability/rebalance.html#limiting-concurrent-vbucket-moves" class="page">Limiting Concurrent vBucket Moves</a>.</p>
+For information, see <a href="../../learn/clusters-and-availability/rebalance.html#limiting-concurrent-vbucket-moves" class="xref page">Limiting Concurrent vBucket Moves</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4676,7 +4676,7 @@ The maximum thread-allocation to each is <em>64</em>, the minimum <em>4</em>.</p
 </div>
 <div class="paragraph">
 <p>A high thread-allocation may improve performance on systems whose hardware-resources are commensurately supportive (for example, where the number of CPU cores is high).
-In particular, a high number of <em>writer</em> threads on such systems may significantly optimize the performance of <em>durable writes</em>: see <a href="../../learn/data/durability.html" class="page">Durability</a>, for information.</p>
+In particular, a high number of <em>writer</em> threads on such systems may significantly optimize the performance of <em>durable writes</em>: see <a href="../../learn/data/durability.html" class="xref page">Durability</a>, for information.</p>
 </div>
 <div class="paragraph">
 <p>Note, however, that a high thread-allocation might <em>impair</em> some aspects of system-performance on less appropriately resourced nodes.
@@ -4782,7 +4782,7 @@ The maximum size of the target can be specified, in megabytes.</p>
 <p>When checked (as it is by default), the <strong>Use Cost-Based Optimizer</strong> checkbox specifies that the cost-based optimizer is used for queries: when the checkbox is unchecked, the optimizer is <em>not</em> used.</p>
 </div>
 <div class="paragraph">
-<p>For additional details on all the Query settings in the lower section of the panel, refer to <a href="../../settings/query-settings.html" class="page">Settings and Parameters</a>.</p>
+<p>For additional details on all the Query settings in the lower section of the panel, refer to <a href="../../settings/query-settings.html" class="xref page">Settings and Parameters</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4797,7 +4797,7 @@ The panel appears as follows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The options are <a href="../../learn/services-and-indexes/indexes/storage-modes.html#memory-optimized-index-storage" class="page">Memory Optimized Index Storage</a>, and <a href="../../learn/services-and-indexes/indexes/storage-modes.html#standard-index-storage" class="page">Standard Index Storage</a>.</p>
+<p>The options are <a href="../../learn/services-and-indexes/indexes/storage-modes.html#memory-optimized-index-storage" class="xref page">Memory Optimized Index Storage</a>, and <a href="../../learn/services-and-indexes/indexes/storage-modes.html#standard-index-storage" class="xref page">Standard Index Storage</a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Advanced Settings</strong> for indexes are also provided:</p>
@@ -4813,13 +4813,13 @@ The default is 0.</p>
 <li>
 <p><strong>Num Replica</strong>.
 The default number of index replicas to be created by the Index Service whenever <code>CREATE INDEX</code> is invoked.
-For further details, refer to <a href="../../learn/services-and-indexes/indexes/index-replication.html#index-replication" class="page">Index Replication</a>.</p>
+For further details, refer to <a href="../../learn/services-and-indexes/indexes/index-replication.html#index-replication" class="xref page">Index Replication</a>.</p>
 </li>
 <li>
 <p><strong>Indexer Rebalance Settings</strong>
 When the <strong>Optimize Index Placement On Rebalance</strong> checkbox is checked, Couchbase Server redistributes indexes when rebalance occurs, in order to optimize performance.
 If the checkbox is unchecked (which is the default), such redistribution does not occur.
-For further details, refer to <a href="../../learn/clusters-and-availability/rebalance.html#rebalancing-the-index-service" class="page">Rebalancing the Index Service</a>.</p>
+For further details, refer to <a href="../../learn/clusters-and-availability/rebalance.html#rebalancing-the-index-service" class="xref page">Rebalancing the Index Service</a>.</p>
 </li>
 <li>
 <p><strong>Indexer Log Level</strong>.
@@ -4869,12 +4869,12 @@ The default number of threads is 4.</p>
 <p>To configure <em>name and memory</em>, <em>index storage</em>, and <em>auto-failover</em> via CLI, use the appropriate CLI command; as described below.
 Note that no CLI support is provided for configuring <em>query settings</em>.
 As an alternative, see <a href="#configure-general-settings-with-the-rest-api">Configure General Settings with the REST API</a>, below.
-Additionally, for information on URL access lists via the N1QL <code>CURL()</code> function, see <a href="../../n1ql/n1ql-language-reference/curl.html" class="page">CURL Function</a>.</p>
+Additionally, for information on URL access lists via the N1QL <code>CURL()</code> function, see <a href="../../n1ql/n1ql-language-reference/curl.html" class="xref page">CURL Function</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="name-and-memory-settings-via-cli"><a class="anchor" href="#name-and-memory-settings-via-cli"></a>Name and Memory Settings via CLI</h3>
 <div class="paragraph">
-<p>Name and memory settings are established with the <a href="#cli:cbcli/couchbase-cli-setting-cluster.adoc" class="page unresolved">setting-cluster</a> command.</p>
+<p>Name and memory settings are established with the <a href="#cli:cbcli/couchbase-cli-setting-cluster.adoc" class="xref unresolved">setting-cluster</a> command.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4902,7 +4902,7 @@ Additionally, for information on URL access lists via the N1QL <code>CURL()</cod
 </div>
 </div>
 <div class="paragraph">
-<p>Note that settings for an individual server may be retrieved with the <a href="#cli:cbcli/couchbase-cli-server-info.adoc" class="page unresolved">server-info</a> command, the output for which can be filtered, as appropriate, by <code>grep</code>:</p>
+<p>Note that settings for an individual server may be retrieved with the <a href="#cli:cbcli/couchbase-cli-server-info.adoc" class="xref unresolved">server-info</a> command, the output for which can be filtered, as appropriate, by <code>grep</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4922,7 +4922,7 @@ Additionally, for information on URL access lists via the N1QL <code>CURL()</cod
 <div class="sect2">
 <h3 id="index-storage-settings-via-cli"><a class="anchor" href="#index-storage-settings-via-cli"></a>Index Storage Settings via CLI</h3>
 <div class="paragraph">
-<p>Index storage can be configured with the <a href="#cli:cbcli/couchbase-cli-setting-index.adoc" class="page unresolved">setting-index</a> command.</p>
+<p>Index storage can be configured with the <a href="#cli:cbcli/couchbase-cli-setting-index.adoc" class="xref unresolved">setting-index</a> command.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4941,7 +4941,7 @@ Additionally, for information on URL access lists via the N1QL <code>CURL()</cod
 <div class="paragraph">
 <p>This establishes the logging level as <code>info</code>, the stable snapshot interval at 40 seconds, the memory snapshot at 150 milliseconds, and the storage setting as <code>default</code> (which means <em>standard</em>, rather than <em>memory optimized</em>).
 The number of threads to be used is established as 8, and the maximum number of rollback points to 10.
-For information on the significance of these values see <a href="#cli:cbcli/couchbase-cli-setting-index.adoc" class="page unresolved">setting-index</a>.</p>
+For information on the significance of these values see <a href="#cli:cbcli/couchbase-cli-setting-index.adoc" class="xref unresolved">setting-index</a>.</p>
 </div>
 <div class="paragraph">
 <p>If successful, the call produces the following output:</p>
@@ -4955,7 +4955,7 @@ For information on the significance of these values see <a href="#cli:cbcli/couc
 <div class="sect2">
 <h3 id="software-update-settings-via-cli"><a class="anchor" href="#software-update-settings-via-cli"></a>Software-Update Settings via CLI</h3>
 <div class="paragraph">
-<p>Software update-notifications can be configured by means of the <a href="#cli:cbcli/couchbase-cli-setting-notification.adoc" class="page unresolved">setting-notification</a> command.</p>
+<p>Software update-notifications can be configured by means of the <a href="#cli:cbcli/couchbase-cli-setting-notification.adoc" class="xref unresolved">setting-notification</a> command.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4977,7 +4977,7 @@ If successful, the command produces the following output:</p>
 <div class="sect2">
 <h3 id="auto-failover-settings-via-cli"><a class="anchor" href="#auto-failover-settings-via-cli"></a>Auto-Failover Settings via CLI</h3>
 <div class="paragraph">
-<p>Auto-failover can be configured with the <a href="#cli:cbcli/couchbase-cli-setting-autofailover.adoc" class="page unresolved">setting-autofailover</a> command.</p>
+<p>Auto-failover can be configured with the <a href="#cli:cbcli/couchbase-cli-setting-autofailover.adoc" class="xref unresolved">setting-autofailover</a> command.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5005,13 +5005,13 @@ It also enables failover server groups, and specifies, by means of the <code>--c
 </div>
 </div>
 <div class="paragraph">
-<p>For a detailed description of auto-failover settings, policy, and constraints, see <a href="../../learn/clusters-and-availability/automatic-failover.html" class="page">Automatic Failover</a>.</p>
+<p>For a detailed description of auto-failover settings, policy, and constraints, see <a href="../../learn/clusters-and-availability/automatic-failover.html" class="xref page">Automatic Failover</a>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="query-settings-via-cli"><a class="anchor" href="#query-settings-via-cli"></a>Query Settings via CLI</h3>
 <div class="paragraph">
-<p>You can set all of the cluster-level query settings, except for the CURL access control settings, using the <a href="#cli:cbcli/couchbase-cli-setting-query.adoc" class="page unresolved">setting-query</a> command.</p>
+<p>You can set all of the cluster-level query settings, except for the CURL access control settings, using the <a href="#cli:cbcli/couchbase-cli-setting-query.adoc" class="xref unresolved">setting-query</a> command.</p>
 </div>
 <div class="paragraph">
 <p>To get the current cluster-level query settings, use the <code>--get</code> option:</p>
@@ -5040,13 +5040,13 @@ It also enables failover server groups, and specifies, by means of the <code>--c
 </div>
 </div>
 <div class="paragraph">
-<p>For additional details on the cluster-level query settings, refer to <a href="../../settings/query-settings.html" class="page">Settings and Parameters</a>.</p>
+<p>For additional details on the cluster-level query settings, refer to <a href="../../settings/query-settings.html" class="xref page">Settings and Parameters</a>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="rebalance-settings-via-cli"><a class="anchor" href="#rebalance-settings-via-cli"></a>Rebalance Settings via CLI</h3>
 <div class="paragraph">
-<p>To obtain the cluster&#8217;s current rebalance settings by means of the CLI, use the <a href="#cli:cbcli/couchbase-cli-setting-rebalance.adoc" class="page unresolved">setting-rebalance</a> command, with the <code>--get</code> option:</p>
+<p>To obtain the cluster&#8217;s current rebalance settings by means of the CLI, use the <a href="#cli:cbcli/couchbase-cli-setting-rebalance.adoc" class="xref unresolved">setting-rebalance</a> command, with the <code>--get</code> option:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5090,13 +5090,13 @@ Maximum number of retries: 2</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For more information, see the reference page <a href="../../rest-api/rest-configure-rebalance-retry.html" class="page">Configure Rebalance Retries</a>.</p>
+<p>For more information, see the reference page <a href="../../rest-api/rest-configure-rebalance-retry.html" class="xref page">Configure Rebalance Retries</a>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="xdcr-process-setting-via-cli"><a class="anchor" href="#xdcr-process-setting-via-cli"></a>XDCR Process Setting via CLI</h3>
 <div class="paragraph">
-<p>To configure the number of XDCR processes for the node, use the <a href="#cli:cbcli/couchbase-cli-setting-xdcr.adoc" class="page unresolved">setting-xdcr</a> command, with the <code>--max-processes</code> option:</p>
+<p>To configure the number of XDCR processes for the node, use the <a href="#cli:cbcli/couchbase-cli-setting-xdcr.adoc" class="xref unresolved">setting-xdcr</a> command, with the <code>--max-processes</code> option:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5242,7 +5242,7 @@ http://localhost:8091/settings/indexes \
 <div class="paragraph">
 <p>This establishes the storage mode for indexes as <code>plasma</code>.
 It also establishes a <code>verbose</code> logging level, and a total of 4 index threads.
-For detailed information on these and other settings, see the REST reference page for the method, at <a href="../../rest-api/post-settings-indexes.html" class="page">Set GSI Settings</a>.</p>
+For detailed information on these and other settings, see the REST reference page for the method, at <a href="../../rest-api/post-settings-indexes.html" class="xref page">Set GSI Settings</a>.</p>
 </div>
 <div class="paragraph">
 <p>If successful, the call returns a JSON object, which provides values for all current index settings:</p>
@@ -5285,8 +5285,8 @@ If successful, the call returns an object whose values confirm the settings that
 </div>
 </div>
 <div class="paragraph">
-<p>See <a href="../../learn/buckets-memory-and-storage/storage.html#threading" class="page">Threading</a> for an overview of reader and writer threads.
-Also see the REST API reference page, <a href="../../rest-api/rest-reader-writer-thread-config.html" class="page">Setting Thread Allocations</a>.</p>
+<p>See <a href="../../learn/buckets-memory-and-storage/storage.html#threading" class="xref page">Threading</a> for an overview of reader and writer threads.
+Also see the REST API reference page, <a href="../../rest-api/rest-reader-writer-thread-config.html" class="xref page">Setting Thread Allocations</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -5334,7 +5334,7 @@ The document&#8217;s values indicate that <code><a href="https://company1.com" c
 </div>
 </div>
 <div class="paragraph">
-<p>For additional information, refer to <a href="../../rest-api/rest-cluster-query-settings.html" class="page">Cluster Query Settings API</a>.</p>
+<p>For additional information, refer to <a href="../../rest-api/rest-cluster-query-settings.html" class="xref page">Cluster Query Settings API</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -5388,7 +5388,7 @@ http://10.143.192.101:8091/settings/retryRebalance \
 <p>This verifies that rebalance retry has been disabled, the required period between retries changed to <code>100</code> seconds, and the maximum number of retries changed to <code>2</code>.</p>
 </div>
 <div class="paragraph">
-<p>For more information on getting and setting the rebalance retry status, see <a href="../../rest-api/rest-configure-rebalance-retry.html" class="page">Configure Rebalance Retries</a>, <a href="../../rest-api/rest-get-rebalance-retry.html" class="page">Get Rebalance-Retry Status</a>, and <a href="../../rest-api/rest-cancel-rebalance-retry.html" class="page">Cancel Rebalance Retries</a>.</p>
+<p>For more information on getting and setting the rebalance retry status, see <a href="../../rest-api/rest-configure-rebalance-retry.html" class="xref page">Configure Rebalance Retries</a>, <a href="../../rest-api/rest-get-rebalance-retry.html" class="xref page">Get Rebalance-Retry Status</a>, and <a href="../../rest-api/rest-cancel-rebalance-retry.html" class="xref page">Cancel Rebalance Retries</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -5430,7 +5430,7 @@ Note that the minimum value is <code>1</code>, and the maximum <code>64</code>.<
 </div>
 </div>
 <div class="paragraph">
-<p>For more information, see the REST reference page <a href="../../rest-api/rest-limit-rebalance-moves.html" class="page">Limiting Concurrent vBucket Moves</a>.</p>
+<p>For more information, see the REST reference page <a href="../../rest-api/rest-limit-rebalance-moves.html" class="xref page">Limiting Concurrent vBucket Moves</a>.</p>
 </div>
 </div>
 </div>
@@ -5515,7 +5515,7 @@ http://10.143.192.101:8091/settings/replications \
 <p>This output indicates that the value of <code>goMaxProcs</code> has been appropriately incremented.</p>
 </div>
 <div class="paragraph">
-<p>For more information, see the reference page <a href="../../rest-api/rest-xdcr-adv-settings.html" class="page">Managing Advanced XDCR Settings</a>.</p>
+<p>For more information, see the reference page <a href="../../rest-api/rest-xdcr-adv-settings.html" class="xref page">Managing Advanced XDCR Settings</a>.</p>
 </div>
 </div>
 </div>

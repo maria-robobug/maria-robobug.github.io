@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="ruby-sdk">
 <meta name="dcterms.identifier" content="3.2">
 <meta name="page-url" content="/ruby-sdk/3.2/howtos/n1ql-queries-with-sdk.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3675,14 +3675,14 @@ Querying can solve typical programming tasks such as finding a user profile by e
 <div class="paragraph">
 <p>Our query service uses N1QL, which will be fairly familiar to anyone who&#8217;s used any dialect of SQL.
 <a href="#additional_resources">Further resources</a> for learning about N1QL are listed at the bottom of the page.
-Before you get started you may wish to checkout the <a href="#7.0@server:n1ql:n1ql-language-reference/index.adoc" class="page unresolved">N1QL intro page</a>, or just dive in with a query against our travel sample data set.
+Before you get started you may wish to checkout the <a href="#7.0@server:n1ql:n1ql-language-reference/index.adoc" class="xref unresolved">N1QL intro page</a>, or just dive in with a query against our travel sample data set.
 In this case, the one thing that you need to know is that in order to make a Bucket queryable, it must have at least one index defined.
 You can define a <em>primary</em> index on a bucket.
 When a primary index is defined you can issue non-covered queries on the bucket as well.</p>
 </div>
 <div class="paragraph">
 <p>Use
-<a href="#7.0@server::tools/cbq-shell.html" class="page unresolved">cbq</a>, our interactive Query shell.
+<a href="#7.0@server::tools/cbq-shell.html" class="xref unresolved">cbq</a>, our interactive Query shell.
 Open it, and enter the following:</p>
 </div>
 <div class="listingblock">
@@ -3903,7 +3903,7 @@ puts "Airports in the database: #{result.rows.first["airport_count"]}"
 <h2 id="querying-at-scope-level"><a class="anchor" href="#querying-at-scope-level"></a>Querying at Scope Level</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>It is possible to query off the <a href="#7.0@server:learn:data/scopes-and-collections.adoc" class="page unresolved"><code>Scope</code> level</a> <em>with the latest version of Couchbase Server release, 7.0</em>,
+<p>It is possible to query off the <a href="#7.0@server:learn:data/scopes-and-collections.adoc" class="xref unresolved"><code>Scope</code> level</a> <em>with the latest version of Couchbase Server release, 7.0</em>,
 using the <code>query()</code> method.
 It takes the statement as a required argument, and then allows additional options if needed.</p>
 </div>
@@ -3949,16 +3949,16 @@ puts "Reported execution time: #{result.meta_data.metrics.execution_time}"
 </td>
 <td class="content">
 N1QL is not the only query option in Couchbase.
-Be sure to check that your <a href="../concept-docs/data-services.html#use-cases" class="page">use case</a> fits your selection of query service.
+Be sure to check that your <a href="../concept-docs/data-services.html#use-cases" class="xref page">use case</a> fits your selection of query service.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>For a deeper dive into N1QL from the SDK, refer to our <a href="../concept-docs/n1ql-query.html" class="page">N1QL SDK concept doc</a>.</p>
+<p>For a deeper dive into N1QL from the SDK, refer to our <a href="../concept-docs/n1ql-query.html" class="xref page">N1QL SDK concept doc</a>.</p>
 </div>
 <div class="paragraph">
-<p>The <a href="#7.0@server:n1ql:n1ql-language-reference/index.adoc" class="page unresolved">Server doc N1QL intro</a> introduces up a complete guide to the N1QL language, including all of the latest additions.</p>
+<p>The <a href="#7.0@server:n1ql:n1ql-language-reference/index.adoc" class="xref unresolved">Server doc N1QL intro</a> introduces up a complete guide to the N1QL language, including all of the latest additions.</p>
 </div>
 <div class="paragraph">
 <p>The <a href="http://query.pub.couchbase.com/tutorial/#1">N1QL interactive tutorial</a> is a good introduction to the basics of N1QL use.</p>

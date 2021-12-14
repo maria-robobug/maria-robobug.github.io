@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-nodes/join-cluster-and-rebalance.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4466,7 +4466,7 @@ An independent Couchbase Server-node can be joined to an existing cluster.
 <div class="paragraph">
 <p><em>Full</em> and <em>Cluster</em> administrators can use the UI or REST API to join a Couchbase Server nodes to an existing cluster. On each node to be added, Couchbase Server must have been <em>installed and started</em>.
 The process of node-addition grants to the new node the settings already established for the parent cluster.
-(See <a href="../manage-settings/manage-settings.html" class="page">Manage Settings</a> for details.)
+(See <a href="../manage-settings/manage-settings.html" class="xref page">Manage Settings</a> for details.)
 The process allow services to be assigned to the new node.
 If the new node was previously <em>initialized</em> with custom disk-paths, these are retained (although if the UI is used for the join operation, these paths can be revised).</p>
 </div>
@@ -4475,7 +4475,7 @@ If the new node was previously <em>initialized</em> with custom disk-paths, thes
 and active member of the cluster.</p>
 </div>
 <div class="paragraph">
-<p>Note that this process has a similar effect to that described in <a href="add-node-and-rebalance.html" class="page">Add a Node and Rebalance</a>.
+<p>Note that this process has a similar effect to that described in <a href="add-node-and-rebalance.html" class="xref page">Add a Node and Rebalance</a>.
 The difference is that here, the process is inverted: rather than a cluster adding a node to itself, a node is joining itself to a cluster.</p>
 </div>
 <div class="paragraph">
@@ -4499,7 +4499,7 @@ Node-join is not supported by the CLI.</p>
 <li>
 <p>A one-node cluster already exists; and is named after its IP address: <code>10.142.181.101</code>.
 It is running the Data, Query, and Index services, and has the <code>travel-sample</code> bucket installed.
-(To access and install this, see <a href="../manage-settings/install-sample-buckets.html" class="page">Sample Buckets</a>.)</p>
+(To access and install this, see <a href="../manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a>.)</p>
 </li>
 <li>
 <p>A new node has been started. This is named after its IP address: <code>10.142.181.102</code>. It has not been initialized or provisioned.</p>
@@ -4584,7 +4584,7 @@ Note, at this point, the figure under the <strong>Items</strong> column for for 
 Meanwhile, the <strong>Items</strong> figure for <code>10.142.181.102</code> is 0/0, indicating that no items are yet distributed onto that node in either active or replica form.</p>
 </div>
 <div class="paragraph">
-<p>To access information on buckets, vBuckets, and intra-cluster replication, see the architecture  <a href="../../learn/architecture-overview.html" class="page">Overview</a>.</p>
+<p>To access information on buckets, vBuckets, and intra-cluster replication, see the architecture  <a href="../../learn/architecture-overview.html" class="xref page">Overview</a>.</p>
 </div>
 </li>
 <li>
@@ -4622,8 +4622,8 @@ Therefore, replication has successfully distributed the contents of <code>travel
 </div>
 <div class="paragraph">
 <p>Note that if rebalance fails, notifications are duly provided.
-These are described in <a href="add-node-and-rebalance.html#rebalance-failure-notification" class="page">Rebalance Failure Notification</a>.
-See also the information provided on <a href="add-node-and-rebalance.html#automated-rebalance-failure-handling" class="page">Automated Rebalance-Failure Handling</a>, and the procedure for its set-up, described in <a href="../manage-settings/general-settings.html#rebalance-settings" class="page">Rebalance Settings</a>.</p>
+These are described in <a href="add-node-and-rebalance.html#rebalance-failure-notification" class="xref page">Rebalance Failure Notification</a>.
+See also the information provided on <a href="add-node-and-rebalance.html#automated-rebalance-failure-handling" class="xref page">Automated Rebalance-Failure Handling</a>, and the procedure for its set-up, described in <a href="../manage-settings/general-settings.html#rebalance-settings" class="xref page">Rebalance Settings</a>.</p>
 </div>
 </div>
 </div>
@@ -4661,7 +4661,7 @@ Use the <code>/controller/rebalance</code> URI, as follows:</p>
 If successful, the command returns no output.</p>
 </div>
 <div class="paragraph">
-<p>For further information on joining a cluster with the REST API, see <a href="../../rest-api/rest-cluster-joinnode.html" class="page">Joining Nodes into Clusters</a>; on rebalancing, see <a href="../../rest-api/rest-cluster-rebalance.html" class="page">Rebalancing Nodes</a>.</p>
+<p>For further information on joining a cluster with the REST API, see <a href="../../rest-api/rest-cluster-joinnode.html" class="xref page">Joining Nodes into Clusters</a>; on rebalancing, see <a href="../../rest-api/rest-cluster-rebalance.html" class="xref page">Rebalancing Nodes</a>.</p>
 </div>
 </div>
 </div>
@@ -4670,7 +4670,7 @@ If successful, the command returns no output.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Couchbase Server allows you to list the nodes within a cluster.
-See <a href="list-cluster-nodes.html" class="page">List Cluster Nodes</a> for details.</p>
+See <a href="list-cluster-nodes.html" class="xref page">List Cluster Nodes</a> for details.</p>
 </div>
 </div>
 </div>

@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/adaptive-indexing.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4460,7 +4460,7 @@
 <p>Adaptive Indexes are a special type of GSI array index that can index all or specified fields of a document.
 Such an index is generic in nature, and it can efficiently index and lookup any of the index-key values.
 This enables efficient ad hoc queries (that may have WHERE clause predicates on any of the index-key fields) without requiring to create various composite indexes for different combinations of fields.
-Adaptive Index is a functional array index created using the N1QL function <a href="metafun.html#pairs" class="page">PAIRS()</a>.</p>
+Adaptive Index is a functional array index created using the N1QL function <a href="metafun.html#pairs" class="xref page">PAIRS()</a>.</p>
 </div>
 <div class="paragraph">
 <p>Basically, the idea is to be able to simply load data and start querying:</p>
@@ -4538,7 +4538,7 @@ To create an adaptive index, the overall syntax is the same as for an array inde
 </div>
 <div id="keyspace-path" class="listingblock">
 <div class="content">
-<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a> ]</pre>
+<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4548,7 +4548,7 @@ To create an adaptive index, the overall syntax is the same as for an array inde
 </div>
 <div id="keyspace-partial" class="listingblock">
 <div class="content">
-<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a></pre>
+<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4558,7 +4558,7 @@ To create an adaptive index, the overall syntax is the same as for an array inde
 </div>
 <div class="paragraph">
 <p>The simple name or fully-qualified name of the keyspace on which to create the index.
-Refer to the <a href="createindex.html#keyspace-ref" class="page">CREATE INDEX</a> statement for details of the syntax.</p>
+Refer to the <a href="createindex.html#keyspace-ref" class="xref page">CREATE INDEX</a> statement for details of the syntax.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4574,7 +4574,7 @@ Refer to the <a href="createindex.html#keyspace-ref" class="page">CREATE INDEX</
 </div>
 </div>
 <div class="paragraph">
-<p>To create an adaptive index, the index key must be a simple array expression containing a <a href="metafun.html#pairs" class="page">PAIRS()</a> function.</p>
+<p>To create an adaptive index, the index key must be a simple array expression containing a <a href="metafun.html#pairs" class="xref page">PAIRS()</a> function.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4619,7 +4619,7 @@ Refer to the <a href="createindex.html#keyspace-ref" class="page">CREATE INDEX</
 </dd>
 <dt class="hdlist1"><em>expr</em></dt>
 <dd>
-<p>A N1QL expression that is allowed in <a href="createindex.html" class="page">CREATE INDEX</a>.
+<p>A N1QL expression that is allowed in <a href="createindex.html" class="xref page">CREATE INDEX</a>.
 This must be an expression over any document fields.</p>
 </dd>
 </dl>
@@ -4635,7 +4635,7 @@ This must be an expression over any document fields.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When using <a href="metafun.html#pairs" class="page">PAIRS()</a> with an OBJECT construction, you need to keep in mind:</p>
+<p>When using <a href="metafun.html#pairs" class="xref page">PAIRS()</a> with an OBJECT construction, you need to keep in mind:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4748,7 +4748,7 @@ The <code>USING GSI</code> keywords are optional and may be omitted.</p>
 </dl>
 </div>
 <div class="paragraph">
-<p>See the <a href="createindex.html" class="page">CREATE INDEX</a> statement for more details on the syntax.</p>
+<p>See the <a href="createindex.html" class="xref page">CREATE INDEX</a> statement for more details on the syntax.</p>
 </div>
 </div>
 </div>
@@ -4759,7 +4759,7 @@ The <code>USING GSI</code> keywords are optional and may be omitted.</p>
 <div class="paragraph">
 <p>For example, consider the <code>travel-sample</code> data that is shipped with the product and the following indexes.
 Sample buckets can be installed as explained
-<a href="../../manage/manage-settings/install-sample-buckets.html" class="page">here</a>.</p>
+<a href="../../manage/manage-settings/install-sample-buckets.html" class="xref page">here</a>.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -5042,8 +5042,8 @@ For example, a modest 20 attributes will result in 20 factorial (2.43&times;10<s
 <h2 id="partial-adaptive-indexes"><a class="anchor" href="#partial-adaptive-indexes"></a>Partial Adaptive Indexes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>An adaptive index may also be a <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#partial-index" class="page">partial index</a>.
-For a partial adaptive index, you must ensure that any fields filtered by the WHERE clause in the index definition are also referenced by the <a href="metafun.html#pairs" class="page">PAIRS()</a> function.</p>
+<p>An adaptive index may also be a <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#partial-index" class="xref page">partial index</a>.
+For a partial adaptive index, you must ensure that any fields filtered by the WHERE clause in the index definition are also referenced by the <a href="metafun.html#pairs" class="xref page">PAIRS()</a> function.</p>
 </div>
 <div class="paragraph">
 <p>For example, the following query <a href="#Q9">Q7</a> cannot select the index defined in <a href="#C9A">C7A</a>.</p>
@@ -5084,7 +5084,7 @@ For a partial adaptive index, you must ensure that any fields filtered by the WH
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The WHERE clause filters on <code>activity</code>, but the <a href="metafun.html#pairs" class="page">PAIRS()</a> function does not include the <code>activity</code> field.</td>
+<td>The WHERE clause filters on <code>activity</code>, but the <a href="metafun.html#pairs" class="xref page">PAIRS()</a> function does not include the <code>activity</code> field.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -5175,7 +5175,7 @@ For a partial adaptive index, you must ensure that any fields filtered by the WH
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The WHERE clause filters on <code>activity</code>, and the <a href="metafun.html#pairs" class="page">PAIRS()</a> function includes the <code>activity</code> field.</td>
+<td>The WHERE clause filters on <code>activity</code>, and the <a href="metafun.html#pairs" class="xref page">PAIRS()</a> function includes the <code>activity</code> field.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -5184,7 +5184,7 @@ For a partial adaptive index, you must ensure that any fields filtered by the WH
 </table>
 </div>
 <div class="paragraph">
-<p>Alternatively, you can use the <code>SELF</code> keyword to ensure that the fields used in the WHERE clause are included in the <a href="metafun.html#pairs" class="page">PAIRS()</a> function.
+<p>Alternatively, you can use the <code>SELF</code> keyword to ensure that the fields used in the WHERE clause are included in the <a href="metafun.html#pairs" class="xref page">PAIRS()</a> function.
 Refer to <a href="#C5">C5</a> for an example.</p>
 </div>
 <div class="paragraph">
@@ -5280,11 +5280,11 @@ To fix this, you may need to remove the index condition from the predicate while
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>Adaptive Indexes are bound to the limitations of Array Indexes</strong> because they are built over <a href="indexing-arrays.html" class="page">Array Indexing</a> technology.
+<p><strong>Adaptive Indexes are bound to the limitations of Array Indexes</strong> because they are built over <a href="indexing-arrays.html" class="xref page">Array Indexing</a> technology.
 Index Joins can’t use Adaptive Indexes because Index Joins can’t use array indexes, and Adaptive Index is basically an array index.</p>
 </li>
 <li>
-<p><strong>Indexed entries of the Adaptive Index are typically larger in size compared to the simple index</strong> on respective fields because the indexed items are elements of the <a href="metafun.html#pairs" class="page">PAIRS()</a> array, which are basically name-value pairs of the document fields.
+<p><strong>Indexed entries of the Adaptive Index are typically larger in size compared to the simple index</strong> on respective fields because the indexed items are elements of the <a href="metafun.html#pairs" class="xref page">PAIRS()</a> array, which are basically name-value pairs of the document fields.
 So, it may be relatively slower when compared with equivalent simple index.
 For example, in the following equivalent queries, <a href="#C7">C8</a>/<a href="#Q7">Q8</a> may perform better than <a href="#C8">C9</a>/<a href="#Q8">Q9</a>.</p>
 <div class="exampleblock">
@@ -5472,7 +5472,7 @@ Whenever applicable, it is recommended to use the following techniques to minimi
 <div class="ulist">
 <ul>
 <li>
-<p>Instead of <code>SELF</code>, use selective adaptive indexes by specifying the field names of interest to the <a href="metafun.html#pairs" class="page">PAIRS()</a> function.
+<p>Instead of <code>SELF</code>, use selective adaptive indexes by specifying the field names of interest to the <a href="metafun.html#pairs" class="xref page">PAIRS()</a> function.
 For examples, refer to <a href="#C4">C4</a>, <a href="#Q1">Q1</a>, <a href="#Q2">Q2</a>, and <a href="#Q3">Q3</a> above.</p>
 </li>
 <li>

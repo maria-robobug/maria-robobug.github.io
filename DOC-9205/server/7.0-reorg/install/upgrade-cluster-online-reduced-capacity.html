@@ -13,7 +13,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/install/upgrade-cluster-online-reduced-capacity.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4465,12 +4465,12 @@ A cluster can be upgraded while still online, without additional nodes required 
 <h2 id="online-upgrade-with-reduced-capacity"><a class="anchor" href="#online-upgrade-with-reduced-capacity"></a>Understanding Reduced-Capacity Upgrade</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The context and overall requirements for upgrading a live cluster without the introduction of one or more additional nodes are described in <a href="upgrade-procedure-selection.html" class="page">Upgrade-Procedure Selection</a>: this fully explains the node-by-node upgrade of the cluster, using <em>swap rebalance</em> to minimize overhead.
+<p>The context and overall requirements for upgrading a live cluster without the introduction of one or more additional nodes are described in <a href="upgrade-procedure-selection.html" class="xref page">Upgrade-Procedure Selection</a>: this fully explains the node-by-node upgrade of the cluster, using <em>swap rebalance</em> to minimize overhead.
 It also explains how, if additional nodes are not available, the procedure can be completed with no more than the existing cluster-nodes, provided that the cluster can perform acceptably at reduced capacity, during the upgrade.</p>
 </div>
 <div class="paragraph">
 <p>The precise steps for this <em>reduced-capacity</em> procedure are provided on this page, below.
-A full understanding of the information in <a href="upgrade-procedure-selection.html" class="page">Upgrade-Procedure Selection</a> should be acquired, before proceeding.
+A full understanding of the information in <a href="upgrade-procedure-selection.html" class="xref page">Upgrade-Procedure Selection</a> should be acquired, before proceeding.
 The procedure assumes that:</p>
 </div>
 <div class="ulist">
@@ -4485,9 +4485,9 @@ Therefore, a spare node must be <em>created</em>; by withdrawal of a node from t
 <li>
 <p>During the cluster-upgrade process, <em>swap</em> nodes and <em>upgraded</em> nodes will be introduced to the cluster by the <em>node-addition</em> procedure; while <em>failed over spare nodes</em> and <em>nodes to be upgraded</em> will be withdrawn from the cluster by means of the <em>node removal</em> and <em>swap rebalance</em> procedures.</p>
 <div class="paragraph">
-<p>For information on node-addition, see <a href="../learn/clusters-and-availability/nodes.html#clusters" class="page">Clusters</a>.
-For information on node-removal, see <a href="../learn/clusters-and-availability/removal.html" class="page">Removal</a>.
-For information on <em>swap rebalance</em>, see <a href="upgrade-procedure-selection.html#swap-rebalance" class="page">Swap Rebalance</a>.</p>
+<p>For information on node-addition, see <a href="../learn/clusters-and-availability/nodes.html#clusters" class="xref page">Clusters</a>.
+For information on node-removal, see <a href="../learn/clusters-and-availability/removal.html" class="xref page">Removal</a>.
+For information on <em>swap rebalance</em>, see <a href="upgrade-procedure-selection.html#swap-rebalance" class="xref page">Swap Rebalance</a>.</p>
 </div>
 </li>
 <li>
@@ -4505,7 +4505,7 @@ For information on <em>swap rebalance</em>, see <a href="upgrade-procedure-selec
 <div class="sectionbody">
 <div class="paragraph">
 <p>Back up all cluster-data.
-This can be performed either with <a href="../backup-restore/enterprise-backup-restore.html" class="page">cbbackupmgr</a> or with the <a href="../learn/services-and-indexes/services/backup-service.html" class="page">Backup Service</a>; and should be a <em>full</em> (rather than an incremental) backup.</p>
+This can be performed either with <a href="../backup-restore/enterprise-backup-restore.html" class="xref page">cbbackupmgr</a> or with the <a href="../learn/services-and-indexes/services/backup-service.html" class="xref page">Backup Service</a>; and should be a <em>full</em> (rather than an incremental) backup.</p>
 </div>
 <div class="paragraph">
 <p>For example, to use <code>cbbackupmgr</code> to configure an archive and repository for the backup, a command of the following form should be entered:</p>
@@ -4534,7 +4534,7 @@ The <code>REPO_NAME</code> is the name of the repository that will be associated
 The <code>--full-backup</code> flag ensures that the backup is indeed a <em>full</em> backup.</p>
 </div>
 <div class="paragraph">
-<p>For the equivalent procedure as performed by the Backup Service, see <a href="../manage/manage-backup-and-restore/manage-backup-and-restore.html#run-an-immediate-backup" class="page">Run an Immediate Backup</a>.</p>
+<p>For the equivalent procedure as performed by the Backup Service, see <a href="../manage/manage-backup-and-restore/manage-backup-and-restore.html#run-an-immediate-backup" class="xref page">Run an Immediate Backup</a>.</p>
 </div>
 </div>
 </div>
@@ -4544,10 +4544,10 @@ The <code>--full-backup</code> flag ensures that the backup is indeed a <em>full
 <div class="paragraph">
 <p>Remove a node from the cluster.
 This node will function as a <em>spare</em> node; allowing <em>swap rebalance</em> to be performed on each successive node to be upgraded; and in consequence, the cluster will continue to serve data with reduced capacity.
-For information, see <a href="upgrade-procedure-selection.html#using-spare-nodes" class="page">Using Spare Nodes</a>.</p>
+For information, see <a href="upgrade-procedure-selection.html#using-spare-nodes" class="xref page">Using Spare Nodes</a>.</p>
 </div>
 <div class="paragraph">
-<p>For examples of removing a node, see <a href="../manage/manage-nodes/remove-node-and-rebalance.html" class="page">Remove a Node and Rebalance</a>.
+<p>For examples of removing a node, see <a href="../manage/manage-nodes/remove-node-and-rebalance.html" class="xref page">Remove a Node and Rebalance</a>.
 To remove a node with the Couchbase CLI, a command such as the following can be used:</p>
 </div>
 <div class="listingblock">
@@ -4562,7 +4562,7 @@ To remove a node with the Couchbase CLI, a command such as the following can be 
 The <code>NODE_HOSTNAME_OR_IP</code> is the IP address or domain name of the node that is to be removed from the cluster.</p>
 </div>
 <div class="paragraph">
-<p>For a full description of steps whereby nodes can be removed from the cluster &#8212; using the UI, CLI, and REST API &#8212; see <a href="../manage/manage-nodes/remove-node-and-rebalance.html" class="page">Remove a Node and Rebalance</a>.</p>
+<p>For a full description of steps whereby nodes can be removed from the cluster &#8212; using the UI, CLI, and REST API &#8212; see <a href="../manage/manage-nodes/remove-node-and-rebalance.html" class="xref page">Remove a Node and Rebalance</a>.</p>
 </div>
 <div class="paragraph">
 <p>From this point until the end of the cluster-upgrade process, the online cluster continues to serve data with its current number of nodes, which is one less than previously.</p>
@@ -4644,7 +4644,7 @@ Note that the following examples remove <em>Enterprise Edition</em> of Couchbase
 <li>
 <p>Manually remove files from <code>/opt/couchbase</code>.
 This folder contains configuration files for the previous server-version; which need to be overwritten by configuration files for the new version.
-If the administrator has manually included in this folder any files that were not provided by Couchbase Server, and need to be retained, these should be individually identified and backed up with with <a href="../backup-restore/enterprise-backup-restore.html" class="page">cbbackupmgr</a> or with the <a href="../learn/services-and-indexes/services/backup-service.html" class="page">Backup Service</a>.
+If the administrator has manually included in this folder any files that were not provided by Couchbase Server, and need to be retained, these should be individually identified and backed up with with <a href="../backup-restore/enterprise-backup-restore.html" class="xref page">cbbackupmgr</a> or with the <a href="../learn/services-and-indexes/services/backup-service.html" class="xref page">Backup Service</a>.
 Note also that care should taken regarding the potential removal of files used in network sharing.</p>
 <div class="paragraph">
 <p>Enter the following command:</p>
@@ -4661,7 +4661,7 @@ If such files exist, deal with them accordingly.</p>
 </li>
 <li>
 <p>Install Couchbase Server on the node.
-Follow steps 1, 2, and 3; provided in <a href="install-intro.html" class="page">Install</a>.</p>
+Follow steps 1, 2, and 3; provided in <a href="install-intro.html" class="xref page">Install</a>.</p>
 </li>
 <li>
 <p><em>Pin</em> (or <em>hold</em>) automated Couchbase-Server updates for the node.
@@ -4742,8 +4742,8 @@ For example, if the node to be removed is running the Data Service, configure th
 Couchbase Server will execute the rebalance as a <em>swap rebalance</em>, to maximize efficiency.</p>
 </div>
 <div class="paragraph">
-<p>For an overview of node-removal, see <a href="../learn/clusters-and-availability/removal.html" class="page">Removal</a>; and for practical examples of performing removal, see <a href="#manage:manage-nodes/remove-node-and-rebalance.adoc.
-For an overview of node-addition, see xref:learn:clusters-and-availability/nodes.html#clusters" class="page unresolved">Clusters</a>; and for practical examples of node-addition, see <a href="../manage/manage-nodes/add-node-and-rebalance.html" class="page">Add a Node and Rebalance</a>.</p>
+<p>For an overview of node-removal, see <a href="../learn/clusters-and-availability/removal.html" class="xref page">Removal</a>; and for practical examples of performing removal, see <a href="#manage:manage-nodes/remove-node-and-rebalance.adoc.
+For an overview of node-addition, see xref:learn:clusters-and-availability/nodes.html#clusters" class="xref unresolved">Clusters</a>; and for practical examples of node-addition, see <a href="../manage/manage-nodes/add-node-and-rebalance.html" class="xref page">Add a Node and Rebalance</a>.</p>
 </div>
 <div class="paragraph">
 <p>Note that for the CLI and REST API, the staging of a swap rebalance requires <em>two</em> separate commands.</p>
@@ -4753,15 +4753,15 @@ For an overview of node-addition, see xref:learn:clusters-and-availability/nodes
 <li>
 <p>The first specifies that one or more nodes be <em>added</em> to the cluster: however, this command requires a subsequent rebalance to be performed, to complete the process.</p>
 <div class="paragraph">
-<p>For an example of performing addition with the CLI, see <a href="../manage/manage-nodes/add-node-and-rebalance.html#add-a-node-with-the-cli" class="page">Add a Node and Rebalance with the CLI</a>.
-For an example of performing addition with the REST API, see <a href="../manage/manage-nodes/add-node-and-rebalance.html#add-a-node-with-the-rest-api" class="page">Add a Node and Rebalance with the REST API</a>.</p>
+<p>For an example of performing addition with the CLI, see <a href="../manage/manage-nodes/add-node-and-rebalance.html#add-a-node-with-the-cli" class="xref page">Add a Node and Rebalance with the CLI</a>.
+For an example of performing addition with the REST API, see <a href="../manage/manage-nodes/add-node-and-rebalance.html#add-a-node-with-the-rest-api" class="xref page">Add a Node and Rebalance with the REST API</a>.</p>
 </div>
 </li>
 <li>
 <p>The second command indeed specifies that subsequent rebalance, but also includes an instruction to <em>remove</em> one or more nodes from the cluster: therefore, as the rebalance occurs, it finalizes both node-addition and node-removal.</p>
 <div class="paragraph">
-<p>For an example of using rebalance to remove a node with the CLI, see <a href="../manage/manage-nodes/remove-node-and-rebalance.html#remove-a-node-with-the-cli" class="page">Remove a Node with the CLI</a>.
-For an example of using rebalance to remove a node with the REST API, see <a href="../manage/manage-nodes/remove-node-and-rebalance.html#remove-a-node-with-the-rest-api" class="page">Remove a Node with the REST API</a>.</p>
+<p>For an example of using rebalance to remove a node with the CLI, see <a href="../manage/manage-nodes/remove-node-and-rebalance.html#remove-a-node-with-the-cli" class="xref page">Remove a Node with the CLI</a>.
+For an example of using rebalance to remove a node with the REST API, see <a href="../manage/manage-nodes/remove-node-and-rebalance.html#remove-a-node-with-the-rest-api" class="xref page">Remove a Node with the REST API</a>.</p>
 </div>
 </li>
 </ul>

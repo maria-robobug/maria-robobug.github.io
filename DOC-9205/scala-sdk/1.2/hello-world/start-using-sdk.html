@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="scala-sdk">
 <meta name="dcterms.identifier" content="1.2">
 <meta name="page-url" content="/scala-sdk/1.2/hello-world/start-using-sdk.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3772,7 +3772,7 @@ You&#8217;ll see examples later of how to better handle a <code>Try</code>, but 
 <p>If you are connecting to Couchbase Cloud rather than a local Couchbase Server, then also refer to the <a href="#cloud-connections">Cloud section</a>, below.</p>
 </div>
 <div class="paragraph">
-<p>Couchbase uses <a href="#7.0@server:learn:security/roles.adoc" class="page unresolved">Role Based Access Control (RBAC)</a> to control access to resources, so specify the username and password of a user you&#8217;ve setup during installation of the Couchbase Data Platform.</p>
+<p>Couchbase uses <a href="#7.0@server:learn:security/roles.adoc" class="xref unresolved">Role Based Access Control (RBAC)</a> to control access to resources, so specify the username and password of a user you&#8217;ve setup during installation of the Couchbase Data Platform.</p>
 </div>
 <div class="paragraph">
 <p>Now we can open a Couchbase bucket, and its default collection:</p>
@@ -3797,7 +3797,7 @@ with all supported versions of Couchbase Server.</p>
 Opening resources such as buckets is asynchronous&#8201;&#8212;&#8201;that is, the <code>cluster.bucket</code> call returns immediately and proceeds in the background.
 <code>waitUntilReady</code> ensures that the bucket resource is fully loaded before proceeding.
 If not present, then the first Key Value (KV) operation on the bucket will wait for it to be ready.
-As with <code>Cluster.connect</code>, we use <code>.get</code> on the result here for simplicity: see the <a href="../howtos/managing-connections.html" class="page">Managing Connections</a> page for a more complete example including functional error-handling.</p>
+As with <code>Cluster.connect</code>, we use <code>.get</code> on the result here for simplicity: see the <a href="../howtos/managing-connections.html" class="xref page">Managing Connections</a> page for a more complete example including functional error-handling.</p>
 </div>
 </div>
 </div>
@@ -3819,7 +3819,7 @@ In addition you can supply JSON encoded into a <code>String</code> or <code>Arra
 The philosophy behind this library is to provide a very easy-to-use API and the fastest JSON implementation possible.</p>
 </div>
 <div class="paragraph">
-<p>These options are described in detail <a href="../howtos/json.html" class="page">here</a>, but to get us started let&#8217;s created some simple JSON using the built-in JsonObject library:</p>
+<p>These options are described in detail <a href="../howtos/json.html" class="xref page">here</a>, but to get us started let&#8217;s created some simple JSON using the built-in JsonObject library:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3872,7 +3872,7 @@ collection.get(docId) match {
 </div>
 </div>
 <div class="paragraph">
-<p>Here we&#8217;re fetching the value for the key <code>docId</code>, converting that value to a <code>JsonObjectSafe</code> (a simple wrapper around <code>JsonObject</code> that returns <code>Try</code> results - see <a href="../howtos/json.html#error-handling-and-jsonobjectsafe" class="page">here</a> for details), and then accessing the value of the <strong>status</strong> key as a String.</p>
+<p>Here we&#8217;re fetching the value for the key <code>docId</code>, converting that value to a <code>JsonObjectSafe</code> (a simple wrapper around <code>JsonObject</code> that returns <code>Try</code> results - see <a href="../howtos/json.html#error-handling-and-jsonobjectsafe" class="xref page">here</a> for details), and then accessing the value of the <strong>status</strong> key as a String.</p>
 </div>
 </div>
 </div>
@@ -3962,13 +3962,13 @@ For instance:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="page">Constrained Network Environments</a>,</p>
+<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="xref page">Constrained Network Environments</a>,</p>
 </li>
 <li>
-<p><a href="../project-docs/compatibility.html#network-requirements" class="page">Network Requirements</a>,</p>
+<p><a href="../project-docs/compatibility.html#network-requirements" class="xref page">Network Requirements</a>,</p>
 </li>
 <li>
-<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="page">Troubleshooting Guide</a>.</p>
+<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="xref page">Troubleshooting Guide</a>.</p>
 </li>
 </ul>
 </div>
@@ -3981,10 +3981,10 @@ For instance:</p>
 <p>You now know the basics of connecting to a Couchbase cluster, creating some JSON, and performing Key-Value operations, using the Scala SDK.</p>
 </div>
 <div class="paragraph">
-<p>Key-Value operations are described in detail <a href="../howtos/kv-operations.html" class="page">here</a>.</p>
+<p>Key-Value operations are described in detail <a href="../howtos/kv-operations.html" class="xref page">here</a>.</p>
 </div>
 <div class="paragraph">
-<p>For performing operations against multiple documents, check out how to use N1QL in Scala <a href="../howtos/n1ql-queries-with-sdk.html" class="page">here</a>.</p>
+<p>For performing operations against multiple documents, check out how to use N1QL in Scala <a href="../howtos/n1ql-queries-with-sdk.html" class="xref page">here</a>.</p>
 </div>
 <div class="paragraph">
 <p>The Scala SDK includes three APIs.  The examples above show the simple blocking API, for simplicity, but you can also perform all operations in an async style using Scala <code>Future</code>, and a reactive style using Project Reactor <code>SMono</code> and <code>SFlux</code>.

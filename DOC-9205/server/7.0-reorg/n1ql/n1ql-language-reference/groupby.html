@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/groupby.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4505,7 +4505,7 @@ This <code>GROUP BY</code> clause follows the <code>WHERE</code> clause and prec
 <dl>
 <dt class="hdlist1">expr</dt>
 <dd>
-<p>String or expression representing an <a href="aggregatefun.html" class="page">aggregate function</a> or field to group together.</p>
+<p>String or expression representing an <a href="aggregatefun.html" class="xref page">aggregate function</a> or field to group together.</p>
 </dd>
 </dl>
 </div>
@@ -4514,7 +4514,7 @@ This <code>GROUP BY</code> clause follows the <code>WHERE</code> clause and prec
 <h3 id="alias"><a class="anchor" href="#alias"></a>AS Alias</h3>
 <div class="paragraph">
 <p>Assigns another name to the group term.
-For details, see <a href="from.html#section_ax5_2nx_1db" class="page">AS Clause</a>.</p>
+For details, see <a href="from.html#section_ax5_2nx_1db" class="xref page">AS Clause</a>.</p>
 </div>
 <div class="paragraph">
 <p>Assigning an alias to the group term is optional.
@@ -4558,7 +4558,7 @@ If you assign an alias, the <code>AS</code> keyword may be omitted.</p>
 <p><span class="image"><img src="../_images/n1ql-language-reference/having-clause.png" alt="'HAVING' cond"></span></p>
 </div>
 <div class="paragraph">
-<p>[Optional] To return items where <a href="aggregatefun.html" class="page">aggregate</a> values meet the specified conditions.</p>
+<p>[Optional] To return items where <a href="aggregatefun.html" class="xref page">aggregate</a> values meet the specified conditions.</p>
 </div>
 <div id="having-clause-args" class="dlist">
 <dl>
@@ -4575,14 +4575,14 @@ If you assign an alias, the <code>AS</code> keyword may be omitted.</p>
 <h2 id="limitations"><a class="anchor" href="#limitations"></a>Limitations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>GROUP BY</code> works only on a group key or <a href="aggregatefun.html" class="page">aggregate function</a>.</p>
+<p><code>GROUP BY</code> works only on a group key or <a href="aggregatefun.html" class="xref page">aggregate function</a>.</p>
 </div>
 <div class="paragraph">
 <p>A query needs a predicate on a leading index key to ensure that the optimizer can select a secondary index for the query.
 Without a matching predicate, the query will use the primary index.
 The simplest predicate is <code>WHERE <em>leading-index-key</em> IS NOT MISSING</code>.
 This is usually only necessary in queries which do not otherwise have a WHERE clause; for example, some GROUP BY and aggregate queries.
-For more details, refer to <a href="selectintro.html#index-selection" class="page">Index Selection</a>.</p>
+For more details, refer to <a href="selectintro.html#index-selection" class="xref page">Index Selection</a>.</p>
 </div>
 </div>
 </div>
@@ -4698,7 +4698,7 @@ HAVING COUNT(DISTINCT name) &gt; 180;</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The above <code>HAVING</code> clause must use the <a href="aggregatefun.html" class="page">aggregate function</a> <code>COUNT</code> instead of its alias <code>LandmarkCount</code>.
+The above <code>HAVING</code> clause must use the <a href="aggregatefun.html" class="xref page">aggregate function</a> <code>COUNT</code> instead of its alias <code>LandmarkCount</code>.
 </td>
 </tr>
 </table>
@@ -4847,7 +4847,7 @@ The alias in the <code>GROUP BY</code> clause enables you to refer to the <code>
 <div class="ulist">
 <ul>
 <li>
-<p>For further examples, refer to <a href="groupby-aggregate-performance.html" class="page">Group By and Aggregate Performance</a>.</p>
+<p>For further examples, refer to <a href="groupby-aggregate-performance.html" class="xref page">Group By and Aggregate Performance</a>.</p>
 </li>
 </ul>
 </div>

@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="dotnet-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/dotnet-sdk/DOC-9205/howtos/analytics-using-sdk.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3677,8 +3677,8 @@ Parallel data management for complex queries over many records, using a familiar
 </blockquote>
 </div>
 <div class="paragraph">
-<p>For complex and long-running queries, involving large ad hoc join, set, aggregation, and grouping operations, Couchbase Data Platform offers the <a href="#7.0@server:analytics:introduction.adoc" class="page unresolved">Couchbase Analytics Service (CBAS)</a>.
-This is the analytic counterpart to our <a href="n1ql-queries-with-sdk.html" class="page">operational data focussed Query Service</a>.
+<p>For complex and long-running queries, involving large ad hoc join, set, aggregation, and grouping operations, Couchbase Data Platform offers the <a href="#7.0@server:analytics:introduction.adoc" class="xref unresolved">Couchbase Analytics Service (CBAS)</a>.
+This is the analytic counterpart to our <a href="n1ql-queries-with-sdk.html" class="xref page">operational data focussed Query Service</a>.
 The analytics service is available in Couchbase Data Platform 6.0 and later (developer preview in 5.5).</p>
 </div>
 </div>
@@ -3687,7 +3687,7 @@ The analytics service is available in Couchbase Data Platform 6.0 and later (dev
 <h2 id="getting-started"><a class="anchor" href="#getting-started"></a>Getting Started</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>After familiarizing yourself with our <a href="#7.0@server:analytics:primer-beer.adoc" class="page unresolved">introductory primer</a>,
+<p>After familiarizing yourself with our <a href="#7.0@server:analytics:primer-beer.adoc" class="xref unresolved">introductory primer</a>,
 in particular creating a dataset and linking it to a bucket to shadow the operational data,
 try Couchbase Analytics using the .NET SDK.
 Intentionally, the API for analytics is very similar to that of the query service.
@@ -3768,7 +3768,7 @@ Uses the <code>ClientContextId(String)</code> builder; default is a random UUID<
 <p><strong>Server Side Timeout</strong>, customizes the timeout sent to the server.
 Does not usually have to be set, as the client sets it based on the timeout on the operation.
 Uses the <code>Timeout(TimeSpan)</code> builder, and defaults to the Analytics timeout set on the client (75s).
-This can be adjusted at the <a href="../ref/client-settings.html#timeout-options" class="page">cluster global config level</a>.</p>
+This can be adjusted at the <a href="../ref/client-settings.html#timeout-options" class="xref page">cluster global config level</a>.</p>
 </li>
 <li>
 <p><strong>Priority</strong>, set if the request should have priority over others.
@@ -3799,7 +3799,7 @@ The <code>Priority(boolean)</code> builder defaults to <code>false</code>.</p>
 <p>After checking that <code>QueryStatus</code> is success, we iterate over the rows.
 These rows may contain various sorts of data and metadata,
 depending upon the nature of the query,
-as you will have seen when working through our <a href="#7.0@server:analytics:primer-beer.adoc" class="page unresolved">introductory primer</a>.</p>
+as you will have seen when working through our <a href="#7.0@server:analytics:primer-beer.adoc" class="xref unresolved">introductory primer</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3828,7 +3828,7 @@ catch (AnalyticsException exception)
 <p>Check the xref:[Errors] list for possible values to be returned in the <code>List&lt;Error&gt;</code>, should <code>QueryStatus</code> return as <code>Errors</code>.</p>
 </div>
 <div class="paragraph">
-<p>Common errors are listed in our <a href="../ref/error-codes.html#analytics-errors" class="page">Errors Reference doc</a>, with exceptions caused by resource unavailability (such as timeouts and <em>Operation cannot be performed during rebalance</em> messages) leading to an <a href="error-handling.html#retry" class="page">automatic retry</a> by the SDK.</p>
+<p>Common errors are listed in our <a href="../ref/error-codes.html#analytics-errors" class="xref page">Errors Reference doc</a>, with exceptions caused by resource unavailability (such as timeouts and <em>Operation cannot be performed during rebalance</em> messages) leading to an <a href="error-handling.html#retry" class="xref page">automatic retry</a> by the SDK.</p>
 </div>
 <div class="sect2">
 <h3 id="metadata"><a class="anchor" href="#metadata"></a>MetaData</h3>
@@ -3847,7 +3847,7 @@ Console.WriteLine($”Error count: {result.MetaData.Metrics.ErrorCount}”);</co
 </div>
 </div>
 <div class="paragraph">
-<p>For a listing of available <code>Metrics</code> in <code>MetaData</code>, see the <a href="../concept-docs/analytics-for-sdk-users.html" class="page">Understanding Analytics</a> SDK doc.</p>
+<p>For a listing of available <code>Metrics</code> in <code>MetaData</code>, see the <a href="../concept-docs/analytics-for-sdk-users.html" class="xref page">Understanding Analytics</a> SDK doc.</p>
 </div>
 </div>
 </div>
@@ -3871,7 +3871,7 @@ This then allows the results themselves to be queried in turn.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-From .NET SDK 3.1, KV Ingest has an Interface Level of <a href="../project-docs/compatibility.html#interface-stability" class="page">Uncommited</a>.
+From .NET SDK 3.1, KV Ingest has an Interface Level of <a href="../project-docs/compatibility.html#interface-stability" class="xref page">Uncommited</a>.
 </td>
 </tr>
 </table>

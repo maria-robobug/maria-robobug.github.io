@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/tools/query-workbench.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4474,7 +4474,7 @@ The Query Workbench provides a rich graphical user interface to perform query de
 <p>Easy viewing and editing of complex queries by providing features such as multi-line formatting, copy-and-paste, syntax coloring, auto completion of N1QL keywords and keyspace and field names, and easy cursor movement.</p>
 </li>
 <li>
-<p>View the structure of the documents in a keyspace by using the N1QL <a href="../n1ql/n1ql-language-reference/infer.html" class="page">INFER</a> command.
+<p>View the structure of the documents in a keyspace by using the N1QL <a href="../n1ql/n1ql-language-reference/infer.html" class="xref page">INFER</a> command.
 You no longer have to select the documents at random and guess the structure of the document.</p>
 </li>
 <li>
@@ -4639,10 +4639,10 @@ A scope drop-down menu appears to the right.</p>
 The scope drop-down menu disappears.</p>
 </div>
 <div class="paragraph">
-<p>To set the query context from the cbq shell or the REST API, use the <a href="../settings/query-settings.html#query_context" class="page">query_context</a> request-level parameter.</p>
+<p>To set the query context from the cbq shell or the REST API, use the <a href="../settings/query-settings.html#query_context" class="xref page">query_context</a> request-level parameter.</p>
 </div>
 <div class="paragraph">
-<p>For more information on scopes and collections, refer to <a href="../learn/data/scopes-and-collections.html" class="page">Scopes and Collections</a>.</p>
+<p>For more information on scopes and collections, refer to <a href="../learn/data/scopes-and-collections.html" class="xref page">Scopes and Collections</a>.</p>
 </div>
 </div>
 </div>
@@ -4878,7 +4878,7 @@ In some cases this may impact server performance.</p>
 </dd>
 <dt class="hdlist1">Use Cost-Based Optimizer</dt>
 <dd>
-<p>Specifies whether the <a href="../n1ql/n1ql-language-reference/cost-based-optimizer.html" class="page">cost-based optimizer</a> is enabled.</p>
+<p>Specifies whether the <a href="../n1ql/n1ql-language-reference/cost-based-optimizer.html" class="xref page">cost-based optimizer</a> is enabled.</p>
 </dd>
 <dt class="hdlist1">Don&#8217;t save query history</dt>
 <dd>
@@ -4890,7 +4890,7 @@ When selected, any query history will be lost when you leave or refresh the quer
 <dd>
 <p>Specifies the maximum parallelism for the query.
 If you do not specify, the cbq-engine uses its default value.
-For more information, refer to the <a href="../settings/query-settings.html#max_parallelism" class="page">max_parallelism</a> parameter.</p>
+For more information, refer to the <a href="../settings/query-settings.html#max_parallelism" class="xref page">max_parallelism</a> parameter.</p>
 </dd>
 <dt class="hdlist1">Scan Consistency</dt>
 <dd>
@@ -4910,7 +4910,7 @@ Select one of the following options:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>For more information, refer to the <a href="../settings/query-settings.html#scan_consistency" class="page">scan_consistency</a> parameter.</p>
+<p>For more information, refer to the <a href="../settings/query-settings.html#scan_consistency" class="xref page">scan_consistency</a> parameter.</p>
 </div>
 </dd>
 <dt class="hdlist1">Positional Parameters</dt>
@@ -4928,13 +4928,13 @@ Otherwise, they are interpreted as parameters to the Query REST API.</p>
 <dt class="hdlist1">Query Timeout</dt>
 <dd>
 <p>Specifies the maximum time to spend on a query before timing out.
-For more information, refer to the <a href="../settings/query-settings.html#timeout_req" class="page">timeout</a> parameter.</p>
+For more information, refer to the <a href="../settings/query-settings.html#timeout_req" class="xref page">timeout</a> parameter.</p>
 </dd>
 <dt class="hdlist1">Transaction Timeout</dt>
 <dd>
 <p>Specifies the maximum time to spend on a transaction before timing out.
-Only applies to <a href="../n1ql/n1ql-language-reference/begin-transaction.html" class="page">BEGIN TRANSACTION</a> statements, or statements executed with the <b class="button">Run as TX</b> button.
-For more information, refer to the <a href="../settings/query-settings.html#txtimeout_req" class="page">txtimeout</a> parameter.</p>
+Only applies to <a href="../n1ql/n1ql-language-reference/begin-transaction.html" class="xref page">BEGIN TRANSACTION</a> statements, or statements executed with the <b class="button">Run as TX</b> button.
+For more information, refer to the <a href="../settings/query-settings.html#txtimeout_req" class="xref page">txtimeout</a> parameter.</p>
 </dd>
 </dl>
 </div>
@@ -4992,7 +4992,7 @@ If there are any indexes within that collection, an <strong class="ui">Indexes</
 </div>
 <div class="paragraph">
 <p>You can expand any document flavor to view the schema for those documents: field names, types, and if you hover the mouse pointer over a field name, you can see example values for that field.
-Keyspace analysis is based on the N1QL <a href="../n1ql/n1ql-language-reference/infer.html" class="page">INFER</a> statement, which you can run manually to get more detailed results.</p>
+Keyspace analysis is based on the N1QL <a href="../n1ql/n1ql-language-reference/infer.html" class="xref page">INFER</a> statement, which you can run manually to get more detailed results.</p>
 </div>
 <div class="paragraph">
 <p>You can expand the <strong class="ui">Indexes</strong> heading to view the names and definitions of the indexes within the collection.</p>
@@ -5013,7 +5013,7 @@ To force the <strong class="ui">Explore Your Data</strong> area to update, click
 <div class="sectionbody">
 <div class="paragraph">
 <p>When you execute a query, the results are displayed in the <strong class="ui">Results</strong> area.
-Since large result sets can take a long time to display, we recommend using the <a href="../n1ql/n1ql-language-reference/limit.html" class="page">LIMIT</a> clause as part of your query when appropriate.</p>
+Since large result sets can take a long time to display, we recommend using the <a href="../n1ql/n1ql-language-reference/limit.html" class="xref page">LIMIT</a> clause as part of your query when appropriate.</p>
 </div>
 <div class="paragraph">
 <p>When a query finishes, the query metrics for that query are displayed to the right of the <b class="button">Execute</b> button.</p>
@@ -5040,7 +5040,7 @@ The values can be: success, failed, or HTTP codes.</p>
 <dt class="hdlist1">Mutation Count</dt>
 <dd>
 <p>Shows the number of documents deleted or changed by the query.
-This appears only for <a href="../n1ql/n1ql-language-reference/update.html" class="page">UPDATE</a> and <a href="../n1ql/n1ql-language-reference/delete.html" class="page">DELETE</a> queries instead of Result Count.</p>
+This appears only for <a href="../n1ql/n1ql-language-reference/update.html" class="xref page">UPDATE</a> and <a href="../n1ql/n1ql-language-reference/delete.html" class="xref page">DELETE</a> queries instead of Result Count.</p>
 </dd>
 <dt class="hdlist1">Result Size</dt>
 <dd>
@@ -5100,7 +5100,7 @@ You can sort a column by clicking the column header.</p>
 <h2 id="query-plans"><a class="anchor" href="#query-plans"></a>Query Plans</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Each time a query is executed, an <a href="../n1ql/n1ql-language-reference/explain.html" class="page">EXPLAIN</a> command is automatically run in the background to retrieve the query plan for that query.</p>
+<p>Each time a query is executed, an <a href="../n1ql/n1ql-language-reference/explain.html" class="xref page">EXPLAIN</a> command is automatically run in the background to retrieve the query plan for that query.</p>
 </div>
 <div class="paragraph">
 <p>To display the query plan, click the <strong>Plan</strong> link or the <strong>Plan Text</strong> link in the <strong class="ui">Results</strong> area.
@@ -5197,7 +5197,7 @@ Projection is split into two parts (one before Order and one after Order), but Q
 <div class="sect2">
 <h3 id="plan-text"><a class="anchor" href="#plan-text"></a>Plan Text</h3>
 <div class="paragraph">
-<p>This simply shows the text output of the <a href="../n1ql/n1ql-language-reference/explain.html" class="page">EXPLAIN</a> command.</p>
+<p>This simply shows the text output of the <a href="../n1ql/n1ql-language-reference/explain.html" class="xref page">EXPLAIN</a> command.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -5282,7 +5282,7 @@ You can change the type of chart, labels and data set by selecting from the thre
 <p><span class="edition"><a href="https://www.couchbase.com/products/editions">ENTERPRISE EDITION</a></span></p>
 </div>
 <div class="paragraph">
-<p>When you execute a <a href="../n1ql/n1ql-language-reference/selectintro.html" class="page">SELECT</a> query, a <a href="../n1ql/n1ql-language-reference/merge.html" class="page">MERGE</a> query, an <a href="../n1ql/n1ql-language-reference/update.html" class="page">UPDATE</a> query, or a <a href="../n1ql/n1ql-language-reference/delete.html" class="page">DELETE</a> query, an <a href="../n1ql/n1ql-language-reference/advise.html" class="page">ADVISE</a> command is automatically run in the background to generate index advice for that query.</p>
+<p>When you execute a <a href="../n1ql/n1ql-language-reference/selectintro.html" class="xref page">SELECT</a> query, a <a href="../n1ql/n1ql-language-reference/merge.html" class="xref page">MERGE</a> query, an <a href="../n1ql/n1ql-language-reference/update.html" class="xref page">UPDATE</a> query, or a <a href="../n1ql/n1ql-language-reference/delete.html" class="xref page">DELETE</a> query, an <a href="../n1ql/n1ql-language-reference/advise.html" class="xref page">ADVISE</a> command is automatically run in the background to generate index advice for that query.</p>
 </div>
 <div class="paragraph">
 <p>To display the index advice in graphical format, click the <strong>Advice</strong> link in the <strong class="ui">Results</strong> area.
@@ -5320,7 +5320,7 @@ This process may take a while.</p>
 </dd>
 <dt class="hdlist1">Covered Index Recommendations</dt>
 <dd>
-<p>If the Index Advisor can also recommend any <a href="../n1ql/n1ql-language-reference/covering-indexes.html" class="page">covering indexes</a> for this query, in addition to the secondary indexes, array indexes, functional indexes, or partial indexes, they are listed under this heading.</p>
+<p>If the Index Advisor can also recommend any <a href="../n1ql/n1ql-language-reference/covering-indexes.html" class="xref page">covering indexes</a> for this query, in addition to the secondary indexes, array indexes, functional indexes, or partial indexes, they are listed under this heading.</p>
 <div class="paragraph">
 <p>You can click <b class="button">Create &amp; Build Covered Indexes</b> to create and build these recommended indexes.
 (The exact name of this button reflects the number of covering indexes that the Index Advisor recommends.)
@@ -5349,7 +5349,7 @@ This process may take a while.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="../n1ql/n1ql-language-reference/advise.html#recommendation-rules" class="page">Recommendation Rules</a> for details of the rules that the index advisor uses to recommend an index.</p>
+<p>Refer to <a href="../n1ql/n1ql-language-reference/advise.html#recommendation-rules" class="xref page">Recommendation Rules</a> for details of the rules that the index advisor uses to recommend an index.</p>
 </div>
 </div>
 </div>
@@ -5357,7 +5357,7 @@ This process may take a while.</p>
 <div id="footnotes">
 <hr>
 <div class="footnote" id="_footnotedef_1">
-<a href="#_footnoteref_1">1</a>. If there is no primary index on a collection, the count of documents within the collection includes any <a href="../learn/data/transactions.html#additional-storage-use" class="page">transaction records</a> that may be stored in that collection. However, if there is a primary index on the collection, the count of documents does not include transaction records.
+<a href="#_footnoteref_1">1</a>. If there is no primary index on a collection, the count of documents within the collection includes any <a href="../learn/data/transactions.html#additional-storage-use" class="xref page">transaction records</a> that may be stored in that collection. However, if there is a primary index on the collection, the count of documents does not include transaction records.
 </div>
 </div>
 </article>

@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/select-syntax.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4540,8 +4540,8 @@ This page enables you to drill down through the syntax of a SELECT query.
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>with-clause ::= WITH <a href="identifiers.html#identifier-alias" class="page">alias</a> AS '(' ( <a href="#select">select</a> | <a href="index.html#N1QL_Expressions" class="page">expression</a> ) ')'
-               [ ',' <a href="identifiers.html#identifier-alias" class="page">alias</a> AS '(' ( <a href="#select">select</a> | <a href="index.html#N1QL_Expressions" class="page">expression</a> ) ')' ]*</pre>
+<pre>with-clause ::= WITH <a href="identifiers.html#identifier-alias" class="xref page">alias</a> AS '(' ( <a href="#select">select</a> | <a href="index.html#N1QL_Expressions" class="xref page">expression</a> ) ')'
+               [ ',' <a href="identifiers.html#identifier-alias" class="xref page">alias</a> AS '(' ( <a href="#select">select</a> | <a href="index.html#N1QL_Expressions" class="xref page">expression</a> ) ')' ]*</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4557,7 +4557,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 <div class="listingblock">
 <div class="content">
 <pre>select-clause ::= SELECT [ ALL | DISTINCT ]
-                ( <a href="index.html#N1QL_Expressions" class="page">result-expr</a> [ , <a href="index.html#N1QL_Expressions" class="page">result-expr</a> ]* | ( RAW | ELEMENT | VALUE ) <a href="index.html#N1QL_Expressions" class="page">expr</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="page">alias</a> ] )</pre>
+                ( <a href="index.html#N1QL_Expressions" class="xref page">result-expr</a> [ , <a href="index.html#N1QL_Expressions" class="xref page">result-expr</a> ]* | ( RAW | ELEMENT | VALUE ) <a href="index.html#N1QL_Expressions" class="xref page">expr</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="xref page">alias</a> ] )</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4592,7 +4592,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="from-keyspace" class="listingblock">
 <div class="content">
-<pre>from-keyspace ::= <a href="#keyspace-ref">keyspace-ref</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="page">alias</a> ] [ <a href="#use-clause">use-clause</a> ]</pre>
+<pre>from-keyspace ::= <a href="#keyspace-ref">keyspace-ref</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="xref page">alias</a> ] [ <a href="#use-clause">use-clause</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4632,7 +4632,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="namespace" class="listingblock">
 <div class="content">
-<pre>namespace ::= <a href="identifiers.html" class="page">identifier</a></pre>
+<pre>namespace ::= <a href="identifiers.html" class="xref page">identifier</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4642,7 +4642,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="bucket" class="listingblock">
 <div class="content">
-<pre>bucket ::= <a href="identifiers.html" class="page">identifier</a></pre>
+<pre>bucket ::= <a href="identifiers.html" class="xref page">identifier</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4652,7 +4652,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="scope" class="listingblock">
 <div class="content">
-<pre>scope ::= <a href="identifiers.html" class="page">identifier</a></pre>
+<pre>scope ::= <a href="identifiers.html" class="xref page">identifier</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4662,7 +4662,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="collection" class="listingblock">
 <div class="content">
-<pre>collection ::= <a href="identifiers.html" class="page">identifier</a></pre>
+<pre>collection ::= <a href="identifiers.html" class="xref page">identifier</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4672,7 +4672,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="from-subquery" class="listingblock">
 <div class="content">
-<pre>from-subquery ::= <a href="#subquery-expr">subquery-expr</a> [ AS ] <a href="identifiers.html#identifier-alias" class="page">alias</a></pre>
+<pre>from-subquery ::= <a href="#subquery-expr">subquery-expr</a> [ AS ] <a href="identifiers.html#identifier-alias" class="xref page">alias</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4692,7 +4692,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="from-generic" class="listingblock">
 <div class="content">
-<pre>from-generic ::= <a href="index.html#N1QL_Expressions" class="page">expr</a> [ AS <a href="identifiers.html#identifier-alias" class="page">alias</a> ]</pre>
+<pre>from-generic ::= <a href="index.html#N1QL_Expressions" class="xref page">expr</a> [ AS <a href="identifiers.html#identifier-alias" class="xref page">alias</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4749,7 +4749,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="rhs-keyspace" class="listingblock">
 <div class="content">
-<pre>rhs-keyspace ::= <a href="#keyspace-ref">keyspace-ref</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="page">alias</a> ]</pre>
+<pre>rhs-keyspace ::= <a href="#keyspace-ref">keyspace-ref</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="xref page">alias</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4759,7 +4759,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="rhs-subquery" class="listingblock">
 <div class="content">
-<pre>rhs-subquery ::= <a href="#subquery-expr">subquery-expr</a> [ AS ] <a href="identifiers.html#identifier-alias" class="page">alias</a></pre>
+<pre>rhs-subquery ::= <a href="#subquery-expr">subquery-expr</a> [ AS ] <a href="identifiers.html#identifier-alias" class="xref page">alias</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4769,7 +4769,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="rhs-generic" class="listingblock">
 <div class="content">
-<pre>rhs-generic ::= <a href="index.html#N1QL_Expressions" class="page">expr</a> [ AS <a href="identifiers.html#identifier-alias" class="page">alias</a> ]</pre>
+<pre>rhs-generic ::= <a href="index.html#N1QL_Expressions" class="xref page">expr</a> [ AS <a href="identifiers.html#identifier-alias" class="xref page">alias</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4859,7 +4859,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="ansi-join-predicate" class="listingblock">
 <div class="content">
-<pre>ansi-join-predicate ::= ON <a href="index.html#N1QL_Expressions" class="page">expr</a></pre>
+<pre>ansi-join-predicate ::= ON <a href="index.html#N1QL_Expressions" class="xref page">expr</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4892,7 +4892,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="lookup-join-rhs" class="listingblock">
 <div class="content">
-<pre>lookup-join-rhs ::= <a href="#keyspace-ref">keyspace-ref</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="page">alias</a> ]</pre>
+<pre>lookup-join-rhs ::= <a href="#keyspace-ref">keyspace-ref</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="xref page">alias</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4902,7 +4902,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="lookup-join-predicate" class="listingblock">
 <div class="content">
-<pre>lookup-join-predicate ::= ON [ PRIMARY ] KEYS <a href="index.html#N1QL_Expressions" class="page">expr</a></pre>
+<pre>lookup-join-predicate ::= ON [ PRIMARY ] KEYS <a href="index.html#N1QL_Expressions" class="xref page">expr</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4935,7 +4935,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="index-join-rhs" class="listingblock">
 <div class="content">
-<pre>index-join-rhs ::= <a href="#keyspace-ref">keyspace-ref</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="page">alias</a> ]</pre>
+<pre>index-join-rhs ::= <a href="#keyspace-ref">keyspace-ref</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="xref page">alias</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4945,7 +4945,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="index-join-predicate" class="listingblock">
 <div class="content">
-<pre>index-join-predicate ::= ON [ PRIMARY ] KEY <a href="index.html#N1QL_Expressions" class="page">expr</a> FOR <a href="identifiers.html#identifier-alias" class="page">alias</a></pre>
+<pre>index-join-predicate ::= ON [ PRIMARY ] KEY <a href="index.html#N1QL_Expressions" class="xref page">expr</a> FOR <a href="identifiers.html#identifier-alias" class="xref page">alias</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4993,7 +4993,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="ansi-nest-rhs" class="listingblock">
 <div class="content">
-<pre>ansi-nest-rhs ::= <a href="#keyspace-ref">keyspace-ref</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="page">alias</a> ]</pre>
+<pre>ansi-nest-rhs ::= <a href="#keyspace-ref">keyspace-ref</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="xref page">alias</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5003,7 +5003,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="ansi-nest-predicate" class="listingblock">
 <div class="content">
-<pre>ansi-nest-predicate ::= ON <a href="index.html#N1QL_Expressions" class="page">expr</a></pre>
+<pre>ansi-nest-predicate ::= ON <a href="index.html#N1QL_Expressions" class="xref page">expr</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5036,7 +5036,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="lookup-nest-rhs" class="listingblock">
 <div class="content">
-<pre>lookup-nest-rhs ::= <a href="#keyspace-ref">keyspace-ref</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="page">alias</a> ]</pre>
+<pre>lookup-nest-rhs ::= <a href="#keyspace-ref">keyspace-ref</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="xref page">alias</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5046,7 +5046,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="lookup-nest-predicate" class="listingblock">
 <div class="content">
-<pre>lookup-nest-predicate ::= ON KEYS <a href="index.html#N1QL_Expressions" class="page">expr</a></pre>
+<pre>lookup-nest-predicate ::= ON KEYS <a href="index.html#N1QL_Expressions" class="xref page">expr</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5079,7 +5079,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="index-nest-rhs" class="listingblock">
 <div class="content">
-<pre>index-nest-rhs ::= <a href="#keyspace-ref">keyspace-ref</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="page">alias</a> ]</pre>
+<pre>index-nest-rhs ::= <a href="#keyspace-ref">keyspace-ref</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="xref page">alias</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5089,7 +5089,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="index-nest-predicate" class="listingblock">
 <div class="content">
-<pre>index-nest-predicate ::= ON KEY <a href="index.html#N1QL_Expressions" class="page">expr</a> FOR <a href="identifiers.html#identifier-alias" class="page">alias</a></pre>
+<pre>index-nest-predicate ::= ON KEY <a href="index.html#N1QL_Expressions" class="xref page">expr</a> FOR <a href="identifiers.html#identifier-alias" class="xref page">alias</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5105,7 +5105,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>unnest-clause ::= <a href="#from-term">from-term</a> [ <a href="#unnest-type">unnest-type</a> ] ( UNNEST | FLATTEN ) <a href="index.html#N1QL_Expressions" class="page">expr</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="page">alias</a> ]</pre>
+<pre>unnest-clause ::= <a href="#from-term">from-term</a> [ <a href="#unnest-type">unnest-type</a> ] ( UNNEST | FLATTEN ) <a href="index.html#N1QL_Expressions" class="xref page">expr</a> [ [ AS ] <a href="identifiers.html#identifier-alias" class="xref page">alias</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5150,7 +5150,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="use-keys-term" class="listingblock">
 <div class="content">
-<pre>use-keys-term ::= [ PRIMARY ] KEYS <a href="index.html#N1QL_Expressions" class="page">expr</a></pre>
+<pre>use-keys-term ::= [ PRIMARY ] KEYS <a href="index.html#N1QL_Expressions" class="xref page">expr</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5190,7 +5190,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="index-name" class="listingblock">
 <div class="content">
-<pre>index-name ::= <a href="identifiers.html" class="page">identifier</a></pre>
+<pre>index-name ::= <a href="identifiers.html" class="xref page">identifier</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5215,7 +5215,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>let-clause ::= LET <a href="identifiers.html#identifier-alias" class="page">alias</a> '=' <a href="index.html#N1QL_Expressions" class="page">expr</a> [ ',' <a href="identifiers.html#identifier-alias" class="page">alias</a> '=' <a href="index.html#N1QL_Expressions" class="page">expr</a> ]*</pre>
+<pre>let-clause ::= LET <a href="identifiers.html#identifier-alias" class="xref page">alias</a> '=' <a href="index.html#N1QL_Expressions" class="xref page">expr</a> [ ',' <a href="identifiers.html#identifier-alias" class="xref page">alias</a> '=' <a href="index.html#N1QL_Expressions" class="xref page">expr</a> ]*</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5240,7 +5240,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="cond" class="listingblock">
 <div class="content">
-<pre>cond ::= <a href="index.html#N1QL_Expressions" class="page">expr</a></pre>
+<pre>cond ::= <a href="index.html#N1QL_Expressions" class="xref page">expr</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5255,7 +5255,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>group-by-clause ::= GROUP BY <a href="index.html#N1QL_Expressions" class="page">expr</a> [ ',' <a href="index.html#N1QL_Expressions" class="page">expr</a> ]* [ <a href="#letting-clause">letting-clause</a> ] [ <a href="#having-clause">having-clause</a> ] | <a href="#letting-clause">letting-clause</a></pre>
+<pre>group-by-clause ::= GROUP BY <a href="index.html#N1QL_Expressions" class="xref page">expr</a> [ ',' <a href="index.html#N1QL_Expressions" class="xref page">expr</a> ]* [ <a href="#letting-clause">letting-clause</a> ] [ <a href="#having-clause">having-clause</a> ] | <a href="#letting-clause">letting-clause</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5265,7 +5265,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="letting-clause" class="listingblock">
 <div class="content">
-<pre>letting-clause ::= LETTING <a href="identifiers.html#identifier-alias" class="page">alias</a> '=' <a href="index.html#N1QL_Expressions" class="page">expr</a> [ ',' <a href="identifiers.html#identifier-alias" class="page">alias</a> '=' <a href="index.html#N1QL_Expressions" class="page">expr</a> ]*</pre>
+<pre>letting-clause ::= LETTING <a href="identifiers.html#identifier-alias" class="xref page">alias</a> '=' <a href="index.html#N1QL_Expressions" class="xref page">expr</a> [ ',' <a href="identifiers.html#identifier-alias" class="xref page">alias</a> '=' <a href="index.html#N1QL_Expressions" class="xref page">expr</a> ]*</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5310,7 +5310,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="window-name" class="listingblock">
 <div class="content">
-<pre>window-name ::= <a href="identifiers.html" class="page">identifier</a></pre>
+<pre>window-name ::= <a href="identifiers.html" class="xref page">identifier</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5331,7 +5331,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="window-ref" class="listingblock">
 <div class="content">
-<pre>window-ref ::= <a href="identifiers.html" class="page">identifier</a></pre>
+<pre>window-ref ::= <a href="identifiers.html" class="xref page">identifier</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5341,7 +5341,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="window-partition-clause" class="listingblock">
 <div class="content">
-<pre>window-partition-clause ::= PARTITION BY <a href="index.html#N1QL_Expressions" class="page">expr</a> [ ',' <a href="index.html#N1QL_Expressions" class="page">expr</a> ]*</pre>
+<pre>window-partition-clause ::= PARTITION BY <a href="index.html#N1QL_Expressions" class="xref page">expr</a> [ ',' <a href="index.html#N1QL_Expressions" class="xref page">expr</a> ]*</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5371,11 +5371,11 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="window-frame-extent" class="listingblock">
 <div class="content">
-<pre>window-frame-extent ::= UNBOUNDED PRECEDING | <a href="literals.html#numbers" class="page">valexpr</a> PRECEDING | CURRENT ROW |
+<pre>window-frame-extent ::= UNBOUNDED PRECEDING | <a href="literals.html#numbers" class="xref page">valexpr</a> PRECEDING | CURRENT ROW |
                         BETWEEN ( UNBOUNDED PRECEDING | CURRENT ROW |
-                                  <a href="literals.html#numbers" class="page">valexpr</a> ( PRECEDING | FOLLOWING ) )
+                                  <a href="literals.html#numbers" class="xref page">valexpr</a> ( PRECEDING | FOLLOWING ) )
                             AND ( UNBOUNDED FOLLOWING | CURRENT ROW |
-                                  <a href="literals.html#numbers" class="page">valexpr</a> ( PRECEDING | FOLLOWING ) )</pre>
+                                  <a href="literals.html#numbers" class="xref page">valexpr</a> ( PRECEDING | FOLLOWING ) )</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5410,7 +5410,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 </div>
 <div id="ordering-term" class="listingblock">
 <div class="content">
-<pre>ordering-term::= <a href="index.html#N1QL_Expressions" class="page">expr</a> [ ASC | DESC ] [ NULLS ( FIRST | LAST ) ]</pre>
+<pre>ordering-term::= <a href="index.html#N1QL_Expressions" class="xref page">expr</a> [ ASC | DESC ] [ NULLS ( FIRST | LAST ) ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5425,7 +5425,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>limit-clause ::= LIMIT <a href="index.html#N1QL_Expressions" class="page">expr</a></pre>
+<pre>limit-clause ::= LIMIT <a href="index.html#N1QL_Expressions" class="xref page">expr</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5440,7 +5440,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>offset-clause ::= OFFSET <a href="index.html#N1QL_Expressions" class="page">expr</a></pre>
+<pre>offset-clause ::= OFFSET <a href="index.html#N1QL_Expressions" class="xref page">expr</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5456,7 +5456,7 @@ This page enables you to drill down through the syntax of a SELECT query.
 <div class="ulist">
 <ul>
 <li>
-<p><a href="conventions.html" class="page">Conventions</a></p>
+<p><a href="conventions.html" class="xref page">Conventions</a></p>
 </li>
 </ul>
 </div>

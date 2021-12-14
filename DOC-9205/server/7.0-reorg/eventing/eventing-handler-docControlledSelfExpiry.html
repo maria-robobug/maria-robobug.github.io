@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/eventing/eventing-handler-docControlledSelfExpiry.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4486,7 +4486,7 @@
 <p>As an absolute Unix time stamp. If the value is greater than 30 days (60 * 60 * 24 * 30 seconds), it is considered an absolute time stamp.</p>
 </li>
 <li>
-<p>As described in <a href="../learn/data/expiration.html" class="page">Expiration</a>, if a "Bucket Max Time-To-Live" is set (specified in seconds), it is an enforced hard upper limit. As such, any subsequent document mutation (by N1QL, Eventing, or any Couchbase SDK) will result in the document having its expiration adjusted and set to the bucket’s maximum TTL if the operation has:</p>
+<p>As described in <a href="../learn/data/expiration.html" class="xref page">Expiration</a>, if a "Bucket Max Time-To-Live" is set (specified in seconds), it is an enforced hard upper limit. As such, any subsequent document mutation (by N1QL, Eventing, or any Couchbase SDK) will result in the document having its expiration adjusted and set to the bucket’s maximum TTL if the operation has:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -4559,7 +4559,7 @@ Using <em>N1QL(&#8230;&#8203;)</em> is much slower than using <em>couchbase.repl
 <p><a href="#docControlledSelfExpiry">docControlledSelfExpiry (indirect TTL via N1QL)</a></p>
 </li>
 <li>
-<p><a href="eventing-handler-advanced-docControlledSelfExpiry.html" class="page">advancedDocControlledSelfExpiry (direct TTL)</a></p>
+<p><a href="eventing-handler-advanced-docControlledSelfExpiry.html" class="xref page">advancedDocControlledSelfExpiry (direct TTL)</a></p>
 </li>
 </ul>
 </div>

@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-security/manage-users-and-roles.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4472,8 +4472,8 @@ Once basic system configuration has been completed, the Full Administrator is fr
 <p>As Full Administrator, to add <em>users</em> (each of which might be either an <em>administrator</em> or an <em>application</em>) and <em>groups</em> to Couchbase Server, use <a href="#manage-users-with-the-ui">Couchbase Web Console</a>, the <a href="#manage-users-with-the-cli">CLI</a>, or the <a href="#manage-users-with-the-rest-api">REST API</a>, as described in the sections below.</p>
 </div>
 <div class="paragraph">
-<p>For a general overview of Couchbase-Server authorization, see <a href="../../learn/security/authorization-overview.html" class="page">Authorization</a>.
-For a list of available roles and corresponding privileges, see <a href="../../learn/security/roles.html" class="page">Roles</a>.</p>
+<p>For a general overview of Couchbase-Server authorization, see <a href="../../learn/security/authorization-overview.html" class="xref page">Authorization</a>.
+For a list of available roles and corresponding privileges, see <a href="../../learn/security/roles.html" class="xref page">Roles</a>.</p>
 </div>
 </div>
 </div>
@@ -4513,9 +4513,9 @@ If at any time the <strong>Users &amp; Groups</strong> panel is not currently vi
 </div>
 <div class="paragraph">
 <p>This indicates that no ability to support <em>external authentication</em> &#8212; by means of either <code>saslauthd</code> or <code>LDAP</code> &#8212; has yet been enabled.
-To enable LDAP, see the first step of the command-sequence provided in <a href="configure-saslauthd.html#getting-started-with-saslauthd-and-ldap" class="page">Getting Started with saslauthd and LDAP</a>.
+To enable LDAP, see the first step of the command-sequence provided in <a href="configure-saslauthd.html#getting-started-with-saslauthd-and-ldap" class="xref page">Getting Started with saslauthd and LDAP</a>.
 For a general overview of external authentication, see
-<a href="../../learn/security/authentication-domains.html" class="page">Authentication Domains</a>.</p>
+<a href="../../learn/security/authentication-domains.html" class="xref page">Authentication Domains</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="add-a-group"><a class="anchor" href="#add-a-group"></a>Add a Group</h3>
@@ -4556,7 +4556,7 @@ An optional description of the new Couchbase-Server group.</p>
 <li>
 <p><strong>Map to LDAP Group</strong>.
 The name of an existing LDAP group to which the new Couchbase-Server group is to be mapped.
-For details, see <a href="configure-ldap.html#map-ldap-groups-to-couchbase-server-roles" class="page">Map LDAP Groups to Couchbase Server Roles</a>.</p>
+For details, see <a href="configure-ldap.html#map-ldap-groups-to-couchbase-server-roles" class="xref page">Map LDAP Groups to Couchbase Server Roles</a>.</p>
 </li>
 <li>
 <p><strong>Roles</strong>. The roles to be associated with the new Couchbase-Server group.
@@ -4566,7 +4566,7 @@ The display lists role-categories: to see roles, open each category by left-clic
 </div>
 <div class="paragraph">
 <p>Below the first category, the <strong>Bucket</strong>, <strong>Data</strong>, and other categories appear: in most of these categories, roles can be applied to some or all buckets defined on the cluster.
-Additionally, within any given bucket, the assigned role can apply to all or to a subset of <em>scopes and collections</em> defined for that bucket (see <a href="../../learn/data/scopes-and-collections.html" class="page">Scopes and Collections</a>, for an overview of scopes and collections).</p>
+Additionally, within any given bucket, the assigned role can apply to all or to a subset of <em>scopes and collections</em> defined for that bucket (see <a href="../../learn/data/scopes-and-collections.html" class="xref page">Scopes and Collections</a>, for an overview of scopes and collections).</p>
 </div>
 </li>
 </ul>
@@ -4583,7 +4583,7 @@ Additionally, within any given bucket, the assigned role can apply to all or to 
 </div>
 <div class="paragraph">
 <p>As this indicates, no LDAP group mapping is required to define a group intended for the support only of users who are defined on Couchbase Server as <em>local</em> or <em>external</em>.
-For an explanation of LDAP group mappings, see <a href="configure-ldap.html#map-ldap-groups-to-couchbase-server-roles" class="page">Map LDAP Groups to Couchbase Server Roles</a>.</p>
+For an explanation of LDAP group mappings, see <a href="configure-ldap.html#map-ldap-groups-to-couchbase-server-roles" class="xref page">Map LDAP Groups to Couchbase Server Roles</a>.</p>
 </div>
 <div class="paragraph">
 <p>Save the group by left-clicking on the <strong>Save</strong> button.</p>
@@ -4593,7 +4593,7 @@ For an explanation of LDAP group mappings, see <a href="configure-ldap.html#map-
 <h4 id="create-a-group-with-a-data-access-role"><a class="anchor" href="#create-a-group-with-a-data-access-role"></a>Create a Group with a Data-Access Role</h4>
 <div class="paragraph">
 <p>Within each bucket, Couchbase Server organizes data into <em>scopes</em> and <em>collections</em>.
-For an overview, see <a href="../../learn/data/scopes-and-collections.html" class="page">Scopes and Collections</a>.
+For an overview, see <a href="../../learn/data/scopes-and-collections.html" class="xref page">Scopes and Collections</a>.
 Access to each bucket, each scope, and each collection is protected by Role-Based Access Control.
 Therefore, roles must be assigned accordingly.</p>
 </div>
@@ -4707,7 +4707,7 @@ By default, <strong class="ui">Couchbase</strong> is checked: this means that th
 <h4 id="add-a-locally-authenticated-user"><a class="anchor" href="#add-a-locally-authenticated-user"></a>Add a Locally Authenticated User</h4>
 <div class="paragraph">
 <p>Add a locally authenticated user, by adding appropriate entries into the <strong class="ui">Username</strong> and <strong class="ui">Password</strong> fields.
-See <a href="../../learn/security/usernames-and-passwords.html" class="page">Usernames and Passwords</a> for character-related requirements.
+See <a href="../../learn/security/usernames-and-passwords.html" class="xref page">Usernames and Passwords</a> for character-related requirements.
 The <strong class="ui">Full Name</strong> field may be left blank.</p>
 </div>
 <div class="paragraph">
@@ -4838,11 +4838,11 @@ Instead, they are authenticated on a server external to the cluster.
 This means that the user&#8217;s password is defined and maintained externally.</p>
 </div>
 <div class="paragraph">
-<p>The addition of a user as externally authenticated must be supported by <a href="../../learn/security/authentication-overview.html#native-ldap-support" class="page">Native LDAP</a>, <a href="../../learn/security/authentication-overview.html#using-saslauthd" class="page">saslauthd</a>, or <a href="../../learn/security/authentication-overview.html#introduction-to-pam-based-authentication" class="page">PAM</a>.
+<p>The addition of a user as externally authenticated must be supported by <a href="../../learn/security/authentication-overview.html#native-ldap-support" class="xref page">Native LDAP</a>, <a href="../../learn/security/authentication-overview.html#using-saslauthd" class="xref page">saslauthd</a>, or <a href="../../learn/security/authentication-overview.html#introduction-to-pam-based-authentication" class="xref page">PAM</a>.
 Appropriate set-up procedures must have been completed prior to the addition of externally authenticated users.</p>
 </div>
 <div class="paragraph">
-<p>For the detailed steps required to establish external authentication by means of Native LDAP (which is the recommended mechanism), see <a href="configure-ldap.html" class="page">Configure LDAP</a>.</p>
+<p>For the detailed steps required to establish external authentication by means of Native LDAP (which is the recommended mechanism), see <a href="configure-ldap.html" class="xref page">Configure LDAP</a>.</p>
 </div>
 <div class="paragraph">
 <p>To add an externally authenticated user, on the <strong>Add New User</strong> dialog, select the <strong>External</strong> option:</p>
@@ -4886,7 +4886,7 @@ changes, based on which roles have been assigned the current user.</p>
 <h2 id="manage-users-with-the-cli"><a class="anchor" href="#manage-users-with-the-cli"></a>Manage Users with the CLI</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Users can be managed with the <a href="#cli:cbcli/couchbase-cli-user-manage.adoc" class="page unresolved">user-manage</a> command.
+<p>Users can be managed with the <a href="#cli:cbcli/couchbase-cli-user-manage.adoc" class="xref unresolved">user-manage</a> command.
 This allows the creation and deletion of users and groups, the assignment of roles, and the listing of current status.</p>
 </div>
 <div class="sect2">
@@ -5174,7 +5174,7 @@ Note that to change the group&#8217;s role-assignments, the group must be recrea
 </div>
 </div>
 <div class="paragraph">
-<p>For information on how to use the CLI to create a mapping between a Couchbase-Server user-group and an LDAP group, see <a href="configure-ldap.html#map-groups-with-the-cli" class="page">Map Groups with the CLI</a>.</p>
+<p>For information on how to use the CLI to create a mapping between a Couchbase-Server user-group and an LDAP group, see <a href="configure-ldap.html#map-groups-with-the-cli" class="xref page">Map Groups with the CLI</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -5208,7 +5208,7 @@ If the command is successful, the following output is provided:</p>
 <div class="paragraph">
 <p>Users can be defined as <em>externally authenticated</em>, by means of the CLI.
 This requires external authentication to have been configured prior to user-creation.
-For recommended procedures, see <a href="configure-ldap.html" class="page">Configure LDAP</a>.</p>
+For recommended procedures, see <a href="configure-ldap.html" class="xref page">Configure LDAP</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="create-an-external-user-using-direct-role-assignment-with-the-cli"><a class="anchor" href="#create-an-external-user-using-direct-role-assignment-with-the-cli"></a>Create an External User, Using Direct Role-Assignment, with the CLI</h4>
@@ -5305,7 +5305,7 @@ All roles assigned to <code>Admins</code> are now to be inherited by <code>rjone
 </div>
 </div>
 <div class="paragraph">
-<p>For information on how to use the CLI to create a mapping between a Couchbase-Server user-group and an LDAP group, see <a href="configure-ldap.html#map-groups-with-the-cli" class="page">Map Groups with the CLI</a>.</p>
+<p>For information on how to use the CLI to create a mapping between a Couchbase-Server user-group and an LDAP group, see <a href="configure-ldap.html#map-groups-with-the-cli" class="xref page">Map Groups with the CLI</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -5343,12 +5343,12 @@ All roles assigned to <code>Admins</code> are now to be inherited by <code>rjone
 This allows the creation and deletion of users and groups, the assignment of roles, and the listing of current status.</p>
 </div>
 <div class="paragraph">
-<p>For corresponding reference information, see <a href="../../rest-api/rbac.html" class="page">Role Based Admin Control (RBAC)</a>.</p>
+<p>For corresponding reference information, see <a href="../../rest-api/rbac.html" class="xref page">Role Based Admin Control (RBAC)</a>.</p>
 </div>
 <div class="paragraph">
 <p>Each user can be defined as either <em>locally</em> or <em>externally</em>.
 The creation of external users requires external authentication to have been configured prior to user-creation.
-For recommended procedures, see <a href="configure-ldap.html" class="page">Configure LDAP</a>.</p>
+For recommended procedures, see <a href="configure-ldap.html" class="xref page">Configure LDAP</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="get-user-information-with-the-rest-api"><a class="anchor" href="#get-user-information-with-the-rest-api"></a>Get User Information with the REST API</h3>
@@ -5499,7 +5499,7 @@ http://10.143.192.101:8091/settings/rbac/groups/roAdminGroup</pre>
 <div class="paragraph">
 <p>Users can be defined as <em>externally authenticated</em>, by means of the REST API.
 This requires external authentication to have been configured prior to user-creation.
-For recommended procedures, see <a href="configure-ldap.html" class="page">Configure LDAP</a>.</p>
+For recommended procedures, see <a href="configure-ldap.html" class="xref page">Configure LDAP</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="create-an-external-user-with-direct-role-assignment-using-the-rest-api"><a class="anchor" href="#create-an-external-user-with-direct-role-assignment-using-the-rest-api"></a>Create an External User, Using Direct Role-Assignment, with the REST API</h4>
@@ -5582,7 +5582,7 @@ http://10.143.192.101:8091/settings/rbac/users/external/wgrey</pre>
 <p>This deletes the external user <code>wgrey</code> from the cluster.</p>
 </div>
 <div class="paragraph">
-<p>For more information on managing users, groups, and roles with the REST API, see <a href="../../rest-api/rbac.html" class="page">Role Based Admin Control (RBAC)</a>.</p>
+<p>For more information on managing users, groups, and roles with the REST API, see <a href="../../rest-api/rbac.html" class="xref page">Role Based Admin Control (RBAC)</a>.</p>
 </div>
 </div>
 </div>

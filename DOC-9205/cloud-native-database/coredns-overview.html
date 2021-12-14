@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="cloud-native-database">
 <meta name="dcterms.identifier" content="master">
 <meta name="page-url" content="/cloud-native-database/coredns-overview.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -341,7 +341,7 @@ In Kubernetes, Domain Name Services (DNS) is used within the Kubernetes cluster 
 <a href="https://coredns.io/" target="_blank" rel="noopener">CoreDNS</a> is the recommended Kubernetes DNS provider.</p>
 </div>
 <div class="paragraph">
-<p>When using the <a href="#operator::overview.adoc" class="page unresolved">Couchbase Autonomous Operator</a> to deploy Couchbase onto a Kubernetes cluster, you will want to be aware of how Couchbase resources such as <a href="#operator::resource/couchbasecluster.adoc" class="page unresolved"><code>CouchbaseClusters</code></a>, <a href="#operator::couchbasebucket.adoc" class="page unresolved"><code>CouchbaseBuckets</code></a>, and so on are identified by applications executing in other pods which are in turn providing other services.
+<p>When using the <a href="#operator::overview.adoc" class="xref unresolved">Couchbase Autonomous Operator</a> to deploy Couchbase onto a Kubernetes cluster, you will want to be aware of how Couchbase resources such as <a href="#operator::resource/couchbasecluster.adoc" class="xref unresolved"><code>CouchbaseClusters</code></a>, <a href="#operator::couchbasebucket.adoc" class="xref unresolved"><code>CouchbaseBuckets</code></a>, and so on are identified by applications executing in other pods which are in turn providing other services.
 A Couchbase cluster in Kubernetes will by default create DNS SRV records for looking up and accessing services on a Couchbase cluster.</p>
 </div>
 <div class="imageblock">
@@ -359,8 +359,8 @@ A Couchbase cluster in Kubernetes will by default create DNS SRV records for loo
 As such, it provides Domain Name Services (DNS) for locating pods and services that are created by the Couchbase Autonomous Operator when you create Kubernetes resources based on Couchbase Custom Resource Definitions (CRDs).</p>
 </div>
 <div class="paragraph">
-<p>When deploying Couchbase to your Kubernetes environment using the <a href="#operator::overview.adoc" class="page unresolved">Couchbase Autonomous Operator</a>, you should first consider the concepts associated with setting up Couchbase as covered on the <a href="#operator::concept-couchbase-networking.adoc" class="page unresolved">operator::concept-couchbase-networking.adoc</a> page, then look to how you would use DNS in <a href="#operator::howto-public-networking.adoc" class="page unresolved">Public Networking</a> or setting up DNS propagation with <a href="#operator::tutorial-remote-dns.adoc" class="page unresolved">Inter-Kubernetes Networking</a>.
-Accessing Couchbase Services is covered on the page <a href="#operator::howto-client-sdks.adoc" class="page unresolved">operator::howto-client-sdks.adoc</a>.</p>
+<p>When deploying Couchbase to your Kubernetes environment using the <a href="#operator::overview.adoc" class="xref unresolved">Couchbase Autonomous Operator</a>, you should first consider the concepts associated with setting up Couchbase as covered on the <a href="#operator::concept-couchbase-networking.adoc" class="xref unresolved">operator::concept-couchbase-networking.adoc</a> page, then look to how you would use DNS in <a href="#operator::howto-public-networking.adoc" class="xref unresolved">Public Networking</a> or setting up DNS propagation with <a href="#operator::tutorial-remote-dns.adoc" class="xref unresolved">Inter-Kubernetes Networking</a>.
+Accessing Couchbase Services is covered on the page <a href="#operator::howto-client-sdks.adoc" class="xref unresolved">operator::howto-client-sdks.adoc</a>.</p>
 </div>
 </div>
 </div>

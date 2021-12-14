@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/begin-transaction.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4472,12 +4472,12 @@ The <code>BEGIN TRANSACTION</code> statement enables you to begin a transaction.
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code>BEGIN TRANSACTION</code> statement enables you to begin a sequence of statements as an ACID transaction.
-Refer to <a href="transactions.html" class="page">N1QL Support for Couchbase Transactions</a> for further information.</p>
+Refer to <a href="transactions.html" class="xref page">N1QL Support for Couchbase Transactions</a> for further information.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Only DML statements are permitted within a transaction: <a href="insert.html" class="page">INSERT</a>, <a href="upsert.html" class="page">UPSERT</a>, <a href="delete.html" class="page">DELETE</a>, <a href="update.html" class="page">UPDATE</a>, <a href="merge.html" class="page">MERGE</a>, <a href="selectintro.html" class="page">SELECT</a>, <a href="execfunction.html" class="page">EXECUTE FUNCTION</a>, <a href="prepare.html" class="page">PREPARE</a>, or <a href="execute.html" class="page">EXECUTE</a>.</p>
+<p>Only DML statements are permitted within a transaction: <a href="insert.html" class="xref page">INSERT</a>, <a href="upsert.html" class="xref page">UPSERT</a>, <a href="delete.html" class="xref page">DELETE</a>, <a href="update.html" class="xref page">UPDATE</a>, <a href="merge.html" class="xref page">MERGE</a>, <a href="selectintro.html" class="xref page">SELECT</a>, <a href="execfunction.html" class="xref page">EXECUTE FUNCTION</a>, <a href="prepare.html" class="xref page">PREPARE</a>, or <a href="execute.html" class="xref page">EXECUTE</a>.</p>
 </li>
 <li>
 <p>The <code>EXECUTE FUNCTION</code> statement is only permitted in a transaction if the user-defined function does not contain any subqueries other than <code>SELECT</code> subqueries.</p>
@@ -4497,7 +4497,7 @@ Refer to <a href="transactions.html" class="page">N1QL Support for Couchbase Tra
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-You can also specify a single DML statement as an ACID transaction by setting the <a href="../../settings/query-settings.html#tximplicit" class="page">tximplicit</a> query parameter.
+You can also specify a single DML statement as an ACID transaction by setting the <a href="../../settings/query-settings.html#tximplicit" class="xref page">tximplicit</a> query parameter.
 </td>
 </tr>
 </table>
@@ -4551,7 +4551,7 @@ The <code>ISOLATION LEVEL READ COMMITTED</code> keywords are therefore optional 
 </dl>
 </div>
 <div class="paragraph">
-<p>If you are using the Query REST API, you must set the <a href="../../settings/query-settings.html#txid" class="page">txid</a> query parameter to specify the transaction ID for any subsequent statements that form part of the same transaction.</p>
+<p>If you are using the Query REST API, you must set the <a href="../../settings/query-settings.html#txid" class="xref page">txid</a> query parameter to specify the transaction ID for any subsequent statements that form part of the same transaction.</p>
 </div>
 <div class="paragraph">
 <p>If you are using the Query Workbench, you don&#8217;t need to specify the transaction ID for any statements that form a part of the same transaction within a multi-statement request.
@@ -4568,7 +4568,7 @@ Once you have started a transaction, all statements within the cbq shell session
 <h2 id="example"><a class="anchor" href="#example"></a>Example</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you want to try this example, first refer to <a href="transactions.html#preparation" class="page">Preparation</a> to set up your environment.</p>
+<p>If you want to try this example, first refer to <a href="transactions.html#preparation" class="xref page">Preparation</a> to set up your environment.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 1. Begin a transaction</div>
@@ -4654,19 +4654,19 @@ COMMIT WORK;</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>For an overview of Couchbase transactions, refer to <a href="../../learn/data/transactions.html" class="page">Transactions</a>.</p>
+<p>For an overview of Couchbase transactions, refer to <a href="../../learn/data/transactions.html" class="xref page">Transactions</a>.</p>
 </li>
 <li>
-<p>To specify transaction settings, refer to <a href="set-transaction.html" class="page">SET TRANSACTION</a>.</p>
+<p>To specify transaction settings, refer to <a href="set-transaction.html" class="xref page">SET TRANSACTION</a>.</p>
 </li>
 <li>
-<p>To set a savepoint, refer to <a href="savepoint.html" class="page">SAVEPOINT</a>.</p>
+<p>To set a savepoint, refer to <a href="savepoint.html" class="xref page">SAVEPOINT</a>.</p>
 </li>
 <li>
-<p>To rollback a transaction, refer to <a href="rollback-transaction.html" class="page">ROLLBACK TRANSACTION</a>.</p>
+<p>To rollback a transaction, refer to <a href="rollback-transaction.html" class="xref page">ROLLBACK TRANSACTION</a>.</p>
 </li>
 <li>
-<p>To commit a transaction, refer to <a href="commit-transaction.html" class="page">COMMIT TRANSACTION</a>.</p>
+<p>To commit a transaction, refer to <a href="commit-transaction.html" class="xref page">COMMIT TRANSACTION</a>.</p>
 </li>
 <li>
 <p>Blog post: <a href="https://blog.couchbase.com/transactions-n1ql-couchbase-distributed-nosql/" target="_blank" rel="noopener">Couchbase Transactions: Elastic, Scalable, and Distributed</a>.</p>

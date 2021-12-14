@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-xdcr/delete-xdcr-replication.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4466,7 +4466,7 @@ Deleting an XDCR <em>replication</em> stops the replication of data, and removes
 <div class="paragraph">
 <p>The examples in the subsections below show how to delete a replication; using the <a href="#delete-an-xdcr-replication-with-the-ui">UI</a>, the <a href="#delete-an-xdcr-replication-with-the-cli">CLI</a>,
 and the <a href="#delete-an-xdcr-replication-with-the-rest-api">REST API</a> respectively.
-As their starting-point, the examples assume the scenario that concluded the page <a href="resume-xdcr-replication.html" class="page">Resume a Replication</a>.</p>
+As their starting-point, the examples assume the scenario that concluded the page <a href="resume-xdcr-replication.html" class="xref page">Resume a Replication</a>.</p>
 </div>
 </div>
 </div>
@@ -4549,7 +4549,7 @@ The <strong>Outgoing Replications</strong> panel now reappears, showing no repli
 </div>
 </div>
 <div class="paragraph">
-<p>The value specified for the <code>--xdcr-replicator</code> flag is that retrieved by means of the <code>--list</code> flag, shown in <a href="pause-xdcr-replication.html#pause-an-xdcr-replication-with-the-cli" class="page">Pause an XDCR Replication with the CLI</a>.
+<p>The value specified for the <code>--xdcr-replicator</code> flag is that retrieved by means of the <code>--list</code> flag, shown in <a href="pause-xdcr-replication.html#pause-an-xdcr-replication-with-the-cli" class="xref page">Pause an XDCR Replication with the CLI</a>.
 The <code>--delete</code> flag signifies that the replication is to be deleted.
 If successful, the command returns the following:</p>
 </div>
@@ -4575,7 +4575,7 @@ http://10.142.180.101:8091/controller/cancelXDCR/570d0ca2db3b1e128e2fafd362a1bfd
 <div class="paragraph">
 <p>Note the encoded form of the endpoint, which is required.
 This consists of the <code>id</code>, the name of the source bucket, and the name of the target bucket.
-These were obtained in <a href="pause-xdcr-replication.html#pause-an-xdcr-replication-with-the-rest-api" class="page">Pause an XDCR Replication with the REST API</a>.</p>
+These were obtained in <a href="pause-xdcr-replication.html#pause-an-xdcr-replication-with-the-rest-api" class="xref page">Pause an XDCR Replication with the REST API</a>.</p>
 </div>
 <div class="paragraph">
 <p>If the call is successful, no output is displayed.
@@ -4588,7 +4588,7 @@ The replication has been deleted.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Once a replication has been deleted, you may also wish to delete the <em>reference</em> on which it was based.
-See <a href="delete-xdcr-reference.html" class="page">Delete a Reference</a>.</p>
+See <a href="delete-xdcr-reference.html" class="xref page">Delete a Reference</a>.</p>
 </div>
 </div>
 </div>

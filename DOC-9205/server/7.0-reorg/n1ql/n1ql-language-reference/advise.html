@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/advise.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4477,16 +4477,16 @@ You can use the ADVISE statement with any of the following types of query:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="selectintro.html" class="page">SELECT</a> queries</p>
+<p><a href="selectintro.html" class="xref page">SELECT</a> queries</p>
 </li>
 <li>
-<p><a href="update.html" class="page">UPDATE</a> queries</p>
+<p><a href="update.html" class="xref page">UPDATE</a> queries</p>
 </li>
 <li>
-<p><a href="delete.html" class="page">DELETE</a> queries</p>
+<p><a href="delete.html" class="xref page">DELETE</a> queries</p>
 </li>
 <li>
-<p><a href="merge.html" class="page">MERGE</a> queries</p>
+<p><a href="merge.html" class="xref page">MERGE</a> queries</p>
 </li>
 </ul>
 </div>
@@ -4527,7 +4527,7 @@ Similarly, if the query is already using the optimal covering index, the index a
 <div class="sectionbody">
 <div class="paragraph">
 <p>To execute the ADVISE statement, you must have the privileges required for the N1QL statement for which you want advice.
-For more details about user roles, see <a href="../../learn/security/authorization-overview.html" class="page">Authorization</a>.</p>
+For more details about user roles, see <a href="../../learn/security/authorization-overview.html" class="xref page">Authorization</a>.</p>
 </div>
 </div>
 </div>
@@ -4536,7 +4536,7 @@ For more details about user roles, see <a href="../../learn/security/authorizati
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>advise-index ::= ADVISE [ INDEX ] ( <a href="selectintro.html" class="page">select</a> | <a href="update.html" class="page">update</a> | <a href="delete.html" class="page">delete</a> | <a href="merge.html" class="page">merge</a> )</pre>
+<pre>advise-index ::= ADVISE [ INDEX ] ( <a href="selectintro.html" class="xref page">select</a> | <a href="update.html" class="xref page">update</a> | <a href="delete.html" class="xref page">delete</a> | <a href="merge.html" class="xref page">merge</a> )</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4864,7 +4864,7 @@ If the index is not identical to the recommended index, or if it is not an optim
 <p>The index advisor recommends secondary indexes based on the query predicate.</p>
 </div>
 <div class="paragraph">
-<p>In Couchbase Server 7.0 and later, the index advisor initially makes use of the <a href="cost-based-optimizer.html" class="page">cost-based optimizer</a>.
+<p>In Couchbase Server 7.0 and later, the index advisor initially makes use of the <a href="cost-based-optimizer.html" class="xref page">cost-based optimizer</a>.
 To do this, the cost-based optimizer must be enabled, and statistics for the keyspace must already exist.
 If these prerequisites are met, the cost-based optimizer analyzes the query predicate and attempts to recommend an index.</p>
 </div>
@@ -4905,7 +4905,7 @@ Within each recommended index, if there is more than one index key, they are sor
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>An <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#array-index" class="page">array index</a>, where the leading index key is an array expression indexing all elements in the unnested array.</p>
+<p>An <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#array-index" class="xref page">array index</a>, where the leading index key is an array expression indexing all elements in the unnested array.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4917,7 +4917,7 @@ Within each recommended index, if there is more than one index key, they are sor
 </ol>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The query has a predicate with an <a href="comparisonops.html" class="page">equality</a>, <a href="comparisonops.html" class="page">IS NULL</a>, or <a href="comparisonops.html" class="page">IS MISSING</a> expression.</p>
+<p>The query has a predicate with an <a href="comparisonops.html" class="xref page">equality</a>, <a href="comparisonops.html" class="xref page">IS NULL</a>, or <a href="comparisonops.html" class="xref page">IS MISSING</a> expression.</p>
 </div>
 <div class="listingblock">
 <div class="title">Examples</div>
@@ -4930,13 +4930,13 @@ WHERE id = 10</pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>If the predicate contains an <a href="collectionops.html#collection-op-any" class="page">ANY</a> expression: an <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#array-index" class="page">array index</a>, where the index key is an array expression recursively indexing all elements referenced by the predicate expression.</p>
+<p>If the predicate contains an <a href="collectionops.html#collection-op-any" class="xref page">ANY</a> expression: an <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#array-index" class="xref page">array index</a>, where the index key is an array expression recursively indexing all elements referenced by the predicate expression.</p>
 </div>
 <div class="paragraph">
-<p>If the predicate contains an indexable function: a <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#functional-index" class="page">functional index</a>, where the index key contains the function referenced by the predicate expression.</p>
+<p>If the predicate contains an indexable function: a <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#functional-index" class="xref page">functional index</a>, where the index key contains the function referenced by the predicate expression.</p>
 </div>
 <div class="paragraph">
-<p>Otherwise: a <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#secondary-index" class="page">secondary index</a>, where one index key is the field referenced by the predicate expression.</p>
+<p>Otherwise: a <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#secondary-index" class="xref page">secondary index</a>, where one index key is the field referenced by the predicate expression.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4948,7 +4948,7 @@ WHERE id = 10</pre>
 </ol>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The query has a predicate with an <a href="collectionops.html#collection-op-in" class="page">IN</a> expression.</p>
+<p>The query has a predicate with an <a href="collectionops.html#collection-op-in" class="xref page">IN</a> expression.</p>
 </div>
 <div class="listingblock">
 <div class="title">Examples</div>
@@ -4973,7 +4973,7 @@ WHERE id IN [10, 20]</pre>
 </ol>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The query has a predicate with a <a href="comparisonops.html" class="page">&lt;=</a>, <a href="comparisonops.html" class="page">BETWEEN</a>, or <a href="comparisonops.html" class="page">&gt;=</a> expression.</p>
+<p>The query has a predicate with a <a href="comparisonops.html" class="xref page">&lt;=</a>, <a href="comparisonops.html" class="xref page">BETWEEN</a>, or <a href="comparisonops.html" class="xref page">&gt;=</a> expression.</p>
 </div>
 <div class="listingblock">
 <div class="title">Examples</div>
@@ -4998,7 +4998,7 @@ WHERE id BETWEEN 10 AND 25</pre>
 </ol>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The query has a predicate with a <a href="comparisonops.html" class="page">&lt;</a> or <a href="comparisonops.html" class="page">&gt;</a> expression.</p>
+<p>The query has a predicate with a <a href="comparisonops.html" class="xref page">&lt;</a> or <a href="comparisonops.html" class="xref page">&gt;</a> expression.</p>
 </div>
 <div class="listingblock">
 <div class="title">Examples</div>
@@ -5023,7 +5023,7 @@ WHERE id &gt; 10 AND id &lt; 25</pre>
 </ol>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The query has a <a href="join.html" class="page">join</a> using an ON clause which filters on the left-hand side keyspace.</p>
+<p>The query has a <a href="join.html" class="xref page">join</a> using an ON clause which filters on the left-hand side keyspace.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example</div>
@@ -5034,7 +5034,7 @@ ON r.airlineid = META(a).id</pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>A <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#secondary-index" class="page">secondary index</a>, where the leading index key is the field from the left-hand side keyspace in the ON clause.</p>
+<p>A <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#secondary-index" class="xref page">secondary index</a>, where the leading index key is the field from the left-hand side keyspace in the ON clause.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5046,7 +5046,7 @@ ON r.airlineid = META(a).id</pre>
 </ol>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The query has a predicate with <a href="comparisonops.html" class="page">IS NOT NULL</a>, <a href="comparisonops.html" class="page">IS NOT MISSING</a>, or <a href="comparisonops.html" class="page">IS NOT VALUED</a>.</p>
+<p>The query has a predicate with <a href="comparisonops.html" class="xref page">IS NOT NULL</a>, <a href="comparisonops.html" class="xref page">IS NOT MISSING</a>, or <a href="comparisonops.html" class="xref page">IS NOT VALUED</a>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Examples</div>
@@ -5071,7 +5071,7 @@ WHERE id IS NOT NULL</pre>
 </ol>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The query has a predicate with a <a href="comparisonops.html" class="page">LIKE</a> expression, where there is a <code>%</code> wildcard at the start of the match string.</p>
+<p>The query has a predicate with a <a href="comparisonops.html" class="xref page">LIKE</a> expression, where there is a <code>%</code> wildcard at the start of the match string.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example</div>
@@ -5080,7 +5080,7 @@ WHERE id IS NOT NULL</pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>A <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#secondary-index" class="page">secondary index</a>, where one index key is the field referenced by the predicate expression.</p>
+<p>A <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#secondary-index" class="xref page">secondary index</a>, where one index key is the field referenced by the predicate expression.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5092,7 +5092,7 @@ WHERE id IS NOT NULL</pre>
 </ol>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The query has a <a href="join.html" class="page">join</a> using an ON clause in which neither the left-hand side source object nor the right-hand side source object is static.</p>
+<p>The query has a <a href="join.html" class="xref page">join</a> using an ON clause in which neither the left-hand side source object nor the right-hand side source object is static.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example</div>
@@ -5103,7 +5103,7 @@ ON r.airline = a.iata</pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>A <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#secondary-index" class="page">secondary index</a>, where one index key is the field from the right-hand side keyspace in the ON clause.</p>
+<p>A <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#secondary-index" class="xref page">secondary index</a>, where one index key is the field from the right-hand side keyspace in the ON clause.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5115,7 +5115,7 @@ ON r.airline = a.iata</pre>
 </ol>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The query includes filters on a particular <a href="infer.html#schema-output" class="page">flavor</a> of document.</p>
+<p>The query includes filters on a particular <a href="infer.html#schema-output" class="xref page">flavor</a> of document.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example</div>
@@ -5124,7 +5124,7 @@ ON r.airline = a.iata</pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>A <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#partial-index" class="page">partial index</a> for that flavor of document.</p>
+<p>A <a href="../../learn/services-and-indexes/indexes/indexing-and-query-perf.html#partial-index" class="xref page">partial index</a> for that flavor of document.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -5155,7 +5155,7 @@ ON r.airline = a.iata</pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>The GROUP BY and aggregate pushdowns support aggregation using the <a href="aggregatefun.html#min" class="page">MIN()</a>, <a href="aggregatefun.html#max" class="page">MAX()</a>, <a href="aggregatefun.html#sum" class="page">SUM()</a>, <a href="aggregatefun.html#countn" class="page">COUNTN()</a>, and <a href="aggregatefun.html#avg" class="page">AVG()</a> functions, with the <a href="aggregatefun.html#aggregate-quantifier" class="page">DISTINCT</a> aggregate quantifier if necessary.</p>
+<p>The GROUP BY and aggregate pushdowns support aggregation using the <a href="aggregatefun.html#min" class="xref page">MIN()</a>, <a href="aggregatefun.html#max" class="xref page">MAX()</a>, <a href="aggregatefun.html#sum" class="xref page">SUM()</a>, <a href="aggregatefun.html#countn" class="xref page">COUNTN()</a>, and <a href="aggregatefun.html#avg" class="xref page">AVG()</a> functions, with the <a href="aggregatefun.html#aggregate-quantifier" class="xref page">DISTINCT</a> aggregate quantifier if necessary.</p>
 </div>
 <div class="paragraph">
 <p>The GROUP BY and aggregate pushdowns may be <em>full</em> or <em>partial</em>.
@@ -5402,10 +5402,10 @@ You should check the suggested index names and change any that are duplicates.
 <div class="ulist">
 <ul>
 <li>
-<p>The <a href="../../tools/query-workbench.html#index-advisor" class="page">Index Advisor</a> in the Query Workbench</p>
+<p>The <a href="../../tools/query-workbench.html#index-advisor" class="xref page">Index Advisor</a> in the Query Workbench</p>
 </li>
 <li>
-<p>The <a href="advisor.html" class="page">ADVISOR</a> function</p>
+<p>The <a href="advisor.html" class="xref page">ADVISOR</a> function</p>
 </li>
 <li>
 <p>Blog post: <a href="https://blog.couchbase.com/?p=7370&amp;preview=true" target="_blank" rel="noopener">Index Advisor for N1QL Query Statement</a></p>

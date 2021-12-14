@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/commit-transaction.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4472,10 +4472,10 @@ The <code>COMMIT TRANSACTION</code> statement enables you to commit a transactio
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code>COMMIT TRANSACTION</code> statement enables you to commit an ACID transaction.
-Refer to <a href="transactions.html" class="page">N1QL Support for Couchbase Transactions</a> for further information.</p>
+Refer to <a href="transactions.html" class="xref page">N1QL Support for Couchbase Transactions</a> for further information.</p>
 </div>
 <div class="paragraph">
-<p>If you are using the Query REST API, you must set the <a href="../../settings/query-settings.html#txid" class="page">txid</a> query parameter to specify the transaction ID.</p>
+<p>If you are using the Query REST API, you must set the <a href="../../settings/query-settings.html#txid" class="xref page">txid</a> query parameter to specify the transaction ID.</p>
 </div>
 <div class="paragraph">
 <p>If you are using the Query Workbench, you don&#8217;t need to specify the transaction ID, as long as the statement is part of a multi-statement request.
@@ -4526,8 +4526,8 @@ These keywords are optional; you may include one of these keywords, or omit them
 <h2 id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The transaction can only be committed if the transactional <a href="../../learn/data/durability.html" class="page">durability</a> requirements can be met.
-The transaction durability level is set by the request-level <a href="../../settings/query-settings.html#durability_level" class="page">durability_level</a> parameter.</p>
+<p>The transaction can only be committed if the transactional <a href="../../learn/data/durability.html" class="xref page">durability</a> requirements can be met.
+The transaction durability level is set by the request-level <a href="../../settings/query-settings.html#durability_level" class="xref page">durability_level</a> parameter.</p>
 </div>
 <div class="paragraph">
 <p>If transaction durability requirements cannot be met, then a 161 error code is generated when you attempt to commit the transaction, with the message "Durability requirements are impossible to achieve".
@@ -4535,7 +4535,7 @@ For example: bucket replication is specified, but there are not enough Data node
 </div>
 <div class="paragraph">
 <p>To avoid this error, it is recommended that you add the correct number of Data nodes for the required durability level, and rebalance.
-As a temporary measure, you can set the request-level <a href="../../settings/query-settings.html#durability_level" class="page">durability_level</a> parameter to <code>"none"</code> to turn off durability for this request, or <a href="../../manage/manage-buckets/edit-bucket.html" class="page">turn off bucket replication</a>.</p>
+As a temporary measure, you can set the request-level <a href="../../settings/query-settings.html#durability_level" class="xref page">durability_level</a> parameter to <code>"none"</code> to turn off durability for this request, or <a href="../../manage/manage-buckets/edit-bucket.html" class="xref page">turn off bucket replication</a>.</p>
 </div>
 </div>
 </div>
@@ -4546,7 +4546,7 @@ As a temporary measure, you can set the request-level <a href="../../settings/qu
 <div class="title">Example 1. Commit a transaction</div>
 <div class="content">
 <div class="paragraph">
-<p>If you want to try this example, first refer to <a href="transactions.html#preparation" class="page">Preparation</a> to set up your environment.</p>
+<p>If you want to try this example, first refer to <a href="transactions.html#preparation" class="xref page">Preparation</a> to set up your environment.</p>
 </div>
 <div class="listingblock">
 <div class="title">Transaction</div>
@@ -4758,19 +4758,19 @@ COMMIT WORK; <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>For an overview of Couchbase transactions, refer to <a href="../../learn/data/transactions.html" class="page">Transactions</a>.</p>
+<p>For an overview of Couchbase transactions, refer to <a href="../../learn/data/transactions.html" class="xref page">Transactions</a>.</p>
 </li>
 <li>
-<p>To begin a transaction, refer to <a href="begin-transaction.html" class="page">BEGIN TRANSACTION</a>.</p>
+<p>To begin a transaction, refer to <a href="begin-transaction.html" class="xref page">BEGIN TRANSACTION</a>.</p>
 </li>
 <li>
-<p>To specify transaction settings, refer to <a href="set-transaction.html" class="page">SET TRANSACTION</a>.</p>
+<p>To specify transaction settings, refer to <a href="set-transaction.html" class="xref page">SET TRANSACTION</a>.</p>
 </li>
 <li>
-<p>To set a savepoint, refer to <a href="savepoint.html" class="page">SAVEPOINT</a>.</p>
+<p>To set a savepoint, refer to <a href="savepoint.html" class="xref page">SAVEPOINT</a>.</p>
 </li>
 <li>
-<p>To rollback a transaction, refer to <a href="rollback-transaction.html" class="page">ROLLBACK TRANSACTION</a>.</p>
+<p>To rollback a transaction, refer to <a href="rollback-transaction.html" class="xref page">ROLLBACK TRANSACTION</a>.</p>
 </li>
 <li>
 <p>Blog post: <a href="https://blog.couchbase.com/transactions-n1ql-couchbase-distributed-nosql/" target="_blank" rel="noopener">Couchbase Transactions: Elastic, Scalable, and Distributed</a>.</p>

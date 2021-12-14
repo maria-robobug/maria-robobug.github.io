@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/clusters-and-availability/connectivity.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4472,25 +4472,25 @@ It also provides connectivity to a number of third-party products.
 <li>
 <p><em>Client-to-Cluster</em>.
 Client applications communicate with a Couchbase Server-cluster through a set of server-defined access-points, each of which provides ports for both clear and encrypted communication.
-For detailed information, see <a href="../../install/install-ports.html" class="page">Couchbase Server Ports</a>.</p>
+For detailed information, see <a href="../../install/install-ports.html" class="xref page">Couchbase Server Ports</a>.</p>
 </li>
 <li>
 <p><em>Node-to-Node</em>.
 Cluster-nodes intercommunicate in order to replicate data, maintain indexes, check the health of nodes, communicate changes to the cluster-configuration, and more.
-See <a href="cluster-manager.html" class="page">Cluster Manager</a>, for detailed information.
-For information on how to encrypt the communications between nodes, see <a href="node-to-node-encryption.html" class="page">Node-to-Node Encryption</a>.</p>
+See <a href="cluster-manager.html" class="xref page">Cluster Manager</a>, for detailed information.
+For information on how to encrypt the communications between nodes, see <a href="node-to-node-encryption.html" class="xref page">Node-to-Node Encryption</a>.</p>
 </li>
 <li>
 <p><em>Cluster-to-Cluster</em>.
 Couchbase Server-clusters communicate with one another by means of <em>Cross Data Center Replication</em>.
-See <a href="xdcr-overview.html" class="page">Cross Data Center Replication (XDCR)</a>, for detailed information.</p>
+See <a href="xdcr-overview.html" class="xref page">Cross Data Center Replication (XDCR)</a>, for detailed information.</p>
 </li>
 <li>
 <p><em>Cluster-to-Connector</em>.
 Couchbase Server-clusters communicate with third party products; by means of <em>connectors</em>.
 Connectors are provided for <em>Elasticsearch</em>, <em>Hadoop</em>, <em>Kafka</em>, <em>Spark</em>, and <em>Talend</em>.
 Drivers are provided for <em>ODBC</em> and <em>JDBC</em>.
-See <a href="../../connectors/intro.html" class="page">Connector Guides</a>, for detailed information.</p>
+See <a href="../../connectors/intro.html" class="xref page">Connector Guides</a>, for detailed information.</p>
 </li>
 </ul>
 </div>
@@ -4509,7 +4509,7 @@ See <a href="../../connectors/intro.html" class="page">Connector Guides</a>, for
 If these are associated with a Couchbase-Server defined <em>role</em>, itself associated with appropriate privileges on the resource access to which is being requested, the client is authorized, and access is granted.
 Otherwise, access is denied.
 See
-<a href="../security/authorization-overview.html" class="page">Authorization</a> for details.</p>
+<a href="../security/authorization-overview.html" class="xref page">Authorization</a> for details.</p>
 </li>
 <li>
 <p><em>Discovery</em>: A cluster-map is returned to the client.
@@ -4529,17 +4529,17 @@ Note that in the event of topology-changes, a service connection-request may res
 <div class="sectionbody">
 <div class="paragraph">
 <p>Couchbase Server supports both the IPv4 and IPv6 address families.
-The address family can be established as part of a cluster&#8217;s initial configuration: see <a href="../../manage/manage-nodes/create-cluster.html" class="page">Create a Cluster</a> and <a href="../../manage/manage-nodes/initialize-node.html#initialize-a-node-with-the-cli" class="page">Initialize a Node with the CLI</a>, for details on how to do this with the UI and CLI respectively.</p>
+The address family can be established as part of a cluster&#8217;s initial configuration: see <a href="../../manage/manage-nodes/create-cluster.html" class="xref page">Create a Cluster</a> and <a href="../../manage/manage-nodes/initialize-node.html#initialize-a-node-with-the-cli" class="xref page">Initialize a Node with the CLI</a>, for details on how to do this with the UI and CLI respectively.</p>
 </div>
 <div class="paragraph">
-<p>For information on using the CLI to change the address family for an existing cluster, see <a href="../../manage/manage-nodes/manage-address-families.html" class="page">Manage Address Families</a>.</p>
+<p>For information on using the CLI to change the address family for an existing cluster, see <a href="../../manage/manage-nodes/manage-address-families.html" class="xref page">Manage Address Families</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="services-and-ip-address-families"><a class="anchor" href="#services-and-ip-address-families"></a>Services and IP-Address Families</h3>
 <div class="paragraph">
-<p><em>All</em> Couchbase <a href="../services-and-indexes/services/services.html" class="page">Services</a> bind on <em>all</em> their assigned ports with the same address family &#8212; either IPv4 or IPv6, depending on which address family has been established for the cluster; either at initial configuration, or subsequently by means of the CLI.
+<p><em>All</em> Couchbase <a href="../services-and-indexes/services/services.html" class="xref page">Services</a> bind on <em>all</em> their assigned ports with the same address family &#8212; either IPv4 or IPv6, depending on which address family has been established for the cluster; either at initial configuration, or subsequently by means of the CLI.
 If a service cannot bind on all its assigned ports with the established address family, the service does not start.
-For more information, see <a href="../../install/install-ports.html" class="page">Couchbase Server Ports</a>.</p>
+For more information, see <a href="../../install/install-ports.html" class="xref page">Couchbase Server Ports</a>.</p>
 </div>
 </div>
 </div>
@@ -4549,11 +4549,11 @@ For more information, see <a href="../../install/install-ports.html" class="page
 <div class="sectionbody">
 <div class="paragraph">
 <p>Couchbase Server allows an <em>alternate address</em> to be assigned to any individual cluster-node, and an <em>alternate port number</em> to be assigned to any service running on that node.
-For a list of services, and the standard ports they occupy, see <a href="../../install/install-ports.html" class="page">Couchbase Server Ports</a>.</p>
+For a list of services, and the standard ports they occupy, see <a href="../../install/install-ports.html" class="xref page">Couchbase Server Ports</a>.</p>
 </div>
 <div class="paragraph">
 <p>The assigning of alternate addresses and port numbers, which can be accomplished by means of the CLI and the REST API, may facilitate communication with external applications that are not permitted to contact a cluster’s nodes directly; but have access to a router or other networked entity that provides externally visible addresses on the nodes’ behalf.
-Note that an alternate address can be used to specify an XDCR <em>target cluster</em>: see <a href="../../manage/manage-xdcr/create-xdcr-reference.html" class="page">Create a Reference</a>.</p>
+Note that an alternate address can be used to specify an XDCR <em>target cluster</em>: see <a href="../../manage/manage-xdcr/create-xdcr-reference.html" class="xref page">Create a Reference</a>.</p>
 </div>
 <div class="paragraph">
 <p>Two possible use cases are given below.</p>
@@ -4638,13 +4638,13 @@ Here, the principal address is mapped to the nodes’ primary addresses, and the
 <ul>
 <li>
 <p>The CLI.
-See the reference page for <a href="#cli:cbcli/couchbase-cli-setting-alternate-address.adoc" class="page unresolved">setting-alternate-address</a>.
+See the reference page for <a href="#cli:cbcli/couchbase-cli-setting-alternate-address.adoc" class="xref unresolved">setting-alternate-address</a>.
 Note that the <code>--list</code> parameter lists the current alternate address and all current port-number settings.</p>
 </li>
 <li>
 <p>The REST API.
-See the reference page for <a href="../../rest-api/rest-set-up-alternate-address.html" class="page">Managing Alternate Addresses</a>.
-See also the page for <a href="../../rest-api/rest-list-node-services.html" class="page">Listing Node Services</a>, whereby current settings can be inspected.</p>
+See the reference page for <a href="../../rest-api/rest-set-up-alternate-address.html" class="xref page">Managing Alternate Addresses</a>.
+See also the page for <a href="../../rest-api/rest-list-node-services.html" class="xref page">Listing Node Services</a>, whereby current settings can be inspected.</p>
 </li>
 </ul>
 </div>

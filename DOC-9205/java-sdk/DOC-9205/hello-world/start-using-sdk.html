@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="java-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/java-sdk/DOC-9205/hello-world/start-using-sdk.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3673,9 +3673,9 @@ It offers synchronous APIs as well as reactive and asynchronous equivalents to m
 </blockquote>
 </div>
 <div class="paragraph">
-<p>The Couchbase Java SDK 3.<em>x</em> is a complete rewrite of the 2.x API, providing a simpler surface area and adding support for Couchbase Server features like <a href="../concept-docs/collections.html" class="page">Collections and Scopes</a> (available in Couchbase Server 7.0).
+<p>The Couchbase Java SDK 3.<em>x</em> is a complete rewrite of the 2.x API, providing a simpler surface area and adding support for Couchbase Server features like <a href="../concept-docs/collections.html" class="xref page">Collections and Scopes</a> (available in Couchbase Server 7.0).
 The (reactive) API also migrated from <code>RxJava</code> to <code>Reactor</code>, along with other improvements to performance, logging, debugging and timeout troubleshooting.
-If you&#8217;re upgrading your application from Java SDK 2.x, please read our <a href="../project-docs/migrating-sdk-code-to-3.n.html" class="page">Migrating 2.x code to SDK 3.0 Guide</a>.</p>
+If you&#8217;re upgrading your application from Java SDK 2.x, please read our <a href="../project-docs/migrating-sdk-code-to-3.n.html" class="xref page">Migrating 2.x code to SDK 3.0 Guide</a>.</p>
 </div>
 </div>
 </div>
@@ -3684,7 +3684,7 @@ If you&#8217;re upgrading your application from Java SDK 2.x, please read our <a
 <div class="sectionbody">
 <div class="paragraph">
 <p>At least Java 8 is required for current releases;
-see the <a href="../project-docs/compatibility.html#jdk-compat" class="page">Compatibility</a> section for details.
+see the <a href="../project-docs/compatibility.html#jdk-compat" class="xref page">Compatibility</a> section for details.
 We recommend running the latest Java LTS version (i.e. at the time of writing JDK 11) with the highest patch version available.</p>
 </div>
 <div class="paragraph">
@@ -3715,7 +3715,7 @@ The following snippet shows how to do it with <a href="https://maven.apache.org/
 </div>
 </div>
 <div class="paragraph">
-<p>Alternatively, we provide a zip file with all the dependencies bundled if you wish to manually include the <code>jar</code> files in your classpath. Refer to the <a href="../project-docs/sdk-release-notes.html" class="page">Release Notes</a> for further details. You can also find links to the hosted javadocs there.</p>
+<p>Alternatively, we provide a zip file with all the dependencies bundled if you wish to manually include the <code>jar</code> files in your classpath. Refer to the <a href="../project-docs/sdk-release-notes.html" class="xref page">Release Notes</a> for further details. You can also find links to the hosted javadocs there.</p>
 </div>
 </div>
 </div>
@@ -3731,7 +3731,7 @@ The following snippet shows how to do it with <a href="https://maven.apache.org/
 </div>
 </div>
 <div class="paragraph">
-<p>Couchbase uses <a href="#7.0@server:learn:security/roles.adoc" class="page unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
+<p>Couchbase uses <a href="#7.0@server:learn:security/roles.adoc" class="xref unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
 Here we will use the <em>Full Admin</em> role created during installation of the Couchbase Data Platform.
 For production client code, you will want to use more appropriate, restrictive settings&#8201;&#8212;&#8201;but here we want to get you up and running quickly.
 If you&#8217;re developing client code on the same VM or machine as the Couchbase Server, your connection string can be just <code>localhost</code>.</p>
@@ -3763,7 +3763,7 @@ Bucket bucket = cluster.bucket(bucketName);</code></pre>
 <p>If you installed the <code>travel-sample</code> data bucket, substitute <em>travel-sample</em> for <em>bucketName</em>.</p>
 </div>
 <div class="paragraph">
-<p>The 3.2 SDK supports full integration with the <a href="../concept-docs/collections.html" class="page">Collections</a> feature in the latest release of the Couchbase Data Platform, Couchbase Server 7.0.
+<p>The 3.2 SDK supports full integration with the <a href="../concept-docs/collections.html" class="xref page">Collections</a> feature in the latest release of the Couchbase Data Platform, Couchbase Server 7.0.
 This brings complete support of Collections, allowing Documents to be grouped by purpose or theme, according to a specified <em>Scope</em>.
 Here we will use the <code>users</code> collection within the <code>tenant_agent_00</code> scope from <code>travel-sample</code> bucket as an example.</p>
 </div>
@@ -3775,7 +3775,7 @@ Collection collection = scope.collection("users");</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>KV Operations are described in detail on the <a href="../howtos/kv-operations.html" class="page">KV Operations page</a>, but to get you started the following code creates a new document and then fetches it again, printing the result.</p>
+<p>KV Operations are described in detail on the <a href="../howtos/kv-operations.html" class="xref page">KV Operations page</a>, but to get you started the following code creates a new document and then fetches it again, printing the result.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3804,7 +3804,7 @@ System.out.println(result.rowsAsObject());</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can learn more about N1QL queries on the <a href="../howtos/n1ql-queries-with-sdk.html" class="page">Query page</a>.
+<p>You can learn more about N1QL queries on the <a href="../howtos/n1ql-queries-with-sdk.html" class="xref page">Query page</a>.
 Other services (like analytics, search or views) work very similar to the two shown above.
 Please refer to their respective documentation sections to learn more.</p>
 </div>
@@ -3979,13 +3979,13 @@ for (JsonObject row : result.rowsAsObject()) {
 <div class="ulist">
 <ul>
 <li>
-<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="page">Constrained Network Environments</a>,</p>
+<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="xref page">Constrained Network Environments</a>,</p>
 </li>
 <li>
-<p><a href="../project-docs/compatibility.html#network-requirements" class="page">Network Requirements</a>,</p>
+<p><a href="../project-docs/compatibility.html#network-requirements" class="xref page">Network Requirements</a>,</p>
 </li>
 <li>
-<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="page">Troubleshooting Guide</a>.</p>
+<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="xref page">Troubleshooting Guide</a>.</p>
 </li>
 </ul>
 </div>
@@ -3996,14 +3996,14 @@ for (JsonObject row : result.rowsAsObject()) {
 <div class="sectionbody">
 <div class="paragraph">
 <p>The API reference is generated for each release and the latest can be found <a href="http://docs.couchbase.com/sdk-api/couchbase-java-client/">here</a>.
-Older API references are linked from their respective sections in the <a href="../project-docs/sdk-release-notes.html" class="page">Release Notes</a>.</p>
+Older API references are linked from their respective sections in the <a href="../project-docs/sdk-release-notes.html" class="xref page">Release Notes</a>.</p>
 </div>
 <div class="paragraph">
 <p>Couchbase welcomes community contributions to the Java SDK.
 The Java SDK source code is available on <a href="https://github.com/couchbaselabs/couchbase-jvm-clients">GitHub</a>.</p>
 </div>
 <div class="paragraph">
-<p>If you are planning to use Spring Data Couchbase, see the <a href="../project-docs/compatibility.html#spring-compat" class="page">notes on version compatibility</a>.</p>
+<p>If you are planning to use Spring Data Couchbase, see the <a href="../project-docs/compatibility.html#spring-compat" class="xref page">notes on version compatibility</a>.</p>
 </div>
 </div>
 </div>

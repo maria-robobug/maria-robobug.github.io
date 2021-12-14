@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-security/configure-server-certificates.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4472,7 +4472,7 @@ Modification of the procedures will likely be required, for the preparation of c
 </div>
 <div class="paragraph">
 <p>Two procedures are provided, each of which configures X.509 certificates on Ubuntu 16 for a one-node Couchbase Server-cluster.
-Before attempting to follow either procedure, see the conceptual and architectural information provided in <a href="../../learn/security/certificates.html" class="page">Certificates</a>.</p>
+Before attempting to follow either procedure, see the conceptual and architectural information provided in <a href="../../learn/security/certificates.html" class="xref page">Certificates</a>.</p>
 </div>
 <div class="paragraph">
 <p>The first procedure, <a href="#root-and-node-certificates">Cluster Protection with Root and Node Certificates</a>, is the simpler: it shows how to create a root certificate that is a trusted, self-signed authority; and how to use this to sign individual, per node certificates.</p>
@@ -4502,11 +4502,11 @@ Additionally, an <em>intermediate</em> (sometimes referred to as a <em>subordina
 <div class="sect2">
 <h3 id="node-to-node-encryption-and-certificate-management"><a class="anchor" href="#node-to-node-encryption-and-certificate-management"></a>Node-to-Node Encryption and Certificate Management</h3>
 <div class="paragraph">
-<p>Couchbase Server supports <a href="../../learn/clusters-and-availability/node-to-node-encryption.html" class="page">Node-to-Node Encryption</a>, whereby network traffic between the individual nodes of a cluster is encrypted.</p>
+<p>Couchbase Server supports <a href="../../learn/clusters-and-availability/node-to-node-encryption.html" class="xref page">Node-to-Node Encryption</a>, whereby network traffic between the individual nodes of a cluster is encrypted.</p>
 </div>
 <div class="paragraph">
 <p>Node-to-node encryption, which is managed by means of the Couchbase CLI, must be <em>disabled</em> before management of either <em>root</em> or <em>intermediate</em> certificates is performed.
-To determine the status of node-to-node encryption, use the <a href="#cli:cbcli/couchbase-cli-node-to-node-encryption.adoc" class="page unresolved">node-to-node-encryption</a> command with the <code>--get</code> flag.
+To determine the status of node-to-node encryption, use the <a href="#cli:cbcli/couchbase-cli-node-to-node-encryption.adoc" class="xref unresolved">node-to-node-encryption</a> command with the <code>--get</code> flag.
 If the command output shows that node-to-node encryption is enabled, disable it; using the same command, with the <code>--disable</code> flag.
 Once management of <em>node</em> and <em>intermediate</em> certificates has been concluded, use the same command with the <code>--enable</code> flag, to re-enable node-to-node encryption.</p>
 </div>
@@ -4518,7 +4518,7 @@ Once management of <em>node</em> and <em>intermediate</em> certificates has been
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following procedure shows how to create a root certificate that is the trusted, self-signed authority used to sign individual, per node certificates.
-Note that corresponding, subsequent procedures that create certificates for <em>client</em>-authentication are provided in <a href="configure-client-certificates.html#client-certificate-authorized-by-a-root-certificate" class="page">Client Access: Root Certificate Authorization</a> and <a href="configure-client-certificates.html#java-client-access-root-certificate-authorization" class="page">Java Client Access: Root Certificate Authorization</a>.</p>
+Note that corresponding, subsequent procedures that create certificates for <em>client</em>-authentication are provided in <a href="configure-client-certificates.html#client-certificate-authorized-by-a-root-certificate" class="xref page">Client Access: Root Certificate Authorization</a> and <a href="configure-client-certificates.html#java-client-access-root-certificate-authorization" class="xref page">Java Client Access: Root Certificate Authorization</a>.</p>
 </div>
 <div class="paragraph">
 <p>Proceed as follows:</p>
@@ -4861,7 +4861,7 @@ Then, left-click on the <strong>Root Certificate</strong> tab, located on the up
 </div>
 </div>
 <div class="paragraph">
-<p>As this indicates, the signed certificate has now been substituted for the default certificate (an example of whose appearance is provided in <a href="manage-security-settings.html#root-certificate-security-screen-display" class="page">Root Certificate</a>).</p>
+<p>As this indicates, the signed certificate has now been substituted for the default certificate (an example of whose appearance is provided in <a href="manage-security-settings.html#root-certificate-security-screen-display" class="xref page">Root Certificate</a>).</p>
 </div>
 </li>
 <li>
@@ -4880,18 +4880,18 @@ Note that when, as is typical, the cluster contains more than one node, this ste
 </ol>
 </div>
 <div class="paragraph">
-<p>For more information using the REST API to manage certificates, see <a href="../../rest-api/rest-certificate-management.html" class="page">Certificate Management API</a>.</p>
+<p>For more information using the REST API to manage certificates, see <a href="../../rest-api/rest-certificate-management.html" class="xref page">Certificate Management API</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="configure-client-access-simple"><a class="anchor" href="#configure-client-access-simple"></a>Configuring Client Access</h3>
 <div class="paragraph">
 <p>Once the cluster has been protected by the deployment of root and node certificates described above, a <em>client</em> certificate can be signed by the root certificate, to allow a client to access the cluster.
 Client-certificate preparation varies, depending on the type of client to be supported.
-For steps to prepare a certificate supportive of Couchbase Server, see <a href="configure-client-certificates.html#client-certificate-authorized-by-a-root-certificate" class="page">Client Access: Root-Certificate Authorization</a>.
-For steps to prepare a certificate supportive of a Java client, see <a href="configure-client-certificates.html#java-client-access-root-certificate-authorization" class="page">Java Client Access: Root-Certificate Authorization</a>.</p>
+For steps to prepare a certificate supportive of Couchbase Server, see <a href="configure-client-certificates.html#client-certificate-authorized-by-a-root-certificate" class="xref page">Client Access: Root-Certificate Authorization</a>.
+For steps to prepare a certificate supportive of a Java client, see <a href="configure-client-certificates.html#java-client-access-root-certificate-authorization" class="xref page">Java Client Access: Root-Certificate Authorization</a>.</p>
 </div>
 <div class="paragraph">
-<p>Note that access by means of a client certificate must be specifically enabled, on the cluster that is to be accessed: see <a href="enable-client-certificate-handling.html" class="page">Enable Client-Certificate Handling</a>.</p>
+<p>Note that access by means of a client certificate must be specifically enabled, on the cluster that is to be accessed: see <a href="enable-client-certificate-handling.html" class="xref page">Enable Client-Certificate Handling</a>.</p>
 </div>
 </div>
 </div>
@@ -4907,7 +4907,7 @@ This increases security, since it minimizes use of the private key associated wi
 <p>The steps and descriptions below assume that the previous procedure, <a href="#root-and-node-certificates">Cluster Protection with Root and Node Certificates</a>, has already been successfully completed; and that familiarity with the basic certificate-related concepts explained there has been attained.</p>
 </div>
 <div class="paragraph">
-<p>Note that corresponding, subsequent procedures that create certificates for <em>client</em>-authentication are provided in <a href="configure-client-certificates.html#client-certificate-authorized-by-an-intermediate-certificate" class="page">Client Access: Intermediate Certificate Authorization</a> and <a href="configure-client-certificates.html#java-client-access-intermediate-certificate-authorization" class="page">Java Client Access: Intermediate Certificate Authorization</a></p>
+<p>Note that corresponding, subsequent procedures that create certificates for <em>client</em>-authentication are provided in <a href="configure-client-certificates.html#client-certificate-authorized-by-an-intermediate-certificate" class="xref page">Client Access: Intermediate Certificate Authorization</a> and <a href="configure-client-certificates.html#java-client-access-intermediate-certificate-authorization" class="xref page">Java Client Access: Intermediate Certificate Authorization</a></p>
 </div>
 <div class="paragraph">
 <p>Proceed as follows:</p>
@@ -4928,7 +4928,7 @@ mkdir -p {root,servers,clients}/{issued,reqs,private}</pre>
 Each directory therefore contains <code>issued</code>, <code>reqs</code>, and <code>private</code> subdirectories.</p>
 </div>
 <div class="paragraph">
-<p>Note that this directory infrastructure will also be used in the subsequent process, <a href="configure-client-certificates.html#client-certificate-authorized-by-an-intermediate-certificate" class="page">Client Access: Intermediate Certificate Authorization</a>; where the contents of the <code>clients</code> directory will be created.</p>
+<p>Note that this directory infrastructure will also be used in the subsequent process, <a href="configure-client-certificates.html#client-certificate-authorized-by-an-intermediate-certificate" class="xref page">Client Access: Intermediate Certificate Authorization</a>; where the contents of the <code>clients</code> directory will be created.</p>
 </div>
 </li>
 <li>
@@ -5201,18 +5201,18 @@ The root certificate can be examined by means of Couchbase Web Console, as shown
 </ol>
 </div>
 <div class="paragraph">
-<p>For more information using the REST API to manage certificates, see <a href="../../rest-api/rest-certificate-management.html" class="page">Certificate Management API</a>.</p>
+<p>For more information using the REST API to manage certificates, see <a href="../../rest-api/rest-certificate-management.html" class="xref page">Certificate Management API</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="configure-client-access-advanced"><a class="anchor" href="#configure-client-access-advanced"></a>Configuring Client Access</h3>
 <div class="paragraph">
 <p>Once the cluster has been protected by the deployment of root, intermediate, and node certificates described above, a <em>client</em> certificate can be signed by a <em>client-intermediate</em> certificate that itself inherits the authority of the root: this allows the client certificate to access the cluster.
 Client-certificate preparation varies, depending on the type of client to be supported.
-For steps to prepare a certificate supportive of Couchbase Server, see <a href="configure-client-certificates.html#client-certificate-authorized-by-an-intermediate-certificate" class="page">Client Access: Intermediate-Certificate Authorization</a>.
-For steps to prepare a certificate supportive of a Java client, see <a href="configure-client-certificates.html#java-client-access-intermediate-certificate-authorization" class="page">Java Client Access: Intermediate-Certificate Authorization</a>.</p>
+For steps to prepare a certificate supportive of Couchbase Server, see <a href="configure-client-certificates.html#client-certificate-authorized-by-an-intermediate-certificate" class="xref page">Client Access: Intermediate-Certificate Authorization</a>.
+For steps to prepare a certificate supportive of a Java client, see <a href="configure-client-certificates.html#java-client-access-intermediate-certificate-authorization" class="xref page">Java Client Access: Intermediate-Certificate Authorization</a>.</p>
 </div>
 <div class="paragraph">
-<p>Note that access by means of a client certificate must be specifically enabled, on the cluster that is to be accessed: see <a href="enable-client-certificate-handling.html" class="page">Enable Client-Certificate Handling</a>.</p>
+<p>Note that access by means of a client certificate must be specifically enabled, on the cluster that is to be accessed: see <a href="enable-client-certificate-handling.html" class="xref page">Enable Client-Certificate Handling</a>.</p>
 </div>
 </div>
 </div>
@@ -5300,7 +5300,7 @@ If the removed node is subsequently re-added to the cluster, it is added as a ne
 Consequently, the appropriate root certificate and chain certificate for the node must again be loaded.</p>
 </div>
 <div class="paragraph">
-<p>For more information on node removal, see <a href="../../learn/clusters-and-availability/removal.html" class="page">Removal</a>.</p>
+<p>For more information on node removal, see <a href="../../learn/clusters-and-availability/removal.html" class="xref page">Removal</a>.</p>
 </div>
 </div>
 </div>
@@ -5311,7 +5311,7 @@ Consequently, the appropriate root certificate and chain certificate for the nod
 <div class="paragraph">
 <p>The <em>default</em> certificates provided automatically by Couchbase Server &#8212; including the <em>root</em> certificate and each of the <em>node</em> certificates for the cluster &#8212; can be <em>regenerated</em> at any time, by means of the REST API.
 This means that the administrator-uploaded certificates are removed, and default certificates re-substituted.
-For information, see <a href="../../rest-api/rest-regenerate-all-certs.html" class="page">Regenerate All Certificates</a>.</p>
+For information, see <a href="../../rest-api/rest-regenerate-all-certs.html" class="xref page">Regenerate All Certificates</a>.</p>
 </div>
 </div>
 </div>
@@ -5319,13 +5319,13 @@ For information, see <a href="../../rest-api/rest-regenerate-all-certs.html" cla
 <h2 id="further-information"><a class="anchor" href="#further-information"></a>Further Information</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For information on certificate-management by means of the REST API, see <a href="#cli:cbcli/couchbase-cli-ssl-manage.adoc" class="page unresolved">ssl-manage</a> and <a href="../../rest-api/rest-certificate-management.html" class="page">Certificate Management API</a>.</p>
+<p>For information on certificate-management by means of the REST API, see <a href="#cli:cbcli/couchbase-cli-ssl-manage.adoc" class="xref unresolved">ssl-manage</a> and <a href="../../rest-api/rest-certificate-management.html" class="xref page">Certificate Management API</a>.</p>
 </div>
 <div class="paragraph">
-<p>For step-by-step instructions on creating <em>client</em> certificates, see <a href="configure-client-certificates.html" class="page">Configure Client Certificates</a>.</p>
+<p>For step-by-step instructions on creating <em>client</em> certificates, see <a href="configure-client-certificates.html" class="xref page">Configure Client Certificates</a>.</p>
 </div>
 <div class="paragraph">
-<p>For an example of using the certificates and keys created on the current page and on <a href="configure-client-certificates.html" class="page">Configure Client Certificates</a> to secure an <em>XDCR replication</em>, see <a href="../manage-xdcr/enable-full-secure-replication.html#specify-full-xdcr-security-with-certificates" class="page">Specify Root and Client Certificates, and Client Private Key</a>.</p>
+<p>For an example of using the certificates and keys created on the current page and on <a href="configure-client-certificates.html" class="xref page">Configure Client Certificates</a> to secure an <em>XDCR replication</em>, see <a href="../manage-xdcr/enable-full-secure-replication.html#specify-full-xdcr-security-with-certificates" class="xref page">Specify Root and Client Certificates, and Client Private Key</a>.</p>
 </div>
 </div>
 </div>

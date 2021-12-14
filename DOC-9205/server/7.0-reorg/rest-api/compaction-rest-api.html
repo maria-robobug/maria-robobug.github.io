@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/rest-api/compaction-rest-api.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4463,7 +4463,7 @@ The periodic compaction of a bucket&#8217;s data helps to ensure the ongoing eff
 </div>
 <div class="paragraph">
 <p>Administrators can initiate the compaction of a single bucket&#8217;s data at any time, and can cancel such compaction if and when necessary.
-The REST APIs that support this are described in <a href="rest-compact-post.html" class="page">Performing Compaction Manually</a>.</p>
+The REST APIs that support this are described in <a href="rest-compact-post.html" class="xref page">Performing Compaction Manually</a>.</p>
 </div>
 <div class="paragraph">
 <p>Additionally, settings are provided whereby compaction is triggered <em>automatically</em>, according to a specified configuration and schedule.
@@ -4473,11 +4473,11 @@ This <em>auto-compaction</em> can be achieved in two ways:</p>
 <ul>
 <li>
 <p><em>Globally</em>, meaning that all buckets in the cluster are compacted according to the same configuration and schedule &#8212; with the exception of those buckets for which these default settings are deliberately overridden.
-The REST APIs that support global auto-compaction are described in <a href="rest-autocompact-global.html" class="page">Auto-Compaction: Global</a>.</p>
+The REST APIs that support global auto-compaction are described in <a href="rest-autocompact-global.html" class="xref page">Auto-Compaction: Global</a>.</p>
 </li>
 <li>
 <p><em>Per bucket</em>, meaning that a specified bucket is automatically compacted according to a different configuration and schedule than those established as the global defaults.
-The REST APIs that support per-bucket auto-compaction are described in <a href="rest-autocompact-per-bucket.html" class="page">Auto-Compaction: Per Bucket</a>.</p>
+The REST APIs that support per-bucket auto-compaction are described in <a href="rest-autocompact-per-bucket.html" class="xref page">Auto-Compaction: Per Bucket</a>.</p>
 </li>
 </ul>
 </div>

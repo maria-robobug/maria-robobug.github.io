@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/services-and-indexes/indexes/index_pushdowns.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4622,7 +4622,7 @@ These attributes exactly define different characteristics of the index scan:</p>
 In this example, the predicate condition (<code>sourceairport = "SFO"</code>) translates to one span with one range that specifies both <code>low</code> and <code>high</code> values of "SFO" (to imply equals condition).</p>
 </li>
 <li>
-<p>Refer to section <a href="index-scans.html" class="page">Scans</a> for more information.</p>
+<p>Refer to section <a href="index-scans.html" class="xref page">Scans</a> for more information.</p>
 </li>
 </ul>
 </div>
@@ -4637,7 +4637,7 @@ In this example, the predicate condition (<code>sourceairport = "SFO"</code>) tr
 <p>Compound or composite predicates are those with multiple conditions on different fields of the document.
 When the predicate is conjunctive with multiple AND conditions, then a single <code>span</code> with multiple <code>ranges</code> are specified in the index-scan request.
 When the predicate is disjunctive, then multiple <code>spans</code> are specified.
-See <a href="index-scans.html" class="page">Scans</a>
+See <a href="index-scans.html" class="xref page">Scans</a>
 for more details and examples on how predicate pushdown works for various types of index-scans as well as the conjunctive predicate AND and the disjunctive predicate OR.</p>
 </div>
 <div class="sect2">
@@ -4826,7 +4826,7 @@ WHERE distance &lt; 2000 AND sourceairport = "LAX"; <i class="conum" data-value=
 </div>
 <div class="paragraph">
 <p>The Indexer processes the lookup request and exactly returns only the documents matching the predicate conditions.
-For example, when you <a href="../../../manage/monitor/monitoring-n1ql-query.html" class="page">enable monitoring</a> with the configuration parameter <code>profile = "timings"</code> for this query, you can see that the indexer returns 165 documents, which is the same as the final result set of the query.</p>
+For example, when you <a href="../../../manage/monitor/monitoring-n1ql-query.html" class="xref page">enable monitoring</a> with the configuration parameter <code>profile = "timings"</code> for this query, you can see that the indexer returns 165 documents, which is the same as the final result set of the query.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5475,7 +5475,7 @@ In such cases, the Query engine pushes down necessary hints or options to the In
 <h2 id="max-pushdown"><a class="anchor" href="#max-pushdown"></a>MAX() Pushdown</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This function returns the highest value of the input field based on the default collation rules. (For details, see <a href="../../../n1ql/n1ql-language-reference/datatypes.html" class="page">Data types</a> and <a href="../../../n1ql/n1ql-language-reference/comparisonops.html" class="page">Comparison Operators</a>.)</p>
+<p>This function returns the highest value of the input field based on the default collation rules. (For details, see <a href="../../../n1ql/n1ql-language-reference/datatypes.html" class="xref page">Data types</a> and <a href="../../../n1ql/n1ql-language-reference/comparisonops.html" class="xref page">Comparison Operators</a>.)</p>
 </div>
 <div class="paragraph">
 <p>Prior to Couchbase Server 5.5, MAX() could be pushed to the Indexer only when the index was created with matching index keys in descending order.
@@ -5541,7 +5541,7 @@ WHERE city IS NOT NULL;</code></pre>
 <h2 id="min-pushdown"><a class="anchor" href="#min-pushdown"></a>MIN() Pushdown</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This function returns the lowest value of the input field based on the default collation rules. (For details, see <a href="../../../n1ql/n1ql-language-reference/datatypes.html" class="page">Data types</a> and <a href="../../../n1ql/n1ql-language-reference/comparisonops.html" class="page">Comparison Operators</a>.)</p>
+<p>This function returns the lowest value of the input field based on the default collation rules. (For details, see <a href="../../../n1ql/n1ql-language-reference/datatypes.html" class="xref page">Data types</a> and <a href="../../../n1ql/n1ql-language-reference/comparisonops.html" class="xref page">Comparison Operators</a>.)</p>
 </div>
 <div class="paragraph">
 <p>Prior to Couchbase Server 5.5, MIN() could be pushed to the Indexer only when the index was created with matching index keys in ascending order.

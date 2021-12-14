@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/clusters-and-availability/removal.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4470,7 +4470,7 @@ Any node, whatever its service-configuration, can be removed.
 However, removal should be used only when all nodes in the cluster are responsive, and those intended to remain in the cluster after removal have the capacity to support the results.</p>
 </div>
 <div class="paragraph">
-<p>Removal essentially means using <a href="rebalance.html" class="page">Rebalance</a> to redistribute data across a subset of pre-existing cluster-nodes.
+<p>Removal essentially means using <a href="rebalance.html" class="xref page">Rebalance</a> to redistribute data across a subset of pre-existing cluster-nodes.
 It can be performed with the UI, the CLI, or the REST API.
 When the CLI or REST API is used, a single command initiates a rebalance, specifying which nodes are to be excluded.
 When the UI is used, nodes to be removed are first identified, then rebalance is initiated.
@@ -4482,7 +4482,7 @@ The process occurs while the cluster continues to service requests for data.</p>
 If the removed node is subsequently re-added to the cluster, it is added as a new node, with a new definition of its configuration.</p>
 </div>
 <div class="paragraph">
-<p>For information on how to perform node-removal with the UI, the CLI, and the REST API, see <a href="../../manage/manage-nodes/remove-node-and-rebalance.html" class="page">Remove a Node and Rebalance</a>.</p>
+<p>For information on how to perform node-removal with the UI, the CLI, and the REST API, see <a href="../../manage/manage-nodes/remove-node-and-rebalance.html" class="xref page">Remove a Node and Rebalance</a>.</p>
 </div>
 </div>
 </div>
@@ -4663,7 +4663,7 @@ The approximate ratio, on each node, of active to replica items is now <em>1:1</
 <p>Note that since multiple buckets may have been configured, and different replication-levels applied, removal and rebalance may result in the replica-count for some buckets being reduced, but for others maintained.</p>
 </div>
 <div class="paragraph">
-<p>For further examples of rebalance, in the context of <em>failover</em>, see <a href="failover.html" class="page">Failover</a>.</p>
+<p>For further examples of rebalance, in the context of <em>failover</em>, see <a href="failover.html" class="xref page">Failover</a>.</p>
 </div>
 </div>
 </div>
@@ -4674,7 +4674,7 @@ The approximate ratio, on each node, of active to replica items is now <em>1:1</
 <div class="paragraph">
 <p>As an alternative to removal, a responsive Data Service node can be taken out of a cluster by means of <em>Graceful Failover</em>.
 This may be faster, but the consequences do not maintain previous availability-levels.
-An account of the advantages and disadvantages is provided in <a href="graceful-failover.html#advantages-and-disadvantages" class="page">Graceful Failover</a>.</p>
+An account of the advantages and disadvantages is provided in <a href="graceful-failover.html#advantages-and-disadvantages" class="xref page">Graceful Failover</a>.</p>
 </div>
 </div>
 </div>

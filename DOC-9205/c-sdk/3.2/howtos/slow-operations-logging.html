@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="c-sdk">
 <meta name="dcterms.identifier" content="3.2">
 <meta name="page-url" content="/c-sdk/3.2/howtos/slow-operations-logging.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3699,7 +3699,7 @@ because most production deployments at least monitor CPU usage etc.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The metrics logging can be enabled/disabled, and the emit interval can be configured, in the connection string or via <code>lcb_cntl</code> calls.
-See the <a href="../ref/client-settings.html#metrics-reporting-options" class="page">metrics reporting options</a>.</p>
+See the <a href="../ref/client-settings.html#metrics-reporting-options" class="xref page">metrics reporting options</a>.</p>
 </div>
 <div class="paragraph">
 <p>At each emit/log interval, libcouchbase logs a JSON structure with the per-operation latencies in a simple histogram.
@@ -3751,7 +3751,7 @@ Since the configuration property is not always available when debugging logs it 
 <div class="sect2">
 <h3 id="configuring-threshold-logging"><a class="anchor" href="#configuring-threshold-logging"></a>Configuring Threshold Logging</h3>
 <div class="paragraph">
-<p>To configure threshold logging, adjust the <a href="../ref/client-settings.html#tracing-threshold-logging-options" class="page">tracing threshold logging options</a>.
+<p>To configure threshold logging, adjust the <a href="../ref/client-settings.html#tracing-threshold-logging-options" class="xref page">tracing threshold logging options</a>.
 You should expect to see output in JSON format in the logs for the services encountering problems:</p>
 </div>
 <div class="listingblock">
@@ -3821,7 +3821,7 @@ For example, if a single node is slow but the rest of the cluster is responsive,
 but instead of tracking responses which are over a specific threshold it tracks those responses which are "orphaned".</p>
 </div>
 <div class="paragraph">
-<p>The <code>emitInterval</code> and <code>sampleSize</code> can be adjusted, see the <a href="../ref/client-settings.html#tracing-orphaned-logging-options" class="page">tracing orphaned logging options</a> for details.
+<p>The <code>emitInterval</code> and <code>sampleSize</code> can be adjusted, see the <a href="../ref/client-settings.html#tracing-orphaned-logging-options" class="xref page">tracing orphaned logging options</a> for details.
 They default to 10s and 128 samples per service, respectively.
 The overall structure looks like this (here prettified for readability):</p>
 </div>

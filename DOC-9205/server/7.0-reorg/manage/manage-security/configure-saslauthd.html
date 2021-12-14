@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-security/configure-saslauthd.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4467,7 +4467,7 @@
 <div class="paragraph">
 <p>Couchbase Server provides <em>Native LDAP</em> support.
 This allows external users to be authenticated by LDAP, and provides support for <em>LDAP groups</em>.
-For details on using this recommended procedure, see <a href="configure-ldap.html" class="page">Configure LDAP</a>.</p>
+For details on using this recommended procedure, see <a href="configure-ldap.html" class="xref page">Configure LDAP</a>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>saslauthd</code> process can still be used to support authentication on LDAP or other servers if required.
@@ -4482,13 +4482,13 @@ The two cannot be used simultaneously.</p>
 <p>Note also that <em>both</em> Native LDAP Support <em>and</em> <code>saslauthd</code> require clients to use the PLAIN authentication mechanism, ideally with TLS.</p>
 </div>
 <div class="paragraph">
-<p>For an overview of authentication options on Couchbase Server, see <a href="../../learn/security/authentication.html" class="page">Authentication</a>.</p>
+<p>For an overview of authentication options on Couchbase Server, see <a href="../../learn/security/authentication.html" class="xref page">Authentication</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="migrating-from-saslauthd-to-native-ldap"><a class="anchor" href="#migrating-from-saslauthd-to-native-ldap"></a>Migrating from saslauthd to Native LDAP</h3>
 <div class="paragraph">
 <p>If you have been using <code>saslauthd</code> with previous versions of Couchbase Server, you are strongly recommended to migrate to <em>Native LDAP</em>.
-See <a href="../../learn/security/authentication-domains.html" class="page">Authentication Domains</a> for a full account of the benefits.</p>
+See <a href="../../learn/security/authentication-domains.html" class="xref page">Authentication Domains</a> for a full account of the benefits.</p>
 </div>
 <div class="paragraph">
 <p>To migrate, proceed as follows:</p>
@@ -4497,7 +4497,7 @@ See <a href="../../learn/security/authentication-domains.html" class="page">Auth
 <ol class="arabic">
 <li>
 <p>Configure Native LDAP.
-This is described in detail, in <a href="configure-ldap.html" class="page">Configure LDAP.</a></p>
+This is described in detail, in <a href="configure-ldap.html" class="xref page">Configure LDAP.</a></p>
 <div class="paragraph">
 <p>Note that the procedure provides two principal options, which are <strong>Enable LDAP user authentication</strong> and <strong>Enable LDAP group authorization &amp; sync</strong>.
 During your configuration procedure:</p>
@@ -4642,7 +4642,7 @@ Then, enable external authentication on the cluster, using the Couchbase CLI <co
 </div>
 <div class="paragraph">
 <p>Note that <code>--enabled 1</code> enables external authentication, and <code>--enabled 0</code> disables.
-See <a href="#cli:cbcli/couchbase-cli-setting-saslauthd.adoc" class="page unresolved">setting-saslauthd</a> for further information.
+See <a href="#cli:cbcli/couchbase-cli-setting-saslauthd.adoc" class="xref unresolved">setting-saslauthd</a> for further information.
 When successfully executed, the command provides the following notification: <code>SUCCESS: saslauthd settings modified</code>.</p>
 </div>
 </li>

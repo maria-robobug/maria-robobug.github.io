@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="java-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/java-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4012,7 +4012,7 @@ It allows to plug in your own library (like GSON) or custom configured mappings 
 This in turn makes it possible to serialize rows into POJOs or other structures that your application defines and the SDK has no idea about.</p>
 </div>
 <div class="paragraph">
-<p>Please see the <a href="transcoders-nonjson.html" class="page">documentation on transcoding and serialization</a> for more information.</p>
+<p>Please see the <a href="transcoders-nonjson.html" class="xref page">documentation on transcoding and serialization</a> for more information.</p>
 </div>
 </div>
 </div>
@@ -4096,7 +4096,7 @@ As always we recommend not blocking in the first place in reactive code.</p>
 <h2 id="querying-at-scope-level"><a class="anchor" href="#querying-at-scope-level"></a>Querying at Scope Level</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>It is possible to query off the <a href="../concept-docs/n1ql-query.html#collections-and-scopes-and-the-query-context" class="page"><code>Scope</code> level</a>,
+<p>It is possible to query off the <a href="../concept-docs/n1ql-query.html#collections-and-scopes-and-the-query-context" class="xref page"><code>Scope</code> level</a>,
 <em>with Couchbase Server release 7.0</em>, using the <code>scope.query()</code> method.
 It takes the statement as a required argument, and then allows additional options if needed.</p>
 </div>
@@ -4129,7 +4129,7 @@ for (JsonObject row : result.rowsAsObject()) {
 </td>
 <td class="content">
 N1QL is not the only query option in Couchbase.
-Be sure to check that <a href="../concept-docs/data-services.html" class="page">your use case fits your selection of query service</a>.
+Be sure to check that <a href="../concept-docs/data-services.html" class="xref page">your use case fits your selection of query service</a>.
 </td>
 </tr>
 </table>
@@ -4137,19 +4137,19 @@ Be sure to check that <a href="../concept-docs/data-services.html" class="page">
 <div class="ulist">
 <ul>
 <li>
-<p>For a deeper dive into N1QL from the SDK, refer to our <a href="../concept-docs/n1ql-query.html" class="page">N1QL SDK concept doc</a>.</p>
+<p>For a deeper dive into N1QL from the SDK, refer to our <a href="../concept-docs/n1ql-query.html" class="xref page">N1QL SDK concept doc</a>.</p>
 </li>
 <li>
-<p>The <a href="#7.0@server:n1ql:n1ql-language-reference/index.adoc" class="page unresolved">Server doc N1QL intro</a> introduces a complete guide to the N1QL language, including all of the latest additions.</p>
+<p>The <a href="#7.0@server:n1ql:n1ql-language-reference/index.adoc" class="xref unresolved">Server doc N1QL intro</a> introduces a complete guide to the N1QL language, including all of the latest additions.</p>
 </li>
 <li>
 <p>The <a href="http://query.pub.couchbase.com/tutorial/#1">N1QL interactive tutorial</a> is a good introduction to the basics of N1QL use.</p>
 </li>
 <li>
-<p>For scaling up queries, be sure to <a href="#7.0@server:learn:services-and-indexes/indexes/index-replication.adoc" class="page unresolved">read up on Indexes</a>.</p>
+<p>For scaling up queries, be sure to <a href="#7.0@server:learn:services-and-indexes/indexes/index-replication.adoc" class="xref unresolved">read up on Indexes</a>.</p>
 </li>
 <li>
-<p>N1QL is for operational queries; for analytical workloads, read more on <a href="../concept-docs/data-services.html#long-running-queries-big-data" class="page">when to choose Analytics</a>, our implementation of SQL++ available in the Enterprise Edition.</p>
+<p>N1QL is for operational queries; for analytical workloads, read more on <a href="../concept-docs/data-services.html#long-running-queries-big-data" class="xref page">when to choose Analytics</a>, our implementation of SQL++ available in the Enterprise Edition.</p>
 </li>
 </ul>
 </div>

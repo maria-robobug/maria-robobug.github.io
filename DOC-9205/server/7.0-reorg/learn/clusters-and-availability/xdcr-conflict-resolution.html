@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/clusters-and-availability/xdcr-conflict-resolution.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4555,12 +4555,12 @@ The document whose update has the more recent timestamp prevails.</p>
 <p>Timestamp-based conflict resolution requires the use of <em>synchronized clocks</em> across all nodes, in all clusters intended to participate in XDCR.
 If clocks are not so synchronized, conflict resolution may produce unexpected results.
 To achieve synchronicity, an external entity such as NTP (Network Time Protocol) is required.
-For information, see <a href="../../install/synchronize-clocks-using-ntp.html" class="page">Clock Sync with NTP</a>.</p>
+For information, see <a href="../../install/synchronize-clocks-using-ntp.html" class="xref page">Clock Sync with NTP</a>.</p>
 </div>
 <div class="paragraph">
 <p>Even with optimal clock synchronicity, small differences may persist between the clock-settings on different nodes and clusters: this is known as <em>clock drift</em>; or more simply, <em>drift</em>.
 Drift between nodes and clusters should be closely monitored, to ensure that timestamp-based conflict resolution produces the intended results.
-For more details, see <a href="../../manage/monitor/xdcr-monitor-timestamp-conflict-resolution.html" class="page">Monitor Clock Drift</a>.</p>
+For more details, see <a href="../../manage/monitor/xdcr-monitor-timestamp-conflict-resolution.html" class="xref page">Monitor Clock Drift</a>.</p>
 </div>
 <div class="paragraph">
 <p>To compensate for drift, Couchbase Server records timestamps using a <em>Hybrid Logical Clock</em> (HLC).
@@ -4614,7 +4614,7 @@ This ensures that writes to data center B commence only after the last write to 
 <div class="sectionbody">
 <div class="paragraph">
 <p>Conflict resolution policy is configured on a per-bucket basis at bucket creation time, it cannot be changed later.
-For more information, see <a href="../../manage/manage-buckets/create-bucket.html" class="page">Create a Bucket</a>.
+For more information, see <a href="../../manage/manage-buckets/create-bucket.html" class="xref page">Create a Bucket</a>.
 Choosing a conflict resolution method requires consideration of the logic of the applications that require the data.
 This is illustrated by the following examples:</p>
 </div>

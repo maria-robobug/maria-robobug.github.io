@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/install/upgrade-feature-availability.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4488,14 +4488,14 @@ When cluster-upgrade is complete, all the features of the higher version of Couc
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../learn/data/scopes-and-collections.html" class="page">Scopes &amp; Collections</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../learn/data/scopes-and-collections.html" class="xref page">Scopes &amp; Collections</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Not usable in mixed mode.
 During upgrade, all documents on an upgraded node appear in the <code>_default</code> collection, within the <code>_default</code> scope.
 No new scope or collection can be defined until all nodes have been upgraded.</p>
 <p class="tableblock">XDCR cannot be used to specify scopes or collections as either sources or targets for replication until all nodes have been upgraded.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../metrics-reference/metrics-reference.html" class="page">Metrics</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../metrics-reference/metrics-reference.html" class="xref page">Metrics</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Usable in mixed mode for upgraded nodes.
 When all nodes have been upgraded, usable for entire cluster.</p>
 <p class="tableblock">Note that pre-7.0 statistics are deleted from each node when the node is upgraded.</p></td>
@@ -4507,20 +4507,20 @@ Magma is a Developer Preview feature that is switched on per bucket.
 Magma should not be switched on until all nodes have been upgraded.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../learn/data/durability.html#specifying-levels" class="page">Bucket-Assigned Durability Levels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../learn/data/durability.html#specifying-levels" class="xref page">Bucket-Assigned Durability Levels</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When a Data Service node is upgraded from a version less than 6.6, the durability-level setting for all the node&#8217;s vBuckets is set to <em>none</em>.</p>
 <p class="tableblock">Bucket durability-levels should not be modified until after the completion of cluster-upgrade.</p>
 <p class="tableblock">When a Data Service node is upgraded from Version 6.6, all bucket durability-level settings remain unchanged.
 Applications that use durable writes can continue to access data throughout the upgrade.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../learn/security/on-the-wire-security.html" class="page">On-the-Wire Security</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../learn/security/on-the-wire-security.html" class="xref page">On-the-Wire Security</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">On-the-wire security-features introduced in 7.0 are not usable in mixed mode.
 These features, including TLS 1.3 support, should be used only following the completion of cluster-upgrade.
 If, at that time, a TLS version is changed, existing connections are not dropped, and so continue with their previously established TLS version: the new TLS version will be established for future connections.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../learn/services-and-indexes/services/backup-service.html" class="page">Backup Service</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../learn/services-and-indexes/services/backup-service.html" class="xref page">Backup Service</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Not usable in mixed mode.
 All nodes in the cluster should first be upgraded.</p></td>
 </tr>
@@ -4531,9 +4531,9 @@ All nodes in the cluster must be upgraded, before new Analytics-Service features
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Query Service</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="../introduction/whats-new.html#index-advisor" class="page">Index Advisor</a> and <a href="../introduction/whats-new.html#memory-usage-quota-setting" class="page">Memory-Usage Quota Setting</a> are usable in mixed mode.</p>
-<p class="tableblock"><a href="../n1ql/n1ql-language-reference/flex-indexes.html" class="page">Flex Indexes</a>, though not a new feature, are usable in mixed mode only if the cluster being upgraded is at least version 6.5.</p>
-<p class="tableblock">The <a href="../introduction/whats-new.html#cost-based-optimizer" class="page">Cost-Based Optimizer</a>, <a href="../introduction/whats-new.html#transactions-with-n1ql" class="page">Transactions with N1QL</a>, and <a href="../introduction/whats-new.html#user-defined-functions" class="page">User-Defined Functions</a> are not usable in mixed mode.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The <a href="../introduction/whats-new.html#index-advisor" class="xref page">Index Advisor</a> and <a href="../introduction/whats-new.html#memory-usage-quota-setting" class="xref page">Memory-Usage Quota Setting</a> are usable in mixed mode.</p>
+<p class="tableblock"><a href="../n1ql/n1ql-language-reference/flex-indexes.html" class="xref page">Flex Indexes</a>, though not a new feature, are usable in mixed mode only if the cluster being upgraded is at least version 6.5.</p>
+<p class="tableblock">The <a href="../introduction/whats-new.html#cost-based-optimizer" class="xref page">Cost-Based Optimizer</a>, <a href="../introduction/whats-new.html#transactions-with-n1ql" class="xref page">Transactions with N1QL</a>, and <a href="../introduction/whats-new.html#user-defined-functions" class="xref page">User-Defined Functions</a> are not usable in mixed mode.</p></td>
 </tr>
 </tbody>
 </table>

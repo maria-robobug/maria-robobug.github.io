@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/flex-indexes.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4467,7 +4467,7 @@ This means that you can write queries in N1QL to leverage the Search service&#82
 </div>
 <div class="paragraph">
 <p>In Couchbase Server, a global secondary index (GSI) uses a B-tree structure for fast exact search, whereas full-text search (FTS) uses an inverted index to provide efficient term search.
-In Couchbase Server 6.5 and later, it is possible to perform a full-text search within a N1QL query using <a href="searchfun.html" class="page">search functions</a>.
+In Couchbase Server 6.5 and later, it is possible to perform a full-text search within a N1QL query using <a href="searchfun.html" class="xref page">search functions</a>.
 However this requires you to write the full-text search using the FTS syntax.</p>
 </div>
 <div class="paragraph">
@@ -4497,7 +4497,7 @@ If these requirements are met, the query is transformed into an FTS query, and r
 </ul>
 </div>
 <div class="paragraph">
-<p>For a general introduction to creating full-text indexes, refer to <a href="#fts:fts-creating-indexes.adoc" class="page unresolved">Creating Indexes</a>.</p>
+<p>For a general introduction to creating full-text indexes, refer to <a href="#fts:fts-creating-indexes.adoc" class="xref unresolved">Creating Indexes</a>.</p>
 </div>
 </div>
 </div>
@@ -4540,16 +4540,16 @@ This is not possible with a full-text index.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>A Flex Index query cannot use a full-text index as a <a href="covering-indexes.html" class="page">covering index</a>.</p>
+<p>A Flex Index query cannot use a full-text index as a <a href="covering-indexes.html" class="xref page">covering index</a>.</p>
 </li>
 <li>
 <p>A Flex Index query cannot use a full-text index with a query on fields whose names contain special characters.</p>
 </li>
 <li>
-<p>A Flex Index query may include LIMIT and OFFSET clauses, but they cannot be <a href="../../learn/services-and-indexes/indexes/index_pushdowns.html" class="page">pushed down to the full-text index</a>.</p>
+<p>A Flex Index query may include LIMIT and OFFSET clauses, but they cannot be <a href="../../learn/services-and-indexes/indexes/index_pushdowns.html" class="xref page">pushed down to the full-text index</a>.</p>
 </li>
 <li>
-<p>A Flex Index query may include Aggregate functions and Window functions, but they cannot be <a href="../../learn/services-and-indexes/indexes/index_pushdowns.html" class="page">pushed down to the full-text index</a>.</p>
+<p>A Flex Index query may include Aggregate functions and Window functions, but they cannot be <a href="../../learn/services-and-indexes/indexes/index_pushdowns.html" class="xref page">pushed down to the full-text index</a>.</p>
 </li>
 </ul>
 </div>
@@ -4567,7 +4567,7 @@ For further details, refer to <a href="#usage">Usage</a> below.</p>
 <div class="paragraph">
 <p>Full-text indexes are online and searchable as soon as they are created.
 GSI indexes are online and searchable after they have been built.
-For further details, refer to <a href="build-index.html" class="page">BUILD INDEX</a>.</p>
+For further details, refer to <a href="build-index.html" class="xref page">BUILD INDEX</a>.</p>
 </div>
 </div>
 </div>
@@ -4582,11 +4582,11 @@ For further details, refer to <a href="build-index.html" class="page">BUILD INDE
 <ul>
 <li>
 <p>Use the <code>USE FTS</code> hint in the N1QL query.
-For full details, refer to <a href="hints.html#index-type" class="page">USE Clause</a>.</p>
+For full details, refer to <a href="hints.html#index-type" class="xref page">USE Clause</a>.</p>
 </li>
 <li>
 <p>Set the <code>use_fts</code> request-level parameter to <code>true</code>.
-For full details, refer to <a href="../../settings/query-settings.html" class="page">Settings and Parameters</a>.</p>
+For full details, refer to <a href="../../settings/query-settings.html" class="xref page">Settings and Parameters</a>.</p>
 </li>
 </ul>
 </div>
@@ -4688,7 +4688,7 @@ WHERE d.f1 = "xyz" AND d.f2 = 100;</code></pre>
 </ol>
 </div>
 <div class="paragraph">
-<p>In all cases, if the query meets the requirements to use a full-text index, and a qualified full-text index is selected, the query is transformed into an FTS <a href="#fts:fts-query-types.adoc#simple-queries" class="page unresolved">simple query</a> (<em>not</em> a query string query), and the simple query is run against the qualified full-text index.</p>
+<p>In all cases, if the query meets the requirements to use a full-text index, and a qualified full-text index is selected, the query is transformed into an FTS <a href="#fts:fts-query-types.adoc#simple-queries" class="xref unresolved">simple query</a> (<em>not</em> a query string query), and the simple query is run against the qualified full-text index.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -4697,7 +4697,7 @@ WHERE d.f1 = "xyz" AND d.f2 = 100;</code></pre>
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-If the query predicate contains a search function, none of this applies&#8201;&#8212;&#8201;instead, an index is selected for the query according to the method described on the <a href="searchfun.html" class="page">Search Functions</a> page.
+If the query predicate contains a search function, none of this applies&#8201;&#8212;&#8201;instead, an index is selected for the query according to the method described on the <a href="searchfun.html" class="xref page">Search Functions</a> page.
 </td>
 </tr>
 </table>
@@ -4713,7 +4713,7 @@ If the query predicate contains a search function, none of this applies&#8201;&#
 <div class="sect2">
 <h3 id="analyzer"><a class="anchor" href="#analyzer"></a>Analyzer</h3>
 <div class="paragraph">
-<p>The full-text index <em>must</em> use the <a href="#fts:fts-using-analyzers.adoc#pre-constructed-analyzers" class="page unresolved">keyword analyzer</a>.</p>
+<p>The full-text index <em>must</em> use the <a href="#fts:fts-using-analyzers.adoc#pre-constructed-analyzers" class="xref unresolved">keyword analyzer</a>.</p>
 </div>
 <div class="paragraph">
 <p>To specify that a full-text index should use the keyword analyzer:</p>
@@ -4769,7 +4769,7 @@ In case of dynamic mapping or dynamic child mappings, any field within the mappi
 <p>Child mappings and fields mapped under top level type mappings can all be used within a query, provided they are enabled.</p>
 </div>
 <div class="paragraph">
-<p>When <a href="#fts:fts-creating-indexes.adoc#inserting-a-child-field" class="page unresolved">creating a full-text definition in the Couchbase Web Console</a>, the child fields listed by field name or by <strong>searchable as</strong> may be used within a N1QL query.</p>
+<p>When <a href="#fts:fts-creating-indexes.adoc#inserting-a-child-field" class="xref unresolved">creating a full-text definition in the Couchbase Web Console</a>, the child fields listed by field name or by <strong>searchable as</strong> may be used within a N1QL query.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5335,7 +5335,7 @@ WHERE a &gt;= 10 AND type = "xyz" AND a &lt;= 20 <i class="conum" data-value="4"
 <div class="sect3">
 <h4 id="isstring-and-issnumber"><a class="anchor" href="#isstring-and-issnumber"></a>ISSTRING() and ISNUMBER()</h4>
 <div class="paragraph">
-<p>You can use the <a href="typefun.html#isstring" class="page">ISSTRING()</a> and <a href="typefun.html#isnumber" class="page">ISNUMBER()</a> functions as a workaround to support open-ended ranges with a full-text index.</p>
+<p>You can use the <a href="typefun.html#isstring" class="xref page">ISSTRING()</a> and <a href="typefun.html#isnumber" class="xref page">ISNUMBER()</a> functions as a workaround to support open-ended ranges with a full-text index.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5348,7 +5348,7 @@ WHERE a &gt;= 10 AND type = "xyz" AND a &lt;= 20 <i class="conum" data-value="4"
 </ul>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="datatypes.html#collation" class="page">Collation</a> for more information.</p>
+<p>Refer to <a href="datatypes.html#collation" class="xref page">Collation</a> for more information.</p>
 </div>
 <div id="ex-isstring-and-issnumber" class="exampleblock">
 <div class="title">Example 15. Workarounds for open-ended ranges</div>

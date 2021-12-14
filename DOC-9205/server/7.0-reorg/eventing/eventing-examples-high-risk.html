@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/eventing/eventing-examples-high-risk.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4507,16 +4507,16 @@ the Eventing handler executes user-defined code to respond to the change in real
 <div class="paragraph">
 <p>For this example, two (2) buckets <strong>'bulk'</strong> and <strong>'rr100'</strong> are required where the later is intended to be 100% resident.
 Create the buckets with a minimum size of 100MB.
-For information on buckets, see <a href="../manage/manage-buckets/create-bucket.html" class="page">Create a Bucket</a>.
+For information on buckets, see <a href="../manage/manage-buckets/create-bucket.html" class="xref page">Create a Bucket</a>.
 Within the buckets we need three (3) keyspaces <strong>'bulk.data.register'</strong>, <strong>'bulk.data.review'</strong>, and <strong>'rr100.eventing.metadata'</strong>
-(we loosely follow this <a href="eventing-buckets-to-collections.html#single-tenancy" class="page">organization</a>).</p>
+(we loosely follow this <a href="eventing-buckets-to-collections.html#single-tenancy" class="xref page">organization</a>).</p>
 </div>
 <div class="paragraph">
 <p><em>If you run a version of Couchbase prior to 7.0 you can just create the buckets <strong>'register'</strong>, <strong>'review'</strong>, and <strong>'metadata'</strong> and run this example.  Furthermore if your cluster was subsequently upgraded from say 6.6.2 to 7.0 your data would be moved to <strong>'register._default._default'</strong>, <strong>'review._default._default'</strong>, and <strong>'metadata._default._default'</strong> and your Eventing Function would be seamlessly upgraded to use the new keyspaces and continue to run correctly.</em></p>
 </div>
 <div class="paragraph">
-<p>For complete details on how to set up your keyspaces refer to <a href="../manage/manage-buckets/create-bucket.html" class="page">creating buckets</a> and
-<a href="../manage/manage-scopes-and-collections/manage-scopes-and-collections.html" class="page">creating scopes and collections</a>.</p>
+<p>For complete details on how to set up your keyspaces refer to <a href="../manage/manage-buckets/create-bucket.html" class="xref page">creating buckets</a> and
+<a href="../manage/manage-scopes-and-collections/manage-scopes-and-collections.html" class="xref page">creating scopes and collections</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4637,7 +4637,7 @@ and check the final control <strong>'Flush [X] Enable'</strong>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>For more details on bucket settings and screen images refer to <a href="../manage/manage-buckets/create-bucket.html#couchbase-bucket-settings" class="page">Bucket Settings</a>.</p>
+<p>For more details on bucket settings and screen images refer to <a href="../manage/manage-buckets/create-bucket.html#couchbase-bucket-settings" class="xref page">Bucket Settings</a>.</p>
 </div>
 </li>
 </ul>

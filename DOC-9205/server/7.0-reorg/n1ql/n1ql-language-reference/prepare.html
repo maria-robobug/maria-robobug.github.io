@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/prepare.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4537,15 +4537,15 @@ For more details, refer to <a href="#result">Result</a> below.</p>
 <p>Using the PREPARE statement in the Query Workbench.</p>
 </li>
 <li>
-<p>Using the PREPARE statement in the the <a href="../../tools/cbq-shell.html" class="page">cbq</a> command line shell.</p>
+<p>Using the PREPARE statement in the the <a href="../../tools/cbq-shell.html" class="xref page">cbq</a> command line shell.</p>
 </li>
 <li>
-<p>Using the <a href="../n1ql-rest-api/index.html" class="page">Query REST API</a> (<code>/query/service</code> endpoint).</p>
+<p>Using the <a href="../n1ql-rest-api/index.html" class="xref page">Query REST API</a> (<code>/query/service</code> endpoint).</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>For information on how to use prepared statements with various SDKs, refer to <a href="../../../../java-sdk/DOC-9205/concept-docs/n1ql-query.html#prepared-statements-for-query-optimization" class="page">Querying with N1QL</a> and <a href="../../../../java-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html#parameterized-queries" class="page">N1QL from the SDK</a>.</p>
+<p>For information on how to use prepared statements with various SDKs, refer to <a href="../../../../java-sdk/DOC-9205/concept-docs/n1ql-query.html#prepared-statements-for-query-optimization" class="xref page">Querying with N1QL</a> and <a href="../../../../java-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html#parameterized-queries" class="xref page">N1QL from the SDK</a>.</p>
 </div>
 </div>
 </div>
@@ -4765,7 +4765,7 @@ The anonymous prepared statement is added to the cache in addition to the named 
 <div class="paragraph">
 <p>The auto-prepare feature is inactive by default.
 You can turn the auto-prepare feature on or off using the <code>auto-prepare</code> service-level query setting.
-For more details, refer to <a href="../../settings/query-settings.html#auto-prepare" class="page">Query Settings</a>.</p>
+For more details, refer to <a href="../../settings/query-settings.html#auto-prepare" class="xref page">Query Settings</a>.</p>
 </div>
 <div class="paragraph">
 <p>Auto-prepare is disabled for N1QL requests which contain parameters, if they do not use the PREPARE statement.</p>
@@ -4780,7 +4780,7 @@ For more details, refer to <a href="../../settings/query-settings.html#auto-prep
 This saves you from having to make two separate N1QL requests in cases where you want to prepare a statement and execute it immediately.</p>
 </div>
 <div class="paragraph">
-<p>When this feature is active, a N1QL request to prepare a statement returns the <a href="../n1ql-intro/queriesandresults.html#results" class="page">result of the execution step</a>.
+<p>When this feature is active, a N1QL request to prepare a statement returns the <a href="../n1ql-intro/queriesandresults.html#results" class="xref page">result of the execution step</a>.
 It does not return the full <a href="#result">result of the preparation step</a>, such as the execution plan.
 However, the output of the N1QL request does include a <code>prepared</code> field, which contains the full name of the prepared statement.
 You can use this when you need to execute the prepared statement again.</p>
@@ -4788,7 +4788,7 @@ You can use this when you need to execute the prepared statement again.</p>
 <div class="paragraph">
 <p>The auto-execute feature is inactive by default.
 You can turn the auto-execute feature on or off using the <code>auto_execute</code> request-level query setting.
-For more details, refer to <a href="../../settings/query-settings.html#auto_execute" class="page">Query Settings</a>.</p>
+For more details, refer to <a href="../../settings/query-settings.html#auto_execute" class="xref page">Query Settings</a>.</p>
 </div>
 <div class="paragraph">
 <p>The auto-execute feature only works for N1QL requests which actually contain the PREPARE statement.
@@ -4815,7 +4815,7 @@ Prepared statements created by the <a href="#auto-prepare">auto-prepare</a> feat
 <div class="sectionbody">
 <div class="paragraph">
 <p>The user executing the PREPARE statement must have the RBAC privileges of the statement being prepared.
-For more details about user roles, refer to <a href="../../learn/security/authorization-overview.html" class="page">Authorization</a>.</p>
+For more details about user roles, refer to <a href="../../learn/security/authorization-overview.html" class="xref page">Authorization</a>.</p>
 </div>
 <div class="paragraph">
 <p>For example,</p>
@@ -4959,7 +4959,7 @@ WHERE airline = "FL";</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>For information on executing the prepared statement, refer to <a href="execute.html" class="page">EXECUTE</a>.</p>
+<p>For information on executing the prepared statement, refer to <a href="execute.html" class="xref page">EXECUTE</a>.</p>
 </li>
 </ul>
 </div>

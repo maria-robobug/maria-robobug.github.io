@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="python-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/python-sdk/DOC-9205/howtos/kv-operations.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3684,7 +3684,7 @@ Here we cover CRUD operations, document expiration, and optimistic locking with 
 <p>A <em>document</em> refers to an entry in the database (other databases may refer to the same concept as a <em>row</em>).
 A document has an ID (<em>primary key</em> in other databases), which is unique to the document and by which it can be located.
 The document also has a value which contains the actual application data.
-See <a href="../concept-docs/documents.html" class="page">the concept guide to <em>Documents</em></a> for a deeper dive into documents in the Couchbase Data Platform.
+See <a href="../concept-docs/documents.html" class="xref page">the concept guide to <em>Documents</em></a> for a deeper dive into documents in the Couchbase Data Platform.
 Or read on, for a hands-on introduction to working with documents from the Python SDK.</p>
 </div>
 </div>
@@ -3694,7 +3694,7 @@ Or read on, for a hands-on introduction to working with documents from the Pytho
 <div class="sectionbody">
 <div class="paragraph">
 <p>The core interface to Couchbase Server is simple KV operations on full documents.
-Make sure you&#8217;re familiar with the basics of authorization and connecting to a Cluster from the <a href="../hello-world/start-using-sdk.html" class="page">Start Using the SDK section</a>.
+Make sure you&#8217;re familiar with the basics of authorization and connecting to a Cluster from the <a href="../hello-world/start-using-sdk.html" class="xref page">Start Using the SDK section</a>.
 We&#8217;re going to expand on the short <em>Upsert</em> example we used there, adding options as we move through the various CRUD operations.
 Here is the <em>Insert</em> operation at its simplest:</p>
 </div>
@@ -3729,12 +3729,12 @@ result = collection.insert("document-key-opts",
 <p>Expiration sets an explicit time to live (TTL) for a document.
 We&#8217;ll discuss modifying <code>Expiration</code> in more details <a href="#expiration-ttl">below</a>.
 For a discussion of item (Document) <em>vs</em> Bucket expiration, see the
-<a href="#6.6@server:learn:buckets-memory-and-storage/expiration.adoc#expiration-bucket-versus-item" class="page unresolved">Expiration Overview page</a>.</p>
+<a href="#6.6@server:learn:buckets-memory-and-storage/expiration.adoc#expiration-bucket-versus-item" class="xref unresolved">Expiration Overview page</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="cas"><a class="anchor" href="#cas"></a>CAS</h3>
 <div class="paragraph">
-<p>Setting a Compare and Swap (CAS) value is a form of optimistic locking&#8201;&#8212;&#8201;dealt with in depth in the <a href="concurrent-document-mutations.html" class="page">CAS page</a>.
+<p>Setting a Compare and Swap (CAS) value is a form of optimistic locking&#8201;&#8212;&#8201;dealt with in depth in the <a href="concurrent-document-mutations.html" class="xref page">CAS page</a>.
 Here we just note that the CAS is a value representing the current state of an item; each time the item is modified, its CAS changes.
 The CAS value is returned as part of a document&#8217;s metadata whenever a document is accessed.
 Without explicitly setting it, a newly-created document would have a CAS value of <em>0</em>.</p>
@@ -3777,9 +3777,9 @@ The optional durability parameter, which all mutating operations accept, allows 
 </div>
 <div class="paragraph">
 <p>In Couchbase Server releases before 6.5, Durability was set with two options&#8201;&#8212;&#8201;see the
-<a href="#2.5@python-sdk::durability.adoc" class="page unresolved">6.0 Durability documentation</a>&#8201;&#8212;&#8201;covering how many replicas the operation must be propagated to and how many persisted copies of the modified record must exist.
+<a href="#2.5@python-sdk::durability.adoc" class="xref unresolved">6.0 Durability documentation</a>&#8201;&#8212;&#8201;covering how many replicas the operation must be propagated to and how many persisted copies of the modified record must exist.
 Couchbase Data Platform 6.5 refines these two options, with
-<a href="#7.0@server:learn:data/durability.adoc" class="page unresolved">Durable Writes</a>&#8201;&#8212;&#8201;although they remain essentially the same in use.
+<a href="#7.0@server:learn:data/durability.adoc" class="xref unresolved">Durable Writes</a>&#8201;&#8212;&#8201;although they remain essentially the same in use.
 The Python SDK exposes both of these forms of Durability.</p>
 </div>
 <div class="paragraph">
@@ -3802,7 +3802,7 @@ The SDK exposes three durability levels:</p>
 <div class="paragraph">
 <p>The options are in increasing levels of safety.
 Note that nothing comes for free - for a given node, waiting for writes to storage is considerably slower than waiting for it to be available in-memory.
-These trade offs, as well as which settings may be tuned, are discussed in the <a href="../concept-docs/durability-replication-failure-considerations.html#durable-writes" class="page">durability page</a>.</p>
+These trade offs, as well as which settings may be tuned, are discussed in the <a href="../concept-docs/durability-replication-failure-considerations.html#durable-writes" class="xref page">durability page</a>.</p>
 </div>
 <div class="paragraph">
 <p>The following example demonstrates using the newer durability features available in Couchbase server 6.5 onwards.</p>
@@ -3816,7 +3816,7 @@ These trade offs, as well as which settings may be tuned, are discussed in the <
 </div>
 </div>
 <div class="paragraph">
-<p>If a version of Couchbase Server lower than 6.5 is being used then the application can fall-back to <a href="../concept-docs/durability-replication-failure-considerations.html#older-server-versions" class="page">'client verified' durability</a>.
+<p>If a version of Couchbase Server lower than 6.5 is being used then the application can fall-back to <a href="../concept-docs/durability-replication-failure-considerations.html#older-server-versions" class="xref page">'client verified' durability</a>.
 The older type of durability, also known as <em>observe based durability</em>, works by monitoring the server to ensure that the change has been replicated or persisted to the required number of nodes within the timeout specified on the operation.
 Here we can see how that is set:</p>
 </div>
@@ -3845,7 +3845,7 @@ and the default level of safety provided by Couchbase will be reasonable for the
 <div class="title">Sub-Document Operations</div>
 <div class="paragraph">
 <p>All of these operations involve fetching the complete document from the Cluster.
-Where the number of operations or other circumstances make bandwidth a significant issue, the SDK can work on just a specific <em>path</em> of the document with <a href="subdocument-operations.html" class="page">Sub-Document Operations</a>.</p>
+Where the number of operations or other circumstances make bandwidth a significant issue, the SDK can work on just a specific <em>path</em> of the document with <a href="subdocument-operations.html" class="xref page">Sub-Document Operations</a>.</p>
 </div>
 </td>
 </tr>
@@ -3997,7 +3997,7 @@ Increment &amp; Decrement are considered part of the ‘binary’ API, and as su
 <div class="sectionbody">
 <div class="paragraph">
 <p>It is possible to perform scoped key-value operations on named
-<a href="#7.0@server:learn:data/scopes-and-collections.adoc" class="page unresolved"><code>Collections</code></a> <em>with Couchbase Server release 7.0</em>. See the <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">API docs</a> for more information.</p>
+<a href="#7.0@server:learn:data/scopes-and-collections.adoc" class="xref unresolved"><code>Collections</code></a> <em>with Couchbase Server release 7.0</em>. See the <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/api/couchbase.html#collection-object">API docs</a> for more information.</p>
 </div>
 <div class="paragraph">
 <p>Here is an example showing an upsert in the <code>users</code> collection, which lives in the <code>travel-sample.tenant_agent_00</code> keyspace:</p>
@@ -4018,16 +4018,16 @@ result = users_collection.upsert("user-key", content);</code></pre>
 <h2 id="additional-resources"><a class="anchor" href="#additional-resources"></a>Additional Resources</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A <a href="https://github.com/couchbase/docs-sdk-python/blob/release/3.1/modules/howtos/examples/caching_flask.py">complete Caching example</a> for the Python 3.x SDK, using Flask, is <a href="caching-example.html" class="page">worked through here</a>.</p>
+<p>A <a href="https://github.com/couchbase/docs-sdk-python/blob/release/3.1/modules/howtos/examples/caching_flask.py">complete Caching example</a> for the Python 3.x SDK, using Flask, is <a href="caching-example.html" class="xref page">worked through here</a>.</p>
 </div>
 <div class="paragraph">
-<p>Working on just a specific path within a JSON document will reduce network bandwidth requirements - see the <a href="subdocument-operations.html" class="page">Sub-Document</a> pages.</p>
+<p>Working on just a specific path within a JSON document will reduce network bandwidth requirements - see the <a href="subdocument-operations.html" class="xref page">Sub-Document</a> pages.</p>
 </div>
 <div class="paragraph">
-<p>For another way of increasing performance, reference our <a href="concurrent-async-apis.html" class="page">asynchronous programmaing options</a>.</p>
+<p>For another way of increasing performance, reference our <a href="concurrent-async-apis.html" class="xref page">asynchronous programmaing options</a>.</p>
 </div>
 <div class="paragraph">
-<p>Our <a href="n1ql-queries-with-sdk.html" class="page">Query Engine</a> enables retrieval of information using the SQL-like syntax of N1QL.</p>
+<p>Our <a href="n1ql-queries-with-sdk.html" class="xref page">Query Engine</a> enables retrieval of information using the SQL-like syntax of N1QL.</p>
 </div>
 </div>
 </div>

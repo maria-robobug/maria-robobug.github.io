@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/curl.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -5130,7 +5130,7 @@ The <code>data</code> option represents the HTTP POST data.</p>
 <div class="content">
 <div class="paragraph">
 <p>This N1QL query shows how to JOIN two keyspaces on different Couchbase clusters.
-It is same as explained in the <a href="join.html" class="page">JOIN Clause</a> example, but with the left and right side keyspaces for the JOIN are in two different Couchbase clusters.</p>
+It is same as explained in the <a href="join.html" class="xref page">JOIN Clause</a> example, but with the left and right side keyspaces for the JOIN are in two different Couchbase clusters.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -5184,11 +5184,11 @@ LIMIT 4;</code></pre>
 <div class="title">Example 4. Full text search (FTS) in a N1QL query</div>
 <div class="content">
 <div class="paragraph">
-<p>The following example shows how to use the <code>CURL()</code> function to include a full text search from the <a href="../../fts/fts-introduction.html" class="page">Search service</a> in a N1QL query.
+<p>The following example shows how to use the <code>CURL()</code> function to include a full text search from the <a href="../../fts/fts-introduction.html" class="xref page">Search service</a> in a N1QL query.
 Assuming the FTS index <code>fts_travel</code> is created on the keyspace <code>`travel-sample`</code>, running the following N1QL query finds all documents that have "sanfrancisco" anywhere in the document.</p>
 </div>
 <div class="paragraph">
-<p>Note that in Couchbase Server 6.5 and later, you can use <a href="searchfun.html" class="page">search functions</a> to use a full text search in a N1QL query, as long as the Search service is available on the cluster.
+<p>Note that in Couchbase Server 6.5 and later, you can use <a href="searchfun.html" class="xref page">search functions</a> to use a full text search in a N1QL query, as long as the Search service is available on the cluster.
 You can still use the <code>CURL()</code> function if you need to access the Search service on another cluster.</p>
 </div>
 <div class="listingblock">

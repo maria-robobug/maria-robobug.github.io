@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/statistics-index.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4534,7 +4534,7 @@ The statement must begin with one of these alternatives.</p>
 </div>
 <div id="keyspace-full-index" class="listingblock">
 <div class="content">
-<pre>keyspace-full ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">namespace</a> ':' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">bucket</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a></pre>
+<pre>keyspace-full ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">namespace</a> ':' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">bucket</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4544,7 +4544,7 @@ The statement must begin with one of these alternatives.</p>
 </div>
 <div id="keyspace-prefix-index" class="listingblock">
 <div class="content">
-<pre>keyspace-prefix ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">bucket</a></pre>
+<pre>keyspace-prefix ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">bucket</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4554,7 +4554,7 @@ The statement must begin with one of these alternatives.</p>
 </div>
 <div id="keyspace-partial-index" class="listingblock">
 <div class="content">
-<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a></pre>
+<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4564,7 +4564,7 @@ The statement must begin with one of these alternatives.</p>
 </div>
 <div class="paragraph">
 <p>You can use a dotted notation to specify the index and the keyspace on which the index is built.
-Refer to the <a href="alterindex.html#index-path" class="page">ALTER INDEX</a> or <a href="dropindex.html#index-path" class="page">DROP INDEX</a> statements for details of the syntax.</p>
+Refer to the <a href="alterindex.html#index-path" class="xref page">ALTER INDEX</a> or <a href="dropindex.html#index-path" class="xref page">DROP INDEX</a> statements for details of the syntax.</p>
 </div>
 </div>
 <div class="sect3">
@@ -4581,7 +4581,7 @@ Refer to the <a href="alterindex.html#index-path" class="page">ALTER INDEX</a> o
 </div>
 <div id="keyspace-path" class="listingblock">
 <div class="content">
-<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a> ]</pre>
+<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4591,7 +4591,7 @@ Refer to the <a href="alterindex.html#index-path" class="page">ALTER INDEX</a> o
 </div>
 <div id="keyspace-partial" class="listingblock">
 <div class="content">
-<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a></pre>
+<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4601,7 +4601,7 @@ Refer to the <a href="alterindex.html#index-path" class="page">ALTER INDEX</a> o
 </div>
 <div class="paragraph">
 <p>Alternatively, you can use the index name with the <code>ON</code> keyword and a keyspace reference to specify the keyspace on which the index is built.
-Refer to the <a href="alterindex.html#keyspace-ref" class="page">ALTER INDEX</a> or <a href="dropindex.html#keyspace-ref" class="page">DROP INDEX</a> statements for details of the syntax.</p>
+Refer to the <a href="alterindex.html#keyspace-ref" class="xref page">ALTER INDEX</a> or <a href="dropindex.html#keyspace-ref" class="xref page">DROP INDEX</a> statements for details of the syntax.</p>
 </div>
 </div>
 </div>
@@ -4677,7 +4677,7 @@ Note that when index expressions are processed in batches, the <code>update_stat
 </dl>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="cost-based-optimizer.html#distribution-stats" class="page">Distribution Statistics</a> for more information on sample size and resolution.</p>
+<p>Refer to <a href="cost-based-optimizer.html#distribution-stats" class="xref page">Distribution Statistics</a> for more information on sample size and resolution.</p>
 </div>
 </div>
 </div>
@@ -4752,19 +4752,19 @@ INDEX def_inventory_airport_city ON default:`travel-sample`.inventory.airport;</
 <div class="ulist">
 <ul>
 <li>
-<p><a href="updatestatistics.html" class="page">UPDATE STATISTICS</a> overview</p>
+<p><a href="updatestatistics.html" class="xref page">UPDATE STATISTICS</a> overview</p>
 </li>
 <li>
-<p><a href="statistics-expressions.html" class="page">Updating Statistics for Index Expressions</a></p>
+<p><a href="statistics-expressions.html" class="xref page">Updating Statistics for Index Expressions</a></p>
 </li>
 <li>
-<p><a href="statistics-indexes.html" class="page">Updating Statistics for Multiple Indexes</a></p>
+<p><a href="statistics-indexes.html" class="xref page">Updating Statistics for Multiple Indexes</a></p>
 </li>
 <li>
-<p><a href="statistics-delete.html" class="page">Deleting Statistics</a></p>
+<p><a href="statistics-delete.html" class="xref page">Deleting Statistics</a></p>
 </li>
 <li>
-<p><a href="cost-based-optimizer.html" class="page">Cost-Based Optimizer</a></p>
+<p><a href="cost-based-optimizer.html" class="xref page">Cost-Based Optimizer</a></p>
 </li>
 </ul>
 </div>

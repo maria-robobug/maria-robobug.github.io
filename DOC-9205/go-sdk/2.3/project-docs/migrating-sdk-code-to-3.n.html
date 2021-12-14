@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="go-sdk">
 <meta name="dcterms.identifier" content="2.3">
 <meta name="page-url" content="/go-sdk/2.3/project-docs/migrating-sdk-code-to-3.n.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3697,7 +3697,7 @@ The new API is built on years of hands-on experience with the current SDK as wel
 <div class="paragraph">
 <p>Before this guide dives into the language-specific technical component of the migration, it is important to understand the high level changes first.
 As a migration guide, this document assumes you are familiar with the previous generation of the SDK and does not re-introducing SDK 2.0 concepts.
-We recommend familiarizing yourself with the new SDK first by reading at least the <a href="../hello-world/start-using-sdk.html" class="page">getting started guide</a>, and browsing through the other chapters a little.</p>
+We recommend familiarizing yourself with the new SDK first by reading at least the <a href="../hello-world/start-using-sdk.html" class="xref page">getting started guide</a>, and browsing through the other chapters a little.</p>
 </div>
 <div class="sect2">
 <h3 id="terminology"><a class="anchor" href="#terminology"></a>Terminology</h3>
@@ -3705,7 +3705,7 @@ We recommend familiarizing yourself with the new SDK first by reading at least t
 <p>The concept of a <code>Cluster</code> and a <code>Bucket</code> remain the same, but a fundamental new layer is introduced into the API: <code>Collections</code> and their <code>Scopes</code>.
 Collections are logical data containers inside a Couchbase bucket that let you group similar data just like a <em>Table</em> does in a relational database&#8201;&#8212;&#8201;although documents inside a collection do not need to have the same structure.
 Scopes allow the grouping of collections into a namespace, which is very usfeul when you have multilpe tenants acessing the same bucket.
-Couchbase Server includes support for collections as a <a href="#6.5@server:developer-preview:preview-mode.adoc" class="page unresolved">developer preview</a> in version 6.5, and as a first class concept of the programming model from <a href="#{version-server}@server:learn:data/scopes-and-collections.adoc" class="page unresolved">version 7.0.</a></p>
+Couchbase Server includes support for collections as a <a href="#6.5@server:developer-preview:preview-mode.adoc" class="xref unresolved">developer preview</a> in version 6.5, and as a first class concept of the programming model from <a href="#{version-server}@server:learn:data/scopes-and-collections.adoc" class="xref unresolved">version 7.0.</a></p>
 </div>
 <div class="paragraph">
 <p>Note that the SDKs include the feature from SDK 3.0, to allow easier migration.</p>
@@ -3946,7 +3946,7 @@ encoding strings as JSON or JSON as strings.  A new LegacyTranscoder has been im
 <h3 id="encryption"><a class="anchor" href="#encryption"></a>Encryption</h3>
 <div class="paragraph">
 <p>Field Level Encryption is a separate library requiring, for Go SDK 2.x, SDK 2.2.0 or more recent.
-Differences between the 1.x and 2.x implementations, and an upgrade path, are discussed in the <a href="../howtos/encrypting-using-sdk.html#migration-from-sdk1" class="page">Field-Level Encryption documentation</a>.</p>
+Differences between the 1.x and 2.x implementations, and an upgrade path, are discussed in the <a href="../howtos/encrypting-using-sdk.html#migration-from-sdk1" class="xref page">Field-Level Encryption documentation</a>.</p>
 </div>
 </div>
 <div class="sect2">

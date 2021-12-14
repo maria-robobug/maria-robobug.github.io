@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/aggregatefun.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4464,7 +4464,7 @@ The function names are case insensitive.</p>
 When using an aggregate function in a query, the query operates as an aggregate query.</p>
 </div>
 <div class="paragraph">
-<p>In Couchbase Server Enterprise Edition, aggregate functions can also be used as <a href="windowfun.html" class="page">window functions</a> when they are used with a window specification, which is introduced by the <code>OVER</code> keyword.</p>
+<p>In Couchbase Server Enterprise Edition, aggregate functions can also be used as <a href="windowfun.html" class="xref page">window functions</a> when they are used with a window specification, which is introduced by the <code>OVER</code> keyword.</p>
 </div>
 <div class="paragraph">
 <p>In Couchbase Server 7.0 and later, window functions (and aggregate functions used as window functions) may specify their own inline window definitions, or they may refer to a named window defined by the WINDOW clause elsewhere in the query.
@@ -4483,7 +4483,7 @@ See the sections below for details of individual aggregate functions.</p>
 <h3 id="aggregate-functions"><a class="anchor" href="#aggregate-functions"></a>Aggregate Functions</h3>
 <div class="listingblock">
 <div class="content">
-<pre>aggregate-function ::= function-name '(' [ <a href="#aggregate-quantifier">aggregate-quantifier</a> ] <a href="index.html#N1QL_Expressions" class="page">expr</a> ')' [ <a href="#filter-clause">filter-clause</a> ]</pre>
+<pre>aggregate-function ::= function-name '(' [ <a href="#aggregate-quantifier">aggregate-quantifier</a> ] <a href="index.html#N1QL_Expressions" class="xref page">expr</a> ')' [ <a href="#filter-clause">filter-clause</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4499,7 +4499,7 @@ See the sections below for details of individual aggregate functions.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>aggregate-function-window ::= function-name '(' [ <a href="#aggregate-quantifier">aggregate-quantifier</a> ] <a href="index.html#N1QL_Expressions" class="page">expr</a> ')' [ <a href="#filter-clause">filter-clause</a> ]
+<pre>aggregate-function-window ::= function-name '(' [ <a href="#aggregate-quantifier">aggregate-quantifier</a> ] <a href="index.html#N1QL_Expressions" class="xref page">expr</a> ')' [ <a href="#filter-clause">filter-clause</a> ]
                               <a href="#over-clause">over-clause</a></pre>
 </div>
 </div>
@@ -4555,7 +4555,7 @@ If omitted, the default value is <code>ALL</code>.</p>
 <h3 id="filter-clause"><a class="anchor" href="#filter-clause"></a>FILTER Clause</h3>
 <div class="listingblock">
 <div class="content">
-<pre>filter-clause ::= FILTER '(' WHERE <a href="index.html#N1QL_Expressions" class="page">cond</a> ')'</pre>
+<pre>filter-clause ::= FILTER '(' WHERE <a href="index.html#N1QL_Expressions" class="xref page">cond</a> ')'</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4592,7 +4592,7 @@ It may not contain a subquery, a window function, or an outer reference.</p>
 </td>
 <td class="content">
 If the query block contains an aggregate function which uses the FILTER clause, the aggregation is not pushed down to the indexer.
-Refer to <a href="groupby-aggregate-performance.html#filter-clause" class="page">Grouping and Aggregate Pushdown</a> for more details.
+Refer to <a href="groupby-aggregate-performance.html#filter-clause" class="xref page">Grouping and Aggregate Pushdown</a> for more details.
 </td>
 </tr>
 </table>
@@ -4605,7 +4605,7 @@ Refer to <a href="groupby-aggregate-performance.html#filter-clause" class="page"
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>over-clause ::= OVER ( <a href="identifiers.html" class="page">window-ref</a> | '(' <a href="window.html#window-definition" class="page">window-definition</a> ')' )</pre>
+<pre>over-clause ::= OVER ( <a href="identifiers.html" class="xref page">window-ref</a> | '(' <a href="window.html#window-definition" class="xref page">window-definition</a> ')' )</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4622,11 +4622,11 @@ There are two ways of specifying the window.</p>
 <li>
 <p>An <em>inline window definition</em> specifies the window directly within the function call.
 It is delimited by parentheses <code>()</code> and has exactly the same syntax as the window definition in a WINDOW clause.
-For further details, refer to <a href="window.html#window-definition" class="page">Window Definition</a>.</p>
+For further details, refer to <a href="window.html#window-definition" class="xref page">Window Definition</a>.</p>
 </li>
 <li>
 <p>A <em>window reference</em> refers to a named window, which must be defined by a WINDOW clause in the same query block as the function call.
-For further details, refer to <a href="window.html" class="page">WINDOW Clause</a>.</p>
+For further details, refer to <a href="window.html" class="xref page">WINDOW Clause</a>.</p>
 </li>
 </ul>
 </div>
@@ -5799,13 +5799,13 @@ WHERE name="Sachas Hotel";</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="groupby.html" class="page">GROUP BY Clause</a> for GROUP BY, LETTING, and HAVING clauses.</p>
+<p><a href="groupby.html" class="xref page">GROUP BY Clause</a> for GROUP BY, LETTING, and HAVING clauses.</p>
 </li>
 <li>
-<p><a href="window.html" class="page">WINDOW Clause</a> for WINDOW clauses.</p>
+<p><a href="window.html" class="xref page">WINDOW Clause</a> for WINDOW clauses.</p>
 </li>
 <li>
-<p><a href="windowfun.html" class="page">Window Functions</a> for window functions.</p>
+<p><a href="windowfun.html" class="xref page">Window Functions</a> for window functions.</p>
 </li>
 </ul>
 </div>
@@ -5814,7 +5814,7 @@ WHERE name="Sachas Hotel";</code></pre>
 <div id="footnotes">
 <hr>
 <div class="footnote" id="_footnotedef_1">
-<a href="#_footnoteref_1">1</a>. When counting all the documents within a collection, this function usually relies on the collection statistics, which include any <a href="../../learn/data/transactions.html#additional-storage-use" class="page">transaction records</a> that may be stored in that collection. However, if the query performs an index scan using the primary index on that collection, counting all documents does not include any transaction records.
+<a href="#_footnoteref_1">1</a>. When counting all the documents within a collection, this function usually relies on the collection statistics, which include any <a href="../../learn/data/transactions.html#additional-storage-use" class="xref page">transaction records</a> that may be stored in that collection. However, if the query performs an index scan using the primary index on that collection, counting all documents does not include any transaction records.
 </div>
 </div>
 </article>

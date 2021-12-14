@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/guides/nest-unnest.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4471,16 +4471,16 @@ This means that documents can contain arrays of embedded subdocuments.
 N1QL provides syntax which enables you to <em>nest</em> (create) or <em>unnest</em> (flatten) arrays of embedded documents in a query.</p>
 </div>
 <div class="paragraph">
-<p>If you want to try out the examples in this section, follow the instructions given in <a href="../getting-started/do-a-quick-install.html" class="page">Do a Quick Install</a> to install Couchbase Server, configure a cluster, and load a sample dataset.
+<p>If you want to try out the examples in this section, follow the instructions given in <a href="../getting-started/do-a-quick-install.html" class="xref page">Do a Quick Install</a> to install Couchbase Server, configure a cluster, and load a sample dataset.
 Read the following for further information about the tools available for editing and executing queries:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../tools/cbq-shell.html" class="page">cbq: The Command Line Shell for N1QL</a></p>
+<p><a href="../tools/cbq-shell.html" class="xref page">cbq: The Command Line Shell for N1QL</a></p>
 </li>
 <li>
-<p><a href="../tools/query-workbench.html" class="page">Query Workbench</a></p>
+<p><a href="../tools/query-workbench.html" class="xref page">Query Workbench</a></p>
 </li>
 </ul>
 </div>
@@ -4524,7 +4524,7 @@ This is a condition that must be met in order to nest an object on the right-han
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-To use a <a href="../learn/data/data.html#keys" class="page">document key</a> in the nest predicate, use the <a href="../n1ql/n1ql-language-reference/metafun.html#meta" class="page">META()</a> function to return the <code>id</code> field from the document metadata.
+To use a <a href="../learn/data/data.html#keys" class="xref page">document key</a> in the nest predicate, use the <a href="../n1ql/n1ql-language-reference/metafun.html#meta" class="xref page">META()</a> function to return the <code>id</code> field from the document metadata.
 </td>
 </tr>
 </table>
@@ -4570,13 +4570,13 @@ LIMIT 1;</code></pre>
 </td>
 <td class="content">
 Before running a query containing a nest, make sure all the required indexes exist.
-To check which indexes may be required, use the <a href="../n1ql/n1ql-language-reference/advise.html" class="page">Index Advisor</a>.
+To check which indexes may be required, use the <a href="../n1ql/n1ql-language-reference/advise.html" class="xref page">Index Advisor</a>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>For more information and examples, refer to <a href="../n1ql/n1ql-language-reference/nest.html#section_tc1_nnx_1db" class="page">ANSI NEST Clause</a>.</p>
+<p>For more information and examples, refer to <a href="../n1ql/n1ql-language-reference/nest.html#section_tc1_nnx_1db" class="xref page">ANSI NEST Clause</a>.</p>
 </div>
 </div>
 </div>
@@ -4845,7 +4845,7 @@ LIMIT 3;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For more information and examples, refer to <a href="../n1ql/n1ql-language-reference/unnest.html" class="page">UNNEST Clause</a>.</p>
+<p>For more information and examples, refer to <a href="../n1ql/n1ql-language-reference/unnest.html" class="xref page">UNNEST Clause</a>.</p>
 </div>
 </div>
 </div>
@@ -4890,7 +4890,7 @@ LIMIT 5;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For more information, refer to <a href="../n1ql/n1ql-language-reference/nest.html#from-term" class="page">FROM Term</a> for NEST clauses, and <a href="../n1ql/n1ql-language-reference/unnest.html#from-term" class="page">FROM Term</a> for UNNEST clauses.</p>
+<p>For more information, refer to <a href="../n1ql/n1ql-language-reference/nest.html#from-term" class="xref page">FROM Term</a> for NEST clauses, and <a href="../n1ql/n1ql-language-reference/unnest.html#from-term" class="xref page">FROM Term</a> for UNNEST clauses.</p>
 </div>
 </div>
 </div>
@@ -4900,7 +4900,7 @@ LIMIT 5;</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="group-agg.html" class="page">Grouping and Aggregation</a></p>
+<p><a href="group-agg.html" class="xref page">Grouping and Aggregation</a></p>
 </li>
 </ul>
 </div>
@@ -4915,10 +4915,10 @@ LIMIT 5;</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../n1ql/n1ql-language-reference/nest.html" class="page">NEST Clause</a></p>
+<p><a href="../n1ql/n1ql-language-reference/nest.html" class="xref page">NEST Clause</a></p>
 </li>
 <li>
-<p><a href="../n1ql/n1ql-language-reference/unnest.html" class="page">UNNEST Clause</a></p>
+<p><a href="../n1ql/n1ql-language-reference/unnest.html" class="xref page">UNNEST Clause</a></p>
 </li>
 </ul>
 </div>
@@ -4938,15 +4938,15 @@ LIMIT 5;</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/howtos/n1ql-queries-with-sdk.html" class="page">C</a>
-| <a href="../../../dotnet-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="page">.NET</a>
-| <a href="../../../go-sdk/2.3/howtos/n1ql-queries-with-sdk.html" class="page">Go</a>
-| <a href="../../../java-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="page">Java</a>
-| <a href="../../../nodejs-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="page">Node.js</a>
-| <a href="../../../php-sdk/3.2/howtos/n1ql-queries-with-sdk.html" class="page">PHP</a>
-| <a href="../../../python-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="page">Python</a>
-| <a href="../../../ruby-sdk/3.2/howtos/n1ql-queries-with-sdk.html" class="page">Ruby</a>
-| <a href="../../../scala-sdk/1.2/howtos/n1ql-queries-with-sdk.html" class="page">Scala</a></p>
+<p><a href="../../../c-sdk/3.2/howtos/n1ql-queries-with-sdk.html" class="xref page">C</a>
+| <a href="../../../dotnet-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="xref page">.NET</a>
+| <a href="../../../go-sdk/2.3/howtos/n1ql-queries-with-sdk.html" class="xref page">Go</a>
+| <a href="../../../java-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="xref page">Java</a>
+| <a href="../../../nodejs-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="xref page">Node.js</a>
+| <a href="../../../php-sdk/3.2/howtos/n1ql-queries-with-sdk.html" class="xref page">PHP</a>
+| <a href="../../../python-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="xref page">Python</a>
+| <a href="../../../ruby-sdk/3.2/howtos/n1ql-queries-with-sdk.html" class="xref page">Ruby</a>
+| <a href="../../../scala-sdk/1.2/howtos/n1ql-queries-with-sdk.html" class="xref page">Scala</a></p>
 </li>
 </ul>
 </div>

@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="home">
 <meta name="dcterms.identifier" content="master">
 <meta name="page-url" content="/home/contribute/includes.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -384,8 +384,8 @@
 <h2 id="example-files"><a class="anchor" href="#example-files"></a>Example Files</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Examples are non-AsciiDoc files that contain reusable content, such as source code or programmatic output, that is often inserted into <a href="code-blocks.html" class="page">code blocks</a>.
-They&#8217;re saved in the <a href="component-configuration.html#examples-dir" class="page"><em>examples</em> directory of a module</a>.
+<p>Examples are non-AsciiDoc files that contain reusable content, such as source code or programmatic output, that is often inserted into <a href="code-blocks.html" class="xref page">code blocks</a>.
+They&#8217;re saved in the <a href="component-configuration.html#examples-dir" class="xref page"><em>examples</em> directory of a module</a>.
 Regardless of an example&#8217;s source module, it can be inserted into any standard page in your documentation site using the include directive and the example file&#8217;s resource ID.</p>
 </div>
 <div class="listingblock">
@@ -401,7 +401,7 @@ Regardless of an example&#8217;s source module, it can be inserted into any stan
 <div class="sectionbody">
 <div class="paragraph">
 <p>Partials are AsciiDoc files that contain reusable snippets of content.
-They&#8217;re saved in the <a href="component-configuration.html#partials-dir" class="page"><em>partials</em> directory of a module</a>.
+They&#8217;re saved in the <a href="component-configuration.html#partials-dir" class="xref page"><em>partials</em> directory of a module</a>.
 Regardless of a partial&#8217;s source module, it can be inserted into any standard page in your documentation site using the include directive and the partial file&#8217;s resource ID.</p>
 </div>
 <div class="listingblock">
@@ -419,7 +419,7 @@ Regardless of a partial&#8217;s source module, it can be inserted into any stand
 <p>An entire example or partial (or a portion of) is inserted into a page using the include directive and file&#8217;s resource ID.
 A <a href="https://docs.antora.org/antora/2.0/page/resource-id/" target="_blank" rel="noopener">resource ID</a> is just like a page ID, but it has an extra coordinate, <code>family$</code>.
 The family coordinate for examples is <code>example$</code> and <code>partial$</code> for partials.
-Like the <a href="cross-references.html" class="page">page ID in an xref</a>, the more a page and the partial or example are related, the less coordinates you have to specify.</p>
+Like the <a href="cross-references.html" class="xref page">page ID in an xref</a>, the more a page and the partial or example are related, the less coordinates you have to specify.</p>
 </div>
 <div class="listingblock">
 <div class="title">Include from the same module</div>
@@ -523,7 +523,7 @@ For example, if you tag code in a YAML file, place a hash (<code>#</code>) befor
 <h3 id="developer-preview-partial"><a class="anchor" href="#developer-preview-partial"></a>Developer Preview Partial</h3>
 <div class="paragraph">
 <p>To call out a section of a page as Developer Preview, use the <code>developer-preview</code> partial.
-Otherwise if the whole page is Developer Preview content, you can use the <a href="attributes-and-roles.html#custom-page-attributes" class="page">page-status</a> attribute.</p>
+Otherwise if the whole page is Developer Preview content, you can use the <a href="attributes-and-roles.html#custom-page-attributes" class="xref page">page-status</a> attribute.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -558,7 +558,7 @@ No Enterprise Support is provided for Developer Preview features.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="code-blocks.html#include-code" class="page">Insert examples into code blocks with the include directive</a>.</p>
+<p><a href="code-blocks.html#include-code" class="xref page">Insert examples into code blocks with the include directive</a>.</p>
 </li>
 <li>
 <p>Browse the source files in the SDK language and common components on GitHub for numerous examples of partial includes and tagging.</p>

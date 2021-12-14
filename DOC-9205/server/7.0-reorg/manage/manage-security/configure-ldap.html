@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-security/configure-ldap.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4472,7 +4472,7 @@ If an LDAP group has been mapped to Couchbase-Server roles, the roles are thereb
 </div>
 <div class="paragraph">
 <p>Note that LDAP authentication and authorization may be more appropriate for human users than for applications.
-For information, see <a href="../../learn/security/authentication-domains.html#ldap-users-and-applications" class="page">LDAP: Users and Applications</a>.</p>
+For information, see <a href="../../learn/security/authentication-domains.html#ldap-users-and-applications" class="xref page">LDAP: Users and Applications</a>.</p>
 </div>
 <div class="paragraph">
 <p>Note that Couchbase Server provides two different ways of setting up LDAP:</p>
@@ -4492,8 +4492,8 @@ This is maintained for support of legacy LDAP authentication (as established on 
 </div>
 <div class="paragraph">
 <p>This page provides examples of how to configure <em>Native LDAP Support</em>.
-For information on configuring <code>saslauthd</code>, see <a href="configure-saslauthd.html" class="page">Configure <code>saslauthd</code></a>.
-For an overview of Couchbase authentication, and more details on external-authentication options, see <a href="../../learn/security/authentication-domains.html" class="page">Authentication Domains</a>.</p>
+For information on configuring <code>saslauthd</code>, see <a href="configure-saslauthd.html" class="xref page">Configure <code>saslauthd</code></a>.
+For an overview of Couchbase authentication, and more details on external-authentication options, see <a href="../../learn/security/authentication-domains.html" class="xref page">Authentication Domains</a>.</p>
 </div>
 <div class="paragraph">
 <p>Note that <em>either</em> Native LDAP Support <em>or</em> <code>saslauthd</code> must be selected for the cluster.
@@ -4509,7 +4509,7 @@ The two cannot be used simultaneously.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>If you have been using <code>saslauthd</code> with previous versions of Couchbase Server, you are strongly recommended to migrate to <em>Native LDAP</em>.
-The overall migration procedure is provided as part of the <code>saslauthd</code> documentation, in <a href="configure-saslauthd.html#migrating-from-saslauthd-to-native-ldap" class="page">Migrating from saslauthd to Native LDAP</a>.
+The overall migration procedure is provided as part of the <code>saslauthd</code> documentation, in <a href="configure-saslauthd.html#migrating-from-saslauthd-to-native-ldap" class="xref page">Migrating from saslauthd to Native LDAP</a>.
 Note that the migration procedure itself involves some of the procedures given on the current page, below.</p>
 </div>
 </div>
@@ -4526,7 +4526,7 @@ The examples assume:</p>
 <li>
 <p>A one-node cluster already exists; and is named after its IP address: <code>10.143.192.101</code>.
 It is running the Data and Query Services, and has the <code>travel-sample</code> bucket installed.
-(To install this bucket, see <a href="../manage-settings/install-sample-buckets.html" class="page">Sample Buckets</a>.)</p>
+(To install this bucket, see <a href="../manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a>.)</p>
 </li>
 <li>
 <p>The cluster has the Full Administrator username of <code>Administrator</code>, and password of <code>password</code>.</p>
@@ -5051,7 +5051,7 @@ After a user has authenticated by means of LDAP, provided that LDAP group author
 </li>
 <li>
 <p><strong>Roles</strong>. The roles to be associated with the new Couchbase-Server group.
-For information, see <a href="../../learn/security/authorization-overview.html" class="page">Authorization</a>.</p>
+For information, see <a href="../../learn/security/authorization-overview.html" class="xref page">Authorization</a>.</p>
 </li>
 </ul>
 </div>
@@ -5131,7 +5131,7 @@ The row expands vertically, and exposes additional controls:</p>
 </div>
 <div class="paragraph">
 <p>Within this dialog, the description, mapping, or roles for the group can be edited.
-For details of selecting roles within the <strong>Roles</strong> panel, see <a href="manage-users-and-roles.html" class="page">Manage Users, Groups, and Roles</a>.</p>
+For details of selecting roles within the <strong>Roles</strong> panel, see <a href="manage-users-and-roles.html" class="xref page">Manage Users, Groups, and Roles</a>.</p>
 </div>
 <div class="paragraph">
 <p>Note that if the <strong>Delete Group</strong> button is left-clicked on, the group is deleted.
@@ -5146,7 +5146,7 @@ This allows roles to be assigned to them on the cluster; either directly, or by 
 Additionally, if one or more LDAP group-mappings have been defined for LDAP groups of which the externally authenticated user is a member, the user is recognized as a member of the Couchbase-Server user-groups to which the mappings have been made, and is thereby assigned still more roles.</p>
 </div>
 <div class="paragraph">
-<p>Step-by-step instructions on adding externally authenticated users are provided in <a href="manage-users-and-roles.html#adding-an-externally-authenticated-user" class="page">Adding an Externally Authenticated User</a>.</p>
+<p>Step-by-step instructions on adding externally authenticated users are provided in <a href="manage-users-and-roles.html#adding-an-externally-authenticated-user" class="xref page">Adding an Externally Authenticated User</a>.</p>
 </div>
 </div>
 </div>
@@ -5155,7 +5155,7 @@ Additionally, if one or more LDAP group-mappings have been defined for LDAP grou
 <h2 id="configure-ldap-with-the-cli"><a class="anchor" href="#configure-ldap-with-the-cli"></a>Configure LDAP with the CLI</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To configure an LDAP server to be used as a point of authentication for Couchbase Server, use the <a href="#cli:cbcli/couchbase-cli-setting-ldap.adoc" class="page unresolved">setting-ldap</a> command.</p>
+<p>To configure an LDAP server to be used as a point of authentication for Couchbase Server, use the <a href="#cli:cbcli/couchbase-cli-setting-ldap.adoc" class="xref unresolved">setting-ldap</a> command.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5188,12 +5188,12 @@ A <code>--user-dn-template</code> is specified as a distinguished name template.
 </div>
 </div>
 <div class="paragraph">
-<p>For more information, see the command reference for <a href="#cli:cbcli/couchbase-cli-setting-ldap.adoc" class="page unresolved">setting-ldap</a>.</p>
+<p>For more information, see the command reference for <a href="#cli:cbcli/couchbase-cli-setting-ldap.adoc" class="xref unresolved">setting-ldap</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="map-groups-with-the-cli"><a class="anchor" href="#map-groups-with-the-cli"></a>Map Groups with the CLI</h3>
 <div class="paragraph">
-<p>The <a href="#cli:cbcli/couchbase-cli-user-manage.adoc" class="page unresolved">user-manage</a> command allows users and groups to be created and deleted, and roles to be assigned.</p>
+<p>The <a href="#cli:cbcli/couchbase-cli-user-manage.adoc" class="xref unresolved">user-manage</a> command allows users and groups to be created and deleted, and roles to be assigned.</p>
 </div>
 <div class="paragraph">
 <p>For example, a Couchbase-Server user-group can be defined as follows:</p>
@@ -5215,7 +5215,7 @@ A <code>--user-dn-template</code> is specified as a distinguished name template.
 It references the LDAP group <code>uid=cbadmins,ou=groups,dc=example,dc=com</code>: from this point, LDAP-authenticated users who are in the LDAP group <code>uid=cbadmins,ou=groups,dc=example,dc=com</code> are placed in the Couchbase-Server <code>admins</code> group, and thereby are granted the <code>admin</code> role.</p>
 </div>
 <div class="paragraph">
-<p>For examples of using the <code>user-manage</code> command to create LDAP-authenticated users, and optionally assign them to groups, see <a href="manage-users-and-roles.html#manage-external-users" class="page">Manage External Users</a>.</p>
+<p>For examples of using the <code>user-manage</code> command to create LDAP-authenticated users, and optionally assign them to groups, see <a href="manage-users-and-roles.html#manage-external-users" class="xref page">Manage External Users</a>.</p>
 </div>
 </div>
 </div>
@@ -5247,7 +5247,7 @@ http://10.143.192.101:8091/settings/ldap \
 <p>This call references the LDAP server at <code>172.23.125.25</code>, on port <code>389</code>, enabling authorization and authentication for user-credentials to be passed from Couchbase Server.</p>
 </div>
 <div class="paragraph">
-<p>For more information, see <a href="../../rest-api/rest-configure-ldap.html" class="page">Configure LDAP</a>.</p>
+<p>For more information, see <a href="../../rest-api/rest-configure-ldap.html" class="xref page">Configure LDAP</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="map-groups-with-the-rest-api"><a class="anchor" href="#map-groups-with-the-rest-api"></a>Map Groups with the REST API</h3>
@@ -5268,7 +5268,7 @@ http://10.143.192.101:8091/settings/rbac/groups/admins \
 It maps the <code>admins</code> group to the LDAP group <code>uid=cbadmins,ou=groups,dc=example,dc=com</code>: from this point, LDAP-authenticated external users who are in the LDAP <code>uid=cbadmins,ou=groups,dc=example,dc=com</code> group are placed in the Couchbase Server <code>admins</code> group, and thereby are granted the <code>admin</code> role.</p>
 </div>
 <div class="paragraph">
-<p>For more information on using the REST API to manage roles, see <a href="../../rest-api/rbac.html" class="page">Role Based Admin Control (RBAC)</a>.</p>
+<p>For more information on using the REST API to manage roles, see <a href="../../rest-api/rbac.html" class="xref page">Role Based Admin Control (RBAC)</a>.</p>
 </div>
 </div>
 </div>

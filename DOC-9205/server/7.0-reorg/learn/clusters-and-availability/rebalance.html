@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/clusters-and-availability/rebalance.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4465,13 +4465,13 @@
 <h2 id="understanding-rebalance"><a class="anchor" href="#understanding-rebalance"></a>Understanding Rebalance</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When one or more nodes have been <em>brought into</em> a cluster (either by <a href="nodes.html#node-addition" class="page">adding</a> or <a href="nodes.html#node-joining" class="page">joining</a>), or have been <em>taken out</em> of a cluster (either through <a href="removal.html" class="page">Removal</a> or <a href="failover.html" class="page">Failover</a>), <em>rebalance</em> redistributes data, indexes, event processing, and query processing among available nodes.
+<p>When one or more nodes have been <em>brought into</em> a cluster (either by <a href="nodes.html#node-addition" class="xref page">adding</a> or <a href="nodes.html#node-joining" class="xref page">joining</a>), or have been <em>taken out</em> of a cluster (either through <a href="removal.html" class="xref page">Removal</a> or <a href="failover.html" class="xref page">Failover</a>), <em>rebalance</em> redistributes data, indexes, event processing, and query processing among available nodes.
 The <em>cluster map</em> is correspondingly updated and distributed to clients.
 The process occurs while the cluster continues to service requests for data.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="cluster-manager.html" class="page">Cluster Manager</a>, for information on the cluster map.
-See <a href="../../manage/manage-nodes/node-management-overview.html" class="page">Manage Nodes and Clusters</a>, for practical examples of using rebalance.</p>
+<p>See <a href="cluster-manager.html" class="xref page">Cluster Manager</a>, for information on the cluster map.
+See <a href="../../manage/manage-nodes/node-management-overview.html" class="xref page">Manage Nodes and Clusters</a>, for practical examples of using rebalance.</p>
 </div>
 </div>
 </div>
@@ -4496,7 +4496,7 @@ Rebalance does not interrupt applications' data-access.
 vBucket data-transfer occurs sequentially: therefore, if rebalance stops for any reason, it can be restarted from the point at which it was stopped.</p>
 </div>
 <div class="paragraph">
-<p>Note the special case provided by <a href="../../install/upgrade-procedure-selection.html#swap-rebalance" class="page">Swap Rebalance</a>, where the number of nodes coming into the cluster is equal to the number of nodes leaving the cluster, ensuring that data is only moved between these nodes.</p>
+<p>Note the special case provided by <a href="../../install/upgrade-procedure-selection.html#swap-rebalance" class="xref page">Swap Rebalance</a>, where the number of nodes coming into the cluster is equal to the number of nodes leaving the cluster, ensuring that data is only moved between these nodes.</p>
 </div>
 <div class="paragraph">
 <p>If nodes have been removed such that the desired number of replicas can no longer be supported, rebalance provides as many replicas as possible.
@@ -4504,7 +4504,7 @@ For example, if four Data Service nodes previously supported one bucket with thr
 If and when the missing Data Service node is restored or replaced, rebalance will provide three replicas again.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="intra-cluster-replication.html" class="page">Intra-Cluster Replication</a>, for information on how data is distributed across nodes.</p>
+<p>See <a href="intra-cluster-replication.html" class="xref page">Intra-Cluster Replication</a>, for information on how data is distributed across nodes.</p>
 </div>
 <div class="sect2">
 <h3 id="data-service-rebalance-phases"><a class="anchor" href="#data-service-rebalance-phases"></a>Data-Service Rebalance Phases</h3>
@@ -4580,7 +4580,7 @@ A node&#8217;s participation in the move may be as either a source or a target.<
 <p>For example, if a node is at a given time the source for two moves in backfill phase, and is the target for two additional moves in backfill phase, and the setting stands at <code>4</code>, the node may participate in the backfill phase of no additional moves, until at least one of its current moves has completed its backfill phase.</p>
 </div>
 <div class="paragraph">
-<p>The setting may be established by means of the <a href="../../manage/manage-settings/general-settings.html#rebalance-settings" class="page">Couchbase Web Console</a>, the <a href="../../manage/manage-settings/general-settings.html#rebalance-settings-via-cli" class="page">Couchbase CLI</a>, or the <a href="../../manage/manage-settings/general-settings.html#rebalance-settings-via-rest" class="page">REST API</a>.</p>
+<p>The setting may be established by means of the <a href="../../manage/manage-settings/general-settings.html#rebalance-settings" class="xref page">Couchbase Web Console</a>, the <a href="../../manage/manage-settings/general-settings.html#rebalance-settings-via-cli" class="xref page">Couchbase CLI</a>, or the <a href="../../manage/manage-settings/general-settings.html#rebalance-settings-via-rest" class="xref page">REST API</a>.</p>
 </div>
 <div class="paragraph">
 <p>A higher setting may improve rebalance performance, at the cost of higher resource consumption; in terms of CPU, memory, disk, and bandwidth.
@@ -4602,10 +4602,10 @@ The document provides summaries of the concluded rebalance activity, as well as 
 <div class="ulist">
 <ul>
 <li>
-<p>By means of Couchbase Web Console, as described in <a href="../../manage/manage-nodes/add-node-and-rebalance.html" class="page">Add a Node and Rebalance</a>.</p>
+<p>By means of Couchbase Web Console, as described in <a href="../../manage/manage-nodes/add-node-and-rebalance.html" class="xref page">Add a Node and Rebalance</a>.</p>
 </li>
 <li>
-<p>By means of the REST API, as described in <a href="../../rest-api/rest-get-cluster-tasks.html" class="page">Getting Cluster Tasks</a>.</p>
+<p>By means of the REST API, as described in <a href="../../rest-api/rest-get-cluster-tasks.html" class="xref page">Getting Cluster Tasks</a>.</p>
 </li>
 <li>
 <p>By accessing the directory <code>/opt/couchbase/var/lib/couchbase/logs/reblance</code> on <em>any</em> of the cluster nodes.
@@ -4615,7 +4615,7 @@ Each report is provided as a <code>*.json</code> file, whose name indicates the 
 </ul>
 </div>
 <div class="paragraph">
-<p>A complete account of the report-content is provided in the <a href="../../rebalance-reference/rebalance-reference.html" class="page">Rebalance Reference</a>.</p>
+<p>A complete account of the report-content is provided in the <a href="../../rebalance-reference/rebalance-reference.html" class="xref page">Rebalance Reference</a>.</p>
 </div>
 </div>
 </div>
@@ -4638,7 +4638,7 @@ Note that rebalance does not <em>move</em> indexes or replicas: instead, it <em>
 </div>
 <div class="paragraph">
 <p>In Couchbase Server 7.0 and later, the <em class="def">index redistribution</em> setting enables you to specify how Couchbase Server redistributes indexes on rebalance.
-The setting may be established by means of the <a href="../../manage/manage-settings/general-settings.html#index-storage-mode" class="page">Couchbase Web Console</a> or the <a href="../../manage/manage-settings/general-settings.html#index-settings-via-rest" class="page">REST API</a>.</p>
+The setting may be established by means of the <a href="../../manage/manage-settings/general-settings.html#index-storage-mode" class="xref page">Couchbase Web Console</a> or the <a href="../../manage/manage-settings/general-settings.html#index-settings-via-rest" class="xref page">REST API</a>.</p>
 </div>
 <div class="paragraph">
 <p>The setting affects how indexes are redistributed in the following scenarios:</p>
@@ -4725,7 +4725,7 @@ This means that no new backup tasks are triggered until the reblance has conclud
 Then, the triggering of Backup Service tasks is resumed.</p>
 </div>
 <div class="paragraph">
-<p>Note that a rebalance has the effect of <em>restarting</em> the Backup Service whenever the service has previously been stopped, due to loss of its <em>leader</em>: for information, see <a href="../services-and-indexes/services/backup-service.html#backup-service-architecture" class="page">Backup-Service Architecture</a>.</p>
+<p>Note that a rebalance has the effect of <em>restarting</em> the Backup Service whenever the service has previously been stopped, due to loss of its <em>leader</em>: for information, see <a href="../services-and-indexes/services/backup-service.html#backup-service-architecture" class="xref page">Backup-Service Architecture</a>.</p>
 </div>
 </div>
 </div>
@@ -4736,8 +4736,8 @@ Then, the triggering of Backup Service tasks is resumed.</p>
 <div class="paragraph">
 <p>Rebalance failures can optionally be responded to automatically, with up to 3 <em>retries</em>.
 The number of seconds required to elapse between retries can also be configured.
-For information on configuration options, see <a href="../../manage/manage-settings/general-settings.html" class="page">General Settings</a>.
-For information on failure-notifications, and options for cancelling rebalance-retries, see <a href="../../manage/manage-nodes/add-node-and-rebalance.html#automated-rebalance-failure-handling" class="page">Automated Rebalance Failure Handling</a>.</p>
+For information on configuration options, see <a href="../../manage/manage-settings/general-settings.html" class="xref page">General Settings</a>.
+For information on failure-notifications, and options for cancelling rebalance-retries, see <a href="../../manage/manage-nodes/add-node-and-rebalance.html#automated-rebalance-failure-handling" class="xref page">Automated Rebalance Failure Handling</a>.</p>
 </div>
 </div>
 </div>

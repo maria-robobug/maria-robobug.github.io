@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="cloud-native-database">
 <meta name="dcterms.identifier" content="master">
 <meta name="page-url" content="/cloud-native-database/persistent-volumes-overview.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -353,7 +353,7 @@ For this reason alone, it is highly recommended that all production deployments 
 <div class="content">
 <img src="_images/pv-Basic.png" alt="pv Basic">
 </div>
-<div class="title">Figure 1. A basic storage topology showing the <a href="#operator::resource/couchbasecluster.adoc#couchbaseclusters-spec-servers-volumemounts-default" class="page unresolved"><code>couchbaseclusters.spec.servers.volumeMounts.default</code></a> volume mount. The volume has two sub volumes, one for configuration data that must be retained for Couchbase recovery, and one for data and logs.</div>
+<div class="title">Figure 1. A basic storage topology showing the <a href="#operator::resource/couchbasecluster.adoc#couchbaseclusters-spec-servers-volumemounts-default" class="xref unresolved"><code>couchbaseclusters.spec.servers.volumeMounts.default</code></a> volume mount. The volume has two sub volumes, one for configuration data that must be retained for Couchbase recovery, and one for data and logs.</div>
 </div>
 <div class="paragraph">
 <p>Using persistent storage also allows the Couchbase cluster to be tailored to the workload.
@@ -368,9 +368,9 @@ For example, flash storage can be explicitly selected for high performance.</p>
 <div class="paragraph">
 <p>Persistent storage also makes the Couchbase cluster far more resilient.
 In a total disaster, an ephemeral cluster cannot be recovered, and the data is lost forever.
-With persistent storage, the <a href="#operator::overview.adoc" class="page unresolved">Couchbase Autonomous Operator</a> can recover the cluster.
+With persistent storage, the <a href="#operator::overview.adoc" class="xref unresolved">Couchbase Autonomous Operator</a> can recover the cluster.
 Recovery is also faster with persistent storage, as there is a high probably that a large percentage of the persisted data is still valid and can be reused.
-The Couchbase Autonomous Operator makes use of Couchbase Server’s <a href="../server/7.0-reorg/manage/manage-nodes/recover-nodes.html" class="page">delta-node recovery</a> to dramatically reduce rebalance times for adding the failed node back to the cluster.</p>
+The Couchbase Autonomous Operator makes use of Couchbase Server’s <a href="../server/7.0-reorg/manage/manage-nodes/recover-nodes.html" class="xref page">delta-node recovery</a> to dramatically reduce rebalance times for adding the failed node back to the cluster.</p>
 </div>
 </div>
 </div>
@@ -378,7 +378,7 @@ The Couchbase Autonomous Operator makes use of Couchbase Server’s <a href="../
 <h2 id="get-started"><a class="anchor" href="#get-started"></a>Get Started</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="#operator::overview.adoc" class="page unresolved">Couchbase Autonomous Operator</a> fully supports Couchbase clusters running with persistent volumes backed by the following provisioners:</p>
+<p>The <a href="#operator::overview.adoc" class="xref unresolved">Couchbase Autonomous Operator</a> fully supports Couchbase clusters running with persistent volumes backed by the following provisioners:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -409,16 +409,16 @@ The Couchbase Autonomous Operator makes use of Couchbase Server’s <a href="../
 <div class="title">Links</div>
 <ul>
 <li>
-<p><strong>Concept</strong>: <a href="#operator::concept-persistent-volumes.adoc" class="page unresolved">operator::concept-persistent-volumes.adoc</a></p>
+<p><strong>Concept</strong>: <a href="#operator::concept-persistent-volumes.adoc" class="xref unresolved">operator::concept-persistent-volumes.adoc</a></p>
 </li>
 <li>
-<p><strong>Manage</strong>: <a href="#operator::howto-persistent-volumes.adoc" class="page unresolved">operator::howto-persistent-volumes.adoc</a></p>
+<p><strong>Manage</strong>: <a href="#operator::howto-persistent-volumes.adoc" class="xref unresolved">operator::howto-persistent-volumes.adoc</a></p>
 </li>
 <li>
-<p><strong>Manage</strong>: <a href="#operator::howto-storage-class.adoc" class="page unresolved">operator::howto-storage-class.adoc</a></p>
+<p><strong>Manage</strong>: <a href="#operator::howto-storage-class.adoc" class="xref unresolved">operator::howto-storage-class.adoc</a></p>
 </li>
 <li>
-<p><strong>Tutorial</strong>: <a href="#operator::tutorial-volume-expansion.adoc" class="page unresolved">operator::tutorial-volume-expansion.adoc</a></p>
+<p><strong>Tutorial</strong>: <a href="#operator::tutorial-volume-expansion.adoc" class="xref unresolved">operator::tutorial-volume-expansion.adoc</a></p>
 </li>
 </ul>
 </div>

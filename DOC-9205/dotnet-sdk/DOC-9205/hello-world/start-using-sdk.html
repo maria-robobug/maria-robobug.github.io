@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="dotnet-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/dotnet-sdk/DOC-9205/hello-world/start-using-sdk.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3700,7 +3700,7 @@ The library is distributed in a number of ways:</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zip</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Zip files for each release are linked from the Release Notes <a href="../project-docs/sdk-release-notes.html" class="page">here</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zip files for each release are linked from the Release Notes <a href="../project-docs/sdk-release-notes.html" class="xref page">here</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Build from Source</p></td>
@@ -3715,7 +3715,7 @@ The library is distributed in a number of ways:</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Start a new console project (in Visual Studio or VS Code, etc).<br>
-Go to our <a href="platform-help.html" class="page">Platform Introduction</a> if you don&#8217;t already have an editor or IDE setup for working in .NET&#8201;&#8212;&#8201;e.g. you are evaluating the .NET SDK, but .NET is not your normal platform.</p>
+Go to our <a href="platform-help.html" class="xref page">Platform Introduction</a> if you don&#8217;t already have an editor or IDE setup for working in .NET&#8201;&#8212;&#8201;e.g. you are evaluating the .NET SDK, but .NET is not your normal platform.</p>
 </div>
 <div class="paragraph">
 <p>Install the latest 3.2 <a href="https://www.nuget.org/packages/CouchbaseNetClient/" target="_blank" rel="noopener">CouchbaseNetClient</a> NuGet package.</p>
@@ -3726,10 +3726,10 @@ Go to our <a href="platform-help.html" class="page">Platform Introduction</a> if
 <div class="ulist">
 <ul>
 <li>
-<p>Couchbase Server is installed and accessible locally (<a href="../../../server/7.0-reorg/getting-started/do-a-quick-install.html" class="page">Do a Quick Install</a> if you don&#8217;t already have Couchbase Server installed).</p>
+<p>Couchbase Server is installed and accessible locally (<a href="../../../server/7.0-reorg/getting-started/do-a-quick-install.html" class="xref page">Do a Quick Install</a> if you don&#8217;t already have Couchbase Server installed).</p>
 </li>
 <li>
-<p>You have create a bucket (perhaps using the <a href="#7.0@server:manage:manage-settings/install-sample-buckets.adoc" class="page unresolved">travel-sample dataset</a>, or by creating a new bucket).</p>
+<p>You have create a bucket (perhaps using the <a href="#7.0@server:manage:manage-settings/install-sample-buckets.adoc" class="xref unresolved">travel-sample dataset</a>, or by creating a new bucket).</p>
 </li>
 <li>
 <p>You have created a Couchbase user named "username" with permissions to access the cluster (at least Application Access permissions).</p>
@@ -3754,7 +3754,7 @@ using Couchbase;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Couchbase uses <a href="../../../server/7.0-reorg/learn/security/roles.html" class="page">Role Based Access Control (RBAC)</a> to control access to resources.
+<p>Couchbase uses <a href="../../../server/7.0-reorg/learn/security/roles.html" class="xref page">Role Based Access Control (RBAC)</a> to control access to resources.
 If you&#8217;re developing client code on the same machine as the Couchbase Server, your URI can be <em>couchbase://localhost</em>.</p>
 </div>
 <div class="paragraph">
@@ -3770,7 +3770,7 @@ var bucket = await cluster.BucketAsync("travel-sample");</code></pre>
 <p>Substitute whatever bucket name you want for <em>bucket-name</em> in the above example.</p>
 </div>
 <div class="paragraph">
-<p>The 3.2 SDK is ready for the introduction of <a href="../concept-docs/collections.html" class="page">Collections</a> in the <a href="#7.0@server:introduction:whats-new.adoc#whats-new-server-700" class="page unresolved">7.0 release</a> of the Couchbase Data Platform.
+<p>The 3.2 SDK is ready for the introduction of <a href="../concept-docs/collections.html" class="xref page">Collections</a> in the <a href="#7.0@server:introduction:whats-new.adoc#whats-new-server-700" class="xref unresolved">7.0 release</a> of the Couchbase Data Platform.
 The latest release, Couchbase Server 7.0, brings Collections, allowing Documents to be grouped by purpose or theme, according to specified <em>Scope</em>.</p>
 </div>
 <div class="listingblock">
@@ -3812,7 +3812,7 @@ Console.WriteLine(getResult.ContentAs&lt;dynamic&gt;());</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Other possible key/value CRUD Operations are described in detail on the <a href="../howtos/kv-operations.html" class="page">KV Operations page</a>.</p>
+<p>Other possible key/value CRUD Operations are described in detail on the <a href="../howtos/kv-operations.html" class="xref page">KV Operations page</a>.</p>
 </div>
 </td>
 </tr>
@@ -3833,7 +3833,7 @@ await foreach (var row in queryResult) {
 </div>
 </div>
 <div class="paragraph">
-<p>You can learn more about N1QL queries on the <a href="../howtos/n1ql-queries-with-sdk.html" class="page">Query page</a>.</p>
+<p>You can learn more about N1QL queries on the <a href="../howtos/n1ql-queries-with-sdk.html" class="xref page">Query page</a>.</p>
 </div>
 </div>
 </div>
@@ -3984,13 +3984,13 @@ namespace net3
 <div class="ulist">
 <ul>
 <li>
-<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="page">Constrained Network Environments</a>,</p>
+<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="xref page">Constrained Network Environments</a>,</p>
 </li>
 <li>
-<p><a href="../project-docs/compatibility.html#network-requirements" class="page">Network Requirements</a>,</p>
+<p><a href="../project-docs/compatibility.html#network-requirements" class="xref page">Network Requirements</a>,</p>
 </li>
 <li>
-<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="page">Troubleshooting Guide</a>.</p>
+<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="xref page">Troubleshooting Guide</a>.</p>
 </li>
 </ul>
 </div>
@@ -4001,10 +4001,10 @@ namespace net3
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/index.html">API reference</a> is generated for each release.
-Older API references are linked from their respective sections in the <a href="../project-docs/sdk-release-notes.html" class="page">Release Notes</a>.</p>
+Older API references are linked from their respective sections in the <a href="../project-docs/sdk-release-notes.html" class="xref page">Release Notes</a>.</p>
 </div>
 <div class="paragraph">
-<p><a href="../project-docs/migrating-sdk-code-to-3.n.html" class="page">The Migrating from SDK2 to 3 page</a> highlights the main differences to be aware of when migrating your code.</p>
+<p><a href="../project-docs/migrating-sdk-code-to-3.n.html" class="xref page">The Migrating from SDK2 to 3 page</a> highlights the main differences to be aware of when migrating your code.</p>
 </div>
 </div>
 </div>

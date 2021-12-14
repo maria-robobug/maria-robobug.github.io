@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/indexing-meta-info.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4466,8 +4466,8 @@ This improves performance of queries involving predicates on the metadata fields
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="metafun.html#meta" class="page">META()</a> function enables you to return the metadata for a keyspace or document.
-To index a selected metadata field, you must use a <a href="nestedops.html#field-selection" class="page">nested expression</a> containing the <code>META()</code> function and the required property, for example <code>META().id</code>.</p>
+<p>The <a href="metafun.html#meta" class="xref page">META()</a> function enables you to return the metadata for a keyspace or document.
+To index a selected metadata field, you must use a <a href="nestedops.html#field-selection" class="xref page">nested expression</a> containing the <code>META()</code> function and the required property, for example <code>META().id</code>.</p>
 </div>
 <div class="paragraph">
 <p>The property name must be separated from the <code>META()</code> function by a dot (<code>.</code>) and only the following metadata properties can be indexed.
@@ -4478,15 +4478,15 @@ If you attempt to build an index on a metadata field that is not indexable, an e
 <dt class="hdlist1">cas</dt>
 <dd>
 <p>Value representing the current state of an item which changes every time the item is modified.
-For details, refer to <a href="#3.0@java-sdk:howtos:concurrent-document-mutations.adoc" class="page unresolved">Concurrent Document Mutations</a>.</p>
+For details, refer to <a href="#3.0@java-sdk:howtos:concurrent-document-mutations.adoc" class="xref unresolved">Concurrent Document Mutations</a>.</p>
 </dd>
 <dt class="hdlist1">expiration</dt>
 <dd>
 <p>Value representing a document&#8217;s expiration date.
 A value of 0 (zero) means no expiration date.
-For details, refer to <a href="#3.0@java-sdk:howtos:kv-operations.adoc#document-expiration" class="page unresolved">KV Operations</a>.</p>
+For details, refer to <a href="#3.0@java-sdk:howtos:kv-operations.adoc#document-expiration" class="xref unresolved">KV Operations</a>.</p>
 <div class="paragraph">
-<p>Note that this property gives correct results only when used in a <a href="covering-indexes.html" class="page">Covered Index</a>.</p>
+<p>Note that this property gives correct results only when used in a <a href="covering-indexes.html" class="xref page">Covered Index</a>.</p>
 </div>
 </dd>
 <dt class="hdlist1">id</dt>

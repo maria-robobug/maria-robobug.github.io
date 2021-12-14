@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="dotnet-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/dotnet-sdk/DOC-9205/concept-docs/durability-replication-failure-considerations.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3694,7 +3694,7 @@ By default all writes are asynchronous, but levels of durability can be set, to 
 <h2 id="durable-writes"><a class="anchor" href="#durable-writes"></a>Durable Writes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Durability has been enhanced in Couchbase Data Platform 6.5, with <a href="#7.0@server:learn:data/durability.adoc" class="page unresolved">Durable Writes</a>,
+<p>Durability has been enhanced in Couchbase Data Platform 6.5, with <a href="#7.0@server:learn:data/durability.adoc" class="xref unresolved">Durable Writes</a>,
 under which mutations will not be visible to other clients until they have met their durability requirements.
 These requirements are now enforced on the server side, rather than requiring client logic, which means that this committed durability can now be guaranteed.</p>
 </div>
@@ -3723,8 +3723,8 @@ In particular, <code>PersistToMajority</code> will take longer than the other tw
 Variation in network speeds and conditions, <em>inter alia</em>, make it difficult to give blanket recommendations.</p>
 </div>
 <div class="paragraph">
-<p>Options for making changes to <code>numKvConnections</code> (kvEndpoints) and <code>kvDurableTimeout</code> for Durable Writes can be found on the <a href="../ref/client-settings.html#io-options" class="page">Client Settings page</a>.
-Increasing the number of reader and writer threads for Couchbase Server storage <em>may</em> be advantageous: see the discussion on the <a href="#7.0@server:learn:buckets-memory-and-storage/storage.adoc#threading" class="page unresolved">Server storage page</a>.</p>
+<p>Options for making changes to <code>numKvConnections</code> (kvEndpoints) and <code>kvDurableTimeout</code> for Durable Writes can be found on the <a href="../ref/client-settings.html#io-options" class="xref page">Client Settings page</a>.
+Increasing the number of reader and writer threads for Couchbase Server storage <em>may</em> be advantageous: see the discussion on the <a href="#7.0@server:learn:buckets-memory-and-storage/storage.adoc#threading" class="xref unresolved">Server storage page</a>.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -3740,12 +3740,12 @@ Attempting this will result in an error message: <code>DURABILITY_IMPOSSIBLE</co
 </table>
 </div>
 <div class="paragraph">
-<p>While Durable Writes are being attempted, another client cannot write to the document concerned&#8201;&#8212;&#8201;see the diagram and explanation <a href="#7.0@server:learn:data/durability.adoc#process-and-communication" class="page unresolved">in the Server Durability docs</a>.</p>
+<p>While Durable Writes are being attempted, another client cannot write to the document concerned&#8201;&#8212;&#8201;see the diagram and explanation <a href="#7.0@server:learn:data/durability.adoc#process-and-communication" class="xref unresolved">in the Server Durability docs</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="errors-exceptions"><a class="anchor" href="#errors-exceptions"></a>Errors &amp; Exceptions</h3>
 <div class="paragraph">
-<p>See <a href="../ref/error-codes.html#107-durabilitylevelnotavailable" class="page">Durable Writes error codes</a>.</p>
+<p>See <a href="../ref/error-codes.html#107-durabilitylevelnotavailable" class="xref page">Durable Writes error codes</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="ambiguity"><a class="anchor" href="#ambiguity"></a>Ambiguity</h4>
@@ -3757,7 +3757,7 @@ Attempting this will result in an error message: <code>DURABILITY_IMPOSSIBLE</co
 </div>
 <div class="paragraph">
 <p>In cases where the operation is idempotent (such as an upsert operation), then simply retrying is a perfectly acceptable strategy, where the cost of doing so is justified by the importance of the operation.
-Where the operation is an array append, or somesuch, then <a href="#7.0@server:learn:data/transactions.adoc" class="page unresolved">distributed, multi-document ACID transactions</a> should be considered.</p>
+Where the operation is an array append, or somesuch, then <a href="#7.0@server:learn:data/transactions.adoc" class="xref unresolved">distributed, multi-document ACID transactions</a> should be considered.</p>
 </div>
 </div>
 </div>
@@ -3788,7 +3788,7 @@ This allows applications to determine when a write is durable (that is, will sti
 </ul>
 </div>
 <div class="paragraph">
-<p>See <a href="../howtos/kv-operations.html#durability" class="page">the durability examples in each SDK</a>.</p>
+<p>See <a href="../howtos/kv-operations.html#durability" class="xref page">the durability examples in each SDK</a>.</p>
 </div>
 <div class="paragraph">
 <p>When an operation is propagated to a replica, it is first propagated to the replica’s memory and then placed in a queue, to be persisted to the replica’s disk.

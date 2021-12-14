@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/rest-api/rest-servergroup-get.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4481,7 +4481,7 @@ The information includes statistics, for each node, on memory allocation, memory
 It also includes URIs and UUIDs whereby groups can be accessed and managed, and the overall configuration changed.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="../learn/clusters-and-availability/groups.html" class="page">Server Group Awareness</a>, for a conceptual overview of groups.</p>
+<p>See <a href="../learn/clusters-and-availability/groups.html" class="xref page">Server Group Awareness</a>, for a conceptual overview of groups.</p>
 </div>
 </div>
 </div>
@@ -4750,18 +4750,18 @@ It also shows that <code>Group 1</code> contains a single node, which is <code>1
 <p><code>"uri": "/pools/default/serverGroups?rev=93706877"</code>.
 Specifies the URI path and revision integer for the overall group-configuration.
 This integer changes whenever the group-configuration is changed.
-See <a href="rest-servergroup-put-membership.html" class="page">Updating Server Group Memberships</a> for an example of changing the configuration.
+See <a href="rest-servergroup-put-membership.html" class="xref page">Updating Server Group Memberships</a> for an example of changing the configuration.
 Note that the configuration-change itself requires that this URI path and revision integer be specified, to identify the current group-configuration.</p>
 </li>
 <li>
 <p><code>"uri":"/pools/default/serverGroups/&lt;:uuid&gt;"</code>.
 Provided for each group, to specify the group&#8217;s URI path and UUID string.
-See <a href="rest-servergroup-put-membership.html" class="page">Updating Server Group Memberships</a> for an example of changing the configuration by means of a JSON document that identifies each group by this means.</p>
+See <a href="rest-servergroup-put-membership.html" class="xref page">Updating Server Group Memberships</a> for an example of changing the configuration by means of a JSON document that identifies each group by this means.</p>
 </li>
 <li>
 <p><code>"addNodeURI":"/pools/default/serverGroups/&lt;:uuid&gt;/addNode"</code>.
 Provided for each group, to specify the URI path and UUID string for adding servers to the group.
-See <a href="rest-servergroup-post-add.html" class="page">Adding Nodes to Groups</a> for an example of adding a node by this means.</p>
+See <a href="rest-servergroup-post-add.html" class="xref page">Adding Nodes to Groups</a> for an example of adding a node by this means.</p>
 </li>
 </ul>
 </div>
@@ -4771,9 +4771,9 @@ See <a href="rest-servergroup-post-add.html" class="page">Adding Nodes to Groups
 <h2 id="see-also"><a class="anchor" href="#see-also"></a>See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>See <a href="rest-servergroup-put-membership.html" class="page">Updating Server Group Memberships</a> for an example of changing the node-to-group configuration.
-See <a href="../learn/clusters-and-availability/groups.html" class="page">Server Group Awareness</a>, for a conceptual overview of groups.
-See <a href="../manage/manage-groups/manage-groups.html" class="page">Manage Groups</a>, for examples of managing groups by means of Couchbase Web Console.</p>
+<p>See <a href="rest-servergroup-put-membership.html" class="xref page">Updating Server Group Memberships</a> for an example of changing the node-to-group configuration.
+See <a href="../learn/clusters-and-availability/groups.html" class="xref page">Server Group Awareness</a>, for a conceptual overview of groups.
+See <a href="../manage/manage-groups/manage-groups.html" class="xref page">Manage Groups</a>, for examples of managing groups by means of Couchbase Web Console.</p>
 </div>
 </div>
 </div>

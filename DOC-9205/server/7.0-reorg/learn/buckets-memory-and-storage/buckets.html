@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/buckets-memory-and-storage/buckets.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4510,7 +4510,7 @@ For an Ephemeral bucket, this means that data, which is resident in memory (but,
 Therefore, if removed data is subsequently needed, it cannot be re-acquired from Couchbase Server.</p>
 <div class="paragraph">
 <p>For an Ephemeral bucket, ejection removes all of an item&#8217;s data: however, a <em>tombstone</em> (a record of the ejected item, which includes keys and metadata) is retained until the next scheduled purge of metadata for the current node.
-See <a href="storage.html" class="page">Storage</a> for more information.</p>
+See <a href="storage.html" class="xref page">Storage</a> for more information.</p>
 </div>
 </li>
 </ul>
@@ -4741,8 +4741,8 @@ When a failed node becomes accessible again, no delta-node recovery is required,
 <div class="paragraph">
 <p>Buckets are protected by the Couchbase <em>Role-Based Access Control</em> (RBAC) system.
 See
-<a href="../security/authorization-overview.html" class="page">Authorization</a> and
-<a href="../security/authentication.html" class="page">Authentication</a> for details.</p>
+<a href="../security/authorization-overview.html" class="xref page">Authorization</a> and
+<a href="../security/authentication.html" class="xref page">Authentication</a> for details.</p>
 </div>
 <div class="paragraph">
 <p>Legacy buckets, defined on releases of Couchbase Server prior to 5.0, may continue to be accessible without password-specification.
@@ -4755,7 +4755,7 @@ However, you are strongly recommended to ensure that all buckets are fully prote
 <div class="sectionbody">
 <div class="paragraph">
 <p>For information on how to create, access, and manage buckets, see
-<a href="../../manage/manage-buckets/bucket-management-overview.html" class="page">Manage Buckets</a>.</p>
+<a href="../../manage/manage-buckets/bucket-management-overview.html" class="xref page">Manage Buckets</a>.</p>
 </div>
 </div>
 </div>

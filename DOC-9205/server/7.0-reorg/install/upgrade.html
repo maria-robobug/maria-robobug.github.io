@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/install/upgrade.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4469,7 +4469,7 @@ For example, a cluster each of whose nodes has been running Couchbase Server Ent
 <div class="paragraph">
 <p>An <em>upgrade procedure</em>, like an install procedure, involves both preparation routines and specific upgrade commands that are performed on each individual node.
 To be upgraded, a cluster must have each of its nodes individually upgraded in turn; and the upgrade procedure for the cluster must therefore be selected with regards to whether the cluster is required to continue serving data, or to cease serving data, during the course of the cluster-upgrade.
-A review of the factors that determine the appropriateness of an upgrade-procedure is provided in <a href="upgrade-procedure-selection.html" class="page">Upgrade Procedure-Selection</a>.</p>
+A review of the factors that determine the appropriateness of an upgrade-procedure is provided in <a href="upgrade-procedure-selection.html" class="xref page">Upgrade Procedure-Selection</a>.</p>
 </div>
 </div>
 </div>
@@ -4547,7 +4547,7 @@ Note that upgrade between non-adjacent version-numbers is frequently <em>not</em
 Therefore, if the target version-number of the Enterprise Edition is higher, the cluster should first be upgraded to the Enterprise version-number that is identical to the Community Edition version-number, then upgraded to the higher Enterprise Edition version-number, according to the paths described above, in <a href="#supported-upgrade-paths">Supported Upgrade Paths</a>.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="upgrade-procedure-selection.html" class="page">Upgrade Procedure-Selection</a>, for a list of procedures that can be used when upgrading from Community Edition to Enterprise.
+<p>See <a href="upgrade-procedure-selection.html" class="xref page">Upgrade Procedure-Selection</a>, for a list of procedures that can be used when upgrading from Community Edition to Enterprise.
 Note, however, that <em>Graceful Failover</em> for Data Service nodes, with <em>Delta Recovery</em>, is <em>not</em> supported for such upgrades: instead, <em>removal</em>, <em>addition</em>, and <em>swap rebalance</em> should be used; for all nodes.</p>
 </div>
 </div>

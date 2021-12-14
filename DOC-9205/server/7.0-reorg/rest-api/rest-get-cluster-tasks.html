@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/rest-api/rest-get-cluster-tasks.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4578,7 +4578,7 @@ http://10.143.194.101:8091/pools/default/tasks | jq '.'</pre>
 <p>The default output indicates that no rebalance is underway.
 A <code>statusId</code> and task <code>type</code> are provided.
 The <code>lastReportURI</code> specifies the location of the <em>report</em> of the last rebalance to have been performed.
-See the <a href="../rebalance-reference/rebalance-reference.html" class="page">Rebalance Reference</a>, for further information.</p>
+See the <a href="../rebalance-reference/rebalance-reference.html" class="xref page">Rebalance Reference</a>, for further information.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4846,8 +4846,8 @@ All progress values are represented as floating-point numbers with fourteen plac
 A <code>detailedProgress</code> object is also provided for each node, with indications of the status of documents and vBuckets: note that at any one time, this object indicates which of the buckets is currently being redistributed &#8212; in this case, it is <code>beer-sample</code>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>stageInfo</code> object provides information on <a href="../learn/clusters-and-availability/rebalance.html#data-service-rebalance-stages" class="page">Data-Service Rebalance Stages</a>.
-A complete description of the fields is provided in the <a href="../rebalance-reference/rebalance-reference.html" class="page">Rebalance Reference</a>.</p>
+<p>The <code>stageInfo</code> object provides information on <a href="../learn/clusters-and-availability/rebalance.html#data-service-rebalance-stages" class="xref page">Data-Service Rebalance Stages</a>.
+A complete description of the fields is provided in the <a href="../rebalance-reference/rebalance-reference.html" class="xref page">Rebalance Reference</a>.</p>
 </div>
 <div class="paragraph">
 <p>Note that a <code>recommendedRefreshPeriod</code> of <code>2</code> seconds is given.
@@ -5127,7 +5127,7 @@ The initial section might appear as follows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>A complete description of the fields in the <code>stageInfo</code> object is provided the in <a href="../rebalance-reference/rebalance-reference.html" class="page">Rebalance Reference</a>.</p>
+<p>A complete description of the fields in the <code>stageInfo</code> object is provided the in <a href="../rebalance-reference/rebalance-reference.html" class="xref page">Rebalance Reference</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="rebalance-failure"><a class="anchor" href="#rebalance-failure"></a>Rebalance Failure</h3>
@@ -5153,13 +5153,13 @@ The initial section might appear as follows:</p>
 <h2 id="see-also"><a class="anchor" href="#see-also"></a>See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Examples of adding a node and rebalancing by means of the UI, CLI, and REST API are provided in <a href="../manage/manage-nodes/add-node-and-rebalance.html" class="page">Add a Node and Rebalance</a>.
-The REST method and URI for rebalance is explained in <a href="rest-cluster-rebalance.html" class="page">Rebalancing the Cluster</a>.
-The REST method and URI for bucket-compaction is documented in <a href="rest-compact-post.html" class="page">Performing Compaction Manually</a>.</p>
+<p>Examples of adding a node and rebalancing by means of the UI, CLI, and REST API are provided in <a href="../manage/manage-nodes/add-node-and-rebalance.html" class="xref page">Add a Node and Rebalance</a>.
+The REST method and URI for rebalance is explained in <a href="rest-cluster-rebalance.html" class="xref page">Rebalancing the Cluster</a>.
+The REST method and URI for bucket-compaction is documented in <a href="rest-compact-post.html" class="xref page">Performing Compaction Manually</a>.</p>
 </div>
 <div class="paragraph">
-<p>For additional information on retrieving the progress of the rebalance operation, see <a href="rest-get-rebalance-progress.html" class="page">Getting Rebalance Progress</a>.
-See the <a href="../rebalance-reference/rebalance-reference.html" class="page">Rebalance Reference</a>, for detailed information on downloading and reading rebalance reports.</p>
+<p>For additional information on retrieving the progress of the rebalance operation, see <a href="rest-get-rebalance-progress.html" class="xref page">Getting Rebalance Progress</a>.
+See the <a href="../rebalance-reference/rebalance-reference.html" class="xref page">Rebalance Reference</a>, for detailed information on downloading and reading rebalance reports.</p>
 </div>
 </div>
 </div>

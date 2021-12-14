@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/buckets-memory-and-storage/storage.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4475,19 +4475,19 @@ However, if a specific item is being restored from disk to memory, the item is n
 </div>
 <div class="paragraph">
 <p>Not all items are written to disk: <em>Ephemeral</em> buckets and their items are maintained in memory only.
-See <a href="buckets.html" class="page">Buckets</a> for information.</p>
+See <a href="buckets.html" class="xref page">Buckets</a> for information.</p>
 </div>
 <div class="paragraph">
 <p>Items written to disk are always written in compressed form.
 Based on bucket configuration, items may be maintained in compressed form in memory also.
-See <a href="compression.html" class="page">Compression</a> for information.</p>
+See <a href="compression.html" class="xref page">Compression</a> for information.</p>
 </div>
 <div class="paragraph">
 <p>Items can be removed from disk based on a configured point of expiration, referred to as <em>Time-To-Live</em>.
-See <a href="../data/expiration.html" class="page">Expiration</a> for information.</p>
+See <a href="../data/expiration.html" class="xref page">Expiration</a> for information.</p>
 </div>
 <div class="paragraph">
-<p>For illustrations of how Couchbase Server saves new and updates existing Couchbase-bucket items, thereby employing both memory and storage resources, see <a href="memory-and-storage.html" class="page">Memory and Storage</a>.</p>
+<p>For illustrations of how Couchbase Server saves new and updates existing Couchbase-bucket items, thereby employing both memory and storage resources, see <a href="memory-and-storage.html" class="xref page">Memory and Storage</a>.</p>
 </div>
 </div>
 </div>
@@ -4504,7 +4504,7 @@ The maximum thread-allocation for each is <em>64</em>, the minimum <em>4</em>.</
 </div>
 <div class="paragraph">
 <p>A high thread-allocation may improve performance on systems whose hardware-resources are commensurately supportive (for example, where the number of CPU cores is high).
-In particular, a high number of <em>writer</em> threads on such systems may significantly optimize the performance of <em>durable writes</em>: see <a href="../data/durability.html" class="page">Durability</a>, for information.</p>
+In particular, a high number of <em>writer</em> threads on such systems may significantly optimize the performance of <em>durable writes</em>: see <a href="../data/durability.html" class="xref page">Durability</a>, for information.</p>
 </div>
 <div class="paragraph">
 <p>Note, however, that a high thread-allocation might <em>impair</em> some aspects of performance on less appropriately resourced nodes.
@@ -4512,11 +4512,11 @@ Consequently, changes to the default thread-allocation should not be made to pro
 A starting-point for experimentation is to establish the numbers for reader threads and writer threads as each equal to the <em>queue depth</em> of the underlying I/O subsystem.</p>
 </div>
 <div class="paragraph">
-<p>See the <em>General-Settings</em> information on <a href="../../manage/manage-settings/general-settings.html#data-settings" class="page">Data Settings</a>, for details on how to establish appropriate numbers of reader and writer threads.</p>
+<p>See the <em>General-Settings</em> information on <a href="../../manage/manage-settings/general-settings.html#data-settings" class="xref page">Data Settings</a>, for details on how to establish appropriate numbers of reader and writer threads.</p>
 </div>
 <div class="paragraph">
 <p>Thread-status can be viewed, by means of the <code class="cmd">cbstats</code> command, specified with the <code class="param">raw workload</code> option.
-See <a href="../../cli/cbstats-intro.html" class="page">cbstats</a> for information.</p>
+See <a href="../../cli/cbstats-intro.html" class="xref page">cbstats</a> for information.</p>
 </div>
 </div>
 </div>
@@ -4532,7 +4532,7 @@ When the point-in-time is reached, Couchbase Server deletes the item.</p>
 </div>
 <div class="paragraph">
 <p>An item&#8217;s TTL can be established either directly on the item itself, or via the bucket that contains the item.
-For information, see <a href="../data/expiration.html" class="page">Expiration</a>.</p>
+For information, see <a href="../data/expiration.html" class="xref page">Expiration</a>.</p>
 </div>
 </div>
 </div>
@@ -4569,7 +4569,7 @@ It is then the responsibility of each recipient to purge anything it still conta
 The Metadata Purge Interval setting runs as part of auto-compaction (see <a href="#append-only-writes-and-auto-compaction">Append-Only Writes and Auto-Compaction</a>, below).</p>
 </div>
 <div class="paragraph">
-<p>For more information, see <a href="../data/expiration.html#post-expiration-purging" class="page">Post-Expiration Purging</a>, in <a href="../data/expiration.html" class="page">Expiration</a>.</p>
+<p>For more information, see <a href="../data/expiration.html#post-expiration-purging" class="xref page">Post-Expiration Purging</a>, in <a href="../data/expiration.html" class="xref page">Expiration</a>.</p>
 </div>
 </div>
 </div>
@@ -4580,7 +4580,7 @@ The Metadata Purge Interval setting runs as part of auto-compaction (see <a href
 <p>At node-initialization, Couchbase Server allows up to four custom paths to be established, for the saving of data to the filesystem: these are for the Data Service, the Index Service, the Analytics Service, and the Eventing Service. Note that the paths are node-specific: consequently, the data for any of these services may occupy a different filesystem-location, on each node.</p>
 </div>
 <div class="paragraph">
-<p>For information on setting data-paths, see <a href="../../manage/manage-nodes/initialize-node.html" class="page">Initialize a Node</a>.</p>
+<p>For information on setting data-paths, see <a href="../../manage/manage-nodes/initialize-node.html" class="xref page">Initialize a Node</a>.</p>
 </div>
 </div>
 </div>
@@ -4596,14 +4596,14 @@ Necessarily, this means that every change made to a file &#8212; whether an addi
 This operation can be performed either manually, on a specified bucket; or on an automated, scheduled basis, either for specified buckets, or for all buckets.</p>
 </div>
 <div class="paragraph">
-<p>For information on performing manual compaction with the CLI, see <a href="#cli:cbcli/couchbase-cli-bucket-compact.adoc" class="page unresolved">bucket-compact</a>.
-For information on configuring auto-compaction with the CLI, see <a href="#cli:cbcli/couchbase-cli-setting-compaction.adoc" class="page unresolved">setting-compaction</a>.</p>
+<p>For information on performing manual compaction with the CLI, see <a href="#cli:cbcli/couchbase-cli-bucket-compact.adoc" class="xref unresolved">bucket-compact</a>.
+For information on configuring auto-compaction with the CLI, see <a href="#cli:cbcli/couchbase-cli-setting-compaction.adoc" class="xref unresolved">setting-compaction</a>.</p>
 </div>
 <div class="paragraph">
-<p>For all information on using the REST API for compaction, see the <a href="../../rest-api/compaction-rest-api.html" class="page">Compaction API</a>.</p>
+<p>For all information on using the REST API for compaction, see the <a href="../../rest-api/compaction-rest-api.html" class="xref page">Compaction API</a>.</p>
 </div>
 <div class="paragraph">
-<p>For information on configuring auto-compaction with Couchbase Web Console, see <a href="../../manage/manage-settings/configure-compact-settings.html" class="page">Auto-Compaction</a>.</p>
+<p>For information on configuring auto-compaction with Couchbase Web Console, see <a href="../../manage/manage-settings/configure-compact-settings.html" class="xref page">Auto-Compaction</a>.</p>
 </div>
 </div>
 </div>
@@ -4615,7 +4615,7 @@ For information on configuring auto-compaction with the CLI, see <a href="#cli:c
 The priority of disk I/O (along with that of other background tasks, such as item-paging and DCP stream-processing) is configurable <em>per bucket</em>.
 This means, for example, that one bucket&#8217;s disk I/O can be granted priority over another&#8217;s.
 For further information, see
-<a href="../../manage/manage-buckets/create-bucket.html" class="page">Create a Bucket</a>.</p>
+<a href="../../manage/manage-buckets/create-bucket.html" class="xref page">Create a Bucket</a>.</p>
 </div>
 </div>
 </div>

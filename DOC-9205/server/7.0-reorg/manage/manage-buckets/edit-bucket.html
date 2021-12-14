@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-buckets/edit-bucket.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4499,10 +4499,10 @@ Current <strong class="ui">Memory</strong> and <strong class="ui">Disk</strong> 
 These indicate the number of items in the bucket, the number of items with data that is currently resident in memory (for Couchbase buckets only), the number of operations performed on the bucket during the last second, the amount of RAM currently in use from the available quota, and the amount of disk-space used (for Couchbase buckets only).</p>
 </div>
 <div class="paragraph">
-<p>To the right hand side of the row are tabs that allow examination of the <a href="../manage-ui/manage-ui.html#console-documents" class="page">Documents</a> within the bucket; and creation of <a href="../../learn/data/scopes-and-collections.html" class="page">Scopes and Collections</a>, into which documents can be organized.</p>
+<p>To the right hand side of the row are tabs that allow examination of the <a href="../manage-ui/manage-ui.html#console-documents" class="xref page">Documents</a> within the bucket; and creation of <a href="../../learn/data/scopes-and-collections.html" class="xref page">Scopes and Collections</a>, into which documents can be organized.</p>
 </div>
 <div class="paragraph">
-<p>(For information on importing documents into a bucket, see <a href="../import-documents/import-documents.html" class="page">Import Documents</a>.)</p>
+<p>(For information on importing documents into a bucket, see <a href="../import-documents/import-documents.html" class="xref page">Import Documents</a>.)</p>
 </div>
 <div class="paragraph">
 <p>At the lower right, buttons are provided for dropping, compacting (for Couchbase buckets only), and editing the bucket.
@@ -4518,7 +4518,7 @@ Note that <em>dropping</em> means deleting the bucket, all the documents it cont
 </div>
 <div class="paragraph">
 <p>This displays the <strong class="ui">Edit Bucket Settings</strong> dialog, which permits changes to be made to a subset of existing settings.
-All the settings contained here are described in detail for the <strong class="ui">Add Data Bucket</strong> dialog, on the page <a href="create-bucket.html" class="page">Create a Bucket</a></p>
+All the settings contained here are described in detail for the <strong class="ui">Add Data Bucket</strong> dialog, on the page <a href="create-bucket.html" class="xref page">Create a Bucket</a></p>
 </div>
 </div>
 </div>
@@ -4544,7 +4544,7 @@ A modified setting applies only to documents that will be created or modified su
 </li>
 <li>
 <p><strong>Compression Mode</strong>: Whether and how compression is applied to data within the bucket.
-For information on available <em>modes</em>, and the effect of changing the mode of an existing bucket, see <a href="../../learn/buckets-memory-and-storage/compression.html" class="page">Compression</a>.</p>
+For information on available <em>modes</em>, and the effect of changing the mode of an existing bucket, see <a href="../../learn/buckets-memory-and-storage/compression.html" class="xref page">Compression</a>.</p>
 </li>
 <li>
 <p><strong>Ejection Method</strong>: The ejection policy used by a bucket.
@@ -4565,14 +4565,14 @@ Note that a priority-change invokes a bucket restart, resulting in the temporary
 <p><strong>Minimum Durability Level</strong>: Allows an appropriate durability level to be assigned to the bucket.
 Levels are accessed by means of a pull-down menu.
 The options are <strong>none</strong>, <strong>majority</strong>, <strong>majorityAndPersistActive</strong>, and <strong>persistToMajority</strong>.
-For information, see <a href="../../learn/data/durability.html" class="page">Durability</a>.</p>
+For information, see <a href="../../learn/data/durability.html" class="xref page">Durability</a>.</p>
 </li>
 <li>
-<p><strong>Auto-Compaction</strong>: When established, these settings, which determine the conditions under which data-compaction for the bucket is performed, override the cluster-wide defaults; as discussed in <a href="../manage-settings/configure-compact-settings.html" class="page">Auto-Compaction</a>.
+<p><strong>Auto-Compaction</strong>: When established, these settings, which determine the conditions under which data-compaction for the bucket is performed, override the cluster-wide defaults; as discussed in <a href="../manage-settings/configure-compact-settings.html" class="xref page">Auto-Compaction</a>.
 The full range of settings applies to and can be changed for Couchbase buckets; while only the <strong class="ui">Metadata Purge Interval</strong> applies to and can be changed for Ephemeral buckets.</p>
 </li>
 <li>
-<p><strong>Flush</strong>: This setting enables or disables the <a href="flush-bucket.html" class="page">Flush</a> command for the current bucket.
+<p><strong>Flush</strong>: This setting enables or disables the <a href="flush-bucket.html" class="xref page">Flush</a> command for the current bucket.
 It can be changed at any time for all three types of bucket.
 Note that when flushing is enabled, left-clicking on the bucket&#8217;s display-row on the <strong class="ui">Buckets</strong> screen displays the <strong>Flush</strong> button:</p>
 <div id="flush_bucket_button" class="imageblock text-left">
@@ -4592,7 +4592,7 @@ Note that when flushing is enabled, left-clicking on the bucket&#8217;s display-
 <h2 id="changing-bucket-settings-with-the-cli-and-rest-api"><a class="anchor" href="#changing-bucket-settings-with-the-cli-and-rest-api"></a>Changing Bucket-Settings with the CLI and REST API</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can change bucket-settings using the CLI command <a href="#cli:cbcli/couchbase-cli-bucket-edit.adoc" class="page unresolved">bucket-edit</a>; or the REST <a href="../../rest-api/rest-bucket-intro.html" class="page">Buckets API</a>.</p>
+<p>You can change bucket-settings using the CLI command <a href="#cli:cbcli/couchbase-cli-bucket-edit.adoc" class="xref unresolved">bucket-edit</a>; or the REST <a href="../../rest-api/rest-bucket-intro.html" class="xref page">Buckets API</a>.</p>
 </div>
 </div>
 </div>

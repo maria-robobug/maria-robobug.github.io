@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/window.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4500,7 +4500,7 @@ Each window function call includes an OVER clause, which introduces the window s
 Some window functions take additional window options, which are specified by further clauses before the OVER clause.</p>
 </div>
 <div class="paragraph">
-<p>In Couchbase Server Enterprise Edition, <a href="aggregatefun.html" class="page">aggregate functions</a> can also be used as window functions when they are used with an OVER clause.</p>
+<p>In Couchbase Server Enterprise Edition, <a href="aggregatefun.html" class="xref page">aggregate functions</a> can also be used as window functions when they are used with an OVER clause.</p>
 </div>
 <div class="paragraph">
 <p>In Couchbase Server 7.0 and later, window functions (and aggregate functions used as window functions) may specify their own inline window definitions, or they may refer to a named window defined by the WINDOW clause elsewhere in the query.
@@ -4514,7 +4514,7 @@ By defining a named window with the WINDOW clause, you can reuse the window defi
 <div class="paragraph">
 <p>For you to select data from keyspace or expression, you must have the <code class="param">query_select</code> privilege on that keyspace.
 For more details about user roles, see
-<a href="../../learn/security/authorization-overview.html" class="page">Authorization</a>.</p>
+<a href="../../learn/security/authorization-overview.html" class="xref page">Authorization</a>.</p>
 </div>
 </div>
 </div>
@@ -4523,7 +4523,7 @@ For more details about user roles, see
 <div class="sectionbody">
 <div class="paragraph">
 <p>This page gives the syntax of the WINDOW clause.
-Refer to <a href="aggregatefun.html" class="page">Aggregate Functions</a> or <a href="windowfun.html" class="page">Window Functions</a> for the details of window function calls.</p>
+Refer to <a href="aggregatefun.html" class="xref page">Aggregate Functions</a> or <a href="windowfun.html" class="xref page">Window Functions</a> for the details of window function calls.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4554,7 +4554,7 @@ Refer to <a href="aggregatefun.html" class="page">Aggregate Functions</a> or <a 
 <h4 id="window-name"><a class="anchor" href="#window-name"></a>Window Name</h4>
 <div class="listingblock">
 <div class="content">
-<pre>window-name ::= <a href="identifiers.html" class="page">identifier</a></pre>
+<pre>window-name ::= <a href="identifiers.html" class="xref page">identifier</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4587,7 +4587,7 @@ Refer to <a href="aggregatefun.html" class="page">Aggregate Functions</a> or <a 
 <h4 id="window-ref"><a class="anchor" href="#window-ref"></a>Window Reference</h4>
 <div class="listingblock">
 <div class="content">
-<pre>window-ref ::= <a href="identifiers.html" class="page">identifier</a></pre>
+<pre>window-ref ::= <a href="identifiers.html" class="xref page">identifier</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4624,7 +4624,7 @@ Furthermore, when one named window refers to another existing named window, the 
 <h4 id="window-partition-clause"><a class="anchor" href="#window-partition-clause"></a>Window Partition Clause</h4>
 <div class="listingblock">
 <div class="content">
-<pre>window-partition-clause ::= PARTITION BY <a href="index.html#N1QL_Expressions" class="page">expr</a> [ ',' <a href="index.html#N1QL_Expressions" class="page">expr</a> ]*</pre>
+<pre>window-partition-clause ::= PARTITION BY <a href="index.html#N1QL_Expressions" class="xref page">expr</a> [ ',' <a href="index.html#N1QL_Expressions" class="xref page">expr</a> ]*</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4636,7 +4636,7 @@ Furthermore, when one named window refers to another existing named window, the 
 <p>The <strong>window partition clause</strong> groups the query results into partitions using one or more expressions.</p>
 </div>
 <div class="paragraph">
-<p>This clause may be used with any <a href="windowfun.html" class="page">window function</a>, or any <a href="aggregatefun.html" class="page">aggregate functions</a> used as a window function.</p>
+<p>This clause may be used with any <a href="windowfun.html" class="xref page">window function</a>, or any <a href="aggregatefun.html" class="xref page">aggregate functions</a> used as a window function.</p>
 </div>
 <div class="paragraph">
 <p>This clause is optional.
@@ -4660,11 +4660,11 @@ If omitted, all the query results are grouped into single partition.</p>
 The window function works on objects in the order specified by this clause.</p>
 </div>
 <div class="paragraph">
-<p>This clause may be used with any <a href="windowfun.html" class="page">window function</a>, or any <a href="aggregatefun.html" class="page">aggregate functions</a> used as a window function.</p>
+<p>This clause may be used with any <a href="windowfun.html" class="xref page">window function</a>, or any <a href="aggregatefun.html" class="xref page">aggregate functions</a> used as a window function.</p>
 </div>
 <div class="paragraph">
 <p>This clause is optional for some functions, and required for others.
-See the <a href="aggregatefun.html" class="page">Aggregate Functions</a> page or <a href="windowfun.html" class="page">Window Functions</a> page for details of the syntax of individual functions.</p>
+See the <a href="aggregatefun.html" class="xref page">Aggregate Functions</a> page or <a href="windowfun.html" class="xref page">Window Functions</a> page for details of the syntax of individual functions.</p>
 </div>
 <div class="paragraph">
 <p>If this clause is omitted, all objects are considered peers, i.e. their order is tied.
@@ -4673,11 +4673,11 @@ When objects in the window partition are tied, each window function behaves diff
 <div class="ulist">
 <ul>
 <li>
-<p>The <a href="windowfun.html#fn-window-row-number" class="page">ROW_NUMBER()</a> function returns a distinct number for each object.
+<p>The <a href="windowfun.html#fn-window-row-number" class="xref page">ROW_NUMBER()</a> function returns a distinct number for each object.
 If objects are tied, the results may be unpredictable.</p>
 </li>
 <li>
-<p>The <a href="windowfun.html#fn-window-rank" class="page">RANK()</a>, <a href="windowfun.html#fn-window-dense-rank" class="page">DENSE_RANK()</a>, <a href="windowfun.html#fn-window-percent-rank" class="page">PERCENT_RANK()</a>, and <a href="windowfun.html#fn-window-cume-dist" class="page">CUME_DIST()</a> functions return the same result for each object.</p>
+<p>The <a href="windowfun.html#fn-window-rank" class="xref page">RANK()</a>, <a href="windowfun.html#fn-window-dense-rank" class="xref page">DENSE_RANK()</a>, <a href="windowfun.html#fn-window-percent-rank" class="xref page">PERCENT_RANK()</a>, and <a href="windowfun.html#fn-window-cume-dist" class="xref page">CUME_DIST()</a> functions return the same result for each object.</p>
 </li>
 <li>
 <p>For other functions, if the <a href="#window-frame-clause">window frame</a> is defined by <code>ROWS</code>, the results may be unpredictable.
@@ -4698,7 +4698,7 @@ To reduce the number of ties, add additional <a href="#ordering-term">ordering t
 <td class="content">
 <div class="paragraph">
 <p>This clause does not guarantee the overall order of the query results.
-To guarantee the order of the final results, use the query <a href="orderby.html" class="page">ORDER BY clause</a>.</p>
+To guarantee the order of the final results, use the query <a href="orderby.html" class="xref page">ORDER BY clause</a>.</p>
 </div>
 </td>
 </tr>
@@ -4709,7 +4709,7 @@ To guarantee the order of the final results, use the query <a href="orderby.html
 <h4 id="ordering-term"><a class="anchor" href="#ordering-term"></a>Ordering Term</h4>
 <div class="listingblock">
 <div class="content">
-<pre>ordering-term ::= <a href="index.html#N1QL_Expressions" class="page">expr</a> [ ASC | DESC ] [ NULLS ( FIRST | LAST ) ]</pre>
+<pre>ordering-term ::= <a href="index.html#N1QL_Expressions" class="xref page">expr</a> [ ASC | DESC ] [ NULLS ( FIRST | LAST ) ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4722,7 +4722,7 @@ To guarantee the order of the final results, use the query <a href="orderby.html
 </div>
 <div class="paragraph">
 <p>This clause has the same syntax and semantics as the ordering term for queries.
-Refer to <a href="orderby.html" class="page">ORDER BY clause</a> for details.</p>
+Refer to <a href="orderby.html" class="xref page">ORDER BY clause</a> for details.</p>
 </div>
 </div>
 </div>
@@ -4742,7 +4742,7 @@ Refer to <a href="orderby.html" class="page">ORDER BY clause</a> for details.</p
 <p>The <strong>window frame clause</strong> defines the window frame.</p>
 </div>
 <div class="paragraph">
-<p>This clause can be used with all <a href="aggregatefun.html" class="page">Aggregate Functions</a> and some <a href="windowfun.html" class="page">Window Functions</a>&#8201;&#8212;&#8201;see the descriptions of individual functions for more details.</p>
+<p>This clause can be used with all <a href="aggregatefun.html" class="xref page">Aggregate Functions</a> and some <a href="windowfun.html" class="xref page">Window Functions</a>&#8201;&#8212;&#8201;see the descriptions of individual functions for more details.</p>
 </div>
 <div class="paragraph">
 <p>This clause is allowed only when the <a href="#window-order-clause">window order clause</a> is present.</p>
@@ -4795,7 +4795,7 @@ The function produces deterministic results.</p>
 The ordering term expression must evaluate to a number.</p>
 </div>
 <div class="paragraph">
-<p>If the ordering term expression does not evaluate to a number, the window frame will be empty, which means the window function will return its default value: in most cases this is NULL, except for <a href="aggregatefun.html#count" class="page">COUNT()</a> or <a href="aggregatefun.html#countn" class="page">COUNTN()</a>, whose default value is 0.</p>
+<p>If the ordering term expression does not evaluate to a number, the window frame will be empty, which means the window function will return its default value: in most cases this is NULL, except for <a href="aggregatefun.html#count" class="xref page">COUNT()</a> or <a href="aggregatefun.html#countn" class="xref page">COUNTN()</a>, whose default value is 0.</p>
 </div>
 <div class="paragraph">
 <p>This restriction does not apply when the window frame uses <code>ROWS</code> or <code>GROUPS</code>.</p>
@@ -4816,7 +4816,7 @@ The ordering term expression must evaluate to a number.</p>
 In JSON, dates and times are represented as a string in ISO-8601 standard.</p>
 </div>
 <div class="paragraph">
-<p>If you want to use <code>RANGE</code> with either <code><em>valexpr</em> PRECEDING</code> or <code><em>valexpr</em> FOLLOWING</code>, and you want to use an ordering expression based on date or time, use the appropriate <a href="datefun.html" class="page">date or time function</a> to convert the date or time into milliseconds, then use the resulting number in the ordering expression.</p>
+<p>If you want to use <code>RANGE</code> with either <code><em>valexpr</em> PRECEDING</code> or <code><em>valexpr</em> FOLLOWING</code>, and you want to use an ordering expression based on date or time, use the appropriate <a href="datefun.html" class="xref page">date or time function</a> to convert the date or time into milliseconds, then use the resulting number in the ordering expression.</p>
 </div>
 </td>
 </tr>
@@ -4826,11 +4826,11 @@ In JSON, dates and times are represented as a string in ISO-8601 standard.</p>
 <h4 id="window-frame-extent"><a class="anchor" href="#window-frame-extent"></a>Window Frame Extent</h4>
 <div class="listingblock">
 <div class="content">
-<pre>window-frame-extent ::= UNBOUNDED PRECEDING | <a href="literals.html#numbers" class="page">valexpr</a> PRECEDING | CURRENT ROW |
+<pre>window-frame-extent ::= UNBOUNDED PRECEDING | <a href="literals.html#numbers" class="xref page">valexpr</a> PRECEDING | CURRENT ROW |
                         BETWEEN ( UNBOUNDED PRECEDING | CURRENT ROW |
-                                  <a href="literals.html#numbers" class="page">valexpr</a> ( PRECEDING | FOLLOWING ) )
+                                  <a href="literals.html#numbers" class="xref page">valexpr</a> ( PRECEDING | FOLLOWING ) )
                             AND ( UNBOUNDED FOLLOWING | CURRENT ROW |
-                                  <a href="literals.html#numbers" class="page">valexpr</a> ( PRECEDING | FOLLOWING ) )</pre>
+                                  <a href="literals.html#numbers" class="xref page">valexpr</a> ( PRECEDING | FOLLOWING ) )</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4846,7 +4846,7 @@ If <code>BETWEEN</code> is omitted, you can only specify the start point; the en
 <div class="paragraph">
 <p>The window frame end point can&#8217;t be before the start point.
 If this clause violates this restriction explicitly, an error will result.
-If it violates this restriction implicitly, the window frame will be empty, which means the window function will return its default value: in most cases this is NULL, except for <a href="aggregatefun.html#count" class="page">COUNT()</a> or <a href="aggregatefun.html#countn" class="page">COUNTN()</a>, whose default value is 0.</p>
+If it violates this restriction implicitly, the window frame will be empty, which means the window function will return its default value: in most cases this is NULL, except for <a href="aggregatefun.html#count" class="xref page">COUNT()</a> or <a href="aggregatefun.html#countn" class="xref page">COUNTN()</a>, whose default value is 0.</p>
 </div>
 <div class="paragraph">
 <p>Window frame extents that result in an explicit violation are:</p>
@@ -4907,7 +4907,7 @@ For <code>ROWS</code> or <code>GROUPS</code>, the <code><em>valexpr</em></code> 
 <p>The <strong>window frame exclusion clause</strong> enables you to exclude specified objects from the window frame.</p>
 </div>
 <div class="paragraph">
-<p>This clause can be used with all <a href="aggregatefun.html" class="page">aggregate functions</a> and some <a href="windowfun.html" class="page">window functions</a>&#8201;&#8212;&#8201;see the descriptions of individual functions for more details.</p>
+<p>This clause can be used with all <a href="aggregatefun.html" class="xref page">aggregate functions</a> and some <a href="windowfun.html" class="xref page">window functions</a>&#8201;&#8212;&#8201;see the descriptions of individual functions for more details.</p>
 </div>
 <div class="paragraph">
 <p>This clause is allowed only when the <a href="#window-frame-clause">window frame clause</a> is present.</p>
@@ -4947,7 +4947,7 @@ If this clause is omitted, the default is no exclusion&#8201;&#8212;&#8201;the s
 <h2 id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If present, the WINDOW clause must be included after the <a href="groupby.html" class="page">GROUP BY</a>, <a href="groupby.html#letting-clause" class="page">LETTING</a>, and <a href="groupby.html#having-clause" class="page">HAVING</a> clauses, and before the <a href="orderby.html" class="page">ORDER BY</a> clause.</p>
+<p>If present, the WINDOW clause must be included after the <a href="groupby.html" class="xref page">GROUP BY</a>, <a href="groupby.html#letting-clause" class="xref page">LETTING</a>, and <a href="groupby.html#having-clause" class="xref page">HAVING</a> clauses, and before the <a href="orderby.html" class="xref page">ORDER BY</a> clause.</p>
 </div>
 <div class="paragraph">
 <p>When the WINDOW clause is present, N1QL rewrites the query by replacing window names with inline window definitions.
@@ -4965,7 +4965,7 @@ If a window is declared by the WINDOW clause, but not actually used by any windo
 <p>For each airline, show each route operated by that airline, including the length of the route, the length of the next-longest route, and the length of the next-shortest route.</p>
 </div>
 <div class="paragraph">
-<p>Compare this example with the examples for <a href="windowfun.html#fn-window-lag" class="page">LAG()</a> and <a href="windowfun.html#fn-window-lead" class="page">LEAD()</a>.</p>
+<p>Compare this example with the examples for <a href="windowfun.html#fn-window-lag" class="xref page">LAG()</a> and <a href="windowfun.html#fn-window-lead" class="xref page">LEAD()</a>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Query</div>
@@ -5054,7 +5054,7 @@ LIMIT 7;</code></pre>
 <p>For each destination airport, number all routes in order of distance, and calculate the distance of each route as a fraction of the total distance of all routes.</p>
 </div>
 <div class="paragraph">
-<p>Compare this example with the examples for <a href="windowfun.html#fn-window-ratio-to-report" class="page">RATIO_TO_REPORT()</a> and <a href="windowfun.html#fn-window-row-number" class="page">ROW_NUMBER()</a>.</p>
+<p>Compare this example with the examples for <a href="windowfun.html#fn-window-ratio-to-report" class="xref page">RATIO_TO_REPORT()</a> and <a href="windowfun.html#fn-window-row-number" class="xref page">ROW_NUMBER()</a>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Query</div>
@@ -5139,7 +5139,7 @@ Note that the definition of <code>win2</code> must come <em>after</em> the defin
 <p>For each airport, show each route starting at that airport, including the distance of the route, the distance of the shortest route from that airport, and the distance of the longest route from that airport.</p>
 </div>
 <div class="paragraph">
-<p>Compare this example with the examples for <a href="windowfun.html#fn-window-first-value" class="page">FIRST_VALUE()</a> and <a href="windowfun.html#fn-window-last-value" class="page">LAST_VALUE()</a>.</p>
+<p>Compare this example with the examples for <a href="windowfun.html#fn-window-first-value" class="xref page">FIRST_VALUE()</a> and <a href="windowfun.html#fn-window-last-value" class="xref page">LAST_VALUE()</a>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Query</div>
@@ -5236,10 +5236,10 @@ Note that the inline window definition comes before the definition of <code>win<
 <div class="ulist">
 <ul>
 <li>
-<p><a href="windowfun.html" class="page">Window Functions</a></p>
+<p><a href="windowfun.html" class="xref page">Window Functions</a></p>
 </li>
 <li>
-<p><a href="aggregatefun.html" class="page">Aggregate Functions</a></p>
+<p><a href="aggregatefun.html" class="xref page">Aggregate Functions</a></p>
 </li>
 </ul>
 </div>

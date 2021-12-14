@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/rest-api/rest-xdcr-adv-settings.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4603,7 +4603,7 @@ Note that the output is piped to the <a href="https://stedolan.github.io/jq/" ta
 <h3 id="get-settings-for-a-specific-replication"><a class="anchor" href="#get-settings-for-a-specific-replication"></a>Get Settings for a Specific Replication</h3>
 <div class="paragraph">
 <p>To reference a specific replication, the replication&#8217;s <code>settings_URI</code> must first be retrieved.
-Use the following call, which is explained in detail in <a href="rest-get-cluster-tasks.html" class="page">Getting Cluster Tasks</a>.
+Use the following call, which is explained in detail in <a href="rest-get-cluster-tasks.html" class="xref page">Getting Cluster Tasks</a>.
 Note that the call pipes output to the <a href="https://stedolan.github.io/jq/" target="_blank" rel="noopener">jq</a> program, to facilitate the readability of output.</p>
 </div>
 <div class="listingblock">
@@ -4758,7 +4758,7 @@ The <code>settings_URI</code> can be used to retrieve information on the corresp
 <div class="sectionbody">
 <div class="paragraph">
 <p>The advanced settings for XDCR are as follows.
-The subset of advanced settings that can be configured by means of Couchbase Web Console is provided at <a href="../xdcr-reference/xdcr-advanced-settings.html" class="page">XDCR Advanced Settings</a>.</p>
+The subset of advanced settings that can be configured by means of Couchbase Web Console is provided at <a href="../xdcr-reference/xdcr-advanced-settings.html" class="xref page">XDCR Advanced Settings</a>.</p>
 </div>
 <table id="table_xdcr_settings" class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. XDCR Advanced Settings</caption>
@@ -4786,19 +4786,19 @@ The interval for checkpointing in seconds.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>colMappingRules</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JSON Object</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Collection-related rules according to which explicit mapping or migration is defined for the replication.
-See <a href="../learn/clusters-and-availability/xdcr-with-scopes-and-collections.html#rules-for-explicit-mappings" class="page">Rules for Explicit Mappings</a> and <a href="../learn/clusters-and-availability/xdcr-with-scopes-and-collections.html#rules-for-migration" class="page">Rules for Migration</a>.</p>
+See <a href="../learn/clusters-and-availability/xdcr-with-scopes-and-collections.html#rules-for-explicit-mappings" class="xref page">Rules for Explicit Mappings</a> and <a href="../learn/clusters-and-availability/xdcr-with-scopes-and-collections.html#rules-for-migration" class="xref page">Rules for Migration</a>.</p>
 <p class="tableblock">This setting can only be established for and retrieved from an individual replication: it cannot be established or retrieved as part of global settings.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>collectionsExplicitMapping</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean (true or false)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the replication uses explicit mapping: see <a href="../learn/clusters-and-availability/xdcr-with-scopes-and-collections.html#rules-for-explicit-mappings" class="page">Rules for Explicit Mappings</a>.</p>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the replication uses explicit mapping: see <a href="../learn/clusters-and-availability/xdcr-with-scopes-and-collections.html#rules-for-explicit-mappings" class="xref page">Rules for Explicit Mappings</a>.</p>
 <p class="tableblock">This setting can only be established for and retrieved from an individual replication: it cannot be established or retrieved as part of global settings.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>collectionsMigrationMode</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean (true or false)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the replication uses migration mode: see <a href="../learn/clusters-and-availability/xdcr-with-scopes-and-collections.html#migration" class="page">Migration</a>.</p>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether the replication uses migration mode: see <a href="../learn/clusters-and-availability/xdcr-with-scopes-and-collections.html#migration" class="xref page">Migration</a>.</p>
 <p class="tableblock">This setting can only be established for and retrieved from an individual replication: it cannot be established or retrieved as part of global settings.</p></td>
 </tr>
 <tr>
@@ -4812,7 +4812,7 @@ Default is true.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Default: <code>Auto</code>.
 Specifies whether documents are to be compressed for XDCR, and if so, what compression type is to be used.
-For information, see <a href="../xdcr-reference/xdcr-advanced-settings.html#table-of-xdcr-advanced-settings" class="page">XDCR Advanced Settings</a>.</p>
+For information, see <a href="../xdcr-reference/xdcr-advanced-settings.html#table-of-xdcr-advanced-settings" class="xref page">XDCR Advanced Settings</a>.</p>
 <p class="tableblock">This setting can be established and retrieved either for an individual replication or globally.</p></td>
 </tr>
 <tr>
@@ -4820,7 +4820,7 @@ For information, see <a href="../xdcr-reference/xdcr-advanced-settings.html#tabl
 <td class="tableblock halign-left valign-top"><p class="tableblock">Integer</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the amount of time in milliseconds within which a high-priority replication&#8217;s currently remaining changes should be reduced in number to zero, by ongoing transmission of the changes from source to target bucket.
 If Couchbase Server estimates that the time required is greater than that specified by <code>desiredLatency</code>, the replication is considered to be backlogged: XDCR therefore attempts to communicate with the Data Service, to establish a higher DCP priority for the replication, and thereby ensure swifter transmission of data.</p>
-<p class="tableblock">This setting applies only to high-priority replications, or to medium-priority replications that achieve high-priority status (see <a href="../learn/clusters-and-availability/xdcr-overview.html#xdcr-priority" class="page">XDCR Priority</a>).
+<p class="tableblock">This setting applies only to high-priority replications, or to medium-priority replications that achieve high-priority status (see <a href="../learn/clusters-and-availability/xdcr-overview.html#xdcr-priority" class="xref page">XDCR Priority</a>).
 The default value is 50.
 The lower the value, the higher (potentially) the transmission rate, and the greater the load on the target cluster.</p>
 <p class="tableblock">This setting can be established and retrieved either for an individual replication or globally.</p></td>
@@ -4869,7 +4869,7 @@ A value of true means that the mutation <em>is</em> filtered out, ensuring that 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Default: null.
 A filter expression to be matched against the ids, field-names, values, and extended attributes of documents in the source bucket.
 Each document that produces a successful match is replicated; other documents are not replicated.
-For supported expressions, see <a href="../xdcr-reference/xdcr-filtering-reference-intro.html" class="page">XDCR Advanced Filtering Reference</a>.</p>
+For supported expressions, see <a href="../xdcr-reference/xdcr-filtering-reference-intro.html" class="xref page">XDCR Advanced Filtering Reference</a>.</p>
 <p class="tableblock">This setting can only be established for and retrieved from an individual replication: it cannot be established or retrieved as part of global settings.</p></td>
 </tr>
 <tr>
@@ -4926,7 +4926,7 @@ Each of the key-value pairs in the JSON object should map a collection-specifier
 <td class="tableblock halign-left valign-top"><p class="tableblock">Default: 0.
 Specifies the upper limit for network usage during replication, for the entire cluster, in MB per second.
 The default is 0, meaning no limit is applied.
-For information, see <a href="../xdcr-reference/xdcr-advanced-settings.html#table-of-xdcr-advanced-settings" class="page">XDCR Advanced Settings</a>.</p>
+For information, see <a href="../xdcr-reference/xdcr-advanced-settings.html#table-of-xdcr-advanced-settings" class="xref page">XDCR Advanced Settings</a>.</p>
 <p class="tableblock">This setting can be established and retrieved either for an individual replication or globally.</p></td>
 </tr>
 <tr>
@@ -4948,7 +4948,7 @@ Indicates whether the replication has been issued a pause request.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">High, Medium, or Low</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Default: High.
 Resource-allocation for the replication.
-For information, see <a href="../learn/clusters-and-availability/xdcr-overview.html#xdcr-priority" class="page">XDCR Priority</a>.</p>
+For information, see <a href="../learn/clusters-and-availability/xdcr-overview.html#xdcr-priority" class="xref page">XDCR Priority</a>.</p>
 <p class="tableblock">This setting can be established and retrieved either for an individual replication or globally.</p></td>
 </tr>
 <tr>
@@ -5007,9 +5007,9 @@ The number of mutations in a batch.</p>
 <h2 id="see-also"><a class="anchor" href="#see-also"></a>See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The REST call for creating a replication and specifying parameters is described in <a href="rest-xdcr-create-replication.html" class="page">Creating XDCR Replications</a>.
-An overview of XDCR is provided in <a href="../learn/clusters-and-availability/xdcr-overview.html" class="page">Cross Data Center Replication (XDCR)</a>.
-The subset of advanced settings that can be configured by means of Couchbase Web Console is provided at <a href="../xdcr-reference/xdcr-advanced-settings.html" class="page">XDCR Advanced Settings</a>.</p>
+<p>The REST call for creating a replication and specifying parameters is described in <a href="rest-xdcr-create-replication.html" class="xref page">Creating XDCR Replications</a>.
+An overview of XDCR is provided in <a href="../learn/clusters-and-availability/xdcr-overview.html" class="xref page">Cross Data Center Replication (XDCR)</a>.
+The subset of advanced settings that can be configured by means of Couchbase Web Console is provided at <a href="../xdcr-reference/xdcr-advanced-settings.html" class="xref page">XDCR Advanced Settings</a>.</p>
 </div>
 </div>
 </div>

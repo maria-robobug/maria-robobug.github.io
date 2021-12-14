@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/join.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4467,7 +4467,7 @@ The <code>JOIN</code> clause enables you to create new input objects by combinin
 <h2 id="purpose"><a class="anchor" href="#purpose"></a>Purpose</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>JOIN</code> clause is used within the <a href="from.html" class="page">FROM</a> clause.
+<p>The <code>JOIN</code> clause is used within the <a href="from.html" class="xref page">FROM</a> clause.
 It creates an input object by combining two or more source objects.
 Couchbase Server supports three types of <code>JOIN</code> clause, which are described in the sections below: <a href="#section_ek1_jnx_1db">ANSI JOIN</a>, <a href="#lookup-join-clause">Lookup JOIN</a>, and <a href="#index-join-clause">Index JOIN</a>.</p>
 </div>
@@ -4479,7 +4479,7 @@ Couchbase Server supports three types of <code>JOIN</code> clause, which are des
 <div class="paragraph">
 <p>For you to select data from keyspace or expression, you must have the <code class="param">query_select</code> privilege on that keyspace.
 For more details about user roles, see
-<a href="../../learn/security/authorization-overview.html" class="page">Authorization</a>.</p>
+<a href="../../learn/security/authorization-overview.html" class="xref page">Authorization</a>.</p>
 </div>
 </div>
 </div>
@@ -4503,7 +4503,7 @@ For more details about user roles, see
 </div>
 <div class="paragraph">
 <p>The FROM term is recursive, which enables you to chain the <code>JOIN</code> clause with any of the terms which are permitted in the <code>FROM</code> clause, including other <code>JOIN</code> clauses.
-For more information, see the page on the <a href="from.html" class="page">FROM</a> clause.</p>
+For more information, see the page on the <a href="from.html" class="xref page">FROM</a> clause.</p>
 </div>
 <div class="paragraph">
 <p>There are restrictions on what types of FROM terms may be chained and in what order&#8201;&#8212;&#8201;see the descriptions on this page for more details.</p>
@@ -4524,7 +4524,7 @@ For more information, see the page on the <a href="from.html" class="page">FROM<
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="from.html#sec_from-keyspace" class="page">keyspace identifier</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="from.html#sec_from-keyspace" class="xref page">keyspace identifier</a></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">`travel-sample`.inventory.hotel</code></pre>
@@ -4532,7 +4532,7 @@ For more information, see the page on the <a href="from.html" class="page">FROM<
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="from.html#generic-expr" class="page">generic expression</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="from.html#generic-expr" class="xref page">generic expression</a></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">20+10 AS Total</code></pre>
@@ -4540,7 +4540,7 @@ For more information, see the page on the <a href="from.html" class="page">FROM<
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="from.html#select-expr" class="page">subquery</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="from.html#select-expr" class="xref page">subquery</a></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">SELECT ARRAY_AGG(t1.city) AS cities,
@@ -4557,7 +4557,7 @@ WHERE t1.city_cnt &gt; 5;</code></pre>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">previous <a href="#">join</a>, <a href="nest.html" class="page">nest</a>, or <a href="unnest.html" class="page">unnest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">previous <a href="#">join</a>, <a href="nest.html" class="xref page">nest</a>, or <a href="unnest.html" class="xref page">unnest</a></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">SELECT *
@@ -4590,7 +4590,7 @@ LIMIT 5;</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<a href="#section_ek1_jnx_1db">ANSI JOIN</a> and <a href="nest.html#section_tc1_nnx_1db" class="page">ANSI NEST</a> clauses have much more flexible functionality than their earlier INDEX and LOOKUP equivalents.
+<a href="#section_ek1_jnx_1db">ANSI JOIN</a> and <a href="nest.html#section_tc1_nnx_1db" class="xref page">ANSI NEST</a> clauses have much more flexible functionality than their earlier INDEX and LOOKUP equivalents.
 Since these are standard compliant and more flexible, we recommend you to use ANSI JOIN and ANSI NEST exclusively, where possible.
 </td>
 </tr>
@@ -4720,10 +4720,10 @@ WHERE route.sourceairport = "SFO";</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>A LEFT OUTER JOIN where all the NULL or MISSING results on the right-hand side are filtered out by the <a href="where.html" class="page">WHERE clause</a> or by the ON clause of a subsequent INNER JOIN, or</p>
+<p>A LEFT OUTER JOIN where all the NULL or MISSING results on the right-hand side are filtered out by the <a href="where.html" class="xref page">WHERE clause</a> or by the ON clause of a subsequent INNER JOIN, or</p>
 </li>
 <li>
-<p>A RIGHT OUTER JOIN where all the NULL or MISSING results on the left-hand side are filtered out by the <a href="where.html" class="page">WHERE clause</a> or by the ON clause of a subsequent INNER JOIN,</p>
+<p>A RIGHT OUTER JOIN where all the NULL or MISSING results on the left-hand side are filtered out by the <a href="where.html" class="xref page">WHERE clause</a> or by the ON clause of a subsequent INNER JOIN,</p>
 </li>
 </ul>
 </div>
@@ -5071,14 +5071,14 @@ ON `travel-sample`.inventory.route (sourceairport, destinationairport, airline);
 <h4 id="ansi-keyspace-ref"><a class="anchor" href="#ansi-keyspace-ref"></a>Keyspace Reference</h4>
 <div class="paragraph">
 <p>Keyspace reference for the right-hand side of the ANSI join.
-For details, see <a href="from.html#from-keyspace-ref" class="page">Keyspace Reference</a>.</p>
+For details, see <a href="from.html#from-keyspace-ref" class="xref page">Keyspace Reference</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="ansi-keyspace-alias"><a class="anchor" href="#ansi-keyspace-alias"></a>AS Alias</h4>
 <div class="paragraph">
 <p>Assigns another name to the keyspace reference.
-For details, see <a href="from.html#section_ax5_2nx_1db" class="page">AS Clause</a>.</p>
+For details, see <a href="from.html#section_ax5_2nx_1db" class="xref page">AS Clause</a>.</p>
 </div>
 <div class="paragraph">
 <p>Assigning an alias to the keyspace reference is optional.
@@ -5102,7 +5102,7 @@ If you assign an alias to the keyspace reference, the <code>AS</code> keyword ma
 <h4 id="ansi-subquery-expr"><a class="anchor" href="#ansi-subquery-expr"></a>Subquery Expression</h4>
 <div class="paragraph">
 <p>Use parentheses to specify a subquery for the right-hand side of the ANSI join.
-For details, see <a href="from.html#select-expr-clause" class="page">Subquery Expression</a>.</p>
+For details, see <a href="from.html#select-expr-clause" class="xref page">Subquery Expression</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5122,7 +5122,7 @@ This will lead to an error.
 <h4 id="ansi-subquery-alias"><a class="anchor" href="#ansi-subquery-alias"></a>AS Alias</h4>
 <div class="paragraph">
 <p>Assigns another name to the subquery.
-For details, see <a href="from.html#section_ax5_2nx_1db" class="page">AS Clause</a>.</p>
+For details, see <a href="from.html#section_ax5_2nx_1db" class="xref page">AS Clause</a>.</p>
 </div>
 <div class="paragraph">
 <p>You must assign an alias to a subquery on the right-hand side of the join.
@@ -5145,7 +5145,7 @@ However, when you assign an alias to the subquery, the <code>AS</code> keyword m
 <div class="sect3">
 <h4 id="ansi-generic-expr"><a class="anchor" href="#ansi-generic-expr"></a>Expression Term</h4>
 <div class="paragraph">
-<p>A N1QL <a href="index.html" class="page">expression</a> generating JSON documents or objects for the right-hand side of the ANSI join.</p>
+<p>A N1QL <a href="index.html" class="xref page">expression</a> generating JSON documents or objects for the right-hand side of the ANSI join.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5165,7 +5165,7 @@ In this case, only a <a href="#ansi-join-hints">nested-loop join</a> may be used
 <h4 id="ansi-generic-alias"><a class="anchor" href="#ansi-generic-alias"></a>AS Alias</h4>
 <div class="paragraph">
 <p>Assigns another name to the generic expression.
-For details, see <a href="from.html#section_ax5_2nx_1db" class="page">AS Clause</a>.</p>
+For details, see <a href="from.html#section_ax5_2nx_1db" class="xref page">AS Clause</a>.</p>
 </div>
 <div class="paragraph">
 <p>You must assign an alias to a generic expression on the right-hand side of the join.
@@ -5267,7 +5267,7 @@ WHERE airport.city = "San Francisco";</code></pre>
 Two corresponding join hints are introduced: <code>USE HASH</code> and <code>USE NL</code>.</p>
 </div>
 <div class="paragraph">
-<p>The ANSI join hints are similar to the <a href="hints.html#use-index-clause" class="page">USE INDEX</a> or <a href="hints.html#use-keys-clause" class="page">USE KEYS</a> hints.
+<p>The ANSI join hints are similar to the <a href="hints.html#use-index-clause" class="xref page">USE INDEX</a> or <a href="hints.html#use-keys-clause" class="xref page">USE KEYS</a> hints.
 The ANSI join hints can be specified after the right-hand side of an ANSI join specification.</p>
 </div>
 <div class="admonitionblock note">
@@ -5495,7 +5495,7 @@ ON (rte.airlineid = META(aline).id);</code></pre>
 </div>
 <div id="other-hint-terms" class="listingblock">
 <div class="content">
-<pre>other-hint-terms ::= <a href="hints.html#use-index-term" class="page">use-index-term</a> | <a href="hints.html#use-keys-term" class="page">use-keys-term</a></pre>
+<pre>other-hint-terms ::= <a href="hints.html#use-index-term" class="xref page">use-index-term</a> | <a href="hints.html#use-keys-term" class="xref page">use-keys-term</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5762,7 +5762,7 @@ WHERE b1.c11 = 10 AND b1.c12 = 100;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>By using the <a href="indexing-arrays.html" class="page">IN</a> clause, the right-hand side field value can match any of the elements of the left-hand side array.
+<p>By using the <a href="indexing-arrays.html" class="xref page">IN</a> clause, the right-hand side field value can match any of the elements of the left-hand side array.
 Conceptually, we are using each element of the left-hand side array to probe the right-hand side index.</p>
 </div>
 </div>
@@ -5860,7 +5860,7 @@ WHERE b1.c11 = 10
 <h3 id="purpose-3"><a class="anchor" href="#purpose-3"></a>Purpose</h3>
 <div class="paragraph">
 <p>A <em>lookup join</em> is a legacy syntax for joins.
-It enables you to join a foreign key field on the left-hand side of the join with the primary <a href="../../learn/data/data.html#keys" class="page">document key</a> on the right-hand side of the join.
+It enables you to join a foreign key field on the left-hand side of the join with the primary <a href="../../learn/data/data.html#keys" class="xref page">document key</a> on the right-hand side of the join.
 Couchbase Server version 4.1 and earlier supported only lookup joins.</p>
 </div>
 <div class="paragraph">
@@ -5931,7 +5931,7 @@ If omitted, the default is <code>INNER</code>.</p>
 <h5 id="lookup-keyspace-ref"><a class="anchor" href="#lookup-keyspace-ref"></a>Keyspace Reference</h5>
 <div class="paragraph">
 <p>Keyspace reference for the right-hand side of the lookup join.
-For details, see <a href="from.html#from-keyspace-ref" class="page">Keyspace Reference</a>.</p>
+For details, see <a href="from.html#from-keyspace-ref" class="xref page">Keyspace Reference</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5951,7 +5951,7 @@ Expressions, subqueries, or other join combinations cannot be on the right-hand 
 <h5 id="lookup-as-alias"><a class="anchor" href="#lookup-as-alias"></a>AS Alias</h5>
 <div class="paragraph">
 <p>Assigns another name to the right-hand side of the lookup join.
-For details, see <a href="from.html#section_ax5_2nx_1db" class="page">AS Clause</a>.</p>
+For details, see <a href="from.html#section_ax5_2nx_1db" class="xref page">AS Clause</a>.</p>
 </div>
 <div class="paragraph">
 <p>Assigning an alias to the keyspace reference is optional.
@@ -6127,7 +6127,7 @@ WHERE route.destinationairport = "ATL"
 <h3 id="purpose-4"><a class="anchor" href="#purpose-4"></a>Purpose</h3>
 <div class="paragraph">
 <p>An <em>index join</em> is another legacy syntax for joins which reverses the direction of a lookup join.
-It enables you to join the primary <a href="../../learn/data/data.html#keys" class="page">document key</a> on the left-hand side of the join with a foreign key field on the right-hand side of the join.</p>
+It enables you to join the primary <a href="../../learn/data/data.html#keys" class="xref page">document key</a> on the left-hand side of the join with a foreign key field on the right-hand side of the join.</p>
 </div>
 <div class="paragraph">
 <p>You can use an index join when a lookup join would be inefficient, and you need to flip the relationship so the join predicate is on the right-hand side of the join.</p>
@@ -6212,7 +6212,7 @@ If omitted, the default is <code>INNER</code>.</p>
 <h5 id="index-keyspace-ref"><a class="anchor" href="#index-keyspace-ref"></a>Keyspace Reference</h5>
 <div class="paragraph">
 <p>Keyspace reference for right-hand side of an index join.
-For details, see <a href="from.html#from-keyspace-ref" class="page">Keyspace Reference</a>.</p>
+For details, see <a href="from.html#from-keyspace-ref" class="xref page">Keyspace Reference</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -6232,7 +6232,7 @@ Expressions, subqueries, or other join combinations cannot be on the right-hand 
 <h5 id="index-as-alias"><a class="anchor" href="#index-as-alias"></a>AS Alias</h5>
 <div class="paragraph">
 <p>Assigns another name to the right-hand side of the index join.
-For details, see <a href="from.html#section_ax5_2nx_1db" class="page">AS Clause</a>.</p>
+For details, see <a href="from.html#section_ax5_2nx_1db" class="xref page">AS Clause</a>.</p>
 </div>
 <div class="paragraph">
 <p>Assigning an alias to the keyspace reference is optional.

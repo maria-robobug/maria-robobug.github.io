@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="python-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/python-sdk/DOC-9205/hello-world/start-using-sdk.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3674,7 +3674,7 @@ It depends on the C SDK, <em>libcouchbase</em>, (included automatically) which i
 </blockquote>
 </div>
 <div class="paragraph">
-<p>The Couchbase Python SDK 3.x is a complete rewrite of the API, reducing the number of overloads to present a simplified surface area, and adding support for Couchbase Server features like <a href="../concept-docs/collections.html" class="page">Collections and Scopes</a> (available from Couchbase Server 7.0).</p>
+<p>The Couchbase Python SDK 3.x is a complete rewrite of the API, reducing the number of overloads to present a simplified surface area, and adding support for Couchbase Server features like <a href="../concept-docs/collections.html" class="xref page">Collections and Scopes</a> (available from Couchbase Server 7.0).</p>
 </div>
 <div class="paragraph">
 <p>The 3.x Python SDK introduces comprehensive <a href="https://www.python.org/dev/peps/pep-0484/">PEP-484</a> style type annotations.</p>
@@ -4041,14 +4041,14 @@ The same process should work within the Anaconda/Miniconda platform.
 <h3 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h3>
 <div class="paragraph">
 <p>As well as the Python SDK (see above), and a running instance of Couchbase Server, you will need to load up the Travel Sample Bucket
-using either the <a href="#{version-server}@server:manage:manage-settings/install-sample-buckets.adoc#install-sample-buckets-with-the-ui" class="page unresolved">Web interface</a>
-or the <a href="#{version-server}@server:manage:manage-settings/install-sample-buckets.adoc#install-sample-buckets-with-the-cli" class="page unresolved">command line</a>.</p>
+using either the <a href="#{version-server}@server:manage:manage-settings/install-sample-buckets.adoc#install-sample-buckets-with-the-ui" class="xref unresolved">Web interface</a>
+or the <a href="#{version-server}@server:manage:manage-settings/install-sample-buckets.adoc#install-sample-buckets-with-the-cli" class="xref unresolved">command line</a>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="connection"><a class="anchor" href="#connection"></a>Connection</h3>
 <div class="paragraph">
-<p>The basic imports and connection string that you&#8217;ll need are given below&#8201;&#8212;&#8201;for more background information, refer to the <a href="../howtos/managing-connections.html#connection-strings" class="page">Managing Connections page</a>.</p>
+<p>The basic imports and connection string that you&#8217;ll need are given below&#8201;&#8212;&#8201;for more background information, refer to the <a href="../howtos/managing-connections.html#connection-strings" class="xref page">Managing Connections page</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4065,12 +4065,12 @@ cluster = Cluster('couchbase://localhost', ClusterOptions(
 </div>
 </div>
 <div class="paragraph">
-<p>Couchbase uses <a href="#{version-server}@server:learn:security/roles.adoc" class="page unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
+<p>Couchbase uses <a href="#{version-server}@server:learn:security/roles.adoc" class="xref unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
 For the sake of this example, we are connecting to Couchbase using the <em>Full Admin</em> role created during the installation of our Couchbase Server.
 The connection is being made to a single Couchbase node, running locally.</p>
 </div>
 <div class="paragraph">
-<p>Couchbase RBAC is fully described in the section <a href="#{version-server}@server:manage:manage-security/manage-users-and-roles.adoc" class="page unresolved">Authorization</a>.
+<p>Couchbase RBAC is fully described in the section <a href="#{version-server}@server:manage:manage-security/manage-users-and-roles.adoc" class="xref unresolved">Authorization</a>.
 An <em>authenticator</em>, containing username and password, should be defined, and then passed to the cluster.
 Following successful authentication, the bucket can be opened:</p>
 </div>
@@ -4096,7 +4096,7 @@ We are working with the <a href="https://docs.couchbase.com/server/current/manag
 <p>If you are connecting to <a href="https://docs.couchbase.com/cloud/index.html">Couchbase Capella</a> rather than a local Couchbase Server, then also refer to the <a href="#cloud-connections">Cloud section</a>, below.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="../howtos/managing-connections.html" class="page">Managing Connections</a> for more connection options and details about the connection string.</p>
+<p>See <a href="../howtos/managing-connections.html" class="xref page">Managing Connections</a> for more connection options and details about the connection string.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4104,7 +4104,7 @@ We are working with the <a href="https://docs.couchbase.com/server/current/manag
 </div>
 </div>
 <div class="paragraph">
-<p>The 3.2 SDK is ready for the introduction of <a href="../concept-docs/collections.html" class="page">Collections</a> in the <a href="#{version-server}@server:introduction:whats-new.adoc#whats-new-server-700" class="page unresolved">7.0 release</a> of the Couchbase Data Platform.
+<p>The 3.2 SDK is ready for the introduction of <a href="../concept-docs/collections.html" class="xref page">Collections</a> in the <a href="#{version-server}@server:introduction:whats-new.adoc#whats-new-server-700" class="xref unresolved">7.0 release</a> of the Couchbase Data Platform.
 The latest release, Couchbase Server 7.0, brings Collections, allowing Documents to be grouped by purpose or theme, according to specified <em>Scope</em>.</p>
 </div>
 <div class="admonitionblock note">
@@ -4144,7 +4144,7 @@ cb_coll_default = cb.default_collection()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="../howtos/kv-operations.html" class="page">Document operations</a>, such as storing and retrieving documents, can be done using simple methods on the <code>Collection</code> class such as <code>Collection.get</code> and <code>Collection.upsert</code>.
+<p><a href="../howtos/kv-operations.html" class="xref page">Document operations</a>, such as storing and retrieving documents, can be done using simple methods on the <code>Collection</code> class such as <code>Collection.get</code> and <code>Collection.upsert</code>.
 Simply pass the key (and value, if applicable) to the relevant methods.</p>
 </div>
 <div class="paragraph">
@@ -4187,7 +4187,7 @@ def get_airline_by_key(key):
 </div>
 </div>
 <div class="paragraph">
-<p>Key-value Operations are described in detail on the <a href="../howtos/kv-operations.html" class="page">KV Operations page</a>.</p>
+<p>Key-value Operations are described in detail on the <a href="../howtos/kv-operations.html" class="xref page">KV Operations page</a>.</p>
 </div>
 <div class="paragraph">
 <p>Now, we can simply call the <code>get_airline_by_key</code> function passing in our valid document key <code>airline_8091</code>:</p>
@@ -4398,13 +4398,13 @@ for row in row_iter.rows():
 <div class="ulist">
 <ul>
 <li>
-<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="page">Constrained Network Environments</a>.</p>
+<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="xref page">Constrained Network Environments</a>.</p>
 </li>
 <li>
-<p><a href="../project-docs/compatibility.html#network-requirements" class="page">Network Requirements</a>.</p>
+<p><a href="../project-docs/compatibility.html#network-requirements" class="xref page">Network Requirements</a>.</p>
 </li>
 <li>
-<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="page">Troubleshooting Guide</a>.</p>
+<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="xref page">Troubleshooting Guide</a>.</p>
 </li>
 </ul>
 </div>
@@ -4417,11 +4417,11 @@ for row in row_iter.rows():
 <p>The API reference is generated for each release and the latest can be found <a href="http://docs.couchbase.com/sdk-api/couchbase-python-client/">here</a>.</p>
 </div>
 <div class="paragraph">
-<p>Older API references are linked from their respective sections in the <a href="../project-docs/sdk-release-notes.html" class="page">Individual Release Notes</a>.
+<p>Older API references are linked from their respective sections in the <a href="../project-docs/sdk-release-notes.html" class="xref page">Individual Release Notes</a>.
 Most of the API documentation can also be accessed via <code>pydoc</code>.</p>
 </div>
 <div class="paragraph">
-<p><a href="../project-docs/migrating-sdk-code-to-3.n.html" class="page">The Migrating from SDK2 to 3 page</a> highlights the main differences to be aware of when migrating your code.</p>
+<p><a href="../project-docs/migrating-sdk-code-to-3.n.html" class="xref page">The Migrating from SDK2 to 3 page</a> highlights the main differences to be aware of when migrating your code.</p>
 </div>
 <div class="paragraph">
 <p>Couchbase welcomes community contributions to the Python SDK.

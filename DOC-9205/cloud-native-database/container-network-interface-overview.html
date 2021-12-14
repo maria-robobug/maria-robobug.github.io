@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="cloud-native-database">
 <meta name="dcterms.identifier" content="master">
 <meta name="page-url" content="/cloud-native-database/container-network-interface-overview.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -338,7 +338,7 @@ Objects in deployments managed by the Couchbase Autonomous Operator define netwo
 <div class="paragraph">
 <p>Kubernetes managed deployments define a number of resources as conceptual objects which are then created and managed at runtime.
 Kubernetes uses a plugin architecture for defining networks from the <a href="https://github.com/containernetworking/cni">Container Network Interface (CNI)</a> project in the Cloud Native Computing Foundation (CNCF).
-When deploying Couchbase on Kubernetes, the objects specified in your deployment and the <a href="#operator::overview.adoc" class="page unresolved">Couchbase Autonomous Operator</a> will in turn define network resources that are implemented through these CNI plugins.</p>
+When deploying Couchbase on Kubernetes, the objects specified in your deployment and the <a href="#operator::overview.adoc" class="xref unresolved">Couchbase Autonomous Operator</a> will in turn define network resources that are implemented through these CNI plugins.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -347,8 +347,8 @@ When deploying Couchbase on Kubernetes, the objects specified in your deployment
 </div>
 <div class="paragraph">
 <p>In general, as a user, you will interact with other configuration objects such as NodePorts and LoadBalancers which in turn use the network primitives implemented by CNI plugins.
-The <a href="#operator::concept-kubernetes-networking.adoc" class="page unresolved">operator::concept-kubernetes-networking.adoc</a> page in the Autonomous Operator concept documentation gives more details on the concepts as they relate to Couchbase.
-Further information on network deployment options and client connectivity is covered on the <a href="#operator::concept-couchbase-networking.adoc" class="page unresolved">operator::concept-couchbase-networking.adoc</a> page.</p>
+The <a href="#operator::concept-kubernetes-networking.adoc" class="xref unresolved">operator::concept-kubernetes-networking.adoc</a> page in the Autonomous Operator concept documentation gives more details on the concepts as they relate to Couchbase.
+Further information on network deployment options and client connectivity is covered on the <a href="#operator::concept-couchbase-networking.adoc" class="xref unresolved">operator::concept-couchbase-networking.adoc</a> page.</p>
 </div>
 </div>
 </div>
@@ -356,8 +356,8 @@ Further information on network deployment options and client connectivity is cov
 <h2 id="get-started"><a class="anchor" href="#get-started"></a>Get Started</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Interacting with Container Network Interface (CNI) plugins is done primarily through configuration of other objects, notably the <a href="#operator::resource/couchbasecluster.adoc#couchbaseclusters-spec-networking" class="page unresolved"><code>couchbaseclusters.spec.networking</code></a> section of the <a href="#operator::resource/couchbasecluster.adoc" class="page unresolved"><code>CouchbaseCluster</code></a> custom resource specification, rather than direct action with any CNI plugin.
-As you deploy Couchbase via the <a href="#operator::overview.adoc" class="page unresolved">Couchbase Autonomous Operator</a>, you are indirectly defining network resources through the Kubernetes CNI.</p>
+<p>Interacting with Container Network Interface (CNI) plugins is done primarily through configuration of other objects, notably the <a href="#operator::resource/couchbasecluster.adoc#couchbaseclusters-spec-networking" class="xref unresolved"><code>couchbaseclusters.spec.networking</code></a> section of the <a href="#operator::resource/couchbasecluster.adoc" class="xref unresolved"><code>CouchbaseCluster</code></a> custom resource specification, rather than direct action with any CNI plugin.
+As you deploy Couchbase via the <a href="#operator::overview.adoc" class="xref unresolved">Couchbase Autonomous Operator</a>, you are indirectly defining network resources through the Kubernetes CNI.</p>
 </div>
 <div class="paragraph">
 <p>For more advanced Couchbase networking deployment options, refer to the tutorials in the links below.</p>
@@ -366,16 +366,16 @@ As you deploy Couchbase via the <a href="#operator::overview.adoc" class="page u
 <div class="title">Links</div>
 <ul>
 <li>
-<p><strong>Concept</strong>: <a href="#operator::concept-kubernetes-networking.adoc" class="page unresolved">operator::concept-kubernetes-networking.adoc</a></p>
+<p><strong>Concept</strong>: <a href="#operator::concept-kubernetes-networking.adoc" class="xref unresolved">operator::concept-kubernetes-networking.adoc</a></p>
 </li>
 <li>
-<p><strong>Concept</strong>: <a href="#operator::concept-couchbase-networking.adoc" class="page unresolved">operator::concept-couchbase-networking.adoc</a></p>
+<p><strong>Concept</strong>: <a href="#operator::concept-couchbase-networking.adoc" class="xref unresolved">operator::concept-couchbase-networking.adoc</a></p>
 </li>
 <li>
-<p><strong>Tutorial</strong>: <a href="#operator::tutorial-remote-dns.adoc" class="page unresolved">operator::tutorial-remote-dns.adoc</a></p>
+<p><strong>Tutorial</strong>: <a href="#operator::tutorial-remote-dns.adoc" class="xref unresolved">operator::tutorial-remote-dns.adoc</a></p>
 </li>
 <li>
-<p><strong>Tutorial</strong>: <a href="#operator::tutorial-public-addressability.adoc" class="page unresolved">operator::tutorial-public-addressability.adoc</a></p>
+<p><strong>Tutorial</strong>: <a href="#operator::tutorial-public-addressability.adoc" class="xref unresolved">operator::tutorial-public-addressability.adoc</a></p>
 </li>
 </ul>
 </div>

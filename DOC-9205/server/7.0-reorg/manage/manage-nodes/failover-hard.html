@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-nodes/failover-hard.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4469,11 +4469,11 @@ Hard failover allows a node to be removed from a cluster reactively, because the
 It is manually or automatically initiated, and occurs after the point at which active vBuckets have been lost.</p>
 </div>
 <div class="paragraph">
-<p>The automatic initiation of hard failover is known as <em>automatic</em> failover, and is configured by means of the <a href="../manage-settings/general-settings.html#node-availability" class="page">Node Availability</a> panel of the <strong>General</strong> settings screen of Couchbase Web Console, or by means of equivalent CLI and REST API commands.
+<p>The automatic initiation of hard failover is known as <em>automatic</em> failover, and is configured by means of the <a href="../manage-settings/general-settings.html#node-availability" class="xref page">Node Availability</a> panel of the <strong>General</strong> settings screen of Couchbase Web Console, or by means of equivalent CLI and REST API commands.
 The current page explains how to initiate hard failover <em>manually</em>.</p>
 </div>
 <div class="paragraph">
-<p>A complete conceptual description of failover and its variants (including hard) is provided in <a href="../../learn/clusters-and-availability/failover.html" class="page">Failover</a>.</p>
+<p>A complete conceptual description of failover and its variants (including hard) is provided in <a href="../../learn/clusters-and-availability/failover.html" class="xref page">Failover</a>.</p>
 </div>
 </div>
 </div>
@@ -4486,7 +4486,7 @@ The current page explains how to initiate hard failover <em>manually</em>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>A two-node cluster already exists; as at the conclusion of <a href="join-cluster-and-rebalance.html" class="page">Join a Cluster and Rebalance</a>.</p>
+<p>A two-node cluster already exists; as at the conclusion of <a href="join-cluster-and-rebalance.html" class="xref page">Join a Cluster and Rebalance</a>.</p>
 </li>
 <li>
 <p>The cluster has the Full Administrator username of <code>Administrator</code>, and password of <code>password</code>.</p>
@@ -4548,7 +4548,7 @@ The row expands vertically, as follows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Note the warning message that appears when hard failover is selected: in particular, this points out that hard failover may interrupt ongoing writes and replications, and that therefore it may be better to <a href="remove-node-and-rebalance.html" class="page">Remove a Node and Rebalance</a>, than use hard failover on a still-available Data Service node.</p>
+<p>Note the warning message that appears when hard failover is selected: in particular, this points out that hard failover may interrupt ongoing writes and replications, and that therefore it may be better to <a href="remove-node-and-rebalance.html" class="xref page">Remove a Node and Rebalance</a>, than use hard failover on a still-available Data Service node.</p>
 </div>
 <div class="paragraph">
 <p>To continue with hard failover, confirm your choice by left-clicking on the <strong>Failover Node</strong> button.</p>
@@ -4582,8 +4582,8 @@ When the process is complete, the <strong>Server</strong> screen appears as foll
 </div>
 <div class="paragraph">
 <p>Note that if rebalance fails, notifications are duly provided.
-These are described in <a href="add-node-and-rebalance.html#rebalance-failure-notification" class="page">Rebalance Failure Notification</a>.
-See also the information provided on <a href="add-node-and-rebalance.html#automated-rebalance-failure-handling" class="page">Automated Rebalance-Failure Handling</a>, and the procedure for its set-up, described in <a href="../manage-settings/general-settings.html#rebalance-settings" class="page">Rebalance Settings</a>.</p>
+These are described in <a href="add-node-and-rebalance.html#rebalance-failure-notification" class="xref page">Rebalance Failure Notification</a>.
+See also the information provided on <a href="add-node-and-rebalance.html#automated-rebalance-failure-handling" class="xref page">Automated Rebalance-Failure Handling</a>, and the procedure for its set-up, described in <a href="../manage-settings/general-settings.html#rebalance-settings" class="xref page">Rebalance Settings</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="resetting-auto-failover-quota"><a class="anchor" href="#resetting-auto-failover-quota"></a>Resetting the Auto-Failover Quota</h3>
@@ -4598,8 +4598,8 @@ See also the information provided on <a href="add-node-and-rebalance.html#automa
 <div class="paragraph">
 <p>Left-clicking on the <strong>Reset Auto-Failover Quota</strong> button causes the current count of already-occurred, successive auto-failovers to be reset to zero.
 Note that a rebalance, which can be started by left-clicking on the <strong>Rebalance</strong> button, also resets this count to zero, on successful completion.
-An overview of auto-failover is provided in <a href="../../learn/clusters-and-availability/automatic-failover.html" class="page">Automatic Failover</a>.
-Information on how to configure auto-failover is provided in <a href="../manage-settings/general-settings.html#node-availability" class="page">Node Availability</a>.</p>
+An overview of auto-failover is provided in <a href="../../learn/clusters-and-availability/automatic-failover.html" class="xref page">Automatic Failover</a>.
+Information on how to configure auto-failover is provided in <a href="../manage-settings/general-settings.html#node-availability" class="xref page">Node Availability</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4658,7 +4658,7 @@ If the checkbox for each of these nodes is selected, and the <strong>Failover No
 </div>
 <div class="paragraph">
 <p>This indicates that hard failover of these nodes will be <em>unsafe</em>.
-For information on unsafe hard failover, see <a href="../../learn/clusters-and-availability/hard-failover.html#performing-an-unsafe-failover" class="page">Performing an Unsafe Failover</a>.
+For information on unsafe hard failover, see <a href="../../learn/clusters-and-availability/hard-failover.html#performing-an-unsafe-failover" class="xref page">Performing an Unsafe Failover</a>.
 If you wish to proceed, check the checkboxes again for each node to be failed over, and left-click on the <strong>Failover Nodes: Unsafe Mode</strong> button.
 Hard failover of the selected nodes then occurs.</p>
 </div>
@@ -4707,14 +4707,14 @@ Hard failover of the selected nodes then occurs.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In certain circumstances, an attempted hard failover will not be executed by Couchbase Server: for information, see <a href="../../learn/clusters-and-availability/hard-failover.html#default-and-unsafe" class="page">Hard Failover in Default and Unsafe Modes</a>.
+<p>In certain circumstances, an attempted hard failover will not be executed by Couchbase Server: for information, see <a href="../../learn/clusters-and-availability/hard-failover.html#default-and-unsafe" class="xref page">Hard Failover in Default and Unsafe Modes</a>.
 Such an attempt therefore fails, with an <code>ERROR: Received unexpected status 504</code> notification.
 If hard failover must nevertheless be performed, the <code>failover</code> CLI expression should be re-entered: this time, with the <code>--force</code> flag used, in addition to the <code>--hard</code> flag.
 This produces an <em>unsafe</em> hard failover.</p>
 </div>
 <div class="paragraph">
-<p>For more information on <code>failover</code> with the CLI, see <a href="#cli:cbcli/couchbase-cli-failover.adoc" class="page unresolved">failover</a>.
-For more information on <code>rebalance</code> with the CLI, see <a href="#cli:cbcli/couchbase-cli-rebalance.adoc" class="page unresolved">rebalance</a>.</p>
+<p>For more information on <code>failover</code> with the CLI, see <a href="#cli:cbcli/couchbase-cli-failover.adoc" class="xref unresolved">failover</a>.
+For more information on <code>rebalance</code> with the CLI, see <a href="#cli:cbcli/couchbase-cli-rebalance.adoc" class="xref unresolved">rebalance</a>.</p>
 </div>
 </div>
 </div>
@@ -4743,11 +4743,11 @@ http://10.142.181.101:8091/controller/rebalance \
 </div>
 </div>
 <div class="paragraph">
-<p>For more information on <code>/controller/failover</code>, see <a href="../../rest-api/rest-node-failover.html" class="page">Failing Over Nodes</a>.
-For more information on <code>/controller/rebalance</code>, see <a href="../../rest-api/rest-cluster-rebalance.html" class="page">Rebalancing Nodes</a>.</p>
+<p>For more information on <code>/controller/failover</code>, see <a href="../../rest-api/rest-node-failover.html" class="xref page">Failing Over Nodes</a>.
+For more information on <code>/controller/rebalance</code>, see <a href="../../rest-api/rest-cluster-rebalance.html" class="xref page">Rebalancing Nodes</a>.</p>
 </div>
 <div class="paragraph">
-<p>In certain circumstances, an attempted hard failover will not be executed by Couchbase Server: for information, see <a href="../../learn/clusters-and-availability/hard-failover.html#default-and-unsafe" class="page">Hard Failover in Default and Unsafe Modes</a>.
+<p>In certain circumstances, an attempted hard failover will not be executed by Couchbase Server: for information, see <a href="../../learn/clusters-and-availability/hard-failover.html#default-and-unsafe" class="xref page">Hard Failover in Default and Unsafe Modes</a>.
 Such an attempt therefore fails, with a <code>Cannot safely perform a failover at the moment</code> notification.
 If hard failover must nevertheless be performed, the <code>POST /controller/rebalance</code> expression should be re-entered, with the same parameters as before; but this time, with the addition of the <code>-d allowUnsafe=true</code> parameter.
 This produces an <em>unsafe</em> hard failover.</p>
@@ -4759,7 +4759,7 @@ This produces an <em>unsafe</em> hard failover.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A node that has been failed over can be recovered and reintegrated into the cluster.
-See <a href="recover-nodes.html" class="page">Recover a Node</a>.</p>
+See <a href="recover-nodes.html" class="xref page">Recover a Node</a>.</p>
 </div>
 </div>
 </div>

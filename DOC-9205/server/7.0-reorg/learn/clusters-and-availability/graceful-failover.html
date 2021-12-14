@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/clusters-and-availability/graceful-failover.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4506,7 +4506,7 @@ If it is not subsequently restarted, the cluster should be rebalanced, in order 
 </div>
 </div>
 <div class="paragraph">
-<p>For examples of managing graceful failover with the UI, the CLI, and the REST API, see <a href="../../manage/manage-nodes/failover-graceful.html" class="page">Perform Graceful Failover</a>.</p>
+<p>For examples of managing graceful failover with the UI, the CLI, and the REST API, see <a href="../../manage/manage-nodes/failover-graceful.html" class="xref page">Perform Graceful Failover</a>.</p>
 </div>
 </div>
 </div>
@@ -4514,7 +4514,7 @@ If it is not subsequently restarted, the cluster should be rebalanced, in order 
 <h2 id="advantages-and-disadvantages"><a class="anchor" href="#advantages-and-disadvantages"></a>Advantages and Disadvantages</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If a Data Service node is to be removed from a cluster all of whose nodes are responsive, either graceful failover or <a href="removal.html" class="page">removal</a> can be used. Graceful failover may be faster, since active vBuckets are assigned to alternative nodes merely by changing the status of existing replicas to <em>active</em>, with no network-intensive data-copying required.</p>
+<p>If a Data Service node is to be removed from a cluster all of whose nodes are responsive, either graceful failover or <a href="removal.html" class="xref page">removal</a> can be used. Graceful failover may be faster, since active vBuckets are assigned to alternative nodes merely by changing the status of existing replicas to <em>active</em>, with no network-intensive data-copying required.</p>
 </div>
 <div class="paragraph">
 <p>Graceful failover, however, entails subsequent loss of resiliency: promotion of replica vBuckets to <em>active</em> status on the surviving nodes results in the cluster no longer having its intended, full complement of replica vBuckets. Following graceful failover, the imbalance should be addressed as soon as possible, by means of a <em>rebalance</em>.</p>

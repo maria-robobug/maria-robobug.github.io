@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="dotnet-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/dotnet-sdk/DOC-9205/howtos/distributed-acid-transactions-from-the-sdk.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3672,7 +3672,7 @@ A practical guide to using Couchbase’s distributed ACID transactions, via the 
 </blockquote>
 </div>
 <div class="paragraph">
-<p>This document presents a practical HOWTO on using the transactions library, following on from our <a href="#7.0@server:learn:data/transactions.adoc" class="page unresolved">transactions documentation</a>.</p>
+<p>This document presents a practical HOWTO on using the transactions library, following on from our <a href="#7.0@server:learn:data/transactions.adoc" class="xref unresolved">transactions documentation</a>.</p>
 </div>
 <div class="paragraph">
 <p>Below we show you how to create Transactions, step-by-step.
@@ -3700,7 +3700,7 @@ It is recommended you use the package on NuGet.</p>
 <p>NTP should be configured so nodes of the Couchbase cluster are in sync with time.</p>
 </li>
 <li>
-<p>The application, if it is using <a href="../concept-docs/xattr.html" class="page">extended attributes (XATTRs)</a>, must avoid using the XATTR field <code>txn</code>, which is reserved for Couchbase use.</p>
+<p>The application, if it is using <a href="../concept-docs/xattr.html" class="xref page">extended attributes (XATTRs)</a>, must avoid using the XATTR field <code>txn</code>, which is reserved for Couchbase use.</p>
 </li>
 </ul>
 </div>
@@ -3714,7 +3714,7 @@ It is recommended you use the package on NuGet.</p>
 If using a single node cluster (for example, during development), then note that the default number of replicas for a newly created bucket is 1.
 If left at this default, then all Key-Value writes performed at with durabiltiy will fail with a <code>DurabilityImpossibleException</code>.
 In turn this will cause all transactions (which perform all Key-Value writes durably) to fail.
-This setting can be changed via <a href="#7.0@server:manage:manage-buckets/create-bucket.adoc#couchbase-bucket-settings" class="page unresolved">GUI</a> or <a href="#7.0@server:cli:cbcli/couchbase-cli-bucket-create.adoc#options" class="page unresolved">command line</a>.  If the bucket already existed, then the server needs to be rebalanced for the setting to take affect.
+This setting can be changed via <a href="#7.0@server:manage:manage-buckets/create-bucket.adoc#couchbase-bucket-settings" class="xref unresolved">GUI</a> or <a href="#7.0@server:cli:cbcli/couchbase-cli-bucket-create.adoc#options" class="xref unresolved">command line</a>.  If the bucket already existed, then the server needs to be rebalanced for the setting to take affect.
 </td>
 </tr>
 </table>
@@ -3728,7 +3728,7 @@ This setting can be changed via <a href="#7.0@server:manage:manage-buckets/creat
 <p>Couchbase transactions require no additional components or services to be configured.
 Simply add the transactions library into your project.
 Version 1.1.0 was release October 29th, 2021.
-See the <a href="../project-docs/distributed-transactions-dotnet-release-notes.html" class="page">Release Notes</a> for the latest version.</p>
+See the <a href="../project-docs/distributed-transactions-dotnet-release-notes.html" class="xref page">Release Notes</a> for the latest version.</p>
 </div>
 <div class="paragraph">
 <p>With NuGut this can be accomplished by using the NuGet Package Manager in your IDE:</p>
@@ -3980,7 +3980,7 @@ In this way, the entry acts as the single point of truth for the transaction, wh
 <h3 id="staged-mutations"><a class="anchor" href="#staged-mutations"></a>Staged Mutations</h3>
 <div class="paragraph">
 <p>The second mechanic is that mutating a document inside a transaction, does not directly change the body of the document.
-Instead, the post-transaction version of the document is staged alongside the document (technically in its <a href="../concept-docs/xattr.html" class="page">extended attributes (XATTRs)</a>).
+Instead, the post-transaction version of the document is staged alongside the document (technically in its <a href="../concept-docs/xattr.html" class="xref page">extended attributes (XATTRs)</a>).
 In this way, all changes are invisible to all parts of the Couchbase Data Platform until the commit point is reached.</p>
 </div>
 <div class="paragraph">
@@ -4352,7 +4352,7 @@ Other transactions, and other non-transactional actors, will not be able to see 
 </ul>
 </div>
 <div class="paragraph">
-<p>See the <a href="n1ql-queries-with-sdk.html#query-options" class="page">QueryOptions documentation</a> for details on these.</p>
+<p>See the <a href="n1ql-queries-with-sdk.html#query-options" class="xref page">QueryOptions documentation</a> for details on these.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4976,7 +4976,7 @@ catch (TransactionFailedException err)
 <p>A failed transaction can involve dozens, even hundreds, of lines of logging, so the application may prefer to write failed transactions into a separate file.</p>
 </div>
 <div class="paragraph">
-<p>Please see the <a href="collecting-information-and-logging.html" class="page">.NET SDK logging documentation</a> for details.</p>
+<p>Please see the <a href="collecting-information-and-logging.html" class="xref page">.NET SDK logging documentation</a> for details.</p>
 </div>
 <div class="paragraph">
 <p>Here is an example of configuring a <code>Microsoft.Extensions.Logging.ILoggingFactory</code>:</p>
@@ -5080,7 +5080,7 @@ You can use an existing collection or create a new one.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>There’s plenty of explanation about how Transactions work in Couchbase in our <a href="#7.0@server:learn:data/transactions.adoc" class="page unresolved">Transactions documentation</a>.</p>
+<p>There’s plenty of explanation about how Transactions work in Couchbase in our <a href="#7.0@server:learn:data/transactions.adoc" class="xref unresolved">Transactions documentation</a>.</p>
 </li>
 <li>
 <p>You can find further code examples on our <a href="https://github.com/couchbaselabs/couchbase-transactions-dotnet-examples">transactions examples repository</a>.</p>

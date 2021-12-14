@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/searchfun.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4456,13 +4456,13 @@
 </div><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Search functions enable you to use full text search (<a href="../../fts/fts-introduction.html" class="page">FTS</a>) queries directly within a N1QL query.</p>
+<p>Search functions enable you to use full text search (<a href="../../fts/fts-introduction.html" class="xref page">FTS</a>) queries directly within a N1QL query.</p>
 </div>
 <h3 id="prerequisites" class="float">Prerequisites</h3>
 <div class="paragraph">
 <p>To use any of the search functions, the Search service must be available on the cluster.
 It is also recommended, but not required, that you should create suitable full text indexes for the searches that you need to perform.
-For more information, refer to <a href="#fts:fts-performing-searches.adoc#preparing-for-full-text-searches" class="page unresolved">Preparing for Full Text Searches</a>.</p>
+For more information, refer to <a href="#fts:fts-performing-searches.adoc#preparing-for-full-text-searches" class="xref unresolved">Preparing for Full Text Searches</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4472,7 +4472,7 @@ For more information, refer to <a href="#fts:fts-performing-searches.adoc#prepar
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The examples in this page all assume that demonstration full text indexes have been created, as described in <a href="#fts:fts-demonstration-indexes.adoc" class="page unresolved">Demonstration Indexes</a>.</p>
+<p>The examples in this page all assume that demonstration full text indexes have been created, as described in <a href="#fts:fts-demonstration-indexes.adoc" class="xref unresolved">Demonstration Indexes</a>.</p>
 </div>
 </td>
 </tr>
@@ -4482,7 +4482,7 @@ For more information, refer to <a href="#fts:fts-performing-searches.adoc#prepar
 <div class="paragraph">
 <p>You do not need credentials for the FTS service to be able to use the search functions in a query.
 The role <strong>Data Admin</strong> must be assigned to those who intend to create indexes; and the role <strong>Data Reader</strong> to those who intend to perform searches.
-For information on creating users and assigning roles, see <a href="../../learn/security/authorization-overview.html" class="page">Authorization</a>.</p>
+For information on creating users and assigning roles, see <a href="../../learn/security/authorization-overview.html" class="xref page">Authorization</a>.</p>
 </div>
 <h3 id="when-to-use-search-functions" class="float">When to Use Search Functions</h3>
 <div class="paragraph">
@@ -4500,7 +4500,7 @@ For information on creating users and assigning roles, see <a href="../../learn/
 <h3 id="description"><a class="anchor" href="#description"></a>Description</h3>
 <div class="paragraph">
 <p>This function enables you to use a full text search to filter a result set, or as a join predicate.
-It is only allowed in the <a href="where.html" class="page">WHERE</a> clause or the <a href="join.html" class="page">ON</a> clause.</p>
+It is only allowed in the <a href="where.html" class="xref page">WHERE</a> clause or the <a href="join.html" class="xref page">ON</a> clause.</p>
 </div>
 <div class="paragraph">
 <p>If a query contains a SEARCH function, the Query engine analyzes the entire query, including the search specification, to select the best index to use with this search, taking any index hints into account.
@@ -4588,7 +4588,7 @@ This may be one of the following:</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A query string.
-For more details, refer to <a href="#fts:fts-query-types.adoc#query-string-query-syntax" class="page unresolved">Query String Query</a>.</p>
+For more details, refer to <a href="#fts:fts-query-types.adoc#query-string-query-syntax" class="xref unresolved">Query String Query</a>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4597,7 +4597,7 @@ For more details, refer to <a href="#fts:fts-query-types.adoc#query-string-query
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The query object within a full text search request.
-For more details, refer to <a href="#fts:fts-query-types.adoc" class="page unresolved">Query Types</a>.</p>
+For more details, refer to <a href="#fts:fts-query-types.adoc" class="xref unresolved">Query Types</a>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4606,7 +4606,7 @@ For more details, refer to <a href="#fts:fts-query-types.adoc" class="page unres
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A complete full text search request, including sort and pagination options, and so on.
-For more details, refer to <a href="../../fts/fts-sorting.html" class="page">Sorting Query Results</a>.</p>
+For more details, refer to <a href="../../fts/fts-sorting.html" class="xref page">Sorting Query Results</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4616,7 +4616,7 @@ For more details, refer to <a href="../../fts/fts-sorting.html" class="page">Sor
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When specifying a complete full text search request with the N1QL SEARCH() function, if the value of the <code>size</code> parameter is greater than the <a href="#fts:fts-response-object-schema.adoc#request" class="page unresolved">maximum number of full text search results</a>, the query ignores the <code>size</code> parameter and returns all matching results.</p>
+<p>When specifying a complete full text search request with the N1QL SEARCH() function, if the value of the <code>size</code> parameter is greater than the <a href="#fts:fts-response-object-schema.adoc#request" class="xref unresolved">maximum number of full text search results</a>, the query ignores the <code>size</code> parameter and returns all matching results.</p>
 </div>
 <div class="paragraph">
 <p>This is different to the behavior of a complete full text search request in the Search service, where the query returns an error if the value of the <code>size</code> parameter is greater than the maximum number of full text search results.</p>
@@ -4671,7 +4671,7 @@ If the full text index does not exist, an error occurs.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You can also provide an index hint to the Query engine with the <a href="hints.html#use-index-clause" class="page">USE INDEX clause</a>.
+<p>You can also provide an index hint to the Query engine with the <a href="hints.html#use-index-clause" class="xref page">USE INDEX clause</a>.
 This takes precedence over a hint provided by the <code>index</code> field.</p>
 </div>
 </td>
@@ -4686,7 +4686,7 @@ It overrides the default mapping and is used during index selection and filterin
 </div>
 <div class="paragraph">
 <p>The object must either have a default mapping with no type mapping, or a single type mapping with the default mapping disabled.
-For more information, refer to <a href="#fts:fts-creating-indexes.adoc" class="page unresolved">Creating Indexes</a>.</p>
+For more information, refer to <a href="#fts:fts-creating-indexes.adoc" class="xref unresolved">Creating Indexes</a>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4708,7 +4708,7 @@ If they identify different full text indexes, or if either of them does not iden
 </div>
 <div class="paragraph">
 <p>You can find the UUID of a full text index by viewing the index definition.
-You can do this using the <a href="#fts:fts-creating-indexes.adoc#using-the-index-definition-preview" class="page unresolved">Index Definition Preview</a> in the Query Workbench, or the <a href="../../rest-api/rest-fts-indexing.html" class="page">Index Definition</a> endpoints provided by the Full Text Search REST API.</p>
+You can do this using the <a href="#fts:fts-creating-indexes.adoc#using-the-index-definition-preview" class="xref unresolved">Index Definition Preview</a> in the Query Workbench, or the <a href="../../rest-api/rest-fts-indexing.html" class="xref page">Index Definition</a> endpoints provided by the Full Text Search REST API.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4933,7 +4933,7 @@ WHERE SEARCH(t1, {
 </div>
 <div class="paragraph">
 <p>This query returns 5 results, and the results are ordered, as specified by the search options.
-As an alternative, you could limit the number of results and order them using the N1QL <a href="limit.html" class="page">LIMIT</a> and <a href="orderby.html" class="page">ORDER BY</a> clauses.</p>
+As an alternative, you could limit the number of results and order them using the N1QL <a href="limit.html" class="xref page">LIMIT</a> and <a href="orderby.html" class="xref page">ORDER BY</a> clauses.</p>
 </div>
 </div>
 </div>
@@ -4968,10 +4968,10 @@ WHERE t1.type = "hotel" AND SEARCH(t1.description, "amazing");</code></pre>
 </div>
 <div class="paragraph">
 <p>If the full text search index being queried has its default mapping disabled and has a custom type mapping defined, the query needs to specify the type explicitly.
-The above query uses the demonstration index <a href="#fts:fts-demonstration-indexes.adoc#travel-sample-index-hotel-description" class="page unresolved">travel-sample-index-hotel-description</a>, which has the custom type mapping "hotel".</p>
+The above query uses the demonstration index <a href="#fts:fts-demonstration-indexes.adoc#travel-sample-index-hotel-description" class="xref unresolved">travel-sample-index-hotel-description</a>, which has the custom type mapping "hotel".</p>
 </div>
 <div class="paragraph">
-<p>For more information on defining custom type mappings within the full text search index, refer to <a href="#fts:fts-creating-indexes.adoc#specifying-type-mappings" class="page unresolved">Specifying Type Mappings</a>.
+<p>For more information on defining custom type mappings within the full text search index, refer to <a href="#fts:fts-creating-indexes.adoc#specifying-type-mappings" class="xref unresolved">Specifying Type Mappings</a>.
 Note that for N1QL queries, only full text search indexes with one type mapping are searchable.
 Also the supported type identifiers at the moment are "type_field" and "docid_prefix"; "docid_regexp" isn&#8217;t supported yet for SEARCH queries via N1QL.</p>
 </div>
@@ -5310,7 +5310,7 @@ LIMIT 3;</code></pre>
 <h2 id="related-links"><a class="anchor" href="#related-links"></a>Related Links</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="../../fts/fts-introduction.html" class="page">Full Text Search</a></p>
+<p><a href="../../fts/fts-introduction.html" class="xref page">Full Text Search</a></p>
 </div>
 </div>
 </div>

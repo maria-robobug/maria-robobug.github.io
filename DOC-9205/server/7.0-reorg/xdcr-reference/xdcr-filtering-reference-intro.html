@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/xdcr-reference/xdcr-filtering-reference-intro.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4465,7 +4465,7 @@ XDCR Advanced Filtering allows specified subsets of documents to be replicated f
 <div class="sectionbody">
 <div class="paragraph">
 <p>Full, Cluster, and XDCR Administrators can configure XDCR filtering.
-For a conceptual overview, see <a href="../learn/clusters-and-availability/xdcr-filtering.html" class="page">XDCR Advanced Filtering</a>.</p>
+For a conceptual overview, see <a href="../learn/clusters-and-availability/xdcr-filtering.html" class="xref page">XDCR Advanced Filtering</a>.</p>
 </div>
 <div class="paragraph">
 <p><em>Regular</em> and <em>filtering</em> expressions are applied, on the source cluster, to documents' keys, values, and metadata: documents that provide a match are replicated to the target; other documents are <em>not</em> replicated.</p>
@@ -4487,9 +4487,9 @@ When multiple filtered replications are being established from the same source, 
 <p>Note that filtering may impact replication-performance; resulting in higher load, reduced throughput, and increased latency.</p>
 </div>
 <div class="paragraph">
-<p>A full account of XDCR Advanced Filtering expression-syntax is provided in  <a href="xdcr-regular-expressions.html" class="page">XDCR Regular Expressions</a> and <a href="xdcr-filtering-expressions.html" class="page">XDCR Filtering Expressions</a>.
+<p>A full account of XDCR Advanced Filtering expression-syntax is provided in  <a href="xdcr-regular-expressions.html" class="xref page">XDCR Regular Expressions</a> and <a href="xdcr-filtering-expressions.html" class="xref page">XDCR Filtering Expressions</a>.
 Note that expressions that attempt to compare values whose data types differ from one another must be handled either by <em>data-type conversion</em> or by <em>collation comparison</em>.
-These procedures, which are performed implicitly, are described in <a href="xdcr-filtering-data-type-conversion.html" class="page"> XDCR Data-Type Conversion</a>.</p>
+These procedures, which are performed implicitly, are described in <a href="xdcr-filtering-data-type-conversion.html" class="xref page"> XDCR Data-Type Conversion</a>.</p>
 </div>
 </div>
 </div>

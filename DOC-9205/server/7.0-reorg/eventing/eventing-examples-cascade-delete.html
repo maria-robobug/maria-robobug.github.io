@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/eventing/eventing-examples-cascade-delete.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4468,7 +4468,7 @@ When a user within the source collection gets deleted, the handler executes a ro
 When the delete operation is complete, all associated documents of the delete user also get removed.</p>
 </div>
 <div class="paragraph">
-<p>This Example uses N1QL unlike the similar scriptlet <a href="eventing-handler-cascadeKvDeleteWithDoc.html" class="page">cascadeKvDeleteWithDoc</a> which uses just KV or the Data Service.</p>
+<p>This Example uses N1QL unlike the similar scriptlet <a href="eventing-handler-cascadeKvDeleteWithDoc.html" class="xref page">cascadeKvDeleteWithDoc</a> which uses just KV or the Data Service.</p>
 </div>
 <div class="paragraph">
 <p><strong>Preparations</strong>:</p>
@@ -4476,16 +4476,16 @@ When the delete operation is complete, all associated documents of the delete us
 <div class="paragraph">
 <p>For this example, two (2) buckets <strong>'bulk'</strong> and <strong>'rr100'</strong> are required where the later is intended to be 100% resident.
 Create the buckets with a minimum size of 100MB.
-For information on buckets, see <a href="../manage/manage-buckets/create-bucket.html" class="page">Create a Bucket</a>.
+For information on buckets, see <a href="../manage/manage-buckets/create-bucket.html" class="xref page">Create a Bucket</a>.
 Within the buckets we need three (3) keyspaces <strong>'bulk.data.users'</strong>, <strong>'bulk.data.transactions'</strong>, and <strong>'rr100.eventing.metadata'</strong>
-(we loosely follow this <a href="eventing-buckets-to-collections.html#single-tenancy" class="page">organization</a>).</p>
+(we loosely follow this <a href="eventing-buckets-to-collections.html#single-tenancy" class="xref page">organization</a>).</p>
 </div>
 <div class="paragraph">
 <p><em>If you run a version of Couchbase prior to 7.0 you can just create the buckets <strong>'users'</strong>, <strong>'transactions'</strong>, and <strong>'metadata'</strong> and run this example.  Furthermore if your cluster was subsequently upgraded from say 6.6.2 to 7.0 your data would be moved to <strong>'users._default._default'</strong>, <strong>'transactions._default._default'</strong>, and <strong>'metadata._default._default'</strong> and your Eventing Function would be seamlessly upgraded to use the new keyspaces and continue to run correctly.</em></p>
 </div>
 <div class="paragraph">
-<p>For complete details on how to set up your keyspaces refer to <a href="../manage/manage-buckets/create-bucket.html" class="page">creating buckets</a> and
-<a href="../manage/manage-scopes-and-collections/manage-scopes-and-collections.html" class="page">creating scopes and collections</a>.</p>
+<p>For complete details on how to set up your keyspaces refer to <a href="../manage/manage-buckets/create-bucket.html" class="xref page">creating buckets</a> and
+<a href="../manage/manage-scopes-and-collections/manage-scopes-and-collections.html" class="xref page">creating scopes and collections</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4710,7 +4710,7 @@ CREATE PRIMARY INDEX `transactions` ON  `bulk`.`data`.`transactions`;</code></pr
 SELECT count(*) FROM `bulk`.`data`.`transactions`;</code></pre>
 </div>
 </div>
-<div class="imageblock">
+<div class="imageblock unresolved">
 <div class="content">
 <img src="cascadedel_05a_counts.png" alt="cascadedel 05a counts" width="100%">
 </div>
@@ -4763,7 +4763,7 @@ SELECT count(*) FROM `bulk`.`data`.`transactions`;</code></pre>
 <div class="paragraph">
 <p>After executing the above N1QL statement you should see a table showing counts as follows:</p>
 </div>
-<div class="imageblock">
+<div class="imageblock unresolved">
 <div class="content">
 <img src="cascadedel_08_remainingcounts.png" alt="cascadedel 08 remainingcounts" width="100%">
 </div>

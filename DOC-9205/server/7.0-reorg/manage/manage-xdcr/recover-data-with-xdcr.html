@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-xdcr/recover-data-with-xdcr.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4472,7 +4472,7 @@ This helps to ensure continued data-availability, in the event of node-failure.<
 </div>
 <div class="paragraph">
 <p>In such cases, provided that a bucket affected by such failure has already been established as a source bucket for XDCR, the lost data may be retrieved from the bucket defined on the remote cluster as the corresponding replication-target.
-This retrieval is achieved from the command-line, by means of the Couchbase <a href="#cli:cbtools/cbrecovery.adoc" class="page unresolved">cbrecovery</a> tool.</p>
+This retrieval is achieved from the command-line, by means of the Couchbase <a href="#cli:cbtools/cbrecovery.adoc" class="xref unresolved">cbrecovery</a> tool.</p>
 </div>
 </div>
 </div>
@@ -4507,7 +4507,7 @@ An XDCR reference to a remote cluster, named <code>10.142.180.104</code>, has al
 <div class="paragraph">
 <p>Since <code>travel-sample</code> was established with one replica, the permanent unavailability of two nodes out of three means data-loss from the local cluster.
 To begin the XDCR-based recovery-process, proceed as follows.
-(Note that the following steps assume knowledge of <a href="../manage-nodes/failover-hard.html#hard-failover-of-multiple-nodes" class="page">Hard Failover of Multiple Nodes</a>.)</p>
+(Note that the following steps assume knowledge of <a href="../manage-nodes/failover-hard.html#hard-failover-of-multiple-nodes" class="xref page">Hard Failover of Multiple Nodes</a>.)</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -4544,7 +4544,7 @@ In order to fail over multiple nodes, left-click on the <strong>FAILOVER</strong
 </div>
 </div>
 <div class="paragraph">
-<p>A detailed explanation of this warning is provided in <a href="../manage-nodes/failover-hard.html#hard-failover-of-multiple-nodes" class="page">Hard Failover of Multiple Nodes</a>.
+<p>A detailed explanation of this warning is provided in <a href="../manage-nodes/failover-hard.html#hard-failover-of-multiple-nodes" class="xref page">Hard Failover of Multiple Nodes</a>.
 Essentially, the warning indicates that because of majority of the cluster&#8217;s nodes will now be failed over, data will be lost.</p>
 </div>
 <div class="paragraph">
@@ -4567,7 +4567,7 @@ The illustration below shows the two nodes that were previously lost, cleansed o
 </div>
 </div>
 <div class="paragraph">
-<p>See <a href="#manage:manage-nodes/add-a-node-and-rebalance.adoc" class="page unresolved">Add a Node and Rebalance</a>, for information on adding nodes.</p>
+<p>See <a href="#manage:manage-nodes/add-a-node-and-rebalance.adoc" class="xref unresolved">Add a Node and Rebalance</a>, for information on adding nodes.</p>
 </div>
 <div class="paragraph">
 <p><em>Do not</em> at this point rebalance the cluster: the rebalance operation affects local vBucket data, and thereby prevents recovery of lost data from the remote cluster.
@@ -4589,7 +4589,7 @@ Rebalance will be performed <em>after</em> the lost data has been recovered.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>For information on all parameter-options, see <a href="#cli:cbtools/cbrecovery.adoc" class="page unresolved">cbrecovery</a>.
+<p>For information on all parameter-options, see <a href="#cli:cbtools/cbrecovery.adoc" class="xref unresolved">cbrecovery</a>.
 Used, as shown here, with the <em>verbose</em> option, the command provides extensive console output.
 The initial portion appears as follows:</p>
 </div>

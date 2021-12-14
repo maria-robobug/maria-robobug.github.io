@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/install/install-ports.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4467,11 +4467,11 @@ These ports must be open for Couchbase Server to operate correctly.
 <div class="paragraph">
 <p>This page describes the TCP ports that are used by Couchbase Server for network communication.
 Some ports, such as those used for cluster management, are required to be open on every node because they are essential to how Couchbase Server communicates with itself.
-Other ports are used by individual <a href="../learn/services-and-indexes/services/services.html" class="page">Couchbase Services</a>, and are only required to be open on the nodes where those services are running.</p>
+Other ports are used by individual <a href="../learn/services-and-indexes/services/services.html" class="xref page">Couchbase Services</a>, and are only required to be open on the nodes where those services are running.</p>
 </div>
 <div class="paragraph">
 <p>Couchbase Server uses a default set of port numbers for all ports that it requires.
-The <a href="../learn/clusters-and-availability/cluster-manager.html" class="page">Couchbase Cluster Manager</a> on each node is responsible for port management, and will open and close these ports on the host as necessary, as well as automatically switch to using encrypted ports if the cluster is configured to use TLS.
+The <a href="../learn/clusters-and-availability/cluster-manager.html" class="xref page">Couchbase Cluster Manager</a> on each node is responsible for port management, and will open and close these ports on the host as necessary, as well as automatically switch to using encrypted ports if the cluster is configured to use TLS.
 Most port numbers can be <a href="#map-custom-ports">remapped</a> to fit the requirements of your network environment, but some port numbers cannot be changed.</p>
 </div>
 <div class="admonitionblock important">
@@ -4514,12 +4514,12 @@ These paths are defined as:</p>
 <p><em>Client-to-node</em>: A Couchbase client, such as an application using the Couchbase SDK, connects to the port on the node that it requires access to.</p>
 </li>
 <li>
-<p><em>XDCR (cluster-to-cluster)</em>: A source node connects to the port on a destination node of another cluster as part of an <a href="../manage/manage-xdcr/prepare-for-xdcr.html" class="page">XDCR replication stream</a>.
+<p><em>XDCR (cluster-to-cluster)</em>: A source node connects to the port on a destination node of another cluster as part of an <a href="../manage/manage-xdcr/prepare-for-xdcr.html" class="xref page">XDCR replication stream</a>.
 (This is very similar to the client-to-node communication path.)</p>
 <div class="paragraph">
 <p>There are two versions of XDCR that each use their own protocol: Version 1 (CAPI), which uses the REST protocol, and Version 2 (XMEM), which uses the Memcached Binary protocol.
 The default is Version 2, and it should be noted that each version requires a different set of ports.
-Refer to <a href="../xdcr-reference/xdcr-advanced-settings.html" class="page">XDCR Advanced Settings</a> for more information about XDCR versions.</p>
+Refer to <a href="../xdcr-reference/xdcr-advanced-settings.html" class="xref page">XDCR Advanced Settings</a> for more information about XDCR versions.</p>
 </div>
 </li>
 </ul>
@@ -4531,8 +4531,8 @@ Refer to <a href="../xdcr-reference/xdcr-advanced-settings.html" class="page">XD
 <div class="sect2">
 <h3 id="port-availability"><a class="anchor" href="#port-availability"></a>Port Availability</h3>
 <div class="paragraph">
-<p>Neither the <a href="../learn/clusters-and-availability/cluster-manager.html" class="page">Cluster Manager</a> nor any of the Couchbase <a href="../learn/services-and-indexes/services/services.html" class="page">Services</a> will start if unable to listen on all required ports.
-Note that the cluster manager and all services attempt to bind to required ports using the IP address family  that the Couchbase Server cluster is configured to use (see <a href="../manage/manage-nodes/manage-address-families.html" class="page">Manage Address Families</a>).
+<p>Neither the <a href="../learn/clusters-and-availability/cluster-manager.html" class="xref page">Cluster Manager</a> nor any of the Couchbase <a href="../learn/services-and-indexes/services/services.html" class="xref page">Services</a> will start if unable to listen on all required ports.
+Note that the cluster manager and all services attempt to bind to required ports using the IP address family  that the Couchbase Server cluster is configured to use (see <a href="../manage/manage-nodes/manage-address-families.html" class="xref page">Manage Address Families</a>).
 Therefore, if the Couchbase Server cluster is configured to use IPv6, the cluster manager and all services attempt to bind to required ports using IPv6; and if the cluster is configured to use IPv4, the cluster manager and all services attempt to bind to required ports using IPv4.
 If the cluster manager or service is unable to bind to one or more required ports using the configured IP address family, it will not start.</p>
 </div>
@@ -4892,7 +4892,7 @@ These are expected to execute locally on a node and so do not require external a
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>fts_grpc_port</code> / <code>fts_grpc_ssl_port</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">9130 / 19130</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Search Service gRPC port used for <a href="../learn/services-and-indexes/services/search-service.html" class="page">scatter-gather</a> operations between FTS nodes</p>
+<p>Search Service gRPC port used for <a href="../learn/services-and-indexes/services/search-service.html" class="xref page">scatter-gather</a> operations between FTS nodes</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
@@ -5003,10 +5003,10 @@ Changing port mappings should only be done at the time of initial node/cluster s
 <div class="title">To Change Port Mapping</div>
 <ol class="arabic">
 <li>
-<p><a href="install-intro.html" class="page">Install Couchbase Server</a>.</p>
+<p><a href="install-intro.html" class="xref page">Install Couchbase Server</a>.</p>
 </li>
 <li>
-<p><a href="startup-shutdown.html" class="page">Stop the Couchbase Server service</a>.</p>
+<p><a href="startup-shutdown.html" class="xref page">Stop the Couchbase Server service</a>.</p>
 </li>
 <li>
 <p>For most ports, you&#8217;ll need to edit the Couchbase Server <em class="path">static_config</em> file.
@@ -5049,7 +5049,7 @@ rm -rf /opt/couchbase/var/lib/couchbase/config/chronicle/*</code></pre>
 </div>
 </li>
 <li>
-<p><a href="startup-shutdown.html" class="page">Start Couchbase Server</a>.</p>
+<p><a href="startup-shutdown.html" class="xref page">Start Couchbase Server</a>.</p>
 </li>
 </ol>
 </div>

@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/rest-api/backup-create-repository.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4477,7 +4477,7 @@ The Backup Service REST API allows repositories to be created.
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code>POST</code> http method and <code>/cluster/self/repository/active/&lt;new-repository-name&gt;</code> create a new repository.
-The call must specify a <em>plan</em>, as a JSON payload: for information on defining a plan, see <a href="backup-create-and-edit-plans.html" class="page">Create and Edit Plans</a>.</p>
+The call must specify a <em>plan</em>, as a JSON payload: for information on defining a plan, see <a href="backup-create-and-edit-plans.html" class="xref page">Create and Edit Plans</a>.</p>
 </div>
 <div class="paragraph">
 <p>Once a repository has been created, the tasks specified in its plan are executed on schedule.
@@ -4508,7 +4508,7 @@ The <code>username</code> and <code>password</code> must be those of a user with
 <li>
 <p><code>plan</code>.
 A defined <em>plan</em>.
-For information, see <a href="backup-create-and-edit-plans.html" class="page">Create and Edit Plans</a>.</p>
+For information, see <a href="backup-create-and-edit-plans.html" class="xref page">Create and Edit Plans</a>.</p>
 </li>
 <li>
 <p><code>archive</code>.
@@ -4516,7 +4516,7 @@ A defined <em>archive</em>.
 This must be a location on a filesystem, or on a cloud, that is not used for any other repository.
 The location must be accessible from all cluster-nodes that run the Backup Service.
 Note also that Couchbase Server must have <em>read</em> and <em>write</em> access to the location.
-On Linux, therefore, for a filesystem location, use the <code>chgrp</code> command to set the group ID of the folder to <code>couchbase</code>; unless a <em>non-root installation</em> has been performed, in which case set the group ID either to the username of the current user, or to a group of which the current user is a member &#8212; see <a href="../install/non-root.html" class="page">Non-Root Install and Upgrade</a>, for more information.</p>
+On Linux, therefore, for a filesystem location, use the <code>chgrp</code> command to set the group ID of the folder to <code>couchbase</code>; unless a <em>non-root installation</em> has been performed, in which case set the group ID either to the username of the current user, or to a group of which the current user is a member &#8212; see <a href="../install/non-root.html" class="xref page">Non-Root Install and Upgrade</a>, for more information.</p>
 </li>
 <li>
 <p><code>bucket_name</code>.
@@ -4627,10 +4627,10 @@ Its plan is to be the default, system-provided plan, <code>_hourly_backups</code
 <h2 id="see-also"><a class="anchor" href="#see-also"></a>See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>An overview of the Backup Service is provided in <a href="../learn/services-and-indexes/services/backup-service.html" class="page">Backup Service</a>.
-A step-by-step guide to using Couchbase Web Console to configure and use the Backup Service is provided in <a href="../manage/manage-backup-and-restore/manage-backup-and-restore.html" class="page">Manage Backup and Restore</a>.
-Information on using the Backup Service REST API to create a plan is provided in <a href="backup-create-and-edit-plans.html" class="page">Create and Edit Plans</a>.
-Information on using the Backup Service REST API to return information on either all active repositories, or on a specified active repository, is provided in <a href="backup-get-repository-info.html" class="page">Get Information on Active Repositories</a>.</p>
+<p>An overview of the Backup Service is provided in <a href="../learn/services-and-indexes/services/backup-service.html" class="xref page">Backup Service</a>.
+A step-by-step guide to using Couchbase Web Console to configure and use the Backup Service is provided in <a href="../manage/manage-backup-and-restore/manage-backup-and-restore.html" class="xref page">Manage Backup and Restore</a>.
+Information on using the Backup Service REST API to create a plan is provided in <a href="backup-create-and-edit-plans.html" class="xref page">Create and Edit Plans</a>.
+Information on using the Backup Service REST API to return information on either all active repositories, or on a specified active repository, is provided in <a href="backup-get-repository-info.html" class="xref page">Get Information on Active Repositories</a>.</p>
 </div>
 </div>
 </div>

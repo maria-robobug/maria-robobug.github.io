@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/services-and-indexes/indexes/storage-modes.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4479,7 +4479,7 @@ A memory-optimized index has better latency for index scans and processes the mu
 </div>
 <div class="paragraph">
 <p>Memory-optimized indexes can be created for both Couchbase and Ephemeral buckets.
-See <a href="../../buckets-memory-and-storage/buckets.html" class="page">Buckets</a>.</p>
+See <a href="../../buckets-memory-and-storage/buckets.html" class="xref page">Buckets</a>.</p>
 </div>
 <div class="paragraph">
 <p>Memory-optimized index-storage allows high-speed maintenance and scanning; since the index is kept fully in memory at all times.
@@ -4490,7 +4490,7 @@ To be consistently beneficial, memory-optimized index-storage requires that all 
 <p>Memory-optimized index-storage may be less suitable for nodes where memory is constrained; since whenever the Index Service memory-quota is exceeded, indexes on the node can neither be updated nor scanned.</p>
 </div>
 <div class="paragraph">
-<p>If indexer RAM usage goes above 75% of the Index Service memory-quota, an <a href="../../../manage/manage-settings/configure-alerts.html" class="page">error-notification</a> is provided.
+<p>If indexer RAM usage goes above 75% of the Index Service memory-quota, an <a href="../../../manage/manage-settings/configure-alerts.html" class="xref page">error-notification</a> is provided.
 If indexer RAM usage then goes above 95% of the Index Service memory-quota, the indexer goes into the Paused mode on that node; and although the indexes remain in <code>Active</code> state, traffic is routed away from the node.</p>
 </div>
 <div class="paragraph">
@@ -4524,7 +4524,7 @@ When the indexer RAM usage drops below 80% of the Index Service memory-quota, th
 Following the node&#8217;s restart, these indexes remain in the <code>Warmup</code> state until all information has been read into memory: then, final updates are made with the indexes in <code>Active</code> state.
 Note that once a rebuilt index is thus available, queries with <code>consistency=request_plus</code> or <code>consistency=at_plus</code> fail, if the specified timestamp exceeds the last timestamp processed by given index. <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>
 However, queries with <code>consistency=unbounded</code> execute normally.
-For information on these settings, see <a href="index-replication.html" class="page">Index Availability and Performance</a>.</p>
+For information on these settings, see <a href="index-replication.html" class="xref page">Index Availability and Performance</a>.</p>
 </div>
 </div>
 </div>
@@ -4539,7 +4539,7 @@ The performance of standard index storage depends on overall I/O performance.</p
 <p>In versions of Couchbase Server prior to 7.0.2, standard index storage supports indexes for Couchbase Buckets, but not for Ephemeral Buckets.
 In version 7.0.2 and after, standard index storage supports indexes for both Couchbase buckets <em>and</em> Ephemeral buckets.
 This applies both to Enterprise and to Community Edition.
-See <a href="../../buckets-memory-and-storage/buckets.html" class="page">Buckets</a>.</p>
+See <a href="../../buckets-memory-and-storage/buckets.html" class="xref page">Buckets</a>.</p>
 </div>
 <div class="paragraph">
 <p>The standard global secondary index uses a B-Tree index and keeps the optimal working set of data in the buffer.
@@ -4575,7 +4575,7 @@ In this case, each index saved with the <em>standard</em> option has two write m
 <p>Writes changes to the end of the index-file, until the relative index fragmentation exceeds 65%.
 <em>Block reuse</em> is then triggered: new data is written into stale blocks where possible, rather than to the end of the file, so as to optimize I/O throughput.
 Full compaction runs in accordance with the value of the <strong>Circular write mode with day + time interval trigger</strong> setting: see
-<a href="../../../manage/manage-settings/configure-compact-settings.html#index-fragmentation" class="page">Index Fragmentation</a>.
+<a href="../../../manage/manage-settings/configure-compact-settings.html#index-fragmentation" class="xref page">Index Fragmentation</a>.
 Note, however, that the index-fragmentation data-size is not significantly changed by compaction.</p>
 </dd>
 <dt class="hdlist1"><a id="compaction"></a>Append-only Write Mode</dt>
@@ -4591,7 +4591,7 @@ Append-only Write Mode is provided for backwards compatibility with previous ver
 </div>
 </div>
 <div class="paragraph">
-<p>Other storage-settings are described in detail in <a href="../../../manage/manage-settings/configure-compact-settings.html" class="page">Configuring Auto-Compaction</a>.</p>
+<p>Other storage-settings are described in detail in <a href="../../../manage/manage-settings/configure-compact-settings.html" class="xref page">Configuring Auto-Compaction</a>.</p>
 </div>
 </div>
 </div>
@@ -4626,7 +4626,7 @@ Note that as Index-Service nodes are removed, so are the indexes they contain; a
 </div>
 <div class="paragraph">
 <p>For information on adding and removing nodes, and on rebalancing a cluster, see
-<a href="../../../manage/manage-nodes/node-management-overview.html" class="page">Manage
+<a href="../../../manage/manage-nodes/node-management-overview.html" class="xref page">Manage
 Nodes and Clusters</a>.</p>
 </div>
 </div>

@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-nodes/add-node-and-rebalance.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4467,7 +4467,7 @@ A new Couchbase Server node can be added to an existing cluster.
 <p><em>Full</em> and <em>Cluster</em> administrators can use the UI, CLI, or REST API to add Couchbase Server nodes to existing clusters.
 On each node to be added, Couchbase Server must have been <em>installed and started</em>.
 The process of node-addition grants to the new node the settings already established for the parent cluster.
-(See <a href="../manage-settings/manage-settings.html" class="page">Manage Settings</a> for details.)
+(See <a href="../manage-settings/manage-settings.html" class="xref page">Manage Settings</a> for details.)
 The process allows services to be assigned to the new node.
 If the new node was previously <em>initialized</em> with custom disk-paths, these can either be retained or modified.
 All aspects of <em>provisioning</em> that may previously have occurred on the new node are eliminated: this includes buckets, services, and settings.</p>
@@ -4489,7 +4489,7 @@ The examples assume:</p>
 <li>
 <p>A one-node cluster already exists; and is named after its IP address: <code>10.142.181.101</code>.
 It is running the Data, Query, and Index services, and has the <code>travel-sample</code> bucket installed.
-(To access and install this, see <a href="../manage-settings/install-sample-buckets.html" class="page">Sample Buckets</a>.)</p>
+(To access and install this, see <a href="../manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a>.)</p>
 </li>
 <li>
 <p>A new node has been started.
@@ -4609,7 +4609,7 @@ However, it is not yet taking traffic, and will be added following a <em>rebalan
 Meanwhile, the <strong>Items</strong> figure for <code>10.142.181.102</code> is 0/0, indicating that no items are yet distributed onto that node in either active or replica form.</p>
 </div>
 <div class="paragraph">
-<p>For an architectural description of how vBuckets and their items are distributed across a cluster, see <a href="../../learn/clusters-and-availability/intra-cluster-replication.html" class="page">Intra-Cluster Replication</a>.</p>
+<p>For an architectural description of how vBuckets and their items are distributed across a cluster, see <a href="../../learn/clusters-and-availability/intra-cluster-replication.html" class="xref page">Intra-Cluster Replication</a>.</p>
 </div>
 </li>
 <li>
@@ -4669,7 +4669,7 @@ Additionally, a complete report on the concluded rebalance activity can be downl
 </div>
 </div>
 <div class="paragraph">
-<p>See the <a href="../../rebalance-reference/rebalance-reference.html" class="page">Rebalance Reference</a>, for information on the contents of the report.</p>
+<p>See the <a href="../../rebalance-reference/rebalance-reference.html" class="xref page">Rebalance Reference</a>, for information on the contents of the report.</p>
 </div>
 <div class="paragraph">
 <p>Left-click on the <strong>X</strong> at the upper-right of the dialog, to dismiss the dialog.</p>
@@ -4700,19 +4700,19 @@ Therefore, replication has successfully distributed the contents of <code>travel
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Addresses</strong> provides at a minimum the <em>internal</em> IP address of the node; and also lists <em>external</em> (that is, <em>alternate</em>) IP addresses, if they have been defined &#8212; see <a href="../../learn/clusters-and-availability/connectivity.html#alternate-addresses" class="page">Alternate Addresses</a>, for information.</p>
+<p><strong>Addresses</strong> provides at a minimum the <em>internal</em> IP address of the node; and also lists <em>external</em> (that is, <em>alternate</em>) IP addresses, if they have been defined &#8212; see <a href="../../learn/clusters-and-availability/connectivity.html#alternate-addresses" class="xref page">Alternate Addresses</a>, for information.</p>
 </li>
 <li>
-<p>The <strong>Address Family</strong> of the node is specified as either <strong>IPv4</strong> or <strong>IPv6</strong>: see <a href="manage-address-families.html" class="page">Manage Address Families</a>, for information.</p>
+<p>The <strong>Address Family</strong> of the node is specified as either <strong>IPv4</strong> or <strong>IPv6</strong>: see <a href="manage-address-families.html" class="xref page">Manage Address Families</a>, for information.</p>
 </li>
 <li>
-<p><strong>Node-to-Node Encryption</strong> for the cluster is specified as either <strong>enabled</strong> or <strong>disabled</strong>: see <a href="apply-node-to-node-encryption.html" class="page">Manage Node-to-Node Encryption</a>.</p>
+<p><strong>Node-to-Node Encryption</strong> for the cluster is specified as either <strong>enabled</strong> or <strong>disabled</strong>: see <a href="apply-node-to-node-encryption.html" class="xref page">Manage Node-to-Node Encryption</a>.</p>
 </li>
 <li>
 <p>The <strong>Version</strong> of the Couchbase-Server instance on the node, its current <strong>Uptime</strong>, and the <strong>OS</strong> on which it runs are also specified.</p>
 </li>
 <li>
-<p>The <strong>RAM Quotas</strong> for each service on the node, and each established <strong>Storage Path</strong> (for one or more of <strong>Data</strong>, <strong>Indexes</strong>, <strong>Eventing</strong>, and <strong>Analytics</strong>) are specified: see <a href="create-cluster.html" class="page">Create a Cluster</a> for examples of how to establish these.</p>
+<p>The <strong>RAM Quotas</strong> for each service on the node, and each established <strong>Storage Path</strong> (for one or more of <strong>Data</strong>, <strong>Indexes</strong>, <strong>Eventing</strong>, and <strong>Analytics</strong>) are specified: see <a href="create-cluster.html" class="xref page">Create a Cluster</a> for examples of how to establish these.</p>
 </li>
 </ul>
 </div>
@@ -4750,7 +4750,7 @@ Alternatively, the handling of a rebalance-failure can be configured to occur au
 </div>
 <div class="paragraph">
 <p>Before attempting rebalance with a reduced number of nodes, assess whether the available resources can support the intended number of replicas.
-See <a href="../../learn/clusters-and-availability/removal.html" class="page">Removal</a>, for guidance.</p>
+See <a href="../../learn/clusters-and-availability/removal.html" class="xref page">Removal</a>, for guidance.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4761,7 +4761,7 @@ Configuration occurs by means of the <strong>General</strong> settings screen.
 Up to 3 <em>retries</em> can be configured.
 Each retry occurs after the elapsing of a time-period specified by the administrator, in seconds.
 By default, automated rebalance-failure handling is <em>not</em> enabled.
-For detailed information, see <a href="../manage-settings/general-settings.html#rebalance-settings" class="page">Rebalance Settings</a>.</p>
+For detailed information, see <a href="../manage-settings/general-settings.html#rebalance-settings" class="xref page">Rebalance Settings</a>.</p>
 </div>
 <div class="paragraph">
 <p>If automated rebalance-failure handling has been enabled (meaning that between 1 and 3 retries have been specified), following a rebalance failure, the following notifications appear at the lower left of the main screen of Couchbase Web Console:</p>
@@ -4802,7 +4802,7 @@ See <a href="#cancel-retries-with-the-cli">Cancel Retries with the CLI</a> and <
 <h2 id="add-a-node-with-the-cli"><a class="anchor" href="#add-a-node-with-the-cli"></a>Add a Node and Rebalance with the CLI</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To add a new Couchbase Server-node to an existing cluster, use the <a href="#cli:cbcli/couchbase-cli-server-add.adoc" class="page unresolved">server-add</a> command.
+<p>To add a new Couchbase Server-node to an existing cluster, use the <a href="#cli:cbcli/couchbase-cli-server-add.adoc" class="xref unresolved">server-add</a> command.
 Note that this command requires that arguments be provided for its <code>--server-add-username</code> and <code>--server-add-password</code> flags.
 In this case, meaningful arguments do not exist, since the new node features an instance of Couchbase Server that is running, but has not been provisioned with a username or password.
 Therefore, specify placeholder arguments.
@@ -4831,7 +4831,7 @@ Additionally, specify that the <code>data</code> service be run on the node, onc
 </div>
 </div>
 <div class="paragraph">
-<p>The newly added node must now be rebalanced into the cluster. Use the <a href="#cli:cbcli/couchbase-cli-rebalance.adoc" class="page unresolved">rebalance</a> command:</p>
+<p>The newly added node must now be rebalanced into the cluster. Use the <a href="#cli:cbcli/couchbase-cli-rebalance.adoc" class="xref unresolved">rebalance</a> command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4859,15 +4859,15 @@ Bucket: 01/01 (travel-sample)                      60714 docs remaining
 </div>
 </div>
 <div class="paragraph">
-<p>Note that when the operation is highly complex, it may be desirable to get status on its progress, or stop the operation. See the command reference for <a href="#cli:cbcli/couchbase-cli-rebalance-status.adoc" class="page unresolved">rebalance-status</a> and <a href="#cli:cbcli/couchbase-cli-rebalance-stop.adoc" class="page unresolved">rebalance-stop</a>, for more information.</p>
+<p>Note that when the operation is highly complex, it may be desirable to get status on its progress, or stop the operation. See the command reference for <a href="#cli:cbcli/couchbase-cli-rebalance-status.adoc" class="xref unresolved">rebalance-status</a> and <a href="#cli:cbcli/couchbase-cli-rebalance-stop.adoc" class="xref unresolved">rebalance-stop</a>, for more information.</p>
 </div>
 <div class="sect2">
 <h3 id="cancel-retries-with-the-cli"><a class="anchor" href="#cancel-retries-with-the-cli"></a>Cancel Retries with the CLI</h3>
 <div class="paragraph">
-<p><em>Retries</em> (described above, in <a href="#automated-rebalance-failure-handling">Automated Rebalance-Failure Handling</a>) can be cancelled with the CLI, by means of the <a href="#cli:cbcli/couchbase-cli-setting-rebalance.adoc" class="page unresolved">setting-rebalance</a> command.</p>
+<p><em>Retries</em> (described above, in <a href="#automated-rebalance-failure-handling">Automated Rebalance-Failure Handling</a>) can be cancelled with the CLI, by means of the <a href="#cli:cbcli/couchbase-cli-setting-rebalance.adoc" class="xref unresolved">setting-rebalance</a> command.</p>
 </div>
 <div class="paragraph">
-<p>Note that use of <code>setting-rebalance</code> for setting and getting the current rebalance-failure configuration is documented in <a href="../manage-settings/general-settings.html" class="page">General Settings</a>.</p>
+<p>Note that use of <code>setting-rebalance</code> for setting and getting the current rebalance-failure configuration is documented in <a href="../manage-settings/general-settings.html" class="xref page">General Settings</a>.</p>
 </div>
 <div class="paragraph">
 <p>If, following a rebalance failure, a retry is pending, retrieve information on the pending retry as follows.
@@ -4975,7 +4975,7 @@ As with the CLI command shown above, a username and password are expected, even 
 If successful, the command returns no output.</p>
 </div>
 <div class="paragraph">
-<p>For further information on adding nodes with the REST API, see <a href="../../rest-api/rest-cluster-addnodes.html" class="page">Adding Nodes to Clusters</a>; on rebalancing, see <a href="../../rest-api/rest-cluster-rebalance.html" class="page">Rebalancing the Cluster</a>.</p>
+<p>For further information on adding nodes with the REST API, see <a href="../../rest-api/rest-cluster-addnodes.html" class="xref page">Adding Nodes to Clusters</a>; on rebalancing, see <a href="../../rest-api/rest-cluster-rebalance.html" class="xref page">Rebalancing the Cluster</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="cancel-retries-with-the-rest-api"><a class="anchor" href="#cancel-retries-with-the-rest-api"></a>Cancel Retries with the REST API</h3>
@@ -4983,7 +4983,7 @@ If successful, the command returns no output.</p>
 <p><em>Retries</em> (described above, in <a href="#automated-rebalance-failure-handling">Automated Rebalance-Failure Handling</a>) can be cancelled with the REST API.</p>
 </div>
 <div class="paragraph">
-<p>Note that use of the REST API for setting and getting the current rebalance-failure configuration is documented in <a href="../manage-settings/general-settings.html#rebalance-settings-via-rest" class="page">Rebalance Settings via REST</a>.</p>
+<p>Note that use of the REST API for setting and getting the current rebalance-failure configuration is documented in <a href="../manage-settings/general-settings.html#rebalance-settings-via-rest" class="xref page">Rebalance Settings via REST</a>.</p>
 </div>
 <div class="paragraph">
 <p>If, following a rebalance failure, a retry is pending, use the <code>GET /pools/default/pendingRetryRebalance</code> http method and URI to identify the pending retry, as follows.
@@ -5045,7 +5045,7 @@ This would be indicated by the following output:</p>
 <p>All scheduled retries have thus been successfully cancelled.</p>
 </div>
 <div class="paragraph">
-<p>Note that reference pages for these commands are provided at <a href="../../rest-api/rest-get-rebalance-retry.html" class="page">Get Rebalance-Retry Status</a> and <a href="../../rest-api/rest-cancel-rebalance-retry.html" class="page">Cancel Rebalance Retries</a>.</p>
+<p>Note that reference pages for these commands are provided at <a href="../../rest-api/rest-get-rebalance-retry.html" class="xref page">Get Rebalance-Retry Status</a> and <a href="../../rest-api/rest-cancel-rebalance-retry.html" class="xref page">Cancel Rebalance Retries</a>.</p>
 </div>
 </div>
 </div>
@@ -5055,7 +5055,7 @@ This would be indicated by the following output:</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>As well as supporting a cluster&#8217;s adding a node to itself, Couchbase Server also supports a node&#8217;s joining itself to a cluster (which is essentially the same operation, but proceeding from the node, rather than from the cluster).
-See <a href="join-cluster-and-rebalance.html" class="page">Join a Cluster and Rebalance</a> for details.</p>
+See <a href="join-cluster-and-rebalance.html" class="xref page">Join a Cluster and Rebalance</a> for details.</p>
 </div>
 </div>
 </div>

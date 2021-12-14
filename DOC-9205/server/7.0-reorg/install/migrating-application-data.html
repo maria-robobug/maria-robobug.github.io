@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/install/migrating-application-data.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4462,7 +4462,7 @@ With the introduction of scopes and collections, you can plan for a simpler mapp
 <p>This topic provides guidelines to help migrate your data from a bucket-based model (pre-7.0) to the collections-based model using scopes and collections in Couchbase Server 7.0.</p>
 </div>
 <div class="paragraph">
-<p>To learn more about scopes and collections, refer to the <a href="../learn/data/scopes-and-collections.html" class="page">Learn</a> section in the documentation.</p>
+<p>To learn more about scopes and collections, refer to the <a href="../learn/data/scopes-and-collections.html" class="xref page">Learn</a> section in the documentation.</p>
 </div>
 <div class="paragraph">
 <p>While the exact steps to migrate will depend on your use case and requirements, following are the high level steps that will be explained in subsequent sections.</p>
@@ -4535,7 +4535,7 @@ With the introduction of scopes and collections, you can plan for a simpler mapp
 <h2 id="pre-requisite-upgrade-to-couchbase-server-version-7-0"><a class="anchor" href="#pre-requisite-upgrade-to-couchbase-server-version-7-0"></a>Pre-requisite: Upgrade to Couchbase Server version 7.0</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Ensure that you upgrade your cluster to Couchbase Server 7.0. For information about the upgrade process and procedures, see <a href="upgrade.html" class="page">Upgrading Couchbase Server</a>.</p>
+<p>Ensure that you upgrade your cluster to Couchbase Server 7.0. For information about the upgrade process and procedures, see <a href="upgrade.html" class="xref page">Upgrading Couchbase Server</a>.</p>
 </div>
 <div class="paragraph">
 <p>Every bucket in Couchbase Server 7.0+ has a <code>_default</code> scope with a <code>_default</code> collection in it.</p>
@@ -4649,7 +4649,7 @@ To do so, you can choose to use one of the following options:</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Ensure that you are conforming to the <a href="../learn/data/scopes-and-collections.html#naming-for-scopes-and-collections" class="page">naming conventions</a> for scopes and collections.
+Ensure that you are conforming to the <a href="../learn/data/scopes-and-collections.html#naming-for-scopes-and-collections" class="xref page">naming conventions</a> for scopes and collections.
 </td>
 </tr>
 </table>
@@ -4982,7 +4982,7 @@ cbbackupmgr restore -a  backup -r test-02 -c localhost -u Administrator -p passw
 <p>The Eventing Service, like XCDR, can also be used to convert (or more aptly, reorganize) upgraded buckets in a 7.0 deployment into targeted collections.</p>
 </div>
 <div class="paragraph">
-<p>A detailed example of reorganizing data from any keyspace is given in the scriptlet <a href="../eventing/eventing-handler-ConvertBucketToCollections.html" class="page">ConvertBucketToCollections</a>.</p>
+<p>A detailed example of reorganizing data from any keyspace is given in the scriptlet <a href="../eventing/eventing-handler-ConvertBucketToCollections.html" class="xref page">ConvertBucketToCollections</a>.</p>
 </div>
 </div>
 </div>
@@ -4995,7 +4995,7 @@ cbbackupmgr restore -a  backup -r test-02 -c localhost -u Administrator -p passw
 <p>Now that your data has been migrated to named scopes and collections, you have finer control over what data you can assign privileges to.</p>
 </div>
 <div class="paragraph">
-<p>The following roles are available at scope and collection levels. Refer to the <a href="../manage/manage-security/manage-users-and-roles.html" class="page">RBAC documentation</a> for details.</p>
+<p>The following roles are available at scope and collection levels. Refer to the <a href="../manage/manage-security/manage-users-and-roles.html" class="xref page">RBAC documentation</a> for details.</p>
 </div>
 <div class="dlist">
 <dl>

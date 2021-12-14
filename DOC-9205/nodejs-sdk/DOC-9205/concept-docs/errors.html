@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="nodejs-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/nodejs-sdk/DOC-9205/concept-docs/errors.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3683,7 +3683,7 @@ practical error handling doc.
 All the other Exception types used are part of the JDK, including <code>IllegalArgumentException</code>, <code>TimeoutException</code> and others.</p>
 </div>
 <div class="paragraph">
-<p>See our <a href="../howtos/error-handling.html" class="page">practical error handling docs</a> for some of the approaches to take.</p>
+<p>See our <a href="../howtos/error-handling.html" class="xref page">practical error handling docs</a> for some of the approaches to take.</p>
 </div>
 </div>
 </div>
@@ -3698,7 +3698,7 @@ All the other Exception types used are part of the JDK, including <code>IllegalA
 <li>
 <p><em>Server timeout exceeded</em>.
 The active node aborts the durable write, instructs all replica nodes also to abort the pending write, and informs the client that the durable write has had an ambiguous result.
-See <a href="#7.0@server:learn:data/durability.adoc#handling-ambiguous-results" class="page unresolved">Handling Ambiguous Results</a>, below.</p>
+See <a href="#7.0@server:learn:data/durability.adoc#handling-ambiguous-results" class="xref unresolved">Handling Ambiguous Results</a>, below.</p>
 </li>
 <li>
 <p><em>Replica node fails while SyncWrite is pending (that is, before the active node can identify whether the node hosted a replica)</em>.
@@ -3741,7 +3741,7 @@ If the attempted durable write is <em>not</em> idempotent, the options are:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Further discussion of handling ambiguous results can be found in our <a href="durability-replication-failure-considerations.html#ambiguity" class="page">Durability &amp; Failure discussion</a>.</p>
+<p>Further discussion of handling ambiguous results can be found in our <a href="durability-replication-failure-considerations.html#ambiguity" class="xref page">Durability &amp; Failure discussion</a>.</p>
 </div>
 </div>
 </div>
@@ -3751,7 +3751,7 @@ If the attempted durable write is <em>not</em> idempotent, the options are:</p>
 <div class="paragraph">
 <p>Distributed systems are not easy to debug.
 One cause of errors to try to eliminate, or quickly diagnose to deal with, is those caused by the network.
-Our <a href="health-check.html" class="page">Health Check API</a> offers status and diagnostics on your cluster&#8217;s network, and can be used, for example, to diagnose network latencies that are behind timeout errors.</p>
+Our <a href="health-check.html" class="xref page">Health Check API</a> offers status and diagnostics on your cluster&#8217;s network, and can be used, for example, to diagnose network latencies that are behind timeout errors.</p>
 </div>
 </div>
 </div>

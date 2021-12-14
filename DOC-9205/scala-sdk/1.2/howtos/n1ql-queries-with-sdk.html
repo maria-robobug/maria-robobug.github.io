@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="scala-sdk">
 <meta name="dcterms.identifier" content="1.2">
 <meta name="page-url" content="/scala-sdk/1.2/howtos/n1ql-queries-with-sdk.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3677,7 +3677,7 @@ You can query for documents in Couchbase using the N1QL query language, a langua
 <div class="paragraph">
 <p>Our query service uses N1QL, which will be fairly familiar to anyone who&#8217;s used any dialect of SQL.
 <a href="#additional-resources">Additional Resources</a> for learning about N1QL are listed at the bottom of the page.
-Before you get started you may wish to checkout the <a href="#6.5@server:n1ql:n1ql-language-reference/index.adoc" class="page unresolved">N1QL intro page</a>.</p>
+Before you get started you may wish to checkout the <a href="#6.5@server:n1ql:n1ql-language-reference/index.adoc" class="xref unresolved">N1QL intro page</a>.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -3787,7 +3787,7 @@ example demonstrates returning the results as <code>JsonObject</code>, the JSON 
 <p>Similar support is included for other excellent JSON libraries: <a href="https://github.com/lihaoyi/upickle">uPickle/uJson</a>, <a href="https://github.com/playframework/play-json">Play Json</a>, <a href="https://github.com/typelevel/jawn">Jawn</a>, and <a href="https://github.com/json4s/json4s">Json4s</a>.</p>
 </li>
 <li>
-<p>Scala case classes.  A tiny amount of boilerplate is needed to support this: see <a href="kv-operations.html" class="page">Key-Value Operations</a> for details.</p>
+<p>Scala case classes.  A tiny amount of boilerplate is needed to support this: see <a href="kv-operations.html" class="xref page">Key-Value Operations</a> for details.</p>
 </li>
 <li>
 <p><code>String</code></p>
@@ -3798,7 +3798,7 @@ example demonstrates returning the results as <code>JsonObject</code>, the JSON 
 </ul>
 </div>
 <div class="paragraph">
-<p>Please see <a href="json.html" class="page">this guide</a> for more information on the supported ways of working with JSON.</p>
+<p>Please see <a href="json.html" class="xref page">this guide</a> for more information on the supported ways of working with JSON.</p>
 </div>
 <div class="paragraph">
 <p>Of course, it wouldn&#8217;t be Scala if we couldn&#8217;t elegantly combine the operations above more concisely:</p>
@@ -3937,7 +3937,7 @@ result match {
 </div>
 <div class="paragraph">
 <p>A small amount of boilerplate is required to tell the SDK how to convert your case class to/from JSON.  There are more details
-available <a href="json.html#case-classes" class="page">here</a>, but the short version is to add a <code>Codec</code> in the case class&#8217;s companion object like this:</p>
+available <a href="json.html#case-classes" class="xref page">here</a>, but the short version is to add a <code>Codec</code> in the case class&#8217;s companion object like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3973,7 +3973,7 @@ val users = cluster
 <h2 id="streaming-large-result-sets"><a class="anchor" href="#streaming-large-result-sets"></a>Streaming Large Result Sets</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>As mentioned earlier, the Scala SDK provides three SDKs (documented further on <a href="concurrent-async-apis.html" class="page">Choosing an API</a>):</p>
+<p>As mentioned earlier, the Scala SDK provides three SDKs (documented further on <a href="concurrent-async-apis.html" class="xref page">Choosing an API</a>):</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4059,7 +4059,7 @@ You&#8217;ll see both <code>reactor.core.scala.publisher</code> and <code>reacto
 <h2 id="querying-at-scope-level"><a class="anchor" href="#querying-at-scope-level"></a>Querying at Scope Level</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>From version 1.0.9 of the Scala SDK, it is possible to query off the <a href="#7.0@server:learn:data/scopes-and-collections.adoc" class="page unresolved"><code>Scope</code> level</a> <em>with the beta version of the next Couchbase Server release, 7.0β</em>,
+<p>From version 1.0.9 of the Scala SDK, it is possible to query off the <a href="#7.0@server:learn:data/scopes-and-collections.adoc" class="xref unresolved"><code>Scope</code> level</a> <em>with the beta version of the next Couchbase Server release, 7.0β</em>,
 using the <code>scope.query()</code> method.
 It takes the statement as a required argument, and then allows additional options if needed.</p>
 </div>
@@ -4070,7 +4070,7 @@ It takes the statement as a required argument, and then allows additional option
 <i class="fa icon-caution" title="Caution"></i>
 </td>
 <td class="content">
-This feature is marked <a href="../project-docs/compatibility.html#interface-stability" class="page"><em>Uncommitted</em></a>.
+This feature is marked <a href="../project-docs/compatibility.html#interface-stability" class="xref page"><em>Uncommitted</em></a>.
 Expect a promotion to <em>Committed</em> API in a future release.
 </td>
 </tr>
@@ -4108,7 +4108,7 @@ the assumption is that the <code>airline</code> collection exists within a scope
 </td>
 <td class="content">
 N1QL is not the only query option in Couchbase.
-Be sure to check that <a href="../concept-docs/data-services.html" class="page">your use case fits your selection of query service</a>.
+Be sure to check that <a href="../concept-docs/data-services.html" class="xref page">your use case fits your selection of query service</a>.
 </td>
 </tr>
 </table>

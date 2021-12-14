@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/clusters-and-availability/groups.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4506,9 +4506,9 @@ Once additional server groups are created, a destination server group must be sp
 </div>
 <div class="paragraph">
 <p>For information on failing over individual nodes, see
-<a href="../../manage/manage-nodes/fail-nodes-over.html" class="page">Fail a Node over and Rebalance</a>.
-For information on vBuckets, see <a href="../buckets-memory-and-storage/buckets.html" class="page">Buckets</a>.
-For information on the standard (non-Group-based) distribution of replica vBuckets across a cluster, see <a href="replication-architecture.html" class="page">Availability</a>.</p>
+<a href="../../manage/manage-nodes/fail-nodes-over.html" class="xref page">Fail a Node over and Rebalance</a>.
+For information on vBuckets, see <a href="../buckets-memory-and-storage/buckets.html" class="xref page">Buckets</a>.
+For information on the standard (non-Group-based) distribution of replica vBuckets across a cluster, see <a href="replication-architecture.html" class="xref page">Availability</a>.</p>
 </div>
 </div>
 </div>
@@ -4579,7 +4579,7 @@ Note, however, that if Group 2 were now to go offline, the data originally activ
 <p>Indexes and index replicas can only be located on nodes that run the Index Service.</p>
 </div>
 <div class="paragraph">
-<p>As described in <a href="../services-and-indexes/indexes/index-replication.html#index-replication" class="page">Index Replication</a>, the Index Service allows index replicas to be defined in either of two ways:</p>
+<p>As described in <a href="../services-and-indexes/indexes/index-replication.html#index-replication" class="xref page">Index Replication</a>, the Index Service allows index replicas to be defined in either of two ways:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4604,7 +4604,7 @@ This is accomplished by providing, as the argument to the <code>WITH</code> clau
 </ul>
 </div>
 <div class="paragraph">
-<p>Examples of these different forms of replica-definition are provided in <a href="../services-and-indexes/indexes/index-replication.html#index-replication" class="page">Index Replication</a>.</p>
+<p>Examples of these different forms of replica-definition are provided in <a href="../services-and-indexes/indexes/index-replication.html#index-replication" class="xref page">Index Replication</a>.</p>
 </div>
 <div class="paragraph">
 <p>If the node-locations for index and replicas <em>are</em> specified, by means of the <code>WITH</code> clause and node-array, this user-defined topology is duly followed in the locating of index and replicas across the cluster, and any server groups that may have been defined.
@@ -4618,7 +4618,7 @@ Such distributions are exemplified as follows.</p>
 <h3 id="optimal-distribution"><a class="anchor" href="#optimal-distribution"></a>Optimal Distribution</h3>
 <div class="paragraph">
 <p>When the number of index replicas created for a given index is at least one less than the total number of groups for the cluster, and each group contains sufficient nodes running the Index Server, automatic distribution ensures that each index and index replica resides on its own group.
-(Indexes and index replicas always exist each on their own Index Server node, with index-creation failing if there is an insufficiency of such nodes to accommodate the specified number of index replicas &#8212; see <a href="../services-and-indexes/indexes/index-replication.html#index-replication" class="page">Index Replication</a>.)</p>
+(Indexes and index replicas always exist each on their own Index Server node, with index-creation failing if there is an insufficiency of such nodes to accommodate the specified number of index replicas &#8212; see <a href="../services-and-indexes/indexes/index-replication.html#index-replication" class="xref page">Index Replication</a>.)</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -4706,13 +4706,13 @@ Consequently, both the index replicas of one index would be assigned to the same
 <div class="ulist">
 <ul>
 <li>
-<p>With Couchbase Web Console, see <a href="../../manage/manage-groups/manage-groups.html" class="page">Manage Groups</a>.</p>
+<p>With Couchbase Web Console, see <a href="../../manage/manage-groups/manage-groups.html" class="xref page">Manage Groups</a>.</p>
 </li>
 <li>
-<p>With CLI, see <a href="#cli:cbcli/couchbase-cli-group-manage.adoc" class="page unresolved">group-manage</a>.</p>
+<p>With CLI, see <a href="#cli:cbcli/couchbase-cli-group-manage.adoc" class="xref unresolved">group-manage</a>.</p>
 </li>
 <li>
-<p>With the REST API, see <a href="../../rest-api/rest-rza.html" class="page">Server Groups API</a>.</p>
+<p>With the REST API, see <a href="../../rest-api/rest-rza.html" class="xref page">Server Groups API</a>.</p>
 </li>
 </ul>
 </div>
@@ -4722,13 +4722,13 @@ Consequently, both the index replicas of one index would be assigned to the same
 <div class="ulist">
 <ul>
 <li>
-<p>With Couchbase Web Console, see the information provided for the <strong>General</strong> settings panel, in <a href="../../manage/manage-settings/general-settings.html#node-availability" class="page">Node Availability</a>.</p>
+<p>With Couchbase Web Console, see the information provided for the <strong>General</strong> settings panel, in <a href="../../manage/manage-settings/general-settings.html#node-availability" class="xref page">Node Availability</a>.</p>
 </li>
 <li>
-<p>With CLI, see <a href="#cli:cbcli/couchbase-cli-setting-autofailover.adoc" class="page unresolved">setting-autofailover</a>.</p>
+<p>With CLI, see <a href="#cli:cbcli/couchbase-cli-setting-autofailover.adoc" class="xref unresolved">setting-autofailover</a>.</p>
 </li>
 <li>
-<p>With the REST API, see <a href="../../rest-api/rest-cluster-autofailover-enable.html" class="page">Enabling and Disabling Auto-Failover</a>.</p>
+<p>With the REST API, see <a href="../../rest-api/rest-cluster-autofailover-enable.html" class="xref page">Enabling and Disabling Auto-Failover</a>.</p>
 </li>
 </ul>
 </div>

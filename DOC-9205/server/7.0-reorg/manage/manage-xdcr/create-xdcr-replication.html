@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-xdcr/create-xdcr-replication.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4466,7 +4466,7 @@ An XDCR replication allows data to be replicated continuously from a specified b
 <div class="paragraph">
 <p>An XDCR replication is created on the cluster that is to be the source of the data-replication.
 Each replication uses a single <em>reference</em>, which has already been created.
-(See <a href="create-xdcr-reference.html" class="page">Create a Reference</a>.)
+(See <a href="create-xdcr-reference.html" class="xref page">Create a Reference</a>.)
 To create the replication, you specify:</p>
 </div>
 <div class="ulist">
@@ -4500,7 +4500,7 @@ This cluster must already be registered on the local cluster as a <em>reference<
 <div class="paragraph">
 <p>The examples in the subsections below show how to create the same replication; using the <a href="#create-an-xdcr-replication-with-the-ui">UI</a>, the <a href="#create-an-xdcr-replication-with-the-cli">CLI</a>,
 and the <a href="#create-an-xdcr-replication-with-the-rest-api">REST API</a> respectively.
-As their starting-point, the examples assume the scenario that concluded the page <a href="create-xdcr-reference.html" class="page">Create a Reference</a>, this being:</p>
+As their starting-point, the examples assume the scenario that concluded the page <a href="create-xdcr-reference.html" class="xref page">Create a Reference</a>, this being:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4579,18 +4579,18 @@ When a keyspace on the source does <strong>not</strong> have a corresponding key
 This is known as replication by <em>implicit mapping</em>.</p>
 </div>
 <div class="paragraph">
-<p>Detailed examples of <em>explicitly</em> specifying scopes and collections (and so, potentially, establishing mappings between dissimilar keyspaces) are provided later, in <a href="replicate-using-scopes-and-collections.html" class="page">Replicate Using Scopes and Collections</a>.</p>
+<p>Detailed examples of <em>explicitly</em> specifying scopes and collections (and so, potentially, establishing mappings between dissimilar keyspaces) are provided later, in <a href="replicate-using-scopes-and-collections.html" class="xref page">Replicate Using Scopes and Collections</a>.</p>
 </div>
 <div class="paragraph">
 <p>Note that when a replication is defined only as <em>bucket to bucket</em> (as in the current example), and thereby makes no reference to a scope or collection, the documents to be replicated are understood by XDCR to reside in the <code>&#95;default</code> collection, which resides within the <code>&#95;default</code> scope, of the source bucket.
 The documents will duly be replicated to the <code>&#95;default</code> collection, in the <code>&#95;default</code> scope, of the <em>target</em> bucket.
-For more information , see <a href="../../learn/data/scopes-and-collections.html#default-scope-and-collection" class="page">Default Scope and Collection</a>.</p>
+For more information , see <a href="../../learn/data/scopes-and-collections.html#default-scope-and-collection" class="xref page">Default Scope and Collection</a>.</p>
 </div>
 <div class="paragraph">
 <p>An account of <strong>Advanced Settings</strong> is provided in <a href="#xdcr-advanced-settings-pointer">Advanced Replication Settings with the UI</a>, below.</p>
 </div>
 <div class="paragraph">
-<p>The practical steps required for establishing filters are explained in <a href="filter-xdcr-replication.html" class="page">Filter a Replication</a>.</p>
+<p>The practical steps required for establishing filters are explained in <a href="filter-xdcr-replication.html" class="xref page">Filter a Replication</a>.</p>
 </div>
 </li>
 <li>
@@ -4634,7 +4634,7 @@ Note that by left-clicking on the row for the replication, additional controls c
 </div>
 </div>
 <div class="paragraph">
-<p>Use of the <strong>Pause</strong> control is described in <a href="pause-xdcr-replication.html" class="page">Pause a Replication</a>; use of the <strong>Delete</strong> control in <a href="delete-xdcr-replication.html" class="page">Delete a Replication</a>; and use of the <strong>Edit</strong> control in <a href="filter-xdcr-replication.html#editing-filters" class="page">Editing Filters</a>.</p>
+<p>Use of the <strong>Pause</strong> control is described in <a href="pause-xdcr-replication.html" class="xref page">Pause a Replication</a>; use of the <strong>Delete</strong> control in <a href="delete-xdcr-replication.html" class="xref page">Delete a Replication</a>; and use of the <strong>Edit</strong> control in <a href="filter-xdcr-replication.html#editing-filters" class="xref page">Editing Filters</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="monitor-current-replications"><a class="anchor" href="#monitor-current-replications"></a>Monitor Current Replications</h3>
@@ -4648,7 +4648,7 @@ The panel appears as follows.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>For information on how to read the interactive charts now displayed, see <a href="../manage-statistics/manage-statistics.html" class="page">Manage Statistics</a>.</p>
+<p>For information on how to read the interactive charts now displayed, see <a href="../manage-statistics/manage-statistics.html" class="xref page">Manage Statistics</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4664,7 +4664,7 @@ The UI expands vertically, to reveal the following:</p>
 </div>
 <div class="paragraph">
 <p>The values displayed in the fields are defaults, which can be modified interactively, and saved: this may help in achieving optimal replication-performance.
-For details on the significance of each field, see the <a href="../../xdcr-reference/xdcr-reference-intro.html" class="page">XDCR Reference</a>.</p>
+For details on the significance of each field, see the <a href="../../xdcr-reference/xdcr-reference-intro.html" class="xref page">XDCR Reference</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4715,7 +4715,7 @@ For details on the significance of each field, see the <a href="../../xdcr-refer
 </div>
 </div>
 <div class="paragraph">
-<p>For more information, see the complete reference for the <a href="#cli:cbcli/couchbase-cli-xdcr-replicate.adoc" class="page unresolved">xdcr-replicate</a> command.
+<p>For more information, see the complete reference for the <a href="#cli:cbcli/couchbase-cli-xdcr-replicate.adoc" class="xref unresolved">xdcr-replicate</a> command.
 Note that this includes descriptions of all flags that support the <a href="#xdcr-advanced-settings-pointer">Advanced Settings</a>, described above.</p>
 </div>
 </div>
@@ -4746,8 +4746,8 @@ http://10.144.210.101:8091/controller/createReplication \
 </div>
 </div>
 <div class="paragraph">
-<p>For more information, see <a href="../../rest-api/rest-xdcr-create-replication.html" class="page">Creating XDCR Replications</a>.
-For information on REST-driven configuration of the <a href="#xdcr-advanced-settings-pointer">Advanced Settings</a> described above, see <a href="../../rest-api/rest-xdcr-adv-settings.html" class="page">Managing Advanced XDCR Settings</a>.</p>
+<p>For more information, see <a href="../../rest-api/rest-xdcr-create-replication.html" class="xref page">Creating XDCR Replications</a>.
+For information on REST-driven configuration of the <a href="#xdcr-advanced-settings-pointer">Advanced Settings</a> described above, see <a href="../../rest-api/rest-xdcr-adv-settings.html" class="xref page">Managing Advanced XDCR Settings</a>.</p>
 </div>
 </div>
 </div>
@@ -4756,7 +4756,7 @@ For information on REST-driven configuration of the <a href="#xdcr-advanced-sett
 <div class="sectionbody">
 <div class="paragraph">
 <p>Once a replication has been defined and is therefore running, you can opt to <em>pause</em> it, in order to perform system maintenance.
-See <a href="pause-xdcr-replication.html" class="page">Pause a Replication</a>.</p>
+See <a href="pause-xdcr-replication.html" class="xref page">Pause a Replication</a>.</p>
 </div>
 </div>
 </div>

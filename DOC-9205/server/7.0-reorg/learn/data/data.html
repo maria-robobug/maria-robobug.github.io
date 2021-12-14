@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/data/data.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4467,7 +4467,7 @@ Couchbase Server saves data as <em>items</em>, each of which has a <em>key</em> 
 Each key is unique within its bucket, and values can be either binary or JSON.</p>
 </div>
 <div class="paragraph">
-<p>All items are handled by Couchbase Server&#8217;s <a href="../services-and-indexes/services/data-service.html" class="page">Data Service</a>. All JSON items must be encoded as specified in <a href="https://tools.ietf.org/html/rfc8259" target="_blank" rel="noopener">RFC 8259</a>.
+<p>All items are handled by Couchbase Server&#8217;s <a href="../services-and-indexes/services/data-service.html" class="xref page">Data Service</a>. All JSON items must be encoded as specified in <a href="https://tools.ietf.org/html/rfc8259" target="_blank" rel="noopener">RFC 8259</a>.
 Binary items can have any encoding.</p>
 </div>
 </div>
@@ -4562,7 +4562,7 @@ Its contents are as follows:</p>
 <p>Note that the official JSON definition is provided at <a href="https://tools.ietf.org/html/rfc7159" target="_blank" rel="noopener">RFC 7159</a>, and at <a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf" target="_blank" rel="noopener">ECMA 404</a>.</p>
 </div>
 <div class="paragraph">
-<p>The benefits offered to application-programmers by JSON are considered in <a href="document-data-model.html" class="page">The Couchbase Data Model</a>.</p>
+<p>The benefits offered to application-programmers by JSON are considered in <a href="document-data-model.html" class="xref page">The Couchbase Data Model</a>.</p>
 </div>
 </div>
 </div>
@@ -4595,7 +4595,7 @@ The sub-document is referred to by a <em>path</em>, which specifies attributes a
 <div class="paragraph">
 <p>The Couchbase SDK provides a <em>Sub-Document API</em>, which allows paths to be specified, and sub-documents thereby read and written to.
 This makes it unnecessary to transfer entire documents over the network when only partial modifications are required, potentially providing significant improvements in network-performance.
-For further information, see <a href="../../../../java-sdk/DOC-9205/howtos/subdocument-operations.html" class="page">Sub-Document Operations</a>.</p>
+For further information, see <a href="../../../../java-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Sub-Document Operations</a>.</p>
 </div>
 </div>
 </div>
@@ -4658,15 +4658,15 @@ The metadata might be as follows:</p>
 <p><code>rev</code>: The <em>revision</em> or <em>sequence</em> number.
 This value is for internal server-use only: it is used in the resolution of conflicts that occur when replicated documents are updated concurrently on different servers, representing the number of times the document has been mutated.
 For more information, see
-<a href="../clusters-and-availability/xdcr-conflict-resolution.html" class="page">XDCR Conflict Resolution</a>.</p>
+<a href="../clusters-and-availability/xdcr-conflict-resolution.html" class="xref page">XDCR Conflict Resolution</a>.</p>
 </li>
 <li>
 <p><code>expiration</code>: The expiration-time (or <em>Time-To-Live</em>) of the document.
 If non-zero, this determines the point at which the document is removed from the system.
 The value can be set either per-document, by means of Couchbase SDK APIs (which is referred to as <em>TTL</em>); or per bucket, by means of Couchbase Web Console, the Couchbase CLI, or the Couchbase REST API (which is referred to as <em>Bucket TTL</em>).</p>
 <div class="paragraph">
-<p>For information on <em>Expiration</em>, see <a href="../../../../java-sdk/DOC-9205/howtos/kv-operations.html#document-expiration" class="page">KV Operations</a>.
-For information on <em>Bucket TTL</em>, see <a href="expiration.html" class="page">Bucket TTL</a>.</p>
+<p>For information on <em>Expiration</em>, see <a href="../../../../java-sdk/DOC-9205/howtos/kv-operations.html#document-expiration" class="xref page">KV Operations</a>.
+For information on <em>Bucket TTL</em>, see <a href="expiration.html" class="xref page">Bucket TTL</a>.</p>
 </div>
 </li>
 <li>
@@ -4677,7 +4677,7 @@ For information on <em>Bucket TTL</em>, see <a href="expiration.html" class="pag
 </li>
 <li>
 <p><code>xattrs</code>: <em>Extended Attributes</em>, which constitute a special kind of metadata, some of which is system-internal, some of which can optionally be written and read by user-applications.
-See <a href="extended-attributes-fundamentals.html" class="page">Extended Attributes</a> for more information.</p>
+See <a href="extended-attributes-fundamentals.html" class="xref page">Extended Attributes</a> for more information.</p>
 </li>
 </ul>
 </div>

@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/clusters-and-availability/cluster-manager.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4475,7 +4475,7 @@ The Couchbase <em>Cluster Manager</em> runs on all the nodes of a cluster, maint
 <p>As shown, the Cluster Manager consists of two processes.
 The first, the <em>babysitter</em>, is responsible for maintaining a variety of Couchbase Server-processes, which indeed include the second Cluster Manager process, <em>ns-server</em>.
 The <em>babysitter</em> starts and monitors all of these processes, logging their output to the file <code>babysitter.log</code> (see
-<a href="../../manage/manage-logging/manage-logging.html" class="page">Manage Logging</a>, for information on
+<a href="../../manage/manage-logging/manage-logging.html" class="xref page">Manage Logging</a>, for information on
 logfile-locations).
 If any of the processes dies, the <em>babysitter</em> restarts it.
 The <em>babysitter</em> is not cluster-aware.</p>
@@ -4489,21 +4489,21 @@ The <em>babysitter</em> is not cluster-aware.</p>
 <p><em>ns-server</em>: Manages the node&#8217;s participation in the cluster, as described in <a href="#ns-server">ns-server</a>, below.</p>
 </li>
 <li>
-<p><em>kv engine</em>: Runs as part of the <a href="../services-and-indexes/services/data-service.html" class="page">Data Service</a>, which must be installed on at least one cluster-node.
-Provides access to <a href="../data/data.html" class="page">Data</a>.</p>
+<p><em>kv engine</em>: Runs as part of the <a href="../services-and-indexes/services/data-service.html" class="xref page">Data Service</a>, which must be installed on at least one cluster-node.
+Provides access to <a href="../data/data.html" class="xref page">Data</a>.</p>
 </li>
 <li>
-<p><em>services</em>: One or more Couchbase <a href="../services-and-indexes/services/services.html" class="page">Services</a> that optionally run on the node.</p>
+<p><em>services</em>: One or more Couchbase <a href="../services-and-indexes/services/services.html" class="xref page">Services</a> that optionally run on the node.</p>
 </li>
 <li>
 <p><em>xdcr</em>: The program for handling <em>Cross Data-Center Replication</em> (XDCR).
 This is installed with the Data Service, but runs as an independent OS-level process, separate from the Cluster Manager itself.
-See <a href="replication-architecture.html" class="page">Availability</a>, for information.</p>
+See <a href="replication-architecture.html" class="xref page">Availability</a>, for information.</p>
 </li>
 <li>
 <p><em>view engine</em>: The program for handling <em>Views</em>.
 This is installed with the Data Service, but runs as an independent OS-level process, separate from the Cluster Manager itself.
-See <a href="../views/views-intro.html" class="page">Views</a>, for more information.</p>
+See <a href="../views/views-intro.html" class="xref page">Views</a>, for more information.</p>
 </li>
 <li>
 <p><em>other</em>: Various ancillary programs.</p>
@@ -4535,7 +4535,7 @@ See <a href="../views/views-intro.html" class="page">Views</a>, for more informa
 <p><em>Authentication</em>: Protects node-resources with <em>Role-Based Access Control</em>.
 This is based on <em>credentials</em> (usernames and passwords) associated with system-defined <em>roles</em>, each of which is associated with a range of <em>privileges</em>.
 For detailed information, see
-<a href="../security/authorization-overview.html" class="page">Authorization</a>.</p>
+<a href="../security/authorization-overview.html" class="xref page">Authorization</a>.</p>
 </li>
 </ul>
 </div>
@@ -4604,8 +4604,8 @@ When no more vBuckets remain on a node, the node is removed from the cluster.</p
 </div>
 <div class="paragraph">
 <p>For the practical steps to be following in adding and removing nodes, see
-<a href="../../manage/manage-nodes/add-node-and-rebalance.html" class="page">Add a Node and Rebalance</a> and
-<a href="../../manage/manage-nodes/remove-node-and-rebalance.html" class="page">Remove a Node and Rebalance</a>.</p>
+<a href="../../manage/manage-nodes/add-node-and-rebalance.html" class="xref page">Add a Node and Rebalance</a> and
+<a href="../../manage/manage-nodes/remove-node-and-rebalance.html" class="xref page">Remove a Node and Rebalance</a>.</p>
 </div>
 </div>
 </div>
@@ -4623,7 +4623,7 @@ If automatic failover is enabled, and no heartbeats are received from a node for
 </div>
 <div class="paragraph">
 <p>For detailed information on failover options, see
-<a href="../../manage/manage-nodes/fail-nodes-over.html" class="page">Fail a Node over and Rebalance</a>.</p>
+<a href="../../manage/manage-nodes/fail-nodes-over.html" class="xref page">Fail a Node over and Rebalance</a>.</p>
 </div>
 </div>
 </div>
@@ -4645,7 +4645,7 @@ The vBucket map is recalculated whenever the cluster topology changes, by means 
 </li>
 <li>
 <p>If <em>Server Groups</em> are defined for master vBuckets, the replica vBuckets are placed in a separate groups.
-See <a href="groups.html" class="page">Server Group Awareness</a>, for more information.</p>
+See <a href="groups.html" class="xref page">Server Group Awareness</a>, for more information.</p>
 </li>
 </ul>
 </div>
@@ -4662,7 +4662,7 @@ All configuration-changes are managed by the <em>Master Services</em>, and are p
 <p>Statistics are accessible through all the Couchbase
 administration interfaces: The CLI, the REST API, and Couchbase Web Console.
 See
-<a href="../../manage/management-overview.html" class="page">Management Tools</a>.</p>
+<a href="../../manage/management-overview.html" class="xref page">Management Tools</a>.</p>
 </div>
 </div>
 </div>

@@ -13,7 +13,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/fts/fts-searching-with-curl-http-requests.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4466,7 +4466,7 @@ Full Text Search can be performed using the Couchbase REST API (cURL/HTTP), at t
 <p>The syntactic elements for a <code>curl</code>-based Full Text Search can be obtained from the Couchbase Web Console. The console allows searches performed via the UI to be translated dynamically into <code>curl</code> examples.</p>
 </div>
 <div class="paragraph">
-<p>To demonstrate this, follow the procedures for accessing the Full Text Search screen, within the Couchbase Web Console, and for performing a simple search; as described in <a href="#fts-searching-from-the-ui.adoc" class="page unresolved">Searching from the UI</a>. Then, left-click on the <strong>show advanced query settings</strong> checkbox, at the right-hand side of the <strong>Search</strong> button:</p>
+<p>To demonstrate this, follow the procedures for accessing the Full Text Search screen, within the Couchbase Web Console, and for performing a simple search; as described in <a href="#fts-searching-from-the-ui.adoc" class="xref unresolved">Searching from the UI</a>. Then, left-click on the <strong>show advanced query settings</strong> checkbox, at the right-hand side of the <strong>Search</strong> button:</p>
 </div>
 <div id="fts_advanced_query_settings" class="imageblock text-left">
 <div class="content">
@@ -4496,7 +4496,7 @@ Additionally, familiarity with <em>query strings</em> should be acquired for the
 <div class="paragraph">
 <p>A <em>Query String</em> combines standard alphanumeric characters with syntactic elements in order to specify complex queries in ASCII form.
 Query Strings can be used for Full Text Searches performed with both the Couchbase Web Console and the REST API.
-A detailed description of Query String-format is provided in <a href="#fts-query-types.adoc" class="page unresolved">Query  Types</a>.</p>
+A detailed description of Query String-format is provided in <a href="#fts-query-types.adoc" class="xref unresolved">Query  Types</a>.</p>
 </div>
 <div class="paragraph">
 <p>For example, to search for instances of both <code>nice</code> and <code>view</code>, specify <code>"+nice +view"</code> in a search from the Couchbase Web Console:</p>
@@ -4537,7 +4537,7 @@ http://localhost:8094/api/index/travel-sample-index/query \
 </div>
 </div>
 <div class="paragraph">
-<p>(For detailed information on Couchbase Server <em>Role-Based Access Control</em>, see <a href="../learn/security/authorization-overview.html" class="page">Authorization</a>.)</p>
+<p>(For detailed information on Couchbase Server <em>Role-Based Access Control</em>, see <a href="../learn/security/authorization-overview.html" class="xref page">Authorization</a>.)</p>
 </div>
 <div class="paragraph">
 <p>The code can now be copied again and pasted against the command-line, and executed, with the result-set appearing as standard output.</p>
@@ -4551,7 +4551,7 @@ http://localhost:8094/api/index/travel-sample-index/query \
 </div>
 </div>
 <div class="paragraph">
-<p>This link provides access to a <a href="fts-query-string-syntax.html" class="page">page</a> of information on <em>Query String</em> Full Text Search queries.</p>
+<p>This link provides access to a <a href="fts-query-string-syntax.html" class="xref page">page</a> of information on <em>Query String</em> Full Text Search queries.</p>
 </div>
 </div>
 </div>
@@ -4579,7 +4579,7 @@ http://localhost:18094/api/index/travel-sample-index/query \
 </div>
 </div>
 <div class="paragraph">
-<p>For additional information on secure communication with Couchbase Server, see <a href="../manage/manage-security/manage-connections-and-disks.html" class="page">Manage Connections and Disks</a>.</p>
+<p>For additional information on secure communication with Couchbase Server, see <a href="../manage/manage-security/manage-connections-and-disks.html" class="xref page">Manage Connections and Disks</a>.</p>
 </div>
 </div>
 </div>
@@ -4645,7 +4645,7 @@ The initial part of the error-output is as follows:</p>
 <h2 id="further-rest-examples"><a class="anchor" href="#further-rest-examples"></a>Further REST Examples</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Further examples of using the REST API to conduct Full Text Searches can be found in <a href="#fts-query-types.adoc" class="page unresolved">Query Types</a>.</p>
+<p>Further examples of using the REST API to conduct Full Text Searches can be found in <a href="#fts-query-types.adoc" class="xref unresolved">Query Types</a>.</p>
 </div>
 </div>
 </div>
@@ -4653,7 +4653,7 @@ The initial part of the error-output is as follows:</p>
 <h2 id="list-of-rest-features-supporting-full-text-search"><a class="anchor" href="#list-of-rest-features-supporting-full-text-search"></a>List of REST Features Supporting Full Text Search</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The full range of features for Full Text Search, as supported by the Couchbase REST API, is documented as part of the REST API&#8217;s reference information on the page <a href="../rest-api/rest-fts.html" class="page">Full Text Search API</a>.</p>
+<p>The full range of features for Full Text Search, as supported by the Couchbase REST API, is documented as part of the REST API&#8217;s reference information on the page <a href="../rest-api/rest-fts.html" class="xref page">Full Text Search API</a>.</p>
 </div>
 </div>
 </div>

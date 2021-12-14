@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/data/scopes-and-collections.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4473,7 +4473,7 @@ Applications can be assigned per-collection access-rights; allowing each applica
 </div>
 <div class="paragraph">
 <p>A collection can be created and managed by means of the Couchbase Web Console UI, the Couchbase CLI, the Couchbase REST API, and N1QL.
-It can also be created and managed by means of the SDK: see <a href="#3.0@java-sdk:howtos:provisioning-cluster-resources.adoc#collection-management" class="page unresolved">Collection Management</a>.
+It can also be created and managed by means of the SDK: see <a href="#3.0@java-sdk:howtos:provisioning-cluster-resources.adoc#collection-management" class="xref unresolved">Collection Management</a>.
 A collection can be indexed; and it can be dropped.
 The data in a collection can be replicated, by means of <em>Cross Data Center Replication</em> (XDCR), to another collection in the same or in a different bucket.</p>
 </div>
@@ -4486,7 +4486,7 @@ Applications can be assigned per-scope access-rights; allowing each application 
 </div>
 <div class="paragraph">
 <p>A scope can be created and managed by means of the Couchbase Web Console UI, the Couchbase CLI, the Couchbase REST API, and N1QL.
-It can also be created and managed by means of the SDK: see <a href="#3.0@java-sdk:howtos:provisioning-cluster-resources.adoc#collection-management" class="page unresolved">Collection Management</a>.
+It can also be created and managed by means of the SDK: see <a href="#3.0@java-sdk:howtos:provisioning-cluster-resources.adoc#collection-management" class="xref unresolved">Collection Management</a>.
 A scope can be dropped.
 A scope cannot be indexed.
 The contents of a scope can be replicated, by means of <em>Cross Data Center Replication</em> (XDCR), to another scope in the same or in a different bucket.</p>
@@ -4568,9 +4568,9 @@ Once dropped, the default collection cannot be recreated.</p>
 <p>Access to scopes and collections is protected by <em>Role-Based Access Control</em> (RBAC): therefore, appropriate roles must be assigned.</p>
 </div>
 <div class="paragraph">
-<p>For information on RBAC, see <a href="../security/authorization-overview.html" class="page">Authorization</a>.
-For a list of roles, see <a href="../security/roles.html" class="page">Roles</a>.
-For examples of how to assign roles to scopes and collections, see <a href="../../manage/manage-security/manage-users-and-roles.html" class="page">Manage Users, Groups, and Roles</a>.</p>
+<p>For information on RBAC, see <a href="../security/authorization-overview.html" class="xref page">Authorization</a>.
+For a list of roles, see <a href="../security/roles.html" class="xref page">Roles</a>.
+For examples of how to assign roles to scopes and collections, see <a href="../../manage/manage-security/manage-users-and-roles.html" class="xref page">Manage Users, Groups, and Roles</a>.</p>
 </div>
 </div>
 </div>
@@ -4579,7 +4579,7 @@ For examples of how to assign roles to scopes and collections, see <a href="../.
 <div class="sectionbody">
 <div class="paragraph">
 <p>An <em>expiration</em> value can be established on a collection: this determines the maximum expiration time of individual items within the collection.
-For information, see <a href="expiration.html" class="page">Expiration</a>.</p>
+For information, see <a href="expiration.html" class="xref page">Expiration</a>.</p>
 </div>
 </div>
 </div>
@@ -4587,26 +4587,26 @@ For information, see <a href="expiration.html" class="page">Expiration</a>.</p>
 <h2 id="managing-scopes-and-collections"><a class="anchor" href="#managing-scopes-and-collections"></a>Managing Scopes and Collections</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>See <a href="../../manage/manage-scopes-and-collections/manage-scopes-and-collections.html" class="page">Manage Scopes and Collections</a>, for information on how to use the CLI and REST API to create, maintain, and delete scopes and collections.</p>
+<p>See <a href="../../manage/manage-scopes-and-collections/manage-scopes-and-collections.html" class="xref page">Manage Scopes and Collections</a>, for information on how to use the CLI and REST API to create, maintain, and delete scopes and collections.</p>
 </div>
 <div class="paragraph">
-<p>For information on using the Backup Service to <em>inspect</em> scopes and collections within backed-up data, and to <em>restore</em> data to specific scopes and collections, see <a href="../../manage/manage-backup-and-restore/manage-backup-and-restore.html" class="page">Manage Backup and Restore</a>.</p>
+<p>For information on using the Backup Service to <em>inspect</em> scopes and collections within backed-up data, and to <em>restore</em> data to specific scopes and collections, see <a href="../../manage/manage-backup-and-restore/manage-backup-and-restore.html" class="xref page">Manage Backup and Restore</a>.</p>
 </div>
 <div class="paragraph">
-<p>For information on using scopes and collections with <em>Cross Data Center Replication</em> (XDCR), see <a href="../../manage/manage-xdcr/replicate-using-scopes-and-collections.html" class="page">Replicate Using Scopes and Collections</a>.</p>
+<p>For information on using scopes and collections with <em>Cross Data Center Replication</em> (XDCR), see <a href="../../manage/manage-xdcr/replicate-using-scopes-and-collections.html" class="xref page">Replicate Using Scopes and Collections</a>.</p>
 </div>
 <div class="paragraph">
-<p>For a complete reference to the CLI command for managing scopes and collections, see <a href="#cli:cbcli/couchbase-cli-collection-manage.adoc" class="page unresolved">collection-manage</a>.</p>
+<p>For a complete reference to the CLI command for managing scopes and collections, see <a href="#cli:cbcli/couchbase-cli-collection-manage.adoc" class="xref unresolved">collection-manage</a>.</p>
 </div>
 <div class="paragraph">
-<p>For reference pages for the REST API commands that manage scopes and collections, see <a href="../../rest-api/scopes-and-collections-api.html" class="page">Scopes and Collections REST API</a>.</p>
+<p>For reference pages for the REST API commands that manage scopes and collections, see <a href="../../rest-api/scopes-and-collections-api.html" class="xref page">Scopes and Collections REST API</a>.</p>
 </div>
 <div class="paragraph">
-<p>For the <code>cbstats</code> reference pages for scopes and collections, see <a href="../../cli/cbstats/cbstats-scopes.html" class="page">scopes</a>, <a href="../../cli/cbstats/cbstats-scopes-details.html" class="page">scopes-details</a>, <a href="../../cli/cbstats/cbstats-collections.html" class="page">collections</a>, and <a href="../../cli/cbstats/cbstats-collections-details.html" class="page">collections-details</a>.</p>
+<p>For the <code>cbstats</code> reference pages for scopes and collections, see <a href="../../cli/cbstats/cbstats-scopes.html" class="xref page">scopes</a>, <a href="../../cli/cbstats/cbstats-scopes-details.html" class="xref page">scopes-details</a>, <a href="../../cli/cbstats/cbstats-collections.html" class="xref page">collections</a>, and <a href="../../cli/cbstats/cbstats-collections-details.html" class="xref page">collections-details</a>.</p>
 </div>
 <div class="paragraph">
 <p>As indicated above, it is possible to create, maintain, and delete scopes and collections using the N1QL query language.
-See the <a href="../../n1ql/n1ql-language-reference/index.html" class="page">N1QL Language Reference</a> for further details.</p>
+See the <a href="../../n1ql/n1ql-language-reference/index.html" class="xref page">N1QL Language Reference</a> for further details.</p>
 </div>
 </div>
 </div>
@@ -4615,7 +4615,7 @@ See the <a href="../../n1ql/n1ql-language-reference/index.html" class="page">N1Q
 <div class="sectionbody">
 <div class="paragraph">
 <p>The 3.0 API versions of Couchbase SDKs work with scopes and collections.
-For information, see the <a href="#3.0@java-sdk:howtos:working-with-collections.adoc" class="page unresolved">Java Howto doc</a>.</p>
+For information, see the <a href="#3.0@java-sdk:howtos:working-with-collections.adoc" class="xref unresolved">Java Howto doc</a>.</p>
 </div>
 </div>
 </div>

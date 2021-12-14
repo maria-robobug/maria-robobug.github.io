@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/clusters-and-availability/intra-cluster-replication.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4468,9 +4468,9 @@ Intra-cluster replication replicates data across the nodes of a cluster, by mean
 <p>Intra-cluster replication involves replicating data across the nodes of a cluster.</p>
 </div>
 <div class="paragraph">
-<p>Couchbase <a href="../data/data.html" class="page">Data</a> is defined logically to reside in <a href="../buckets-memory-and-storage/buckets.html" class="page">Buckets</a>.
-Each bucket, when defined, is implemented by Couchbase Server as <a href="../buckets-memory-and-storage/vbuckets.html" class="page">vBuckets</a>, up to 1024 of which thereby exist in memory (and, in the case of Couchbase Buckets, on disk); the exact number at any given time depending on the number of items to be stored.
-Items are associated with vBuckets by means of a hashing algorithm, and buckets are assigned to nodes according to a fixed mapping, determined and updated by the <em>Master Services</em> of the <a href="cluster-manager.html#ns-server" class="page">ns-server</a> component of the <em>Cluster Manager</em>.</p>
+<p>Couchbase <a href="../data/data.html" class="xref page">Data</a> is defined logically to reside in <a href="../buckets-memory-and-storage/buckets.html" class="xref page">Buckets</a>.
+Each bucket, when defined, is implemented by Couchbase Server as <a href="../buckets-memory-and-storage/vbuckets.html" class="xref page">vBuckets</a>, up to 1024 of which thereby exist in memory (and, in the case of Couchbase Buckets, on disk); the exact number at any given time depending on the number of items to be stored.
+Items are associated with vBuckets by means of a hashing algorithm, and buckets are assigned to nodes according to a fixed mapping, determined and updated by the <em>Master Services</em> of the <a href="cluster-manager.html#ns-server" class="xref page">ns-server</a> component of the <em>Cluster Manager</em>.</p>
 </div>
 <div class="paragraph">
 <p>Up to three <em>replica</em> buckets can be defined for every bucket.
@@ -4479,7 +4479,7 @@ A vBucket that is part of the original implementation of the defined bucket refe
 Therefore, a bucket defined with two replicas has 1024 active vBuckets and 2048 replica vBuckets.
 Typically, only active vBuckets are accessed for read and write operations: although vBuckets <em>are</em> able to support <em>read</em> requests.
 Nevertheless, vBuckets receive a continuous stream of mutations from the active vBucket by means of the <em>Database Change Protocol</em> (DCP), and are thereby kept constantly up to date.
-To ensure maximum availability of data in case of node-failures, the <em>Master Services</em> for the cluster calculate and implement the optimal <a href="cluster-manager.html#vbucket-distribution" class="page">vBucket Distribution</a> across available nodes: consequently, the chance of data-loss through the failure of an individual node is minimized, since replicas are available on the nodes that remain.
+To ensure maximum availability of data in case of node-failures, the <em>Master Services</em> for the cluster calculate and implement the optimal <a href="cluster-manager.html#vbucket-distribution" class="xref page">vBucket Distribution</a> across available nodes: consequently, the chance of data-loss through the failure of an individual node is minimized, since replicas are available on the nodes that remain.
 This is shown by the following illustration:</p>
 </div>
 <div id="vbucket_replication" class="imageblock text-left">
@@ -4495,16 +4495,16 @@ The distribution of vBuckets indicates a likely distribution calculated by Couch
 <div class="paragraph">
 <p>When a node becomes unavailable, <em>failover</em> can be performed: meaning that the Cluster Manager is instructed to read and write data only on those cluster-nodes that are still available.
 Failover can be performed by manual intervention, or automatically: as part of this process, where required, replica vBuckets are promoted to active status.
-<a href="automatic-failover.html" class="page">Automatic Failover</a> can be performed for one node at a time, up to a configurable number of times, the maximum being three.
+<a href="automatic-failover.html" class="xref page">Automatic Failover</a> can be performed for one node at a time, up to a configurable number of times, the maximum being three.
 Automatic failover never occurs where data-loss might result.</p>
 </div>
 <div class="paragraph">
-<p>For information on configuring replicas, see <a href="../../manage/manage-buckets/create-bucket.html" class="page">Create a Bucket</a>.
+<p>For information on configuring replicas, see <a href="../../manage/manage-buckets/create-bucket.html" class="xref page">Create a Bucket</a>.
 As a rule, configure one replica for a cluster of up to five nodes; one or two
 replicas for from five to ten nodes; and one, two, or three replicas for over ten nodes.</p>
 </div>
 <div class="paragraph">
-<p>Note that intra-cluster availability can further be optimized by defining <a href="groups.html" class="page">Groups</a>.</p>
+<p>Note that intra-cluster availability can further be optimized by defining <a href="groups.html" class="xref page">Groups</a>.</p>
 </div>
 </div>
 </div>
@@ -4527,12 +4527,12 @@ DCP streams changes made in memory to items, by means of a <em>replication queue
 <li>
 <p><em>Application client</em>: A client external to the cluster.
 Transmits <em>read</em>, <em>write</em>, <em>update</em>, <em>delete</em>, and <em>query</em> requests to the server-cluster.
-See <a href="../buckets-memory-and-storage/compression.html" class="page">Compression</a>, for an illustration.</p>
+See <a href="../buckets-memory-and-storage/compression.html" class="xref page">Compression</a>, for an illustration.</p>
 </li>
 <li>
 <p><em>DCP client</em>: A Couchbase client that is either internal or external to the cluster.
 Streams data from one or more Couchbase Server-nodes, in support of intra-cluster replication, indexing, XDCR, services, incremental backup, connectors, and mobile synchronicity.
-See <a href="../buckets-memory-and-storage/compression.html" class="page">Compression</a>, for an illustration.</p>
+See <a href="../buckets-memory-and-storage/compression.html" class="xref page">Compression</a>, for an illustration.</p>
 </li>
 <li>
 <p><em>Failover log</em>: A list of previously known vBucket-versions, for a vBucket.

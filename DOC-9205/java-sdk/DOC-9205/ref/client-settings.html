@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="java-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/java-sdk/DOC-9205/ref/client-settings.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3849,7 +3849,7 @@ Unless you set <code>enableTls</code> to <code>true</code>, none of the other se
 <p>Set this to <code>true</code> to encrypt all communication between the client and server using TLS.
 This feature requires the Enterprise Edition of Couchbase Server 3.0 or later.
 If TLS is enabled you must also specify the trusted certificates by calling exactly one of <code>trustCertificate</code>, <code>trustCertificates</code>, or <code>trustManagerFactory</code>.
-Please see the <a href="../howtos/managing-connections.html" class="page">Managing Connections</a> section for more details on how to set it up properly.</p>
+Please see the <a href="../howtos/managing-connections.html" class="xref page">Managing Connections</a> section for more details on how to set it up properly.</p>
 </div>
 </dd>
 <dt class="hdlist1">Name: <strong>Disabling Native TLS Provider</strong></dt>
@@ -3878,7 +3878,7 @@ If <code>enableTls</code> is  <code>false</code> then <code>enableNativeTls</cod
 </div>
 <div class="paragraph">
 <p>Path to a file containing a single X.509 certificate to trust as a Certificate Authority when establishing secure connections.
-See the <a href="../howtos/managing-connections.html#ssl" class="page">Connection Management</a> section for more details on how to set it up properly.</p>
+See the <a href="../howtos/managing-connections.html#ssl" class="xref page">Connection Management</a> section for more details on how to set it up properly.</p>
 </div>
 </dd>
 <dt class="hdlist1">Name: <strong>TLS Certificates</strong></dt>
@@ -3892,7 +3892,7 @@ See the <a href="../howtos/managing-connections.html#ssl" class="page">Connectio
 </div>
 <div class="paragraph">
 <p>If you wish to trust more than one certificate, or prefer to load the certificate yourself, then call this method to specify the certificates to trust as Certificate Authorities when establishing secure connections.
-See the <a href="../howtos/managing-connections.html#ssl" class="page">Connection Management</a> section for more details on how to set it up properly.</p>
+See the <a href="../howtos/managing-connections.html#ssl" class="xref page">Connection Management</a> section for more details on how to set it up properly.</p>
 </div>
 </dd>
 <dt class="hdlist1">Name: <strong>Custom TLS Trust Manager Factory</strong></dt>
@@ -3906,7 +3906,7 @@ See the <a href="../howtos/managing-connections.html#ssl" class="page">Connectio
 </div>
 <div class="paragraph">
 <p>As an alternative to specifying the certificates to trust, you can specify a custom <code>TrustManagerFactory</code> to use when establishing secure connections.
-See the <a href="../howtos/managing-connections.html#ssl" class="page">Connection Management</a> section for more details on how to set it up properly.</p>
+See the <a href="../howtos/managing-connections.html#ssl" class="xref page">Connection Management</a> section for more details on how to set it up properly.</p>
 </div>
 </dd>
 </dl>
@@ -3941,7 +3941,7 @@ The associated <code>ClusterEnvironement.Builder</code> method is called <code>i
 </div>
 <div class="paragraph">
 <p>Gets the bootstrap node list from a DNS SRV record.
-See the <a href="../howtos/managing-connections.html#using-dns-srv-records" class="page">Connection Management</a> section for more information on how to use it properly.</p>
+See the <a href="../howtos/managing-connections.html#using-dns-srv-records" class="xref page">Connection Management</a> section for more information on how to use it properly.</p>
 </div>
 </dd>
 <dt class="hdlist1">Name: <strong>Mutation Tokens Enabled</strong></dt>
@@ -4081,7 +4081,7 @@ The recommendation is keeping it at 1 unless there is other evidence.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<a href="../concept-docs/durability-replication-failure-considerations.html#synchronous-writes" class="page">Durable Write</a> operations with Couchbase Server 6.5 and above require up to 16 kvEndpoints per node, for most efficient operation, unless the environment dictates something a little lower.
+<a href="../concept-docs/durability-replication-failure-considerations.html#synchronous-writes" class="xref page">Durable Write</a> operations with Couchbase Server 6.5 and above require up to 16 kvEndpoints per node, for most efficient operation, unless the environment dictates something a little lower.
 </td>
 </tr>
 </table>
@@ -4272,7 +4272,7 @@ This includes all commands like get(), getFromReplica() and all mutation command
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<a href="../concept-docs/durability-replication-failure-considerations.html#synchronous-writes" class="page">Durable Write operations</a> have their own timeout setting, <code>kvDurableTimeout</code>, see below.
+<a href="../concept-docs/durability-replication-failure-considerations.html#synchronous-writes" class="xref page">Durable Write operations</a> have their own timeout setting, <code>kvDurableTimeout</code>, see below.
 </td>
 </tr>
 </table>
@@ -4726,7 +4726,7 @@ Some options may be commonly used together in certain envionments or to achieve 
 <div class="sect2">
 <h3 id="constrained-network-environments"><a class="anchor" href="#constrained-network-environments"></a>Constrained Network Environments</h3>
 <div class="paragraph">
-<p>Though <a href="../project-docs/compatibility.html#network-requirements" class="page">wide area network</a> (WAN) connections are not directly supported, some development and non-critical operations activities across a WAN are convenient.
+<p>Though <a href="../project-docs/compatibility.html#network-requirements" class="xref page">wide area network</a> (WAN) connections are not directly supported, some development and non-critical operations activities across a WAN are convenient.
 These settings are some you may want to consider adjusting:</p>
 </div>
 <div class="ulist">

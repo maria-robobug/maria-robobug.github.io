@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-logging/manage-logging.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4486,7 +4486,7 @@ This may appear as follows:</p>
 (Note that the  <code>logs</code> directory may include <code>audit.log</code>.
 This is a special log file, used to manage cluster-security, and is handled separately from the other log files.
 The information provided throughout the remainder of this page — on collecting, uploading, redacting, and more — <em>does not</em> apply to <code>audit.log</code>.
-For information on <code>audit.log</code>, see <a href="../../learn/security/auditing.html" class="page">Auditing</a>.)</p>
+For information on <code>audit.log</code>, see <a href="../../learn/security/auditing.html" class="xref page">Auditing</a>.)</p>
 </div>
 <div class="paragraph">
 <p>Additionally, <em>explicit logging</em> can be performed by the user.
@@ -4498,7 +4498,7 @@ The results are saved as zip files: each zip file contains the log-data generate
 <div class="paragraph">
 <p>Explicit logging can be performed by means of the Couchbase CLI utility <code>cbcollect_info</code>.
 The documentation for this utility, provided
-<a href="../../cli/cbcollect-info-tool.html" class="page">here</a>, includes a complete list of the log files that can be created, and a description of the contents of each.</p>
+<a href="../../cli/cbcollect-info-tool.html" class="xref page">here</a>, includes a complete list of the log files that can be created, and a description of the contents of each.</p>
 </div>
 <div class="paragraph">
 <p>Additionally, administrators with either the <strong>Full Admin</strong> or <strong>Cluster Admin</strong> role can perform explicit logging by means of Couchbase Web Console: on the <strong>Logs</strong> page, left-click on the <strong class="ui">Collect Information</strong> tab, located near the top.
@@ -4553,7 +4553,7 @@ Each file is saved as a zip file in the stated temporary location.</p>
 <p>Log files can be uploaded to Couchbase, for inspection by Couchbase Support.</p>
 </div>
 <div class="paragraph">
-<p>For information on performing upload at the command-prompt, see <a href="../../cli/cbcollect-info-tool.html" class="page">cbcollect_info</a>.
+<p>For information on performing upload at the command-prompt, see <a href="../../cli/cbcollect-info-tool.html" class="xref page">cbcollect_info</a>.
 To upload by means of Couchbase Web Console, before starting the collection-process, check the <strong class="ui">Upload to Couchbase</strong> checkbox:</p>
 </div>
 <div id="upload_to_couchbase_checkbox" class="imageblock text-left">
@@ -4685,7 +4685,7 @@ Bucket=&lt;UD&gt;e16d86f91f9fd0b110be28ad00e348664b435e9e&lt;/UD&gt;</code></pre
 </div>
 <div class="paragraph">
 <p>For information on performing explicit logging with redaction at the command-prompt, see
-<a href="../../cli/cbcollect-info-tool.html" class="page">cbcollect_info</a>.</p>
+<a href="../../cli/cbcollect-info-tool.html" class="xref page">cbcollect_info</a>.</p>
 </div>
 <div class="paragraph">
 <p>To perform explicit logging with redaction by means of Couchbase Web Console, before starting the collection-process, access the <strong>Redact Logs</strong> panel, on the <strong>Collect Information</strong> screen.
@@ -4874,14 +4874,14 @@ It is output in common log format and contains several important fields such as 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>prometheus</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Log for the instance of <a href="https://prometheus.io" target="_blank" rel="noopener">Prometheus</a> that runs on the current node, supporting the gathering and management of Couchbase-Server <em>metrics</em> .
-(See the <a href="../../metrics-reference/metrics-reference.html" class="page">Metrics Reference</a>, for more information.)</p></td>
+(See the <a href="../../metrics-reference/metrics-reference.html" class="xref page">Metrics Reference</a>, for more information.)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>rebalance</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Contains reports on rebalances that have occurred.
 Up to the last <em>five</em> reports are maintained.
 Each report is named in accordance with the time it was run: for example, <code>rebalance_report_2020-03-17T11:10:17Z.json</code>.
-See the <a href="../../rebalance-reference/rebalance-reference.html" class="page">Rebalance Reference</a>, for detailed information.</p></td>
+See the <a href="../../rebalance-reference/rebalance-reference.html" class="xref page">Rebalance Reference</a>, for detailed information.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>reports</code></p></td>
@@ -5001,7 +5001,7 @@ For example: <code>/opt/couchbase/etc/couchbase/static_config</code>.</p>
 For example: <code>{error_logger_mf_dir, "/home/user/cb/opt/couchbase/var/lib/couchbase/logs"}</code></p>
 </li>
 <li>
-<p>Stop and restart Couchbase Server. See <a href="../../install/startup-shutdown.html" class="page">Startup and Shutdown</a>.</p>
+<p>Stop and restart Couchbase Server. See <a href="../../install/startup-shutdown.html" class="xref page">Startup and Shutdown</a>.</p>
 </li>
 </ol>
 </div>
@@ -5035,7 +5035,7 @@ For example: <code>/opt/couchbase/etc/couchbase/static_config</code>.</p>
 (Parameters with the <code>loglevel_</code> prefix establish logging levels.)</p>
 </li>
 <li>
-<p>Stop and restart Couchbase Server. See <a href="../../install/startup-shutdown.html" class="page">Startup and Shutdown</a>.</p>
+<p>Stop and restart Couchbase Server. See <a href="../../install/startup-shutdown.html" class="xref page">Startup and Shutdown</a>.</p>
 </li>
 </ol>
 </div>
@@ -5077,7 +5077,7 @@ The available loggers are <code>ns_server</code>, <code>couchdb</code>, <code>us
 <div class="sectionbody">
 <div class="paragraph">
 <p>To collect logs, use the CLI command
-<a href="../../cli/cbcollect-info-tool.html" class="page">cbcollect_info</a>.</p>
+<a href="../../cli/cbcollect-info-tool.html" class="xref page">cbcollect_info</a>.</p>
 </div>
 <div class="paragraph">
 <p>To start and stop log-collection, and to collect log-status, use:</p>
@@ -5085,13 +5085,13 @@ The available loggers are <code>ns_server</code>, <code>couchdb</code>, <code>us
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#cli:cbcli/couchbase-cli-collect-logs-start.adoc" class="page unresolved">collect-logs-start</a></p>
+<p><a href="#cli:cbcli/couchbase-cli-collect-logs-start.adoc" class="xref unresolved">collect-logs-start</a></p>
 </li>
 <li>
-<p><a href="#cli:cbcli/couchbase-cli-collect-logs-stop.adoc" class="page unresolved">collect-logs-stop</a></p>
+<p><a href="#cli:cbcli/couchbase-cli-collect-logs-stop.adoc" class="xref unresolved">collect-logs-stop</a></p>
 </li>
 <li>
-<p><a href="#cli:cbcli/couchbase-cli-collect-logs-status.adoc" class="page unresolved">collect-logs-status</a></p>
+<p><a href="#cli:cbcli/couchbase-cli-collect-logs-status.adoc" class="xref unresolved">collect-logs-status</a></p>
 </li>
 </ul>
 </div>
@@ -5105,7 +5105,7 @@ The available loggers are <code>ns_server</code>, <code>couchdb</code>, <code>us
 </div>
 <div class="paragraph">
 <p>To retrieve log information use the <code>/diag</code> and <code>/sasl_logs</code>
-<a href="../../rest-api/logs-rest-api.html" class="page">REST endpoints</a>.</p>
+<a href="../../rest-api/logs-rest-api.html" class="xref page">REST endpoints</a>.</p>
 </div>
 </div>
 </div>

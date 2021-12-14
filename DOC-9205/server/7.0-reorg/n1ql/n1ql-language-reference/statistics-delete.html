@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/statistics-delete.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4476,7 +4476,7 @@ You can use the <code>UPDATE STATISTICS</code> statement to delete statistics.
 <p>The <code>UPDATE STATISTICS</code> statement provides a syntax which enables you to delete statistics for a set of index expressions, or for an entire keyspace.</p>
 </div>
 <div class="paragraph">
-<p>Since the <a href="cost-based-optimizer.html" class="page">cost-based optimizer</a> uses statistics for cost calculations, deleting statistics for a set of index expressions effectively turns off the cost-based optimizer for queries which utilize predicates on those expressions.
+<p>Since the <a href="cost-based-optimizer.html" class="xref page">cost-based optimizer</a> uses statistics for cost calculations, deleting statistics for a set of index expressions effectively turns off the cost-based optimizer for queries which utilize predicates on those expressions.
 Deleting all statistics for a keyspace turns off the cost-based optimizer for all queries referencing that keyspace.</p>
 </div>
 </div>
@@ -4522,7 +4522,7 @@ Including either of these keywords makes no difference to the operation of the s
 </div>
 <div id="keyspace-path" class="listingblock">
 <div class="content">
-<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a> ]</pre>
+<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4532,7 +4532,7 @@ Including either of these keywords makes no difference to the operation of the s
 </div>
 <div id="keyspace-partial" class="listingblock">
 <div class="content">
-<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a></pre>
+<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4542,7 +4542,7 @@ Including either of these keywords makes no difference to the operation of the s
 </div>
 <div class="paragraph">
 <p>The simple name or fully-qualified name of the keyspace for which you want to delete statistics.
-Refer to the <a href="createindex.html#keyspace-ref" class="page">CREATE INDEX</a> statement for details of the syntax.</p>
+Refer to the <a href="createindex.html#keyspace-ref" class="xref page">CREATE INDEX</a> statement for details of the syntax.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4587,13 +4587,13 @@ This may be any expression that is supported as an index key, including, but not
 <div class="ulist">
 <ul>
 <li>
-<p>A <a href="index.html" class="page">N1QL expression</a> over any fields in the document, as used in a secondary index.</p>
+<p>A <a href="index.html" class="xref page">N1QL expression</a> over any fields in the document, as used in a secondary index.</p>
 </li>
 <li>
-<p>An <a href="indexing-arrays.html#array-expr" class="page">array expression</a>, as used when creating an array index.</p>
+<p>An <a href="indexing-arrays.html#array-expr" class="xref page">array expression</a>, as used when creating an array index.</p>
 </li>
 <li>
-<p>An <a href="indexing-meta-info.html#metakeyspace_expr-property" class="page">expression with the META() function</a>, as used in a metadata index.</p>
+<p>An <a href="indexing-meta-info.html#metakeyspace_expr-property" class="xref page">expression with the META() function</a>, as used in a metadata index.</p>
 </li>
 </ul>
 </div>
@@ -4690,19 +4690,19 @@ DELETE STATISTICS (city, country, free_breakfast);</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="updatestatistics.html" class="page">UPDATE STATISTICS</a> overview</p>
+<p><a href="updatestatistics.html" class="xref page">UPDATE STATISTICS</a> overview</p>
 </li>
 <li>
-<p><a href="statistics-expressions.html" class="page">Updating Statistics for Index Expressions</a></p>
+<p><a href="statistics-expressions.html" class="xref page">Updating Statistics for Index Expressions</a></p>
 </li>
 <li>
-<p><a href="statistics-index.html" class="page">Updating Statistics for a Single Index</a></p>
+<p><a href="statistics-index.html" class="xref page">Updating Statistics for a Single Index</a></p>
 </li>
 <li>
-<p><a href="statistics-indexes.html" class="page">Updating Statistics for Multiple Indexes</a></p>
+<p><a href="statistics-indexes.html" class="xref page">Updating Statistics for Multiple Indexes</a></p>
 </li>
 <li>
-<p><a href="cost-based-optimizer.html" class="page">Cost-Based Optimizer</a></p>
+<p><a href="cost-based-optimizer.html" class="xref page">Cost-Based Optimizer</a></p>
 </li>
 </ul>
 </div>

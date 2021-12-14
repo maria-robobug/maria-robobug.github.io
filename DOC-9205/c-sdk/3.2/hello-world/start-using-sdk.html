@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="c-sdk">
 <meta name="dcterms.identifier" content="3.2">
 <meta name="page-url" content="/c-sdk/3.2/hello-world/start-using-sdk.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3712,10 +3712,10 @@ Follow the instructions in the archive&#8217;s <a href="https://github.com/couch
 <p><code><strong>libcouchbase3-tools</strong></code>: The command line utilities (<code><strong>cbc</strong></code> and others).</p>
 </li>
 <li>
-<p><code><strong>libcouchbase3-libevent</strong></code>: Optional but recommended component for I/O performance. Can also be used to integrate with libevent (see <a href="../howtos/concurrent-async-apis.html" class="page">Asynchronous Programming</a>).</p>
+<p><code><strong>libcouchbase3-libevent</strong></code>: Optional but recommended component for I/O performance. Can also be used to integrate with libevent (see <a href="../howtos/concurrent-async-apis.html" class="xref page">Asynchronous Programming</a>).</p>
 </li>
 <li>
-<p><code><strong>libcouchbase3-libev</strong></code>: Optional, for use with applications that make use of event loop integration with libev (see <a href="../howtos/concurrent-async-apis.html" class="page">Asynchronous Programming</a>).
+<p><code><strong>libcouchbase3-libev</strong></code>: Optional, for use with applications that make use of event loop integration with libev (see <a href="../howtos/concurrent-async-apis.html" class="xref page">Asynchronous Programming</a>).
 To install the C SDK from a static binary package or by manually configuring the repositories, you can use the following procedures.</p>
 </li>
 </ul>
@@ -3917,7 +3917,7 @@ libcouchbase3-tools - library for the Couchbase protocol</code></pre>
 </div>
 <div class="paragraph">
 <p>The following commands show steps to execute for the current version on a <strong>CentOS 8</strong> box.
-Check the <a href="../project-docs/sdk-release-notes.html#downloads" class="page">Downloads table</a> for other Redhat based systems.</p>
+Check the <a href="../project-docs/sdk-release-notes.html#downloads" class="xref page">Downloads table</a> for other Redhat based systems.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -3961,7 +3961,7 @@ Check the <a href="../project-docs/sdk-release-notes.html#downloads" class="page
 </div>
 <div class="paragraph">
 <p>The following commands show steps to execute for the current version on a <strong>Debian 10 (buster)</strong> box.
-Check the <a href="../project-docs/sdk-release-notes.html#downloads" class="page">Downloads table</a> for the other DEB-based distributions.</p>
+Check the <a href="../project-docs/sdk-release-notes.html#downloads" class="xref page">Downloads table</a> for the other DEB-based distributions.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -4049,7 +4049,7 @@ Once <em>homebrew</em> is configured:</p>
 <h2 id="install-windows"><a class="anchor" href="#install-windows"></a>Windows Installation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Windows binary packages can be found in the <a href="../project-docs/sdk-release-notes.html#downloads" class="page">Downloads table</a> for each supported version of libcouchbase.
+<p>Windows binary packages can be found in the <a href="../project-docs/sdk-release-notes.html#downloads" class="xref page">Downloads table</a> for each supported version of libcouchbase.
 Included are the header files, release and debug variants of the DLLs and import libraries, and release and debug variants of the command line tools.
 Note that the C SDK does not have any preferred installation path, and it is up to you to determine where to place <code>libcouchbase.dll</code>.</p>
 </div>
@@ -4153,9 +4153,9 @@ lcb_createopts_credentials(create_options, argv[2], strlen(argv[2]), argv[3], st
 <p>If you are connecting to <a href="https://docs.couchbase.com/cloud/index.html">Couchbase Capella</a> rather than a local Couchbase Server, see the <a href="#cloud-connections">Cloud section</a>, below.</p>
 </div>
 <div class="paragraph">
-<p>Couchbase uses <a href="#7.0@server:learn:security/roles.adoc" class="page unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
+<p>Couchbase uses <a href="#7.0@server:learn:security/roles.adoc" class="xref unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
 Here we will use the <em>Full Admin</em> role created during installation of the Couchbase Data Platform.
-For production client code, you will want to use <a href="../howtos/managing-connections.html#rbac" class="page">more appropriate, restrictive settings</a>, but here we want to get you up and running quickly.
+For production client code, you will want to use <a href="../howtos/managing-connections.html#rbac" class="xref page">more appropriate, restrictive settings</a>, but here we want to get you up and running quickly.
 If you&#8217;re developing client code on the same VM or machine as the Couchbase Server, your URI can be <em>localhost</em>.</p>
 </div>
 <div class="listingblock">
@@ -4189,7 +4189,7 @@ rc = lcb_open(instance, name, strlen(name)),</code></pre>
 <p>If you installed the travel sample data bucket, substitute <em>travel-sample</em> for <em>bucket-name</em>.</p>
 </div>
 <div class="paragraph">
-<p>The 3.x SDKs support full integration with the <a href="../concept-docs/collections.html" class="page">Collections</a> feature in the latest release of Couchbase Server, 7.0.
+<p>The 3.x SDKs support full integration with the <a href="../concept-docs/collections.html" class="xref page">Collections</a> feature in the latest release of Couchbase Server, 7.0.
 This includes complete support of Collections, allowing Documents to be grouped by purpose or theme, according to a specified <em>Scope</em>.
 Here we will use the <code>users</code> collection within the <code>tenant_agent_00</code> scope from <code>travel-sample</code> bucket as an example.</p>
 </div>
@@ -4253,7 +4253,7 @@ rc = lcb_wait(instance);</code></pre>
 </div>
 <div class="paragraph">
 <p>This code shows how you would use a named collection and scope.
-A named or default <a href="#7.0@server:learn:data/scopes-and-collections.adoc" class="page unresolved">collection</a> will provide the same functionality as bucket-level operations did in previous versions of Couchbase Server.</p>
+A named or default <a href="#7.0@server:learn:data/scopes-and-collections.adoc" class="xref unresolved">collection</a> will provide the same functionality as bucket-level operations did in previous versions of Couchbase Server.</p>
 </div>
 </div>
 </div>
@@ -4266,13 +4266,13 @@ A named or default <a href="#7.0@server:learn:data/scopes-and-collections.adoc" 
 <div class="ulist">
 <ul>
 <li>
-<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="page">Constrained Network Environments</a>,</p>
+<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="xref page">Constrained Network Environments</a>,</p>
 </li>
 <li>
-<p><a href="../project-docs/compatibility.html#network-requirements" class="page">Network Requirements</a>,</p>
+<p><a href="../project-docs/compatibility.html#network-requirements" class="xref page">Network Requirements</a>,</p>
 </li>
 <li>
-<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="page">Troubleshooting Guide</a>.</p>
+<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="xref page">Troubleshooting Guide</a>.</p>
 </li>
 </ul>
 </div>
@@ -4283,7 +4283,7 @@ A named or default <a href="#7.0@server:learn:data/scopes-and-collections.adoc" 
 <div class="sectionbody">
 <div class="paragraph">
 <p>The API reference is generated for each release and the latest can be found <a href="http://docs.couchbase.com/sdk-api/couchbase-c-client/">here</a>.
-Older API references are linked from their respective sections in the <a href="../project-docs/sdk-release-notes.html" class="page">Release Notes</a>.</p>
+Older API references are linked from their respective sections in the <a href="../project-docs/sdk-release-notes.html" class="xref page">Release Notes</a>.</p>
 </div>
 <div class="paragraph">
 <p>Couchbase welcomes community contributions to the C SDK.

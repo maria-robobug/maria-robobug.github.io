@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/datefun.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -5020,7 +5020,7 @@ Should be used in conjunction with <code>iso_year</code> to get consistent resul
 <td class="content">
 Many date functions use the local system clock value and timezone of the query node to generate results.
 Therefore, if all nodes running the query service do not have their time appropriately synchronized then you may experience inconsistent behavior.
-It is recommended that all Couchbase Server nodes have their <a href="../../install/synchronize-clocks-using-ntp.html" class="page">time synchronized via NTP</a>.
+It is recommended that all Couchbase Server nodes have their <a href="../../install/synchronize-clocks-using-ntp.html" class="xref page">time synchronized via NTP</a>.
 </td>
 </tr>
 </table>
@@ -5056,7 +5056,7 @@ Similarly, if any of the arguments are <code>NULL</code> then <code>NULL</code> 
 <dl>
 <dt class="hdlist1"><strong>fmt</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
 <p><strong>Optional argument</strong>, if no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
@@ -5169,7 +5169,7 @@ To avoid inconsistencies between multiple calls to <code>CLOCK_MILLIS()</code> w
 <dl>
 <dt class="hdlist1"><strong>fmt</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.
 .</p>
 <div class="paragraph">
 <p><strong>Optional argument</strong>, if no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
@@ -5234,14 +5234,14 @@ This time is the local system time converted to the specified timezone.</p>
 <dl>
 <dt class="hdlist1"><strong>tz</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to convert the local time to.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to convert the local time to.</p>
 <div class="paragraph">
 <p>If this argument is not a valid timezone then <code>null</code> is returned as the result.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>fmt</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
 <p><strong>Optional argument</strong>, if no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
@@ -5313,7 +5313,7 @@ This function is provided for convenience and is the same as <code>CLOCK_TZ('UTC
 <dl>
 <dt class="hdlist1"><strong>fmt</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
 <p><strong>Optional argument</strong>, if no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
@@ -5380,7 +5380,7 @@ This calculation is specified by the arguments <code>n</code> and <code>part</co
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing an Epoch/UNIX timestamp in milliseconds.</p>
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing an Epoch/UNIX timestamp in milliseconds.</p>
 <div class="paragraph">
 <p>If this argument is not an integer then <code>null</code> is returned.</p>
 </div>
@@ -5388,14 +5388,14 @@ This calculation is specified by the arguments <code>n</code> and <code>part</co
 <dt class="hdlist1"><strong>n</strong></dt>
 <dd>
 <p>The value to increment the date component by.
-This value must be an integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, and may be negative to perform date subtraction.</p>
+This value must be an integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, and may be negative to perform date subtraction.</p>
 <div class="paragraph">
 <p>If a non-integer is passed to the function then <code>null</code> is returned.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>part</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
 <p>If an invalid part is passed to the function then <code>null</code> is returned.</p>
 </div>
@@ -5454,19 +5454,19 @@ For example a value of 3 for <code>n</code> and a value of <code>day</code> for 
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the date in a <a href="#date-string">supported date format</a>.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the date in a <a href="#date-string">supported date format</a>.</p>
 </dd>
 <dt class="hdlist1"><strong>n</strong></dt>
 <dd>
 <p>The value to increment the date component by.
-This value must be an integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, and may be negative to perform date subtraction.</p>
+This value must be an integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, and may be negative to perform date subtraction.</p>
 <div class="paragraph">
 <p>If a non-integer is passed to the function then <code>null</code> is returned.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>part</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
 <p>If an invalid part is passed to the function then <code>null</code> is returned.</p>
 </div>
@@ -5525,7 +5525,7 @@ If <code>date1</code> is greater than <code>date2</code>, then the value returne
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the value that is subtracted from <code>date1</code>.</p>
 <div class="paragraph">
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
@@ -5533,7 +5533,7 @@ This is the value that is subtracted from <code>date1</code>.</p>
 </dd>
 <dt class="hdlist1"><strong>date2</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.</p>
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.</p>
 <div class="paragraph">
 <p>This is the value that is subtracted from <code>date1</code>.</p>
 </div>
@@ -5543,7 +5543,7 @@ This is the value that is subtracted from <code>date1</code>.</p>
 </dd>
 <dt class="hdlist1"><strong>part</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
 <p>If an invalid part is passed to the function, then <code>null</code> is returned.</p>
 </div>
@@ -5602,7 +5602,7 @@ If <code>date1</code> is greater than <code>date2</code> then the value returned
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the value that is subtracted from <code>date1</code>.</p>
 <div class="paragraph">
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
@@ -5610,7 +5610,7 @@ This is the value that is subtracted from <code>date1</code>.</p>
 </dd>
 <dt class="hdlist1"><strong>date2</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.</p>
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.</p>
 <div class="paragraph">
 <p>This is the value that is subtracted from <code>date1</code>.</p>
 </div>
@@ -5620,7 +5620,7 @@ This is the value that is subtracted from <code>date1</code>.</p>
 </dd>
 <dt class="hdlist1"><strong>part</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
 <p>If an invalid part is passed to the function, then <code>null</code> is returned.</p>
 </div>
@@ -5754,14 +5754,14 @@ When querying between two dates, you must specify the full date (with time and t
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.</p>
 <div class="paragraph">
 <p>If this argument is not a valid date string then <code>null</code> is returned.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>fmt</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
 <p>If an incorrect format is specified then this defaults to the combined full date and time.</p>
 </div>
@@ -5816,7 +5816,7 @@ When querying between two dates, you must specify the full date (with time and t
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the value that is subtracted from <code>date1</code>.</p>
 <div class="paragraph">
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
@@ -5824,14 +5824,14 @@ This is the value that is subtracted from <code>date1</code>.</p>
 </dd>
 <dt class="hdlist1"><strong>part</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
 <p>If an invalid part is passed to the function, then <code>null</code> is returned.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>tz</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to convert the local time to.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to convert the local time to.</p>
 <div class="paragraph">
 <p><strong>Optional argument</strong>, defaults to the system timezone if not specified.
 If an incorrect time zone is provided, then <code>null</code> is returned.</p>
@@ -5893,7 +5893,7 @@ If an incorrect time zone is provided, then <code>null</code> is returned.</p>
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the value that is subtracted from <code>date1</code>.</p>
 <div class="paragraph">
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
@@ -5901,7 +5901,7 @@ This is the value that is subtracted from <code>date1</code>.</p>
 </dd>
 <dt class="hdlist1"><strong>part</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
 <p>If an invalid part is passed to the function, then <code>null</code> is returned.</p>
 </div>
@@ -5961,7 +5961,7 @@ The difference between each subsequent generated date can be adjusted.</p>
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the value that is subtracted from <code>date1</code>.</p>
 <div class="paragraph">
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
@@ -5969,7 +5969,7 @@ This is the value that is subtracted from <code>date1</code>.</p>
 </dd>
 <dt class="hdlist1"><strong>date2</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.</p>
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.</p>
 <div class="paragraph">
 <p>This is the value that is subtracted from <code>date1</code>.</p>
 </div>
@@ -5979,14 +5979,14 @@ This is the value that is subtracted from <code>date1</code>.</p>
 </dd>
 <dt class="hdlist1"><strong>part</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
 <p>If an invalid part is passed to the function, then <code>null</code> is returned.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>n</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing the value by which to increment the part component for each generated date.</p>
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing the value by which to increment the part component for each generated date.</p>
 <div class="paragraph">
 <p><strong>Optional argument</strong>, if not specified, this defaults to 1.
 If a value which is not an integer is specified, then <code>null</code> is returned.</p>
@@ -6086,7 +6086,7 @@ The input dates can be in any of the <a href="#date-string">supported date forma
 <dl>
 <dt class="hdlist1"><strong>start_date</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
 This is the date used as the start date of the array generation.</p>
 <div class="paragraph">
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
@@ -6094,7 +6094,7 @@ This is the date used as the start date of the array generation.</p>
 </dd>
 <dt class="hdlist1"><strong>end_date</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
 This is the date used as the end date of the array generation, and this value is exclusive, that is, the end date will not be included in the result.</p>
 <div class="paragraph">
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
@@ -6102,14 +6102,14 @@ This is the date used as the end date of the array generation, and this value is
 </dd>
 <dt class="hdlist1"><strong>date_interval</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
 <p>If an invalid part is passed to the function, then <code>null</code> is returned.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>quantity_int</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing the value by which to increment the interval component for each generated date.</p>
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing the value by which to increment the interval component for each generated date.</p>
 <div class="paragraph">
 <p><strong>Optional argument</strong>, if not specified, this defaults to 1.
 If a value which is not an integer is specified, then <code>null</code> is returned.</p>
@@ -6296,7 +6296,7 @@ To ensure that both dates have the same format, you should use <a href="#fn-date
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the date used as the date to truncate.</p>
 <div class="paragraph">
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
@@ -6304,7 +6304,7 @@ This is the date used as the date to truncate.</p>
 </dd>
 <dt class="hdlist1"><strong>part</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> to truncate to.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> to truncate to.</p>
 <div class="paragraph">
 <p>If an invalid part is specified, then <code>null</code> is returned.</p>
 </div>
@@ -6364,7 +6364,7 @@ It is recommended that you do not use this function for very small Epoch/UNIX ti
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
 This is the date that is truncated.</p>
 <div class="paragraph">
 <p>If this argument is not a valid date format, then <code>null</code> is returned.</p>
@@ -6372,7 +6372,7 @@ This is the date that is truncated.</p>
 </dd>
 <dt class="hdlist1"><strong>part</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> to truncate to.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> to truncate to.</p>
 <div class="paragraph">
 <p>If an invalid part is specified, then <code>null</code> is returned.</p>
 </div>
@@ -6427,7 +6427,7 @@ This is the date that is truncated.</p>
 <dl>
 <dt class="hdlist1"><strong>duration</strong></dt>
 <dd>
-<p>A number, or any valid <a href="index.html" class="page">expression</a> which evaluates to a number, which represents the duration to convert to a string.
+<p>A number, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a number, which represents the duration to convert to a string.
 This value is specified in nanoseconds (<code>1x10-9 seconds</code>).</p>
 <div class="paragraph">
 <p>If a value which is not a number is specified, then <code>null</code> is returned.</p>
@@ -6483,7 +6483,7 @@ This value is specified in nanoseconds (<code>1x10-9 seconds</code>).</p>
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
 This is the date to convert to Epoch/UNIX milliseconds.</p>
 <div class="paragraph">
 <p>If this argument is not a valid date format.
@@ -6544,7 +6544,7 @@ then <code>null</code> is returned.</p>
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the date to convert.</p>
 <div class="paragraph">
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
@@ -6552,7 +6552,7 @@ This is the date to convert.</p>
 </dd>
 <dt class="hdlist1"><strong>fmt</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
 <p><strong>Optional argument</strong>, if unspecified or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
@@ -6612,7 +6612,7 @@ It is recommended that you do not use this function for very small Epoch/UNIX ti
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the date to convert.</p>
 <div class="paragraph">
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
@@ -6620,7 +6620,7 @@ This is the date to convert.</p>
 </dd>
 <dt class="hdlist1"><strong>tz</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to convert the local time to.
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to convert the local time to.
 <strong>Optional argument</strong>, defaults to the system timezone if not specified.</p>
 <div class="paragraph">
 <p>If an incorrect time zone is provided, then <code>null</code> is returned.</p>
@@ -6628,7 +6628,7 @@ This is the date to convert.</p>
 </dd>
 <dt class="hdlist1"><strong>fmt</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
 <p><strong>Optional argument</strong>, if no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
@@ -6683,7 +6683,7 @@ This is the date to convert.</p>
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the date to convert to UTC.</p>
 <div class="paragraph">
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
@@ -6691,7 +6691,7 @@ This is the date to convert to UTC.</p>
 </dd>
 <dt class="hdlist1"><strong>fmt</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
 <p><strong>Optional argument</strong>, if unspecified or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
@@ -6755,7 +6755,7 @@ Will not vary during a query.</p>
 <dl>
 <dt class="hdlist1"><strong>fmt</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
 <p><strong>Optional argument</strong>, if no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
@@ -6913,14 +6913,14 @@ Will not vary during a query.</p>
 <dl>
 <dt class="hdlist1"><strong>tz</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to convert the query timestamp to.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to convert the query timestamp to.</p>
 <div class="paragraph">
 <p>If an incorrect time zone is provided then <code>null</code> is returned.</p>
 </div>
 </dd>
 <dt class="hdlist1"><strong>fmt</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
 <p><strong>Optional argument</strong>, if unspecified or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
@@ -7007,7 +7007,7 @@ Will not vary during a query.</p>
 <dl>
 <dt class="hdlist1"><strong>fmt</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
 <p><strong>Optional argument</strong>, if unspecified or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
@@ -7095,7 +7095,7 @@ Will not vary during a query.</p>
 <dl>
 <dt class="hdlist1"><strong>fmt</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
 <p><strong>Optional argument</strong>, if unspecified or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
@@ -7202,7 +7202,7 @@ This accepts the following units:</p>
 <dl>
 <dt class="hdlist1"><strong>duration</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the duration to convert.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the duration to convert.</p>
 <div class="paragraph">
 <p>If an invalid duration string is specified, then <code>null</code> is returned.</p>
 </div>
@@ -7263,7 +7263,7 @@ STR_TO_DURATION('1s') as second;</code></pre>
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
 This is the date to convert to Epoch/UNIX milliseconds.</p>
 <div class="paragraph">
 <p>If this argument is not a valid date format, then <code>null</code> is returned.</p>
@@ -7316,7 +7316,7 @@ The output date format follows the date format of the date passed as input.</p>
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
 This is the date to convert to UTC.</p>
 <div class="paragraph">
 <p>If this argument is not a valid date format, then <code>null</code> is returned.</p>
@@ -7371,7 +7371,7 @@ The output date format follows the date format of the date passed as input.</p>
 <dl>
 <dt class="hdlist1"><strong>date1</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
 This is the date to convert to UTC.</p>
 <div class="paragraph">
 <p>If this argument is not a valid date format then <code>null</code> is returned.</p>
@@ -7379,7 +7379,7 @@ This is the date to convert to UTC.</p>
 </dd>
 <dt class="hdlist1"><strong>tz</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to convert the local time to.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to convert the local time to.</p>
 <div class="paragraph">
 <p>If this argument is not a valid timezone, then <code>null</code> is returned.</p>
 </div>
@@ -7443,11 +7443,11 @@ The output date format follows the date format of the date passed as input.</p>
 <dl>
 <dt class="hdlist1"><strong>expr</strong></dt>
 <dd>
-<p>An integer, or any valid <a href="index.html" class="page">expression</a> which evaluates to an integer, representing an Epoch/UNIX timestamp in milliseconds.</p>
+<p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing an Epoch/UNIX timestamp in milliseconds.</p>
 </dd>
 <dt class="hdlist1"><strong>tz</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to for the expr argument.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to for the expr argument.</p>
 <div class="paragraph">
 <p><strong>Optional argument</strong>, defaults to the system timezone if not specified.
 If an incorrect time zone is provided then <code>null</code> is returned.</p>
@@ -7501,7 +7501,7 @@ Note that his function returns the string value of the day of the week, where <a
 <dl>
 <dt class="hdlist1"><strong>date</strong></dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
 This is the date to convert to UTC.</p>
 <div class="paragraph">
 <p>If this argument is not a valid date format then <code>null</code> is returned.</p>

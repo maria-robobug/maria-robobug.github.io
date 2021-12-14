@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/userfun.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4477,12 +4477,12 @@ User-defined functions have the same syntax as built-in functions, with brackets
 </div>
 <div class="paragraph">
 <p>The name of the function is usually an unqualified identifier, such as <code>func1</code> or <code>`func-1`</code>.
-In this case, the path to the function is determined by the current <a href="../n1ql-intro/sysinfo.html#query-context" class="page">query context</a>.</p>
+In this case, the path to the function is determined by the current <a href="../n1ql-intro/sysinfo.html#query-context" class="xref page">query context</a>.</p>
 </div>
 <div class="paragraph">
 <p>To call a global function in a particular namespace, the function name must be a qualified identifier with a namespace, such as <code>default:func1</code>.
 Similarly, to call a scope function in a particular scope, the function name must be a qualified identifier with the full path to a scope, such as <code>default:`travel-sample`.inventory.func1</code>.
-Refer to <a href="createfunction.html#context" class="page">Global Functions and Scope Functions</a> for more details.</p>
+Refer to <a href="createfunction.html#context" class="xref page">Global Functions and Scope Functions</a> for more details.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4565,11 +4565,11 @@ The result (and the data type of the result) depend on the expression or code th
 <h2 id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Refer to <a href="createfunction.html" class="page">CREATE FUNCTION</a> for details on creating user-defined functions.</p>
+<p>Refer to <a href="createfunction.html" class="xref page">CREATE FUNCTION</a> for details on creating user-defined functions.</p>
 </div>
 <div class="paragraph">
 <p>For simplicity, none of these examples implement any data validation or error checking.
-If necessary, you can use <a href="conditionalops.html" class="page">conditional operators</a> to check the parameters of a user-defined function, and the <a href="metafun.html#abort" class="page">ABORT()</a> function to generate an error if something is wrong.</p>
+If necessary, you can use <a href="conditionalops.html" class="xref page">conditional operators</a> to check the parameters of a user-defined function, and the <a href="metafun.html#abort" class="xref page">ABORT()</a> function to generate an error if something is wrong.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 1. Inline function with expression</div>
@@ -4639,7 +4639,7 @@ LIMIT 5;</code></pre>
 </div>
 <div class="paragraph">
 <p>The following query uses the <code>locations</code> function as the FROM term in a SELECT query.
-Compare this query with <a href="from.html#ex-subquery-1" class="page">Example 2 in FROM Subquery</a>.</p>
+Compare this query with <a href="from.html#ex-subquery-1" class="xref page">Example 2 in FROM Subquery</a>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Query</div>
@@ -4695,7 +4695,7 @@ WHERE l.city = "Gillingham";</code></pre>
 </ol>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="createfunction.html#ex-external" class="page">Example 7 in CREATE FUNCTION</a> for details.</p>
+<p>Refer to <a href="createfunction.html#ex-external" class="xref page">Example 7 in CREATE FUNCTION</a> for details.</p>
 </div>
 <div class="paragraph">
 <p>The following query uses the <code>geohash</code> and <code>adjacent</code> functions to find the 9-figure geohash of the selected hotel, and the geohashes immediately to the north, south, west, and east.</p>
@@ -4742,16 +4742,16 @@ At the latitude of the selected hotel, each geohash represents an area of approx
 <div class="ulist">
 <ul>
 <li>
-<p>To create user-defined functions, refer to <a href="createfunction.html" class="page">CREATE FUNCTION</a>.</p>
+<p>To create user-defined functions, refer to <a href="createfunction.html" class="xref page">CREATE FUNCTION</a>.</p>
 </li>
 <li>
-<p>To execute user-defined functions, refer to <a href="execfunction.html" class="page">EXECUTE FUNCTION</a>.</p>
+<p>To execute user-defined functions, refer to <a href="execfunction.html" class="xref page">EXECUTE FUNCTION</a>.</p>
 </li>
 <li>
-<p>To view user-defined functions, refer to <a href="../../manage/monitor/monitoring-n1ql-query.html#sys-functions" class="page">Monitor Queries</a>.</p>
+<p>To view user-defined functions, refer to <a href="../../manage/monitor/monitoring-n1ql-query.html#sys-functions" class="xref page">Monitor Queries</a>.</p>
 </li>
 <li>
-<p>To drop user-defined functions, refer to <a href="dropfunction.html" class="page">DROP FUNCTION</a>.</p>
+<p>To drop user-defined functions, refer to <a href="dropfunction.html" class="xref page">DROP FUNCTION</a>.</p>
 </li>
 </ul>
 </div>

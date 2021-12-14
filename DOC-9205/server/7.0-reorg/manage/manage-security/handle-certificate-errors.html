@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-security/handle-certificate-errors.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4467,7 +4467,7 @@ Specific errors can arise from use of X.509 certificates: these should be recogn
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following error messages may be encountered when configuring the cluster CA certificate.
-For examples of using the <code>openssl</code> command to generate and inspect certificates, see <a href="configure-server-certificates.html" class="page">Configure Server Certificates</a>.</p>
+For examples of using the <code>openssl</code> command to generate and inspect certificates, see <a href="configure-server-certificates.html" class="xref page">Configure Server Certificates</a>.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -4588,13 +4588,13 @@ certificate:</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Cannot validate certificate for <em>&lt;ip-address&gt;</em> because it doesn&#8217;t contain any IP SANs</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The node certificate does not contain the required IP-address <em>Subject Alternative Name</em>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Recreate the node certificate, specifying the appropriate Subject Alternative Name.
-See <a href="configure-server-certificates.html" class="page">Configure Server Certificates</a>.</p></td>
+See <a href="configure-server-certificates.html" class="xref page">Configure Server Certificates</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Certificate is valid for <em>&lt;ip-address-1&gt;</em>, not &lt;ip-address-2&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The node certificate contains an incorrect IP-address <em>Subject Alternative Name</em>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Recreate the node certificate, specifying the the correct IP-address Subject Alternative Name.
-See <a href="configure-server-certificates.html" class="page">Configure Server Certificates</a>.</p></td>
+See <a href="configure-server-certificates.html" class="xref page">Configure Server Certificates</a>.</p></td>
 </tr>
 </tbody>
 </table>

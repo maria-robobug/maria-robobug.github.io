@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-security/enable-client-certificate-handling.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4531,10 +4531,10 @@ If the client does not present a certificate, the certificate-based authenticati
 <li>
 <p><strong>Mandatory</strong>: Specifies that all clients <em>must</em> present a certificate, in order to authenticate.
 No other form of client-authentication is handled over the secure connection.
-Note that imposing this level of security likely requires the additional measure of disabling non-secure console access: see <a href="manage-console-access.html" class="page">Manage Console Access</a>.</p>
+Note that imposing this level of security likely requires the additional measure of disabling non-secure console access: see <a href="manage-console-access.html" class="xref page">Manage Console Access</a>.</p>
 <div class="paragraph">
 <p>A current limitation is that client certificate authentication cannot be set to mandatory if node-to-node encryption is set to <em>all</em>.
-See <a href="../../learn/clusters-and-availability/node-to-node-encryption.html" class="page">Node-to-Node Encryption</a>.</p>
+See <a href="../../learn/clusters-and-availability/node-to-node-encryption.html" class="xref page">Node-to-Node Encryption</a>.</p>
 </div>
 </li>
 </ul>
@@ -4547,7 +4547,7 @@ See <a href="../../learn/clusters-and-availability/node-to-node-encryption.html"
 Frequently, the username is specified as the certificate&#8217;s <em>Subject Common Name</em>; but it may also be expressed as a <em>Subject Alternative Name</em>.</p>
 </div>
 <div class="paragraph">
-<p>These certificate-configuration options are described in detail in <a href="../../learn/security/certificates.html#identity-encoding-in-client-certificates" class="page">Specifying Usernames for Client-Certificate Authentication</a>; and practical examples of their use are provided in <a href="configure-client-certificates.html" class="page">Configure Client Certificates</a>.
+<p>These certificate-configuration options are described in detail in <a href="../../learn/security/certificates.html#identity-encoding-in-client-certificates" class="xref page">Specifying Usernames for Client-Certificate Authentication</a>; and practical examples of their use are provided in <a href="configure-client-certificates.html" class="xref page">Configure Client Certificates</a>.
 The administrator who configures client-certificate handling on Couchbase Server is expected to anticipate what forms of username-specification are likely to occur in the certificates used by client applications, and to decide how they should be handled.</p>
 </div>
 <div class="paragraph">
@@ -4557,7 +4557,7 @@ Note that the default option is <strong>subject.cn</strong>, which indicates tha
 </div>
 <div class="paragraph">
 <p>For an explanation of <strong>Path</strong>, <strong>Prefix</strong>, and <strong>Delimiter</strong> values, see
-<a href="../../learn/security/certificates.html#identity-encoding-in-client-certificates" class="page">Specifying Usernames for Client-Certificate Authentication</a>.
+<a href="../../learn/security/certificates.html#identity-encoding-in-client-certificates" class="xref page">Specifying Usernames for Client-Certificate Authentication</a>.
 Note that <strong>Prefix</strong> and <strong>Delimiter</strong> are optional; and their fields can therefore be left blank.</p>
 </div>
 </li>
@@ -4573,7 +4573,7 @@ Client certificates will now be handled in accordance with your specification.</
 <h2 id="enable-client-certificate-handling-with-the-cli"><a class="anchor" href="#enable-client-certificate-handling-with-the-cli"></a>Enable Client-Certificate Handling with the CLI</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To use the Couchbase CLI to enable and configure client-certificate handling, use the <a href="#cli:cbcli/couchbase-cli-ssl-manage.adoc" class="page unresolved">ssl-manage</a> command.
+<p>To use the Couchbase CLI to enable and configure client-certificate handling, use the <a href="#cli:cbcli/couchbase-cli-ssl-manage.adoc" class="xref unresolved">ssl-manage</a> command.
 The value assigned to the <code>--set-client-auth</code> parameter of this command should be a JSON document that lists the <em>enablement state</em> and the <em>path-prefix-delimiter</em> combinations for client-certificate handling.
 The document may appear as follows:</p>
 </div>

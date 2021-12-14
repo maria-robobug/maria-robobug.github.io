@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/unnest.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4467,7 +4467,7 @@ The UNNEST clause creates an input object by flattening an array in the parent d
 <h2 id="purpose"><a class="anchor" href="#purpose"></a>Purpose</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>UNNEST</code> clause is used within the <a href="from.html" class="page">FROM</a> clause.
+<p>The <code>UNNEST</code> clause is used within the <a href="from.html" class="xref page">FROM</a> clause.
 If a document or object contains a nested array, UNNEST conceptually performs a join of the nested array with its parent object.
 Each resulting joined object becomes an output of the query.
 Unnests can be chained.</p>
@@ -4494,7 +4494,7 @@ Unnests can be chained.</p>
 </div>
 <div class="paragraph">
 <p>The FROM term is recursive, which enables you to chain the <code>UNNEST</code> clause with any of the terms which are permitted in the <code>FROM</code> clause, including other <code>UNNEST</code> clauses.
-For more information, see the page on the <a href="from.html" class="page">FROM</a> clause.</p>
+For more information, see the page on the <a href="from.html" class="xref page">FROM</a> clause.</p>
 </div>
 <div class="paragraph">
 <p>There are restrictions on what types of FROM terms may be chained and in what order&#8201;&#8212;&#8201;see the descriptions on this page for more details.</p>
@@ -4515,7 +4515,7 @@ For more information, see the page on the <a href="from.html" class="page">FROM<
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="from.html#sec_from-keyspace" class="page">keyspace identifier</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="from.html#sec_from-keyspace" class="xref page">keyspace identifier</a></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">`travel-sample`.inventory.hotel</code></pre>
@@ -4523,7 +4523,7 @@ For more information, see the page on the <a href="from.html" class="page">FROM<
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="from.html#generic-expr" class="page">generic expression</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="from.html#generic-expr" class="xref page">generic expression</a></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">20+10 AS Total</code></pre>
@@ -4531,7 +4531,7 @@ For more information, see the page on the <a href="from.html" class="page">FROM<
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="from.html#select-expr" class="page">subquery</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="from.html#select-expr" class="xref page">subquery</a></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">SELECT ARRAY_AGG(t1.city) AS cities,
@@ -4548,7 +4548,7 @@ WHERE t1.city_cnt &gt; 5;</code></pre>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">previous <a href="join.html" class="page">join</a>, <a href="nest.html" class="page">nest</a>, or <a href="#">unnest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">previous <a href="join.html" class="xref page">join</a>, <a href="nest.html" class="xref page">nest</a>, or <a href="#">unnest</a></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">SELECT *
@@ -4617,7 +4617,7 @@ If omitted, the default is <code>INNER</code>.</p>
 <h3 id="unnest-as-alias"><a class="anchor" href="#unnest-as-alias"></a>AS Alias</h3>
 <div class="paragraph">
 <p>Assigns another name to the right-hand side of the unnest.
-For details, see <a href="from.html#section_ax5_2nx_1db" class="page">AS Clause</a>.</p>
+For details, see <a href="from.html#section_ax5_2nx_1db" class="xref page">AS Clause</a>.</p>
 </div>
 <div class="paragraph">
 <p>Assigning an alias to the path is optional.
@@ -4631,7 +4631,7 @@ If you assign an alias to the path, the <code>AS</code> keyword may be omitted.<
 </td>
 <td class="content">
 <div class="paragraph">
-<p>In Couchbase Server 6.5 and later, if you want to use an <a href="indexing-arrays.html" class="page">ARRAY index</a> for the UNNEST query, you can use any arbitrary alias for the right side of the UNNEST&#8201;&#8212;&#8201;the alias does not have to be the same as the ARRAY index variable name in order to use that index.</p>
+<p>In Couchbase Server 6.5 and later, if you want to use an <a href="indexing-arrays.html" class="xref page">ARRAY index</a> for the UNNEST query, you can use any arbitrary alias for the right side of the UNNEST&#8201;&#8212;&#8201;the alias does not have to be the same as the ARRAY index variable name in order to use that index.</p>
 </div>
 </td>
 </tr>

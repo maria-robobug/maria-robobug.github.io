@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/upsert.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4473,7 +4473,7 @@ UPSERT is a combination of INSERT and UPDATE.
 <p>User executing the UPSERT statement must have the <em>Query Update</em> and <em>Query Insert</em> privileges on the target keyspace.
 If the statement has any RETURNING clauses, then the <em>Query Select</em> privilege is also required on the keyspaces referred in the respective clauses.
 For more details about user roles, see
-<a href="../../learn/security/authorization-overview.html" class="page">Authorization</a>.</p>
+<a href="../../learn/security/authorization-overview.html" class="xref page">Authorization</a>.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -4484,7 +4484,7 @@ For more details about user roles, see
 <td class="content">
 Please note that the examples below will alter the data in your sample buckets.
 To restore your sample data, remove and reinstall the <code>travel-sample</code> bucket.
-Refer to <a href="../../manage/manage-settings/install-sample-buckets.html" class="page">Sample Buckets</a> for details.
+Refer to <a href="../../manage/manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a> for details.
 </td>
 </tr>
 </table>
@@ -4595,7 +4595,7 @@ When the document expires, the data service deletes the document, even though th
 </div>
 <div id="keyspace-path" class="listingblock">
 <div class="content">
-<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a> ]</pre>
+<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4605,7 +4605,7 @@ When the document expires, the data service deletes the document, even though th
 </div>
 <div id="keyspace-partial" class="listingblock">
 <div class="content">
-<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a></pre>
+<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4615,14 +4615,14 @@ When the document expires, the data service deletes the document, even though th
 </div>
 <div class="paragraph">
 <p>Keyspace reference for the insert target.
-For more details, refer to <a href="from.html#from-keyspace-ref" class="page">Keyspace Reference</a>.</p>
+For more details, refer to <a href="from.html#from-keyspace-ref" class="xref page">Keyspace Reference</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="insert-target-alias"><a class="anchor" href="#insert-target-alias"></a>AS Alias</h4>
 <div class="paragraph">
 <p>Assigns another name to the keyspace reference.
-For details, refer to <a href="from.html#section_ax5_2nx_1db" class="page">AS Clause</a>.</p>
+For details, refer to <a href="from.html#section_ax5_2nx_1db" class="xref page">AS Clause</a>.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -4652,7 +4652,7 @@ If you assign an alias to the keyspace reference, the <code>AS</code> keyword ma
 </div>
 <div class="paragraph">
 <p>Specifies one or more documents to be upserted using the VALUES clause.
-For details, refer to <a href="insert.html#insert-values" class="page">Insert Values</a>.</p>
+For details, refer to <a href="insert.html#insert-values" class="xref page">Insert Values</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="values-clause"><a class="anchor" href="#values-clause"></a>VALUES Clause</h4>
@@ -4670,7 +4670,7 @@ For details, refer to <a href="insert.html#insert-values" class="page">Insert Va
 <div class="paragraph">
 <p>Specify the values as well-formed JSON.
 Also enables you to set the expiration of the upserted documents.
-For details, refer to <a href="insert.html#values-clause" class="page">VALUES Clause</a>.</p>
+For details, refer to <a href="insert.html#values-clause" class="xref page">VALUES Clause</a>.</p>
 </div>
 </div>
 </div>
@@ -4689,13 +4689,13 @@ For details, refer to <a href="insert.html#values-clause" class="page">VALUES Cl
 <div class="paragraph">
 <p>Specifies the documents to be upserted as a SELECT statement.
 Also enables you to set the expiration of the upserted documents.
-For details, refer to <a href="insert.html#insert-select" class="page">Insert Select</a>.</p>
+For details, refer to <a href="insert.html#insert-select" class="xref page">Insert Select</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="select-statement"><a class="anchor" href="#select-statement"></a>SELECT Statement</h4>
 <div class="paragraph">
 <p>SELECT statements let you retrieve data from specified keyspaces.
-For details, refer to <a href="select-syntax.html" class="page">SELECT Syntax</a>.</p>
+For details, refer to <a href="select-syntax.html" class="xref page">SELECT Syntax</a>.</p>
 </div>
 </div>
 </div>
@@ -4718,7 +4718,7 @@ For details, refer to <a href="select-syntax.html" class="page">SELECT Syntax</a
 <h4 id="result-expr"><a class="anchor" href="#result-expr"></a>Result Expression</h4>
 <div class="listingblock">
 <div class="content">
-<pre>result-expr ::= ( [ <a href="../n1ql-intro/queriesandresults.html#paths" class="page">path</a> "." ] "*" | <em>expr</em> [ [ AS ] <em>alias</em> ] )</pre>
+<pre>result-expr ::= ( [ <a href="../n1ql-intro/queriesandresults.html#paths" class="xref page">path</a> "." ] "*" | <em>expr</em> [ [ AS ] <em>alias</em> ] )</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4728,7 +4728,7 @@ For details, refer to <a href="select-syntax.html" class="page">SELECT Syntax</a
 </div>
 <div class="paragraph">
 <p>Specifies an expression on the data you upserted, to be returned as output.
-For details, refer to <a href="insert.html#result-expression" class="page">Result Expression</a>.</p>
+For details, refer to <a href="insert.html#result-expression" class="xref page">Result Expression</a>.</p>
 </div>
 </div>
 </div>

@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/security/auditing.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4491,8 +4491,8 @@ If a cluster-wide record is needed, the individual per node records must be manu
 </div>
 <div class="paragraph">
 <p>This page explains frequently used audit fields, and gives examples of record-structures.
-For information on managing auditing, see <a href="../../manage/manage-security/manage-auditing.html" class="page">Manage Auditing</a>.
-See the reference page <a href="../../audit-event-reference/audit-event-reference.html" class="page">Audit Event Reference</a>, for a complete list of events that can be audited.</p>
+For information on managing auditing, see <a href="../../manage/manage-security/manage-auditing.html" class="xref page">Manage Auditing</a>.
+See the reference page <a href="../../audit-event-reference/audit-event-reference.html" class="xref page">Audit Event Reference</a>, for a complete list of events that can be audited.</p>
 </div>
 </div>
 </div>
@@ -4567,7 +4567,7 @@ For example, <code>"Unsuccessful attempt to login to couchbase cluster"</code>, 
 After an administrator-specified period — which must be a minimum of 15 minutes and a maximum of 7 days — this file is closed, and is saved under a modified name that features a timestamp corresponding to the time of saving.
 A new, empty <code>audit.log</code> file is created and saved when a new audit event is generated.
 Note that this <em>rotation</em> may happen earlier if the file reaches its maximum size of 20MB.
-For instructions on configuring the file&#8217;s <em>rotation time</em>, see <a href="../../manage/manage-security/manage-auditing.html" class="page">Manage Auditing</a>.</p>
+For instructions on configuring the file&#8217;s <em>rotation time</em>, see <a href="../../manage/manage-security/manage-auditing.html" class="xref page">Manage Auditing</a>.</p>
 </div>
 <div class="paragraph">
 <p>Note that audit log-files are not automatically deleted: their eventual deletion is the responsibility of the administrator.</p>
@@ -4826,7 +4826,7 @@ The events in this default subset are <em>non-filterable</em>; meaning that whil
 These events relate to the same modules as the non-filterable events: however, filterable events can be individually disabled or enabled; and, optionally, all filterable events can be ignored, for specified users.</p>
 </div>
 <div class="paragraph">
-<p>For information on how to filter events, see <a href="../../manage/manage-security/manage-auditing.html" class="page">Manage Auditing</a>.</p>
+<p>For information on how to filter events, see <a href="../../manage/manage-security/manage-auditing.html" class="xref page">Manage Auditing</a>.</p>
 </div>
 </div>
 </div>
@@ -4834,7 +4834,7 @@ These events relate to the same modules as the non-filterable events: however, f
 <h2 id="event-tables"><a class="anchor" href="#event-tables"></a>Event Tables</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>See the reference page <a href="../../audit-event-reference/audit-event-reference.html" class="page">Audit Event Reference</a>, for a complete list of events that can be audited.</p>
+<p>See the reference page <a href="../../audit-event-reference/audit-event-reference.html" class="xref page">Audit Event Reference</a>, for a complete list of events that can be audited.</p>
 </div>
 </div>
 </div>

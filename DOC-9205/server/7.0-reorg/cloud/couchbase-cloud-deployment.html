@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/cloud/couchbase-cloud-deployment.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4542,7 +4542,7 @@ Deploy Couchbase in the cloud for its unique data model flexibility, elastic sca
 <div class="title">Manual Deployment</div>
 <ul>
 <li>
-<p><a href="couchbase-aws-marketplace.html" class="page">AWS Marketplace</a></p>
+<p><a href="couchbase-aws-marketplace.html" class="xref page">AWS Marketplace</a></p>
 <div class="paragraph">
 <p>The AWS Marketplace provides one of the simplest methods for deploying and licensing Couchbase Server on AWS VMs.</p>
 </div>
@@ -4554,7 +4554,7 @@ Deploy Couchbase in the cloud for its unique data model flexibility, elastic sca
 </div>
 </li>
 <li>
-<p><a href="aws-terraform.html" class="page">Terraform</a></p>
+<p><a href="aws-terraform.html" class="xref page">Terraform</a></p>
 <div class="paragraph">
 <p>Deploy Couchbase Server on AWS using a set of fully-featured, open source Terraform modules that define an ideal set of infrastructure components.</p>
 </div>
@@ -4565,13 +4565,13 @@ Deploy Couchbase in the cloud for its unique data model flexibility, elastic sca
 <div class="title">Orchestrated Deployment</div>
 <ul>
 <li>
-<p><a href="#operator:ROOT:install-eks.adoc" class="page unresolved">Kubernetes (EKS and Unmanaged)</a></p>
+<p><a href="#operator:ROOT:install-eks.adoc" class="xref unresolved">Kubernetes (EKS and Unmanaged)</a></p>
 <div class="paragraph">
 <p>Use the Couchbase Autonomous Operator to deploy and manage Couchbase Server on Amazon Elastic Kubernetes Service (EKS) or open source Kubernetes clusters running in AWS.</p>
 </div>
 </li>
 <li>
-<p><a href="#operator:ROOT:install-openshift.adoc" class="page unresolved">Red Hat OpenShift</a></p>
+<p><a href="#operator:ROOT:install-openshift.adoc" class="xref unresolved">Red Hat OpenShift</a></p>
 <div class="paragraph">
 <p>Use the Couchbase Autonomous Operator to deploy and manage Couchbase Server on OpenShift clusters running in AWS.</p>
 </div>
@@ -4600,7 +4600,7 @@ For the majority of deployments, <code>m4.xlarge</code> provides a good balance 
 <p><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html" target="_blank" rel="noopener">Auto Scaling groups</a> are recommended instead of stand alone instances, as it improves reliability and simplifies the addition and removal of nodes.</p>
 </li>
 <li>
-<p>The Couchbase concept of a <a href="../learn/clusters-and-availability/groups.html" class="page">Server Group</a> maps closely to an <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html" target="_blank" rel="noopener">Availability Zone</a>.
+<p>The Couchbase concept of a <a href="../learn/clusters-and-availability/groups.html" class="xref page">Server Group</a> maps closely to an <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html" target="_blank" rel="noopener">Availability Zone</a>.
 You should deploy nodes across all available Availability Zones and then create a Couchbase Server Group per Availability Zone.</p>
 </li>
 </ul>
@@ -4656,7 +4656,7 @@ However, they make using an Auto Scaling group more difficult because nodes will
 <div class="title">Security</div>
 <ul>
 <li>
-<p>You should configure a <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html" target="_blank" rel="noopener">security group</a> that closes off <a href="../install/install-ports.html" class="page">unused ports</a>.
+<p>You should configure a <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html" target="_blank" rel="noopener">security group</a> that closes off <a href="../install/install-ports.html" class="xref page">unused ports</a>.
 This configuration can be further secured by specifying CIDR blocks to whitelist XDCR and client connectivity.
 It&#8217;s also recommended to restrict access to intra-cluster communication ports to the security group.</p>
 </li>
@@ -4665,7 +4665,7 @@ It&#8217;s also recommended to restrict access to intra-cluster communication po
 </li>
 <li>
 <p>If using Couchbase Sync Gateway, it&#8217;s recommended that you secure the admin interface for access from <code>127.0.0.1</code> only.
-This can be configured using the Sync Gateway <a href="#sync-gateway::config-properties.adoc" class="page unresolved">configuration file</a>.</p>
+This can be configured using the Sync Gateway <a href="#sync-gateway::config-properties.adoc" class="xref unresolved">configuration file</a>.</p>
 </li>
 </ul>
 </div>
@@ -4681,7 +4681,7 @@ This can be configured using the Sync Gateway <a href="#sync-gateway::config-pro
 <div class="title">Manual Deployment</div>
 <ul>
 <li>
-<p><a href="couchbase-azure-marketplace.html" class="page">Azure Marketplace</a></p>
+<p><a href="couchbase-azure-marketplace.html" class="xref page">Azure Marketplace</a></p>
 <div class="paragraph">
 <p>The Azure Marketplace provides one of the simplest methods for deploying and licensing Couchbase Server on Azure VMs.</p>
 </div>
@@ -4698,13 +4698,13 @@ This can be configured using the Sync Gateway <a href="#sync-gateway::config-pro
 <div class="title">Orchestrated Deployment</div>
 <ul>
 <li>
-<p><a href="#operator:ROOT:install-aks.adoc" class="page unresolved">Kubernetes (AKS and Unmanaged)</a></p>
+<p><a href="#operator:ROOT:install-aks.adoc" class="xref unresolved">Kubernetes (AKS and Unmanaged)</a></p>
 <div class="paragraph">
 <p>Use the Couchbase Autonomous Operator to deploy and manage Couchbase Server on Azure Kubernetes Service (AKS) or open source Kubernetes clusters running in Azure.</p>
 </div>
 </li>
 <li>
-<p><a href="#operator:ROOT:install-openshift.adoc" class="page unresolved">Red Hat OpenShift</a></p>
+<p><a href="#operator:ROOT:install-openshift.adoc" class="xref unresolved">Red Hat OpenShift</a></p>
 <div class="paragraph">
 <p>Use the Couchbase Autonomous Operator to deploy and manage Couchbase Server on OpenShift clusters running in Azure.</p>
 </div>
@@ -4735,7 +4735,7 @@ For the majority of deployments, <code>DS14 v2</code> provides a good balance of
 <li>
 <p>The current model for resilience is based on <a href="https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/availability" target="_blank" rel="noopener">availability sets</a> that are made up of fault domains and upgrade domains.
 Virtual machine scale sets default to configuring 5 fault domains, each with their own upgrade domain.
-It&#8217;s recommended that you configure a <a href="../learn/clusters-and-availability/groups.html" class="page">Server Group</a> for each fault domain.</p>
+It&#8217;s recommended that you configure a <a href="../learn/clusters-and-availability/groups.html" class="xref page">Server Group</a> for each fault domain.</p>
 </li>
 </ul>
 </div>
@@ -4796,7 +4796,7 @@ ExpressRoute is a very expensive option that may work well for some on-prem/Azur
 <div class="title">Security</div>
 <ul>
 <li>
-<p>You should configure a <a href="https://docs.microsoft.com/en-us/azure/virtual-network/security-overview" target="_blank" rel="noopener">security group</a> that closes off <a href="../install/install-ports.html" class="page">unused ports</a>.
+<p>You should configure a <a href="https://docs.microsoft.com/en-us/azure/virtual-network/security-overview" target="_blank" rel="noopener">security group</a> that closes off <a href="../install/install-ports.html" class="xref page">unused ports</a>.
 This configuration can be further secured by specifying CIDR blocks to whitelist XDCR and client connectivity.
 It&#8217;s also recommended to restrict access to intra-cluster communication ports to the security group.</p>
 </li>
@@ -4805,7 +4805,7 @@ It&#8217;s also recommended to restrict access to intra-cluster communication po
 </li>
 <li>
 <p>If using Couchbase Sync Gateway, it&#8217;s recommended that you secure the admin interface for access from <code>127.0.0.1</code> only.
-This can be configured using the Sync Gateway <a href="#sync-gateway:refer/config-properties.adoc" class="page unresolved">configuration file</a>.</p>
+This can be configured using the Sync Gateway <a href="#sync-gateway:refer/config-properties.adoc" class="xref unresolved">configuration file</a>.</p>
 </li>
 </ul>
 </div>
@@ -4821,7 +4821,7 @@ This can be configured using the Sync Gateway <a href="#sync-gateway:refer/confi
 <div class="title">Manual Deployment</div>
 <ul>
 <li>
-<p><a href="couchbase-gcp-cloud-launcher.html" class="page">GCP Marketplace</a></p>
+<p><a href="couchbase-gcp-cloud-launcher.html" class="xref page">GCP Marketplace</a></p>
 <div class="paragraph">
 <p>The GCP Marketplace provides one of the simplest methods for deploying and licensing Couchbase Server on GCP VMs.</p>
 </div>
@@ -4838,13 +4838,13 @@ This can be configured using the Sync Gateway <a href="#sync-gateway:refer/confi
 <div class="title">Orchestrated Deployment</div>
 <ul>
 <li>
-<p><a href="#operator:ROOT:install-gke.adoc" class="page unresolved">Kubernetes (GKE and Unmanaged)</a></p>
+<p><a href="#operator:ROOT:install-gke.adoc" class="xref unresolved">Kubernetes (GKE and Unmanaged)</a></p>
 <div class="paragraph">
 <p>Use the Couchbase Autonomous Operator to deploy and manage Couchbase Server on Google Kubernetes Engine (GKE) or open source Kubernetes clusters running in GCP.</p>
 </div>
 </li>
 <li>
-<p><a href="#operator:ROOT:install-openshift.adoc" class="page unresolved">Red Hat OpenShift</a></p>
+<p><a href="#operator:ROOT:install-openshift.adoc" class="xref unresolved">Red Hat OpenShift</a></p>
 <div class="paragraph">
 <p>Use the Couchbase Autonomous Operator to deploy and manage Couchbase Server on OpenShift clusters running in GCP.</p>
 </div>
@@ -4871,7 +4871,7 @@ Many of these recommendations are incorporated into the GCP Marketplace offering
 <p>It&#8217;s recommended to deploy GCE nodes via a <a href="https://cloud.google.com/compute/docs/instance-groups/" target="_blank" rel="noopener">managed instance group</a> (MIG) as it improves reliability and simplifies the addition and removal of nodes.
 You can set up the MIG to place nodes across <a href="https://cloud.google.com/compute/docs/regions-zones/" target="_blank" rel="noopener">zones</a> in a round robin fashion.
 For most installs this will be sufficient.
-Ideally you should configure Couchbase <a href="../learn/clusters-and-availability/groups.html" class="page">Server Groups</a> to map to zones.</p>
+Ideally you should configure Couchbase <a href="../learn/clusters-and-availability/groups.html" class="xref page">Server Groups</a> to map to zones.</p>
 </li>
 </ul>
 </div>
@@ -4925,7 +4925,7 @@ GCP does not provide public DNS records for the public IPs.
 <div class="title">Security</div>
 <ul>
 <li>
-<p>You should configure a <a href="https://cloud.google.com/vpc/docs/firewalls" target="_blank" rel="noopener">firewall rule</a> that closes off <a href="../install/install-ports.html" class="page">unused ports</a>.
+<p>You should configure a <a href="https://cloud.google.com/vpc/docs/firewalls" target="_blank" rel="noopener">firewall rule</a> that closes off <a href="../install/install-ports.html" class="xref page">unused ports</a>.
 This configuration can be further secured by specifying CIDR blocks to whitelist XDCR and client connectivity.
 It&#8217;s also recommended to restrict access to intra-cluster communication ports to the security group.</p>
 </li>
@@ -4934,7 +4934,7 @@ It&#8217;s also recommended to restrict access to intra-cluster communication po
 </li>
 <li>
 <p>If using Couchbase Sync Gateway, it&#8217;s recommended that you secure the admin interface for access from <code>127.0.0.1</code> only.
-This can be configured using the Sync Gateway <a href="#sync-gateway::config-properties.adoc" class="page unresolved">configuration file</a>.</p>
+This can be configured using the Sync Gateway <a href="#sync-gateway::config-properties.adoc" class="xref unresolved">configuration file</a>.</p>
 </li>
 </ul>
 </div>
@@ -4945,13 +4945,13 @@ This can be configured using the Sync Gateway <a href="#sync-gateway::config-pro
 <h2 id="kubernetes-and-openshift"><a class="anchor" href="#kubernetes-and-openshift"></a>Kubernetes and OpenShift</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="#operator:ROOT:overview.adoc" class="page unresolved">Couchbase Autonomous Operator</a> provides a native integration of Couchbase Server with Kubernetes and Red Hat OpenShift.
+<p>The <a href="#operator:ROOT:overview.adoc" class="xref unresolved">Couchbase Autonomous Operator</a> provides a native integration of Couchbase Server with Kubernetes and Red Hat OpenShift.
 It enables you to automate the management of common Couchbase tasks such as the configuration, creation, scaling, and recovery of Couchbase clusters.</p>
 </div>
 <div class="sect2">
 <h3 id="k8s-deployment-methods"><a class="anchor" href="#k8s-deployment-methods"></a>Deployment Methods</h3>
 <div class="paragraph">
-<p>See <a href="#operator:ROOT:prerequisite-and-setup.adoc" class="page unresolved">Couchbase Autonomous Operator</a>.</p>
+<p>See <a href="#operator:ROOT:prerequisite-and-setup.adoc" class="xref unresolved">Couchbase Autonomous Operator</a>.</p>
 </div>
 </div>
 </div>
@@ -4968,7 +4968,7 @@ It enables you to automate the management of common Couchbase tasks such as the 
 <div class="title">Manual Deployment</div>
 <ul>
 <li>
-<p><a href="../install/getting-started-docker.html" class="page">Basic Docker Installation</a></p>
+<p><a href="../install/getting-started-docker.html" class="xref page">Basic Docker Installation</a></p>
 </li>
 </ul>
 </div>

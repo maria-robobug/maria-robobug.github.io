@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="ruby-sdk">
 <meta name="dcterms.identifier" content="3.2">
 <meta name="page-url" content="/ruby-sdk/3.2/howtos/sdk-authentication.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3678,7 +3678,7 @@ As well as Role-Based Access Control (RBAC), Couchbase offers connection with Ce
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Our <a href="../hello-world/start-using-sdk.html" class="page">Getting Started</a> guide covered the basics for authorizing against a Couchbase cluster, but you may need to use alternative authentication methods such as Certification.</p>
+<p>Our <a href="../hello-world/start-using-sdk.html" class="xref page">Getting Started</a> guide covered the basics for authorizing against a Couchbase cluster, but you may need to use alternative authentication methods such as Certification.</p>
 </div>
 </div>
 </div>
@@ -3686,7 +3686,7 @@ As well as Role-Based Access Control (RBAC), Couchbase offers connection with Ce
 <h2 id="rbac"><a class="anchor" href="#rbac"></a>RBAC</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Our <a href="../hello-world/start-using-sdk.html" class="page">Getting Started</a> guide introduced basic authentication against a Couchbase cluster:</p>
+<p>Our <a href="../hello-world/start-using-sdk.html" class="xref page">Getting Started</a> guide introduced basic authentication against a Couchbase cluster:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3697,12 +3697,12 @@ cluster = Cluster.connect("couchbase://localhost", options)</code></pre>
 </div>
 <div class="paragraph">
 <p>Couchbase uses Role Base Access Control (RBAC), and has since Server 5.0 was released.
-For a general overview of Couchbase-Server authorization, see <a href="#7.0@server:learn:security/authorization-overview.adoc" class="page unresolved">Authorization</a>.
-For a list of available roles and corresponding privileges, see <a href="#7.0@server:learn:security/roles.adoc" class="page unresolved">Roles</a>.</p>
+For a general overview of Couchbase-Server authorization, see <a href="#7.0@server:learn:security/authorization-overview.adoc" class="xref unresolved">Authorization</a>.
+For a list of available roles and corresponding privileges, see <a href="#7.0@server:learn:security/roles.adoc" class="xref unresolved">Roles</a>.</p>
 </div>
 <div class="paragraph">
 <p>In the SDK docs, many examples will use the full <em>Administrator</em> role for convenience, but this is rarely a good idea on a production machine, so reference the above links to find best practice for the needs of your application.
-RBAC is also implemented by the Community Edition of Couchbase Server, but with fewer roles&#8201;&#8212;&#8201;see the <a href="#7.0@server:learn:security/roles.adoc" class="page unresolved">Roles overview</a>.</p>
+RBAC is also implemented by the Community Edition of Couchbase Server, but with fewer roles&#8201;&#8212;&#8201;see the <a href="#7.0@server:learn:security/roles.adoc" class="xref unresolved">Roles overview</a>.</p>
 </div>
 </div>
 </div>
@@ -3721,7 +3721,7 @@ If the certificate is valid, the user under whose identity the client is running
 If the assigned roles are appropriate for the level of access requested to the specified resource, access is granted.</p>
 </div>
 <div class="paragraph">
-<p>For a more detailed conceptual description of using certificates, see <a href="#7.0@server:learn:security/certificates.adoc" class="page unresolved">Certificates</a>.</p>
+<p>For a more detailed conceptual description of using certificates, see <a href="#7.0@server:learn:security/certificates.adoc" class="xref unresolved">Certificates</a>.</p>
 </div>
 </div>
 </div>
@@ -3729,7 +3729,7 @@ If the assigned roles are appropriate for the level of access requested to the s
 <h2 id="authenticating-a-ruby-client-by-certificate"><a class="anchor" href="#authenticating-a-ruby-client-by-certificate"></a>Authenticating a Ruby Client by Certificate</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For sample procedures whereby certificates can be generated and deployed, see <a href="#7.0@server:manage:manage-security/manage-certificates.adoc" class="page unresolved">Manage Certificates</a>.
+<p>For sample procedures whereby certificates can be generated and deployed, see <a href="#7.0@server:manage:manage-security/manage-certificates.adoc" class="xref unresolved">Manage Certificates</a>.
 The rest of this document assumes that the processes there, or something similar, have been followed:</p>
 </div>
 <div class="listingblock">
@@ -3755,8 +3755,8 @@ Please pay attention to the following important note on secure connection.</p>
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-If <a href="#7.0@server:manage:manage-security/configure-ldap.adoc#understanding-ldap-authentication" class="page unresolved">LDAP</a> is enabled, Couchbase Server will only allow PLAIN sasl authentication which by default, for good security, the SDK will not allow.
-Although this can be overridden in a development environment, by explicitly enabling PLAIN in the password authenticator, <em>the secure solution</em> is <a href="managing-connections.html#ssl" class="page">to use TLS</a>.
+If <a href="#7.0@server:manage:manage-security/configure-ldap.adoc#understanding-ldap-authentication" class="xref unresolved">LDAP</a> is enabled, Couchbase Server will only allow PLAIN sasl authentication which by default, for good security, the SDK will not allow.
+Although this can be overridden in a development environment, by explicitly enabling PLAIN in the password authenticator, <em>the secure solution</em> is <a href="managing-connections.html#ssl" class="xref page">to use TLS</a>.
 </td>
 </tr>
 </table>

@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="php-sdk">
 <meta name="dcterms.identifier" content="3.2">
 <meta name="page-url" content="/php-sdk/3.2/howtos/managing-connections.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3785,7 +3785,7 @@ Both the client and server require special configuration in this case.</p>
 </div>
 <div class="paragraph">
 <p>On the server side, each server node must be configured to advertise its external address as well as any custom port mapping.
-This is done with the <code>setting-alternate-address</code> <a href="#7.0@server:cli:cbcli/couchbase-cli-setting-alternate-address.adoc" class="page unresolved">CLI command</a> introduced in Couchbase Server 6.5.
+This is done with the <code>setting-alternate-address</code> <a href="#7.0@server:cli:cbcli/couchbase-cli-setting-alternate-address.adoc" class="xref unresolved">CLI command</a> introduced in Couchbase Server 6.5.
 A node configured in this way will advertise two addresses: one for connecting from the same network, and another for connecting from an external network.</p>
 </div>
 <div class="paragraph">
@@ -4002,8 +4002,8 @@ $cluster = new Cluster($connectionString, $opts);</code></pre>
 The use of DNS-SRV. Alternate Address, and TLS is covered above.</p>
 </div>
 <div class="paragraph">
-<p>We strongly recommend that the client and server <a href="../project-docs/compatibility.html#network-requirements" class="page">are in the same LAN-like environment</a> (e.g. AWS Availability Zone).
-As this may not always be possible during development, read the guidance on working with <a href="../ref/client-settings.html#commonly-used-options" class="page">constrained network environments</a>.
+<p>We strongly recommend that the client and server <a href="../project-docs/compatibility.html#network-requirements" class="xref page">are in the same LAN-like environment</a> (e.g. AWS Availability Zone).
+As this may not always be possible during development, read the guidance on working with <a href="../ref/client-settings.html#commonly-used-options" class="xref page">constrained network environments</a>.
 More details on connecting your client code to the Couchbase Cloud can be found <a href="https://docs.couchbase.com/cloud/get-started/connect-to-cluster.html#locate-the-clusters-endpoints-and-built-in-sdk-examples">in the Cloud docs</a>.</p>
 </div>
 <div class="sect2">
@@ -4011,7 +4011,7 @@ More details on connecting your client code to the Couchbase Cloud can be found 
 <div class="paragraph">
 <p>Some DNS caching providers (notably, home routers) can’t handle an SRV record that’s large&#8201;&#8212;&#8201;if you have DNS-SRV issues with such a set-up, reduce your DNS-SRV to only include three records.
 [<em>For development only, not production.</em>].
-Our <a href="troubleshooting-cloud-connections.html" class="page">Troubleshooting Cloud Connections</a> page will help you to diagnose this and other problems&#8201;&#8212;&#8201;as well as introducing the SDK doctor tool.</p>
+Our <a href="troubleshooting-cloud-connections.html" class="xref page">Troubleshooting Cloud Connections</a> page will help you to diagnose this and other problems&#8201;&#8212;&#8201;as well as introducing the SDK doctor tool.</p>
 </div>
 </div>
 </div>
@@ -4020,7 +4020,7 @@ Our <a href="troubleshooting-cloud-connections.html" class="page">Troubleshootin
 <h2 id="further-reading"><a class="anchor" href="#further-reading"></a>Further Reading</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more on RBAC, refer to the <a href="#7.0@server:learn:security/authorization-overview.adoc" class="page unresolved">Server docs</a>.</p>
+<p>For more on RBAC, refer to the <a href="#7.0@server:learn:security/authorization-overview.adoc" class="xref unresolved">Server docs</a>.</p>
 </div>
 </div>
 </div>

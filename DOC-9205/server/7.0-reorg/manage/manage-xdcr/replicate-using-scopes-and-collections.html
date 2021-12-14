@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-xdcr/replicate-using-scopes-and-collections.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4464,13 +4464,13 @@ XDCR can be performed with reference to scopes and collections within source and
 <h2 id="understanding-scopes-collections-and-replication"><a class="anchor" href="#understanding-scopes-collections-and-replication"></a>Understanding Scopes, Collections, and Replication</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>As described in <a href="../../learn/data/scopes-and-collections.html" class="page">Scopes and Collections</a>, scopes and collections are containers for data within a bucket.
+<p>As described in <a href="../../learn/data/scopes-and-collections.html" class="xref page">Scopes and Collections</a>, scopes and collections are containers for data within a bucket.
 A cluster can contain up to 1000 scopes; and it can contain 1000 collections.</p>
 </div>
 <div class="paragraph">
 <p>As well as specifying a source bucket and a target bucket, XDCR can specify scopes and collections within those buckets.
 This allows data to be replicated from one collection to another.
-For an overview, see <a href="../../learn/clusters-and-availability/xdcr-overview.html#xdcr-using-scopes-and-collections" class="page">XDCR Using Scopes and Collections</a>.</p>
+For an overview, see <a href="../../learn/clusters-and-availability/xdcr-overview.html#xdcr-using-scopes-and-collections" class="xref page">XDCR Using Scopes and Collections</a>.</p>
 </div>
 </div>
 </div>
@@ -4479,11 +4479,11 @@ For an overview, see <a href="../../learn/clusters-and-availability/xdcr-overvie
 <div class="sectionbody">
 <div class="paragraph">
 <p>Data replicated between collections can be <em>filtered</em>.
-An overview is provided in <a href="../../learn/clusters-and-availability/xdcr-filtering.html" class="page">XDCR Advanced Filtering</a>; and examples of filtering are provided in <a href="filter-xdcr-replication.html" class="page">Filter a Replication</a>.</p>
+An overview is provided in <a href="../../learn/clusters-and-availability/xdcr-filtering.html" class="xref page">XDCR Advanced Filtering</a>; and examples of filtering are provided in <a href="filter-xdcr-replication.html" class="xref page">Filter a Replication</a>.</p>
 </div>
 <div class="paragraph">
 <p>Note in particular that settings for <em>deletion filters</em> must be appropriately determined before replication or migration is performed: failure to establish the correct settings for deletion filters may, in certain circumstances, lead to data loss.
-For information, see <a href="../../learn/clusters-and-availability/xdcr-filtering.html#using-deletion-filters" class="page">Using Deletion Filters</a>.</p>
+For information, see <a href="../../learn/clusters-and-availability/xdcr-filtering.html#using-deletion-filters" class="xref page">Using Deletion Filters</a>.</p>
 </div>
 </div>
 </div>
@@ -4499,14 +4499,14 @@ The examples assume the following:</p>
 <ul>
 <li>
 <p>A single-node cluster named <code>10.144.210.101</code> has been created, and features the <code>travel-sample</code> and <code>beer-sample</code> buckets.
-See <a href="../manage-settings/install-sample-buckets.html" class="page">Install Sample Buckets</a>, for information on installing these buckets.
+See <a href="../manage-settings/install-sample-buckets.html" class="xref page">Install Sample Buckets</a>, for information on installing these buckets.
 Note that the <code>travel-sample</code> bucket contains multiple scopes and collections, from which replications to the target cluster can be immediately established.
 The <code>beer-sample</code> contains only the <code><em>default</code> scope and collection, within which all data is contained: the _migration</em> process will be used to separate data into scopes and collections on the target cluster.</p>
 </li>
 <li>
 <p>A single-node cluster named <code>10.144.210.102</code> has been created, and features no buckets.
 Note that during the course of the examples on this page, buckets, scopes, and collections will need to be created on the <code>10.144.210.102</code> cluster: therefore, knowledge of how to create buckets, scopes, and collections must first be attained.
-For comprehensive instructions, see <a href="../manage-buckets/create-bucket.html" class="page">Create a Bucket</a> and <a href="../manage-scopes-and-collections/manage-scopes-and-collections.html" class="page">Manage Scopes and Collections</a>.</p>
+For comprehensive instructions, see <a href="../manage-buckets/create-bucket.html" class="xref page">Create a Bucket</a> and <a href="../manage-scopes-and-collections/manage-scopes-and-collections.html" class="xref page">Manage Scopes and Collections</a>.</p>
 </li>
 <li>
 <p>The cluster <code>10.144.210.101</code> has defined <code>10.144.210.102</code> as a remote cluster for XDCR: this will permit replications to be established between the two clusters.</p>
@@ -4514,10 +4514,10 @@ For comprehensive instructions, see <a href="../manage-buckets/create-bucket.htm
 </ul>
 </div>
 <div class="paragraph">
-<p>Before following the examples, familiarity should be gained with all XDCR management-basics explained on other pages. In particular, see <a href="prepare-for-xdcr.html" class="page">Prepare for XDCR</a>, <a href="create-xdcr-reference.html" class="page">Create a Reference</a>, and <a href="create-xdcr-replication.html" class="page">Create a Replication</a>.</p>
+<p>Before following the examples, familiarity should be gained with all XDCR management-basics explained on other pages. In particular, see <a href="prepare-for-xdcr.html" class="xref page">Prepare for XDCR</a>, <a href="create-xdcr-reference.html" class="xref page">Create a Reference</a>, and <a href="create-xdcr-replication.html" class="xref page">Create a Replication</a>.</p>
 </div>
 <div class="paragraph">
-<p>The subsequent examples provided on this page &#8212; in <a href="#manage:manage-xdcr/replicate-using-scopes-andcollections.adoc#cli-procedures" class="page unresolved">CLI Procedures</a> and <a href="#manage:manage-xdcr/replicate-using-scopes-andcollections.adoc#rest-api-procedures" class="page unresolved">REST API Procedures</a> a&#8212; ssume the same starting-points as those for the UI; and achieve the same goals, by means of the Couchbase CLI and REST API respectively.</p>
+<p>The subsequent examples provided on this page &#8212; in <a href="#manage:manage-xdcr/replicate-using-scopes-andcollections.adoc#cli-procedures" class="xref unresolved">CLI Procedures</a> and <a href="#manage:manage-xdcr/replicate-using-scopes-andcollections.adoc#rest-api-procedures" class="xref unresolved">REST API Procedures</a> a&#8212; ssume the same starting-points as those for the UI; and achieve the same goals, by means of the Couchbase CLI and REST API respectively.</p>
 </div>
 <div class="paragraph">
 <p>Note that whereas <em>implicit</em> replication is available in both Couchbase Server Enterprise and Community Edition, <em>explicit</em> replication and <em>migration</em> are available only in Couchbase Server Enterprise Edition.</p>
@@ -4571,10 +4571,10 @@ These scopes will <em>not</em> be replicated in this example.</p>
 <p>On cluster <code>101.144.210.102</code>, access the <strong>Buckets</strong> screen.</p>
 </li>
 <li>
-<p>Using the procedure described in <a href="../manage-buckets/create-bucket.html" class="page">Create a Bucket</a>, create a Couchbase bucket namd <code>ts</code>.</p>
+<p>Using the procedure described in <a href="../manage-buckets/create-bucket.html" class="xref page">Create a Bucket</a>, create a Couchbase bucket namd <code>ts</code>.</p>
 </li>
 <li>
-<p>Using the procedures described in <a href="../manage-scopes-and-collections/manage-scopes-and-collections.html" class="page">Manage Scopes and Collections</a>, create, within <code>ts</code>, a scope named <code>inventory</code>; and within <code>inventory</code>, five collections; named <code>airport</code>, <code>airline</code>, <code>route</code>, <code>landmark</code>, and <code>hotel</code>.
+<p>Using the procedures described in <a href="../manage-scopes-and-collections/manage-scopes-and-collections.html" class="xref page">Manage Scopes and Collections</a>, create, within <code>ts</code>, a scope named <code>inventory</code>; and within <code>inventory</code>, five collections; named <code>airport</code>, <code>airline</code>, <code>route</code>, <code>landmark</code>, and <code>hotel</code>.
 (The <strong>Time-to-Live</strong> for each of these collections can be left at the default of <code>0</code>.)</p>
 <div class="paragraph">
 <p>With the row for <code>inventory</code> vertically expanded, the <strong>Scopes and Collections</strong> screen for the bucket <code>ts</code> now appears as follows:</p>
@@ -4824,8 +4824,8 @@ Continue in this way until the overall migration is complete.</p>
 </div>
 <div class="paragraph">
 <p>Note that prior to attempting migration, appropriate settings for <em>deletion filters</em> should be determined.
-These are individually described in <a href="filter-xdcr-replication.html#deletion-filters" class="page">Deletion Filters</a>.
-However, the significance of deletion-filter settings for replication and migration is explained in detail in <a href="../../learn/clusters-and-availability/xdcr-filtering.html#using-deletion-filters" class="page">Using Deletion Filters</a>: this information should be fully understood before migration is performed.</p>
+These are individually described in <a href="filter-xdcr-replication.html#deletion-filters" class="xref page">Deletion Filters</a>.
+However, the significance of deletion-filter settings for replication and migration is explained in detail in <a href="../../learn/clusters-and-availability/xdcr-filtering.html#using-deletion-filters" class="xref page">Using Deletion Filters</a>: this information should be fully understood before migration is performed.</p>
 </div>
 <div class="paragraph">
 <p>Migration can now be exemplified as follows.
@@ -4839,10 +4839,10 @@ By means of migration, this example separates the document progressively into di
 <p>Access the <strong>Buckets</strong> screen of the target cluster, <code>10.144.210.102</code>.</p>
 </li>
 <li>
-<p>Using the procedure described in <a href="../manage-buckets/create-bucket.html" class="page">Create a Bucket</a>, create a Couchbase bucket named <code>beerSampleByLocation</code>.</p>
+<p>Using the procedure described in <a href="../manage-buckets/create-bucket.html" class="xref page">Create a Bucket</a>, create a Couchbase bucket named <code>beerSampleByLocation</code>.</p>
 </li>
 <li>
-<p>Within <code>beerSampleByLocation</code>, using the procedures described in <a href="../manage-scopes-and-collections/manage-scopes-and-collections.html" class="page">Manage Scopes and Collections</a>, create a scope named <code>California</code>; and within <code>California</code>, three collections, respectively named <code>SanFrancisco</code>, <code>SanJose</code>, and <code>Sacramento</code>.
+<p>Within <code>beerSampleByLocation</code>, using the procedures described in <a href="../manage-scopes-and-collections/manage-scopes-and-collections.html" class="xref page">Manage Scopes and Collections</a>, create a scope named <code>California</code>; and within <code>California</code>, three collections, respectively named <code>SanFrancisco</code>, <code>SanJose</code>, and <code>Sacramento</code>.
 Leave <strong>Time-to-Live</strong> at its default value of <code>0</code> for each collection.</p>
 <div class="paragraph">
 <p>The <strong>Scopes &amp; Collections</strong> screen should now look as follows:</p>
@@ -4883,8 +4883,8 @@ However, if other specified entities are valid, replication to them will proceed
 </li>
 <li>
 <p>Establish appropriate settings for <em>deletion filters</em>.
-These filters are individually described in <a href="filter-xdcr-replication.html#deletion-filters" class="page">Deletion Filters</a>.
-Detailed information on their significance for migration is provided in <a href="../../learn/clusters-and-availability/xdcr-filtering.html#using-deletion-filters" class="page">Using Deletion Filters</a>.</p>
+These filters are individually described in <a href="filter-xdcr-replication.html#deletion-filters" class="xref page">Deletion Filters</a>.
+Detailed information on their significance for migration is provided in <a href="../../learn/clusters-and-availability/xdcr-filtering.html#using-deletion-filters" class="xref page">Using Deletion Filters</a>.</p>
 <div class="paragraph">
 <p>Left-click on the <strong>Filter Replication</strong> toggle:</p>
 </div>
@@ -5014,7 +5014,7 @@ Return to the <strong>XDCR Replications</strong> screen, and inspect the row for
 </div>
 <div class="paragraph">
 <p>Note that in cases where, following migration, source data is to be deleted, it is essential to delete the migration <em>prior</em> to deletion of the source data, if all data is intended to continue to exist on the targets, and <em>deletion filters</em> have been left at their default values.
-For detailed information, see <a href="../../learn/clusters-and-availability/xdcr-filtering.html#using-deletion-filters" class="page">Using Deletion Filters</a></p>
+For detailed information, see <a href="../../learn/clusters-and-availability/xdcr-filtering.html#using-deletion-filters" class="xref page">Using Deletion Filters</a></p>
 </div>
 </li>
 <li>
@@ -5035,8 +5035,8 @@ For detailed information, see <a href="../../learn/clusters-and-availability/xdc
 The required steps are provided below.</p>
 </div>
 <div class="paragraph">
-<p>For detailed information on all CLI options for XDCR replication, see the reference page for <a href="#cli:cbcli/couchbase-cli-xdcr-replicate.adoc" class="page unresolved">xdcr-replicate</a>.
-For more information on creating buckets, scopes, and collections with the CLI, see the reference pages for <a href="#cli:cbcli/couchbase-cli-bucket-create.adoc" class="page unresolved">bucket-create</a> and <a href="#cli:cbcli/couchbase-cli-collection-manage.adoc" class="page unresolved">collection-manage</a>.</p>
+<p>For detailed information on all CLI options for XDCR replication, see the reference page for <a href="#cli:cbcli/couchbase-cli-xdcr-replicate.adoc" class="xref unresolved">xdcr-replicate</a>.
+For more information on creating buckets, scopes, and collections with the CLI, see the reference pages for <a href="#cli:cbcli/couchbase-cli-bucket-create.adoc" class="xref unresolved">bucket-create</a> and <a href="#cli:cbcli/couchbase-cli-collection-manage.adoc" class="xref unresolved">collection-manage</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="replicate-data-implicitly-with-the-cli"><a class="anchor" href="#replicate-data-implicitly-with-the-cli"></a>Replicate Data Implicitly, with the CLI</h3>
@@ -5209,7 +5209,7 @@ Note also that, in cases where <em>all</em> data from the source bucket is to be
 <p>Documents are now replicated as specified by the explicit mapping and filter.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="#cli:cbcli/couchbase-cli-xdcr-replicate.adoc" class="page unresolved">xdcr-replicate</a> for information on setting <em>deletion filters</em> with the CLI; and see <a href="../../learn/clusters-and-availability/xdcr-filtering.html#using-deletion-filters" class="page">Using Deletion Filters</a> for information on how to use deletion filters, in the context of migrating data.</p>
+<p>See <a href="#cli:cbcli/couchbase-cli-xdcr-replicate.adoc" class="xref unresolved">xdcr-replicate</a> for information on setting <em>deletion filters</em> with the CLI; and see <a href="../../learn/clusters-and-availability/xdcr-filtering.html#using-deletion-filters" class="xref page">Using Deletion Filters</a> for information on how to use deletion filters, in the context of migrating data.</p>
 </div>
 </div>
 </div>
@@ -5222,8 +5222,8 @@ Note also that, in cases where <em>all</em> data from the source bucket is to be
 The required steps are provided below.</p>
 </div>
 <div class="paragraph">
-<p>For detailed information on all REST API options for XDCR replication, see the reference page for <a href="#cli:cbcli/couchbase-cli-xdcr-replicate.adoc" class="page unresolved">xdcr-replicate</a>.
-For more information on creating buckets, scopes, and collections with the REST API, see the reference pages for <a href="../../rest-api/rest-bucket-create.html" class="page">Creating and Editing Buckets</a> and <a href="#rest-api/scopes-and-collections-api.adoc" class="page unresolved">Scopes and Collections REST API</a>.</p>
+<p>For detailed information on all REST API options for XDCR replication, see the reference page for <a href="#cli:cbcli/couchbase-cli-xdcr-replicate.adoc" class="xref unresolved">xdcr-replicate</a>.
+For more information on creating buckets, scopes, and collections with the REST API, see the reference pages for <a href="../../rest-api/rest-bucket-create.html" class="xref page">Creating and Editing Buckets</a> and <a href="#rest-api/scopes-and-collections-api.adoc" class="xref unresolved">Scopes and Collections REST API</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="replicate-data-implicitly-with-the-rest-api"><a class="anchor" href="#replicate-data-implicitly-with-the-rest-api"></a>Replicate Data Implicitly, with the REST API</h3>
@@ -5383,7 +5383,7 @@ Note the format required for the specifying of <code>colMappingRules</code>: the
 <p>Documents are now migrated as specified by the explicit mapping and filter.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="../../rest-api/rest-xdcr-create-replication.html" class="page">Creating XDCR Replications</a> for information on setting <em>deletion filters</em> with the REST API; and see <a href="../../learn/clusters-and-availability/xdcr-filtering.html#using-deletion-filters" class="page">Using Deletion Filters</a> for information on how to use deletion filters, in the context of migrating data.</p>
+<p>See <a href="../../rest-api/rest-xdcr-create-replication.html" class="xref page">Creating XDCR Replications</a> for information on setting <em>deletion filters</em> with the REST API; and see <a href="../../learn/clusters-and-availability/xdcr-filtering.html#using-deletion-filters" class="xref page">Using Deletion Filters</a> for information on how to use deletion filters, in the context of migrating data.</p>
 </div>
 </div>
 </div>
@@ -5396,7 +5396,7 @@ Note the format required for the specifying of <code>colMappingRules</code>: the
 Use of Couchbase Web Console generates mappings that automatically conform with these rules: however, use of the CLI and REST API requires creation of a JSON payload, in which rules are correctly expressed by the administrator.</p>
 </div>
 <div class="paragraph">
-<p>All rules are listed in <a href="../../learn/clusters-and-availability/xdcr-with-scopes-and-collections.html#rules-for-explicit-mappings" class="page">Rules for Explicit Mappings</a> and <a href="../../learn/clusters-and-availability/xdcr-with-scopes-and-collections.html#rules-for-migration" class="page">Rules for Migration</a>.</p>
+<p>All rules are listed in <a href="../../learn/clusters-and-availability/xdcr-with-scopes-and-collections.html#rules-for-explicit-mappings" class="xref page">Rules for Explicit Mappings</a> and <a href="../../learn/clusters-and-availability/xdcr-with-scopes-and-collections.html#rules-for-migration" class="xref page">Rules for Migration</a>.</p>
 </div>
 </div>
 </div>
@@ -5405,7 +5405,7 @@ Use of Couchbase Web Console generates mappings that automatically conform with 
 <div class="sectionbody">
 <div class="paragraph">
 <p>An XDCR replication can be <em>filtered</em>, by means of <em>regular expressions</em>; so that only selected documents are replicated from the source to the target cluster.
-See <a href="filter-xdcr-replication.html" class="page">Filter a Replication</a>.</p>
+See <a href="filter-xdcr-replication.html" class="xref page">Filter a Replication</a>.</p>
 </div>
 </div>
 </div>

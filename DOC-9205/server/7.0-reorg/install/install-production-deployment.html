@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/install/install-production-deployment.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4473,48 +4473,48 @@ Before you install Couchbase Server, follow the recommended deployment guideline
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Sizing</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Evaluate the overall performance and capacity requirements of your deployment, and determine the hardware and other resources.</p>
-<p class="tableblock"><a href="sizing-general.html" class="page">Sizing Guidelines</a></p>
-<p class="tableblock"><a href="../learn/services-and-indexes/services/services.html" class="page">Services</a></p></td>
+<p class="tableblock"><a href="sizing-general.html" class="xref page">Sizing Guidelines</a></p>
+<p class="tableblock"><a href="../learn/services-and-indexes/services/services.html" class="xref page">Services</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Time keeping</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Keeping accurate time is essential to a properly-functioning database.
 Ensure that you follow the guidelines for synchronizing each Couchbase node using Network Time Protocol (NTP).</p>
-<p class="tableblock"><a href="synchronize-clocks-using-ntp.html" class="page">Clock Sync with NTP</a></p></td>
+<p class="tableblock"><a href="synchronize-clocks-using-ntp.html" class="xref page">Clock Sync with NTP</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Disable Transparent Huge Pages</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">You must disable the THP memory management system on each node that runs Couchbase Server.</p>
-<p class="tableblock"><a href="thp-disable.html" class="page">Disabling Transparent Huge Pages (THP)</a></p></td>
+<p class="tableblock"><a href="thp-disable.html" class="xref page">Disabling Transparent Huge Pages (THP)</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Set kernel swappiness</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The <em class="term">kernel swappiness</em> setting defines how aggressively the kernel will swap memory pages versus dropping pages from the page cache.
 You need to set the swappiness setting to 0, or at most 1, for optimal Couchbase Server operation.</p>
-<p class="tableblock"><a href="install-swap-space.html" class="page">Swap Space and Kernel Swappiness</a></p></td>
+<p class="tableblock"><a href="install-swap-space.html" class="xref page">Swap Space and Kernel Swappiness</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Couchbase client deployment</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When you deploy Couchbase Server, you need to plan how clients will access and interact with the cluster.</p>
-<p class="tableblock"><a href="../sdk/overview.html" class="page">Couchbase Client Deployment Strategies</a></p></td>
+<p class="tableblock"><a href="../sdk/overview.html" class="xref page">Couchbase Client Deployment Strategies</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Security</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Couchbase Server provides security features that allow administrators to implement various security controls to ensure secure deployment.
 You should take Couchbase security best practices into consideration before, during, and after deployment.</p>
-<p class="tableblock"><a href="../learn/security/security-overview.html" class="page">Security</a></p>
-<p class="tableblock"><a href="server-processes.html" class="page">Couchbase Server Processes</a></p></td>
+<p class="tableblock"><a href="../learn/security/security-overview.html" class="xref page">Security</a></p>
+<p class="tableblock"><a href="server-processes.html" class="xref page">Couchbase Server Processes</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Virtualized and containerized deployments</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Certain considerations must be made when you&#8217;re deploying Couchbase Server on a virtual machine or container.</p>
-<p class="tableblock"><a href="best-practices-vm.html" class="page">Deployment Considerations for Virtual Machines and Containers</a></p></td>
+<p class="tableblock"><a href="best-practices-vm.html" class="xref page">Deployment Considerations for Virtual Machines and Containers</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Clusters with less than three nodes</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Couchbase Server clusters with less than three nodes are not recommended in production.
 However, you might find a need to have a smaller deployment for test and development purposes.</p>
-<p class="tableblock"><a href="deployment-considerations-lt-3nodes.html" class="page">About Deploying Clusters With Less Than Three Nodes</a></p></td>
+<p class="tableblock"><a href="deployment-considerations-lt-3nodes.html" class="xref page">About Deploying Clusters With Less Than Three Nodes</a></p></td>
 </tr>
 </tbody>
 </table>

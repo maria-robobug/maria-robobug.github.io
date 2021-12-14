@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/indexing-arrays.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4500,7 +4500,7 @@ You can now create an index of array elements ranging from plain scalar values t
 </div>
 <div id="keyspace-path" class="listingblock">
 <div class="content">
-<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a> ]</pre>
+<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4510,7 +4510,7 @@ You can now create an index of array elements ranging from plain scalar values t
 </div>
 <div id="keyspace-partial" class="listingblock">
 <div class="content">
-<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a></pre>
+<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4520,7 +4520,7 @@ You can now create an index of array elements ranging from plain scalar values t
 </div>
 <div class="paragraph">
 <p>The simple name or fully-qualified name of the keyspace on which to create the index.
-Refer to the <a href="createindex.html#keyspace-ref" class="page">CREATE INDEX</a> statement for details of the syntax.</p>
+Refer to the <a href="createindex.html#keyspace-ref" class="xref page">CREATE INDEX</a> statement for details of the syntax.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4543,7 +4543,7 @@ This constitutes an index-key for the index.</p>
 <dl>
 <dt class="hdlist1">expr</dt>
 <dd>
-<p>A <a href="index.html" class="page">N1QL expression</a> over any fields in the document.
+<p>A <a href="index.html" class="xref page">N1QL expression</a> over any fields in the document.
 This cannot use constant expressions, aggregate functions, or sub-queries.</p>
 </dd>
 </dl>
@@ -4775,7 +4775,7 @@ The <code>USING GSI</code> keywords are optional and may be omitted.</p>
 </dl>
 </div>
 <div class="paragraph">
-<p>See the <a href="createindex.html" class="page">CREATE INDEX</a> statement for more details on the syntax.</p>
+<p>See the <a href="createindex.html" class="xref page">CREATE INDEX</a> statement for more details on the syntax.</p>
 </div>
 </div>
 </div>
@@ -4853,7 +4853,7 @@ They can efficiently index and query recursive trees of arbitrary depth.
 <h2 id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following examples use the <a href="../../manage/manage-settings/install-sample-buckets.html" class="page">travel-sample</a> bucket that is shipped with Couchbase Server.</p>
+<p>The following examples use the <a href="../../manage/manage-settings/install-sample-buckets.html" class="xref page">travel-sample</a> bucket that is shipped with Couchbase Server.</p>
 </div>
 <div id="example-1" class="exampleblock">
 <div class="title">Example 1. Indexing all DISTINCT elements in an array</div>
@@ -5066,7 +5066,7 @@ WHERE sch = {"day":2, "flight": "US681", "utc": "19:20:00"};</code></pre>
 <div class="paragraph">
 <p>Covering indexes are an efficient method of using an Index for a particular query, whereby the index itself can completely cover the query in terms of providing all data required for the query.
 Basically, it avoids the fetch phase of the query processing and related overhead in fetching the required documents from data-service nodes.
-For more details, see <a href="covering-indexes.html" class="page">Covering Indexes</a>.</p>
+For more details, see <a href="covering-indexes.html" class="xref page">Covering Indexes</a>.</p>
 </div>
 <div class="paragraph">
 <p>Array indexing requires special attention to create covering array indexes.
@@ -5236,7 +5236,7 @@ WHERE v.flight LIKE 'UA%';</code></pre>
 <p>As items cannot be indexed, it is not possible to index MISSING items, so the EVERY operator is evaluated in the N1QL engine and cannot leverage the array index scan.</p>
 </div>
 <div class="paragraph">
-<p>For example, <a href="#Q7C">Query D</a> below uses the primary index <code>def_inventory_route_primary</code> ignoring the <a href="hints.html#use-index-clause" class="page">USE INDEX hint</a> to use the array indexes.
+<p>For example, <a href="#Q7C">Query D</a> below uses the primary index <code>def_inventory_route_primary</code> ignoring the <a href="hints.html#use-index-clause" class="xref page">USE INDEX hint</a> to use the array indexes.
 (Note that in this example, <a href="#C7">Index I</a> defines a DISTINCT array index while <a href="#C7C">Index II</a> defines an ALL array index, and both are ignored).</p>
 </div>
 </td>

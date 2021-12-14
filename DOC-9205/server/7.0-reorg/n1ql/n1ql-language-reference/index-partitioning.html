@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/index-partitioning.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4511,7 +4511,7 @@ The system partitions the index across a number of index nodes using a hash part
 </div>
 </div>
 <div class="paragraph">
-<p>For further details, refer to <a href="../../manage/manage-indexes/manage-indexes.html" class="page">Manage Indexes</a>.</p>
+<p>For further details, refer to <a href="../../manage/manage-indexes/manage-indexes.html" class="xref page">Manage Indexes</a>.</p>
 </div>
 </div>
 </div>
@@ -4534,7 +4534,7 @@ The system partitions the index across a number of index nodes using a hash part
 <dl>
 <dt class="hdlist1"><em>index-name</em></dt>
 <dd>
-<p><a href="identifiers.html" class="page">Identifier</a> representing the name of your index.
+<p><a href="identifiers.html" class="xref page">Identifier</a> representing the name of your index.
 The partitioned index name must be unique within a keyspace or bucket.</p>
 </dd>
 </dl>
@@ -4553,7 +4553,7 @@ The partitioned index name must be unique within a keyspace or bucket.</p>
 </div>
 <div id="keyspace-path" class="listingblock">
 <div class="content">
-<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a> ]</pre>
+<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a> ]</pre>
 </div>
 </div>
 <div class="imageblock text-left">
@@ -4563,7 +4563,7 @@ The partitioned index name must be unique within a keyspace or bucket.</p>
 </div>
 <div id="keyspace-partial" class="listingblock">
 <div class="content">
-<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a></pre>
+<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a></pre>
 </div>
 </div>
 <div class="imageblock text-left">
@@ -4573,7 +4573,7 @@ The partitioned index name must be unique within a keyspace or bucket.</p>
 </div>
 <div class="paragraph">
 <p>The simple name or fully-qualified name of the keyspace on which to create the index.
-Refer to the <a href="createindex.html#keyspace-ref" class="page">CREATE INDEX</a> statement for details of the syntax.</p>
+Refer to the <a href="createindex.html#keyspace-ref" class="xref page">CREATE INDEX</a> statement for details of the syntax.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4592,7 +4592,7 @@ Refer to the <a href="createindex.html#keyspace-ref" class="page">CREATE INDEX</
 <dl>
 <dt class="hdlist1"><em>expr</em></dt>
 <dd>
-<p>A <a href="index.html" class="page">N1QL expression</a> over any fields in the document.</p>
+<p>A <a href="index.html" class="xref page">N1QL expression</a> over any fields in the document.</p>
 </dd>
 </dl>
 </div>
@@ -4720,20 +4720,20 @@ For more details and examples, refer to <a href="#number-of-partitions">Number o
 <dd>
 <p>[Optional] An array of strings, specifying a list of nodes.
 The node list to restrict the set of nodes available for placement.
-Refer to the <a href="createindex.html#index-with" class="page">CREATE INDEX</a> statement for details of the syntax.
+Refer to the <a href="createindex.html#index-with" class="xref page">CREATE INDEX</a> statement for details of the syntax.
 For more details and examples, refer to <a href="#partition-placement">Partition Placement</a>.</p>
 </dd>
 <dt class="hdlist1">defer_build</dt>
 <dd>
 <p>[Optional] Boolean.
 When set to true, the index creation operation queues the task for building the index, but immediately pauses the building of the index.
-Refer to the <a href="createindex.html#index-with" class="page">CREATE INDEX</a> statement for more details.</p>
+Refer to the <a href="createindex.html#index-with" class="xref page">CREATE INDEX</a> statement for more details.</p>
 </dd>
 <dt class="hdlist1">num_replica</dt>
 <dd>
 <p>[Optional] An integer specifying the number of replicas of the partitioned index to create.
 If this integer is greater than or equal to the number of index nodes in the cluster, then the index creation will fail.
-Refer to the <a href="createindex.html#index-with" class="page">CREATE INDEX</a> statement for more details.</p>
+Refer to the <a href="createindex.html#index-with" class="xref page">CREATE INDEX</a> statement for more details.</p>
 </dd>
 <dt class="hdlist1">secKeySize</dt>
 <dd>
@@ -5110,7 +5110,7 @@ It tries to even out resource utilization across the index service nodes by movi
 <p>As with a range query, when an index is partitioned by document key, an aggregate query can gather the qualifying index keys from all the partitions before performing aggregation in the query engine.
 Whenever aggregate pushdown optimization is allowed, the query engine will push down "partial aggregate" calculation to each partition.
 The query engine then computes the final aggregate result from the partial aggregates across all the partitions.
-For more details on aggregate query optimization, refer to <a href="groupby-aggregate-performance.html" class="page">Group By and Aggregate Performance</a>.</p>
+For more details on aggregate query optimization, refer to <a href="groupby-aggregate-performance.html" class="xref page">Group By and Aggregate Performance</a>.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 9. Create a partitioned index with partition key being document key</div>
@@ -5372,7 +5372,7 @@ For example:</p>
 </div>
 <div class="paragraph">
 <p>In Couchbase Server 7.0 and later, the <em class="def">index redistribution</em> setting enables you to specify how Couchbase Server redistributes indexes on rebalance.
-For further details, refer to <a href="../../learn/clusters-and-availability/rebalance.html#rebalancing-the-index-service" class="page">Rebalancing the Index Service</a>.</p>
+For further details, refer to <a href="../../learn/clusters-and-availability/rebalance.html#rebalancing-the-index-service" class="xref page">Rebalancing the Index Service</a>.</p>
 </div>
 </div>
 </div>

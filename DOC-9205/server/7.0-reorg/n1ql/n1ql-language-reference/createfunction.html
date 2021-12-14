@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/createfunction.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4490,20 +4490,20 @@ The only supported language is JavaScript.</p>
 <div class="sect2">
 <h3 id="context"><a class="anchor" href="#context"></a>Global Functions and Scope Functions</h3>
 <div class="paragraph">
-<p>You can create user-defined functions at two different levels of the N1QL <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">logical hierarchy</a>.</p>
+<p>You can create user-defined functions at two different levels of the N1QL <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">logical hierarchy</a>.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p>A <em class="def">global function</em> is created within a namespace, at the same level as the buckets within the namespace.
-When you call a global function, any partial keyspace references within the function definition are resolved against the function&#8217;s namespace, regardless of the current <a href="../n1ql-intro/sysinfo.html#query-context" class="page">query context</a>.</p>
+When you call a global function, any partial keyspace references within the function definition are resolved against the function&#8217;s namespace, regardless of the current <a href="../n1ql-intro/sysinfo.html#query-context" class="xref page">query context</a>.</p>
 <div class="paragraph">
 <p>For example, when you call a global function <code>default:global()</code> which contains the keyspace reference <code>`travel-sample`</code>, the keyspace reference is always resolved within the context of the function to the <code>default:`travel-sample`</code> bucket.</p>
 </div>
 </li>
 <li>
 <p>A <em class="def">scope function</em> is created within a scope, at the same level as the collections within the scope.
-When you call a scope function, any partial keyspace references within the function definition are resolved against the function&#8217;s scope, regardless of the current <a href="../n1ql-intro/sysinfo.html#query-context" class="page">query context</a>.</p>
+When you call a scope function, any partial keyspace references within the function definition are resolved against the function&#8217;s scope, regardless of the current <a href="../n1ql-intro/sysinfo.html#query-context" class="xref page">query context</a>.</p>
 <div class="paragraph">
 <p>For example, when you call a scope function <code>default:`travel-sample`.inventory.scope()</code> which contains the keyspace reference <code>route</code>, the keyspace reference is always resolved within the context of the function to <code>default:`travel-sample`.inventory.route</code>.</p>
 </div>
@@ -4683,7 +4683,7 @@ To create a variadic function, that is, a function which you can call with any n
 <dd>
 <p>The name of the JavaScript function that you want to use for the user-defined function.
 This parameter is a string and must be wrapped in quotes.
-External functions in N1QL <em>only</em> support plain JavaScript, without any of the <a href="../../eventing/eventing-language-constructs.html#added-lang-features" class="page">added language features</a> supported by functions in the Eventing Service.</p>
+External functions in N1QL <em>only</em> support plain JavaScript, without any of the <a href="../../eventing/eventing-language-constructs.html#added-lang-features" class="xref page">added language features</a> supported by functions in the Eventing Service.</p>
 </dd>
 </dl>
 </div>
@@ -4694,7 +4694,7 @@ External functions in N1QL <em>only</em> support plain JavaScript, without any o
 <p>The name of the JavaScript library that contains the function you want to use.
 This parameter is a string and must be wrapped in quotes.
 You must create the JavaScript library and the JavaScript function using the N1QL Functions REST API.
-For details, refer to <a href="../n1ql-rest-api/functions.html" class="page">Functions REST API</a>.</p>
+For details, refer to <a href="../n1ql-rest-api/functions.html" class="xref page">Functions REST API</a>.</p>
 </dd>
 </dl>
 </div>
@@ -4716,7 +4716,7 @@ If these keywords are present, and a function with the same name already exists,
 <div class="sectionbody">
 <div class="paragraph">
 <p>For simplicity, none of these examples implement any data validation or error checking.
-If necessary, you can use <a href="conditionalops.html" class="page">conditional operators</a> to check the parameters of a user-defined function, and the <a href="metafun.html#abort" class="page">ABORT()</a> function to generate an error if something is wrong.</p>
+If necessary, you can use <a href="conditionalops.html" class="xref page">conditional operators</a> to check the parameters of a user-defined function, and the <a href="metafun.html#abort" class="xref page">ABORT()</a> function to generate an error if something is wrong.</p>
 </div>
 <div id="ex-inline-language" class="exampleblock">
 <div class="title">Example 1. Inline function with the LANGUAGE syntax</div>
@@ -5114,16 +5114,16 @@ At this level of precision, the geohash should appear to be in almost exactly th
 <div class="ulist">
 <ul>
 <li>
-<p>To execute user-defined functions, refer to <a href="execfunction.html" class="page">EXECUTE FUNCTION</a>.</p>
+<p>To execute user-defined functions, refer to <a href="execfunction.html" class="xref page">EXECUTE FUNCTION</a>.</p>
 </li>
 <li>
-<p>To include user-defined functions in an expression, refer to <a href="userfun.html" class="page">User-Defined Functions</a>.</p>
+<p>To include user-defined functions in an expression, refer to <a href="userfun.html" class="xref page">User-Defined Functions</a>.</p>
 </li>
 <li>
-<p>To view user-defined functions, refer to <a href="../../manage/monitor/monitoring-n1ql-query.html#sys-functions" class="page">Monitor Queries</a>.</p>
+<p>To view user-defined functions, refer to <a href="../../manage/monitor/monitoring-n1ql-query.html#sys-functions" class="xref page">Monitor Queries</a>.</p>
 </li>
 <li>
-<p>To drop user-defined functions, refer to <a href="dropfunction.html" class="page">DROP FUNCTION</a>.</p>
+<p>To drop user-defined functions, refer to <a href="dropfunction.html" class="xref page">DROP FUNCTION</a>.</p>
 </li>
 </ul>
 </div>

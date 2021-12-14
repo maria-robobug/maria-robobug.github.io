@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="ruby-sdk">
 <meta name="dcterms.identifier" content="3.2">
 <meta name="page-url" content="/ruby-sdk/3.2/hello-world/start-using-sdk.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3674,7 +3674,7 @@ The Ruby SDK includes high-performance native Ruby extensions to handle communic
 </div>
 <div class="paragraph">
 <p>The Couchbase Ruby SDK 3.x is a complete rewrite of the API, reducing the number of overloads to present a simplified surface area,
-and adding support for future Couchbase Server features like <a href="../concept-docs/collections.html" class="page">Collections and Scopes</a> (available in Couchbase Server 7.0).</p>
+and adding support for future Couchbase Server features like <a href="../concept-docs/collections.html" class="xref page">Collections and Scopes</a> (available in Couchbase Server 7.0).</p>
 </div>
 <div class="paragraph">
 <p>Ruby SDK supports MRI Ruby versions 2.5, 2.6, and 2.7.</p>
@@ -3694,7 +3694,7 @@ and adding support for future Couchbase Server features like <a href="../concept
 </div>
 <div class="paragraph">
 <p>In addition to rubygems.org, we also maintain official gem repositories, where we publish not only source version of the package, but also precompiled binaries for Linux and MacOS.
-Further details can be found on the <a href="../project-docs/sdk-release-notes.html" class="page">Release Notes &amp; Archives page</a>.</p>
+Further details can be found on the <a href="../project-docs/sdk-release-notes.html" class="xref page">Release Notes &amp; Archives page</a>.</p>
 </div>
 </div>
 </div>
@@ -3702,9 +3702,9 @@ Further details can be found on the <a href="../project-docs/sdk-release-notes.h
 <h2 id="hello-couchbase"><a class="anchor" href="#hello-couchbase"></a>Hello Couchbase</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Couchbase uses <a href="#7.0@server:learn:security/roles.adoc" class="page unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
+<p>Couchbase uses <a href="#7.0@server:learn:security/roles.adoc" class="xref unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
 Here we will use the <em>Full Admin</em> role created during installation of the Couchbase Data Platform.
-For production client code, you will want to use <a href="../howtos/managing-connections.html#rbac" class="page">more appropriate, restrictive settings</a>, but here we want to get you up and running quickly.
+For production client code, you will want to use <a href="../howtos/managing-connections.html#rbac" class="xref page">more appropriate, restrictive settings</a>, but here we want to get you up and running quickly.
 If you&#8217;re developing client code on the same VM or machine as the Couchbase Server, your URI can be <em>localhost</em>.</p>
 </div>
 <div class="listingblock">
@@ -3729,7 +3729,7 @@ If you&#8217;re developing client code on the same VM or machine as the Couchbas
 <p>If you are connecting to Couchbase Cloud rather than a local Couchbase Server, then also refer to the <a href="#cloud-connections">Cloud section</a>, below.</p>
 </div>
 <div class="paragraph">
-<p>Couchbase uses <a href="#7.0@server:learn:security/roles.adoc" class="page unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
+<p>Couchbase uses <a href="#7.0@server:learn:security/roles.adoc" class="xref unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
 For production client code, you will want to use more appropriate, restrictive settings
 &#8201;&#8212;&#8201;but here we want to get you up and running quickly,
 so you can use the <em>Full Admin</em> role created during installation of the Couchbase Data Platform, in which case set <em>Administrator</em> as the username, and use the password that you defined in setting up your test Couchbase cluster.</p>
@@ -3754,7 +3754,7 @@ collection = scope.collection("users")</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The 3.2 SDK supports full integration with the <a href="../concept-docs/collections.html" class="page">Collections</a> feature in the latest release of the Couchbase Data Platform, Couchbase Server 7.0.
+<p>The 3.2 SDK supports full integration with the <a href="../concept-docs/collections.html" class="xref page">Collections</a> feature in the latest release of the Couchbase Data Platform, Couchbase Server 7.0.
 This brings complete support for Collections, allowing Documents to be grouped by purpose or theme, according to a specified <em>Scope</em>.
 Here we will use the <code>users</code> collection within the <code>tenant_agent_00</code> scope from <code>travel-sample</code> bucket as an example.</p>
 </div>
@@ -3786,7 +3786,7 @@ p cas: get_result.cas,
 <p>The code shows how you would use a named collection and scope. A named or default collection will provide the same functionality as bucket-level operations did in previous versions of Couchbase Server.</p>
 </div>
 <div class="paragraph">
-<p>KV Operations are described in detail on the <a href="../howtos/kv-operations.html" class="page">KV Operations page</a>.
+<p>KV Operations are described in detail on the <a href="../howtos/kv-operations.html" class="xref page">KV Operations page</a>.
 Now that you know the basics, you may wish to go straight to that page.</p>
 </div>
 <div class="paragraph">
@@ -3802,7 +3802,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can learn more about N1QL queries on the <a href="../howtos/n1ql-queries-with-sdk.html" class="page">Query page</a>.
+<p>You can learn more about N1QL queries on the <a href="../howtos/n1ql-queries-with-sdk.html" class="xref page">Query page</a>.
 Other services (like analytics, search or views) work very similar to the two shown above.
 Please refer to their respective documentation sections to learn more.</p>
 </div>
@@ -3825,13 +3825,13 @@ Please refer to their respective documentation sections to learn more.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="page">Constrained Network Environments</a>,</p>
+<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="xref page">Constrained Network Environments</a>,</p>
 </li>
 <li>
-<p><a href="../project-docs/compatibility.html#network-requirements" class="page">Network Requirements</a>,</p>
+<p><a href="../project-docs/compatibility.html#network-requirements" class="xref page">Network Requirements</a>,</p>
 </li>
 <li>
-<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="page">Troubleshooting Guide</a>.</p>
+<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="xref page">Troubleshooting Guide</a>.</p>
 </li>
 </ul>
 </div>
@@ -3842,7 +3842,7 @@ Please refer to their respective documentation sections to learn more.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The API reference is generated for each release and can be found <a href="https://docs.couchbase.com/sdk-api/couchbase-ruby-client/Couchbase.html">here</a>.
-Older API references are linked from their respective sections in the <a href="../project-docs/sdk-release-notes.html" class="page">Release Notes</a>.</p>
+Older API references are linked from their respective sections in the <a href="../project-docs/sdk-release-notes.html" class="xref page">Release Notes</a>.</p>
 </div>
 <div class="paragraph">
 <p>Couchbase welcomes community contributions to the Ruby SDK.

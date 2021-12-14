@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/delete.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4469,7 +4469,7 @@
 <p>To execute the DELETE statement, you must have the <em>Query Delete</em> privilege granted on the target keyspace.
 If the statement has any RETURNING clauses that need data read, then the <em>Query Select</em> privilege is also required on the keyspaces referred in the respective clauses.
 For more details about user roles, see
-<a href="../../learn/security/authorization-overview.html" class="page">Authorization</a>.</p>
+<a href="../../learn/security/authorization-overview.html" class="xref page">Authorization</a>.</p>
 </div>
 <div class="paragraph">
 <p>In summary, see the below table.</p>
@@ -4556,7 +4556,7 @@ For more details about user roles, see
 </div>
 <div id="keyspace-path" class="listingblock">
 <div class="content">
-<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a> ]</pre>
+<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4566,7 +4566,7 @@ For more details about user roles, see
 </div>
 <div id="keyspace-partial" class="listingblock">
 <div class="content">
-<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a></pre>
+<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4576,14 +4576,14 @@ For more details about user roles, see
 </div>
 <div class="paragraph">
 <p>Keyspace reference for the delete target.
-For more details, refer to <a href="from.html#from-keyspace-ref" class="page">Keyspace Reference</a>.</p>
+For more details, refer to <a href="from.html#from-keyspace-ref" class="xref page">Keyspace Reference</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="delete-alias"><a class="anchor" href="#delete-alias"></a>AS Alias</h4>
 <div class="paragraph">
 <p>Assigns another name to the keyspace reference.
-For details, refer to <a href="from.html#section_ax5_2nx_1db" class="page">AS Clause</a>.</p>
+For details, refer to <a href="from.html#section_ax5_2nx_1db" class="xref page">AS Clause</a>.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -4603,7 +4603,7 @@ If you assign an alias to the keyspace reference, the <code>AS</code> keyword ma
 <h3 id="delete-hint"><a class="anchor" href="#delete-hint"></a>Delete Hint</h3>
 <div class="paragraph">
 <p>You can use a <code>USE KEYS</code> hint on the delete target to specify the keys of the data items to be deleted.
-For details, refer to <a href="hints.html#use-keys-clause" class="page">USE KEYS Clause</a>.</p>
+For details, refer to <a href="hints.html#use-keys-clause" class="xref page">USE KEYS Clause</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4655,7 +4655,7 @@ Optional.</p>
 </div>
 <div class="paragraph">
 <p>Specifies the information to be returned by the operation as a query result.
-For more details, refer to <a href="insert.html#returning-clause" class="page">RETURNING Clause</a>.</p>
+For more details, refer to <a href="insert.html#returning-clause" class="xref page">RETURNING Clause</a>.</p>
 </div>
 </div>
 </div>
@@ -4672,7 +4672,7 @@ For more details, refer to <a href="insert.html#returning-clause" class="page">R
 <td class="content">
 Please note that running the following examples will permanently delete your sample data.
 To restore your sample data, remove and reinstall the <code>travel-sample</code> bucket.
-Refer to <a href="../../manage/manage-settings/install-sample-buckets.html" class="page">Sample Buckets</a> for details.
+Refer to <a href="../../manage/manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a> for details.
 </td>
 </tr>
 </table>

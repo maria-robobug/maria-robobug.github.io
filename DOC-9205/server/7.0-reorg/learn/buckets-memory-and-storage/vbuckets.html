@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/buckets-memory-and-storage/vbuckets.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4467,12 +4467,12 @@
 <div class="paragraph">
 <p>Couchbase Server allows users and applications to save data, in binary or JSON format, in named <em>buckets</em>.
 Each bucket therefore contains <em>keys</em> and associated <em>values</em>.
-See <a href="buckets.html" class="page">Buckets</a>, for detailed information.</p>
+See <a href="buckets.html" class="xref page">Buckets</a>, for detailed information.</p>
 </div>
 <div class="paragraph">
 <p>Within the memory and storage management system of Couchbase Server, both Couchbase and Ephermal buckets are implemented as <em>vBuckets</em>, 1024 of which are created for every bucket (except on MacOS, where the number is 64).
 vBuckets are distributed evenly across the memory and storage facilities of the cluster; and the bucket&#8217;s items are distributed evenly across its vBuckets.
-This evenness of distribution ensures that all instances of the <a href="../services-and-indexes/services/data-service.html" class="page">Data Service</a> take an approximately equal share of the workload, in terms of numbers of documents to maintain, and operations to handle.</p>
+This evenness of distribution ensures that all instances of the <a href="../services-and-indexes/services/data-service.html" class="xref page">Data Service</a> take an approximately equal share of the workload, in terms of numbers of documents to maintain, and operations to handle.</p>
 </div>
 <div class="paragraph">
 <p>The 1024 vBuckets that implement a defined bucket are referred to as <em>active</em> vBuckets.
@@ -4501,7 +4501,7 @@ vBuckets are mapped to individual nodes by the Cluster Manager: the mapping is c
 The client then examines the vBucket map to determine the server-node on which the vBucket resides; and finally performs its operation directly on that server-node.</p>
 </div>
 <div class="paragraph">
-<p>In Couchbase Server Version 7.0+, documents within a bucket are organized into <a href="../data/scopes-and-collections.html" class="page">Scopes and Collections</a>.
+<p>In Couchbase Server Version 7.0+, documents within a bucket are organized into <a href="../data/scopes-and-collections.html" class="xref page">Scopes and Collections</a>.
 Scopes and collections do <em>not</em> affect the way in which keys are allocated to vBuckets.
 However, each vBucket <em>is</em> aware, for each of its allocated keys, of the scope and collection with which that particular key is associated.</p>
 </div>
@@ -4509,7 +4509,7 @@ However, each vBucket <em>is</em> aware, for each of its allocated keys, of the 
 <p>When a cluster-configuration changes — due to rebalance, failover, or node-addition — replica buckets are promoted to primaries if appropriate, and both primaries and replicas are redistributed across the available nodes of the modified cluster.
 The vBucket map is duly updated by the Cluster Manager.
 The updated map is then sent to all cluster-participants.
-For additional information on the distribution of vBuckets across the cluster, see <a href="../clusters-and-availability/replication-architecture.html" class="page">Availability</a>.</p>
+For additional information on the distribution of vBuckets across the cluster, see <a href="../clusters-and-availability/replication-architecture.html" class="xref page">Availability</a>.</p>
 </div>
 <div class="paragraph">
 <p>Note that this use of client-side hashing for access to Couchbase and Ephemeral bucket-data contrasts with the Memcached data-access method; which requires active management of the server-list, and a specific hashing algorithm, such as Ketama, to handle topology-changes.</p>

@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-xdcr/secure-xdcr-replication.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4469,12 +4469,12 @@ Optionally, a secure connection can be enabled between clusters, in order to sec
 </div>
 <div class="paragraph">
 <p>Note that if the password received by the destination cluster requires authentication by an LDAP server, the destination cluster communicates with the LDAP server according to the destination cluster&#8217;s prior configuration.
-For details on configuration options, see <a href="../manage-security/configure-ldap.html" class="page">Configure LDAP</a>.</p>
+For details on configuration options, see <a href="../manage-security/configure-ldap.html" class="xref page">Configure LDAP</a>.</p>
 </div>
 <div class="paragraph">
 <p>XDCR security is enabled either by SCRAM-SHA or by TLS — depending on the administrator-specified connection-type, and the server-version of the destination cluster.
-Use of TLS involves certificate management: for an overview of certificates, see <a href="../../learn/security/certificates.html" class="page">Certificates</a>.
-For specific details on how to prepare and handle certificates for servers and clients, see <a href="../manage-security/manage-certificates.html" class="page">Manage Certificates</a>.</p>
+Use of TLS involves certificate management: for an overview of certificates, see <a href="../../learn/security/certificates.html" class="xref page">Certificates</a>.
+For specific details on how to prepare and handle certificates for servers and clients, see <a href="../manage-security/manage-certificates.html" class="xref page">Manage Certificates</a>.</p>
 </div>
 <div class="paragraph">
 <p>The following security-levels are supported:</p>
@@ -4497,7 +4497,7 @@ If this certificate is provided and a SCRAM-SHA connection is achieved, the cert
 The root certificate can be obtained by accessing the <strong>Root Certificate</strong> tab, on the <strong>Security</strong> screen for the remote cluster: copy the certificate from the interactive panel in which it appears.</p>
 </div>
 <div class="paragraph">
-<p>For step-by-step instructions, see <a href="enable-half-secure-replication.html" class="page">Enable Half-Secure Replications</a>.</p>
+<p>For step-by-step instructions, see <a href="enable-half-secure-replication.html" class="xref page">Enable Half-Secure Replications</a>.</p>
 </div>
 </li>
 </ul>
@@ -4505,7 +4505,7 @@ The root certificate can be obtained by accessing the <strong>Root Certificate</
 </li>
 <li>
 <p><em>Fully</em> secure: Handles both authentication and data-transfer via TLS.
-For step-by-step instructions, see <a href="enable-full-secure-replication.html" class="page">Enable Fully Secure Replications</a>.</p>
+For step-by-step instructions, see <a href="enable-full-secure-replication.html" class="xref page">Enable Fully Secure Replications</a>.</p>
 </li>
 </ul>
 </div>

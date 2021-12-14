@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/hints.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4467,7 +4467,7 @@ The <code>USE</code> clause enables you to specify that the query should use par
 <h2 id="purpose"><a class="anchor" href="#purpose"></a>Purpose</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>USE</code> clause is used within the <a href="from.html" class="page">FROM</a> clause.
+<p>The <code>USE</code> clause is used within the <a href="from.html" class="xref page">FROM</a> clause.
 It enables you to provide a hint to the query service, specifying that the query should use particular keys, or a particular index.</p>
 </div>
 </div>
@@ -4478,7 +4478,7 @@ It enables you to provide a hint to the query service, specifying that the query
 <div class="paragraph">
 <p>For you to select data from a document or keyspace, you must have the <code class="param">query_select</code> privilege on the document or keyspace.
 For more details about user roles, see
-<a href="../../learn/security/authorization-overview.html" class="page">Authorization</a>.</p>
+<a href="../../learn/security/authorization-overview.html" class="xref page">Authorization</a>.</p>
 </div>
 </div>
 </div>
@@ -4729,8 +4729,8 @@ In this case, the query service considers all the available indexes of the speci
 </dd>
 <dt class="hdlist1"><code>USING FTS</code></dt>
 <dd>
-<p>A Full Text Search index, for use with queries containing <a href="searchfun.html" class="page">Search functions</a>.
-In Couchbase Server 6.6 Enterprise Edition and later, you can use this hint to specify that the query is a <a href="flex-indexes.html" class="page">Flex Index</a> query using a Full Text Search index.
+<p>A Full Text Search index, for use with queries containing <a href="searchfun.html" class="xref page">Search functions</a>.
+In Couchbase Server 6.6 Enterprise Edition and later, you can use this hint to specify that the query is a <a href="flex-indexes.html" class="xref page">Flex Index</a> query using a Full Text Search index.
 In Couchbase Server 6.6 Community Edition and later, this hint is ignored if the query does not contain a Search function.</p>
 </dd>
 </dl>
@@ -4794,7 +4794,7 @@ If none of the available FTS indexes are qualified, the available GSI indexes ar
 <div class="ulist">
 <ul>
 <li>
-<p><a href="join.html#ansi-join-hints" class="page">ANSI JOIN Hints</a></p>
+<p><a href="join.html#ansi-join-hints" class="xref page">ANSI JOIN Hints</a></p>
 </li>
 </ul>
 </div>

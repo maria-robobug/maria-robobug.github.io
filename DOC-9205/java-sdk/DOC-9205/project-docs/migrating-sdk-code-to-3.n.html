@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="java-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/java-sdk/DOC-9205/project-docs/migrating-sdk-code-to-3.n.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3693,7 +3693,7 @@ The new API is built on years of hands-on experience with the current SDK as wel
 <div class="paragraph">
 <p>Before this guide dives into the language-specific technical component of the migration, it is important to understand the high level changes first.
 As a migration guide, this document assumes you are familiar with the previous generation of the SDK and does not re-introducing SDK 2.0 concepts.
-We recommend familiarizing yourself with the new SDK first by reading at least the <a href="../hello-world/start-using-sdk.html" class="page">getting started guide</a>, and browsing through the other chapters a little.</p>
+We recommend familiarizing yourself with the new SDK first by reading at least the <a href="../hello-world/start-using-sdk.html" class="xref page">getting started guide</a>, and browsing through the other chapters a little.</p>
 </div>
 <div class="sect2">
 <h3 id="terminology"><a class="anchor" href="#terminology"></a>Terminology</h3>
@@ -3701,7 +3701,7 @@ We recommend familiarizing yourself with the new SDK first by reading at least t
 <p>The concept of a <code>Cluster</code> and a <code>Bucket</code> remain the same, but a fundamental new layer is introduced into the API: <code>Collections</code> and their <code>Scopes</code>.
 Collections are logical data containers inside a Couchbase bucket that let you group similar data just like a <em>Table</em> does in a relational database&#8201;&#8212;&#8201;although documents inside a collection do not need to have the same structure.
 Scopes allow the grouping of collections into a namespace, which is very usfeul when you have multilpe tenants acessing the same bucket.
-Couchbase Server includes support for collections as a <a href="#6.5@server:developer-preview:preview-mode.adoc" class="page unresolved">developer preview</a> in version 6.5, and as a first class concept of the programming model from <a href="#{version-server}@server:learn:data/scopes-and-collections.adoc" class="page unresolved">version 7.0.</a></p>
+Couchbase Server includes support for collections as a <a href="#6.5@server:developer-preview:preview-mode.adoc" class="xref unresolved">developer preview</a> in version 6.5, and as a first class concept of the programming model from <a href="#{version-server}@server:learn:data/scopes-and-collections.adoc" class="xref unresolved">version 7.0.</a></p>
 </div>
 <div class="paragraph">
 <p>Note that the SDKs include the feature from SDK 3.0, to allow easier migration.</p>
@@ -3776,7 +3776,7 @@ First, installation and configuration are covered, then we talk about exception 
 <div class="paragraph">
 <p>The Java SDK 3.x is available for download from the same resources as the previous generation. Builds can be found on maven central, pre-releases are available from our own maven repository.
 In addition, a <code>zip</code> file is available with the required jars.
-Please see the <a href="sdk-release-notes.html" class="page">Release Notes</a> for up-to-date information.</p>
+Please see the <a href="sdk-release-notes.html" class="xref page">Release Notes</a> for up-to-date information.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -3870,7 +3870,7 @@ env.shutdown();</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If a default environment is used, the default settings can still be customized through either the connection string or <a href="../ref/client-settings.html" class="page">system properties</a>.
+<p>If a default environment is used, the default settings can still be customized through either the connection string or <a href="../ref/client-settings.html" class="xref page">system properties</a>.
 The SDK has elaborate reflection logic in place to parse "flat" string values and apply them to the builder, which means that you can now configure more properties than in SDK 2.
 Note that the property paths have changed.</p>
 </div>
@@ -3896,7 +3896,7 @@ ClusterEnvironment env = ClusterEnvironment.builder().ioConfig(IoConfig.maxHttpC
 <div class="paragraph">
 <p>The paths for each config start with the pattern <code>com.couchbase.env.</code> followed by either a toplevel or nested config. <code>IoConfig</code> is under the <code>io</code> path, similar to <code>TimeoutConfig</code> under <code>timeout</code>.
 So, if you want to modify a KV timeout you can use the <code>com.couchbase.env.timeout.kvTimeout</code> path.
-See the <a href="../ref/client-settings.html" class="page">configuration section</a> for full specifics.</p>
+See the <a href="../ref/client-settings.html" class="xref page">configuration section</a> for full specifics.</p>
 </div>
 <div class="paragraph">
 <p>At the end of this guide you&#8217;ll find a <a href="#configurations-options-reference">reference</a> that describes the SDK 2 environment options and their SDK 3 equivalents where applicable.</p>
@@ -3933,7 +3933,7 @@ Cluster.connect("127.0.0.1",
 </div>
 </div>
 <div class="paragraph">
-<p>Please see the <a href="../howtos/sdk-authentication.html" class="page">documentation on certificate-based authentication</a> for detailed information on how to configure this properly.</p>
+<p>Please see the <a href="../howtos/sdk-authentication.html" class="xref page">documentation on certificate-based authentication</a> for detailed information on how to configure this properly.</p>
 </div>
 </div>
 </div>
@@ -4193,7 +4193,7 @@ It also means, when migrating to the new SDK API, you may observe a longer perio
 <td class="content">
 Operations are retried by default as described above with the default <code>BestEffortRetryStrategy</code>.
 Like in SDK 2 you can configure fail-fast retry strategies to not retry certain or all operations.
-The <code>RetryStrategy</code> interface has been extended heavily in SDK 3&#8201;&#8212;&#8201;please see the <a href="../howtos/error-handling.html" class="page">error handling documentation</a>.
+The <code>RetryStrategy</code> interface has been extended heavily in SDK 3&#8201;&#8212;&#8201;please see the <a href="../howtos/error-handling.html" class="xref page">error handling documentation</a>.
 </td>
 </tr>
 </table>
@@ -4227,7 +4227,7 @@ The <code>LoggingEventConsumer</code> being one of the potential consumers, and 
 <div class="paragraph">
 <p>Notice the package path (which you can also filter on if needed), the event name, an optional time that it took to perform the operation, the message and surrounding context.
 This makes it easier to debug potential problems but also allows consuming all the events and feeding them in other monitoring systems without having to round-trip a file log.
-Please see <a href="../howtos/collecting-information-and-logging.html" class="page">the logging documentation</a> for further information.</p>
+Please see <a href="../howtos/collecting-information-and-logging.html" class="xref page">the logging documentation</a> for further information.</p>
 </div>
 </div>
 </div>

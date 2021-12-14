@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/savepoint.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4472,13 +4472,13 @@ The <code>SAVEPOINT</code> statement enables you to set a savepoint within a tra
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <code>SAVEPOINT</code> statement enables you to set a savepoint within an ACID transaction.
-Refer to <a href="transactions.html" class="page">N1QL Support for Couchbase Transactions</a> for further information.</p>
+Refer to <a href="transactions.html" class="xref page">N1QL Support for Couchbase Transactions</a> for further information.</p>
 </div>
 <div class="paragraph">
 <p>This statement may only be used within a transaction.</p>
 </div>
 <div class="paragraph">
-<p>If you are using the Query REST API, you must set the <a href="../../settings/query-settings.html#txid" class="page">txid</a> query parameter to specify the transaction ID.</p>
+<p>If you are using the Query REST API, you must set the <a href="../../settings/query-settings.html#txid" class="xref page">txid</a> query parameter to specify the transaction ID.</p>
 </div>
 <div class="paragraph">
 <p>If you are using the Query Workbench, you don&#8217;t need to specify the transaction ID, as long as the statement is part of a multi-statement request.
@@ -4521,7 +4521,7 @@ Once you have started a transaction, all statements within the cbq shell session
 <h2 id="example"><a class="anchor" href="#example"></a>Example</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you want to try this example, first refer to <a href="transactions.html#preparation" class="page">Preparation</a> to set up your environment.</p>
+<p>If you want to try this example, first refer to <a href="transactions.html#preparation" class="xref page">Preparation</a> to set up your environment.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Example 1. Set savepoints</div>
@@ -4703,19 +4703,19 @@ COMMIT WORK;</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>For an overview of Couchbase transactions, refer to <a href="../../learn/data/transactions.html" class="page">Transactions</a>.</p>
+<p>For an overview of Couchbase transactions, refer to <a href="../../learn/data/transactions.html" class="xref page">Transactions</a>.</p>
 </li>
 <li>
-<p>To begin a transaction, refer to <a href="begin-transaction.html" class="page">BEGIN TRANSACTION</a>.</p>
+<p>To begin a transaction, refer to <a href="begin-transaction.html" class="xref page">BEGIN TRANSACTION</a>.</p>
 </li>
 <li>
-<p>To specify transaction settings, refer to <a href="set-transaction.html" class="page">SET TRANSACTION</a>.</p>
+<p>To specify transaction settings, refer to <a href="set-transaction.html" class="xref page">SET TRANSACTION</a>.</p>
 </li>
 <li>
-<p>To rollback a transaction, refer to <a href="rollback-transaction.html" class="page">ROLLBACK TRANSACTION</a>.</p>
+<p>To rollback a transaction, refer to <a href="rollback-transaction.html" class="xref page">ROLLBACK TRANSACTION</a>.</p>
 </li>
 <li>
-<p>To commit a transaction, refer to <a href="commit-transaction.html" class="page">COMMIT TRANSACTION</a>.</p>
+<p>To commit a transaction, refer to <a href="commit-transaction.html" class="xref page">COMMIT TRANSACTION</a>.</p>
 </li>
 <li>
 <p>Blog post: <a href="https://blog.couchbase.com/transactions-n1ql-couchbase-distributed-nosql/" target="_blank" rel="noopener">Couchbase Transactions: Elastic, Scalable, and Distributed</a>.</p>

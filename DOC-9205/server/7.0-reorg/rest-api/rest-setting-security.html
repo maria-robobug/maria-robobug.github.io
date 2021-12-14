@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/rest-api/rest-setting-security.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4536,7 +4536,7 @@ This parameter can only be set globally.</p>
 <li>
 <p><code>clusterEncryptionLevel</code>.
 Controls the level of encryption imposed on cluster-communications.
-This can only be set after cluster encryption has been enabled (see <a href="../manage/manage-nodes/apply-node-to-node-encryption.html" class="page">Manage Node-to-Node Encryption</a>) and can only be set globally.
+This can only be set after cluster encryption has been enabled (see <a href="../manage/manage-nodes/apply-node-to-node-encryption.html" class="xref page">Manage Node-to-Node Encryption</a>) and can only be set globally.
 Its value can be any of the following:</p>
 <div class="ulist">
 <ul>
@@ -4586,7 +4586,7 @@ If the parameter is set globally, each listed cipher-suite can be used by a give
 </ul>
 </div>
 <div class="paragraph">
-<p>For an explanation of the relationships between per service and global settings, see <a href="../learn/security/on-the-wire-security.html" class="page">On-the-Wire Security</a>.</p>
+<p>For an explanation of the relationships between per service and global settings, see <a href="../learn/security/on-the-wire-security.html" class="xref page">On-the-Wire Security</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="enforcing-tls"><a class="anchor" href="#enforcing-tls"></a>Enforcing TLS</h3>
@@ -4598,16 +4598,16 @@ If the parameter is set globally, each listed cipher-suite can be used by a give
 <li>
 <p>Pause all Eventing functions on the node.
 (Resume them only after <code>strict</code> has been applied.)
-See <a href="../eventing/eventing-lifecycle.html" class="page">The Eventing Lifecycle</a>.</p>
+See <a href="../eventing/eventing-lifecycle.html" class="xref page">The Eventing Lifecycle</a>.</p>
 </li>
 <li>
 <p>Ensure all client applications and scripts are able to connect with TLS.</p>
 </li>
 <li>
-<p>Ensure node-to-node encryption is enabled (see <a href="../manage/manage-nodes/apply-node-to-node-encryption.html" class="page">Manage Node-to-Node Encryption</a>).</p>
+<p>Ensure node-to-node encryption is enabled (see <a href="../manage/manage-nodes/apply-node-to-node-encryption.html" class="xref page">Manage Node-to-Node Encryption</a>).</p>
 </li>
 <li>
-<p>Ensure all XDCR replications are configured as fully secure (see <a href="../manage/manage-xdcr/enable-full-secure-replication.html" class="page">Enable Fully Secure Replications</a>).</p>
+<p>Ensure all XDCR replications are configured as fully secure (see <a href="../manage/manage-xdcr/enable-full-secure-replication.html" class="xref page">Enable Fully Secure Replications</a>).</p>
 </li>
 </ul>
 </div>
@@ -4621,11 +4621,11 @@ See <a href="../eventing/eventing-lifecycle.html" class="page">The Eventing Life
 </li>
 <li>
 <p>The Eventing Service debugger port (9140) is not available (since non-TLS only).
-See <a href="../install/install-ports.html" class="page">Couchbase Server Ports</a>.</p>
+See <a href="../install/install-ports.html" class="xref page">Couchbase Server Ports</a>.</p>
 </li>
 <li>
 <p>The node cannot be added to a Version 6.0.x cluster.
-See <a href="../install/upgrade-cluster-online.html#tls-address-family-restriction-and-node-addition" class="page">TLS, Address-Family Restriction, and Node Addition</a>.</p>
+See <a href="../install/upgrade-cluster-online.html#tls-address-family-restriction-and-node-addition" class="xref page">TLS, Address-Family Restriction, and Node Addition</a>.</p>
 </li>
 </ul>
 </div>
@@ -4665,7 +4665,7 @@ For example, a call that incorrectly specifies every significant parameter-value
 </div>
 <div class="paragraph">
 <p>Note additionally that an attempt to establish a value for <code>clusterEncryptionLevel</code> prior to the enablement of node-to-node encryption returns the following error-message: <code>clusterEncryptionLevel - Can&#8217;t set cluster encryption level when cluster encryption is disabled.</code>
-See <a href="../manage/manage-nodes/apply-node-to-node-encryption.html" class="page">Manage Node-to-Node Encryption</a>, for details on how to enable.</p>
+See <a href="../manage/manage-nodes/apply-node-to-node-encryption.html" class="xref page">Manage Node-to-Node Encryption</a>, for details on how to enable.</p>
 </div>
 </div>
 </div>
@@ -4693,7 +4693,7 @@ http://10.144.210.101:8091/settings/security \
 <div class="paragraph">
 <p>The <code>disableUIOverHttp</code> flag is given a value of <code>true</code>, indicating that access to Couchbase Web Console will be disabled over http.
 The <code>disableUIOverHttps</code> flag is <em>not</em> specified, meaning that access to Couchbase Web Console will <em>not</em> be disabled over https, by default.
-The <code>clusterEncryptionLevel</code> is specified as <code>control</code>, indicating that only server-management information is passed in encrypted form between cluster-nodes: note that this parameter can only be set after the <code>node-to-node-encryption</code> CLI command has been used to enable internal network-security for the cluster, as described in <a href="../manage/manage-nodes/apply-node-to-node-encryption.html" class="page">Manage Node-to-Node Encryption</a>.
+The <code>clusterEncryptionLevel</code> is specified as <code>control</code>, indicating that only server-management information is passed in encrypted form between cluster-nodes: note that this parameter can only be set after the <code>node-to-node-encryption</code> CLI command has been used to enable internal network-security for the cluster, as described in <a href="../manage/manage-nodes/apply-node-to-node-encryption.html" class="xref page">Manage Node-to-Node Encryption</a>.
 The <code>tlsMinVersion</code> is specified as version 1.1.
 The <code>honorCipherOrder</code> parameter is <em>not</em> specified, meaning that it retains its default value of <code>true</code>; which ensures that the cluster&#8217;s own cipher-suites preference is used, rather than the client&#8217;s.
 The <code>cipherSuites</code> parameter is assigned a value that is a list of two cipher suites.</p>
@@ -4816,10 +4816,10 @@ http://10.144.210.101:8091/settings/security/data | jq '.'</pre>
 <h2 id="see-also"><a class="anchor" href="#see-also"></a>See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For more information on managing on-the-wire security-settings with the CLI, see the reference page for the <a href="#cli:cbcli/couchbase-cli-setting-security.adoc" class="page unresolved">setting-security</a> command.</p>
+<p>For more information on managing on-the-wire security-settings with the CLI, see the reference page for the <a href="#cli:cbcli/couchbase-cli-setting-security.adoc" class="xref unresolved">setting-security</a> command.</p>
 </div>
 <div class="paragraph">
-<p>A conceptual overview of on-the-wire security is provided in <a href="../learn/security/on-the-wire-security.html" class="page">On-the-Wire Security</a>.</p>
+<p>A conceptual overview of on-the-wire security is provided in <a href="../learn/security/on-the-wire-security.html" class="xref page">On-the-Wire Security</a>.</p>
 </div>
 </div>
 </div>

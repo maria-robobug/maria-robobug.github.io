@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-security/manage-certificates.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4465,7 +4465,7 @@ Couchbase Server supports the use of X.509 certificates.
 <h2 id="certificate-management-overview"><a class="anchor" href="#certificate-management-overview"></a>Certificate Management Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A conceptual and architectural overview of Couchbase Server&#8217;s support of X.509 certificates is provided in <a href="../../learn/security/certificates.html" class="page">Certificates</a>.
+<p>A conceptual and architectural overview of Couchbase Server&#8217;s support of X.509 certificates is provided in <a href="../../learn/security/certificates.html" class="xref page">Certificates</a>.
 The current section provides practical steps for:</p>
 </div>
 <div class="ulist">
@@ -4473,24 +4473,24 @@ The current section provides practical steps for:</p>
 <li>
 <p><em>Configuring server certificates</em>: These reside on Couchbase Server-nodes, identify the cluster to networked clients, and support encrypted network communications.
 Procedures are provided to demonstrate how a cluster can be protected by means of <em>root</em> and <em>node</em> certificates; and how node certificates can themselves be created with additional security and efficiency, by the creation and use of <em>intermediate</em> certificates.
-See <a href="configure-server-certificates.html" class="page">Configure Server Certificates</a>.</p>
+See <a href="configure-server-certificates.html" class="xref page">Configure Server Certificates</a>.</p>
 </li>
 <li>
 <p><em>Configuring client certificates</em>: These can be used by networked clients to authenticate with Couchbase Server, and to support encrypted network communications.
 Certificate creation is demonstrated both with and without the use of intermediate certificates.
 The certificate-creation requirements specific to Java applications are demonstrated.
 Additionally, links are provided to other areas of the documentation, where the certificates in the current section can be used to establish secure <em>XDCR</em> communication between clusters; and to establish communication between a cluster and a Java client.
-See <a href="configure-client-certificates.html" class="page">Configure Client Certificates</a>.</p>
+See <a href="configure-client-certificates.html" class="xref page">Configure Client Certificates</a>.</p>
 </li>
 <li>
 <p><em>Handling client certificates</em>: Couchbase Server can be configured to accept or demand the presentation by clients of certificates for the purpose of authentication.
 Since client certificates contain a <em>username</em>, which can be represented in a number of different ways within the certificate content, Couchbase Server must be configured to identify the appropriate representation, and so extract the specified username.
-Full instructions for accomplishing this with the UI, the CLI, and the REST API are provided: see <a href="enable-client-certificate-handling.html" class="page">Enable Client-Certificate Handling</a>.</p>
+Full instructions for accomplishing this with the UI, the CLI, and the REST API are provided: see <a href="enable-client-certificate-handling.html" class="xref page">Enable Client-Certificate Handling</a>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Additionally, procedures are provided for <a href="rotate-server-certificates.html" class="page">Certificate Rotation</a>, to ensure optimal security; and <a href="handle-certificate-errors.html" class="page">Certificate Error Handling</a>.</p>
+<p>Additionally, procedures are provided for <a href="rotate-server-certificates.html" class="xref page">Certificate Rotation</a>, to ensure optimal security; and <a href="handle-certificate-errors.html" class="xref page">Certificate Error Handling</a>.</p>
 </div>
 </div>
 </div>

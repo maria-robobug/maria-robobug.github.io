@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/monitor/monitoring-n1ql-query.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4526,25 +4526,25 @@ All the power of the N1QL query language can be applied on the keyspaces to obta
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
-<p><a href="../../n1ql/n1ql-intro/sysinfo.html#querying-datastores" class="page">system:datastores</a></p>
+<p><a href="../../n1ql/n1ql-intro/sysinfo.html#querying-datastores" class="xref page">system:datastores</a></p>
 </li>
 <li>
-<p><a href="../../n1ql/n1ql-intro/sysinfo.html#querying-namespaces" class="page">system:namespaces</a></p>
+<p><a href="../../n1ql/n1ql-intro/sysinfo.html#querying-namespaces" class="xref page">system:namespaces</a></p>
 </li>
 <li>
-<p><a href="../../n1ql/n1ql-intro/sysinfo.html#querying-buckets" class="page">system:buckets</a></p>
+<p><a href="../../n1ql/n1ql-intro/sysinfo.html#querying-buckets" class="xref page">system:buckets</a></p>
 </li>
 <li>
-<p><a href="../../n1ql/n1ql-intro/sysinfo.html#querying-scopes" class="page">system:scopes</a></p>
+<p><a href="../../n1ql/n1ql-intro/sysinfo.html#querying-scopes" class="xref page">system:scopes</a></p>
 </li>
 <li>
-<p><a href="../../n1ql/n1ql-intro/sysinfo.html#querying-keyspaces" class="page">system:keyspaces</a></p>
+<p><a href="../../n1ql/n1ql-intro/sysinfo.html#querying-keyspaces" class="xref page">system:keyspaces</a></p>
 </li>
 <li>
-<p><a href="../../n1ql/n1ql-intro/sysinfo.html#querying-indexes" class="page">system:indexes</a></p>
+<p><a href="../../n1ql/n1ql-intro/sysinfo.html#querying-indexes" class="xref page">system:indexes</a></p>
 </li>
 <li>
-<p><a href="../../n1ql/n1ql-intro/sysinfo.html#querying-dual" class="page">system:dual</a></p>
+<p><a href="../../n1ql/n1ql-intro/sysinfo.html#querying-dual" class="xref page">system:dual</a></p>
 </li>
 </ul>
 </div></div></td>
@@ -4635,7 +4635,7 @@ These are only available using REST APIs.
 </li>
 <li>
 <p>Other non-Administrator users must have explicitly granted privilege called <strong>Query System Catalog</strong> to access the restricted system keyspaces.
-For querying details of system keyspaces, see <a href="../../n1ql/n1ql-intro/sysinfo.html" class="page">Getting System Information</a>.</p>
+For querying details of system keyspaces, see <a href="../../n1ql/n1ql-intro/sysinfo.html" class="xref page">Getting System Information</a>.</p>
 </li>
 <li>
 <p>The following system keyspaces are considered <em>open</em>, that is, all users can access them without any special privileges:</p>
@@ -4662,13 +4662,13 @@ For querying details of system keyspaces, see <a href="../../n1ql/n1ql-intro/sys
 <div class="sectionbody">
 <div class="paragraph">
 <p>The monitoring settings can be set for each query engine (using the REST API) or for each query statement (using the cbq command line tool).
-Both settings are actually set via REST endpoints: using the <a href="../../n1ql/n1ql-rest-api/admin.html" class="page">Admin REST API</a> (<code>/admin/settings</code> endpoint) and the <a href="../../n1ql/n1ql-rest-api/index.html" class="page">Query REST API</a> (<code>/query/service</code> endpoint).</p>
+Both settings are actually set via REST endpoints: using the <a href="../../n1ql/n1ql-rest-api/admin.html" class="xref page">Admin REST API</a> (<code>/admin/settings</code> endpoint) and the <a href="../../n1ql/n1ql-rest-api/index.html" class="xref page">Query REST API</a> (<code>/query/service</code> endpoint).</p>
 </div>
 <div class="paragraph">
 <p>The cbq shell and Query Workbench use the Query REST API to set monitoring at the request level.
 The Query Workbench automatically enables the profiling and timings.
 It can be disabled using the <strong class="ui">Preferences</strong> option.
-For more information refer to the <a href="../../tools/query-workbench.html" class="page">Query Workbench</a> section.</p>
+For more information refer to the <a href="../../tools/query-workbench.html" class="xref page">Query Workbench</a> section.</p>
 </div>
 <div class="paragraph">
 <p>Use the following query parameters to enable, disable, and control the monitoring capabilities, and the level of monitoring and profiling details for each query or globally at a query engine level:</p>
@@ -4685,7 +4685,7 @@ For more information refer to the <a href="../../tools/query-workbench.html" cla
 </div>
 <div class="paragraph">
 <p>For more details and examples, refer to the
-<a href="../../settings/query-settings.html" class="page">Query Settings</a> section.</p>
+<a href="../../settings/query-settings.html" class="xref page">Query Settings</a> section.</p>
 </div>
 <div class="sect2">
 <h3 id="enabling-settings-for-a-query-engine"><a class="anchor" href="#enabling-settings-for-a-query-engine"></a>Enabling Settings for a Query Engine</h3>
@@ -5412,7 +5412,7 @@ The small disadvantage of this is that it has to be maintained as new system key
 This information can be very useful to assess the current workload and performance characteristics of a query engine, and hence load-balance the requests being sent to various query engines.</p>
 </div>
 <div class="paragraph">
-<p>For field names and meanings, refer to <a href="../../n1ql/n1ql-rest-api/admin.html#_vitals" class="page">Vitals</a>.</p>
+<p>For field names and meanings, refer to <a href="../../n1ql/n1ql-rest-api/admin.html#_vitals" class="xref page">Vitals</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="get-system-vitals"><a class="anchor" href="#get-system-vitals"></a>Get System Vitals</h3>
@@ -5461,7 +5461,7 @@ This information can be very useful to assess the current workload and performan
 <p>This catalog lists all currently executing active requests or queries.</p>
 </div>
 <div class="paragraph">
-<p>For field names and meanings, refer to <a href="../../n1ql/n1ql-rest-api/admin.html#_requests" class="page">Requests</a>.
+<p>For field names and meanings, refer to <a href="../../n1ql/n1ql-rest-api/admin.html#_requests" class="xref page">Requests</a>.
 The profile related attributes are described in the section <a href="#profile">Attribute profile in Query Response.</a></p>
 </div>
 <div class="sect2">
@@ -5701,7 +5701,7 @@ The root operator is a Sequence, which itself has a collection of child operator
 For each prepared statement, this catalog provides information such as name, statement, query plan, last use time, number of uses, and so on.</p>
 </div>
 <div class="paragraph">
-<p>For field names and meanings, refer to <a href="../../n1ql/n1ql-rest-api/admin.html#_statements" class="page">Statements</a>.
+<p>For field names and meanings, refer to <a href="../../n1ql/n1ql-rest-api/admin.html#_statements" class="xref page">Statements</a>.
 The <code>system:prepareds</code> catalog returns all the properties that the N1QL Admin REST API would return for a specific prepared statement.
 In addition, the <code>system:prepareds</code> catalog also returns the following property.</p>
 </div>
@@ -6055,7 +6055,7 @@ In addition, the <code>system:prepareds</code> catalog also returns the followin
 This information provides a general insight into the health and performance of the query engine and the cluster.</p>
 </div>
 <div class="paragraph">
-<p>For field names and meanings, refer to <a href="../../n1ql/n1ql-rest-api/admin.html#_requests" class="page">Requests</a>.
+<p>For field names and meanings, refer to <a href="../../n1ql/n1ql-rest-api/admin.html#_requests" class="xref page">Requests</a>.
 Note that most field names and meanings match exactly those of <code>system:active_requests</code>.</p>
 </div>
 <div class="admonitionblock note">
@@ -6211,7 +6211,7 @@ A completed request is logged if <em>any</em> of the qualifiers are met (logical
 </table>
 </div>
 <div class="paragraph">
-<p>For full details, refer to <a href="../../n1ql/n1ql-rest-api/admin.html#_logging_parameters" class="page">Logging parameters</a>.</p>
+<p>For full details, refer to <a href="../../n1ql/n1ql-rest-api/admin.html#_logging_parameters" class="xref page">Logging parameters</a>.</p>
 </div>
 <div class="paragraph">
 <p>The basic syntax adds a qualifier to the logging parameters, i.e. any existing qualifiers are not removed.
@@ -7186,7 +7186,7 @@ To see the list of recently-used scheduled tasks, use:</p>
 </table>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="../../n1ql/n1ql-language-reference/advisor.html" class="page">ADVISOR Function</a> for more information on index advisor sessions.</p>
+<p>Refer to <a href="../../n1ql/n1ql-language-reference/advisor.html" class="xref page">ADVISOR Function</a> for more information on index advisor sessions.</p>
 </div>
 </div>
 </div>
@@ -7269,7 +7269,7 @@ To see the list of active transactions, use:</p>
 </table>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="../../n1ql/n1ql-language-reference/transactions.html" class="page">N1QL Support for Couchbase Transactions</a> for more information.</p>
+<p>Refer to <a href="../../n1ql/n1ql-language-reference/transactions.html" class="xref page">N1QL Support for Couchbase Transactions</a> for more information.</p>
 </div>
 </div>
 </div>
@@ -7279,7 +7279,7 @@ To see the list of active transactions, use:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Refer to <a href="../../n1ql/n1ql-intro/sysinfo.html" class="page">Getting System Information</a> for more information on the system namespace.</p>
+<p>Refer to <a href="../../n1ql/n1ql-intro/sysinfo.html" class="xref page">Getting System Information</a> for more information on the system namespace.</p>
 </li>
 </ul>
 </div>

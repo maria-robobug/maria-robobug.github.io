@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/clusters-and-availability/xdcr-overview.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4470,13 +4470,13 @@ The buckets may be located on different clusters, and in different data centers:
 </div>
 <div class="paragraph">
 <p>Note that Couchbase has modified the license restrictions to its Couchbase Server Community Edition package, for version 7.0 and higher: in consequence, XDCR is promoted to a commercial-only feature of Enterprise Edition.
-See <a href="https://blog.couchbase.com/couchbase-modifies-license-free-community-edition-package/" target="_blank" rel="noopener">Couchbase Modifies License of Free Community Edition Package</a>, for more information on the license restrictions; and see <a href="../../manage/manage-xdcr/xdcr-management-overview.html#xdcr-and-community-edition" class="page">XDCR and Community Edition</a>, for information on how the new restrictions affect the experience of Community-Edition administrators.</p>
+See <a href="https://blog.couchbase.com/couchbase-modifies-license-free-community-edition-package/" target="_blank" rel="noopener">Couchbase Modifies License of Free Community Edition Package</a>, for more information on the license restrictions; and see <a href="../../manage/manage-xdcr/xdcr-management-overview.html#xdcr-and-community-edition" class="xref page">XDCR and Community Edition</a>, for information on how the new restrictions affect the experience of Community-Edition administrators.</p>
 </div>
 <div class="paragraph">
 <p>Data from the source bucket is pushed to the target bucket by means of an XDCR agent, running on the source cluster, using the Database Change Protocol.
 Any bucket (Couchbase or Ephemeral) on any cluster can be specified as a source or a target for one or more XDCR definitions.
 Note, however, that if an Ephemeral bucket configured to eject data when its RAM-quota is exceeded is used as a source for XDCR, not all data written to the bucket is guaranteed to be replicated by XDCR.
-(See <a href="../buckets-memory-and-storage/buckets.html" class="page">Buckets</a>, for information on ejection.)</p>
+(See <a href="../buckets-memory-and-storage/buckets.html" class="xref page">Buckets</a>, for information on ejection.)</p>
 </div>
 <div class="paragraph">
 <p>Cross Data Center Replication differs from intra-cluster replication in the following, principal ways:</p>
@@ -4504,14 +4504,14 @@ While running, XDCR continuously propagates mutations from the source to the tar
 <h2 id="tools-for-managing-xdcr"><a class="anchor" href="#tools-for-managing-xdcr"></a>Tools and Procedures for Managing XDCR</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Prior to XDCR management, source and target clusters should be appropriately prepared, as described in <a href="../../manage/manage-xdcr/prepare-for-xdcr.html" class="page">Prepare for XDCR</a>.
+<p>Prior to XDCR management, source and target clusters should be appropriately prepared, as described in <a href="../../manage/manage-xdcr/prepare-for-xdcr.html" class="xref page">Prepare for XDCR</a>.
 Then, XDCR is managed in three stages:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
 <p>Define a <em>reference</em> to a remote cluster, which will be the target for Cross Data Center Replication.
-See <a href="../../manage/manage-xdcr/create-xdcr-reference.html" class="page">Create a Reference</a>.</p>
+See <a href="../../manage/manage-xdcr/create-xdcr-reference.html" class="xref page">Create a Reference</a>.</p>
 </li>
 <li>
 <p>Define and start a <em>replication</em>, which continuously transfers mutations from a specified source bucket to a specified target bucket.
@@ -4519,7 +4519,7 @@ See <a href="#manage:manage-xdcr/create-xdcr-replication">Create a Replication</
 </li>
 <li>
 <p>Monitor the ongoing replication, pausing and resuming the replication if and when appropriate.
-See <a href="../../manage/manage-xdcr/create-xdcr-replication.html" class="page">Monitor a Replication</a>, <a href="../../manage/manage-xdcr/pause-xdcr-replication.html" class="page">Pause a Replication</a>, and <a href="../../manage/manage-xdcr/resume-xdcr-replication.html" class="page">Resume a Replication</a>.</p>
+See <a href="../../manage/manage-xdcr/create-xdcr-replication.html" class="xref page">Monitor a Replication</a>, <a href="../../manage/manage-xdcr/pause-xdcr-replication.html" class="xref page">Pause a Replication</a>, and <a href="../../manage/manage-xdcr/resume-xdcr-replication.html" class="xref page">Resume a Replication</a>.</p>
 </li>
 </ol>
 </div>
@@ -4540,7 +4540,7 @@ See <a href="../../manage/manage-xdcr/create-xdcr-replication.html" class="page"
 </ul>
 </div>
 <div class="paragraph">
-<p>For procedures that cover all main XDCR management tasks, performed with all three of the principal tools, see <a href="../../manage/manage-xdcr/xdcr-management-overview.html" class="page">XDCR Management Overview</a>.</p>
+<p>For procedures that cover all main XDCR management tasks, performed with all three of the principal tools, see <a href="../../manage/manage-xdcr/xdcr-management-overview.html" class="xref page">XDCR Management Overview</a>.</p>
 </div>
 </div>
 </div>
@@ -4603,13 +4603,13 @@ A <em>bidirectional</em> topology is created by implementing two <em>unidirectio
 <p><em>Filtering Expressions</em> can be used in XDCR replications.
 Each is a regular expression that is applied to the
 document keys on the source cluster: those document keys returned by the filtering process correspond to the documents that will be replicated to the target.
-For information, See <a href="xdcr-filtering.html" class="page">XDCR Advanced Filtering</a>.</p>
+For information, See <a href="xdcr-filtering.html" class="xref page">XDCR Advanced Filtering</a>.</p>
 </div>
 <div class="paragraph">
 <p>Optionally, <em>deletion filters</em> can be applied to a replication: these control whether the deletion of a document at source causes deletion of a replica that has been created.
 Each filter covers a specific deletion-context.
-For a description of the individual deletion filters, see <a href="../../manage/manage-xdcr/filter-xdcr-replication.html#deletion-filters" class="page">Deletion Filters</a>.
-For an explanation of the relationship between deletion filters and filters formed with regular and other filtering expressions, see <a href="xdcr-filtering.html#using-deletion-filters" class="page">Using Deletion Filters</a>.</p>
+For a description of the individual deletion filters, see <a href="../../manage/manage-xdcr/filter-xdcr-replication.html#deletion-filters" class="xref page">Deletion Filters</a>.
+For an explanation of the relationship between deletion filters and filters formed with regular and other filtering expressions, see <a href="xdcr-filtering.html#using-deletion-filters" class="xref page">Using Deletion Filters</a>.</p>
 </div>
 </div>
 </div>
@@ -4671,9 +4671,9 @@ Thus, XDCR can subsequently be used to redistribute the data into administrator-
 <p>Note that whereas <em>implicit</em> replication is available in both Couchbase Server Enterprise and Community Edition, <em>explicit</em> replication and <em>migration</em> are available only in Couchbase Server Enterprise Edition.</p>
 </div>
 <div class="paragraph">
-<p>For an introduction to scopes and collections, see <a href="../data/scopes-and-collections.html" class="page">Scopes and Collections</a>.
-For more information on how XDCR works with scopes and collections, see <a href="xdcr-with-scopes-and-collections.html" class="page">XDCR with Scopes and Collections</a>.
-Examples of collections-based XDCR are provided in <a href="../../manage/manage-xdcr/replicate-using-scopes-and-collections.html" class="page">Replicate Using Scopes and Collections</a>.</p>
+<p>For an introduction to scopes and collections, see <a href="../data/scopes-and-collections.html" class="xref page">Scopes and Collections</a>.
+For more information on how XDCR works with scopes and collections, see <a href="xdcr-with-scopes-and-collections.html" class="xref page">XDCR with Scopes and Collections</a>.
+Examples of collections-based XDCR are provided in <a href="../../manage/manage-xdcr/replicate-using-scopes-and-collections.html" class="xref page">Replicate Using Scopes and Collections</a>.</p>
 </div>
 </div>
 </div>
@@ -4689,11 +4689,11 @@ A document is only replicated if both of the following requirements are satisfie
 <ul>
 <li>
 <p>The document meets whatever filtering criteria may have been configured.
-For information, See <a href="xdcr-filtering.html" class="page">XDCR Advanced Filtering</a>.</p>
+For information, See <a href="xdcr-filtering.html" class="xref page">XDCR Advanced Filtering</a>.</p>
 </li>
 <li>
 <p>The source collection within which the document resides can be mapped to a collection within the target bucket.
-For information, see <a href="xdcr-with-scopes-and-collections.html#xdcr-with-scopes-and-collections" class="page">XDCR with Scopes and Collections</a>.</p>
+For information, see <a href="xdcr-with-scopes-and-collections.html#xdcr-with-scopes-and-collections" class="xref page">XDCR with Scopes and Collections</a>.</p>
 </li>
 </ul>
 </div>
@@ -4710,16 +4710,16 @@ For information, see <a href="xdcr-with-scopes-and-collections.html#xdcr-with-sc
 <div class="paragraph">
 <p>Replication of a deleted or expired document means that the document will be correspondingly deleted or expired on the target.
 Note that this is the default behavior; although options are provided for <em>not</em> replicating deletion or expiration mutations &#8212; so that the replicated documents are not removed.
-See the reference information for the CLI <a href="#cli:cbcli/couchbase-cli-xdcr-replicate.adoc" class="page unresolved">xdcr-replicate</a> command.</p>
+See the reference information for the CLI <a href="#cli:cbcli/couchbase-cli-xdcr-replicate.adoc" class="xref unresolved">xdcr-replicate</a> command.</p>
 </div>
 </li>
 <li>
 <p>On the target bucket, a collection is created that allows a new mapping to occur between a source collection and the new target collection.
-For information, see <a href="xdcr-with-scopes-and-collections.html#target-collection-removal-and-addition" class="page">Target-Collection Removal and Addition</a>.</p>
+For information, see <a href="xdcr-with-scopes-and-collections.html#target-collection-removal-and-addition" class="xref page">Target-Collection Removal and Addition</a>.</p>
 </li>
 <li>
 <p>The current replication is <em>restarted</em>, following the editing of filtering criteria.
-For more information, see <a href="xdcr-filtering.html#filter-expression-editing" class="page">Filter-Expression Editing</a>.</p>
+For more information, see <a href="xdcr-filtering.html#filter-expression-editing" class="xref page">Filter-Expression Editing</a>.</p>
 </li>
 <li>
 <p>The current replication is <em>deleted</em>, and a new replication is created and started.</p>
@@ -4761,7 +4761,7 @@ Subsequently, it is treated as a <em>High</em> priority replication.</p>
 <div class="paragraph">
 <p>In some cases, especially when bidirectionally replicated data is being modified by applications in different locations, <em>conflicts</em> may arise: meaning that the data of one or more documents has been differently modified more or less simultaneously, requiring resolution.
 XDCR provides options for <em>conflict resolution</em>, based on either <em>sequence number</em> or <em>timestamp</em>, whereby conflicted data can be saved consistently on source and target.
-For more information, See <a href="xdcr-conflict-resolution.html" class="page">XDCR Conflict Resolution</a>.</p>
+For more information, See <a href="xdcr-conflict-resolution.html" class="xref page">XDCR Conflict Resolution</a>.</p>
 </div>
 </div>
 </div>
@@ -4784,7 +4784,7 @@ This helps to ensure continued data-availability in the event of node-failure.</
 This retrieval is achieved from the command-line, by means of the Couchbase <strong>cbrecovery</strong> tool.</p>
 </div>
 <div class="paragraph">
-<p>For a sample step-by-step procedure, see <a href="../../manage/manage-xdcr/recover-data-with-xdcr.html" class="page">Recover Data with XDCR</a>.</p>
+<p>For a sample step-by-step procedure, see <a href="../../manage/manage-xdcr/recover-data-with-xdcr.html" class="xref page">Recover Data with XDCR</a>.</p>
 </div>
 </div>
 </div>
@@ -4796,11 +4796,11 @@ This retrieval is achieved from the command-line, by means of the Couchbase <str
 When replication occurs, the password is automatically supplied, along with the data.
 By default, XDCR transmits both password and data in non-secure form.
 Optionally however, a secure connection can be enabled between clusters, in order to secure either password alone, or both password and data.
-The password received by the destination cluster can be authenticated either locally or externally, as described in <a href="../security/authentication.html" class="page">Authentication</a>.</p>
+The password received by the destination cluster can be authenticated either locally or externally, as described in <a href="../security/authentication.html" class="xref page">Authentication</a>.</p>
 </div>
 <div class="paragraph">
 <p>A secure XDCR connection is enabled either by SCRAM-SHA or by TLS — depending on the administrator-specified connection-type, and the server-version of the destination cluster.
-Use of TLS involves certificate management: for information on preparing and using certificates, see <a href="../../manage/manage-security/manage-certificates.html" class="page">Manage Certificates</a>.</p>
+Use of TLS involves certificate management: for information on preparing and using certificates, see <a href="../../manage/manage-security/manage-certificates.html" class="xref page">Manage Certificates</a>.</p>
 </div>
 <div class="paragraph">
 <p>Two administrator-specified connection-types are possible:</p>
@@ -4818,7 +4818,7 @@ The root certificate of the destination cluster must be provided, for a successf
 </ul>
 </div>
 <div class="paragraph">
-<p>For step-by-step procedures, see <a href="../../manage/manage-xdcr/secure-xdcr-replication.html" class="page">Secure a Replication</a>.</p>
+<p>For step-by-step procedures, see <a href="../../manage/manage-xdcr/secure-xdcr-replication.html" class="xref page">Secure a Replication</a>.</p>
 </div>
 </div>
 </div>
@@ -4827,7 +4827,7 @@ The root certificate of the destination cluster must be provided, for a successf
 <div class="sectionbody">
 <div class="paragraph">
 <p>The performance of XDCR can be fine-tuned, by means of configuration-settings, specified when a replication is defined.
-These settings modify <em>compression</em>, source and target <em>nozzles</em> (worker threads), <em>checkpoints</em>, <em>counts</em>, <em>sizes</em>, <em>network usage limits</em>, and more. For detailed information, see <a href="../../xdcr-reference/xdcr-advanced-settings.html" class="page">XDCR Advanced Settings</a>.</p>
+These settings modify <em>compression</em>, source and target <em>nozzles</em> (worker threads), <em>checkpoints</em>, <em>counts</em>, <em>sizes</em>, <em>network usage limits</em>, and more. For detailed information, see <a href="../../xdcr-reference/xdcr-advanced-settings.html" class="xref page">XDCR Advanced Settings</a>.</p>
 </div>
 </div>
 </div>
@@ -4848,8 +4848,8 @@ If the target bucket is flushed during replication, the bucket becomes temporari
 <div class="sectionbody">
 <div class="paragraph">
 <p>Buckets, collections, and documents have a <em>TTL</em> setting, which determines the maximum expiration times of individual items.
-This is explained in detail in <a href="#buckets-memory-and-storage/expiration.adoc" class="page unresolved">Expiration</a>.
-For specific information on how TTL is affected by XDCR, see the section <a href="#buckets-memory-and-storage/expiration.adoc#bucket-expiration-and-xdcr" class="page unresolved">Expiration and XDCR</a>.</p>
+This is explained in detail in <a href="#buckets-memory-and-storage/expiration.adoc" class="xref unresolved">Expiration</a>.
+For specific information on how TTL is affected by XDCR, see the section <a href="#buckets-memory-and-storage/expiration.adoc#bucket-expiration-and-xdcr" class="xref unresolved">Expiration and XDCR</a>.</p>
 </div>
 </div>
 </div>
@@ -4858,7 +4858,7 @@ For specific information on how TTL is affected by XDCR, see the section <a href
 <div class="sectionbody">
 <div class="paragraph">
 <p>Couchbase Server provides the ability to monitor ongoing XDCR replications, by means of the Couchbase Web Console.
-Detailed information is provided in <a href="../../manage/manage-xdcr/create-xdcr-replication.html" class="page">Monitor a Replication</a>.</p>
+Detailed information is provided in <a href="../../manage/manage-xdcr/create-xdcr-replication.html" class="xref page">Monitor a Replication</a>.</p>
 </div>
 </div>
 </div>

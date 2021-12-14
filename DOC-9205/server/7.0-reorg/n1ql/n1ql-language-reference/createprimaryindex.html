@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/createprimaryindex.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4471,12 +4471,12 @@ If there is an index creation task already running, the Index Service queues the
 If you lose connectivity, the index build operation continues in the background.
 You can also defer the index build phase using the <code>defer_build</code> clause.
 In deferred build mode, <code>CREATE PRIMARY INDEX</code> creates the index definition, but does not trigger the index build phase.
-You can then build the index using the <a href="build-index.html" class="page">BUILD INDEX</a> command.</p>
+You can then build the index using the <a href="build-index.html" class="xref page">BUILD INDEX</a> command.</p>
 </div>
 <div class="paragraph">
 <p>Index metadata provides a state field.
 The index state may be <code>scheduled for creation</code>, <code>deferred</code>, <code>building</code>, <code>pending</code>, <code>online</code>, <code>offline</code>, or <code>abridged</code>.
-This state field and other index metadata can be queried using <a href="../n1ql-intro/sysinfo.html#querying-indexes" class="page">system:indexes</a>.
+This state field and other index metadata can be queried using <a href="../n1ql-intro/sysinfo.html#querying-indexes" class="xref page">system:indexes</a>.
 You can also monitor the index state using the Couchbase Web Console.</p>
 </div>
 <div class="admonitionblock important">
@@ -4524,7 +4524,7 @@ Refer to <a href="#index-with">WITH Clause</a> below for more details.</p>
 <div class="paragraph">
 <p>Users executing the <code>CREATE PRIMARY INDEX</code> statement must have the <em>Query Manage Index</em> privilege granted on the keyspace.
 For more details about user roles, see
-<a href="../../learn/security/authorization-overview.html" class="page">Authorization</a>.</p>
+<a href="../../learn/security/authorization-overview.html" class="xref page">Authorization</a>.</p>
 </div>
 </div>
 </div>
@@ -4609,28 +4609,28 @@ Refer to the examples below.
 </div>
 <div class="paragraph">
 <p>If the keyspace is a named collection, or the default collection in the default scope within a bucket, the keyspace reference may be a keyspace path.
-In this case, the <a href="../n1ql-intro/sysinfo.html#query-context" class="page">query context</a> should not be set.</p>
+In this case, the <a href="../n1ql-intro/sysinfo.html#query-context" class="xref page">query context</a> should not be set.</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">namespace</dt>
 <dd>
-<p>(Optional) An <a href="identifiers.html" class="page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">namespace</a> of the keyspace.
+<p>(Optional) An <a href="identifiers.html" class="xref page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">namespace</a> of the keyspace.
 Currently, only the <code>default</code> namespace is available.
 If the namespace name is omitted, the default namespace in the current session is used.</p>
 </dd>
 <dt class="hdlist1">bucket</dt>
 <dd>
-<p>(Required) An <a href="identifiers.html" class="page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">bucket name</a> of the keyspace.</p>
+<p>(Required) An <a href="identifiers.html" class="xref page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">bucket name</a> of the keyspace.</p>
 </dd>
 <dt class="hdlist1">scope</dt>
 <dd>
-<p>(Optional) An <a href="identifiers.html" class="page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">scope name</a> of the keyspace.
+<p>(Optional) An <a href="identifiers.html" class="xref page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">scope name</a> of the keyspace.
 If omitted, the bucket&#8217;s default scope is used.</p>
 </dd>
 <dt class="hdlist1">collection</dt>
 <dd>
-<p>(Optional) An <a href="identifiers.html" class="page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection name</a> of the keyspace.
+<p>(Optional) An <a href="identifiers.html" class="xref page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection name</a> of the keyspace.
 If omitted, the default collection in the bucket&#8217;s default scope is used.</p>
 </dd>
 </dl>
@@ -4660,13 +4660,13 @@ If omitted, the default collection in the bucket&#8217;s default scope is used.<
 </div>
 <div class="paragraph">
 <p>Alternatively, if the keyspace is a named collection, the keyspace reference may be just the collection name with no path.
-In this case, you must set the <a href="../n1ql-intro/sysinfo.html#query-context" class="page">query context</a> to indicate the required namespace, bucket, and scope.</p>
+In this case, you must set the <a href="../n1ql-intro/sysinfo.html#query-context" class="xref page">query context</a> to indicate the required namespace, bucket, and scope.</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">collection</dt>
 <dd>
-<p>(Required) An <a href="identifiers.html" class="page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection name</a> of the keyspace.</p>
+<p>(Required) An <a href="identifiers.html" class="xref page">identifier</a> that refers to the <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection name</a> of the keyspace.</p>
 </dd>
 </dl>
 </div>
@@ -4800,7 +4800,7 @@ Admins can defer building multiple indexes and, using the <code>BUILD INDEX</cod
 <p>This property is only available in Couchbase Server Enterprise Edition.</p>
 </div>
 <div class="paragraph">
-<p>[Optional] Integer that specifies the number of <a href="../../learn/services-and-indexes/indexes/index-replication.html#index-replication" class="page">replicas</a> of the index to create.</p>
+<p>[Optional] Integer that specifies the number of <a href="../../learn/services-and-indexes/indexes/index-replication.html#index-replication" class="xref page">replicas</a> of the index to create.</p>
 </div>
 <div class="paragraph">
 <p>The indexer will automatically distribute these replicas amongst index nodes in the cluster for load-balancing and high availability purposes.
@@ -4835,7 +4835,7 @@ It is possible that the indexer throws scan timeout without returning any primar
 <div class="paragraph">
 <p>For secondary index scans, the query engine does not handle scan timeout, and returns index scan timeout error to the client.
 You can handle scan timeout on a secondary index by increasing the indexer timeout setting (See
-<a href="../../settings/query-settings.html" class="page">Query Settings</a>) or preferably by defining and using a more selective index.</p>
+<a href="../../settings/query-settings.html" class="xref page">Query Settings</a>) or preferably by defining and using a more selective index.</p>
 </div>
 </div>
 </div>
@@ -4845,7 +4845,7 @@ You can handle scan timeout on a secondary index by increasing the indexer timeo
 <h5 id="default-collection" class="discrete">Default Collection</h5>
 <div class="paragraph">
 <p>The following example creates a primary index on the default collection in the default scope within the <code>travel-sample</code> bucket.
-First make sure the <a href="../n1ql-intro/sysinfo.html#query-context" class="page">query context</a> is not set.</p>
+First make sure the <a href="../n1ql-intro/sysinfo.html#query-context" class="xref page">query context</a> is not set.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
@@ -4891,7 +4891,7 @@ First make sure the <a href="../n1ql-intro/sysinfo.html#query-context" class="pa
 <h5 id="query-context" class="discrete">Query Context</h5>
 <div class="paragraph">
 <p>The following example is similar to <a href="#ex-create-primary">Example 1</a>, but creates a primary index on the <code>airport</code> collection.
-First set the <a href="../n1ql-intro/sysinfo.html#query-context" class="page">query context</a> to <code>`travel-sample`.inventory</code>.</p>
+First set the <a href="../n1ql-intro/sysinfo.html#query-context" class="xref page">query context</a> to <code>`travel-sample`.inventory</code>.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">

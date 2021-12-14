@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-nodes/fail-nodes-over.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4464,7 +4464,7 @@ Nodes can be <em>failed over</em>, and thereby removed safely from a cluster in 
 <h2 id="understanding-failover"><a class="anchor" href="#understanding-failover"></a>Understanding Failover</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A complete conceptual description of failover is provided in <a href="../../learn/clusters-and-availability/failover.html" class="page">Failover</a>.
+<p>A complete conceptual description of failover is provided in <a href="../../learn/clusters-and-availability/failover.html" class="xref page">Failover</a>.
 There are two basic types: <em>graceful</em> and <em>hard</em>.</p>
 </div>
 <div class="ulist">
@@ -4480,7 +4480,7 @@ If applied to an available node running the Data Service, ongoing writes and rep
 </ul>
 </div>
 <div class="paragraph">
-<p>The automatic initiation of hard failover is known as <em>automatic</em> failover, and is configured by means of the <a href="../manage-settings/general-settings.html" class="page">General</a> settings screen, in the <strong>Settings</strong> area of Couchbase Web Console; or by means of equivalent CLI and REST API commands.</p>
+<p>The automatic initiation of hard failover is known as <em>automatic</em> failover, and is configured by means of the <a href="../manage-settings/general-settings.html" class="xref page">General</a> settings screen, in the <strong>Settings</strong> area of Couchbase Web Console; or by means of equivalent CLI and REST API commands.</p>
 </div>
 <div class="paragraph">
 <p>Note that when a node is flagged for <em>failover</em> (as opposed to <em>removal</em>), replica vBuckets are lost when rebalance occurs, following node-removal. By contrast, <em>removal</em> creates new copies of replica vBuckets that would otherwise be lost (thereby creating greater competition for the memory resources of the remaining nodes).</p>

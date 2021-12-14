@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/collectionops.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4487,11 +4487,11 @@ It uses the <code>IN</code> and <code>WITHIN</code> operators to range through t
 <dl>
 <dt class="hdlist1">var1, var2, … , varX</dt>
 <dd>
-<p>A string or <a href="index.html#N1QL_Expressions" class="page">expression</a> that evaluates to a string representing the variable name in the <code>ANY</code> loop.</p>
+<p>A string or <a href="index.html#N1QL_Expressions" class="xref page">expression</a> that evaluates to a string representing the variable name in the <code>ANY</code> loop.</p>
 </dd>
 <dt class="hdlist1">expr1, expr2, … , exprX</dt>
 <dd>
-<p>A string or <a href="index.html#N1QL_Expressions" class="page">expression</a> that evaluates to a string representing the array to loop through.</p>
+<p>A string or <a href="index.html#N1QL_Expressions" class="xref page">expression</a> that evaluates to a string representing the array to loop through.</p>
 </dd>
 <dt class="hdlist1">condition</dt>
 <dd>
@@ -4716,11 +4716,11 @@ It evaluates to an array of the operand expression, that satisfies the <code>WHE
 <dl>
 <dt class="hdlist1">var1, var2, … , varX</dt>
 <dd>
-<p>A string or <a href="index.html#N1QL_Expressions" class="page">expression</a> that evaluates to a string representing the variable name in the <code>ARRAY</code> loop.</p>
+<p>A string or <a href="index.html#N1QL_Expressions" class="xref page">expression</a> that evaluates to a string representing the variable name in the <code>ARRAY</code> loop.</p>
 </dd>
 <dt class="hdlist1">expr1, expr2, … , exprX</dt>
 <dd>
-<p>A string or <a href="index.html#N1QL_Expressions" class="page">expression</a> that evaluates to a string representing the array to loop through.</p>
+<p>A string or <a href="index.html#N1QL_Expressions" class="xref page">expression</a> that evaluates to a string representing the array to loop through.</p>
 </dd>
 <dt class="hdlist1">cond1, cond2, … , condX</dt>
 <dd>
@@ -4816,11 +4816,11 @@ It uses the IN and WITHIN operators to range through the collection.</p>
 <dl>
 <dt class="hdlist1">var1, var2, … , varX</dt>
 <dd>
-<p>A string or <a href="index.html#N1QL_Expressions" class="page">expression</a> that evaluates to a string representing the variable name in the <code>EVERY</code> loop.</p>
+<p>A string or <a href="index.html#N1QL_Expressions" class="xref page">expression</a> that evaluates to a string representing the variable name in the <code>EVERY</code> loop.</p>
 </dd>
 <dt class="hdlist1">expr1, expr2, … , exprX</dt>
 <dd>
-<p>A string or <a href="index.html#N1QL_Expressions" class="page">expression</a> that evaluates to a string representing the array to loop through.</p>
+<p>A string or <a href="index.html#N1QL_Expressions" class="xref page">expression</a> that evaluates to a string representing the array to loop through.</p>
 </dd>
 <dt class="hdlist1">condition</dt>
 <dd>
@@ -5025,7 +5025,7 @@ AND EVERY departure IN schedule SATISFIES departure.utc &gt; "00:35" END;</code>
 <dl>
 <dt class="hdlist1">expr</dt>
 <dd>
-<p>A string or <a href="index.html#N1QL_Expressions" class="page">expression</a> that evaluates to a string representing the expression or variable being searched for.</p>
+<p>A string or <a href="index.html#N1QL_Expressions" class="xref page">expression</a> that evaluates to a string representing the expression or variable being searched for.</p>
 </dd>
 </dl>
 </div>
@@ -5103,11 +5103,11 @@ It evaluates to a single element based on the operand expression that satisfies 
 <dl>
 <dt class="hdlist1">var1, var2, … , varX</dt>
 <dd>
-<p>A string or <a href="index.html#N1QL_Expressions" class="page">expression</a> that evaluates to a string representing the variable name in the <code>ARRAY</code> loop.</p>
+<p>A string or <a href="index.html#N1QL_Expressions" class="xref page">expression</a> that evaluates to a string representing the variable name in the <code>ARRAY</code> loop.</p>
 </dd>
 <dt class="hdlist1">expr1, expr2, … , exprX</dt>
 <dd>
-<p>A string or <a href="index.html#N1QL_Expressions" class="page">expression</a> that evaluates to a string representing the array to loop through.</p>
+<p>A string or <a href="index.html#N1QL_Expressions" class="xref page">expression</a> that evaluates to a string representing the array to loop through.</p>
 </dd>
 <dt class="hdlist1">cond1, cond2, … , condX</dt>
 <dd>
@@ -5186,11 +5186,11 @@ AND ANY v IN schedule SATISFIES v.utc &gt; "19:00" END;</code></pre>
 <dl>
 <dt class="hdlist1">search_expr</dt>
 <dd>
-<p>A string or <a href="index.html#N1QL_Expressions" class="page">expression</a> that evaluates to a string representing the expression or variable being searched for.</p>
+<p>A string or <a href="index.html#N1QL_Expressions" class="xref page">expression</a> that evaluates to a string representing the expression or variable being searched for.</p>
 </dd>
 <dt class="hdlist1">target_expr</dt>
 <dd>
-<p>A string or <a href="index.html#N1QL_Expressions" class="page">expression</a> that evaluates to a string representing the array or collection being searched through.</p>
+<p>A string or <a href="index.html#N1QL_Expressions" class="xref page">expression</a> that evaluates to a string representing the array or collection being searched through.</p>
 </dd>
 </dl>
 </div>
@@ -5293,11 +5293,11 @@ WHERE country IN ["United Kingdom", "France"];</code></pre>
 <dl>
 <dt class="hdlist1">search_expr</dt>
 <dd>
-<p>A string or <a href="index.html#N1QL_Expressions" class="page">expression</a> that evaluates to a string representing the expression or variable being searched for.</p>
+<p>A string or <a href="index.html#N1QL_Expressions" class="xref page">expression</a> that evaluates to a string representing the expression or variable being searched for.</p>
 </dd>
 <dt class="hdlist1">target_expr</dt>
 <dd>
-<p>A string or <a href="index.html#N1QL_Expressions" class="page">expression</a> that evaluates to a string representing the array or collection being searched through.</p>
+<p>A string or <a href="index.html#N1QL_Expressions" class="xref page">expression</a> that evaluates to a string representing the array or collection being searched through.</p>
 </dd>
 </dl>
 </div>

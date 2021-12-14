@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="cloud-native-database">
 <meta name="dcterms.identifier" content="master">
 <meta name="page-url" content="/cloud-native-database/fluent-bit-overview.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -341,7 +341,7 @@ From there, logs can be picked up by a myriad of tools to feed into a plethora o
 </div>
 <div class="paragraph">
 <p>By default, Couchbase Server does not follow this cloud-native standard, and instead writes logs to various log files held on an optional volume.
-However, the <a href="#operator::overview.adoc" class="page unresolved">Couchbase Autonomous Operator</a> can optionally manage a sidecar container, built on the <a href="https://fluentbit.io/" target="_blank" rel="noopener">Fluent Bit</a> technology, that can process and forward Couchbase logs to any number of locations, including standard output.</p>
+However, the <a href="#operator::overview.adoc" class="xref unresolved">Couchbase Autonomous Operator</a> can optionally manage a sidecar container, built on the <a href="https://fluentbit.io/" target="_blank" rel="noopener">Fluent Bit</a> technology, that can process and forward Couchbase logs to any number of locations, including standard output.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -349,7 +349,7 @@ However, the <a href="#operator::overview.adoc" class="page unresolved">Couchbas
 </div>
 </div>
 <div class="paragraph">
-<p>The <a href="https://docs.microsoft.com/en-us/azure/architecture/patterns/sidecar" target="_blank" rel="noopener"><em>sidecar approach</em></a> used by the Couchbase-supplied Fluent Bit container is the same one followed by the <a href="prometheus-overview.html" class="page">Couchbase Prometheus Exporter</a>, and is completely optional.
+<p>The <a href="https://docs.microsoft.com/en-us/azure/architecture/patterns/sidecar" target="_blank" rel="noopener"><em>sidecar approach</em></a> used by the Couchbase-supplied Fluent Bit container is the same one followed by the <a href="prometheus-overview.html" class="xref page">Couchbase Prometheus Exporter</a>, and is completely optional.
 Fluent Bit handles basic parsing of the logs and supports <a href="https://docs.fluentbit.io/manual/pipeline/outputs" target="_blank" rel="noopener">any end point provided by Fluent Bit</a>.
 A default configuration is provided that sends all logs to the standard output stream of the container, but this is fully customizable to integrate with user-provided tooling.</p>
 </div>
@@ -359,24 +359,24 @@ A default configuration is provided that sends all logs to the standard output s
 <h2 id="get-started"><a class="anchor" href="#get-started"></a>Get Started</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Fluent Bit log forwarding is managed by the <a href="#operator::overview.adoc" class="page unresolved">Couchbase Autonomous Operator</a>.
-Log forwarding can be enabled via the <a href="#operator::resource/couchbasecluster.adoc" class="page unresolved"><code>CouchbaseCluster</code></a> custom resource specification (it is disabled by default).
+<p>Fluent Bit log forwarding is managed by the <a href="#operator::overview.adoc" class="xref unresolved">Couchbase Autonomous Operator</a>.
+Log forwarding can be enabled via the <a href="#operator::resource/couchbasecluster.adoc" class="xref unresolved"><code>CouchbaseCluster</code></a> custom resource specification (it is disabled by default).
 When enabled, the Autonomous Operator automatically deploys the Couchbase-supplied <a href="https://hub.docker.com/r/couchbase/fluent-bit" target="_blank" rel="noopener">fluent-bit container image</a>, along with a default log forwarding configuration in the form of a Kubernetes Secret that gets consumed by the <code>logging</code> sidecar container.</p>
 </div>
 <div class="ulist">
 <div class="title">Links</div>
 <ul>
 <li>
-<p><strong>Learn</strong>: <a href="#operator::concept-couchbase-logging.adoc#log-forwarding" class="page unresolved">Log Forwarding</a></p>
+<p><strong>Learn</strong>: <a href="#operator::concept-couchbase-logging.adoc#log-forwarding" class="xref unresolved">Log Forwarding</a></p>
 </li>
 <li>
-<p><strong>Manage</strong>: <a href="#operator::howto-couchbase-log-forwarding.adoc" class="page unresolved">operator::howto-couchbase-log-forwarding.adoc</a></p>
+<p><strong>Manage</strong>: <a href="#operator::howto-couchbase-log-forwarding.adoc" class="xref unresolved">operator::howto-couchbase-log-forwarding.adoc</a></p>
 </li>
 <li>
-<p><strong>Manage</strong>: <a href="#operator::howto-manage-couchbase-logging.adoc" class="page unresolved">operator::howto-manage-couchbase-logging.adoc</a></p>
+<p><strong>Manage</strong>: <a href="#operator::howto-manage-couchbase-logging.adoc" class="xref unresolved">operator::howto-manage-couchbase-logging.adoc</a></p>
 </li>
 <li>
-<p><strong>Tutorial</strong>: <a href="#operator::tutorial-couchbase-log-forwarding.adoc" class="page unresolved">operator::tutorial-couchbase-log-forwarding.adoc</a></p>
+<p><strong>Tutorial</strong>: <a href="#operator::tutorial-couchbase-log-forwarding.adoc" class="xref unresolved">operator::tutorial-couchbase-log-forwarding.adoc</a></p>
 </li>
 </ul>
 </div>

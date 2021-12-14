@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-xdcr/create-xdcr-reference.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4475,7 +4475,7 @@ The reference must contain the following details:</p>
 <li>
 <p>The IP address or hostname of a node within the target cluster.
 Note if the target cluster has an <em>alternate address</em>, this address can be used to identify the target cluster.
-See <a href="../../learn/clusters-and-availability/connectivity.html#alternate-addresses" class="page">Alternate Addresses</a>.</p>
+See <a href="../../learn/clusters-and-availability/connectivity.html#alternate-addresses" class="xref page">Alternate Addresses</a>.</p>
 </li>
 <li>
 <p>A username and password, associated on the target cluster with a role that allows one or more buckets to receive documents from an XDCR replication.
@@ -4487,7 +4487,7 @@ The possible roles are <em>Full</em>, and <em>XDCR Inbound</em> (either for the 
 <li>
 <p>Whether the the connection between source and target clusters will be managed securely, and if so, by what secure methodology.
 Corresponding TLS certificates may need to be provided.
-Securing a connection is described in detail in <a href="secure-xdcr-replication.html" class="page">Secure a Replication</a>.</p>
+Securing a connection is described in detail in <a href="secure-xdcr-replication.html" class="xref page">Secure a Replication</a>.</p>
 </li>
 </ul>
 </div>
@@ -4511,7 +4511,7 @@ These are named after their IP addresses: <code>10.144.210.101</code> and <code>
 </li>
 <li>
 <p>Each cluster contains a single bucket, which is the <code>travel-sample</code> bucket.
-To access and install this, see <a href="../manage-settings/install-sample-buckets.html" class="page">Sample Buckets</a>.</p>
+To access and install this, see <a href="../manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a>.</p>
 </li>
 <li>
 <p>Each cluster has the Full Administrator username of <code>Administrator</code>, and password of <code>password</code>.</p>
@@ -4534,8 +4534,8 @@ To access and install this, see <a href="../manage-settings/install-sample-bucke
 </ul>
 </div>
 <div class="paragraph">
-<p>The examples on this page use the <code>travel-sample</code> bucket, whose installation is described in <a href="../manage-settings/install-sample-buckets.html" class="page">Sample Buckets</a>.
-For information on listing and creating additional buckets, see <a href="../manage-buckets/bucket-management-overview.html" class="page">Manage Buckets</a>.</p>
+<p>The examples on this page use the <code>travel-sample</code> bucket, whose installation is described in <a href="../manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a>.
+For information on listing and creating additional buckets, see <a href="../manage-buckets/bucket-management-overview.html" class="xref page">Manage Buckets</a>.</p>
 </div>
 </div>
 </div>
@@ -4692,7 +4692,7 @@ Note the <code>uuid</code> associated with the reference, which will be used lat
 </div>
 <div class="paragraph">
 <p>For more information, see the complete reference for the
-<a href="#cli:cbcli/couchbase-cli-xdcr-setup.adoc" class="page unresolved">xdcr-setup</a> command, which
+<a href="#cli:cbcli/couchbase-cli-xdcr-setup.adoc" class="xref unresolved">xdcr-setup</a> command, which
 includes details on how to edit an existing reference.</p>
 </div>
 </div>
@@ -4758,7 +4758,7 @@ http://10.144.210.101:8091/pools/default/remoteClusters</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For more information on the REST APIs <code>remoteClusters</code> method, see the detailed reference pages on <a href="../../rest-api/rest-xdcr-create-ref.html" class="page">setting</a> and <a href="../../rest-api/rest-xdcr-get-ref.html" class="page">getting</a> references.</p>
+<p>For more information on the REST APIs <code>remoteClusters</code> method, see the detailed reference pages on <a href="../../rest-api/rest-xdcr-create-ref.html" class="xref page">setting</a> and <a href="../../rest-api/rest-xdcr-get-ref.html" class="xref page">getting</a> references.</p>
 </div>
 </div>
 </div>
@@ -4766,7 +4766,7 @@ http://10.144.210.101:8091/pools/default/remoteClusters</pre>
 <h2 id="next-xdcr-steps-after-create-reference"><a class="anchor" href="#next-xdcr-steps-after-create-reference"></a>Next Steps</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Once a reference to a target cluster has been defined, you can <a href="create-xdcr-replication.html" class="page">Create a Replication</a>.</p>
+<p>Once a reference to a target cluster has been defined, you can <a href="create-xdcr-replication.html" class="xref page">Create a Replication</a>.</p>
 </div>
 </div>
 </div>

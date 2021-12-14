@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="dotnet-sdk">
 <meta name="dcterms.identifier" content="DOC-9205">
 <meta name="page-url" content="/dotnet-sdk/DOC-9205/project-docs/migrating-sdk-code-to-3.n.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3696,7 +3696,7 @@ The new API is built on years of hands-on experience with the current SDK as wel
 <div class="paragraph">
 <p>Before this guide dives into the language-specific technical component of the migration, it is important to understand the high level changes first.
 As a migration guide, this document assumes you are familiar with the previous generation of the SDK and does not re-introducing SDK 2.0 concepts.
-We recommend familiarizing yourself with the new SDK first by reading at least the <a href="../hello-world/start-using-sdk.html" class="page">getting started guide</a>, and browsing through the other chapters a little.</p>
+We recommend familiarizing yourself with the new SDK first by reading at least the <a href="../hello-world/start-using-sdk.html" class="xref page">getting started guide</a>, and browsing through the other chapters a little.</p>
 </div>
 <div class="sect2">
 <h3 id="terminology"><a class="anchor" href="#terminology"></a>Terminology</h3>
@@ -3704,7 +3704,7 @@ We recommend familiarizing yourself with the new SDK first by reading at least t
 <p>The concept of a <code>Cluster</code> and a <code>Bucket</code> remain the same, but a fundamental new layer is introduced into the API: <code>Collections</code> and their <code>Scopes</code>.
 Collections are logical data containers inside a Couchbase bucket that let you group similar data just like a <em>Table</em> does in a relational database&#8201;&#8212;&#8201;although documents inside a collection do not need to have the same structure.
 Scopes allow the grouping of collections into a namespace, which is very usfeul when you have multilpe tenants acessing the same bucket.
-Couchbase Server includes support for collections as a <a href="#6.5@server:developer-preview:preview-mode.adoc" class="page unresolved">developer preview</a> in version 6.5, and as a first class concept of the programming model from <a href="#7.0@server:learn:data/scopes-and-collections.adoc" class="page unresolved">version 7.0.</a></p>
+Couchbase Server includes support for collections as a <a href="#6.5@server:developer-preview:preview-mode.adoc" class="xref unresolved">developer preview</a> in version 6.5, and as a first class concept of the programming model from <a href="#7.0@server:learn:data/scopes-and-collections.adoc" class="xref unresolved">version 7.0.</a></p>
 </div>
 <div class="paragraph">
 <p>Note that the SDKs include the feature from SDK 3.0, to allow easier migration.</p>
@@ -3800,7 +3800,7 @@ First, installation and configuration are covered, then we talk about exception 
 </ul>
 </div>
 <div class="paragraph">
-<p>Please see the <a href="sdk-release-notes.html" class="page">Release Notes</a> for up-to-date information.</p>
+<p>Please see the <a href="sdk-release-notes.html" class="xref page">Release Notes</a> for up-to-date information.</p>
 </div>
 <div class="paragraph">
 <p>Couchbase .NET SDK 3.0 targets the .NET Standard 2.0.
@@ -3842,7 +3842,7 @@ One dependency addition is DnsClient, which was previously in SDK 2.x through a 
 </div>
 <div class="paragraph">
 <p>Note that if using the NuGet package these dependencies will all be handled for you by the NuGet Package Manager tool in Visual Studio or Visual Studio Code.
-See the <a href="../hello-world/start-using-sdk.html" class="page">Start Using</a> document for information on adding it via NuGet.</p>
+See the <a href="../hello-world/start-using-sdk.html" class="xref page">Start Using</a> document for information on adding it via NuGet.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3899,7 +3899,7 @@ var options = new ClusterOptions
 </div>
 <div class="paragraph">
 <p>When creating a configuration, you may customize settings through the ClusterOptions or the connection string.
-See <a href="../ref/client-settings.html" class="page">client configuration</a> for further configuration details.</p>
+See <a href="../ref/client-settings.html" class="xref page">client configuration</a> for further configuration details.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3935,7 +3935,7 @@ See <a href="../ref/client-settings.html" class="page">client configuration</a> 
 <div class="paragraph">
 <p>The SDK offers a configuration API for customizing bootstrapping, timeouts, reliability and performance tuning.
 Configuration options have changed since the 2.x release.
-See the <a href="../ref/client-settings.html" class="page">configuration section</a> for specifics.</p>
+See the <a href="../ref/client-settings.html" class="xref page">configuration section</a> for specifics.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4135,7 +4135,7 @@ It also means, when migrating to the new SDK API, you may observe a longer perio
 <td class="content">
 Operations are retried by default as described above with the default <code>BestEffortRetryStrategy</code>.
 Like in SDK 2 you can configure fail-fast retry strategies to not retry certain or all operations.
-The <code>RetryStrategy</code> interface has been extended heavily in SDK 3&#8201;&#8212;&#8201;please see the <a href="../howtos/error-handling.html" class="page">error handling documentation</a>.
+The <code>RetryStrategy</code> interface has been extended heavily in SDK 3&#8201;&#8212;&#8201;please see the <a href="../howtos/error-handling.html" class="xref page">error handling documentation</a>.
 </td>
 </tr>
 </table>

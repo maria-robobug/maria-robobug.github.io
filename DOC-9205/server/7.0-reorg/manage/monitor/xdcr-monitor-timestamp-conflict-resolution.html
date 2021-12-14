@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/monitor/xdcr-monitor-timestamp-conflict-resolution.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4463,22 +4463,22 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>In a production environment, the clock of each individual node within a Couchbase-Server cluster should be synchronized with a reference clock, provided by an NTP server.
-This is described in <a href="../../install/synchronize-clocks-using-ntp.html" class="page">Clock Sync with NTP</a>.
+This is described in <a href="../../install/synchronize-clocks-using-ntp.html" class="xref page">Clock Sync with NTP</a>.
 Over time, progressive <em>desynchronization</em> may occur: this is referred to as <a href="https://en.wikipedia.org/wiki/Clock_drift" target="_blank" rel="noopener">Clock Drift</a>, or more simply, <em>drift</em>.</p>
 </div>
 <div class="paragraph">
-<p>During <a href="../../learn/clusters-and-availability/replication-architecture.html" class="page">Intra-Cluster Replication</a>, each replica vBucket calculates drift; when it receives updates from the corresponding active vBucket, located on a separate node.</p>
+<p>During <a href="../../learn/clusters-and-availability/replication-architecture.html" class="xref page">Intra-Cluster Replication</a>, each replica vBucket calculates drift; when it receives updates from the corresponding active vBucket, located on a separate node.</p>
 </div>
 <div class="paragraph">
-<p>During <a href="../../learn/clusters-and-availability/xdcr-overview.html" class="page">XDCR</a>, each active vBucket on the target cluster calculates drift; when it receives updates from its corresponding active vBucket, located on the source cluster.
+<p>During <a href="../../learn/clusters-and-availability/xdcr-overview.html" class="xref page">XDCR</a>, each active vBucket on the target cluster calculates drift; when it receives updates from its corresponding active vBucket, located on the source cluster.
 If drift is greater than 5 seconds (5000 milliseconds), an alert is raised on the destination cluster; with the following message: "<code class="out">[&lt;DATE&gt;] - Remote or replica mutation received for bucket "&lt;BUCKET&gt;" on node "&lt;IP&gt;" with timestamp more than 5000 milliseconds ahead of local clock.
 Please ensure that NTP is set up correctly on all nodes across the replication topology and clocks are synchronized.</code>"</p>
 </div>
 <div class="paragraph">
-<p>Drift can be monitored by means of the <a href="#cli:cbstats/cbstats-intro.adoc" class="page unresolved">cbstats</a> tool, using the <code>vbucket-details</code> and <code>all</code> commands; as described below.</p>
+<p>Drift can be monitored by means of the <a href="#cli:cbstats/cbstats-intro.adoc" class="xref unresolved">cbstats</a> tool, using the <code>vbucket-details</code> and <code>all</code> commands; as described below.</p>
 </div>
 <div class="sect2">
-<h3 id="cbstats-vbucket-details"><a class="anchor" href="#cbstats-vbucket-details"></a><a href="../../cli/cbstats/cbstats-vbucket-details.html" class="page">cbstats vbucket-details</a></h3>
+<h3 id="cbstats-vbucket-details"><a class="anchor" href="#cbstats-vbucket-details"></a><a href="../../cli/cbstats/cbstats-vbucket-details.html" class="xref page">cbstats vbucket-details</a></h3>
 <div class="paragraph">
 <p>The following drift-related statistics are provided:</p>
 </div>
@@ -4528,7 +4528,7 @@ How many times the hybrid logical clock has had to increment the logical clock.<
 </div>
 </div>
 <div class="sect2">
-<h3 id="cbstats-all"><a class="anchor" href="#cbstats-all"></a><a href="../../cli/cbstats/cbstats-all.html" class="page">cbstats all</a></h3>
+<h3 id="cbstats-all"><a class="anchor" href="#cbstats-all"></a><a href="../../cli/cbstats/cbstats-all.html" class="xref page">cbstats all</a></h3>
 <div class="paragraph">
 <p>The following drift-related statistics are provided:</p>
 </div>

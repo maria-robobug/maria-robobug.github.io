@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/guides/group-agg.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4469,16 +4469,16 @@ How to calculate aggregates and group the results.
 Grouping enables you to display the results in groups.</p>
 </div>
 <div class="paragraph">
-<p>If you want to try out the examples in this section, follow the instructions given in <a href="../getting-started/do-a-quick-install.html" class="page">Do a Quick Install</a> to install Couchbase Server, configure a cluster, and load a sample dataset.
+<p>If you want to try out the examples in this section, follow the instructions given in <a href="../getting-started/do-a-quick-install.html" class="xref page">Do a Quick Install</a> to install Couchbase Server, configure a cluster, and load a sample dataset.
 Read the following for further information about the tools available for editing and executing queries:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../tools/cbq-shell.html" class="page">cbq: The Command Line Shell for N1QL</a></p>
+<p><a href="../tools/cbq-shell.html" class="xref page">cbq: The Command Line Shell for N1QL</a></p>
 </li>
 <li>
-<p><a href="../tools/query-workbench.html" class="page">Query Workbench</a></p>
+<p><a href="../tools/query-workbench.html" class="xref page">Query Workbench</a></p>
 </li>
 </ul>
 </div>
@@ -4489,11 +4489,11 @@ Read the following for further information about the tools available for editing
 <div class="sectionbody">
 <div class="paragraph">
 <p>To take multiple values from documents, perform calculations, and return a single value as the result, use an aggregate function, such as
-<a href="../n1ql/n1ql-language-reference/aggregatefun.html#avg" class="page">AVG()</a>,
-<a href="../n1ql/n1ql-language-reference/aggregatefun.html#count" class="page">COUNT()</a>,
-<a href="../n1ql/n1ql-language-reference/aggregatefun.html#min" class="page">MIN()</a>,
-<a href="../n1ql/n1ql-language-reference/aggregatefun.html#max" class="page">MAX()</a>, or
-<a href="../n1ql/n1ql-language-reference/aggregatefun.html#sum" class="page">SUM()</a>.</p>
+<a href="../n1ql/n1ql-language-reference/aggregatefun.html#avg" class="xref page">AVG()</a>,
+<a href="../n1ql/n1ql-language-reference/aggregatefun.html#count" class="xref page">COUNT()</a>,
+<a href="../n1ql/n1ql-language-reference/aggregatefun.html#min" class="xref page">MIN()</a>,
+<a href="../n1ql/n1ql-language-reference/aggregatefun.html#max" class="xref page">MAX()</a>, or
+<a href="../n1ql/n1ql-language-reference/aggregatefun.html#sum" class="xref page">SUM()</a>.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -4519,7 +4519,7 @@ Read the following for further information about the tools available for editing
 </div>
 </div>
 <div class="paragraph">
-<p>For more information and examples, refer to <a href="../n1ql/n1ql-language-reference/aggregatefun.html" class="page">Aggregate Functions</a>.</p>
+<p>For more information and examples, refer to <a href="../n1ql/n1ql-language-reference/aggregatefun.html" class="xref page">Aggregate Functions</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="aggregating-distinct-values"><a class="anchor" href="#aggregating-distinct-values"></a>Aggregating Distinct Values</h3>
@@ -4582,7 +4582,7 @@ Read the following for further information about the tools available for editing
 </div>
 </div>
 <div class="paragraph">
-<p>For more information, refer to <a href="../n1ql/n1ql-language-reference/aggregatefun.html#aggregate-quantifier" class="page">Aggregate Quantifier</a>.</p>
+<p>For more information, refer to <a href="../n1ql/n1ql-language-reference/aggregatefun.html#aggregate-quantifier" class="xref page">Aggregate Quantifier</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4615,7 +4615,7 @@ FROM `travel-sample`.inventory.hotel;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For more information, refer to <a href="../n1ql/n1ql-language-reference/aggregatefun.html#filter-clause" class="page">FILTER Clause</a>.</p>
+<p>For more information, refer to <a href="../n1ql/n1ql-language-reference/aggregatefun.html#filter-clause" class="xref page">FILTER Clause</a>.</p>
 </div>
 </div>
 </div>
@@ -4671,7 +4671,7 @@ LIMIT 4;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For more information and examples, refer to <a href="../n1ql/n1ql-language-reference/groupby.html" class="page">GROUP BY Clause</a>.</p>
+<p>For more information and examples, refer to <a href="../n1ql/n1ql-language-reference/groupby.html" class="xref page">GROUP BY Clause</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="filtering-the-groups"><a class="anchor" href="#filtering-the-groups"></a>Filtering the Groups</h3>
@@ -4718,7 +4718,7 @@ HAVING COUNT(DISTINCT name) &gt; 180;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For more information and examples, refer to <a href="../n1ql/n1ql-language-reference/groupby.html#having-clause" class="page">HAVING Clause</a>.</p>
+<p>For more information and examples, refer to <a href="../n1ql/n1ql-language-reference/groupby.html#having-clause" class="xref page">HAVING Clause</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4759,7 +4759,7 @@ HAVING COUNT(DISTINCT name) &gt; MinimumThingsToSee;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For more information and examples, refer to <a href="../n1ql/n1ql-language-reference/groupby.html#letting-clause" class="page">LETTING Clause</a>.</p>
+<p>For more information and examples, refer to <a href="../n1ql/n1ql-language-reference/groupby.html#letting-clause" class="xref page">LETTING Clause</a>.</p>
 </div>
 </div>
 </div>
@@ -4773,10 +4773,10 @@ HAVING COUNT(DISTINCT name) &gt; MinimumThingsToSee;</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../n1ql/n1ql-language-reference/aggregatefun.html" class="page">Aggregate Functions</a></p>
+<p><a href="../n1ql/n1ql-language-reference/aggregatefun.html" class="xref page">Aggregate Functions</a></p>
 </li>
 <li>
-<p><a href="../n1ql/n1ql-language-reference/groupby.html" class="page">GROUP BY Clause</a></p>
+<p><a href="../n1ql/n1ql-language-reference/groupby.html" class="xref page">GROUP BY Clause</a></p>
 </li>
 </ul>
 </div>
@@ -4796,15 +4796,15 @@ HAVING COUNT(DISTINCT name) &gt; MinimumThingsToSee;</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/howtos/n1ql-queries-with-sdk.html" class="page">C</a>
-| <a href="../../../dotnet-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="page">.NET</a>
-| <a href="../../../go-sdk/2.3/howtos/n1ql-queries-with-sdk.html" class="page">Go</a>
-| <a href="../../../java-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="page">Java</a>
-| <a href="../../../nodejs-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="page">Node.js</a>
-| <a href="../../../php-sdk/3.2/howtos/n1ql-queries-with-sdk.html" class="page">PHP</a>
-| <a href="../../../python-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="page">Python</a>
-| <a href="../../../ruby-sdk/3.2/howtos/n1ql-queries-with-sdk.html" class="page">Ruby</a>
-| <a href="../../../scala-sdk/1.2/howtos/n1ql-queries-with-sdk.html" class="page">Scala</a></p>
+<p><a href="../../../c-sdk/3.2/howtos/n1ql-queries-with-sdk.html" class="xref page">C</a>
+| <a href="../../../dotnet-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="xref page">.NET</a>
+| <a href="../../../go-sdk/2.3/howtos/n1ql-queries-with-sdk.html" class="xref page">Go</a>
+| <a href="../../../java-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="xref page">Java</a>
+| <a href="../../../nodejs-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="xref page">Node.js</a>
+| <a href="../../../php-sdk/3.2/howtos/n1ql-queries-with-sdk.html" class="xref page">PHP</a>
+| <a href="../../../python-sdk/DOC-9205/howtos/n1ql-queries-with-sdk.html" class="xref page">Python</a>
+| <a href="../../../ruby-sdk/3.2/howtos/n1ql-queries-with-sdk.html" class="xref page">Ruby</a>
+| <a href="../../../scala-sdk/1.2/howtos/n1ql-queries-with-sdk.html" class="xref page">Scala</a></p>
 </li>
 </ul>
 </div>

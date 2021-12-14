@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/metafun.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4469,8 +4469,8 @@ For example, there are functions to retrieve information about a document or ite
 The error message contains the text specified by the given <code class="var">expression</code>.</p>
 </div>
 <div class="paragraph">
-<p>This function is useful for flow control when <a href="createfunction.html" class="page">creating inline user-defined functions</a>.
-You can use <a href="conditionalops.html" class="page">conditional operators</a> to check the parameters, and use this function to generate an error if something is wrong.</p>
+<p>This function is useful for flow control when <a href="createfunction.html" class="xref page">creating inline user-defined functions</a>.
+You can use <a href="conditionalops.html" class="xref page">conditional operators</a> to check the parameters, and use this function to generate an error if something is wrong.</p>
 </div>
 <div class="sect2">
 <h3 id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h3>
@@ -4637,19 +4637,19 @@ END;</code></pre>
 <h2 id="meta"><a class="anchor" href="#meta"></a>META( [ <code>keyspace_expr</code> ] ) [ .<code>property</code> ]</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This function returns the <a href="../../learn/data/data.html#metadata" class="page">metadata</a> for the document or keyspace specified by <code class="var">keyspace_expr</code>.
+<p>This function returns the <a href="../../learn/data/data.html#metadata" class="xref page">metadata</a> for the document or keyspace specified by <code class="var">keyspace_expr</code>.
 The metadata is returned as a JSON object.</p>
 </div>
 <div class="paragraph">
-<p>To return a single property from the metadata, you must use a <a href="nestedops.html#field-selection" class="page">nested expression</a> containing the <code>META()</code> function and the required property, for example <code>META().id</code>.
+<p>To return a single property from the metadata, you must use a <a href="nestedops.html#field-selection" class="xref page">nested expression</a> containing the <code>META()</code> function and the required property, for example <code>META().id</code>.
 The supported metadata properties are described below.</p>
 </div>
 <div class="paragraph">
-<p>You can use the <code>META()</code> function with a property to <a href="indexing-meta-info.html" class="page">index metadata information</a>.
+<p>You can use the <code>META()</code> function with a property to <a href="indexing-meta-info.html" class="xref page">index metadata information</a>.
 Only certain metadata properties are indexable; these are indicated in the description below.</p>
 </div>
 <div class="paragraph">
-<p>You can also use the <code>META()</code> function with a property in the predicate of an <a href="join.html#section_ek1_jnx_1db" class="page">ANSI JOIN Clause</a>.</p>
+<p>You can also use the <code>META()</code> function with a property in the predicate of an <a href="join.html#section_ek1_jnx_1db" class="xref page">ANSI JOIN Clause</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="arguments-2"><a class="anchor" href="#arguments-2"></a>Arguments</h3>
@@ -4673,7 +4673,7 @@ The property name must be separated from the <code>META()</code> function by a d
 <dt class="hdlist1">cas</dt>
 <dd>
 <p>Value representing the current state of an item which changes every time the item is modified.
-For details, refer to <a href="#3.0@java-sdk:howtos:concurrent-document-mutations.adoc" class="page unresolved">Concurrent Document Mutations</a>.</p>
+For details, refer to <a href="#3.0@java-sdk:howtos:concurrent-document-mutations.adoc" class="xref unresolved">Concurrent Document Mutations</a>.</p>
 <div class="paragraph">
 <p>This property is indexable.</p>
 </div>
@@ -4682,7 +4682,7 @@ For details, refer to <a href="#3.0@java-sdk:howtos:concurrent-document-mutation
 <dd>
 <p>Value representing a document&#8217;s expiration date.
 A value of 0 (zero) means no expiration date.
-For details, refer to <a href="#3.0@java-sdk:howtos:kv-operations.adoc#document-expiration" class="page unresolved">KV Operations</a>.</p>
+For details, refer to <a href="#3.0@java-sdk:howtos:kv-operations.adoc#document-expiration" class="xref unresolved">KV Operations</a>.</p>
 <div class="paragraph">
 <p>This property is indexable.</p>
 </div>
@@ -4690,7 +4690,7 @@ For details, refer to <a href="#3.0@java-sdk:howtos:kv-operations.adoc#document-
 <dt class="hdlist1">flags</dt>
 <dd>
 <p>Value set by the SDKs for non-JSON documents.
-For details, refer to <a href="#3.0@java-sdk:howtos:transcoders-nonjson.adoc" class="page unresolved">Non-JSON Documents</a>.</p>
+For details, refer to <a href="#3.0@java-sdk:howtos:transcoders-nonjson.adoc" class="xref unresolved">Non-JSON Documents</a>.</p>
 <div class="paragraph">
 <p>This property is not indexable.
 If you attempt to build an index on this property, an error is returned.</p>
@@ -4840,10 +4840,10 @@ LIMIT 3;</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>For examples showing how to index metadata information, refer to <a href="indexing-meta-info.html" class="page">Indexing Meta Info</a>.</p>
+<p>For examples showing how to index metadata information, refer to <a href="indexing-meta-info.html" class="xref page">Indexing Meta Info</a>.</p>
 </div>
 <div class="paragraph">
-<p>For examples showing how to use metadata information in the predicate of an ANSI JOIN clause, refer to <a href="join.html" class="page">JOIN Clause</a>.</p>
+<p>For examples showing how to use metadata information in the predicate of an ANSI JOIN clause, refer to <a href="join.html" class="xref page">JOIN Clause</a>.</p>
 </div>
 </div>
 </div>

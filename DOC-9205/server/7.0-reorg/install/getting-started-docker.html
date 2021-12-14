@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/install/getting-started-docker.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4460,7 +4460,7 @@ Couchbase Server can be installed using official Couchbase images from Docker Hu
 </blockquote>
 </div>
 <div class="paragraph">
-<p>If you&#8217;re trying Couchbase Server for the first time and just want to explore a Couchbase configuration, the quickest way to install a pre-configured single-node deployment using Docker is to follow the <a href="../getting-started/start-here.html" class="page">Get Started</a> tutorial.</p>
+<p>If you&#8217;re trying Couchbase Server for the first time and just want to explore a Couchbase configuration, the quickest way to install a pre-configured single-node deployment using Docker is to follow the <a href="../getting-started/start-here.html" class="xref page">Get Started</a> tutorial.</p>
 </div>
 <div class="paragraph">
 <p>For more traditional Docker deployments, use the following sections below:</p>
@@ -4494,15 +4494,15 @@ Couchbase Server can be installed using official Couchbase images from Docker Hu
 </td>
 <td class="content">
 <div class="paragraph">
-<p>For detailed information about deploying Couchbase Server, make sure to review the Couchbase Server <a href="plan-for-production.html" class="page">system requirements</a> and <a href="install-production-deployment.html" class="page">deployment guidelines</a>, paying particular attention to the following pages:</p>
+<p>For detailed information about deploying Couchbase Server, make sure to review the Couchbase Server <a href="plan-for-production.html" class="xref page">system requirements</a> and <a href="install-production-deployment.html" class="xref page">deployment guidelines</a>, paying particular attention to the following pages:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="best-practices-vm.html" class="page">Deployment Considerations for Virtual Machines and Containers</a></p>
+<p><a href="best-practices-vm.html" class="xref page">Deployment Considerations for Virtual Machines and Containers</a></p>
 </li>
 <li>
-<p><a href="deployment-considerations-lt-3nodes.html" class="page">About Deploying Clusters With Less Than Three Nodes</a>.</p>
+<p><a href="deployment-considerations-lt-3nodes.html" class="xref page">About Deploying Clusters With Less Than Three Nodes</a>.</p>
 </li>
 </ul>
 </div>
@@ -4566,7 +4566,7 @@ Ensure that you stop any local instance of Couchbase Server before running this 
 <li>
 <p>Click <b class="button">Setup New Cluster</b> and proceed through the setup wizard to create a cluster of one node.</p>
 <div class="paragraph">
-<p>Refer to <a href="../manage/manage-nodes/create-cluster.html" class="page">Create a Cluster</a> for instructions on using the setup wizard.
+<p>Refer to <a href="../manage/manage-nodes/create-cluster.html" class="xref page">Create a Cluster</a> for instructions on using the setup wizard.
 You may need to lower the RAM allocation for various services to fit within the bounds of the container&#8217;s resources.</p>
 </div>
 </li>
@@ -4603,7 +4603,7 @@ You may need to lower the RAM allocation for various services to fit within the 
 </td>
 <td class="content">
 <div class="paragraph">
-<p>For detailed information about deploying Couchbase Server, make sure to review the Couchbase Server <a href="plan-for-production.html" class="page">system requirements</a> and <a href="install-production-deployment.html" class="page">deployment guidelines</a>, paying particular attention to <a href="best-practices-vm.html" class="page">Deployment Considerations for Virtual Machines and Containers</a>.</p>
+<p>For detailed information about deploying Couchbase Server, make sure to review the Couchbase Server <a href="plan-for-production.html" class="xref page">system requirements</a> and <a href="install-production-deployment.html" class="xref page">deployment guidelines</a>, paying particular attention to <a href="best-practices-vm.html" class="xref page">Deployment Considerations for Virtual Machines and Containers</a>.</p>
 </div>
 </td>
 </tr>
@@ -4662,7 +4662,7 @@ Ensure that you stop any local instance of Couchbase Server before running these
 </td>
 <td class="content">
 If you are using encrypted communication for the Couchbase Web Console, client, and server, and using XDCR, you need to open up additional ports.
-For details, refer to <a href="install-ports.html" class="page">Couchbase Server Ports</a>.
+For details, refer to <a href="install-ports.html" class="xref page">Couchbase Server Ports</a>.
 </td>
 </tr>
 </table>
@@ -4735,7 +4735,7 @@ For details, refer to <a href="install-ports.html" class="page">Couchbase Server
 <li>
 <p>Click <b class="button">Setup New Cluster</b> and proceed through the setup wizard as normal.</p>
 <div class="paragraph">
-<p>Refer to <a href="../manage/manage-nodes/create-cluster.html" class="page">Create a Cluster</a> for instructions on using the setup wizard.
+<p>Refer to <a href="../manage/manage-nodes/create-cluster.html" class="xref page">Create a Cluster</a> for instructions on using the setup wizard.
 You may need to lower the RAM allocation for various services to fit within the bounds of the container&#8217;s resources.</p>
 </div>
 </li>
@@ -4788,7 +4788,7 @@ This is the supported model for Couchbase Server container deployments in produc
 </div>
 <div class="paragraph">
 <p>The following procedure explains how to set up a three-node Couchbase cluster with each container running on its own physical host.
-Note that all physical hosts must be able to discover one another on the same network and be able to communicate over the <a href="install-ports.html" class="page">required ports</a>.</p>
+Note that all physical hosts must be able to discover one another on the same network and be able to communicate over the <a href="install-ports.html" class="xref page">required ports</a>.</p>
 </div>
 <div id="ol_txh_tlm_42b" class="olist arabic">
 <ol class="arabic">
@@ -4857,7 +4857,7 @@ The <code>--net=host</code> option provides better network performance and maps 
 <li>
 <p>Click <b class="button">Setup New Cluster</b> and proceed through the setup wizard as normal.</p>
 <div class="paragraph">
-<p>Refer to <a href="../manage/manage-nodes/create-cluster.html" class="page">Create a Cluster</a> for instructions on using the setup wizard.</p>
+<p>Refer to <a href="../manage/manage-nodes/create-cluster.html" class="xref page">Create a Cluster</a> for instructions on using the setup wizard.</p>
 </div>
 </li>
 <li>
@@ -4907,12 +4907,12 @@ Click <b class="button">Add Server</b> to add the node to the cluster configurat
 <h2 id="section_pfz_p1r_42b"><a class="anchor" href="#section_pfz_p1r_42b"></a>Next Steps</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Once you&#8217;ve successfully initialized a Couchbase cluster running in containers, you can start installing and querying <a href="../manage/manage-settings/install-sample-buckets.html" class="page">sample buckets</a>, as well as begin connecting clients.</p>
+<p>Once you&#8217;ve successfully initialized a Couchbase cluster running in containers, you can start installing and querying <a href="../manage/manage-settings/install-sample-buckets.html" class="xref page">sample buckets</a>, as well as begin connecting clients.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../getting-started/try-a-query.html" class="page">Run Your First N1QL Query</a></p>
+<p><a href="../getting-started/try-a-query.html" class="xref page">Run Your First N1QL Query</a></p>
 <div class="paragraph">
 <p>If you would like to practice querying on a new Couchbase cluster, log into the Couchbase Web Console at <code>http://localhost:8091</code> and go to the <strong class="ui">Query</strong> tab.
 If you don&#8217;t have any buckets set up yet, you can go to the <strong class="ui">Buckets</strong> tab and click <strong class="ui">sample bucket</strong> to load some sample data.</p>
@@ -4928,7 +4928,7 @@ Given that each node is registered using the IP address of the hosts, applicatio
 <p>For single-node clusters, simply run your application through the Couchbase Server SDK on the host and point it to <code>http://localhost:8091/pools</code> to connect to the container.</p>
 </div>
 <div class="paragraph">
-<p>For more information about deploying a sample application, refer to the <a href="../../../java-sdk/DOC-9205/hello-world/sample-application.html" class="page">SDK documentation</a>.</p>
+<p>For more information about deploying a sample application, refer to the <a href="../../../java-sdk/DOC-9205/hello-world/sample-application.html" class="xref page">SDK documentation</a>.</p>
 </div>
 </li>
 </ul>

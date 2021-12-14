@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/rest-api/rest-xdcr-create-replication.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4572,7 +4572,7 @@ If the target cluster <em>is</em> running Couchbase Server 5.5 or later:</p>
 <p>The optional <code>filterExpression</code> is matched against the ids, field-names, values, and extended attributes of documents in the source bucket.
 Each document that produces a successful match is replicated; other documents are not replicated.
 Only one filter can be applied per replication; and, once applied, affects all mappings.
-For supported expressions, see <a href="../xdcr-reference/xdcr-filtering-reference-intro.html" class="page">XDCR Advanced Filtering Reference</a>.</p>
+For supported expressions, see <a href="../xdcr-reference/xdcr-filtering-reference-intro.html" class="xref page">XDCR Advanced Filtering Reference</a>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>filterDeletion</code> and <code>filterExpiration</code> flags indicate whether mutations corresponding respectively to the deletion and expiration of documents on the source cluster should be either <em>filtered out</em> of the replication to the target cluster, or allowed to remain in.
@@ -4588,22 +4588,22 @@ The default value is <code>false</code>.</p>
 <p>The <code>filterSkipRestream</code> flag indicates whether the replication should be either restarted or allowed to continue without restarting, following modification of the value of <code>filterExpression</code>.
 A value of <code>true</code> means that the replication should be allowed to continue without restarting.
 A value of <code>false</code> (the default) means that the replication should be restarted.
-For more information, see <a href="../learn/clusters-and-availability/xdcr-filtering.html#filter-expression-editing" class="page">Filter-Expression Editing</a>.</p>
+For more information, see <a href="../learn/clusters-and-availability/xdcr-filtering.html#filter-expression-editing" class="xref page">Filter-Expression Editing</a>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>priority</code> flag controls resource-allocation to the replication.
 The value can be <code>High</code>, <code>Medium</code>, or <code>Low</code>.
 The default value is <code>High</code>.
-For information, see <a href="../learn/clusters-and-availability/xdcr-overview.html#xdcr-priority" class="page">XDCR Priority</a>.</p>
+For information, see <a href="../learn/clusters-and-availability/xdcr-overview.html#xdcr-priority" class="xref page">XDCR Priority</a>.</p>
 </div>
 <div class="paragraph">
 <p>The optional <code>network_type</code> flag determines whether <em>internal</em> or <em>alternate</em> IP addresses are used when communicating with the target cluster.
 A value of <code>default</code> enforces the use of internal IP addresses.
 A value of <code>external</code> enforces the use of alternate IP addresses, whenever possible.
-For information, see <a href="../learn/clusters-and-availability/connectivity.html#alternate-addresses" class="page">Alternate Addresses</a>.</p>
+For information, see <a href="../learn/clusters-and-availability/connectivity.html#alternate-addresses" class="xref page">Alternate Addresses</a>.</p>
 </div>
 <div class="paragraph">
-<p>For information on all other flags, see <a href="rest-xdcr-adv-settings.html" class="page">Managing Advanced XDCR Settings</a>.</p>
+<p>For information on all other flags, see <a href="rest-xdcr-adv-settings.html" class="xref page">Managing Advanced XDCR Settings</a>.</p>
 </div>
 </div>
 </div>
@@ -4752,18 +4752,18 @@ Note the format required for the specifying of <code>colMappingRules</code>: the
 <h2 id="see-also"><a class="anchor" href="#see-also"></a>See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The REST procedures for establishing and retrieving advanced settings are described in <a href="rest-xdcr-adv-settings.html" class="page">Managing Advanced XDCR Settings</a>.
-See <a href="../manage/manage-xdcr/create-xdcr-replication.html" class="page">Create a Replication</a> for additional examples of creating a replication, including by means of Couchbase Web Console and the CLI.
-For a conceptual overview of XDCR, see <a href="../learn/clusters-and-availability/xdcr-overview.html" class="page">Cross Data Center Replication (XDCR)</a>.</p>
+<p>The REST procedures for establishing and retrieving advanced settings are described in <a href="rest-xdcr-adv-settings.html" class="xref page">Managing Advanced XDCR Settings</a>.
+See <a href="../manage/manage-xdcr/create-xdcr-replication.html" class="xref page">Create a Replication</a> for additional examples of creating a replication, including by means of Couchbase Web Console and the CLI.
+For a conceptual overview of XDCR, see <a href="../learn/clusters-and-availability/xdcr-overview.html" class="xref page">Cross Data Center Replication (XDCR)</a>.</p>
 </div>
 <div class="paragraph">
-<p>For an overview of scopes and collections, see <a href="../learn/data/scopes-and-collections.html" class="page">Scopes and Collections</a>.
-For an overview of how XDCR can be used to replicate between scopes and collections &#8212; and a description of the syntactic requirements of <em>mapping rules</em> &#8212; see <a href="../learn/clusters-and-availability/xdcr-with-scopes-and-collections.html" class="page">XDCR with Scopes and Collections</a>.
-For specific examples of using XDCR to replicate between scopes and collections, see <a href="../manage/manage-xdcr/replicate-using-scopes-and-collections.html" class="page">Replicate Using Scopes and Collections</a>.</p>
+<p>For an overview of scopes and collections, see <a href="../learn/data/scopes-and-collections.html" class="xref page">Scopes and Collections</a>.
+For an overview of how XDCR can be used to replicate between scopes and collections &#8212; and a description of the syntactic requirements of <em>mapping rules</em> &#8212; see <a href="../learn/clusters-and-availability/xdcr-with-scopes-and-collections.html" class="xref page">XDCR with Scopes and Collections</a>.
+For specific examples of using XDCR to replicate between scopes and collections, see <a href="../manage/manage-xdcr/replicate-using-scopes-and-collections.html" class="xref page">Replicate Using Scopes and Collections</a>.</p>
 </div>
 <div class="paragraph">
-<p>For an overview of XDCR filtering, see <a href="../learn/clusters-and-availability/xdcr-filtering.html" class="page">XDCR Advanced Filtering</a>.
-Information on how alternate addresses may be used is provided in <a href="../learn/clusters-and-availability/connectivity.html#alternate-addresses" class="page">Alternate Addresses</a>.</p>
+<p>For an overview of XDCR filtering, see <a href="../learn/clusters-and-availability/xdcr-filtering.html" class="xref page">XDCR Advanced Filtering</a>.
+Information on how alternate addresses may be used is provided in <a href="../learn/clusters-and-availability/connectivity.html#alternate-addresses" class="xref page">Alternate Addresses</a>.</p>
 </div>
 </div>
 </div>

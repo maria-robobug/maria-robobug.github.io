@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/install/synchronize-clocks-using-ntp.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4457,7 +4457,7 @@
 <p>Network Time Protocol (NTP) is used to synchronize time across multiple servers. The purpose of NTP is to keep an individual node&#8217;s clock 'accurate'.
 This is done by having the node periodically synchronize its clock with a reference server.
 You can specify multiple servers to provide redundancy in case one or more time servers are unavailable.
-Correct time synchronisation is important in Couchbase Server for Expiry behavior and to maintain accurate synchronicity in timestamp-based conflict resolution (see <a href="../learn/clusters-and-availability/xdcr-conflict-resolution.html#time-synchronization" class="page">Time Synchronization</a>).</p>
+Correct time synchronisation is important in Couchbase Server for Expiry behavior and to maintain accurate synchronicity in timestamp-based conflict resolution (see <a href="../learn/clusters-and-availability/xdcr-conflict-resolution.html#time-synchronization" class="xref page">Time Synchronization</a>).</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -4533,7 +4533,7 @@ These NTP servers within a pool synchronize with external NTP servers (over the 
 <p>In case of a bigger, scalable cluster, Couchbase recommends that you run your own NTP server pool that is externally synchronized.
 You should have at least two NTP sources on the same local network as each Couchbase
 server group. See
-<a href="../manage/manage-groups/manage-groups.html" class="page">Manage Groups</a>.
+<a href="../manage/manage-groups/manage-groups.html" class="xref page">Manage Groups</a>.
 This configuration will provide perfect relative and absolute clock synchronization, high availability, and easy maintenance.</p>
 </li>
 <li>

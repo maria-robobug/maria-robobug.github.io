@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-buckets/create-bucket.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4530,7 +4530,7 @@ The bar provides size-information for the bucket you are creating, for the amoun
 <div class="paragraph">
 <p>Three <strong class="ui">Bucket Type</strong> options are displayed: which are <strong class="ui">Couchbase</strong>, <strong class="ui">Memcached</strong>, and <strong class="ui">Ephemeral</strong>.
 For information on the differences between these bucket-types, see
-<a href="../../learn/buckets-memory-and-storage/buckets.html" class="page">Buckets</a>.</p>
+<a href="../../learn/buckets-memory-and-storage/buckets.html" class="xref page">Buckets</a>.</p>
 </div>
 <div class="paragraph">
 <p>Selection of each bucket-type provides a different set of advanced settings, which can be used to configure the bucket.
@@ -4564,7 +4564,7 @@ The number of replica-copies to be created and maintained is determined by means
 <p>By checking the <strong class="ui">Replicate view indexes</strong> checkbox, you ensure that view indexes, as well as data, are replicated.</p>
 </div>
 <div class="paragraph">
-<p>For detailed information on replication, see <a href="../../learn/clusters-and-availability/intra-cluster-replication.html" class="page">Intra-Cluster Replication</a>.</p>
+<p>For detailed information on replication, see <a href="../../learn/clusters-and-availability/intra-cluster-replication.html" class="xref page">Intra-Cluster Replication</a>.</p>
 </div>
 </li>
 <li>
@@ -4573,20 +4573,20 @@ The maximum time that can be specified is 2147483648 (68.096 years).
 The setting is applied to all documents created after the setting is itself established.</p>
 <div class="paragraph">
 <p>For detailed information, see
-<a href="../../learn/data/expiration.html" class="page">Expiration</a>.</p>
+<a href="../../learn/data/expiration.html" class="xref page">Expiration</a>.</p>
 </div>
 </li>
 <li>
 <p><strong class="ui">Compression Mode</strong>: Controls whether and how compression is applied to data within the bucket.
-For detailed information, see <a href="../../learn/buckets-memory-and-storage/compression.html" class="page">Compression</a>.</p>
+For detailed information, see <a href="../../learn/buckets-memory-and-storage/compression.html" class="xref page">Compression</a>.</p>
 </li>
 <li>
 <p><strong class="ui">Conflict Resolution</strong>: A <em>conflict</em> occurs during XDCR, when a document has been modified in different ways in different locations; necessitating that one of the versions be chosen for retention, and the other discarded.
 There are two methods for making this choice: these are represented by the <strong class="ui">Sequence number</strong> and <strong class="ui">Timestamp</strong> checkboxes.
 The method you choose is permanently established for the current bucket: it cannot subsequently be changed.
-For information on the significance of each method, see <a href="../../learn/clusters-and-availability/xdcr-conflict-resolution.html" class="page">XDCR Conflict Resolution</a>.</p>
+For information on the significance of each method, see <a href="../../learn/clusters-and-availability/xdcr-conflict-resolution.html" class="xref page">XDCR Conflict Resolution</a>.</p>
 <div class="paragraph">
-<p>Note that you can also set the conflict resolution method using the CLI <a href="#cli:cbcli/couchbase-cli-bucket-create.adoc" class="page unresolved">bucket-create</a> command, or the <a href="../../rest-api/rest-bucket-create.html" class="page">REST API</a>.</p>
+<p>Note that you can also set the conflict resolution method using the CLI <a href="#cli:cbcli/couchbase-cli-bucket-create.adoc" class="xref unresolved">bucket-create</a> command, or the <a href="../../rest-api/rest-bucket-create.html" class="xref page">REST API</a>.</p>
 </div>
 </li>
 <li>
@@ -4594,7 +4594,7 @@ For information on the significance of each method, see <a href="../../learn/clu
 If <strong class="ui">Full</strong> is selected, everything (including data, metadata, key, and value) is ejected.
 If <strong class="ui">Value-only</strong> is selected, only data is ejected.
 Generally, Value-only ejection favors performance at the expense of memory; and Full ejection vice versa.
-See <a href="../../learn/buckets-memory-and-storage/memory.html#ejection" class="page">Ejection</a>, for more information.
+See <a href="../../learn/buckets-memory-and-storage/memory.html#ejection" class="xref page">Ejection</a>, for more information.
 Note that <em>ejection</em> in the context of a Couchbase bucket means removal from memory, with continued persistence on disk.</p>
 </li>
 </ul>
@@ -4609,7 +4609,7 @@ Background tasks may involve disk I/O, DCP stream-processing, item-paging, and m
 These settings determine whether the bucket&#8217;s tasks are enqueued in low or high priority task-queues.
 Specifying High <em>may</em> result in faster processing for the current bucket&#8217;s tasks.
 However, the specification only makes a difference when there is more than one bucket defined for the cluster, and when those buckets are assigned different priority-values.
-See <a href="../../learn/services-and-indexes/services/data-service.html" class="page">Data Service</a>, for further information.</p>
+See <a href="../../learn/services-and-indexes/services/data-service.html" class="xref page">Data Service</a>, for further information.</p>
 </div>
 </li>
 </ul>
@@ -4620,19 +4620,19 @@ See <a href="../../learn/services-and-indexes/services/data-service.html" class=
 <p><strong>Minimum Durability Level</strong>: Allows an appropriate durability level to be assigned to the bucket.
 Levels are accessed by means of a pull-down menu.
 The options are <strong>none</strong>, <strong>majority</strong>, <strong>majorityAndPersistActive</strong>, and <strong>persistToMajority</strong>.
-For information, see <a href="../../learn/data/durability.html" class="page">Durability</a>.</p>
+For information, see <a href="../../learn/data/durability.html" class="xref page">Durability</a>.</p>
 </li>
 <li>
 <p><strong class="ui">Auto-Compaction</strong>: Allows triggering of the process whereby data and indexes are compacted automatically on a system-defined schedule, to save space.
 To override the default settings, check the checkbox marked <strong class="ui">Override the default auto-compation settings?</strong> If you do so, the dialog goes through a further vertical expansion; and additional fields are displayed, whereby you can specify your own compaction-settings.
 For information on the defaults, and on the options provided for overriding them, see
-<a href="../manage-settings/configure-compact-settings.html" class="page">Configuring Auto-Compaction</a>.</p>
+<a href="../manage-settings/configure-compact-settings.html" class="xref page">Configuring Auto-Compaction</a>.</p>
 </li>
 <li>
 <p><strong class="ui">Flush</strong>: This section allows flushing to be enabled.
 If it is enabled, and flushing is performed, items in the bucket are removed as soon as possible.
 See
-<a href="flush-bucket.html" class="page">Flush a Bucket</a>, for details.</p>
+<a href="flush-bucket.html" class="xref page">Flush a Bucket</a>, for details.</p>
 </li>
 </ul>
 </div>
@@ -4717,10 +4717,10 @@ Note that other auto-compaction settings do not apply to Ephemeral buckets, sinc
 </div>
 </div>
 <div class="paragraph">
-<p>The row for the created bucket provides data on the number of items the bucket contains and how many are currently resident; on how many operations per second are being performed on the bucket; on the amount of RAM currently being used by the bucket, in comparison to its maximum quota; and the amount of disk space used by the bucket. To the right hand side of the row are tabs that allow examination of the <a href="../manage-ui/manage-ui.html#console-documents" class="page">Documents</a> within the bucket; and creation of <a href="../../learn/data/scopes-and-collections.html" class="page">Scopes and Collections</a>, into which documents can be organized.</p>
+<p>The row for the created bucket provides data on the number of items the bucket contains and how many are currently resident; on how many operations per second are being performed on the bucket; on the amount of RAM currently being used by the bucket, in comparison to its maximum quota; and the amount of disk space used by the bucket. To the right hand side of the row are tabs that allow examination of the <a href="../manage-ui/manage-ui.html#console-documents" class="xref page">Documents</a> within the bucket; and creation of <a href="../../learn/data/scopes-and-collections.html" class="xref page">Scopes and Collections</a>, into which documents can be organized.</p>
 </div>
 <div class="paragraph">
-<p>For information on importing documents into a bucket, see <a href="../import-documents/import-documents.html" class="page">Import Documents</a>.</p>
+<p>For information on importing documents into a bucket, see <a href="../import-documents/import-documents.html" class="xref page">Import Documents</a>.</p>
 </div>
 </div>
 </div>
@@ -4748,11 +4748,11 @@ For example:</p>
 <div class="paragraph">
 <p>This creates a <em>Couchbase</em> bucket named <code>testBucket</code>, with a RAM size of <code>1024</code>; specifying a maximum time-to-live, and disabling flush.
 Note that a minimum durability level of <code>persistToMajority</code> is specified: other permitted settings for this parameter are <code>none</code> (the default), <code>majorityAndPersistActive</code>, and <code>majority</code>.
-For details on the significance of these settings, see <a href="../../learn/data/durability.html" class="page">Durability</a>.
+For details on the significance of these settings, see <a href="../../learn/data/durability.html" class="xref page">Durability</a>.
 (Note that an <em>Ephemeral</em> bucket, when created, can only use the <code>none</code> and <code>majority</code> settings, for this parameter.)</p>
 </div>
 <div class="paragraph">
-<p>For further information on <code>bucket-create</code> and its additional parameters, see the reference page for <a href="#cli:cbcli/couchbase-cli-bucket-create.adoc" class="page unresolved">bucket-create</a>.</p>
+<p>For further information on <code>bucket-create</code> and its additional parameters, see the reference page for <a href="#cli:cbcli/couchbase-cli-bucket-create.adoc" class="xref unresolved">bucket-create</a>.</p>
 </div>
 </div>
 </div>
@@ -4776,11 +4776,11 @@ For example:</p>
 <div class="paragraph">
 <p>This creates a <em>Couchbase</em> bucket named <code>testBucket</code>, with a RAM size of <code>512</code>.
 Note that a minimum durability level of <code>majorityAndPersistActive</code> is specified: other permitted settings for this parameter are <code>none</code> (the default), <code>majority</code>, and <code>persistToMajority</code>.
-For details on the significance of these settings, see <a href="../../learn/data/durability.html" class="page">Durability</a>.
+For details on the significance of these settings, see <a href="../../learn/data/durability.html" class="xref page">Durability</a>.
 (Note that an <em>Ephemeral</em> bucket, when created, can only use the <code>none</code> and <code>majority</code> settings, for this parameter.)</p>
 </div>
 <div class="paragraph">
-<p>For further information, see the REST API reference page <a href="../../rest-api/rest-bucket-create.html" class="page">Creating and Editing Buckets</a>.</p>
+<p>For further information, see the REST API reference page <a href="../../rest-api/rest-bucket-create.html" class="xref page">Creating and Editing Buckets</a>.</p>
 </div>
 </div>
 </div>

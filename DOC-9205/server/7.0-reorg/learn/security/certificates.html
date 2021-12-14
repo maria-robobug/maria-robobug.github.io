@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/security/certificates.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4484,7 +4484,7 @@ Consequently, the mechanism can be used by Couchbase SDK clients, to access Couc
 </div>
 <div class="paragraph">
 <p>This page provides a general overview of certificates, and of their management in the context of Couchbase Server.
-For step-by-step instructions on certificate creation and deployment, see <a href="../../manage/manage-security/configure-server-certificates.html" class="page">Configure Server Certificates</a> and <a href="../../manage/manage-security/configure-client-certificates.html" class="page">Configure Client Certificates</a>.</p>
+For step-by-step instructions on certificate creation and deployment, see <a href="../../manage/manage-security/configure-server-certificates.html" class="xref page">Configure Server Certificates</a> and <a href="../../manage/manage-security/configure-client-certificates.html" class="xref page">Configure Client Certificates</a>.</p>
 </div>
 </div>
 </div>
@@ -4565,7 +4565,7 @@ Thus, if client and server share the same root certificate, they are likely to t
 <p>Couchbase Server provides a default, self-signed cluster certificate, which is created and deployed when the first node in a cluster is created.
 A new, replacement cluster certificate can be deployed on the cluster by means of the Couchbase REST API or CLI.
 The current cluster certificate is always visible on the <strong>Root Certificate</strong> panel of the <strong>Security</strong> screen of Couchbase Web Console.
-See <a href="../../manage/manage-security/manage-security-settings.html#root-certificate-security-screen-display" class="page">Root Certificate</a>.</p>
+See <a href="../../manage/manage-security/manage-security-settings.html#root-certificate-security-screen-display" class="xref page">Root Certificate</a>.</p>
 </div>
 <div class="paragraph">
 <p>The file for the cluster certificate (indeed, for any other server or client certificate) is required to be in <em>Privacy Enhanced Mail</em> (or <em>PEM</em>) format, with a <code>.pem</code> extension.
@@ -4580,7 +4580,7 @@ Consequently, custom certificate-chains based on the default certificate <em>can
 To create custom certificate-chains, a custom cluster certificate and private key must be generated (or alternatively, a Root CA must be acquired from an external authority, and certificate-chains then created based on an authority-signed <em>intermediate certificate</em>, as described below).</p>
 </div>
 <div class="paragraph">
-<p>Examples of creating cluster and other certificates based on private keys are provided in <a href="../../manage/manage-security/configure-server-certificates.html" class="page">Configure Server Certificates</a></p>
+<p>Examples of creating cluster and other certificates based on private keys are provided in <a href="../../manage/manage-security/configure-server-certificates.html" class="xref page">Configure Server Certificates</a></p>
 </div>
 </div>
 <div class="sect2">
@@ -4612,7 +4612,7 @@ However, if customized certificates and certificate-chains are substituted by th
 <div class="paragraph">
 <p>A <em>node certificate</em>, signed directly by the <em>cluster</em> certificate, is assigned to each node in a Couchbase Cluster by default.
 The process whereby default node certificates are generated (based on a new private key) and signed (by means of the current cluster certificate and cluster private key) is entirely automated; and occurs whenever a single-node cluster is created, and whenever additional nodes are added or joined.
-Certificate-based security for a Couchbase Server-cluster is thereby provided, in a limited form, <em>out-of-the-box</em> (supporting, for example, all the standard Couchbase-Server secure ports &#8212; which are described in <a href="../../install/install-ports.html" class="page">Couchbase Server Ports</a> &#8212;  and <a href="../clusters-and-availability/node-to-node-encryption.html" class="page">Node-to-Node Encryption</a>).
+Certificate-based security for a Couchbase Server-cluster is thereby provided, in a limited form, <em>out-of-the-box</em> (supporting, for example, all the standard Couchbase-Server secure ports &#8212; which are described in <a href="../../install/install-ports.html" class="xref page">Couchbase Server Ports</a> &#8212;  and <a href="../clusters-and-availability/node-to-node-encryption.html" class="xref page">Node-to-Node Encryption</a>).
 However, broader security requirements may need to be supported by means of <em>customized</em> certificates, configured to include special extensions and <em>Subject Alternative Names</em>, based on an administrator-selected root authority.</p>
 </div>
 <div class="paragraph">
@@ -4635,10 +4635,10 @@ Access to this file allows the authority of the node certificate to be establish
 </div>
 <div class="paragraph">
 <p>Couchbase Server requires that these files, when newly created, be manually copied to a specific location in the filesystem: from this location, they are deployed by Couchbase Server.
-Examples are provided in <a href="../../manage/manage-security/configure-server-certificates.html" class="page">Configure Server Certificates</a>.</p>
+Examples are provided in <a href="../../manage/manage-security/configure-server-certificates.html" class="xref page">Configure Server Certificates</a>.</p>
 </div>
 <div class="paragraph">
-<p>Unlike the cluster certificate, the text of which is displayed in Couchbase Web Console (as described in <a href="../../manage/manage-security/manage-security-settings.html#root-certificate-security-screen-display" class="page">Root Certificate</a>), node certificates (whether defaults or customized substitutions) are not displayed to users; nor are the corresponding chain files.</p>
+<p>Unlike the cluster certificate, the text of which is displayed in Couchbase Web Console (as described in <a href="../../manage/manage-security/manage-security-settings.html#root-certificate-security-screen-display" class="xref page">Root Certificate</a>), node certificates (whether defaults or customized substitutions) are not displayed to users; nor are the corresponding chain files.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4660,8 +4660,8 @@ If the user exists, and the associated roles are appropriate, access is granted;
 </div>
 <div class="paragraph">
 <p>Note that the private key used to create the client certificate is itself used in the process whereby the client authenticates itself against the server: the client digitally signs a message, using its private key, and sends this message to the server; allowing the client&#8217;s <em>public</em> key then to be used by the server to verify that the message has indeed been sent by the client.
-An example of specifying the private key for this purpose, in the context of securing XDCR, is provided in <a href="../../manage/manage-xdcr/enable-full-secure-replication.html#specify-full-xdcr-security-with-certificates" class="page">Specify Root and Client Certificates, and Client Private Key</a>.
-A further example, in the context of securing contact with an LDAP host, is provided in <a href="../../manage/manage-security/configure-ldap.html#client-certificate" class="page">Configure LDAP</a>.</p>
+An example of specifying the private key for this purpose, in the context of securing XDCR, is provided in <a href="../../manage/manage-xdcr/enable-full-secure-replication.html#specify-full-xdcr-security-with-certificates" class="xref page">Specify Root and Client Certificates, and Client Private Key</a>.
+A further example, in the context of securing contact with an LDAP host, is provided in <a href="../../manage/manage-security/configure-ldap.html#client-certificate" class="xref page">Configure LDAP</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="identity-encoding-in-client-certificates"><a class="anchor" href="#identity-encoding-in-client-certificates"></a>Specifying Usernames for Client-Certificate Authentication</h4>
@@ -4671,7 +4671,7 @@ Couchbase Server can be configured to search for appropriate elements within the
 </div>
 <div class="paragraph">
 <p>If multiple elements within the client certificate are so used, the first to be successfully authenticated by Couchbase Server is the one used.
-The order in which the elements are examined is that configured on Couchbase Server, as described in <a href="../../manage/manage-security/enable-client-certificate-handling.html" class="page">Enable Client Certificate Handling</a>.</p>
+The order in which the elements are examined is that configured on Couchbase Server, as described in <a href="../../manage/manage-security/enable-client-certificate-handling.html" class="xref page">Enable Client Certificate Handling</a>.</p>
 </div>
 <div class="sect4">
 <h5 id="specifying-usernames-in-certificates"><a class="anchor" href="#specifying-usernames-in-certificates"></a>Embedding Usernames in Certificates</h5>
@@ -4708,7 +4708,7 @@ For example, <code>subjectAltName = URI:www.acme.com</code> would, with no prefi
 </ul>
 </div>
 <div class="paragraph">
-<p>Examples of specifying <em>Subject Common Names</em> and <em>Subject Alternative Names</em> are provided in <a href="../../manage/manage-security/configure-server-certificates.html" class="page">Configure Server Certificates</a> and <a href="../../manage/manage-security/configure-client-certificates.html" class="page">Configure Client Certificates</a>.</p>
+<p>Examples of specifying <em>Subject Common Names</em> and <em>Subject Alternative Names</em> are provided in <a href="../../manage/manage-security/configure-server-certificates.html" class="xref page">Configure Server Certificates</a> and <a href="../../manage/manage-security/configure-client-certificates.html" class="xref page">Configure Client Certificates</a>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -4791,7 +4791,7 @@ For example, a delimiter of <code>.</code> causes the substring <code>.couchbase
 </ul>
 </div>
 <div class="paragraph">
-<p>For step-by-step instructions, see <a href="../../manage/manage-security/enable-client-certificate-handling.html" class="page">Enable Client Certificate Handling</a>.</p>
+<p>For step-by-step instructions, see <a href="../../manage/manage-security/enable-client-certificate-handling.html" class="xref page">Enable Client Certificate Handling</a>.</p>
 </div>
 </div>
 </div>
@@ -4817,7 +4817,7 @@ Subject Common Name may continue to be specified.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Examples of certificate-creation provided in <a href="../../manage/manage-security/manage-certificates.html" class="page">Manage Certificates</a> continue to include definitions of Subject Common Name for both server and client.</p>
+<p>Examples of certificate-creation provided in <a href="../../manage/manage-security/manage-certificates.html" class="xref page">Manage Certificates</a> continue to include definitions of Subject Common Name for both server and client.</p>
 </div>
 </div>
 </div>
@@ -4825,7 +4825,7 @@ Subject Common Name may continue to be specified.</p>
 <h2 id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Examples of file-types and their generation, of extension-definition, of intermediate-certificate use, and of Couchbase-Server specific deployment requirements are provided for the server-side in <a href="../../manage/manage-security/configure-server-certificates.html" class="page">Configure Server Certificates</a>, and for the client-side in <a href="../../manage/manage-security/configure-client-certificates.html" class="page">Configure Client Certificates</a>.
+<p>Examples of file-types and their generation, of extension-definition, of intermediate-certificate use, and of Couchbase-Server specific deployment requirements are provided for the server-side in <a href="../../manage/manage-security/configure-server-certificates.html" class="xref page">Configure Server Certificates</a>, and for the client-side in <a href="../../manage/manage-security/configure-client-certificates.html" class="xref page">Configure Client Certificates</a>.
 The examples allow <em>Cross Data Center Replication</em> to be secured with certificates only.
 They also support secure access to Couchbase Server from Java clients.</p>
 </div>

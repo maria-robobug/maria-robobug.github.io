@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="c-sdk">
 <meta name="dcterms.identifier" content="3.2">
 <meta name="page-url" content="/c-sdk/3.2/concept-docs/data-model.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3672,12 +3672,12 @@ Several data structures are supported by the other SDKs, including map, list, qu
 </div>
 <div class="paragraph">
 <p>The power to search, query, and easily work with data in Couchbase, comes from the choice of JSON as a storage format.
-Non-JSON storage is supported&#8201;&#8212;&#8201;see the <a href="nonjson.html" class="page">Binary Storage Documentation</a>&#8201;&#8212;&#8201;including UTF-8 strings, raw sequences of bytes, and language specific serializations,
-however, only JSON is supported by <a href="n1ql-query.html" class="page">Query</a>.</p>
+Non-JSON storage is supported&#8201;&#8212;&#8201;see the <a href="nonjson.html" class="xref page">Binary Storage Documentation</a>&#8201;&#8212;&#8201;including UTF-8 strings, raw sequences of bytes, and language specific serializations,
+however, only JSON is supported by <a href="n1ql-query.html" class="xref page">Query</a>.</p>
 </div>
 <div class="paragraph">
 <p>In Couchbase, JSON’s key-value structure allows the storage of collection data structures such as lists, maps, sets and queues.
-JSON’s tree-like structure allows operations against <a href="subdocument-operations.html" class="page">specific paths in the Document</a>,
+JSON’s tree-like structure allows operations against <a href="subdocument-operations.html" class="xref page">specific paths in the Document</a>,
 and efficient support for these data structures.
 The data structure API is not available in the C SDK, but the sub-document API (which the data structure feature uses) can be used to attain the same results with the same performance profile.
 The best way to inter-operate with data structures as provided by other Couchbase SDKs is to use either full-document operations or sub-document operations.</p>

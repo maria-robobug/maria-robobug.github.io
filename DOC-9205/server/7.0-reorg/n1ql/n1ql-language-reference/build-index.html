@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/build-index.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4473,7 +4473,7 @@ The full index build operation happens in the background.</p>
 <div class="paragraph">
 <p>Index metadata provides a state field.
 The index state may be <code>scheduled for creation</code>, <code>deferred</code>, <code>building</code>, <code>pending</code>, <code>online</code>, <code>offline</code>, or <code>abridged</code>.
-This state field and other index metadata can be queried using <a href="../n1ql-intro/sysinfo.html#querying-indexes" class="page">system:indexes</a>.
+This state field and other index metadata can be queried using <a href="../n1ql-intro/sysinfo.html#querying-indexes" class="xref page">system:indexes</a>.
 You can also monitor the index state using the Couchbase Web Console.</p>
 </div>
 <div class="paragraph">
@@ -4524,7 +4524,7 @@ If any of the indexes specified by BUILD INDEX have already been built, BUILD IN
 <div class="paragraph">
 <p>User executing the BUILD INDEX statement must have the <em>Query Manage Index</em> privilege granted on the keyspace.
 For more details about user roles, see
-<a href="../../learn/security/authorization-overview.html" class="page">Authorization</a>.</p>
+<a href="../../learn/security/authorization-overview.html" class="xref page">Authorization</a>.</p>
 </div>
 </div>
 </div>
@@ -4555,7 +4555,7 @@ For more details about user roles, see
 </div>
 <div id="keyspace-path" class="listingblock">
 <div class="content">
-<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a> ]</pre>
+<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4565,7 +4565,7 @@ For more details about user roles, see
 </div>
 <div id="keyspace-partial" class="listingblock">
 <div class="content">
-<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a></pre>
+<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4575,7 +4575,7 @@ For more details about user roles, see
 </div>
 <div class="paragraph">
 <p>The simple name or fully-qualified name of the keyspace on which to build the index.
-Refer to the <a href="createindex.html#keyspace-ref" class="page">CREATE INDEX</a> statement for details of the syntax.</p>
+Refer to the <a href="createindex.html#keyspace-ref" class="xref page">CREATE INDEX</a> statement for details of the syntax.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4601,7 +4601,7 @@ The BUILD INDEX clause may contain a mixture of the different types of index ter
 <div class="sect3">
 <h4 id="index-name"><a class="anchor" href="#index-name"></a>Index Name</h4>
 <div class="paragraph">
-<p>An <a href="identifiers.html" class="page">identifier</a> that refers to the name of an index.</p>
+<p>An <a href="identifiers.html" class="xref page">identifier</a> that refers to the name of an index.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -4616,7 +4616,7 @@ The BUILD INDEX clause may contain a mixture of the different types of index ter
 <div class="sect3">
 <h4 id="index-expr"><a class="anchor" href="#index-expr"></a>Index Expression</h4>
 <div class="paragraph">
-<p>An <a href="index.html" class="page">expression</a> that may be a string, or an array of strings, each referring to the name of an index.</p>
+<p>An <a href="index.html" class="xref page">expression</a> that may be a string, or an array of strings, each referring to the name of an index.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -4654,7 +4654,7 @@ BUILD INDEX ON `travel-sample`.inventory.airline([ix1], [ix2, ix3]);</code></pre
 <h4 id="subquery-expr"><a class="anchor" href="#subquery-expr"></a>Subquery Expression</h4>
 <div class="listingblock">
 <div class="content">
-<pre>subquery-expr ::= '(' <a href="selectclause.html" class="page">select</a> ')'</pre>
+<pre>subquery-expr ::= '(' <a href="selectclause.html" class="xref page">select</a> ')'</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4670,7 +4670,7 @@ BUILD INDEX ON `travel-sample`.inventory.airline([ix1], [ix2, ix3]);</code></pre
 See <a href="#ex-build-idx-all">Example 4</a> for details.</p>
 </div>
 <div class="paragraph">
-<p>For more details and examples, see <a href="selectclause.html" class="page">SELECT Clause</a> and <a href="subqueries.html" class="page">Subqueries</a>.</p>
+<p>For more details and examples, see <a href="selectclause.html" class="xref page">SELECT Clause</a> and <a href="subqueries.html" class="xref page">Subqueries</a>.</p>
 </div>
 </div>
 </div>

@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="go-sdk">
 <meta name="dcterms.identifier" content="2.3">
 <meta name="page-url" content="/go-sdk/2.3/hello-world/start-using-sdk.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3674,12 +3674,12 @@ It is a native Go library and uses the high-performance gocbcore to handle commu
 </div>
 <div class="paragraph">
 <p>The Couchbase Go SDK 2.x is a complete rewrite of the API, reducing the number of overloads to present a simplified surface area,
-and adding support for future Couchbase Server features like <a href="../concept-docs/collections.html" class="page">Collections and Scopes</a>
+and adding support for future Couchbase Server features like <a href="../concept-docs/collections.html" class="xref page">Collections and Scopes</a>
 (available in Couchbase Server 7.0).
 The Go 2.x SDK also introduces improved error handling providing extra error information.</p>
 </div>
 <div class="paragraph">
-<p>If you&#8217;re upgrading your application from Couchbase Go SDK 1.x, please read our <a href="../project-docs/migrating-sdk-code-to-3.n.html" class="page">Migration Guide</a>.</p>
+<p>If you&#8217;re upgrading your application from Couchbase Go SDK 1.x, please read our <a href="../project-docs/migrating-sdk-code-to-3.n.html" class="xref page">Migration Guide</a>.</p>
 </div>
 </div>
 </div>
@@ -3710,7 +3710,7 @@ Older versions may work, but are not supported.
 </table>
 </div>
 <div class="paragraph">
-<p>Information on new features, fixes, and known issues&#8201;&#8212;&#8201;as well as information on how to install older release versions&#8201;&#8212;&#8201;is in the <a href="#1.6@go-sdk::relnotes-go-sdk.html" class="page unresolved">release notes</a>.</p>
+<p>Information on new features, fixes, and known issues&#8201;&#8212;&#8201;as well as information on how to install older release versions&#8201;&#8212;&#8201;is in the <a href="#1.6@go-sdk::relnotes-go-sdk.html" class="xref unresolved">release notes</a>.</p>
 </div>
 </div>
 </div>
@@ -3738,7 +3738,7 @@ Older versions may work, but are not supported.
 <p>If you are connecting to Couchbase Cloud rather than a local Couchbase Server, then also refer to the <a href="#cloud-connections">Cloud section</a>, below.</p>
 </div>
 <div class="paragraph">
-<p>Couchbase uses <a href="#7.0@server:learn:security/roles.adoc" class="page unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
+<p>Couchbase uses <a href="#7.0@server:learn:security/roles.adoc" class="xref unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
 Here we will use the <em>Full Admin</em> role created during installation of the Couchbase Data Platform.
 For production client code, you will want to use more appropriate, restrictive settings&#8201;&#8212;&#8201;but here we want to get you up and running quickly.
 If you&#8217;re developing client code on the same VM or machine as the Couchbase Server, your URI can be <em>localhost</em>.</p>
@@ -3762,7 +3762,7 @@ If you&#8217;re developing client code on the same VM or machine as the Couchbas
 <p>If you installed the travel sample data bucket, replace <em>bucketName</em> with <em>travel-sample</em>.</p>
 </div>
 <div class="paragraph">
-<p>The 2.3 SDK supports full integration with the <a href="../concept-docs/collections.html" class="page">Collections</a> feature in the latest release of the Couchbase Data Platform, Couchbase Server 7.0.
+<p>The 2.3 SDK supports full integration with the <a href="../concept-docs/collections.html" class="xref page">Collections</a> feature in the latest release of the Couchbase Data Platform, Couchbase Server 7.0.
 This brings complete support of Collections, allowing Documents to be grouped by purpose or theme, according to a specified <em>Scope</em>.
 Here we will use the <code>users</code> collection within the <code>tenant_agent_00</code> scope from <code>travel-sample</code> bucket as an example.</p>
 </div>
@@ -3803,7 +3803,7 @@ Here we will use the <code>users</code> collection within the <code>tenant_agent
 </div>
 </div>
 <div class="paragraph">
-<p>KV Operations are described in detail on the <a href="../howtos/kv-operations.html" class="page">KV Operations page</a>.
+<p>KV Operations are described in detail on the <a href="../howtos/kv-operations.html" class="xref page">KV Operations page</a>.
 Now that you know the basics, you may wish to go straight to that page.</p>
 </div>
 </div>
@@ -3821,13 +3821,13 @@ try the <a href="https://github.com/couchbase/docs-sdk-go/blob/release/2.3/modul
 <div class="ulist">
 <ul>
 <li>
-<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="page">Constrained Network Environments</a>,</p>
+<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="xref page">Constrained Network Environments</a>,</p>
 </li>
 <li>
-<p><a href="../project-docs/compatibility.html#network-requirements" class="page">Network Requirements</a>,</p>
+<p><a href="../project-docs/compatibility.html#network-requirements" class="xref page">Network Requirements</a>,</p>
 </li>
 <li>
-<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="page">Troubleshooting Guide</a>.</p>
+<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="xref page">Troubleshooting Guide</a>.</p>
 </li>
 </ul>
 </div>
@@ -3838,10 +3838,10 @@ try the <a href="https://github.com/couchbase/docs-sdk-go/blob/release/2.3/modul
 <div class="sectionbody">
 <div class="paragraph">
 <p>The API reference is generated for each release and can be found <a href="https://pkg.go.dev/github.com/couchbase/gocb/v2">here</a>.
-Older API references are linked from their respective sections in the <a href="../project-docs/sdk-release-notes.html" class="page">Release Notes</a>.</p>
+Older API references are linked from their respective sections in the <a href="../project-docs/sdk-release-notes.html" class="xref page">Release Notes</a>.</p>
 </div>
 <div class="paragraph">
-<p><a href="../project-docs/migrating-sdk-code-to-3.n.html" class="page">The Migrating from SDK2 to 3 page</a> highlights the main differences to be aware of when migrating your code.</p>
+<p><a href="../project-docs/migrating-sdk-code-to-3.n.html" class="xref page">The Migrating from SDK2 to 3 page</a> highlights the main differences to be aware of when migrating your code.</p>
 </div>
 <div class="paragraph">
 <p>Couchbase welcomes community contributions to the Go SDK.

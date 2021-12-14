@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/insert.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4472,14 +4472,14 @@ In Couchbase, documents in a single keyspace must have a unique key.
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Use the <a href="upsert.html" class="page">UPSERT</a> statement if you want to overwrite a document with the same key, in case it already exists.
+Use the <a href="upsert.html" class="xref page">UPSERT</a> statement if you want to overwrite a document with the same key, in case it already exists.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
 <p>Install the sample bucket <code>travel-sample</code> before proceeding to run the examples in this topic.
-See <a href="../../manage/manage-settings/install-sample-buckets.html" class="page">Sample Buckets</a> for information on how to install the sample buckets and <a href="../../../../java-sdk/DOC-9205/ref/travel-app-data-model.html" class="page">Travel App Data Model</a> for details about the travel-sample data model.</p>
+See <a href="../../manage/manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a> for information on how to install the sample buckets and <a href="../../../../java-sdk/DOC-9205/ref/travel-app-data-model.html" class="xref page">Travel App Data Model</a> for details about the travel-sample data model.</p>
 </div>
 </div>
 </div>
@@ -4512,7 +4512,7 @@ See and for details.</p>
 <p>You should have read-write permission to the keyspace, to be able to insert documents into a keyspace.
 Any user who has the keyspace credentials or any Couchbase administrator should be able to insert documents into a keyspace.
 This includes the keyspace administrator for the specified keyspace, the cluster administrator, and the full administrator roles.
-See <a href="../../learn/security/roles.html" class="page">Roles</a> for details about access privileges for various administrators.</p>
+See <a href="../../learn/security/roles.html" class="xref page">Roles</a> for details about access privileges for various administrators.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -4534,7 +4534,7 @@ You cannot insert documents into a SASL bucket if you have a read-only role for 
 </div>
 <div class="paragraph">
 <p>If the statement has any SELECT or RETURNING data-read clauses, then the <em>Query Select</em> privilege is also required on the keyspaces referred in the respective clauses.
-For more details about roles and privileges, see <a href="../../learn/security/authorization-overview.html" class="page">Authorization</a>.</p>
+For more details about roles and privileges, see <a href="../../learn/security/authorization-overview.html" class="xref page">Authorization</a>.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -4545,7 +4545,7 @@ For more details about roles and privileges, see <a href="../../learn/security/a
 <td class="content">
 Please note that the examples below will alter the data in your sample buckets.
 To restore your sample data, remove and reinstall the <code>travel-sample</code> bucket.
-Refer to <a href="../../manage/manage-settings/install-sample-buckets.html" class="page">Sample Buckets</a> for details.
+Refer to <a href="../../manage/manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a> for details.
 </td>
 </tr>
 </table>
@@ -4641,7 +4641,7 @@ Ensure that the keyspace exists before trying to insert a document.</p>
 </div>
 <div id="keyspace-path" class="listingblock">
 <div class="content">
-<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a> ]</pre>
+<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a> ]</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4651,7 +4651,7 @@ Ensure that the keyspace exists before trying to insert a document.</p>
 </div>
 <div id="keyspace-partial" class="listingblock">
 <div class="content">
-<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="page">collection</a></pre>
+<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -4661,14 +4661,14 @@ Ensure that the keyspace exists before trying to insert a document.</p>
 </div>
 <div class="paragraph">
 <p>Keyspace reference for the insert target.
-For more details, refer to <a href="from.html#from-keyspace-ref" class="page">Keyspace Reference</a>.</p>
+For more details, refer to <a href="from.html#from-keyspace-ref" class="xref page">Keyspace Reference</a>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="insert-target-alias"><a class="anchor" href="#insert-target-alias"></a>AS Alias</h4>
 <div class="paragraph">
 <p>Assigns another name to the keyspace reference.
-For details, refer to <a href="from.html#section_ax5_2nx_1db" class="page">AS Clause</a>.</p>
+For details, refer to <a href="from.html#section_ax5_2nx_1db" class="xref page">AS Clause</a>.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -4744,9 +4744,9 @@ Only the <code>expiration</code> attribute has any effect; any other attributes 
 <dl>
 <dt class="hdlist1">expiration</dt>
 <dd>
-<p>An integer, or an expression resolving to an integer, representing the <a href="#3.0@java-sdk:howtos:kv-operations.adoc#document-expiration" class="page unresolved">document expiration</a> in seconds.</p>
+<p>An integer, or an expression resolving to an integer, representing the <a href="#3.0@java-sdk:howtos:kv-operations.adoc#document-expiration" class="xref unresolved">document expiration</a> in seconds.</p>
 <div class="paragraph">
-<p>If the document expiration is not specified, it defaults to <code>0</code>, meaning the document expiration is the same as the <a href="../../learn/data/expiration.html" class="page">bucket expiration</a>.</p>
+<p>If the document expiration is not specified, it defaults to <code>0</code>, meaning the document expiration is the same as the <a href="../../learn/data/expiration.html" class="xref page">bucket expiration</a>.</p>
 </div>
 </dd>
 </dl>
@@ -4775,7 +4775,7 @@ Only the <code>expiration</code> attribute has any effect; any other attributes 
 <div class="title">Example 2. Generate a unique key</div>
 <div class="content">
 <div class="paragraph">
-<p>If you don’t require the document key to be in a specific format, you can use the function <a href="metafun.html#uuid" class="page">UUID()</a> to generate a unique key, as shown here.</p>
+<p>If you don’t require the document key to be in a specific format, you can use the function <a href="metafun.html#uuid" class="xref page">UUID()</a> to generate a unique key, as shown here.</p>
 </div>
 <div class="listingblock">
 <div class="title">Query</div>
@@ -4965,9 +4965,9 @@ Only the <code>expiration</code> attribute has any effect; any other attributes 
 <dl>
 <dt class="hdlist1">expiration</dt>
 <dd>
-<p>An integer, or an expression resolving to an integer, representing the <a href="#3.0@java-sdk:howtos:kv-operations.adoc#document-expiration" class="page unresolved">document expiration</a> in seconds.</p>
+<p>An integer, or an expression resolving to an integer, representing the <a href="#3.0@java-sdk:howtos:kv-operations.adoc#document-expiration" class="xref unresolved">document expiration</a> in seconds.</p>
 <div class="paragraph">
-<p>If the document expiration is not specified, it defaults to <code>0</code>, meaning the document expiration is the same as the <a href="../../learn/data/expiration.html" class="page">bucket expiration</a>.</p>
+<p>If the document expiration is not specified, it defaults to <code>0</code>, meaning the document expiration is the same as the <a href="../../learn/data/expiration.html" class="xref page">bucket expiration</a>.</p>
 </div>
 </dd>
 </dl>
@@ -4979,7 +4979,7 @@ Only the <code>expiration</code> attribute has any effect; any other attributes 
 <h4 id="select-statement"><a class="anchor" href="#select-statement"></a>SELECT Statement</h4>
 <div class="paragraph">
 <p>SELECT statements let you retrieve data from specified keyspaces.
-For details, see <a href="select-syntax.html" class="page">SELECT Syntax</a>.</p>
+For details, see <a href="select-syntax.html" class="xref page">SELECT Syntax</a>.</p>
 </div>
 <div id="example-8" class="exampleblock">
 <div class="title">Example 8. Insert with SELECT</div>
@@ -5042,7 +5042,7 @@ RETURNING *;</code></pre>
 <div class="title">Example 10. Insert with SELECT and preserve expiration</div>
 <div class="content">
 <div class="paragraph">
-<p>If you want to copy the expiration of an existing document to the inserted document, you can use a <a href="metafun.html#meta" class="page">META().expiration</a> expression in the SELECT statement, as shown here.</p>
+<p>If you want to copy the expiration of an existing document to the inserted document, you can use a <a href="metafun.html#meta" class="xref page">META().expiration</a> expression in the SELECT statement, as shown here.</p>
 </div>
 <div class="listingblock">
 <div class="title">Query</div>
@@ -5079,7 +5079,7 @@ RETURNING *;</code></pre>
 <h4 id="result-expr"><a class="anchor" href="#result-expr"></a>Result Expression</h4>
 <div class="listingblock">
 <div class="content">
-<pre>result-expr ::= ( [ <a href="../n1ql-intro/queriesandresults.html#paths" class="page">path</a> "." ] "*" | expr [ [ AS ] alias ] )</pre>
+<pre>result-expr ::= ( [ <a href="../n1ql-intro/queriesandresults.html#paths" class="xref page">path</a> "." ] "*" | expr [ [ AS ] alias ] )</pre>
 </div>
 </div>
 <div class="imageblock">
@@ -5217,7 +5217,7 @@ In case of <code>INSERT</code> without a <code>RETURNING</code> clause, the valu
 <p>You can use the query monitoring API to gather diagnostic information.
 For example, if you are performing a bulk insert using a <code>SELECT</code> statement, you can use the query monitoring API to get the number of documents being inserted.
 Check <code class="api">system:active_requests</code> catalog for more information on monitoring active queries.
-For more information, see <a href="../../tools/query-monitoring.html" class="page">Query Monitoring</a>.</p>
+For more information, see <a href="../../tools/query-monitoring.html" class="xref page">Query Monitoring</a>.</p>
 </div>
 <div class="paragraph">
 <p>You can also take a look at the keyspace metrics from the Web Console.
@@ -5295,7 +5295,7 @@ When inserting a large number of  documents, you can improve the performance of 
 <li>
 <p>Batching the documents to perform bulk inserts, which decreases the latency and increases the throughput.
 The INSERT statement sends documents to the data node in batches, with a default batch size of 16.
-You can configure this value using the <a href="../../settings/query-settings.html#pipeline_batch_req" class="page">pipeline_batch</a> request-level parameter, or the <a href="../../settings/query-settings.html#pipeline-batch-srv" class="page">pipeline-batch</a> service-level setting.
+You can configure this value using the <a href="../../settings/query-settings.html#pipeline_batch_req" class="xref page">pipeline_batch</a> request-level parameter, or the <a href="../../settings/query-settings.html#pipeline-batch-srv" class="xref page">pipeline-batch</a> service-level setting.
 Note that the maximum batch size is (2^32 -1) and specifying a value higher than the maximum batch size may increase the memory consumption.
 The following example command sets the pipeline-batch size to 32 instead of the default 16:</p>
 <div class="listingblock">
@@ -5306,7 +5306,7 @@ The following example command sets the pipeline-batch size to 32 instead of the 
 </div>
 </li>
 <li>
-<p>Use the <a href="../../settings/query-settings.html#max_parallelism_req" class="page">max_parallelism</a> request-level parameter, or the <a href="../../settings/query-settings.html#max-parallelism-srv" class="page">max-parallelism</a> service-level setting when inserting multiple documents.</p>
+<p>Use the <a href="../../settings/query-settings.html#max_parallelism_req" class="xref page">max_parallelism</a> request-level parameter, or the <a href="../../settings/query-settings.html#max-parallelism-srv" class="xref page">max-parallelism</a> service-level setting when inserting multiple documents.</p>
 </li>
 <li>
 <p>When performing bulk inserts, use prepared statements or multiple values.</p>
@@ -5697,7 +5697,7 @@ For brevity, we <code>SELECT</code> only 4 documents.</td>
 <div class="title">Example 20. Inserting Values Using Functions</div>
 <div class="content">
 <div class="paragraph">
-<p>Set the parameter <code>$faa_code</code> using the cbq prompt, or the <a href="../../tools/query-workbench.html#query-preferences" class="page">Run-Time Preferences</a> in the Query Workbench.</p>
+<p>Set the parameter <code>$faa_code</code> using the cbq prompt, or the <a href="../../tools/query-workbench.html#query-preferences" class="xref page">Run-Time Preferences</a> in the Query Workbench.</p>
 </div>
 <div class="listingblock">
 <div class="title">Parameters</div>
@@ -5799,7 +5799,7 @@ To execute using the REST API, skip to <a href="#step-3">Step 3</a>.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Set the parameters <code>$key</code> and <code>$faa_code</code> using the cbq prompt, or the <a href="../../tools/query-workbench.html#query-preferences" class="page">Run-Time Preferences</a> in the Query Workbench.
+<p>Set the parameters <code>$key</code> and <code>$faa_code</code> using the cbq prompt, or the <a href="../../tools/query-workbench.html#query-preferences" class="xref page">Run-Time Preferences</a> in the Query Workbench.
 These values will be passed as parameters when executing the prepared statement <code>ins_india</code>.</p>
 <div class="listingblock">
 <div class="title">Parameters</div>
@@ -5894,7 +5894,7 @@ To execute using the cbq shell or the Query Workbench, go to <a href="#step-2">S
 <div class="sectionbody">
 <div class="paragraph">
 <p>To understand how the INSERT statement is executed by N1QL, let us take a look at two examples.
-For detailed explanation about the EXPLAIN plan, see the <a href="explain.html" class="page">EXPLAIN</a> statement.</p>
+For detailed explanation about the EXPLAIN plan, see the <a href="explain.html" class="xref page">EXPLAIN</a> statement.</p>
 </div>
 <div id="example-19" class="exampleblock">
 <div class="title">Example 22. Simple INSERT Statement Using KEY VALUE Pairs to Insert Two Documents</div>

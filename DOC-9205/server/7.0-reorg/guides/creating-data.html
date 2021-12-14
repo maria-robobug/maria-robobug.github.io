@@ -23,7 +23,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/guides/creating-data.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4473,10 +4473,10 @@ How to create documents in Couchbase.
 <h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Couchbase stores its <a href="../learn/data/data.html" class="page">data</a> as either JSON or Binary <em>documents</em> with unique IDs (primary keys) by which they can be located.</p>
+<p>Couchbase stores its <a href="../learn/data/data.html" class="xref page">data</a> as either JSON or Binary <em>documents</em> with unique IDs (primary keys) by which they can be located.</p>
 </div>
 <div class="paragraph">
-<p>Documents are organized and grouped in <em>buckets</em> using <a href="#tutorials:buckets-scopes-and-collections.adoc" class="page unresolved">scopes and collections</a>.
+<p>Documents are organized and grouped in <em>buckets</em> using <a href="#tutorials:buckets-scopes-and-collections.adoc" class="xref unresolved">scopes and collections</a>.
 If a scope or collection is not provided when creating a document, Couchbase will automatically store data in the <code>_default</code> collection or <code>_default</code> scope.</p>
 </div>
 <div class="paragraph">
@@ -4485,10 +4485,10 @@ If a scope or collection is not provided when creating a document, Couchbase wil
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/hello-world/cbc.html" class="page">Command Line Clients</a></p>
+<p><a href="../../../c-sdk/3.2/hello-world/cbc.html" class="xref page">Command Line Clients</a></p>
 </li>
 <li>
-<p><a href="../../../home/sdk.html" class="page">SDK Clients</a></p>
+<p><a href="../../../home/sdk.html" class="xref page">SDK Clients</a></p>
 </li>
 </ul>
 </div>
@@ -4501,7 +4501,7 @@ If a scope or collection is not provided when creating a document, Couchbase wil
 <td class="content">
 Please note that the examples in this guide will alter the data in your sample buckets.
 To restore your sample data, remove and reinstall the <code>travel-sample</code> bucket.
-Refer to <a href="../manage/manage-settings/install-sample-buckets.html" class="page">Sample Buckets</a> for details.
+Refer to <a href="../manage/manage-settings/install-sample-buckets.html" class="xref page">Sample Buckets</a> for details.
 </td>
 </tr>
 </table>
@@ -4905,7 +4905,7 @@ If the document already exists, the SDK will return a <code>DocumentExistsExcept
 </div>
 </div>
 <div class="paragraph">
-<p>When a document is created, Couchbase assigns it a <a href="../../../java-sdk/DOC-9205/howtos/concurrent-document-mutations.html" class="page">CAS (Compare And Swap)</a> value to keep track of the document’s state within the database.
+<p>When a document is created, Couchbase assigns it a <a href="../../../java-sdk/DOC-9205/howtos/concurrent-document-mutations.html" class="xref page">CAS (Compare And Swap)</a> value to keep track of the document’s state within the database.
 Each time a document is mutated the CAS will change accordingly.
 This unique value allows the database to protect against concurrent updates to the same document.</p>
 </div>
@@ -5193,15 +5193,15 @@ print("CAS:", insert_result.cas)</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/howtos/kv-operations.html" class="page">C</a>
-| <a href="../../../dotnet-sdk/DOC-9205/howtos/kv-operations.html" class="page">.NET</a>
-| <a href="../../../go-sdk/2.3/howtos/kv-operations.html" class="page">Go</a>
-| <a href="../../../java-sdk/DOC-9205/howtos/kv-operations.html" class="page">Java</a>
-| <a href="../../../nodejs-sdk/DOC-9205/howtos/kv-operations.html" class="page">Node.js</a>
-| <a href="../../../php-sdk/3.2/howtos/kv-operations.html" class="page">PHP</a>
-| <a href="../../../python-sdk/DOC-9205/howtos/kv-operations.html" class="page">Python</a>
-| <a href="../../../ruby-sdk/3.2/howtos/kv-operations.html" class="page">Ruby</a>
-| <a href="../../../scala-sdk/1.2/howtos/kv-operations.html" class="page">Scala</a></p>
+<p><a href="../../../c-sdk/3.2/howtos/kv-operations.html" class="xref page">C</a>
+| <a href="../../../dotnet-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">.NET</a>
+| <a href="../../../go-sdk/2.3/howtos/kv-operations.html" class="xref page">Go</a>
+| <a href="../../../java-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Java</a>
+| <a href="../../../nodejs-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Node.js</a>
+| <a href="../../../php-sdk/3.2/howtos/kv-operations.html" class="xref page">PHP</a>
+| <a href="../../../python-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Python</a>
+| <a href="../../../ruby-sdk/3.2/howtos/kv-operations.html" class="xref page">Ruby</a>
+| <a href="../../../scala-sdk/1.2/howtos/kv-operations.html" class="xref page">Scala</a></p>
 </li>
 </ul>
 </div>

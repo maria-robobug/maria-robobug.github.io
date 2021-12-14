@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/clusters-and-availability/recovery.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4470,7 +4470,7 @@ After a node has been failed over, it can be <em>recovered</em>: that is, added 
 <div class="ulist">
 <ul>
 <li>
-<p>The node can be <em>removed</em> from the cluster, by means of the <a href="rebalance.html" class="page">Rebalance</a> operation.</p>
+<p>The node can be <em>removed</em> from the cluster, by means of the <a href="rebalance.html" class="xref page">Rebalance</a> operation.</p>
 </li>
 <li>
 <p>The node can be <em>recovered</em>, and thereby added back into the cluster; again by means of the rebalance operation.</p>
@@ -4480,7 +4480,7 @@ After a node has been failed over, it can be <em>recovered</em>: that is, added 
 <div class="paragraph">
 <p>There are two options for recovery; which are <em>full</em> and <em>delta</em>.
 The remainder of this page explains the principles and architectural aspects of these options.
-For practical examples, see <a href="../../manage/manage-nodes/recover-nodes.html" class="page">Recover a Node and Rebalance</a>.</p>
+For practical examples, see <a href="../../manage/manage-nodes/recover-nodes.html" class="xref page">Recover a Node and Rebalance</a>.</p>
 </div>
 </div>
 </div>
@@ -4573,7 +4573,7 @@ This indicates that one or more of the following conditions exist:</p>
 </li>
 <li>
 <p>The rebalance was configured to perform the Delta recovery while simultaneously moving other nodes in or out of the cluster, and the numbers of nodes intended respectively to leave and join the cluster were unequal.
-(Note that in this case, a <a href="#install:upgrade-online.adoc#swap-rebalance-example" class="page unresolved">Swap Rebalance</a> can be performed instead.)</p>
+(Note that in this case, a <a href="#install:upgrade-online.adoc#swap-rebalance-example" class="xref unresolved">Swap Rebalance</a> can be performed instead.)</p>
 </li>
 <li>
 <p>Bucket-operations were performed while Delta recovery was pending: this changed configurations, and has made Delta recovery impossible.</p>
@@ -4596,7 +4596,7 @@ This indicates that one or more of the following conditions exist:</p>
 <p>However, in cases where the node’s memory-footprint is extremely large, and data exceeds bucket memory-quotas, the memory-management overhead potentially entailed by Delta recovery might imply Full recovery’s taking less time overall.</p>
 </div>
 <div class="paragraph">
-<p>Note that in Couchbase Server 6.5 and later, a <a href="../services-and-indexes/indexes/index-scans.html" class="page">scan</a> can be requested from each index, as soon as the index has warmed up &#8212; the recovery does not need to be fully complete.
+<p>Note that in Couchbase Server 6.5 and later, a <a href="../services-and-indexes/indexes/index-scans.html" class="xref page">scan</a> can be requested from each index, as soon as the index has warmed up &#8212; the recovery does not need to be fully complete.
 This can reduce the downtime during recovery.</p>
 </div>
 <div class="paragraph">

@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/cli/mctimings.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4483,7 +4483,7 @@ The sampling period, during which timings are taken, starts at whichever of the 
 <div class="ulist">
 <ul>
 <li>
-<p>The last reset of Data-Service statistics by means of <a href="#cli/cbstats/cbstats-reset.adoc" class="page unresolved">cbstats-reset</a>.</p>
+<p>The last reset of Data-Service statistics by means of <a href="#cli/cbstats/cbstats-reset.adoc" class="xref unresolved">cbstats-reset</a>.</p>
 </li>
 <li>
 <p>The last restart of the Data Service (which action itself resets Data-Service statistics).</p>
@@ -4494,7 +4494,7 @@ The sampling period, during which timings are taken, starts at whichever of the 
 <p>The sampling period ends when the Data Service receives the <code>mctimings</code> request.</p>
 </div>
 <div class="paragraph">
-<p>Note that timings taken by <code>mctimings</code> are more comprehensive than those taken by <a href="cbstats/cbstats-timing.html" class="page">cbstats timings</a>; which, unlike <code>mctimings</code>, only measures the time spent on a request by a front-end worker thread; and does not include time spent fetching items from disk.</p>
+<p>Note that timings taken by <code>mctimings</code> are more comprehensive than those taken by <a href="cbstats/cbstats-timing.html" class="xref page">cbstats timings</a>; which, unlike <code>mctimings</code>, only measures the time spent on a request by a front-end worker thread; and does not include time spent fetching items from disk.</p>
 </div>
 <div class="paragraph">
 <p>The <code>mctimings</code> tool resides in the following locations:</p>
@@ -5243,7 +5243,7 @@ Note that the output is formatted by means of the <code>-v</code> option:</p>
 <h2 id="see-also"><a class="anchor" href="#see-also"></a>See Also</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The tool <a href="cbstats/cbstats-timing.html" class="page">cbstats timings</a> provides an alternative way of returning timing information.</p>
+<p>The tool <a href="cbstats/cbstats-timing.html" class="xref page">cbstats timings</a> provides an alternative way of returning timing information.</p>
 </div>
 </div>
 </div>

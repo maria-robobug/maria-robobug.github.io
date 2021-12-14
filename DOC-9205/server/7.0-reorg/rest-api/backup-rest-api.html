@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/rest-api/backup-rest-api.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4468,8 +4468,8 @@ The Backup Service API allows full and incremental data-backups to be planned an
 <p>The Backup Service API provides endpoints categorized as follows: <em>Cluster</em>, <em>Configuration</em>, <em>Repository</em>, <em>Plan</em>, <em>Task</em>, and <em>Data</em>.
 The individual endpoints are listed by category, in the tables below.
 Each table-entry provides a link to an associated reference page, where more detailed information, including curl examples, is provided.
-For a conceptual overview of the Backup Service, see <a href="../learn/services-and-indexes/services/backup-service.html" class="page">Backup Service</a>.
-For information on using Couchbase Web Console to configure and use the Backup Service, see <a href="../manage/manage-backup-and-restore/manage-backup-and-restore.html" class="page">Manage Backup and Restore</a>.</p>
+For a conceptual overview of the Backup Service, see <a href="../learn/services-and-indexes/services/backup-service.html" class="xref page">Backup Service</a>.
+For information on using Couchbase Web Console to configure and use the Backup Service, see <a href="../manage/manage-backup-and-restore/manage-backup-and-restore.html" class="xref page">Manage Backup and Restore</a>.</p>
 </div>
 <div class="paragraph">
 <p>All calls listed below require the Full Admin role, and use port <code>8097</code>.
@@ -4499,7 +4499,7 @@ Note that for all cluster references, in Couchbase Server Enterprise Edition Ver
 <td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Retrieves information on all active, archived, and imported repositories defined on a cluster.</p>
-<p class="tableblock">See <a href="backup-get-cluster-info.html" class="page">Get Information on the Cluster</a>.</p></td>
+<p class="tableblock">See <a href="backup-get-cluster-info.html" class="xref page">Get Information on the Cluster</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4526,19 +4526,19 @@ Note that for all cluster references, in Couchbase Server Enterprise Edition Ver
 <td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/config</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns the rotation-configuration for the Backup Service.</p>
-<p class="tableblock">See <a href="backup-manage-config.html" class="page">Manage Backup Configuration</a>.</p></td>
+<p class="tableblock">See <a href="backup-manage-config.html" class="xref page">Manage Backup Configuration</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/config</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Creates the rotation-configuration for the Backup Service.</p>
-<p class="tableblock">See <a href="backup-manage-config.html" class="page">Manage Backup Configuration</a>.</p></td>
+<p class="tableblock">See <a href="backup-manage-config.html" class="xref page">Manage Backup Configuration</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/config</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Edits the existing rotation-configuration for the Backup Service.</p>
-<p class="tableblock">See <a href="backup-manage-config.html" class="page">Manage Backup Configuration</a>.</p></td>
+<p class="tableblock">See <a href="backup-manage-config.html" class="xref page">Manage Backup Configuration</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4566,108 +4566,108 @@ Note that for all cluster references, in Couchbase Server Enterprise Edition Ver
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/active</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Retrieves information on all active repositories, defined on a cluster.
 Information includes repository names, file or cluster paths, and plan details.</p>
-<p class="tableblock">See <a href="backup-get-repository-info.html" class="page">Get Information on Repositories</a>.</p></td>
+<p class="tableblock">See <a href="backup-get-repository-info.html" class="xref page">Get Information on Repositories</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/active/&lt;repository-id&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Retrieves information on a specific, active repository, defined on a cluster.
 Information includes repository names, file or cluster paths, and plan details.</p>
-<p class="tableblock">See <a href="backup-get-repository-info.html" class="page">Get Information on Repositories</a>.</p></td>
+<p class="tableblock">See <a href="backup-get-repository-info.html" class="xref page">Get Information on Repositories</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/&lt;'active'&#124;'archived'&#124;'imported'&gt;/&lt;repository-id&gt;/info</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Retrieves information on an active, archived, or imported repository, defined on a cluster.
 Information includes backup names and dates, buckets, items, and mutations.</p>
-<p class="tableblock">See <a href="backup-get-repository-info.html" class="page">Get Information on Repositories</a>.</p></td>
+<p class="tableblock">See <a href="backup-get-repository-info.html" class="xref page">Get Information on Repositories</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/active/&lt;repository-id&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Creates an active repository on the cluster, specifying an associated <em>plan</em>.</p>
-<p class="tableblock">See <a href="backup-create-repository.html" class="page">Create a Repository</a>.</p></td>
+<p class="tableblock">See <a href="backup-create-repository.html" class="xref page">Create a Repository</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/&lt;'archived'&#124;'imported'&gt;/&lt;repository-id&gt;/restore</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Restores data from a specified archived, or imported repository to the cluster.</p>
-<p class="tableblock">See <a href="backup-restore-data.html" class="page">Restore Data</a>.</p></td>
+<p class="tableblock">See <a href="backup-restore-data.html" class="xref page">Restore Data</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/import</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Imports an existing repository into the Backup Service.</p>
-<p class="tableblock">See <a href="backup-import-repository.html" class="page">Import a Repository</a>.</p></td>
+<p class="tableblock">See <a href="backup-import-repository.html" class="xref page">Import a Repository</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/&lt;'active'&#124;'archived'&#124;'imported'&gt;/&lt;repository-id&gt;/examine</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns information on a specified document, within a specified scope and collection, within the specified active, archived, or imported repository.</p>
-<p class="tableblock">See <a href="backup-examine-data.html" class="page">Examine Backed-Up Data</a>.</p></td>
+<p class="tableblock">See <a href="backup-examine-data.html" class="xref page">Examine Backed-Up Data</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/active/&lt;repository-id&gt;/backup</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Triggers an immediate backup of the cluster, to the specified repository; specifying whether the backup should be incremental or full.</p>
-<p class="tableblock">See <a href="backup-trigger-backup.html" class="page">Perform an Immediate Backup</a>.</p></td>
+<p class="tableblock">See <a href="backup-trigger-backup.html" class="xref page">Perform an Immediate Backup</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/active/&lt;repository-id&gt;/merge</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Triggers an immediate merge of specified repositories; providing the start and end dates for the period of time within which backups are to be merged.</p>
-<p class="tableblock">See <a href="backup-trigger-merge.html" class="page">Perform an Immediate Merge</a>.</p></td>
+<p class="tableblock">See <a href="backup-trigger-merge.html" class="xref page">Perform an Immediate Merge</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/active/&lt;repository-id&gt;/archive</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Archives the specified, active repository.</p>
-<p class="tableblock">See <a href="backup-archive-a-repository.html" class="page">Archive a Repository</a>.</p></td>
+<p class="tableblock">See <a href="backup-archive-a-repository.html" class="xref page">Archive a Repository</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/&lt;'archived'&#124;'imported'&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns information on all the cluster&#8217;s archived and imported repositories.
 Information includes repository names, file or cluster paths, and plan details.</p>
-<p class="tableblock">See <a href="backup-get-repository-info.html" class="page">Get Information on Repositories</a>.</p></td>
+<p class="tableblock">See <a href="backup-get-repository-info.html" class="xref page">Get Information on Repositories</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/&lt;'archived'&#124;'imported'&gt;/&lt;repository-id&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns information on a single archived or imported repository.
 Information includes repository names, file or cluster paths, and plan details.</p>
-<p class="tableblock">See <a href="backup-get-repository-info.html" class="page">Get Information on Repositories</a>.</p></td>
+<p class="tableblock">See <a href="backup-get-repository-info.html" class="xref page">Get Information on Repositories</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/&lt;'archived'&#124;'imported'&gt;/&lt;repository-id&gt;/info</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns information on a single archived or imported repository.
 Information includes backup names and dates, buckets, items, and mutations.</p>
-<p class="tableblock">See <a href="backup-get-repository-info.html" class="page">Get Information on Repositories</a>.</p></td>
+<p class="tableblock">See <a href="backup-get-repository-info.html" class="xref page">Get Information on Repositories</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/active/&lt;repository-id&gt;/pause</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Triggers an immediate pause of the specified repository, so that all task-processing ceases.</p>
-<p class="tableblock">See <a href="backup-pause-and-resume-tasks.html" class="page">Pause and Resume Tasks</a>.</p></td>
+<p class="tableblock">See <a href="backup-pause-and-resume-tasks.html" class="xref page">Pause and Resume Tasks</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/active/&lt;repository-id&gt;/resume</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Triggers an immediate resumption of task-processing, on the specified, <em>paused</em> repository.</p>
-<p class="tableblock">See <a href="backup-pause-and-resume-tasks.html" class="page">Pause and Resume Tasks</a>.</p></td>
+<p class="tableblock">See <a href="backup-pause-and-resume-tasks.html" class="xref page">Pause and Resume Tasks</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DELETE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/&lt;'archived'&#124;'imported'&gt;/&lt;repository-id&gt;?remove_repository</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Deletes an archived repository.</p>
-<p class="tableblock">See <a href="backup-delete-repository.html" class="page">Delete a Repository</a>.</p></td>
+<p class="tableblock">See <a href="backup-delete-repository.html" class="xref page">Delete a Repository</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DELETE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/active/&lt;repository-id&gt;/backups/&lt;backup-id&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Deletes a backup.</p>
-<p class="tableblock">See <a href="backup-delete-backups.html" class="page">Delete a Backup</a>.</p></td>
+<p class="tableblock">See <a href="backup-delete-backups.html" class="xref page">Delete a Backup</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4694,31 +4694,31 @@ Information includes backup names and dates, buckets, items, and mutations.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/plan</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns an array containing all plans defined on the cluster.</p>
-<p class="tableblock">See <a href="backup-get-plan-info.html" class="page">Get Information on Plans</a>.</p></td>
+<p class="tableblock">See <a href="backup-get-plan-info.html" class="xref page">Get Information on Plans</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/plan/&lt;plan-id&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns a specific plan, defined on the cluster.</p>
-<p class="tableblock">See <a href="backup-get-plan-info.html" class="page">Get Information on Plans</a>.</p></td>
+<p class="tableblock">See <a href="backup-get-plan-info.html" class="xref page">Get Information on Plans</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/plan/&lt;plan-id&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Creates a new plan on the cluster.</p>
-<p class="tableblock">See <a href="backup-create-and-edit-plans.html" class="page">Create and Edit Plans</a>.</p></td>
+<p class="tableblock">See <a href="backup-create-and-edit-plans.html" class="xref page">Create and Edit Plans</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/plan/&lt;plan-id&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Edits an existing plan, defined on the cluster.</p>
-<p class="tableblock">See <a href="backup-create-and-edit-plans.html" class="page">Create and Edit Plans</a>.</p></td>
+<p class="tableblock">See <a href="backup-create-and-edit-plans.html" class="xref page">Create and Edit Plans</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DELETE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/plan/&lt;plan-id&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Deletes a plan.</p>
-<p class="tableblock">See <a href="backup-delete-plan.html" class="page">Delete a Plan</a>.</p></td>
+<p class="tableblock">See <a href="backup-delete-plan.html" class="xref page">Delete a Plan</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4745,13 +4745,13 @@ Information includes backup names and dates, buckets, items, and mutations.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/&lt;'active'&#124;'archived'&#124;'imported'&gt;/&lt;repository-id&gt;/taskHistory</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns an array, containing the history of all tasks performed for the specified repository.</p>
-<p class="tableblock">See <a href="backup-get-task-info.html" class="page">Get Information on Tasks</a>.</p></td>
+<p class="tableblock">See <a href="backup-get-task-info.html" class="xref page">Get Information on Tasks</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/&lt;'active'&#124;'archived'&#124;'imported'&gt;/&lt;repository-id&gt;/taskHistory?&lt;task-subset-specification-string&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns an array, containing the history of a specific subset of tasks performed for the specified repository.</p>
-<p class="tableblock">See <a href="backup-get-task-info.html" class="page">Get Information on Tasks</a>.</p></td>
+<p class="tableblock">See <a href="backup-get-task-info.html" class="xref page">Get Information on Tasks</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4778,7 +4778,7 @@ Information includes backup names and dates, buckets, items, and mutations.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DELETE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/cluster/self/repository/active/&lt;repository-id&gt;/backups/&lt;backup-id&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Deletes the specified backup from the specified active repository..</p>
-<p class="tableblock">See <a href="backup-delete-backups.html" class="page">Delete Backups</a>.</p></td>
+<p class="tableblock">See <a href="backup-delete-backups.html" class="xref page">Delete Backups</a>.</p></td>
 </tr>
 </tbody>
 </table>

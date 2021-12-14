@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="ruby-sdk">
 <meta name="dcterms.identifier" content="3.2">
 <meta name="page-url" content="/ruby-sdk/3.2/howtos/subdocument-operations.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3692,14 +3692,14 @@ You should use sub-document operations when you are modifying only portions of a
 </td>
 <td class="content">
 The sub-document operations described on this page are for <em>Key-Value</em> requests only: they are not related to sub-document N1QL queries.
-(Sub-document N1QL queries are explained in the section <a href="n1ql-queries-with-sdk.html" class="page">Querying with N1QL</a>.)
+(Sub-document N1QL queries are explained in the section <a href="n1ql-queries-with-sdk.html" class="xref page">Querying with N1QL</a>.)
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
 <p>In order to use sub-document operations you need to specify a <em>path</em> indicating the location of the sub-document.
-The <em>path</em> follows N1QL syntax <a href="#">below^</a>, and <a href="#7.0@server:n1ql:n1ql-intro/queriesandresults.adoc" class="page unresolved">N1QL Queries and Results</a>).
+The <em>path</em> follows N1QL syntax <a href="#">below^</a>, and <a href="#7.0@server:n1ql:n1ql-intro/queriesandresults.adoc" class="xref unresolved">N1QL Queries and Results</a>).
 Considering the document:</p>
 </div>
 <div class="listingblock">
@@ -4016,7 +4016,7 @@ If the value does not exist, the <em>subdoc-counter</em> operation will create i
 Full-document counters will use normal C semantics for overflow (in which the overflow value is carried over above 0), and will silently fail on underflow, setting the value to 0 instead.</p>
 </li>
 <li>
-<p>Sub-Document counter operations can operate on any numeric value within a document, while <a href="kv-operations.html#atomic-counters" class="page">full-document counter operations</a> require a specially formatted counter document with only the counter value.</p>
+<p>Sub-Document counter operations can operate on any numeric value within a document, while <a href="kv-operations.html#atomic-counters" class="xref page">full-document counter operations</a> require a specially formatted counter document with only the counter value.</p>
 </li>
 </ul>
 </div>
@@ -4106,7 +4106,7 @@ puts "some_doc: #{collection.get("some_doc").content}"
 <h2 id="cas-semantics"><a class="anchor" href="#cas-semantics"></a>CAS Semantics</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Subdoc mostly eliminates the need for tracking the <a href="concurrent-document-mutations.html" class="page">CAS</a> value.
+<p>Subdoc mostly eliminates the need for tracking the <a href="concurrent-document-mutations.html" class="xref page">CAS</a> value.
 Subdoc operations are atomic and therefore if two different threads access two different sub-documents then no conflict will arise.</p>
 </div>
 <div class="listingblock">
@@ -4133,7 +4133,7 @@ For example, two concurrent <em>subdoc-array-append</em> operations to the same 
 <h2 id="durability"><a class="anchor" href="#durability"></a>Durability</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In Couchbase Server 6.5 and up, this is built upon with <a href="../concept-docs/durability-replication-failure-considerations.html#durable-writes" class="page">Durable Writes</a>, which uses the concept of majority to indicate the number of configured Data Service nodes to which commitment is required:</p>
+<p>In Couchbase Server 6.5 and up, this is built upon with <a href="../concept-docs/durability-replication-failure-considerations.html#durable-writes" class="xref page">Durable Writes</a>, which uses the concept of majority to indicate the number of configured Data Service nodes to which commitment is required:</p>
 </div>
 <div class="listingblock">
 <div class="content">

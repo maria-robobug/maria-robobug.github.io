@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="scala-sdk">
 <meta name="dcterms.identifier" content="1.2">
 <meta name="page-url" content="/scala-sdk/1.2/howtos/transcoders-nonjson.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3704,7 +3704,7 @@ It is down to the transcoder to make this choice.</p>
 <td class="content">
 Many applications will not need to be aware of transcoders and serializers, as the defaults support most standard JSON use cases.
 The information in this page is only needed if the application has an advanced use-case, likely involving either non-JSON data, or a requirement for a particular JSON serialization library.
-For examples of many common JSON use cases see <a href="json.html" class="page">JSON Libraries</a>.
+For examples of many common JSON use cases see <a href="json.html" class="xref page">JSON Libraries</a>.
 </td>
 </tr>
 </table>
@@ -3827,7 +3827,7 @@ It will reject this with a <code>Failure(IllegalArgumentException)</code>, as it
 </tbody>
 </table>
 <div class="paragraph">
-<p>There are concrete examples of using these on the <a href="json.html" class="page">JSON Libraries</a> page.
+<p>There are concrete examples of using these on the <a href="json.html" class="xref page">JSON Libraries</a> page.
 Note that the Scala SDK only has an optional dependency on Circe, Json4s, et al, so those libraries not be pulled into your application.</p>
 </div>
 </div>
@@ -4091,7 +4091,7 @@ The transcoder does not perform any form of real transcoding, and does not take 
 <h3 id="creating-a-custom-serializer"><a class="anchor" href="#creating-a-custom-serializer"></a>Creating a Custom Serializer</h3>
 <div class="paragraph">
 <p>Say we have a Scala case class, <code>MyUser</code>, that we want to easily convert to &amp; from JSON to store in Couchbase.
-The Scala SDK already provides support for this (see <a href="json.html" class="page">JSON Libraries</a>), but perhaps for some reason we want to use the JSON library <a href="https://github.com/lihaoyi/upickle">uPickle</a> for this instead.
+The Scala SDK already provides support for this (see <a href="json.html" class="xref page">JSON Libraries</a>), but perhaps for some reason we want to use the JSON library <a href="https://github.com/lihaoyi/upickle">uPickle</a> for this instead.
 First we need a <code>JsonSerializer[User]</code> and <code>JsonDeserializer[User]</code>, which are simple to write:</p>
 </div>
 <div class="listingblock">
@@ -4313,11 +4313,11 @@ collection.upsert(
 <div class="ulist">
 <ul>
 <li>
-<p>For <em>Common flags</em>, setting the data format used, see the <a href="../ref/data-structures.html#common-flags" class="page">Data Structures reference</a>.</p>
+<p>For <em>Common flags</em>, setting the data format used, see the <a href="../ref/data-structures.html#common-flags" class="xref page">Data Structures reference</a>.</p>
 </li>
 <li>
 <p><em>Format flags</em> for ancient SDKs are still available for compatibility, if you are porting a long-lived legacy app.
-See the <a href="../ref/data-structures.html#legacy-formats" class="page">Legacy formats reference</a>.</p>
+See the <a href="../ref/data-structures.html#legacy-formats" class="xref page">Legacy formats reference</a>.</p>
 </li>
 <li>
 <p>If you want to work with binary documents and our Search service, you might like to take a look at <a href="https://github.com/khanium/couchbase-fts-binary" class="bare">https://github.com/khanium/couchbase-fts-binary</a></p>

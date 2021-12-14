@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-nodes/recover-nodes.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4469,7 +4469,7 @@ This is useful in circumstances where, following failover, the unhealthy node ha
 </div>
 <div class="paragraph">
 <p>There are two options for recovery, which are <em>full</em> and <em>delta</em>.
-These are explained in <a href="../../learn/clusters-and-availability/recovery.html" class="page">Recovery</a>.</p>
+These are explained in <a href="../../learn/clusters-and-availability/recovery.html" class="xref page">Recovery</a>.</p>
 </div>
 </div>
 </div>
@@ -4485,7 +4485,7 @@ These are explained in <a href="../../learn/clusters-and-availability/recovery.h
 <div class="ulist">
 <ul>
 <li>
-<p>A two-node cluster already exists, as at the conclusion of <a href="join-cluster-and-rebalance.html" class="page">Join a Cluster and Rebalance</a>.</p>
+<p>A two-node cluster already exists, as at the conclusion of <a href="join-cluster-and-rebalance.html" class="xref page">Join a Cluster and Rebalance</a>.</p>
 </li>
 <li>
 <p>The cluster has the Full Administrator username of <code>Administrator</code>, and password of <code>password</code>.</p>
@@ -4547,7 +4547,7 @@ The row expands vertically, as follows:</p>
 A progress dialog appears new the top of the screen, summarizing overall progress.</p>
 </div>
 <div class="paragraph">
-<p>For server-level details of the graceful-failover process, see the conceptual overview provided in <a href="../../learn/clusters-and-availability/graceful-failover.html" class="page">Graceful Failover</a>.</p>
+<p>For server-level details of the graceful-failover process, see the conceptual overview provided in <a href="../../learn/clusters-and-availability/graceful-failover.html" class="xref page">Graceful Failover</a>.</p>
 </div>
 <div class="paragraph">
 <p>When the process ends, the display is as follows:</p>
@@ -4570,7 +4570,7 @@ Additionally, the <strong>Add Back: Full Recovery</strong> and <strong>Add Back:
 </li>
 <li>
 <p>Select one of the two available forms of recovery, by left-clicking the corresponding button.
-Note that <em>full</em> and <em>delta</em> recovery are described in <a href="../../learn/clusters-and-availability/recovery.html" class="page">Recovery</a>.
+Note that <em>full</em> and <em>delta</em> recovery are described in <a href="../../learn/clusters-and-availability/recovery.html" class="xref page">Recovery</a>.
 If you select <em>full</em>, by left-clicking on the <strong>Add Back: Full Recovery</strong> button, the row for <code>10.142.181.102</code> is displayed as follows:</p>
 <div id="node-row-after-full-recovery-select" class="imageblock text-middle">
 <div class="content">
@@ -4593,8 +4593,8 @@ Whichever form of recovery you have chosen, <em>full</em> or <em>delta</em>, is 
 </div>
 <div class="paragraph">
 <p>Note that if rebalance fails, notifications are duly provided.
-These are described in <a href="add-node-and-rebalance.html#rebalance-failure-notification" class="page">Rebalance Failure Notification</a>.
-See also the information provided on <a href="add-node-and-rebalance.html#automated-rebalance-failure-handling" class="page">Automated Rebalance-Failure Handling</a>, and the procedure for its set-up, described in <a href="../manage-settings/general-settings.html#rebalance-settings" class="page">Rebalance Settings</a>.</p>
+These are described in <a href="add-node-and-rebalance.html#rebalance-failure-notification" class="xref page">Rebalance Failure Notification</a>.
+See also the information provided on <a href="add-node-and-rebalance.html#automated-rebalance-failure-handling" class="xref page">Automated Rebalance-Failure Handling</a>, and the procedure for its set-up, described in <a href="../manage-settings/general-settings.html#rebalance-settings" class="xref page">Rebalance Settings</a>.</p>
 </div>
 </div>
 </div>
@@ -4604,7 +4604,7 @@ See also the information provided on <a href="add-node-and-rebalance.html#automa
 <div class="paragraph">
 <p>For a node to be recovered with the CLI, it must first be failed over.
 Perform graceful failover as documented in
-<a href="failover-graceful.html#graceful-failover-with-the-cli" class="page">Graceful Failover with the CLI</a>, as follows:</p>
+<a href="failover-graceful.html#graceful-failover-with-the-cli" class="xref page">Graceful Failover with the CLI</a>, as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4683,7 +4683,7 @@ Bucket: 01/01 (travel-sample)                    60714 docs remaining
 </div>
 </div>
 <div class="paragraph">
-<p>For more information on <code>rebalance</code>, see the command reference at <a href="#cli:cbcli/couchbase-cli-rebalance.adoc" class="page unresolved">rebalance</a>. For more information on <code>recover</code>, see the command reference at <a href="#cli:cbcli/couchbase-cli-recovery.adoc" class="page unresolved">recovery</a>.</p>
+<p>For more information on <code>rebalance</code>, see the command reference at <a href="#cli:cbcli/couchbase-cli-rebalance.adoc" class="xref unresolved">rebalance</a>. For more information on <code>recover</code>, see the command reference at <a href="#cli:cbcli/couchbase-cli-recovery.adoc" class="xref unresolved">recovery</a>.</p>
 </div>
 </div>
 </div>
@@ -4692,7 +4692,7 @@ Bucket: 01/01 (travel-sample)                    60714 docs remaining
 <div class="sectionbody">
 <div class="paragraph">
 <p>For a node to be recovered with the REST API, it must first be failed over.
-Perform graceful failover as documented in <a href="failover-graceful.html#graceful-failover-with-the-rest-api" class="page">Graceful
+Perform graceful failover as documented in <a href="failover-graceful.html#graceful-failover-with-the-rest-api" class="xref page">Graceful
 Failover with the REST API</a>, as follows:</p>
 </div>
 <div class="listingblock">
@@ -4743,9 +4743,9 @@ Use the <code>/controller/rebalance</code> URI, as follows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>For more information on <code>/controller/startGracefulFailover</code>, see <a href="../../rest-api/rest-failover-graceful.html" class="page">Setting Graceful Failover</a>.
-For more information on <code>/controller/setRecoveryType</code> see <a href="../../rest-api/rest-node-recovery-incremental.html" class="page">Setting Recovery Type</a>.
-For more information on <code>/controller/rebalance</code>, see <a href="../../rest-api/rest-cluster-rebalance.html" class="page">Rebalancing Nodes</a>.</p>
+<p>For more information on <code>/controller/startGracefulFailover</code>, see <a href="../../rest-api/rest-failover-graceful.html" class="xref page">Setting Graceful Failover</a>.
+For more information on <code>/controller/setRecoveryType</code> see <a href="../../rest-api/rest-node-recovery-incremental.html" class="xref page">Setting Recovery Type</a>.
+For more information on <code>/controller/rebalance</code>, see <a href="../../rest-api/rest-cluster-rebalance.html" class="xref page">Rebalancing Nodes</a>.</p>
 </div>
 </div>
 </div>

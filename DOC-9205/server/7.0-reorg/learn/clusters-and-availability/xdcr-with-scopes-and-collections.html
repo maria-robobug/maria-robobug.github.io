@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/clusters-and-availability/xdcr-with-scopes-and-collections.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4468,7 +4468,7 @@ When XDCR is established between a source bucket and a target bucket, data can b
 <div class="paragraph">
 <p>XDCR allows only a single replication to be established between a specific source bucket and a specific target bucket.
 However, within the replication, documents can be <em>mapped</em> between different source and target <em>collections</em>.
-(An overview of scopes and collections is provided in <a href="../data/scopes-and-collections.html" class="page">Scopes and Collections</a>.)</p>
+(An overview of scopes and collections is provided in <a href="../data/scopes-and-collections.html" class="xref page">Scopes and Collections</a>.)</p>
 </div>
 <div class="paragraph">
 <p>A <em>mapping</em> is a link, established by XDCR, between a <em>keyspace</em> within the source bucket and a keyspace within the target bucket.
@@ -4546,14 +4546,14 @@ However, although the target bucket contains a scope named <code>ScopeB</code>, 
 Therefore, since <code>ScopeB.CollectionB</code> is a keyspace unique to the source, no implicit mapping is established with the target, and no replication is automatically initiated.</p>
 <div class="paragraph">
 <p>Note, however, if an identical keyspace is <em>subsequently</em> established within the target bucket, this is eventually detected by XDCR, by means of a periodic check.
-At this point, a <em>backfill pipeline</em> is automatically created, and is maintained for a temporary period; for the purpose of replicating any dropped data: this is described below, in <a href="#learn:collections-and-availability/xdcr-overview.adoc#target-collection-removal-and-addition" class="page unresolved">Target-Collection Removal and Addition</a>.</p>
+At this point, a <em>backfill pipeline</em> is automatically created, and is maintained for a temporary period; for the purpose of replicating any dropped data: this is described below, in <a href="#learn:collections-and-availability/xdcr-overview.adoc#target-collection-removal-and-addition" class="xref unresolved">Target-Collection Removal and Addition</a>.</p>
 </div>
 </li>
 </ol>
 </div>
 <div class="paragraph">
 <p>For the practical steps required to set up implicit mappings, see
-<a href="../../manage/manage-xdcr/replicate-using-scopes-and-collections.html#replicate-data-between-collections-implicitly-with-the-ui" class="page">Replicate Data Between Collections Implicitly, with the UI</a>.</p>
+<a href="../../manage/manage-xdcr/replicate-using-scopes-and-collections.html#replicate-data-between-collections-implicitly-with-the-ui" class="xref page">Replicate Data Between Collections Implicitly, with the UI</a>.</p>
 </div>
 </div>
 </div>
@@ -4617,7 +4617,7 @@ However, as an alternative to an explicit mapping between <code>ScopeB</code> an
 </div>
 <div class="paragraph">
 <p>For the practical steps required to set up explicit mappings, see
-<a href="../../manage/manage-xdcr/replicate-using-scopes-and-collections.html#replicate-data-between-collections-explicitly-with-the-ui" class="page">Replicate Data Between Collections Explicitly, with the UI</a>.
+<a href="../../manage/manage-xdcr/replicate-using-scopes-and-collections.html#replicate-data-between-collections-explicitly-with-the-ui" class="xref page">Replicate Data Between Collections Explicitly, with the UI</a>.
 For the <em>rules</em> whereby explicit mappings must be expressed, see <a href="#rules-for-explicit-mappings">Rules for Explicit Mappings</a>, immediately below.</p>
 </div>
 </div>
@@ -4778,7 +4778,7 @@ For example, the expression <code>{"inventory":null,"inventory.airport":null}</c
 <h2 id="scopes-collections-and-filtering"><a class="anchor" href="#scopes-collections-and-filtering"></a>Scopes, Collections, and Filtering</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="xdcr-filtering.html" class="page">XDCR Advanced Filtering</a> can be applied to all implicit and explicit mappings.
+<p><a href="xdcr-filtering.html" class="xref page">XDCR Advanced Filtering</a> can be applied to all implicit and explicit mappings.
 However, only one filter can be applied to any given replication.
 Therefore, once a filter has been defined, it applies equally to all mappings for the replication.</p>
 </div>
@@ -4788,7 +4788,7 @@ Therefore, once a filter has been defined, it applies equally to all mappings fo
 <h2 id="target-collection-removal-and-addition"><a class="anchor" href="#target-collection-removal-and-addition"></a>Target-Collection Removal and Addition</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The conditions under which a document is replicated from a source bucket to a target bucket are explained in <a href="xdcr-overview.html#xdcr-process" class="page">XDCR Process</a>.
+<p>The conditions under which a document is replicated from a source bucket to a target bucket are explained in <a href="xdcr-overview.html#xdcr-process" class="xref page">XDCR Process</a>.
 These include the existence of a valid collection-to-collection mapping, which may be any of the following:</p>
 </div>
 <div class="ulist">
@@ -4833,7 +4833,7 @@ The documents to be considered candidates for this replication are determined ba
 </div>
 <div class="paragraph">
 <p>Backfill pipelines are always started with <em>Low</em> priority, to minimize the performance degradation of main-pipeline activity.
-(See <a href="xdcr-overview.html#xdcr-priority" class="page">XDCR Priority</a>, for information.)
+(See <a href="xdcr-overview.html#xdcr-priority" class="xref page">XDCR Priority</a>, for information.)
 Once a backfill pipeline has finished replicating the missing data, its process is terminated, and the main pipeline continues.
 Note that the creation, activation, and removal of a backfill pipeline are entirely automated, and are invisible to the administrator (except for occasional instances of recently created documents arriving at the target bucket prior to earlier mutations).</p>
 </div>
@@ -4852,7 +4852,7 @@ Note that the creation, activation, and removal of a backfill pipeline are entir
 <h2 id="performing-replication-with-scopes-and-collections"><a class="anchor" href="#performing-replication-with-scopes-and-collections"></a>Performing Replication with Scopes and Collections</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The practical, administrative steps required for performing replication as described above are provided in <a href="../../manage/manage-xdcr/replicate-using-scopes-and-collections.html" class="page">Replicate Using Scopes and Collections</a>.</p>
+<p>The practical, administrative steps required for performing replication as described above are provided in <a href="../../manage/manage-xdcr/replicate-using-scopes-and-collections.html" class="xref page">Replicate Using Scopes and Collections</a>.</p>
 </div>
 </div>
 </div>
@@ -4861,7 +4861,7 @@ Note that the creation, activation, and removal of a backfill pipeline are entir
 <div class="sectionbody">
 <div class="paragraph">
 <p>When a pre-7.0 version of Couchbase Server is upgraded to 7.0 or later, all documents that resided in a pre-7.0 bucket appear in the upgraded bucket&#8217;s <em>default collection</em>, within its <em>default scope</em>.
-See <a href="../data/scopes-and-collections.html" class="page">Scopes and Collections</a>, for information.</p>
+See <a href="../data/scopes-and-collections.html" class="xref page">Scopes and Collections</a>, for information.</p>
 </div>
 <div class="paragraph">
 <p>Following upgrade, data within the default collection can be <em>migrated</em> to administrator-defined collections, within new target buckets, potentially on the same cluster.
@@ -4896,7 +4896,7 @@ Thus, every document whose <code>type</code> is <code>"airline"</code>, and whos
 </ol>
 </div>
 <div class="paragraph">
-<p>For the practical steps, see <a href="../../manage/manage-xdcr/replicate-using-scopes-and-collections.html#migrate-data-to-a-collection-with-the-ui" class="page">Migrate Data to a Collection, with the UI</a>.</p>
+<p>For the practical steps, see <a href="../../manage/manage-xdcr/replicate-using-scopes-and-collections.html#migrate-data-to-a-collection-with-the-ui" class="xref page">Migrate Data to a Collection, with the UI</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="rules-for-migration"><a class="anchor" href="#rules-for-migration"></a>Rules for Migration</h3>
@@ -4931,7 +4931,7 @@ If a second migration-rule, specifying a different target collection, attempts t
 <p>Replications can be defined to proceed from specified scopes and collections only after the source cluster has been completely upgraded to at least Couchbase Server Version 7.0.</p>
 </div>
 <div class="paragraph">
-<p>During the upgrade of a pre-7.0 <em>online</em> source cluster (see <a href="../../install/upgrade-cluster-online.html" class="page">Upgrade an Online Cluster</a>), any previously commenced replications (that is, replications commenced when the source cluster consisted entirely of nodes running a pre-7.0 version of Couchbase Server) continue.
+<p>During the upgrade of a pre-7.0 <em>online</em> source cluster (see <a href="../../install/upgrade-cluster-online.html" class="xref page">Upgrade an Online Cluster</a>), any previously commenced replications (that is, replications commenced when the source cluster consisted entirely of nodes running a pre-7.0 version of Couchbase Server) continue.
 Note that during such an upgrade, if the upgrade is to Version 7.0 (and no higher), while the replications proceed, statistics for the source cluster may be inaccurate, log messages may show innocuous errors (such as <code>StatsMgr: error from getting high seqno</code>), and system activity may be marginally higher than usual.</p>
 </div>
 <div class="paragraph">

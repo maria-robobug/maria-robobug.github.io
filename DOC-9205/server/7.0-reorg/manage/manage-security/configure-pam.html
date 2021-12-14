@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-security/configure-pam.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4539,7 +4539,7 @@ Then, enable external authentication on the cluster, using the Couchbase CLI <co
 </div>
 <div class="paragraph">
 <p>Note that <code>--authentication-enabled 1</code> enables external authentication, and <code>--authentication-enabled 0</code> disables.
-See <a href="#cli:cbcli/couchbase-cli-setting-ldap.adoc" class="page unresolved">setting-ldap</a> for further information.
+See <a href="#cli:cbcli/couchbase-cli-setting-ldap.adoc" class="xref unresolved">setting-ldap</a> for further information.
 When successfully executed, the command provides the following notification: <code>SUCCESS: saslauthd settings modified</code>.</p>
 </div>
 </li>
@@ -4621,7 +4621,7 @@ This brings up the <strong class="ui">Security</strong> view:</p>
 This brings up the <strong class="ui">Add New User</strong> dialog.
 Select the <strong class="ui">External</strong> radio-button, in the <strong class="ui">Authentication Domain</strong> panel at the upper left.
 Then, enter the name of the new user you are creating.
-(Note that at this point, if <a href="configure-ldap.html" class="page">Native LDAP</a> has also been configured for the cluster, the notification <code>not found</code> appears above the username-field: however, this can be ignored.)
+(Note that at this point, if <a href="configure-ldap.html" class="xref page">Native LDAP</a> has also been configured for the cluster, the notification <code>not found</code> appears above the username-field: however, this can be ignored.)
 Next, specify a suitable role, such as <strong class="ui">Cluster Admin</strong>.</p>
 <div class="paragraph">
 <p>The panel now appears as follows:</p>

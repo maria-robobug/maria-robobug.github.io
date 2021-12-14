@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/services-and-indexes/services/data-service.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4491,10 +4491,10 @@ The Data Service must run on at least one node of every cluster.</p>
 <p><strong>Dispatcher</strong>: Manages networking, by handling each <strong>Request</strong> for data, and providing the <strong>Response</strong>.
 Also streams data to other nodes within the cluster, and to other clusters, by means of the <strong>DCP</strong> protocol; and handles <strong>Authentication</strong>.</p>
 <div class="paragraph">
-<p>For information on <strong>DCP Streaming</strong>, see <a href="../../clusters-and-availability/clusters-and-availability.html" class="page">Clusters and Availability</a>.
+<p>For information on <strong>DCP Streaming</strong>, see <a href="../../clusters-and-availability/clusters-and-availability.html" class="xref page">Clusters and Availability</a>.
 For information on <strong>Authentication</strong>, see
-<a href="../../security/authentication.html" class="page">Authentication</a>.
-For information on ports used by the dispatcher, see <a href="../../../install/install-ports.html" class="page">Network Configuration</a>.</p>
+<a href="../../security/authentication.html" class="xref page">Authentication</a>.
+For information on ports used by the dispatcher, see <a href="../../../install/install-ports.html" class="xref page">Network Configuration</a>.</p>
 </div>
 </li>
 <li>
@@ -4507,9 +4507,9 @@ These are:</p>
 This contains <em>Partition Hash Tables</em>, whereby the location of bucket-items, in memory and on disk, on different nodes across the cluster, is recorded.
 When written, items enter the cache, and subsequently are placed onto a replication queue, so as to be replicated to one or more other nodes; and (in the case of items for Couchbase buckets) onto a disk queue, so as to be written to disk.</p>
 <div class="paragraph">
-<p>For information on memory quotas, see <a href="../../buckets-memory-and-storage/memory.html" class="page">Memory</a>.
-For information on how items from a bucket are assigned to <em>vBuckets</em> across a cluster, see <a href="../../buckets-memory-and-storage/vbuckets.html" class="page">vBuckets</a>.
-For illustrations of how items are written and updated for Couchbase buckets, see <a href="../../buckets-memory-and-storage/memory-and-storage.html" class="page">Memory and Storage</a>.</p>
+<p>For information on memory quotas, see <a href="../../buckets-memory-and-storage/memory.html" class="xref page">Memory</a>.
+For information on how items from a bucket are assigned to <em>vBuckets</em> across a cluster, see <a href="../../buckets-memory-and-storage/vbuckets.html" class="xref page">vBuckets</a>.
+For illustrations of how items are written and updated for Couchbase buckets, see <a href="../../buckets-memory-and-storage/memory-and-storage.html" class="xref page">Memory and Storage</a>.</p>
 </div>
 </li>
 <li>
@@ -4518,17 +4518,17 @@ Changes already made to items in memory, but not yet placed on the replication a
 </li>
 <li>
 <p><strong>Item Pager</strong>: Ejects from memory items that have not recently been used, in order to free up space, as required.
-For further information, see <a href="../../buckets-memory-and-storage/memory.html" class="page">Memory</a>.</p>
+For further information, see <a href="../../buckets-memory-and-storage/memory.html" class="xref page">Memory</a>.</p>
 </li>
 <li>
 <p><strong>Flusher</strong>: Deletes every item in the bucket.
 For information on how to activate, see
-<a href="../../../manage/manage-buckets/flush-bucket.html" class="page">Flush a Bucket</a>.</p>
+<a href="../../../manage/manage-buckets/flush-bucket.html" class="xref page">Flush a Bucket</a>.</p>
 </li>
 <li>
 <p><strong>Expiry Pager</strong>: Scans for items that have expired, and erases them from memory and disk; after which, a <em>tombstone</em> remains for a default period of 3 days.
-The expiry pager runs every 10 minutes by default: for information on changing the interval, see <code>cbepctl</code> <a href="../../../cli/cbepctl/set-flush_param.html" class="page">set flush_param</a>.
-For more information on item-deletion and tombstones, see <a href="../../data/expiration.html" class="page">Expiration</a>.</p>
+The expiry pager runs every 10 minutes by default: for information on changing the interval, see <code>cbepctl</code> <a href="../../../cli/cbepctl/set-flush_param.html" class="xref page">set flush_param</a>.
+For more information on item-deletion and tombstones, see <a href="../../data/expiration.html" class="xref page">Expiration</a>.</p>
 </li>
 <li>
 <p><strong>Batch Reader</strong>: Enhances performance by combining changes made to multiple items into <em>batches</em>, which are placed on the disk queue, to be written to disk.</p>
@@ -4556,7 +4556,7 @@ The threads are divided into four kinds, which run independently of and without 
 </ul>
 </div>
 <div class="paragraph">
-<p>For more information on the Data Service' threading model, see <a href="../../buckets-memory-and-storage/storage.html" class="page">Storage</a>.</p>
+<p>For more information on the Data Service' threading model, see <a href="../../buckets-memory-and-storage/storage.html" class="xref page">Storage</a>.</p>
 </div>
 </li>
 </ul>

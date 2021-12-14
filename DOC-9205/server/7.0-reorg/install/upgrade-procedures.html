@@ -13,7 +13,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/install/upgrade-procedures.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4459,7 +4459,7 @@ Multiple procedures are provided for the upgrade of a Couchbase-Server cluster.
 </div>
 <div class="paragraph">
 <p>This section provides step-by-step instructions for the upgrade of multi-node Couchbase-Server clusters.
-Each procedure addresses a specific context and its associated dependencies: for information on how to select the appropriate procedure, see the information provided in <a href="upgrade-procedure-selection.html" class="page">Upgrade Procedure-Selection</a>.</p>
+Each procedure addresses a specific context and its associated dependencies: for information on how to select the appropriate procedure, see the information provided in <a href="upgrade-procedure-selection.html" class="xref page">Upgrade Procedure-Selection</a>.</p>
 </div>
 <div class="paragraph">
 <p>Additionally provided on this page is guidance for <a href="#upgrading-developer-clusters">Upgrading Developer Clusters</a> &#8212; which are frequently <em>single-node</em> clusters.</p>
@@ -4475,29 +4475,29 @@ Each procedure addresses a specific context and its associated dependencies: for
 <div class="ulist">
 <ul>
 <li>
-<p><a href="upgrade-cluster-offline.html" class="page">Upgrade an Offline Cluster</a>.
+<p><a href="upgrade-cluster-offline.html" class="xref page">Upgrade an Offline Cluster</a>.
 This is the simplest procedure for the upgrade of a multi-node cluster.
 Note, however, that it requires cluster-downtime.</p>
 </li>
 <li>
-<p><a href="upgrade-cluster-online.html" class="page">Upgrade an Online Cluster</a>.
+<p><a href="upgrade-cluster-online.html" class="xref page">Upgrade an Online Cluster</a>.
 This allows the cluster to continue serving data, for the duration of the upgrade.
 Two options are provided:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="upgrade-cluster-online-reduced-capacity.html" class="page">Upgrade a Reduced-Capacity, Online Cluster</a>.
+<p><a href="upgrade-cluster-online-reduced-capacity.html" class="xref page">Upgrade a Reduced-Capacity, Online Cluster</a>.
 If no additional nodes are available to facilitate the upgrade-procedure, the procedure can be completed with the existing cluster-nodes, provided that it is acceptable for the cluster to serve data, during the upgrade, at reduced capacity.</p>
 </li>
 <li>
-<p><a href="upgrade-cluster-online-full-capacity.html" class="page">Upgrade a Full-Capacity, Online Cluster</a>.
+<p><a href="upgrade-cluster-online-full-capacity.html" class="xref page">Upgrade a Full-Capacity, Online Cluster</a>.
 If additional nodes are available to facilitate the upgrade-procedure, the procedure can be completed with the cluster continuing to serve data at full capacity.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><a href="upgrade-ipv6-cluster.html" class="page">Upgrade an IPv6 Cluster</a>.
+<p><a href="upgrade-ipv6-cluster.html" class="xref page">Upgrade an IPv6 Cluster</a>.
 Special instructions are provided for the upgrade of IPv6 clusters.</p>
 </li>
 </ul>
@@ -4514,14 +4514,14 @@ When these are <em>multi-node</em>, the upgrade procedures listed above, in <a h
 <div class="paragraph">
 <p>However, clusters established for development purposes are frequently <em>single-node</em> clusters.
 Single-node clusters are <em>unsupported</em>: nevertheless, they can be upgraded by following subsets of the instructions provided for multi-node clusters; as described below.
-Before following these procedures, developers should become familiar with the <a href="upgrade.html#supported-upgrade-paths" class="page">Upgrade Paths</a>; and, if appropriate, with the information provided in <a href="upgrade-ipv6-cluster.html" class="page">Upgrade an IPv6 Cluster</a>.</p>
+Before following these procedures, developers should become familiar with the <a href="upgrade.html#supported-upgrade-paths" class="xref page">Upgrade Paths</a>; and, if appropriate, with the information provided in <a href="upgrade-ipv6-cluster.html" class="xref page">Upgrade an IPv6 Cluster</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="upgrading-linux-and-windows-based-single-node-clusters"><a class="anchor" href="#upgrading-linux-and-windows-based-single-node-clusters"></a>Upgrading Linux- and Windows-Based Single-Node Clusters</h3>
 <div class="paragraph">
 <p>The cluster should be taken <em>offline</em> (such that no application access is possible) for the duration of the upgrade process.
-Therefore, the step-by-step procedure provided in <a href="upgrade-cluster-offline.html" class="page">Upgrade an Offline Cluster</a> can be followed.
-Note that when following the steps in the stage named <a href="upgrade-cluster-offline.html#upgrade-each-individual-node" class="page">Upgrade Each Individual Node</a>, the final step can be omitted (since only one node needs to be upgraded).</p>
+Therefore, the step-by-step procedure provided in <a href="upgrade-cluster-offline.html" class="xref page">Upgrade an Offline Cluster</a> can be followed.
+Note that when following the steps in the stage named <a href="upgrade-cluster-offline.html#upgrade-each-individual-node" class="xref page">Upgrade Each Individual Node</a>, the final step can be omitted (since only one node needs to be upgraded).</p>
 </div>
 </div>
 <div class="sect2">
@@ -4536,13 +4536,13 @@ As with Linux- and Windows-based single-node clusters, a MacOS-based single-node
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Follow the instructions provided for offline multi-node clusters, in <a href="upgrade-cluster-offline.html#prepare-the-cluster" class="page">Stage One: Prepare the Cluster</a> (which is part of the procedure <a href="upgrade-cluster-offline.html" class="page">Upgrade an Offline Cluster</a>).</p>
+<p>Follow the instructions provided for offline multi-node clusters, in <a href="upgrade-cluster-offline.html#prepare-the-cluster" class="xref page">Stage One: Prepare the Cluster</a> (which is part of the procedure <a href="upgrade-cluster-offline.html" class="xref page">Upgrade an Offline Cluster</a>).</p>
 </li>
 <li>
-<p>Follow the instructions provided for online multi-node clusters, in <a href="upgrade-cluster-online-reduced-capacity.html#upgrade-the-removed-node" class="page">Stage Three: Upgrade the Removed Node</a> (which is part of the procedure <a href="upgrade-cluster-online-reduced-capacity.html" class="page">Upgrade a Reduced-Capacity, Online Cluster</a>).</p>
+<p>Follow the instructions provided for online multi-node clusters, in <a href="upgrade-cluster-online-reduced-capacity.html#upgrade-the-removed-node" class="xref page">Stage Three: Upgrade the Removed Node</a> (which is part of the procedure <a href="upgrade-cluster-online-reduced-capacity.html" class="xref page">Upgrade a Reduced-Capacity, Online Cluster</a>).</p>
 </li>
 <li>
-<p>Follow the instructions provided for offline multi-node clusters, in <a href="upgrade-cluster-offline.html#bring-the-cluster-back-online" class="page">Stage Three: Bring the Cluster Back Online</a> (which is part of the procedure <a href="upgrade-cluster-offline.html" class="page">Upgrade an Offline Cluster</a>).</p>
+<p>Follow the instructions provided for offline multi-node clusters, in <a href="upgrade-cluster-offline.html#bring-the-cluster-back-online" class="xref page">Stage Three: Bring the Cluster Back Online</a> (which is part of the procedure <a href="upgrade-cluster-offline.html" class="xref page">Upgrade an Offline Cluster</a>).</p>
 </li>
 </ol>
 </div>

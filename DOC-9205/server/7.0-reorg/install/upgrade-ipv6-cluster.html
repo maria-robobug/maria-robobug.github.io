@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/install/upgrade-ipv6-cluster.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4470,13 +4470,13 @@ All pre-7.0 clusters using the IPv6 address family can be upgraded to Couchbase 
 <div class="ulist">
 <ul>
 <li>
-<p><em>All</em> IPv6 clusters running a pre-7.0 version of Couchbase Server Enterprise Edition can perform <em>online</em> upgrade as explained in <a href="#install:upgrade-online.adoc" class="page unresolved">Performing the Rolling Online Upgrade</a>.</p>
+<p><em>All</em> IPv6 clusters running a pre-7.0 version of Couchbase Server Enterprise Edition can perform <em>online</em> upgrade as explained in <a href="#install:upgrade-online.adoc" class="xref unresolved">Performing the Rolling Online Upgrade</a>.</p>
 </li>
 <li>
-<p>IPv6 clusters currently running Couchbase Server Enterprise Edition Version 6.0.1 or higher can perform <em>offline</em> upgrade as explained in <a href="upgrade-cluster-offline.html" class="page">Upgrade an Offline Cluster</a>.</p>
+<p>IPv6 clusters currently running Couchbase Server Enterprise Edition Version 6.0.1 or higher can perform <em>offline</em> upgrade as explained in <a href="upgrade-cluster-offline.html" class="xref page">Upgrade an Offline Cluster</a>.</p>
 </li>
 <li>
-<p>IPv6 clusters currently running Couchbase Server Enterprise Edition Version 6.0.0 can perform <em>offline</em> upgrade as explained in <a href="upgrade-cluster-offline.html" class="page">Upgrade and Offline Cluster</a>, but must then perform the additional steps described below.</p>
+<p>IPv6 clusters currently running Couchbase Server Enterprise Edition Version 6.0.0 can perform <em>offline</em> upgrade as explained in <a href="upgrade-cluster-offline.html" class="xref page">Upgrade and Offline Cluster</a>, but must then perform the additional steps described below.</p>
 </li>
 </ul>
 </div>
@@ -4487,14 +4487,14 @@ Note also that if a pre-7.0 cluster is not using IPv6 and no address-family chan
 <div class="sect2">
 <h3 id="additional-upgrade-steps-for-some-clusters"><a class="anchor" href="#additional-upgrade-steps-for-some-clusters"></a>Additional Upgrade Steps for Some Clusters</h3>
 <div class="paragraph">
-<p>To complete <em>offline</em> upgrade to 7.0 for a 6.0.0 cluster that has already been running IPv6 and is intended to continue doing so, after completion of the instructions in <a href="upgrade-cluster-offline.html" class="page">Performing the Offline Upgrade</a>, proceed as follows:</p>
+<p>To complete <em>offline</em> upgrade to 7.0 for a 6.0.0 cluster that has already been running IPv6 and is intended to continue doing so, after completion of the instructions in <a href="upgrade-cluster-offline.html" class="xref page">Performing the Offline Upgrade</a>, proceed as follows:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
 <p>Stop Couchbase Server.
-For instructions on stopping a server installed by the standard, <em>package-based</em> procedure, see <a href="startup-shutdown.html" class="page">Start and Stop Couchbase Server</a>.
-For instructions on stopping a server installed by the <em>non-root</em> procedure, see <a href="non-root.html" class="page">Non-Root Install and Upgrade</a>, in the section <a href="non-root.html#start-stop-and-get-status" class="page">Stop, Start, and Get Status</a>.</p>
+For instructions on stopping a server installed by the standard, <em>package-based</em> procedure, see <a href="startup-shutdown.html" class="xref page">Start and Stop Couchbase Server</a>.
+For instructions on stopping a server installed by the <em>non-root</em> procedure, see <a href="non-root.html" class="xref page">Non-Root Install and Upgrade</a>, in the section <a href="non-root.html#start-stop-and-get-status" class="xref page">Stop, Start, and Get Status</a>.</p>
 </li>
 <li>
 <p>As either <em>root</em> or <em>couchbase user</em>, enter the following command:</p>

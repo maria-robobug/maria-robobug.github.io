@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/manage/manage-settings/configure-compact-settings.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4476,7 +4476,7 @@ However, settings can be overridden on a per bucket basis.</p>
 <div class="paragraph">
 <p>Note that in Couchbase Server Enterprise Edition, auto-compaction does not apply to memory-optimized index storage, and there are no settings necessary for configuring the auto-compaction of Global Secondary Indexes using standard index storage.
 However, for installations of Couchbase Server Enterprise Edition running on Linux, note that hole punching is required to enable auto-compaction of Global Secondary Indexes using standard index storage.
-See <a href="../../learn/services-and-indexes/indexes/storage-modes.html#standard-index-storage" class="page">Standard Index Storage</a>, for information.</p>
+See <a href="../../learn/services-and-indexes/indexes/storage-modes.html#standard-index-storage" class="xref page">Standard Index Storage</a>, for information.</p>
 </div>
 </div>
 </div>
@@ -4694,7 +4694,7 @@ To specify when compaction is permitted to run, select appropriate <em>days of t
 <p>Note that whenever you change the compaction settings for the index, the system starts the global secondary index process on all the nodes.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="../../learn/services-and-indexes/indexes/storage-modes.html#standard-index-storage" class="page">Standard Index Storage</a> for information on append-only and circular write modes.</p>
+<p>See <a href="../../learn/services-and-indexes/indexes/storage-modes.html#standard-index-storage" class="xref page">Standard Index Storage</a> for information on append-only and circular write modes.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4735,7 +4735,7 @@ Therefore:</p>
 </li>
 <li>
 <p>If a Couchbase bucket has already been given a customized setting, no change made here to the default value has any effect on the frequency of metadata purges for that bucket.
-For information on providing customized settings, see <a href="../manage-buckets/create-bucket.html" class="page">Create a Bucket</a> and <a href="../manage-buckets/edit-bucket.html" class="page">Edit a Bucket</a>.</p>
+For information on providing customized settings, see <a href="../manage-buckets/create-bucket.html" class="xref page">Create a Bucket</a> and <a href="../manage-buckets/edit-bucket.html" class="xref page">Edit a Bucket</a>.</p>
 </li>
 <li>
 <p>Neither the default nor the customized frequency of metadata purges for any Ephemeral bucket is affected by changes made here.
@@ -4744,7 +4744,7 @@ Note that although the default interval for Ephemeral buckets is, as with Couchb
 </ul>
 </div>
 <div class="paragraph">
-<p>For more information, see <a href="../../learn/buckets-memory-and-storage/storage.html" class="page">Storage</a>.</p>
+<p>For more information, see <a href="../../learn/buckets-memory-and-storage/storage.html" class="xref page">Storage</a>.</p>
 </div>
 </div>
 </div>
@@ -4753,7 +4753,7 @@ Note that although the default interval for Ephemeral buckets is, as with Couchb
 <h2 id="configure-auto-compaction-with-the-cli"><a class="anchor" href="#configure-auto-compaction-with-the-cli"></a>Configure Auto-Compaction with the CLI</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To configure auto-compaction with the CLI, use the <a href="#cli:cbcli/couchbase-cli-setting-compaction.adoc" class="page unresolved">setting-compaction</a> command.</p>
+<p>To configure auto-compaction with the CLI, use the <a href="#cli:cbcli/couchbase-cli-setting-compaction.adoc" class="xref unresolved">setting-compaction</a> command.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4838,7 +4838,7 @@ Formatted, this might appear as follows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>See <a href="../../rest-api/compaction-rest-api.html" class="page">Getting Auto-Compaction Settings</a>, for more information.</p>
+<p>See <a href="../../rest-api/compaction-rest-api.html" class="xref page">Getting Auto-Compaction Settings</a>, for more information.</p>
 </div>
 <div class="paragraph">
 <p>To modify auto-compaction settings, use the <code>/controller/setAutoCompaction</code> method:</p>
@@ -4874,7 +4874,7 @@ Parallel compaction for database and view is switched <em>off</em>.
 The tombstone purge interval is set to 3 days; and <em>circular</em> standard compaction is specified for particular days and hours.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="../../rest-api/compaction-rest-api.html" class="page">Setting Auto-Compaction</a>, for more information.</p>
+<p>See <a href="../../rest-api/compaction-rest-api.html" class="xref page">Setting Auto-Compaction</a>, for more information.</p>
 </div>
 </div>
 </div>

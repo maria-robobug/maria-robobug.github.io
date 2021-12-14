@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/with.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4472,8 +4472,8 @@ The common table expression may be temporary result set that can be used as a da
 They can also be particularly useful when a value needs to be used several times in a query.</p>
 </div>
 <div class="paragraph">
-<p>The WITH clause has comparable functionality to the <a href="let.html" class="page">LET</a> clause.
-The major difference between the WITH clause and the LET clause is that the WITH clause can come before the SELECT clause, enabling an earlier definition of expressions; whereas the LET clause must come after the <a href="from.html" class="page">FROM</a> clause, and can only be used in subselects.</p>
+<p>The WITH clause has comparable functionality to the <a href="let.html" class="xref page">LET</a> clause.
+The major difference between the WITH clause and the LET clause is that the WITH clause can come before the SELECT clause, enabling an earlier definition of expressions; whereas the LET clause must come after the <a href="from.html" class="xref page">FROM</a> clause, and can only be used in subselects.</p>
 </div>
 <div class="paragraph">
 <p>The WITH clause is evaluated once per query block, and LET is evaluated for every object produced by the FROM or JOIN clause.</p>
@@ -4490,7 +4490,7 @@ A CTE that you create in one WITH clause may be referenced in a later WITH claus
 <div class="paragraph">
 <p>The WITH clause can only be used preceding a SELECT statement, and in order for you to select data from a document or keyspace, you must have the <code class="param">query_select</code> privilege on the document or keyspace.
 For more details about user roles, see
-<a href="../../learn/security/authorization-overview.html" class="page">Authorization</a>.</p>
+<a href="../../learn/security/authorization-overview.html" class="xref page">Authorization</a>.</p>
 </div>
 </div>
 </div>
@@ -4517,15 +4517,15 @@ For more details about user roles, see
 <dl>
 <dt class="hdlist1">alias</dt>
 <dd>
-<p>[Required] String or <a href="index.html" class="page">expression</a> that represents the name of the variable.</p>
+<p>[Required] String or <a href="index.html" class="xref page">expression</a> that represents the name of the variable.</p>
 </dd>
 <dt class="hdlist1">select</dt>
 <dd>
-<p><a href="selectclause.html" class="page">SELECT</a> statement that returns a temporary result set assigned to <code class="var">alias</code>.</p>
+<p><a href="selectclause.html" class="xref page">SELECT</a> statement that returns a temporary result set assigned to <code class="var">alias</code>.</p>
 </dd>
 <dt class="hdlist1">expression</dt>
 <dd>
-<p>String or <a href="index.html" class="page">expression</a> that represents a value assigned to <code class="var">alias</code>.</p>
+<p>String or <a href="index.html" class="xref page">expression</a> that represents a value assigned to <code class="var">alias</code>.</p>
 </dd>
 </dl>
 </div>

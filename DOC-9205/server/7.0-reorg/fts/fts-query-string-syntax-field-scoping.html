@@ -13,7 +13,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/fts/fts-query-string-syntax-field-scoping.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4466,7 +4466,7 @@ The path must use Search syntax rather than N1QL syntax; in other words, you can
 <h2 id="required-optional-and-exclusion"><a class="anchor" href="#required-optional-and-exclusion"></a>Required, Optional, and Exclusion</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When a query string includes multiple items, by default these are placed into the SHOULD clause of a <a href="#fts-query-types.adoc#boolean-query" class="page unresolved">boolean query</a>.
+<p>When a query string includes multiple items, by default these are placed into the SHOULD clause of a <a href="#fts-query-types.adoc#boolean-query" class="xref unresolved">boolean query</a>.
 You can adjust this by prefixing items with <code>+</code> or <code>-</code>.</p>
 </div>
 <div class="ulist">
@@ -4482,7 +4482,7 @@ You can adjust this by prefixing items with <code>+</code> or <code>-</code>.</p
 <div class="sect2">
 <h3 id="example"><a class="anchor" href="#example"></a>Example</h3>
 <div class="paragraph">
-<p>For example, <code>description:pool</code> performs a <a href="#fts-query-types.adoc#match-query" class="page unresolved">match query</a> for the term <code>pool</code>, in the <code>description</code> field.</p>
+<p>For example, <code>description:pool</code> performs a <a href="#fts-query-types.adoc#match-query" class="xref unresolved">match query</a> for the term <code>pool</code>, in the <code>description</code> field.</p>
 </div>
 <div class="paragraph">
 <p>For example, <code>+description:pool -continental breakfast</code> performs a boolean query that MUST satisfy the match query for the term <code>pool</code> in the <code>description</code> field, MUST NOT satisfy the match query for the term <code>continental</code> in the <code>default</code> field, and SHOULD satisfy the match query for the term <code>breakfast</code> in the <code>default</code> field.

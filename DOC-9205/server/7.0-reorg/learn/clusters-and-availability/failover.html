@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/learn/clusters-and-availability/failover.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4476,7 +4476,7 @@ The process promotes replica vBuckets on the remaining cluster-nodes to <em>acti
 Throughout the process, the cluster maintains all 1024 active vBuckets for each bucket.</p>
 <div class="paragraph">
 <p>Graceful failover can <em>only</em> be used on nodes that run the Data Service.
-If controlled removal of a non-Data Service node is required, <a href="removal.html" class="page">Removal</a> should be used.</p>
+If controlled removal of a non-Data Service node is required, <a href="removal.html" class="xref page">Removal</a> should be used.</p>
 </div>
 </li>
 <li>
@@ -4484,7 +4484,7 @@ If controlled removal of a non-Data Service node is required, <a href="removal.h
 If the lost node was running the Data Service, active vBuckets have been lost: therefore the hard failover process promotes replica vBuckets on the remaining cluster-nodes to <em>active</em> status, until 1024 active vBuckets again exist for each bucket.</p>
 <div class="paragraph">
 <p>Hard failover should <em>not</em> be used on a responsive node, since this may disrupt ongoing operations (such as the writes and replications that occur on a Data Service node).
-Instead, available nodes should be taken out of the cluster by means of either graceful failover (if they are Data Service nodes) or <a href="removal.html" class="page">removal</a> (if they are nodes of any kind).</p>
+Instead, available nodes should be taken out of the cluster by means of either graceful failover (if they are Data Service nodes) or <a href="removal.html" class="xref page">removal</a> (if they are nodes of any kind).</p>
 </div>
 </li>
 </ul>
@@ -4496,10 +4496,10 @@ The Cluster Manager detects the unavailability of a node, and duly initiates a <
 </div>
 <div class="paragraph">
 <p>Note that when a node is failed over (as opposed to <em>removed</em>), some replica vBuckets are lost from the surviving nodes; since some are promoted to <em>active</em> status, and are not replaced with new replica-copies.
-By contrast, <a href="removal.html" class="page">removal</a> creates new copies of those replica vBuckets that would otherwise be lost. This maintains the cluster&#8217;s previous level of data-availability; but results in greater competition for memory resources, across the surviving nodes.</p>
+By contrast, <a href="removal.html" class="xref page">removal</a> creates new copies of those replica vBuckets that would otherwise be lost. This maintains the cluster&#8217;s previous level of data-availability; but results in greater competition for memory resources, across the surviving nodes.</p>
 </div>
 <div class="paragraph">
-<p>Ideally, after any failover, <a href="rebalance.html" class="page">rebalance</a> should be performed.
+<p>Ideally, after any failover, <a href="rebalance.html" class="xref page">rebalance</a> should be performed.
 This is especially important when a Data Service node has been failed over, since the rebalance will ensure an optimal ratio of active to replica vBuckets across all the remaining Data Service nodes.</p>
 </div>
 </div>
@@ -4676,7 +4676,7 @@ For example, on node 1, the number of active items is now raised (from its forme
 <p>Ratios on nodes 1 to 3 are now <em>1:2</em>, indicating that rebalance has reduced the number of replicas for the bucket from 3 to 2, in correspondence with the reduced node-count.</p>
 </div>
 <div class="paragraph">
-<p>For further examples of rebalance in the context of <em>node removal</em>, see <a href="removal.html" class="page">Removal</a>.</p>
+<p>For further examples of rebalance in the context of <em>node removal</em>, see <a href="removal.html" class="xref page">Removal</a>.</p>
 </div>
 </div>
 </div>
@@ -4685,7 +4685,7 @@ For example, on node 1, the number of active items is now raised (from its forme
 <div class="sectionbody">
 <div class="paragraph">
 <p><em>Node removal</em> uses the <em>rebalance</em> process to remove a node from a cluster in a controlled fashion.
-It creates on the remaining nodes new copies of replica vBuckets that would otherwise be lost when the selected node is taken offline. See <a href="removal.html" class="page">Removal</a> for a conceptual description of node-removal. For practical steps, see <a href="../../manage/manage-nodes/remove-node-and-rebalance.html" class="page">Remove a Node and Rebalance</a>.</p>
+It creates on the remaining nodes new copies of replica vBuckets that would otherwise be lost when the selected node is taken offline. See <a href="removal.html" class="xref page">Removal</a> for a conceptual description of node-removal. For practical steps, see <a href="../../manage/manage-nodes/remove-node-and-rebalance.html" class="xref page">Remove a Node and Rebalance</a>.</p>
 </div>
 </div>
 </div>

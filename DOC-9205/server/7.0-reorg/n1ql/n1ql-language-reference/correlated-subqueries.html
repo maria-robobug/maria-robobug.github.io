@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/n1ql/n1ql-language-reference/correlated-subqueries.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4456,7 +4456,7 @@
 </div><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the examples <a href="subqueries.html#Q1" class="page">Q1</a>, <a href="subqueries.html#Q2" class="page">Q2</a>, and <a href="subqueries.html#Q3" class="page">Q3</a>, subqueries are independent of the parent queries.
+<p>In the examples <a href="subqueries.html#Q1" class="xref page">Q1</a>, <a href="subqueries.html#Q2" class="xref page">Q2</a>, and <a href="subqueries.html#Q3" class="xref page">Q3</a>, subqueries are independent of the parent queries.
 That means, they do not depend on any of the variables, aliases defined in the outer query, nor the specific document being processed at the outer query.
 In such cases, the inner subquery has no correlation with its outer query so it is called as <strong>non-correlated</strong> subquery.</p>
 </div>
@@ -4513,13 +4513,13 @@ Such subquery is called <strong>Source Correlated Subquery</strong> and it offer
 <dd>
 <p>Couchbase Server version 4.6.2 introduced powerful subquery functionality where correlated nested paths can be used in a subquery FROM clause.
 This provides powerful language expressibility, simplicity, and flexibility to N1QL queries especially when dealing with nested array attributes.
-See <a href="subqueries.html#nested-path-expr" class="page">Nested Paths in Subqueries</a> for more details.</p>
+See <a href="subqueries.html#nested-path-expr" class="xref page">Nested Paths in Subqueries</a> for more details.</p>
 </dd>
 <dt class="hdlist1">Better Performance</dt>
 <dd>
 <p>When correlation is established through the FROM clause in the subquery (with variables in scope), then the N1QL engine knows that the subquery is referring to the same document that is being processed in one of the outer queries.
 Therefore, the subquery avoids fetch of the documents used in the subquery.
-This significantly improves the performance of such subqueries, as shown in example <a href="subqueries.html#Q6" class="page">Q6</a> earlier, to contrast the example <a href="subqueries.html#Q6A" class="page">Q6A</a> cannot take advantage of this optimization.</p>
+This significantly improves the performance of such subqueries, as shown in example <a href="subqueries.html#Q6" class="xref page">Q6</a> earlier, to contrast the example <a href="subqueries.html#Q6A" class="xref page">Q6A</a> cannot take advantage of this optimization.</p>
 </dd>
 </dl>
 </div>
@@ -4527,10 +4527,10 @@ This significantly improves the performance of such subqueries, as shown in exam
 <div class="sect2">
 <h3 id="correlation-by-reference-or-non-from-clause-expression"><a class="anchor" href="#correlation-by-reference-or-non-from-clause-expression"></a>Correlation by Reference (or non FROM clause-Expression)</h3>
 <div class="paragraph">
-<p>In this case the subqueries refer to <a href="subqueries.html#section_onz_3tj_mz" class="page">variables in the scope</a> of outer level queries, in clauses other than the FROM clause of the subquery.
+<p>In this case the subqueries refer to <a href="subqueries.html#section_onz_3tj_mz" class="xref page">variables in the scope</a> of outer level queries, in clauses other than the FROM clause of the subquery.
 In such case, the FROM clause will have an independent keyspace identifier that does not reference any variables in the scope.
 This kind of subquery execution works like a JOIN query and requires the USE KEYS clause.
-For more information, see <a href="#use-keys">USE KEYS in the Subquery</a> and <a href="subqueries.html#from-clause" class="page">FROM clause in Subqueries</a> for more details.</p>
+For more information, see <a href="#use-keys">USE KEYS in the Subquery</a> and <a href="subqueries.html#from-clause" class="xref page">FROM clause in Subqueries</a> for more details.</p>
 </div>
 <div class="paragraph">
 <p>In the following example, in LET clause of parent query, with correlation introduced in the WHERE clause (<code>t2.iata = t1.airline</code>) and USE KEYS clauses of the subquery (referencing <code>t1</code> fields).
@@ -4622,15 +4622,15 @@ For example:</p>
 <p>FROM clause of the subquery in <a href="#Q10">Q10</a> is an independent keyspace identifier <code>`travel-sample`</code> and hence the correlation with parent query is established explicitly using the USE KEYS clause through the referential attribute <code>t1.airlineid</code>.</p>
 </li>
 <li>
-<p>Similarly, the subquery in <a href="subqueries.html#Q9A" class="page">Q9A</a> has an independent keyspace identifier <code>`travel-sample`.inventory.airport</code> in FROM clause, but the correlation is self-referencing to the same document.
+<p>Similarly, the subquery in <a href="subqueries.html#Q9A" class="xref page">Q9A</a> has an independent keyspace identifier <code>`travel-sample`.inventory.airport</code> in FROM clause, but the correlation is self-referencing to the same document.
 Therefore, <code>USE KEYS meta(t).id</code> is used.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>This is exactly same as the PrimaryKey-ForeignKey relationship required to <a href="join.html" class="page">join</a> two documents that are referenced in the outer/inner queries.
+<p>This is exactly same as the PrimaryKey-ForeignKey relationship required to <a href="join.html" class="xref page">join</a> two documents that are referenced in the outer/inner queries.
 Note that, in <code>`travel-sample`</code> keyspace data model, the <code>"route"</code> documents refer the <code>"airline"</code> documents using the attribute <code>airlineid</code>.
-Refer to the <a href="../../learn/data/document-data-model.html" class="page">Data Model</a>.</p>
+Refer to the <a href="../../learn/data/document-data-model.html" class="xref page">Data Model</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4650,7 +4650,7 @@ The FROM clause expression can be:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>In the example <a href="subqueries.html#Q9" class="page">Q9</a>, the FROM clause is an expression referring to the variable/alias <code>t</code> (in fact the nested path <code>t.reviews</code>) that already establishes correlation and hence the subquery does not need explicit USE KEYS clause.</p>
+<p>In the example <a href="subqueries.html#Q9" class="xref page">Q9</a>, the FROM clause is an expression referring to the variable/alias <code>t</code> (in fact the nested path <code>t.reviews</code>) that already establishes correlation and hence the subquery does not need explicit USE KEYS clause.</p>
 </div>
 </div>
 </div>

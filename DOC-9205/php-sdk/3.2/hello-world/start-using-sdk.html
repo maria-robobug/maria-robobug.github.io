@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="php-sdk">
 <meta name="dcterms.identifier" content="3.2">
 <meta name="page-url" content="/php-sdk/3.2/hello-world/start-using-sdk.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3685,7 +3685,7 @@ and adding support for future Couchbase Server features like Collections and Sco
 <h2 id="installing-the-sdk"><a class="anchor" href="#installing-the-sdk"></a>Installing the SDK</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Before installing the PHP SDK, you must install the <a href="#3.0@c-sdk:hello-world:start-using-sdk.adoc" class="page unresolved">C SDK&#8201;&#8212;&#8201;<em>libcouchbase</em> (LCB)</a>;
+<p>Before installing the PHP SDK, you must install the <a href="#3.0@c-sdk:hello-world:start-using-sdk.adoc" class="xref unresolved">C SDK&#8201;&#8212;&#8201;<em>libcouchbase</em> (LCB)</a>;
 version 3.0 or higher is required for PHP Client 3.1.</p>
 </div>
 <div class="paragraph">
@@ -3697,7 +3697,7 @@ version 3.0 or higher is required for PHP Client 3.1.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Further details can be found on the <a href="../project-docs/sdk-release-notes.html" class="page">Release Notes &amp; Archives page</a>.
+<p>Further details can be found on the <a href="../project-docs/sdk-release-notes.html" class="xref page">Release Notes &amp; Archives page</a>.
 In particular, look at the post-install instructions in light of the <code>.ini</code> practices for your platform,
 and note that the Couchbase SDK depends on the JSON module, therefore that module has to be loaded before the SDK.</p>
 </div>
@@ -3707,9 +3707,9 @@ and note that the Couchbase SDK depends on the JSON module, therefore that modul
 <h2 id="hello-couchbase"><a class="anchor" href="#hello-couchbase"></a>Hello Couchbase</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Couchbase uses <a href="#7.0@server:learn:security/roles.adoc" class="page unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
+<p>Couchbase uses <a href="#7.0@server:learn:security/roles.adoc" class="xref unresolved">Role Based Access Control (RBAC)</a> to control access to resources.
 Here we will use the <em>Full Admin</em> role created during installation of the Couchbase Data Platform.
-For production client code, you will want to use <a href="../howtos/managing-connections.html#rbac" class="page">more appropriate, restrictive settings</a>, but here we want to get you up and running quickly.
+For production client code, you will want to use <a href="../howtos/managing-connections.html#rbac" class="xref page">more appropriate, restrictive settings</a>, but here we want to get you up and running quickly.
 If you&#8217;re developing client code on the same VM or machine as the Couchbase Server, your URI can be <em>localhost</em>.</p>
 </div>
 <div class="listingblock">
@@ -3749,7 +3749,7 @@ $collection = $bucket-&gt;scope("myapp")-&gt;collection("my-collection");</code>
 </div>
 </div>
 <div class="paragraph">
-<p>The 3.2 SDK supports full integration with the <a href="#7.0@server:learn:data:scopes-and-collections.adoc" class="page unresolved">Collections</a> feature in the latest release of the Couchbase Data Platform, Couchbase Server 7.0.
+<p>The 3.2 SDK supports full integration with the <a href="#7.0@server:learn:data:scopes-and-collections.adoc" class="xref unresolved">Collections</a> feature in the latest release of the Couchbase Data Platform, Couchbase Server 7.0.
 This brings complete support of Collections, allowing Documents to be grouped by purpose or theme, according to a specified Scope.
 Here we will use the <code>users</code> collection within the <code>tenant_agent_00</code> scope from <code>travel-sample</code> bucket as an example.</p>
 </div>
@@ -3775,9 +3775,9 @@ $getResult = $collection-&gt;get("my-document");</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>KV Operations are described in detail on the <a href="../howtos/kv-operations.html" class="page">KV Operations page</a>.
+<p>KV Operations are described in detail on the <a href="../howtos/kv-operations.html" class="xref page">KV Operations page</a>.
 Now that you know the basics, you may wish to go straight to that page&#8201;&#8212;&#8201;or first see a complete worked example of
-using the Couchbase php client, our <a href="sample-application.html" class="page">Travel Sample Application</a>.</p>
+using the Couchbase php client, our <a href="sample-application.html" class="xref page">Travel Sample Application</a>.</p>
 </div>
 </div>
 </div>
@@ -3793,13 +3793,13 @@ using the Couchbase php client, our <a href="sample-application.html" class="pag
 <div class="ulist">
 <ul>
 <li>
-<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="page">Constrained Network Environments</a>,</p>
+<p>Notes on <a href="../ref/client-settings.html#constrained-network-environments" class="xref page">Constrained Network Environments</a>,</p>
 </li>
 <li>
-<p><a href="../project-docs/compatibility.html#network-requirements" class="page">Network Requirements</a>,</p>
+<p><a href="../project-docs/compatibility.html#network-requirements" class="xref page">Network Requirements</a>,</p>
 </li>
 <li>
-<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="page">Troubleshooting Guide</a>.</p>
+<p>If you have a consumer-grade router which has problems with DNS-SRV records review our <a href="../howtos/troubleshooting-cloud-connections.html#troubleshooting-host-not-found" class="xref page">Troubleshooting Guide</a>.</p>
 </li>
 </ul>
 </div>
@@ -3810,10 +3810,10 @@ using the Couchbase php client, our <a href="sample-application.html" class="pag
 <div class="sectionbody">
 <div class="paragraph">
 <p>The API reference is generated for each release and can be found <a href="http://docs.couchbase.com/sdk-api/couchbase-php-client/namespaces/couchbase.html" target="_blank" rel="noopener">here</a>.
-Older API references are linked from their respective sections in the <a href="../project-docs/sdk-release-notes.html" class="page">Release Notes</a>.</p>
+Older API references are linked from their respective sections in the <a href="../project-docs/sdk-release-notes.html" class="xref page">Release Notes</a>.</p>
 </div>
 <div class="paragraph">
-<p><a href="../project-docs/migrating-sdk-code-to-3.n.html" class="page">The Migrating from SDK2 to 3 page</a> highlights the main differences to be aware of when migrating your code.</p>
+<p><a href="../project-docs/migrating-sdk-code-to-3.n.html" class="xref page">The Migrating from SDK2 to 3 page</a> highlights the main differences to be aware of when migrating your code.</p>
 </div>
 <div class="paragraph">
 <p>Couchbase welcomes community contributions to the PHP SDK.

@@ -15,7 +15,7 @@
 <meta name="dcterms.subject" content="scala-sdk">
 <meta name="dcterms.identifier" content="1.2">
 <meta name="page-url" content="/scala-sdk/1.2/howtos/kv-operations.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -3676,10 +3676,10 @@
 <p>A <em>document</em> refers to an entry in the database (other databases may refer to the same concept as a <em>row</em>).
 A document has an ID (<em>primary key</em> in other databases), which is unique to the document and by which it can be located.
 The document also has a value which contains the actual application data.
-See <a href="../concept-docs/documents.html" class="page">the concept guide to <em>Documents</em></a> for a deeper dive into documents in the Couchbase Data Platform.</p>
+See <a href="../concept-docs/documents.html" class="xref page">the concept guide to <em>Documents</em></a> for a deeper dive into documents in the Couchbase Data Platform.</p>
 </div>
 <div class="paragraph">
-<p>Before proceeding, make sure you&#8217;re familiar with the basics of authorization and connecting to a Cluster from the <a href="../hello-world/start-using-sdk.html" class="page">Start Using the SDK</a> section.</p>
+<p>Before proceeding, make sure you&#8217;re familiar with the basics of authorization and connecting to a Cluster from the <a href="../hello-world/start-using-sdk.html" class="xref page">Start Using the SDK</a> section.</p>
 </div>
 <div class="paragraph">
 <p>The code samples below will use these imports:</p>
@@ -3718,7 +3718,7 @@ N1QL can also be used to perform many single-document operations, but we very st
 <p>The Couchbase Server is a key-value store that&#8217;s agnostic to what&#8217;s stored, but it&#8217;s very common to store JSON so most of the examples below will focus on that use-case.</p>
 </div>
 <div class="paragraph">
-<p>The Scala SDK provides you with several options for working with JSON.  They are described in more detail in <a href="json.html" class="page">this guide</a>, and the information below is just a summary of that.</p>
+<p>The Scala SDK provides you with several options for working with JSON.  They are described in more detail in <a href="json.html" class="xref page">this guide</a>, and the information below is just a summary of that.</p>
 </div>
 <div class="paragraph">
 <p>The SDK directly supports several popular JSON libraries: <a href="https://github.com/lihaoyi/upickle">uPickle/uJson</a>, <a href="https://circe.github.io/circe/">Circe</a>, <a href="https://github.com/playframework/play-json">Play Json</a>, <a href="https://github.com/typelevel/jawn">Jawn</a>, and <a href="https://github.com/json4s/json4s">Json4s</a>.</p>
@@ -3968,7 +3968,7 @@ collection.get("document-key3") match {
 </div>
 <div class="paragraph">
 <p>We can use <code>contentAs</code> to return the document&#8217;s
-content in all sorts of ways: as a String, as an Array[Byte], as a <code>org.json4s.JValue</code> from the <a href="https://github.com/json4s/json4s">json4s library</a>&#8230;&#8203; it&#8217;s very flexible (see <a href="json.html" class="page">the JSON docs</a> for details).  Here,
+content in all sorts of ways: as a String, as an Array[Byte], as a <code>org.json4s.JValue</code> from the <a href="https://github.com/json4s/json4s">json4s library</a>&#8230;&#8203; it&#8217;s very flexible (see <a href="json.html" class="xref page">the JSON docs</a> for details).  Here,
 we&#8217;ve asked for it to be returned as a <code>JsonObjectSafe</code> - a 'safe' interface to the <code>JsonObject</code> that doesn&#8217;t throw exceptions.</p>
 </div>
 <div class="paragraph">
@@ -4069,7 +4069,7 @@ r match {
 <p>So, what is CAS?</p>
 </div>
 <div class="paragraph">
-<p>CAS, or Compare and Swap, is a form of optimistic locking.  Every document in Couchbase has a CAS value, and it&#8217;s changed on every mutation.  When you <code>get</code> a document you also get the document&#8217;s CAS, and then when it&#8217;s time to write the document, you send the same CAS back.  If another agent has modified that document, the Couchbase Server can detect you&#8217;ve provided a now-outdated CAS, and return an error instead of mutating the document.  This provides cheap, safe concurrency.  See <a href="concurrent-document-mutations.html" class="page">this detailed description of CAS</a> for further details.</p>
+<p>CAS, or Compare and Swap, is a form of optimistic locking.  Every document in Couchbase has a CAS value, and it&#8217;s changed on every mutation.  When you <code>get</code> a document you also get the document&#8217;s CAS, and then when it&#8217;s time to write the document, you send the same CAS back.  If another agent has modified that document, the Couchbase Server can detect you&#8217;ve provided a now-outdated CAS, and return an error instead of mutating the document.  This provides cheap, safe concurrency.  See <a href="concurrent-document-mutations.html" class="xref page">this detailed description of CAS</a> for further details.</p>
 </div>
 <div class="paragraph">
 <p>In general, you&#8217;ll want to provide a CAS value whenever you <code>replace</code> a document, to prevent overwriting another agent&#8217;s mutations.</p>
@@ -4150,7 +4150,7 @@ def retryOnCASMismatch(
 <p>All of the operations seen so far involve fetching the complete document.</p>
 </div>
 <div class="paragraph">
-<p>As an optimization the application may consider using the <a href="subdocument-operations.html" class="page">Sub-Document API</a> to access or mutate specific parts of a document.</p>
+<p>As an optimization the application may consider using the <a href="subdocument-operations.html" class="xref page">Sub-Document API</a> to access or mutate specific parts of a document.</p>
 </div>
 </div>
 </div>
@@ -4161,7 +4161,7 @@ def retryOnCASMismatch(
 <p>So far we&#8217;ve used JSON directly with <code>JsonObject</code> and <code>JsonObjectSafe</code>, but it can be very useful to deal with Scala case classes instead.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="json.html#case-classes" class="page">this guide</a> for details.</p>
+<p>See <a href="json.html#case-classes" class="xref page">this guide</a> for details.</p>
 </div>
 </div>
 </div>
@@ -4195,7 +4195,7 @@ def retryOnCASMismatch(
 <p>However, we recognize that there are times when the application needs that extra certainty that especially vital mutations have been successfully replicated, and the other durability options provide the means to achieve this.</p>
 </div>
 <div class="paragraph">
-<p>The options differ depend on what Couchbase Server version is in use.  If 6.5 or above is being used, you can take advantage of the <a href="../concept-docs/durability-replication-failure-considerations.html#durable-writes" class="page">Durable Write</a> feature, in which Couchbase Server will only return success to the SDK after the requested replication level has been achieved.  The three replication levels are:</p>
+<p>The options differ depend on what Couchbase Server version is in use.  If 6.5 or above is being used, you can take advantage of the <a href="../concept-docs/durability-replication-failure-considerations.html#durable-writes" class="xref page">Durable Write</a> feature, in which Couchbase Server will only return success to the SDK after the requested replication level has been achieved.  The three replication levels are:</p>
 </div>
 <div class="paragraph">
 <p><code>Majority</code> - The server will ensure that the change is available in memory on the majority of configured replicas.</p>
@@ -4208,10 +4208,10 @@ def retryOnCASMismatch(
 </div>
 <div class="paragraph">
 <p>The options are in increasing levels of failure-resistance.  Note that nothing comes for free - for a given node, waiting for writes to storage is considerably slower than waiting for it to be available in-memory.
-These trade offs, as well as which settings may be tuned, are discussed in the <a href="../concept-docs/durability-replication-failure-considerations.html#durable-writes" class="page">durability page</a>.</p>
+These trade offs, as well as which settings may be tuned, are discussed in the <a href="../concept-docs/durability-replication-failure-considerations.html#durable-writes" class="xref page">durability page</a>.</p>
 </div>
 <div class="paragraph">
-<p>If a version of Couchbase Server lower than 6.5 is being used then the application can fall-back to <a href="../concept-docs/durability-replication-failure-considerations.html#older-server-versions" class="page">'client verified' durability</a>.
+<p>If a version of Couchbase Server lower than 6.5 is being used then the application can fall-back to <a href="../concept-docs/durability-replication-failure-considerations.html#older-server-versions" class="xref page">'client verified' durability</a>.
 Here the SDK will do a simple poll of the replicas and only return once the requested durability level is achieved.  This can be achieved like this:</p>
 </div>
 <div class="listingblock">
@@ -4338,7 +4338,7 @@ collection.binary.decrement("document-key6", delta = 1, initial = Some(10)) matc
 <h2 id="scoped-kv-operations"><a class="anchor" href="#scoped-kv-operations"></a>Scoped KV Operations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>It is possible to perform scoped key value operations on named <a href="#{version-server}@server:learn:data/scopes-and-collections.adoc" class="page unresolved"><code>Collections</code></a> <em>with Couchbase Server release, 7.0</em>.</p>
+<p>It is possible to perform scoped key value operations on named <a href="#{version-server}@server:learn:data/scopes-and-collections.adoc" class="xref unresolved"><code>Collections</code></a> <em>with Couchbase Server release, 7.0</em>.</p>
 </div>
 <div class="paragraph">
 <p>Here is an example showing an upsert in the <code>users</code> collection, which lives in the <code>travel-sample.tenant_agent_00</code> keyspace:</p>
@@ -4361,13 +4361,13 @@ usersCollection.upsert("user-key", json) match {
 <h2 id="additional-resources"><a class="anchor" href="#additional-resources"></a>Additional Resources</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Working on just a specific path within a JSON document will reduce network bandwidth requirements - see the <a href="subdocument-operations.html" class="page">Sub-Document</a> pages.</p>
+<p>Working on just a specific path within a JSON document will reduce network bandwidth requirements - see the <a href="subdocument-operations.html" class="xref page">Sub-Document</a> pages.</p>
 </div>
 <div class="paragraph">
-<p>As well as various <a href="../concept-docs/data-model.html" class="page">Formats</a> of JSON, Couchbase can work directly with <a href="../concept-docs/nonjson.html" class="page">arbitrary bytes, or binary format</a>.</p>
+<p>As well as various <a href="../concept-docs/data-model.html" class="xref page">Formats</a> of JSON, Couchbase can work directly with <a href="../concept-docs/nonjson.html" class="xref page">arbitrary bytes, or binary format</a>.</p>
 </div>
 <div class="paragraph">
-<p>Our <a href="n1ql-queries-with-sdk.html" class="page">Query Engine</a> enables retrieval of information using the SQL-like syntax of N1QL.</p>
+<p>Our <a href="n1ql-queries-with-sdk.html" class="xref page">Query Engine</a> enables retrieval of information using the SQL-like syntax of N1QL.</p>
 </div>
 </div>
 </div>

@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/rest-api/rest-rza.html">
-<meta name="generator" content="Antora 3.0.0-alpha.5">
+<meta name="generator" content="Antora 3.0.0-beta.5">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -4473,7 +4473,7 @@ Following group-definition and rebalance, the active vBuckets for any defined bu
 This allows <em>Group Failover</em> to be enabled, so that if an entire group goes offline, its replica vBuckets, which remain available on another group, can be automatically promoted to active status.</p>
 </div>
 <div class="paragraph">
-<p>For a complete conceptual overview, see <a href="../learn/clusters-and-availability/groups.html" class="page">Server Group Awareness</a>.</p>
+<p>For a complete conceptual overview, see <a href="../learn/clusters-and-availability/groups.html" class="xref page">Server Group Awareness</a>.</p>
 </div>
 <div class="paragraph">
 <p><em>Server Group Awareness</em> is supported by the <em>Server Groups REST API</em>, whose capabilites are summarized below.</p>
@@ -4498,43 +4498,43 @@ This allows <em>Group Failover</em> to be enabled, so that if an entire group go
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em class="path">/pools/default/serverGroups</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="rest-servergroup-get.html" class="page">Retrieves</a> information about the current server-group configuration.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="rest-servergroup-get.html" class="xref page">Retrieves</a> information about the current server-group configuration.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Full, Cluster</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em class="path">/pools/default/serverGroups</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="rest-servergroup-post-create.html" class="page">Creates</a> and uniquely names a server group.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="rest-servergroup-post-create.html" class="xref page">Creates</a> and uniquely names a server group.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Full, Cluster</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em class="path">/pools/default/serverGroups/&lt;:uuid&gt;/addNode</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="rest-servergroup-post-add.html" class="page">Adds</a> a node to the cluster, and simultaneously assigns it to an existing server group.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="rest-servergroup-post-add.html" class="xref page">Adds</a> a node to the cluster, and simultaneously assigns it to an existing server group.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Full, Cluster</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em class="path">/pools/default/serverGroups/&lt;:uuid&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="rest-servergroup-put.html" class="page">Renames</a> a server group.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="rest-servergroup-put.html" class="xref page">Renames</a> a server group.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Full, Cluster</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PUT</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em class="path">/pools/default/serverGroups?rev=&lt;:number&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="rest-servergroup-put-membership.html" class="page">Updates</a> the assignment of nodes to server groups.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="rest-servergroup-put-membership.html" class="xref page">Updates</a> the assignment of nodes to server groups.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Full, Cluster</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DELETE</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em class="path">/pools/default/serverGroups/&lt;:uuid&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="rest-servergroup-delete.html" class="page">Deletes</a> a specific server group.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="rest-servergroup-delete.html" class="xref page">Deletes</a> a specific server group.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Full, Cluster</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>For information on Couchbase <em>Role-Based Access Control</em>, see <a href="../learn/security/roles.html" class="page">Roles</a>.</p>
+<p>For information on Couchbase <em>Role-Based Access Control</em>, see <a href="../learn/security/roles.html" class="xref page">Roles</a>.</p>
 </div>
 </div>
 </div>
