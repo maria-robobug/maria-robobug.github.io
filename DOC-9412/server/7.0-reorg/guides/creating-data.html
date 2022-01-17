@@ -23,7 +23,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/guides/creating-data.html">
-<meta name="generator" content="Antora 3.0.0-beta.5">
+<meta name="generator" content="Antora 3.0.0">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -75,33 +75,22 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../../cloud-native-database/index.html">
-                      Cloud-Native
-                    </a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link" href="../../../home/sdk.html">
                       SDKs
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="../../../tutorials/index.html">
-                      Tutorials
-                      <span class="arrow">
-                        <i class="fas fa-arrow-right"></i>
-                      </span>
                     </a>
                   </li>
                 </ul>
               </div>
               <div class="primary-action">
-                <a href="https://cloud.couchbase.com/sign-up" class="free-trial-link" onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Free Trial'});" >
-                  <i class="fas fa-cloud"></i>
-                  Free Trial
-                </a>
-                <a class="btn btn-primary try-btn"  onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Download'});" href="https://www.couchbase.com/downloads">
+                <a class="btn btn-primary btn-grey-reverse" onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Download'});" href="https://www.couchbase.com/downloads">
                   Downloads
+                  <i class="far fa-arrow-to-bottom fa-fw"></i>
                 </a>
+                <a href="https://cloud.couchbase.com/sign-up" class="btn btn-primary" onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Free Trial'});" >
+                  Start Free Trial
+                  <i class="far fa-cloud fa-fw"></i>
+                </a>
+
               </div>
 
         </nav>
@@ -4392,7 +4381,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/pages/creating-data.adoc" title="Edit Page" target="_blank" rel="noopener">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/pages/creating-data.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -4490,7 +4479,7 @@ If a scope or collection is not provided when creating a document, Couchbase wil
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/hello-world/cbc.html" class="xref page">Command Line Clients</a></p>
+<p><a href="#c-sdk:hello-world:cbc.adoc" class="xref unresolved">Command Line Clients</a></p>
 </li>
 <li>
 <p><a href="../../../home/sdk.html" class="xref page">SDK Clients</a></p>
@@ -4682,7 +4671,36 @@ If the document already exists, the SDK will return a <code>DocumentExistsExcept
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/guides/pages/creating-data.adoc - include::java-sdk:hello-world:example$KvHelloWorldScoped.java[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L45-L74">// Create the document object.
+JsonObject geo = JsonObject.create()
+    .put("lat", 51.35785)
+    .put("lon", 0.55818)
+    .put("accuracy", "RANGE_INTERPOLATED");
+
+JsonArray reviews = JsonArray.create();
+reviews.add(JsonObject.create()
+    .put("content", "This was our 2nd trip here and we enjoyed it more than last year.")
+    .put("author", "Ozella Sipes")
+    .put("date", DateTimeFormatter.ISO_INSTANT.format(Instant.now())));
+
+JsonObject document = JsonObject.create()
+    .put("id", "hotel-123")
+    .put("name", "Medway Youth Hostel")
+    .put("address", "Capstone Road, ME7 3JE")
+    .put("url", "http://www.yha.org.uk")
+    .put("geo", geo)
+    .put("country", "United Kingdom")
+    .put("city", "Medway")
+    .put("state", (String) null)
+    .put("reviews", reviews)
+    .put("vacancy", true)
+    .put("description", "40 bed summer hostel about 3 miles from Gillingham.");
+
+// Insert the document in the hotel collection.
+MutationResult insertResult = hotelCollection.insert("hotel-123", document);
+
+// Print the result's CAS metadata to the console.
+System.out.println("CAS:" + insertResult.cas());</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -4724,7 +4742,37 @@ If the document already exists, the SDK will return a <code>DocumentExistsExcept
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs">Unresolved include directive in modules/guides/pages/creating-data.adoc - include::nodejs-sdk:hello-world:example$kv-hello-world-scoped.js[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L14-L44">// Create a document object.
+const document = {
+  id: 123,
+  name: 'Medway Youth Hostel',
+  address: 'Capstone Road, ME7 3JE',
+  url: 'http://www.yha.org.uk',
+  geo: {
+    lat: 51.35785,
+    lon: 0.55818,
+    accuracy: 'RANGE_INTERPOLATED',
+  },
+  country: 'United Kingdom',
+  city: 'Medway',
+  state: null,
+  reviews: [
+    {
+      content:
+        'This was our 2nd trip here and we enjoyed it more than last year.',
+      author: 'Ozella Sipes',
+      date: new Date().toISOString(),
+    },
+  ],
+  vacancy: true,
+  description: '40 bed summer hostel about 3 miles from Gillingham.',
+}
+
+// Insert the document in the hotel collection.
+const insertResult = await hotelCollection.insert('hotel-123', document)
+
+// Print the result's CAS metadata to the console.
+console.log('CAS:', insertResult.cas)</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -4923,7 +4971,27 @@ This unique value allows the database to protect against concurrent updates to t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/guides/pages/creating-data.adoc - include::java-sdk:hello-world:example$KvHelloWorldScoped.java[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L81-L101">JsonObject document = JsonObject.create()
+    .put("id", 456)
+    .put("title", "Ardèche")
+    .put("name", "La Pradella")
+    .put("address", "rue du village, 07290 Preaux, France")
+    .put("phone", "+33 4 75 32 08 52")
+    .put("url", "http://www.lapradella.fr")
+    .put("country", "France")
+    .put("city", "Preaux")
+    .put("state", "Rhône-Alpes")
+    .put("vacancy", false);
+
+// Insert the document with an expiry time option of 60 seconds.
+MutationResult insertResult = hotelCollection.insert(
+  "hotel-456",
+  document,
+  InsertOptions.insertOptions().expiry(Duration.ofSeconds(2))
+);
+
+// Print the result's CAS metadata to the console.
+System.out.println("CAS:" + insertResult.cas());</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4950,7 +5018,26 @@ This unique value allows the database to protect against concurrent updates to t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs">Unresolved include directive in modules/guides/pages/creating-data.adoc - include::nodejs-sdk:hello-world:example$kv-hello-world-scoped.js[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L51-L70">document = {
+  id: 456,
+  title: 'Ardèche',
+  name: 'La Pradella',
+  address: 'rue du village, 07290 Preaux, France',
+  phone: '+33 4 75 32 08 52',
+  url: 'http://www.lapradella.fr',
+  country: 'France',
+  city: 'Preaux',
+  state: 'Rhône-Alpes',
+  vacancy: false,
+}
+
+// Insert the document with an expiry time option of 60 seconds.
+const insertResult = await hotelCollection.insert('hotel-456', document, {
+  expiry: 60,
+})
+
+// Print the result's CAS metadata to the console.
+console.log('CAS:', insertResult.cas)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5001,15 +5088,15 @@ This unique value allows the database to protect against concurrent updates to t
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/howtos/kv-operations.html" class="xref page">C</a>
+<p><a href="#c-sdk:howtos:kv-operations.adoc" class="xref unresolved">C</a>
 | <a href="../../../dotnet-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">.NET</a>
-| <a href="../../../go-sdk/2.3/howtos/kv-operations.html" class="xref page">Go</a>
+| <a href="#go-sdk:howtos:kv-operations.adoc" class="xref unresolved">Go</a>
 | <a href="../../../java-sdk/3.2/howtos/kv-operations.html" class="xref page">Java</a>
-| <a href="../../../nodejs-sdk/3.2/howtos/kv-operations.html" class="xref page">Node.js</a>
-| <a href="../../../php-sdk/3.2/howtos/kv-operations.html" class="xref page">PHP</a>
+| <a href="../../../nodejs-sdk/DOC-9236/howtos/kv-operations.html" class="xref page">Node.js</a>
+| <a href="#php-sdk:howtos:kv-operations.adoc" class="xref unresolved">PHP</a>
 | <a href="../../../python-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Python</a>
-| <a href="../../../ruby-sdk/3.2/howtos/kv-operations.html" class="xref page">Ruby</a>
-| <a href="../../../scala-sdk/1.2/howtos/kv-operations.html" class="xref page">Scala</a></p>
+| <a href="#ruby-sdk:howtos:kv-operations.adoc" class="xref unresolved">Ruby</a>
+| <a href="#scala-sdk:howtos:kv-operations.adoc" class="xref unresolved">Scala</a></p>
 </li>
 </ul>
 </div>
@@ -5082,7 +5169,7 @@ This unique value allows the database to protect against concurrent updates to t
     </div>
     <div class="footer-terms">
       <div class="footer-terms-copyright">
-          <span>© 2021 Couchbase, Inc. Couchbase, Couchbase Lite and the Couchbase logo are registered trademarks of Couchbase, Inc.</span>
+          <span>© 2022 Couchbase, Inc. Couchbase, Couchbase Lite and the Couchbase logo are registered trademarks of Couchbase, Inc.</span>
       </div>
       <div class="footer-terms-links">
         <a href="https://www.couchbase.com/terms-of-use">Terms of Use</a>

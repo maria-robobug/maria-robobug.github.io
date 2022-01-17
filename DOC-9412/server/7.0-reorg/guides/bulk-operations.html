@@ -21,7 +21,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/guides/bulk-operations.html">
-<meta name="generator" content="Antora 3.0.0-beta.5">
+<meta name="generator" content="Antora 3.0.0">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -73,33 +73,22 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../../cloud-native-database/index.html">
-                      Cloud-Native
-                    </a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link" href="../../../home/sdk.html">
                       SDKs
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="../../../tutorials/index.html">
-                      Tutorials
-                      <span class="arrow">
-                        <i class="fas fa-arrow-right"></i>
-                      </span>
                     </a>
                   </li>
                 </ul>
               </div>
               <div class="primary-action">
-                <a href="https://cloud.couchbase.com/sign-up" class="free-trial-link" onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Free Trial'});" >
-                  <i class="fas fa-cloud"></i>
-                  Free Trial
-                </a>
-                <a class="btn btn-primary try-btn"  onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Download'});" href="https://www.couchbase.com/downloads">
+                <a class="btn btn-primary btn-grey-reverse" onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Download'});" href="https://www.couchbase.com/downloads">
                   Downloads
+                  <i class="far fa-arrow-to-bottom fa-fw"></i>
                 </a>
+                <a href="https://cloud.couchbase.com/sign-up" class="btn btn-primary" onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Free Trial'});" >
+                  Start Free Trial
+                  <i class="far fa-cloud fa-fw"></i>
+                </a>
+
               </div>
 
         </nav>
@@ -4390,7 +4379,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/pages/bulk-operations.adoc" title="Edit Page" target="_blank" rel="noopener">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/pages/bulk-operations.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -4485,7 +4474,7 @@ This guide contains basic procedures for performing bulk CRUD operations on Couc
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/hello-world/cbc.html" class="xref page">Command Line Clients</a></p>
+<p><a href="#c-sdk:hello-world:cbc.adoc" class="xref unresolved">Command Line Clients</a></p>
 </li>
 <li>
 <p><a href="../../../home/sdk.html" class="xref page">SDK Clients</a></p>
@@ -4583,9 +4572,29 @@ Unresolved include directive in modules/guides/pages/bulk-operations.adoc - incl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/guides/pages/bulk-operations.adoc - include::java-sdk:hello-world:example$KvBulkHelloWorld.java[]
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">JsonObject user1 = JsonObject.create().put("id", "user_111").put("email", "tom_the_cat@gmail.com");
+JsonObject user2 = JsonObject.create().put("id", "user_222").put("email", "jerry_mouse@gmail.com");
+JsonObject user3 = JsonObject.create().put("id", "user_333").put("email", "mickey_mouse@gmail.com");
 
-Unresolved include directive in modules/guides/pages/bulk-operations.adoc - include::java-sdk:hello-world:example$KvBulkHelloWorld.java[]</code></pre>
+List&lt;JsonDocument&gt; documents = Arrays.asList(
+  new JsonDocument("user_111", user1),
+  new JsonDocument("user_222", user2),
+  new JsonDocument("user_333", user3)
+);
+
+// Iterate over a list of documents to insert.
+List&lt;MutationResult&gt; results = Flux.fromIterable(documents)
+    .flatMap(document -&gt; reactiveCollection.insert(
+        document.getId(), document.getContent()
+      )
+    )
+    .collectList()
+    .block(); // Wait until all operations have completed.
+
+// Print all the results.
+for (MutationResult result : results) {
+  System.out.println("CAS: " + result.cas());
+}</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -4602,7 +4611,28 @@ A <code>JsonDocument</code> class is used to supplement the example.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/guides/pages/bulk-operations.adoc - include::java-sdk:hello-world:example$KvBulkHelloWorld.java[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvBulkHelloWorld.java#L132-L153">class JsonDocument {
+  private final String id;
+  private final JsonObject content;
+
+  public JsonDocument(String id, JsonObject content) {
+    this.id = id;
+    this.content = content;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public JsonObject getContent() {
+    return content;
+  }
+
+  @Override
+  public String toString() {
+    return "JsonDocument{id='" + id + "', content=" + content + "}";
+  }
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4629,7 +4659,21 @@ A <code>JsonDocument</code> class is used to supplement the example.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs">Unresolved include directive in modules/guides/pages/bulk-operations.adoc - include::nodejs-sdk:hello-world:example$kv-bulk-hello-world.js[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-bulk-hello-world.js">const users = [
+  { id: 'user_111', email: 'tom_the_cat@gmail.com' },
+  { id: 'user_222', email: 'jerry_mouse@gmail.com' },
+  { id: 'user_333', email: 'mickey_mouse@gmail.com' },
+]
+// Wait for all the insert operations to complete and store the results.
+const insertResults = await Promise.all(
+  users.map((user) =&gt; {
+    console.log(`Inserting document: ${user.id}`)
+    return usersCollection.insert(user.id, user)
+  })
+)
+
+// Iterate the results and print the CAS metadata.
+insertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4805,9 +4849,28 @@ Unresolved include directive in modules/guides/pages/bulk-operations.adoc - incl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/guides/pages/bulk-operations.adoc - include::java-sdk:hello-world:example$KvBulkHelloWorld.java[]
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">JsonObject user1 = JsonObject.create().put("id", "user_111").put("email", "tom_the_cat@gmail.com");
+JsonObject user2 = JsonObject.create().put("id", "user_222").put("email", "jerry_mouse@gmail.com");
+JsonObject user3 = JsonObject.create().put("id", "user_333").put("email", "mickey_mouse@gmail.com");
 
-Unresolved include directive in modules/guides/pages/bulk-operations.adoc - include::java-sdk:hello-world:example$KvBulkHelloWorld.java[]</code></pre>
+List&lt;JsonDocument&gt; documents = Arrays.asList(
+  new JsonDocument("user_111", user1),
+  new JsonDocument("user_222", user2),
+  new JsonDocument("user_333", user3)
+);
+
+// Iterate over a list of documents to fetch.
+List&lt;GetResult&gt; results = Flux.fromIterable(documents)
+    .flatMap(document -&gt; reactiveCollection.get(document.getId()))
+    .collectList()
+    .block(); // Wait until all operations have completed.
+
+// Print all the results.
+for (GetResult result : results) {
+  JsonObject document = result.contentAsObject();
+  System.out.println("Document: "  + document);
+  System.out.println("CAS: " + result.cas());
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4827,7 +4890,21 @@ Unresolved include directive in modules/guides/pages/bulk-operations.adoc - incl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs">Unresolved include directive in modules/guides/pages/bulk-operations.adoc - include::nodejs-sdk:hello-world:example$kv-bulk-hello-world.js[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-bulk-hello-world.js">const users = [
+  { id: 'user_111', email: 'tom_the_cat@gmail.com' },
+  { id: 'user_222', email: 'jerry_mouse@gmail.com' },
+  { id: 'user_333', email: 'mickey_mouse@gmail.com' },
+]
+// Wait for all the get operations to complete and store the results.
+const getResults = await Promise.all(
+  users.map((user) =&gt; {
+    console.log(`Getting document: ${user.id}`)
+    return usersCollection.get(user.id, user)
+  })
+)
+
+// Iterate the results and print the CAS metadata.
+getResults.forEach((result) =&gt; console.log('Document:', result.content))</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4952,9 +5029,39 @@ Unresolved include directive in modules/guides/pages/bulk-operations.adoc - incl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/guides/pages/bulk-operations.adoc - include::java-sdk:hello-world:example$KvBulkHelloWorld.java[]
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">JsonObject user1 = JsonObject.create().put("id", "user_111").put("email", "tom_the_cat@gmail.com");
+JsonObject user2 = JsonObject.create().put("id", "user_222").put("email", "jerry_mouse@gmail.com");
+JsonObject user3 = JsonObject.create().put("id", "user_333").put("email", "mickey_mouse@gmail.com");
 
-Unresolved include directive in modules/guides/pages/bulk-operations.adoc - include::java-sdk:hello-world:example$KvBulkHelloWorld.java[]</code></pre>
+List&lt;JsonDocument&gt; documents = Arrays.asList(
+  new JsonDocument("user_111", user1),
+  new JsonDocument("user_222", user2),
+  new JsonDocument("user_333", user3)
+);
+
+JsonObject newUser1 = JsonObject.create().put("id", "user_111").put("email", "tom@gmail.com");
+JsonObject newUser2 = JsonObject.create().put("id", "user_222").put("email", "jerry@gmail.com");
+JsonObject newUser3 = JsonObject.create().put("id", "user_333").put("email", "mickey@gmail.com");
+
+List&lt;JsonDocument&gt; newDocuments = Arrays.asList(
+  new JsonDocument("user_111", newUser1),
+  new JsonDocument("user_222", newUser2),
+  new JsonDocument("user_333", newUser3)
+);
+
+// Iterate over a list of documents to upsert.
+List&lt;MutationResult&gt; results = Flux.fromIterable(newDocuments)
+    .flatMap(newDocument -&gt; reactiveCollection.upsert(
+        newDocument.getId(), newDocument.getContent()
+      )
+    )
+    .collectList()
+    .block(); // Wait until all operations have completed.
+
+// Print all the results.
+for (MutationResult result : results) {
+  System.out.println("CAS: " + result.cas());
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4981,7 +5088,27 @@ Unresolved include directive in modules/guides/pages/bulk-operations.adoc - incl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs">Unresolved include directive in modules/guides/pages/bulk-operations.adoc - include::nodejs-sdk:hello-world:example$kv-bulk-hello-world.js[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-bulk-hello-world.js">const users = [
+  { id: 'user_111', email: 'tom_the_cat@gmail.com' },
+  { id: 'user_222', email: 'jerry_mouse@gmail.com' },
+  { id: 'user_333', email: 'mickey_mouse@gmail.com' },
+]
+const newUsers = [
+  { id: 'user_111', email: 'tom@gmail.com' },
+  { id: 'user_222', email: 'jerry@gmail.com' },
+  { id: 'user_333', email: 'mickey@gmail.com' },
+]
+
+// Wait for all the upsert operations to complete and store the results.
+const upsertResults = await Promise.all(
+  newUsers.map((newUser) =&gt; {
+    console.log(`Upserting document: ${newUser.id}`)
+    return usersCollection.upsert(newUser.id, newUser)
+  })
+)
+
+// Iterate the results and print the CAS metadata.
+upsertResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5103,9 +5230,26 @@ Unresolved include directive in modules/guides/pages/bulk-operations.adoc - incl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/guides/pages/bulk-operations.adoc - include::java-sdk:hello-world:example$KvBulkHelloWorld.java[]
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">JsonObject user1 = JsonObject.create().put("id", "user_111").put("email", "tom_the_cat@gmail.com");
+JsonObject user2 = JsonObject.create().put("id", "user_222").put("email", "jerry_mouse@gmail.com");
+JsonObject user3 = JsonObject.create().put("id", "user_333").put("email", "mickey_mouse@gmail.com");
 
-Unresolved include directive in modules/guides/pages/bulk-operations.adoc - include::java-sdk:hello-world:example$KvBulkHelloWorld.java[]</code></pre>
+List&lt;JsonDocument&gt; documents = Arrays.asList(
+  new JsonDocument("user_111", user1),
+  new JsonDocument("user_222", user2),
+  new JsonDocument("user_333", user3)
+);
+
+// Iterate over a list of documents to remove.
+List&lt;MutationResult&gt; results = Flux.fromIterable(documents)
+    .flatMap(document -&gt; reactiveCollection.remove(document.getId()))
+    .collectList()
+    .block(); // Wait until all operations have completed.
+
+// Print all the results.
+for (MutationResult result : results) {
+  System.out.println("CAS: " + result.cas());
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5125,7 +5269,21 @@ Unresolved include directive in modules/guides/pages/bulk-operations.adoc - incl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs">Unresolved include directive in modules/guides/pages/bulk-operations.adoc - include::nodejs-sdk:hello-world:example$kv-bulk-hello-world.js[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-bulk-hello-world.js">const users = [
+  { id: 'user_111', email: 'tom_the_cat@gmail.com' },
+  { id: 'user_222', email: 'jerry_mouse@gmail.com' },
+  { id: 'user_333', email: 'mickey_mouse@gmail.com' },
+]
+// Wait for all the remove operations to complete and store the results.
+const removeResults = await Promise.all(
+  users.map((user) =&gt; {
+    console.log(`Removing document: ${user.id}`)
+    return usersCollection.remove(user.id, user)
+  })
+)
+
+// Iterate the results and print the CAS metadata.
+removeResults.forEach((result) =&gt; console.log('CAS:', result.cas))</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5183,15 +5341,15 @@ Unresolved include directive in modules/guides/pages/bulk-operations.adoc - incl
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/howtos/concurrent-async-apis.html" class="xref page">C</a>
+<p><a href="#c-sdk:howtos:concurrent-async-apis.adoc" class="xref unresolved">C</a>
 | <a href="../../../dotnet-sdk/DOC-9205/howtos/concurrent-async-apis.html" class="xref page">.NET</a>
-| <a href="../../../go-sdk/2.3/howtos/concurrent-async-apis.html" class="xref page">Go</a>
+| <a href="#go-sdk:howtos:concurrent-async-apis.adoc" class="xref unresolved">Go</a>
 | <a href="../../../java-sdk/3.2/howtos/concurrent-async-apis.html" class="xref page">Java</a>
-| <a href="../../../nodejs-sdk/3.2/howtos/concurrent-async-apis.html" class="xref page">Node.js</a>
-| <a href="../../../php-sdk/3.2/howtos/concurrent-async-apis.html" class="xref page">PHP</a>
+| <a href="../../../nodejs-sdk/DOC-9236/howtos/concurrent-async-apis.html" class="xref page">Node.js</a>
+| <a href="#php-sdk:howtos:concurrent-async-apis.adoc" class="xref unresolved">PHP</a>
 | <a href="../../../python-sdk/DOC-9205/howtos/concurrent-async-apis.html" class="xref page">Python</a>
-| <a href="../../../ruby-sdk/3.2/howtos/concurrent-async-apis.html" class="xref page">Ruby</a>
-| <a href="../../../scala-sdk/1.2/howtos/concurrent-async-apis.html" class="xref page">Scala</a></p>
+| <a href="#ruby-sdk:howtos:concurrent-async-apis.adoc" class="xref unresolved">Ruby</a>
+| <a href="#scala-sdk:howtos:concurrent-async-apis.adoc" class="xref unresolved">Scala</a></p>
 </li>
 </ul>
 </div>
@@ -5264,7 +5422,7 @@ Unresolved include directive in modules/guides/pages/bulk-operations.adoc - incl
     </div>
     <div class="footer-terms">
       <div class="footer-terms-copyright">
-          <span>© 2021 Couchbase, Inc. Couchbase, Couchbase Lite and the Couchbase logo are registered trademarks of Couchbase, Inc.</span>
+          <span>© 2022 Couchbase, Inc. Couchbase, Couchbase Lite and the Couchbase logo are registered trademarks of Couchbase, Inc.</span>
       </div>
       <div class="footer-terms-links">
         <a href="https://www.couchbase.com/terms-of-use">Terms of Use</a>

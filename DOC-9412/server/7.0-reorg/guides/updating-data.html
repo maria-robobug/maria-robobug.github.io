@@ -23,7 +23,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/guides/updating-data.html">
-<meta name="generator" content="Antora 3.0.0-beta.5">
+<meta name="generator" content="Antora 3.0.0">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -75,33 +75,22 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../../cloud-native-database/index.html">
-                      Cloud-Native
-                    </a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link" href="../../../home/sdk.html">
                       SDKs
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="../../../tutorials/index.html">
-                      Tutorials
-                      <span class="arrow">
-                        <i class="fas fa-arrow-right"></i>
-                      </span>
                     </a>
                   </li>
                 </ul>
               </div>
               <div class="primary-action">
-                <a href="https://cloud.couchbase.com/sign-up" class="free-trial-link" onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Free Trial'});" >
-                  <i class="fas fa-cloud"></i>
-                  Free Trial
-                </a>
-                <a class="btn btn-primary try-btn"  onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Download'});" href="https://www.couchbase.com/downloads">
+                <a class="btn btn-primary btn-grey-reverse" onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Download'});" href="https://www.couchbase.com/downloads">
                   Downloads
+                  <i class="far fa-arrow-to-bottom fa-fw"></i>
                 </a>
+                <a href="https://cloud.couchbase.com/sign-up" class="btn btn-primary" onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Free Trial'});" >
+                  Start Free Trial
+                  <i class="far fa-cloud fa-fw"></i>
+                </a>
+
               </div>
 
         </nav>
@@ -4392,7 +4381,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/pages/updating-data.adoc" title="Edit Page" target="_blank" rel="noopener">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/pages/updating-data.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -4488,7 +4477,7 @@ A replace operation, on the other hand, will only replace a document if it exist
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/hello-world/cbc.html" class="xref page">Command Line Clients</a></p>
+<p><a href="#c-sdk:hello-world:cbc.adoc" class="xref unresolved">Command Line Clients</a></p>
 </li>
 <li>
 <p><a href="../../../home/sdk.html" class="xref page">SDK Clients</a></p>
@@ -4623,7 +4612,11 @@ If it doesn&#8217;t exist, Couchbase will simply create a new document.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/guides/pages/updating-data.adoc - include::java-sdk:hello-world:example$KvHelloWorldScoped.java[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L186-L190">// Update or create a document in the hotel collection.
+MutationResult upsertResult = hotelCollection.upsert("hotel-123", document);
+
+// Print the result's CAS metadata to the console.
+System.out.println("CAS:" + upsertResult.cas());</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4644,7 +4637,11 @@ If it doesn&#8217;t exist, Couchbase will simply create a new document.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs">Unresolved include directive in modules/guides/pages/updating-data.adoc - include::nodejs-sdk:hello-world:example$kv-hello-world-scoped.js[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L155-L159">// Update or create a document in the hotel collection.
+const upsertResult = await hotelCollection.upsert('hotel-123', document)
+
+// Print the result's CAS metadata to the console.
+console.log('CAS:', upsertResult.cas)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4849,7 +4846,31 @@ To ensure data has not been modified before executing the replace operation, pas
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/guides/pages/updating-data.adoc - include::java-sdk:hello-world:example$KvHelloWorldScoped.java[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L143-L167">// Fetch an existing hotel document
+GetResult getResult = hotelCollection.get("hotel-123");
+JsonObject existingDoc = getResult.contentAsObject();
+
+// Get the current CAS value.
+Long currentCas = getResult.cas();
+System.out.println("Current CAS:" + currentCas);
+
+// Add a new review to the reviews array.
+existingDoc.getArray("reviews").add(JsonObject.create()
+    .put("content", "This hotel was cozy, conveniently located and clean.")
+    .put("author", "Carmella O'Keefe")
+    .put("date", DateTimeFormatter.ISO_INSTANT.format(Instant.now())
+  )
+);
+
+// Update the document with new data and pass the current CAS value. 
+MutationResult replaceResult = hotelCollection.replace(
+    "hotel-123",
+    existingDoc,
+    ReplaceOptions.replaceOptions().cas(currentCas)
+);
+
+// Print the new CAS value.
+System.out.println("New CAS:" + replaceResult.cas());</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -4892,7 +4913,29 @@ To ensure data has not been modified before executing the replace operation, pas
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs">Unresolved include directive in modules/guides/pages/updating-data.adoc - include::nodejs-sdk:hello-world:example$kv-hello-world-scoped.js[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L113-L135">// Fetch an existing hotel document.
+getResult = await hotelCollection.get('hotel-123')
+const existingDoc = getResult.content
+
+// Get the current CAS value.
+const currentCas = getResult.cas
+console.log('Current CAS:', currentCas)
+
+// Add a new review to the reviews array.
+existingDoc['reviews'].push({
+  content: 'This hotel was cozy, conveniently located and clean.',
+  author: "Carmella O'Keefe",
+  date: new Date().toISOString(),
+})
+
+// Update the document with new data and pass the current CAS value.
+const replaceResult = await hotelCollection.replace(
+  'hotel-123',
+  existingDoc
+)
+
+// Print the new CAS value.
+console.log('New CAS:', replaceResult.cas)</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -5074,7 +5117,10 @@ subdoc&gt; dict-upsert airport_1254 --path pets_ok=true</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/guides/pages/updating-data.adoc - include::java-sdk:hello-world:example$KvHelloWorldScoped.java[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/hello-world/examples/KvHelloWorldScoped.java#L197-L200">List&lt;MutateInSpec&gt; specs = Arrays.asList(MutateInSpec.upsert("pets_ok", true));
+
+MutateInResult mutateInResult = hotelCollection.mutateIn("hotel-123", specs);
+System.out.println("CAS:" + mutateInResult.cas());</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5104,7 +5150,10 @@ subdoc&gt; dict-upsert airport_1254 --path pets_ok=true</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs">Unresolved include directive in modules/guides/pages/updating-data.adoc - include::nodejs-sdk:hello-world:example$kv-hello-world-scoped.js[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/kv-hello-world-scoped.js#L166-L169">const mutateInResult = await hotelCollection.mutateIn('hotel-123', [
+  couchbase.MutateInSpec.upsert('pets_ok', true),
+])
+console.log('CAS:', mutateInResult.cas)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5157,15 +5206,15 @@ subdoc&gt; dict-upsert airport_1254 --path pets_ok=true</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/howtos/kv-operations.html" class="xref page">C</a>
+<p><a href="#c-sdk:howtos:kv-operations.adoc" class="xref unresolved">C</a>
 | <a href="../../../dotnet-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">.NET</a>
-| <a href="../../../go-sdk/2.3/howtos/kv-operations.html" class="xref page">Go</a>
+| <a href="#go-sdk:howtos:kv-operations.adoc" class="xref unresolved">Go</a>
 | <a href="../../../java-sdk/3.2/howtos/kv-operations.html" class="xref page">Java</a>
-| <a href="../../../nodejs-sdk/3.2/howtos/kv-operations.html" class="xref page">Node.js</a>
-| <a href="../../../php-sdk/3.2/howtos/kv-operations.html" class="xref page">PHP</a>
+| <a href="../../../nodejs-sdk/DOC-9236/howtos/kv-operations.html" class="xref page">Node.js</a>
+| <a href="#php-sdk:howtos:kv-operations.adoc" class="xref unresolved">PHP</a>
 | <a href="../../../python-sdk/DOC-9205/howtos/kv-operations.html" class="xref page">Python</a>
-| <a href="../../../ruby-sdk/3.2/howtos/kv-operations.html" class="xref page">Ruby</a>
-| <a href="../../../scala-sdk/1.2/howtos/kv-operations.html" class="xref page">Scala</a></p>
+| <a href="#ruby-sdk:howtos:kv-operations.adoc" class="xref unresolved">Ruby</a>
+| <a href="#scala-sdk:howtos:kv-operations.adoc" class="xref unresolved">Scala</a></p>
 </li>
 </ul>
 </div>
@@ -5175,15 +5224,15 @@ subdoc&gt; dict-upsert airport_1254 --path pets_ok=true</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/howtos/subdocument-operations.html" class="xref page">C</a>
+<p><a href="#c-sdk:howtos:subdocument-operations.adoc" class="xref unresolved">C</a>
 | <a href="../../../dotnet-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">.NET</a>
-| <a href="../../../go-sdk/2.3/howtos/subdocument-operations.html" class="xref page">Go</a>
+| <a href="#go-sdk:howtos:subdocument-operations.adoc" class="xref unresolved">Go</a>
 | <a href="../../../java-sdk/3.2/howtos/subdocument-operations.html" class="xref page">Java</a>
-| <a href="../../../nodejs-sdk/3.2/howtos/subdocument-operations.html" class="xref page">Node.js</a>
-| <a href="../../../php-sdk/3.2/howtos/subdocument-operations.html" class="xref page">PHP</a>
+| <a href="../../../nodejs-sdk/DOC-9236/howtos/subdocument-operations.html" class="xref page">Node.js</a>
+| <a href="#php-sdk:howtos:subdocument-operations.adoc" class="xref unresolved">PHP</a>
 | <a href="../../../python-sdk/DOC-9205/howtos/subdocument-operations.html" class="xref page">Python</a>
-| <a href="../../../ruby-sdk/3.2/howtos/subdocument-operations.html" class="xref page">Ruby</a>
-| <a href="../../../scala-sdk/1.2/howtos/subdocument-operations.html" class="xref page">Scala</a></p>
+| <a href="#ruby-sdk:howtos:subdocument-operations.adoc" class="xref unresolved">Ruby</a>
+| <a href="#scala-sdk:howtos:subdocument-operations.adoc" class="xref unresolved">Scala</a></p>
 </li>
 </ul>
 </div>
@@ -5256,7 +5305,7 @@ subdoc&gt; dict-upsert airport_1254 --path pets_ok=true</code></pre>
     </div>
     <div class="footer-terms">
       <div class="footer-terms-copyright">
-          <span>© 2021 Couchbase, Inc. Couchbase, Couchbase Lite and the Couchbase logo are registered trademarks of Couchbase, Inc.</span>
+          <span>© 2022 Couchbase, Inc. Couchbase, Couchbase Lite and the Couchbase logo are registered trademarks of Couchbase, Inc.</span>
       </div>
       <div class="footer-terms-links">
         <a href="https://www.couchbase.com/terms-of-use">Terms of Use</a>

@@ -14,7 +14,7 @@
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.0-reorg">
 <meta name="page-url" content="/server/7.0-reorg/guides/connect.html">
-<meta name="generator" content="Antora 3.0.0-beta.5">
+<meta name="generator" content="Antora 3.0.0">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="article">
@@ -66,33 +66,22 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../../../cloud-native-database/index.html">
-                      Cloud-Native
-                    </a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link" href="../../../home/sdk.html">
                       SDKs
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="../../../tutorials/index.html">
-                      Tutorials
-                      <span class="arrow">
-                        <i class="fas fa-arrow-right"></i>
-                      </span>
                     </a>
                   </li>
                 </ul>
               </div>
               <div class="primary-action">
-                <a href="https://cloud.couchbase.com/sign-up" class="free-trial-link" onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Free Trial'});" >
-                  <i class="fas fa-cloud"></i>
-                  Free Trial
-                </a>
-                <a class="btn btn-primary try-btn"  onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Download'});" href="https://www.couchbase.com/downloads">
+                <a class="btn btn-primary btn-grey-reverse" onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Download'});" href="https://www.couchbase.com/downloads">
                   Downloads
+                  <i class="far fa-arrow-to-bottom fa-fw"></i>
                 </a>
+                <a href="https://cloud.couchbase.com/sign-up" class="btn btn-primary" onclick="(window.dataLayer=window.dataLayer||[]).push({'event':'customEvent', 'category':'CTA', 'action':'Button Click',  'label':'Free Trial'});" >
+                  Start Free Trial
+                  <i class="far fa-cloud fa-fw"></i>
+                </a>
+
               </div>
 
         </nav>
@@ -4383,7 +4372,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/pages/connect.adoc" title="Edit Page" target="_blank" rel="noopener">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/pages/connect.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -4469,7 +4458,7 @@ How to connect to a Couchbase Cluster.
 <div class="sectionbody">
 <div class="paragraph">
 <p>Connecting to Couchbase can be done in several ways.
-This guide will take you through some of the most common methods used to access a Couchbase cluster with an SDK client or cli tool.</p>
+This guide will take you through some of the most common methods used to access a Couchbase cluster with an SDK client or CLI tool.</p>
 </div>
 <div class="paragraph">
 <p>A Couchbase <a href="../learn/clusters-and-availability/clusters-and-availability.html" class="xref page">Cluster</a> is a combination of multiple server nodes, which can be accessed by users or applications with a <a href="../learn/security/usernames-and-passwords.html" class="xref page">username and password</a>.
@@ -4549,7 +4538,7 @@ macOS
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/hello-world/cbc.html" class="xref page">Command Line Clients</a></p>
+<p><a href="#c-sdk:hello-world:cbc.adoc" class="xref unresolved">Command Line Clients</a></p>
 </li>
 <li>
 <p><a href="../../../home/sdk.html" class="xref page">SDK Clients</a></p>
@@ -4569,24 +4558,14 @@ When running Couchbase in a production environment, the latter is always recomme
 <div class="sect2">
 <h3 id="basic-auth"><a class="anchor" href="#basic-auth"></a>Basic Auth</h3>
 <div class="paragraph">
-<p>To connect to a standalone or Docker installation with <em>unencrypted</em> network access, setup a user with appropriate access levels and a secure password.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-To access a cluster via the Couchbase Server Web Console over an <em>unencrypted</em> connection, navigate to the default configuration address on <code>localhost:8091</code> from your browser and enter your credentials.
-See <a href="../getting-started/look-at-the-results.html" class="xref page">Explore the Server Configuration</a> for more information.
-</td>
-</tr>
-</table>
+<p>To connect to a standalone or Docker installation with <em>unencrypted</em> network access, set up a user with <a href="../learn/security/roles.html" class="xref page">appropriate access levels</a> and a secure password.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
 <ul>
+<li>
+<p><a id="tabset1_web-console"></a>Web Console</p>
+</li>
 <li>
 <p><a id="tabset1_cbc"></a>cbc</p>
 </li>
@@ -4605,6 +4584,19 @@ See <a href="../getting-started/look-at-the-results.html" class="xref page">Expl
 </ul>
 </div>
 <div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_web-console">
+<div class="paragraph">
+<p>To access a cluster via the Couchbase Server Web Console over an <em>unencrypted</em> connection, navigate to the Web Console address with your browser (by default, <code>localhost:8091</code>) and enter your credentials.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/login.png" alt="The Couchbase Admin">
+</div>
+</div>
+<div class="paragraph">
+<p>See <a href="../manage/manage-ui/manage-ui.html#authenticating-with-the-console" class="xref page">Authenticating with the Console</a> for more information.</p>
+</div>
+</div>
 <div class="tab-pane" aria-labelledby="tabset1_cbc">
 <div class="paragraph">
 <p>Most <code>cbc</code> sub-commands will require some form of authentication to access a cluster or perform operations on data within a bucket.</p>
@@ -4612,10 +4604,10 @@ See <a href="../getting-started/look-at-the-results.html" class="xref page">Expl
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To connect to Couchbase Server using <code>cbc</code>, pass <code>-u</code> for the username, <code>-P</code> for the password and <code>-U</code> for the connection url immediately after a sub-command.</p>
+<p>To connect to Couchbase Server using <code>cbc</code>, pass <code>-u</code> for the username, <code>-P</code> for the password and <code>-U</code> for the connection URL immediately after a sub-command.</p>
 </li>
 <li>
-<p>Provide the bucket name required in the connection url (i.e., couchbase://localhost/&lt;bucket-name&gt;).</p>
+<p>Provide the bucket name required in the connection URL (i.e., couchbase://localhost/&lt;bucket-name&gt;).</p>
 </li>
 </ol>
 </div>
@@ -4662,7 +4654,7 @@ If the user credentials are invalid, <code class="cmd">cbc</code> will return a 
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_net">
 <div class="paragraph">
-<p>Call the <code>Cluster.ConnectAsync()</code> method with a connection url, username and password.</p>
+<p>Call the <code>Cluster.ConnectAsync()</code> method with a connection URL, username and password.</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -4695,7 +4687,7 @@ await cluster.DisposeAsync();</code></pre>
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_java">
 <div class="paragraph">
-<p>Call the <code>Cluster.connect()</code> method with a connection url, username and password.</p>
+<p>Call the <code>Cluster.connect()</code> method with a connection URL, username and password.</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -4740,7 +4732,7 @@ If the user credentials provided are invalid, the SDK will return a <code>Authen
 </div>
 <div class="tab-pane" aria-labelledby="tabset1_node-js">
 <div class="paragraph">
-<p>Call the <code>connect()</code> function with a connection url, and a <code>ConnectOptions</code> object containing the username and password.</p>
+<p>Call the <code>connect()</code> function with a connection URL, and a <code>ConnectOptions</code> object containing the username and password.</p>
 </div>
 <hr>
 <div class="paragraph">
@@ -4777,7 +4769,7 @@ If the user credentials provided are invalid, the SDK will return a <code>Authen
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Call the <code>Cluster.connect()</code> function with a connection url, and a <code>ClusterOptions</code> object containing a <code>PasswordAutheticator</code>.</p>
+<p>Call the <code>Cluster.connect()</code> function with a connection URL, and a <code>ClusterOptions</code> object containing a <code>PasswordAutheticator</code>.</p>
 </li>
 <li>
 <p>Provide a username and password to the <code>PasswordAutheticator</code>.</p>
@@ -4790,7 +4782,7 @@ If the user credentials provided are invalid, the SDK will return a <code>Authen
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/managing_connections.py#L18-L28">cluster = Cluster.connect("couchbase://localhost", ClusterOptions(PasswordAuthenticator("username", "password")))
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/managing_connections.py#L17-L27">cluster = Cluster.connect("couchbase://localhost", ClusterOptions(PasswordAuthenticator("username", "password")))
 bucket = cluster.bucket("travel-sample")
 collection = bucket.default_collection()
 
@@ -4841,22 +4833,12 @@ Before using X.509 certificate based authentication, you should run through the 
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-To access a cluster via the Couchbase Server Web Console over an <em>encrypted</em> connection, navigate to the default configuration address on <code><a href="https://localhost:18091" class="bare">https://localhost:18091</a></code> from your browser and enter your credentials.
-See <a href="../manage/manage-security/manage-console-access.html" class="xref page">Manage Console Access</a> for more information.
-</td>
-</tr>
-</table>
-</div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
 <ul>
+<li>
+<p><a id="tabset2_web-console"></a>Web Console</p>
+</li>
 <li>
 <p><a id="tabset2_cbc"></a>cbc</p>
 </li>
@@ -4875,17 +4857,30 @@ See <a href="../manage/manage-security/manage-console-access.html" class="xref p
 </ul>
 </div>
 <div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_web-console">
+<div class="paragraph">
+<p>To access a cluster via the Couchbase Server Web Console over an <em>encrypted</em> connection, navigate to the secure Web Console address with your browser (by default, <code><a href="https://localhost:18091" class="bare">https://localhost:18091</a></code>) and enter your credentials.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/login.png" alt="The Couchbase Admin">
+</div>
+</div>
+<div class="paragraph">
+<p>See <a href="../manage/manage-security/manage-console-access.html" class="xref page">Manage Console Access</a> for more information.</p>
+</div>
+</div>
 <div class="tab-pane" aria-labelledby="tabset2_cbc">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To securely connect to Couchbase Server using <code>cbc</code>, pass <code>-U</code> for the connection url immediately after a sub-command.</p>
+<p>To securely connect to Couchbase Server using <code>cbc</code>, pass <code>-U</code> for the connection URL immediately after a sub-command.</p>
 </li>
 <li>
-<p>Provide the bucket name required in the connection url (i.e., couchbases://127.0.0.1/&lt;bucket-name&gt;). Note that "couchbases://" implies an encrypted connection scheme is used.</p>
+<p>Provide the bucket name required in the connection URL (i.e., couchbases://127.0.0.1/&lt;bucket-name&gt;). Note that "couchbases://" implies an encrypted connection scheme is used.</p>
 </li>
 <li>
-<p>Pass a <code>certpath</code> query parameter to the connection url, after the bucket name.</p>
+<p>Pass a <code>certpath</code> query parameter to the connection URL, after the bucket name.</p>
 </li>
 </ol>
 </div>
@@ -4923,7 +4918,7 @@ See <a href="../manage/manage-security/manage-console-access.html" class="xref p
 <p>The example below connects to a single-node cluster over a secure connection with a client certificate.</p>
 </div>
 <div class="paragraph">
-<p>It is assumed that a valid client certificate and certificate store have been setup.</p>
+<p>It is assumed that a valid client certificate and certificate store have been set up.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4963,7 +4958,7 @@ var cluster = await Cluster.ConnectAsync(options);</code></pre>
 <p>The example below connects to a single-node cluster over a secure connection with a client certificate.</p>
 </div>
 <div class="paragraph">
-<p>It is assumed that a valid client certificate and a Java keystore have been setup.</p>
+<p>It is assumed that a valid client certificate and a Java keystore have been set up.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4983,14 +4978,14 @@ Cluster cluster = Cluster.connect("127.0.0.1", clusterOptions(authenticator));</
 </div>
 <div class="tab-pane" aria-labelledby="tabset2_node-js">
 <div class="paragraph">
-<p>Call the <code>connect()</code> function with a connection url, and a <code>ConnectOptions</code> object containing a certificate <code>trustStorePath</code> and user credentials.</p>
+<p>Call the <code>connect()</code> function with a connection URL, and a <code>ConnectOptions</code> object containing a certificate <code>trustStorePath</code> and user credentials.</p>
 </div>
 <hr>
 <div class="paragraph">
 <p>The example below connects to a single-node cluster over a secure connection with a client certificate.</p>
 </div>
 <div class="paragraph">
-<p>It is assumed that a valid client certificate has been setup.</p>
+<p>It is assumed that a valid client certificate has been set up.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5012,7 +5007,7 @@ Cluster cluster = Cluster.connect("127.0.0.1", clusterOptions(authenticator));</
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Call the <code>Cluster.connect()</code> function with a connection url, and a <code>ClusterOptions</code> object containing a <code>PasswordAutheticator</code>.</p>
+<p>Call the <code>Cluster.connect()</code> function with a connection URL, and a <code>ClusterOptions</code> object containing a <code>PasswordAutheticator</code>.</p>
 </li>
 <li>
 <p>Provide a username and password to the <code>PasswordAutheticator</code>.</p>
@@ -5027,11 +5022,11 @@ Cluster cluster = Cluster.connect("127.0.0.1", clusterOptions(authenticator));</
 <p>The example below connects to a single-node cluster over a secure connection with a client certificate.</p>
 </div>
 <div class="paragraph">
-<p>It is assumed that a valid client certificate has been setup.</p>
+<p>It is assumed that a valid client certificate has been set up.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/managing_connections.py#L146">cluster = Cluster("couchbases://localhost",ClusterOptions(PasswordAuthenticator("username","password",cert_path="/path/to/cluster.crt")))</code></pre>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/managing_connections.py#L145">cluster = Cluster("couchbases://localhost",ClusterOptions(PasswordAuthenticator("username","password",cert_path="/path/to/cluster.crt")))</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5050,11 +5045,22 @@ Cluster cluster = Cluster.connect("127.0.0.1", clusterOptions(authenticator));</
 <h2 id="connecting-to-couchbase-capella"><a class="anchor" href="#connecting-to-couchbase-capella"></a>Connecting to Couchbase Capella</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To connect to the database via Couchbase Capella cloud, ensure that you have setup some credentials for your cloud setup, including a client certificate.</p>
+<p>To connect to the database via Couchbase Capella, create a valid account and set up some <a href="#cloud:get-started:cluster-and-data.adoc#credentials" class="xref unresolved">database credentials</a>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/capella-security-cert.png" alt="The Security Certificate">
+</div>
+</div>
+<div class="paragraph">
+<p>Download a security certificate to <a href="#cloud:get-started:cluster-and-data.adoc#connect" class="xref unresolved">connect</a> an SDK or CLI client to Capella.</p>
 </div>
 <div class="tabset is-loading">
 <div class="ulist tabs">
 <ul>
+<li>
+<p><a id="tabset3_web-console"></a>Web Console</p>
+</li>
 <li>
 <p><a id="tabset3_cbc"></a>cbc</p>
 </li>
@@ -5073,14 +5079,27 @@ Cluster cluster = Cluster.connect("127.0.0.1", clusterOptions(authenticator));</
 </ul>
 </div>
 <div class="content">
+<div class="tab-pane" aria-labelledby="tabset3_web-console">
+<div class="paragraph">
+<p>Navigate to <a href="https://cloud.couchbase.com/login" class="bare">https://cloud.couchbase.com/login</a> to access the Capella Web Console.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/capella-login.png" alt="The Couchbase Capella Login">
+</div>
+</div>
+<div class="paragraph">
+<p>See <a href="#cloud:get-started:cluster-and-data.adoc" class="xref unresolved">Cluster and Data</a> for more information.</p>
+</div>
+</div>
 <div class="tab-pane" aria-labelledby="tabset3_cbc">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To connect to Couchbase Capella using <code>cbc</code>, pass <code>-u</code> for the username, <code>-P</code> for the password and <code>-U</code> for the connection url immediately after a sub-command.</p>
+<p>To connect to Couchbase Capella using <code>cbc</code>, pass <code>-u</code> for the username, <code>-P</code> for the password and <code>-U</code> for the connection URL immediately after a sub-command.</p>
 </li>
 <li>
-<p>Provide the bucket name required in the connection url (i.e., cb.&lt;your endpoint address&gt;.dp.cloud.couchbase.com/&lt;bucket-name&gt;).</p>
+<p>Provide the bucket name required in the connection URL (i.e., cb.&lt;your endpoint address&gt;.dp.cloud.couchbase.com/&lt;bucket-name&gt;).</p>
 </li>
 </ol>
 </div>
@@ -5090,9 +5109,23 @@ Cluster cluster = Cluster.connect("127.0.0.1", clusterOptions(authenticator));</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/connect/connect-cbc.sh#L16-L18">cbc ping -v -U "cb.&lt;your endpoint address&gt;.dp.cloud.couchbase.com/travel-sample?certpath=ca.pem" \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/connect/connect-cbc.sh#L16-L19">cbc ping -u username -P "passworD#1" \
+	-U "couchbases://cb.oawlpi4audpc6jp5.cloud.couchbase.com/travel-sample?certpath=cert.pem" \
 	--count=1 \
 	--table</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Result</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">-----------------------------------------------------------------------------------------------------------------------------------
+| type  | id             | status | latency, us | remote                                                      | local             |
+-----------------------------------------------------------------------------------------------------------------------------------
+| fts   | 0x7fecf9407a70 | ok     |      198657 | evb8loulphaibjnn.oawlpi4audpc6jp5.cloud.couchbase.com:18094 | 172.20.10.6:54394 |
+| kv    | 0x7fecfb00d110 | ok     |       69737 | evb8loulphaibjnn.oawlpi4audpc6jp5.cloud.couchbase.com:11207 | 172.20.10.6:54391 |
+| n1ql  | 0x7fecfb0110f0 | ok     |      210735 | evb8loulphaibjnn.oawlpi4audpc6jp5.cloud.couchbase.com:18093 | 172.20.10.6:54392 |
+| views | 0x7fecf961e2e0 | ok     |      330057 | evb8loulphaibjnn.oawlpi4audpc6jp5.cloud.couchbase.com:18092 | 172.20.10.6:54393 |
+-----------------------------------------------------------------------------------------------------------------------------------</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5101,15 +5134,15 @@ Cluster cluster = Cluster.connect("127.0.0.1", clusterOptions(authenticator));</
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_net">
 <div class="paragraph">
-<p>Call the <code>Cluster.ConnectAsync()</code> method with a Capella cloud endpoint, username, password, and client certificate.</p>
+<p>Call the <code>Cluster.ConnectAsync()</code> method with a Couchbase Capella endpoint, username, password, and client certificate.</p>
 </div>
 <hr>
 <div class="paragraph">
-<p>The example below connects to a Capella cloud instance over a secure connection with a client certificate.</p>
+<p>The example below connects to a Couchbase Capella instance over a secure connection with a client certificate.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/devguide/examples/dotnet/Cloud.cs">﻿using System;
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/devguide/examples/dotnet/Cloud.cs">using System;
 using System.Threading.Tasks;
 using Couchbase;
 using Couchbase.Query;
@@ -5183,11 +5216,11 @@ namespace net3
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_java">
 <div class="paragraph">
-<p>Call the <code>Cluster.connect()</code> method method with a Capella cloud endpoint, username, password, and client certificate.</p>
+<p>Call the <code>Cluster.connect()</code> method method with a Couchbase Capella endpoint, username, password, and client certificate.</p>
 </div>
 <hr>
 <div class="paragraph">
-<p>The example below connects to a Capella cloud instance over a secure connection with a client certificate.</p>
+<p>The example below connects to a Couchbase Capella instance over a secure connection with a client certificate.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5208,6 +5241,7 @@ namespace net3
  */
 
 import static com.couchbase.client.java.query.QueryOptions.queryOptions;
+
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyStore;
@@ -5217,6 +5251,7 @@ import java.security.cert.X509Certificate;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import com.couchbase.client.core.deps.io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import com.couchbase.client.core.env.IoConfig;
 import com.couchbase.client.core.env.SecurityConfig;
@@ -5258,7 +5293,6 @@ public class Cloud {
             + "DPFAN/4qZAgD5q3AFNIq2WWADFQGSwVJhg==\n" + "-----END CERTIFICATE-----";
 
     public static void main(String... args) throws Exception {
-        // tag::cloud-simple[]
         // Update this to your cluster
         String endpoint = "cb.&lt;your endpoint address&gt;.dp.cloud.couchbase.com";
         String bucketName = "yourBucketName";
@@ -5278,7 +5312,6 @@ public class Cloud {
 
         // Initialize the Connection
         Cluster cluster = Cluster.connect(endpoint, ClusterOptions.clusterOptions(username, password).environment(env));
-        // end::cloud-simple[]
         Bucket bucket = cluster.bucket(bucketName);
         Scope scope = bucket.defaultScope();
         Collection collection = bucket.defaultCollection();
@@ -5341,11 +5374,11 @@ public class Cloud {
 </div>
 <div class="tab-pane" aria-labelledby="tabset3_node-js">
 <div class="paragraph">
-<p>Call the <code>connect()</code> function with a Capella cloud endpoint, and a <code>ConnectOptions</code> object containing the username, password and client certificate.</p>
+<p>Call the <code>connect()</code> function with a Couchbase Capella endpoint, and a <code>ConnectOptions</code> object containing the username, password and client certificate.</p>
 </div>
 <hr>
 <div class="paragraph">
-<p>The example below connects to a Capella cloud instance over a secure connection with a client certificate.</p>
+<p>The example below connects to a Couchbase Capella instance over a secure connection with a client certificate.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5408,7 +5441,7 @@ go()</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Call the <code>Cluster.connect()</code> function with a Capella cloud endpoint, and a <code>ClusterOptions</code> object containing a <code>PasswordAutheticator</code>.</p>
+<p>Call the <code>Cluster.connect()</code> function with a Couchbase Capella endpoint, and a <code>ClusterOptions</code> object containing a <code>PasswordAutheticator</code>.</p>
 </li>
 <li>
 <p>Provide a username and password to the <code>PasswordAutheticator</code>.</p>
@@ -5420,7 +5453,7 @@ go()</code></pre>
 </div>
 <hr>
 <div class="paragraph">
-<p>The example below connects to a Capella cloud instance over a secure connection with a client certificate.</p>
+<p>The example below connects to a Couchbase Capella instance over a secure connection with a client certificate.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5500,15 +5533,15 @@ for row in row_iter.rows():
 <div class="ulist">
 <ul>
 <li>
-<p><a href="../../../c-sdk/3.2/howtos/managing-connections.html" class="xref page">C</a>
+<p><a href="#c-sdk:howtos:managing-connections.adoc" class="xref unresolved">C</a>
 | <a href="../../../dotnet-sdk/DOC-9205/howtos/managing-connections.html" class="xref page">.NET</a>
-| <a href="../../../go-sdk/2.3/howtos/managing-connections.html" class="xref page">Go</a>
+| <a href="#go-sdk:howtos:managing-connections.adoc" class="xref unresolved">Go</a>
 | <a href="../../../java-sdk/3.2/howtos/managing-connections.html" class="xref page">Java</a>
-| <a href="../../../nodejs-sdk/3.2/howtos/managing-connections.html" class="xref page">Node.js</a>
-| <a href="../../../php-sdk/3.2/howtos/managing-connections.html" class="xref page">PHP</a>
+| <a href="../../../nodejs-sdk/DOC-9236/howtos/managing-connections.html" class="xref page">Node.js</a>
+| <a href="#php-sdk:howtos:managing-connections.adoc" class="xref unresolved">PHP</a>
 | <a href="../../../python-sdk/DOC-9205/howtos/managing-connections.html" class="xref page">Python</a>
-| <a href="../../../ruby-sdk/3.2/howtos/managing-connections.html" class="xref page">Ruby</a>
-| <a href="../../../scala-sdk/1.2/howtos/managing-connections.html" class="xref page">Scala</a></p>
+| <a href="#ruby-sdk:howtos:managing-connections.adoc" class="xref unresolved">Ruby</a>
+| <a href="#scala-sdk:howtos:managing-connections.adoc" class="xref unresolved">Scala</a></p>
 </li>
 </ul>
 </div>
@@ -5573,7 +5606,7 @@ for row in row_iter.rows():
     </div>
     <div class="footer-terms">
       <div class="footer-terms-copyright">
-          <span>© 2021 Couchbase, Inc. Couchbase, Couchbase Lite and the Couchbase logo are registered trademarks of Couchbase, Inc.</span>
+          <span>© 2022 Couchbase, Inc. Couchbase, Couchbase Lite and the Couchbase logo are registered trademarks of Couchbase, Inc.</span>
       </div>
       <div class="footer-terms-links">
         <a href="https://www.couchbase.com/terms-of-use">Terms of Use</a>
