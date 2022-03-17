@@ -3887,9 +3887,8 @@ If durability is set to <code>None</code>, then ACID semantics are not guarantee
 <h2 id="creating-a-transaction"><a class="anchor" href="#creating-a-transaction"></a>Creating a Transaction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A core idea of Couchbase transactions is that an application supplies the logic for transaction inside a lambda, including any conditional logic required.
-Couchbase transactions takes care of getting the transaction committed.
-If a transient error occurs, such as a temporary conflict with another transaction, then Couchbase transactions can rollback what has been done so far and run the lambda again.
+<p>A core idea of Couchbase transactions is that an application supplies the logic for the transaction inside a lambda, including any conditional logic required, and the transaction is then automatically committed.
+If a transient error occurs, such as a temporary conflict with another transaction, then the transaction will rollback what has been done so far and run the lambda again.
 The application does have to do these retries and error handling itself.</p>
 </div>
 <div class="paragraph">
@@ -4060,7 +4059,7 @@ In this way, all changes are invisible to all parts of the Couchbase Data Platfo
 <h3 id="cleanup"><a class="anchor" href="#cleanup"></a>Cleanup</h3>
 <div class="paragraph">
 <p>There are safety mechanisms to ensure that leftover staged changes from a failed transaction cannot block live transactions indefinitely.
-These include an asynchronous cleanup process that is started with the creation of the transaction, and scans for expired transactions created by any application, on all buckets.</p>
+These include an asynchronous cleanup process that is started with the creation of the <code>Transactions</code> object, and scans for expired transactions created by any application, on all buckets.</p>
 </div>
 <div class="paragraph">
 <p>Note that if an application is not running, then this cleanup is also not running.</p>
@@ -4178,30 +4177,7 @@ It is provided as a convenience method so the developer does not have to check f
 <h3 id="begin-transaction"><a class="anchor" href="#begin-transaction"></a>BEGIN TRANSACTION</h3>
 <div class="paragraph">
 <p>There are two ways to initiate a transaction with Couchbase 7.0: via a transactions library, and via the query service directly using <code>BEGIN TRANSACTION</code>.
-The latter is intended for those using query via the REST API, or using the query workbench in the UI, and it is strongly recommended that application writers instead use the transactions library.
-This provides these benefits:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>It automatically handles errors and retrying.</p>
-</li>
-<li>
-<p>It allows Key-Value operations and N1QL queries to be freely mixed.</p>
-</li>
-<li>
-<p>It takes care of issuing <code>BEGIN TRANSACTION</code>, <code>END TRANSACTION</code>, <code>COMMIT</code> and <code>ROLLBACK</code> automatically.  These become an implementation detail and you should not use these statements inside the lambda.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="supported-n1ql"><a class="anchor" href="#supported-n1ql"></a>Supported N1QL</h3>
-<div class="paragraph">
-<p>The majority of N1QL DML statements are permitted within a transaction.  Specifically: INSERT, UPSERT, DELETE, UPDATE, MERGE and SELECT are supported.</p>
-</div>
-<div class="paragraph">
-<p>DDL statements, such as CREATE INDEX, are not.</p>
+The latter is intended for those using query via the REST API, or using the query workbench in the UI, and it is strongly recommended that application writers instead use the transactions library.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4425,7 +4401,7 @@ Other transactions, and other non-transactional actors, will not be able to see 
 <h3 id="query-concurrency"><a class="anchor" href="#query-concurrency"></a>Query Concurrency</h3>
 <div class="paragraph">
 <p>Only one query statement will be performed by the query service at a time.
-The reactive API allows performing multiple concurrent query statements, but this may result internally in some added network traffic due to retries, and is unlikely to provide any increased performance.</p>
+Non-blocking mechanisms can be used to perform multiple concurrent query statements, but this may result internally in some added network traffic due to retries, and is unlikely to provide any increased performance.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4444,8 +4420,7 @@ The operation will behave identically, and this implementation detail can largel
 Those looking for the maximum possible performance are recommended to put Key-Value operations before the first query in the lambda, if possible.</p>
 </li>
 <li>
-<p>Those using the reactive API to achieve concurrency should be aware that the converted Key-Value operations are subject to the same parallelism restrictions mentioned above, e.g. they will not be executed in parallel by the query service.
-If possible, concurrent Key-Value operations should be moved before the first query.</p>
+<p>Those using non-blocking mechanisms to achieve concurrency should be aware that the converted Key-Value operations are subject to the same parallelism restrictions mentioned above, e.g. they will not be executed in parallel by the query service.</p>
 </li>
 </ul>
 </div>
@@ -4940,10 +4915,12 @@ However, there are situations that inevitably created failed, or 'lost' transact
 <p>This requires an asynchronous cleanup task, described in this section.</p>
 </div>
 <div class="paragraph">
-<p>The transactions cleanup task periodically scans for expired transactions and cleans them up.
+<p>Creating the <code>Transactions</code> object spawns a background cleanup task, whose job it is to periodically scan for expired transactions and clean them up.
 It does this by scanning a subset of the Active Transaction Record (ATR) transaction metadata documents, on each bucket.
 As you&#8217;ll recall from <a href="#mechanics">earlier</a>, an entry for each transaction attempt exists in one of these documents.
-They are removed during cleanup or at some time after successful completion.</p>
+They are removed during cleanup or at some time after successful completion.
+The first transaction triggered by an application will spawn a background cleanup task, whose job it is to periodically scan for expired transactions and clean them up.
+It does this by scanning a subset of the Active Transaction Record (ATR) transaction metadata documents, for each collection used by any transactions.</p>
 </div>
 <div class="paragraph">
 <p>The default settings are tuned to find expired transactions reasonably quickly, while creating negligible impact from the background reads required by the scanning process.
@@ -4952,8 +4929,7 @@ This is unlikely to impact performance on any cluster, but the settings may be <
 </div>
 <div class="paragraph">
 <p>All applications connected to the same cluster and running transactions will share in the cleanup, via a low-touch communication protocol on the "_txn:client-record" metadata document that will be created in each bucket in the cluster.
-This document is visible and should not be modified externally.
-It is maintained automatically by Couchbase transactions.
+This document is visible and should not be modified externally as it is maintained automatically.
 All ATRs on a bucket will be distributed between all cleanup clients, so increasing the number of applications will not increase the reads required for scanning.</p>
 </div>
 <div class="paragraph">
@@ -4961,7 +4937,7 @@ All ATRs on a bucket will be distributed between all cleanup clients, so increas
 </div>
 <div class="paragraph">
 <p>It is important to understand that if an application is not running, then cleanup is not running.
-(This is particularly relevant to developers running unit tests or similar.)</p>
+This is particularly relevant to developers running unit tests or similar.</p>
 </div>
 <div class="paragraph">
 <p>If this is an issue, then the deployment may want to consider running a simple application at all times that just opens a transaction, to guarantee that cleanup is running.</p>

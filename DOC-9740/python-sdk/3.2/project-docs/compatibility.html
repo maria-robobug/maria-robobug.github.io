@@ -4036,6 +4036,120 @@ In rare instances, deprecated API may be rendered non-functional in a dot-minor 
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="sdk-api-specification-and-version"><a class="anchor" href="#sdk-api-specification-and-version"></a>SDK API Specification and Version</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>API Specification (referred to as API going forward) and its version represents a logical grouping of a set of features being bundled.
+SDK Versions follow <a href="https://semver.org/">Semantic Versioning</a> and implement an API specification version.</p>
+</div>
+<div class="paragraph">
+<p>This release of the SDK is written to version 3.2 of the SDK API specification (and matching the features available in Couchbase 7.0 and earlier).
+For most developers, just using the latest version will be all that matters, and few will need to look at another of our SDKs.
+Just for those few that do, the table below shows each Couchbase SDK release version that matches the API version.</p>
+</div>
+<div class="paragraph">
+<p>Whilst these two numbers may match&#8201;&#8212;&#8201;for the C, .NET, Java, PHP, Python, and Ruby SDKs&#8201;&#8212;&#8201;this is not the case for the others.
+Check the <a href="sdk-release-notes.html" class="xref page">release notes</a> of each SDK for individual details.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. API vs SDK Versions</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">API 2.7</th>
+<th class="tableblock halign-left valign-top">API 3.0</th>
+<th class="tableblock halign-left valign-top">API 3.1</th>
+<th class="tableblock halign-left valign-top">API 3.2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C (libcouchbase)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">.NET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Go</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.5 &amp; 1.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.0 &amp; 2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.3 &amp; 2.4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Java</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node.js</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2 &amp; 4.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PHP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Python</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ruby</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scala</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
+</tr>
+</tbody>
+</table>
+<div id="sdk3" class="paragraph 2">
+<p><strong>SDK API 3.2</strong>: Introduced alongside Couchbase Server 7.0, provides features in support of Scopes and Collections, extends capabilities around Open Telemetry API to instrument telemetry data, enhanced client side field level encryption to add an additional layer of security to protect sensitive data, adds new platform support such as Ubuntu 20.04 LTS.</p>
+</div>
+<div class="paragraph">
+<p><strong>SDK API 3.1</strong>: Introduced alongside Couchbase Server 6.6,  focuses on Bucket Management API, adds capabilities around Full Text Search features such-as  Geo-Polygon support, Flex Index, and Scoring.</p>
+</div>
+<div class="paragraph">
+<p><strong>SDK API 3.0</strong>: Introduced alongside Couchbase Server 6.5,  is a major overhaul from its predecessor, has simplified surface area, removed long-standing bugs and deprecated/removed old API, introduces new programming languages Scala and Ruby, written in anticipation to support Scopes and Collections.</p>
+</div>
+<div class="paragraph">
+<p><strong>SDK API 2.7</strong>: Introduced alongside Couchbase Server 6.0, with support for its new features such as the Analytics Service, improvements to Full Text Search, and support for more complex network configurations.</p>
+</div>
+</div>
+</div>
 <div id="footnotes">
 <hr>
 <div class="footnote" id="_footnotedef_1">

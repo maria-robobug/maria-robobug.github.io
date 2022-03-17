@@ -3836,9 +3836,8 @@ If durability is set to <code>None</code>, then ACID semantics are not guarantee
 <h2 id="creating-a-transaction"><a class="anchor" href="#creating-a-transaction"></a>Creating a Transaction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A core idea of Couchbase transactions is that an application supplies the logic for transaction inside a lambda, including any conditional logic required.
-Couchbase transactions takes care of getting the transaction committed.
-If a transient error occurs, such as a temporary conflict with another transaction, then Couchbase transactions can rollback what has been done so far and run the lambda again.
+<p>A core idea of Couchbase transactions is that an application supplies the logic for the transaction inside a lambda, including any conditional logic required, and the transaction is then automatically committed.
+If a transient error occurs, such as a temporary conflict with another transaction, then the transaction will rollback what has been done so far and run the lambda again.
 The application does have to do these retries and error handling itself.</p>
 </div>
 <div class="paragraph">
@@ -4046,7 +4045,7 @@ In this way, all changes are invisible to all parts of the Couchbase Data Platfo
 <h3 id="cleanup"><a class="anchor" href="#cleanup"></a>Cleanup</h3>
 <div class="paragraph">
 <p>There are safety mechanisms to ensure that leftover staged changes from a failed transaction cannot block live transactions indefinitely.
-These include an asynchronous cleanup process that is started with the creation of the transaction, and scans for expired transactions created by any application, on all buckets.</p>
+These include an asynchronous cleanup process that is started with the first transaction, and scans for expired transactions created by any application, on the relevant collections.</p>
 </div>
 <div class="paragraph">
 <p>Note that if an application is not running, then this cleanup is also not running.</p>
@@ -4076,8 +4075,8 @@ This provides an eventually consistent commit for non-transactional actors.</p>
 <h3 id="replacing"><a class="anchor" href="#replacing"></a>Replacing</h3>
 <div class="paragraph">
 <p>Replacing a document requires a <code>ctx.Get()</code> call first.
-This is necessary so that the transactions library can check that the document is not involved in another transaction.
-If it is, then the transactions library will handle this at the <code>ctx.Replace()</code> point.
+This is necessary so that the transaction can check that the document is not involved in another transaction.
+If it is, then the SDK will handle this at the <code>ctx.Replace()</code> point.
 Generally, this involves rolling back what has been done so far, and retrying the lambda.</p>
 </div>
 <div class="listingblock">
@@ -4248,8 +4247,8 @@ if err != nil {
 <div class="sect2">
 <h3 id="begin-transaction"><a class="anchor" href="#begin-transaction"></a>BEGIN TRANSACTION</h3>
 <div class="paragraph">
-<p>There are two ways to initiate a transaction with Couchbase 7.0: via a transactions library, and via the query service directly using <code>BEGIN TRANSACTION</code>.
-The latter is intended for those using query via the REST API, or using the query workbench in the UI, and it is strongly recommended that application writers instead use the transactions library.
+<p>There are two ways to initiate a transaction with Couchbase 7.0: via the SDK, and via the query service directly using <code>BEGIN TRANSACTION</code>.
+The latter is intended for those using query via the REST API, or using the query workbench in the UI, and it is strongly recommended that application writers instead use the SDK.
 This provides these benefits:</p>
 </div>
 <div class="ulist">
@@ -4610,19 +4609,29 @@ if err != nil {
 </div>
 </div>
 <div class="sect2">
+<h3 id="query-concurrency"><a class="anchor" href="#query-concurrency"></a>Query Concurrency</h3>
+<div class="paragraph">
+<p>Only one query statement will be performed by the query service at a time.
+Non-blocking mechanisms can be used to perform multiple concurrent query statements, but this may result internally in some added network traffic due to retries, and is unlikely to provide any increased performance.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="query-performance-advice"><a class="anchor" href="#query-performance-advice"></a>Query Performance Advice</h3>
 <div class="paragraph">
 <p>This section is optional reading, and only for those looking to maximize transactions performance.</p>
 </div>
 <div class="paragraph">
 <p>After the first query statement in a transaction, subsequent Key-Value operations in the lambda are converted into N1QL and executed by the query service rather than the Key-Value data service.
-The operation will behave identically, and this implementation detail can largely be ignored, except for this caveat:</p>
+The operation will behave identically, and this implementation detail can largely be ignored, except for these two caveats:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p>These converted Key-Value operations are likely to be slightly slower, as the query service is optimized for statements involving multiple documents.
 Those looking for the maximum possible performance are recommended to put Key-Value operations before the first query in the lambda, if possible.</p>
+</li>
+<li>
+<p>Those using non-blocking mechanisms to achieve concurrency should be aware that the converted Key-Value operations are subject to the same parallelism restrictions mentioned above, e.g. they will not be executed in parallel by the query service.</p>
 </li>
 </ul>
 </div>
@@ -5053,8 +5062,7 @@ This is unlikely to impact performance on any cluster, but the settings may be <
 </div>
 <div class="paragraph">
 <p>All applications connected to the same cluster and running <code>Transactions</code> will share in the cleanup, via a low-touch communication protocol on the "_txn:client-record" metadata document that will be created in each metadata collection used during transactions.
-This document is visible and should not be modified externally.
-It is maintained automatically by the transactions library.
+This document is visible and should not be modified externally as is maintained automatically.
 All ATRs on a metadata collection will be distributed between all cleanup clients, so increasing the number of applications will not increase the reads required for scanning.</p>
 </div>
 <div class="paragraph">
@@ -5208,7 +5216,7 @@ result, err := cluster.Transactions().Run(func(ctx *gocb.TransactionAttemptConte
 <h2 id="further-reading"><a class="anchor" href="#further-reading"></a>Further Reading</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There’s plenty of explanation about how Transactions work in Couchbase in our <a href="../../../server/7.0/learn/data/transactions.html" class="xref page">Transactions documentation</a>.</p>
+<p>There’s plenty of explanation about how transactions work in Couchbase in our <a href="../../../server/7.0/learn/data/transactions.html" class="xref page">Transactions documentation</a>.</p>
 </div>
 </div>
 </div>
