@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<sitemap>
+<loc>https://maria-robobug.github.io/sitemap-c-sdk.xml</loc>
+</sitemap>
+<sitemap>
+<loc>https://maria-robobug.github.io/sitemap-cloud-native-database.xml</loc>
+</sitemap>
+<sitemap>
+<loc>https://maria-robobug.github.io/sitemap-cmos.xml</loc>
+</sitemap>
+<sitemap>
+<loc>https://maria-robobug.github.io/sitemap-home.xml</loc>
+</sitemap>
+<sitemap>
+<loc>https://maria-robobug.github.io/sitemap-operator.xml</loc>
+</sitemap>
+<sitemap>
+<loc>https://maria-robobug.github.io/sitemap-server.xml</loc>
+</sitemap>
+</sitemapindex>
