@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generated": 1649147855776,
+  "generated": 1649154351383,
   "url": "https://maria-robobug.github.io",
   "components": [
     {
@@ -924,6 +924,199 @@
       ]
     },
     {
+      "name": "cmos",
+      "title": "Couchbase Monitoring and Observability Stack",
+      "latest": "DOC-9847-new-nav",
+      "versions": [
+        {
+          "version": "DOC-9847-new-nav",
+          "url": "/cmos/DOC-9847-new-nav/index.html",
+          "pages": [
+            {
+              "module": "ROOT",
+              "path": "architecture.adoc",
+              "url": "/cmos/DOC-9847-new-nav/architecture.html",
+              "title": "Architecture"
+            },
+            {
+              "module": "ROOT",
+              "path": "cluster-monitor-api.adoc",
+              "url": "/cmos/DOC-9847-new-nav/cluster-monitor-api.html",
+              "title": "Cluster Monitor API"
+            },
+            {
+              "module": "ROOT",
+              "path": "cluster-monitor.adoc",
+              "url": "/cmos/DOC-9847-new-nav/cluster-monitor.html",
+              "title": "Cluster Monitor"
+            },
+            {
+              "module": "ROOT",
+              "path": "component-alertmanager.adoc",
+              "url": "/cmos/DOC-9847-new-nav/component-alertmanager.html",
+              "title": "Alertmanager"
+            },
+            {
+              "module": "ROOT",
+              "path": "component-exporter.adoc",
+              "url": "/cmos/DOC-9847-new-nav/component-exporter.html",
+              "title": "Exporter"
+            },
+            {
+              "module": "ROOT",
+              "path": "component-fluent-bit.adoc",
+              "url": "/cmos/DOC-9847-new-nav/component-fluent-bit.html",
+              "title": "Fluent Bit"
+            },
+            {
+              "module": "ROOT",
+              "path": "component-grafana.adoc",
+              "url": "/cmos/DOC-9847-new-nav/component-grafana.html",
+              "title": "Grafana"
+            },
+            {
+              "module": "ROOT",
+              "path": "component-jaeger.adoc",
+              "url": "/cmos/DOC-9847-new-nav/component-jaeger.html",
+              "title": "Jaeger"
+            },
+            {
+              "module": "ROOT",
+              "path": "component-loki.adoc",
+              "url": "/cmos/DOC-9847-new-nav/component-loki.html",
+              "title": "Loki"
+            },
+            {
+              "module": "ROOT",
+              "path": "component-prometheus.adoc",
+              "url": "/cmos/DOC-9847-new-nav/component-prometheus.html",
+              "title": "Prometheus"
+            },
+            {
+              "module": "ROOT",
+              "path": "configure-cmos.adoc",
+              "url": "/cmos/DOC-9847-new-nav/configure-cmos.html",
+              "title": "Configuration Options"
+            },
+            {
+              "module": "ROOT",
+              "path": "deployment-distributed.adoc",
+              "url": "/cmos/DOC-9847-new-nav/deployment-distributed.html",
+              "title": "Distributed multi-cluster deployment"
+            },
+            {
+              "module": "ROOT",
+              "path": "deployment-fluentbit.adoc",
+              "url": "/cmos/DOC-9847-new-nav/deployment-fluentbit.html",
+              "title": "Fluent Bit deployment"
+            },
+            {
+              "module": "ROOT",
+              "path": "deployment-microlith.adoc",
+              "url": "/cmos/DOC-9847-new-nav/deployment-microlith.html",
+              "title": "Microlith deployment"
+            },
+            {
+              "module": "ROOT",
+              "path": "deployment-onpremise.adoc",
+              "url": "/cmos/DOC-9847-new-nav/deployment-onpremise.html",
+              "title": "On-premise deployment"
+            },
+            {
+              "module": "ROOT",
+              "path": "health-checks.adoc",
+              "url": "/cmos/DOC-9847-new-nav/health-checks.html",
+              "title": "Health Checks"
+            },
+            {
+              "module": "ROOT",
+              "path": "index.adoc",
+              "url": "/cmos/DOC-9847-new-nav/index.html",
+              "title": "Couchbase Monitoring and Observability Stack"
+            },
+            {
+              "module": "ROOT",
+              "path": "integrating-with-existing-deployments.adoc",
+              "url": "/cmos/DOC-9847-new-nav/integrating-with-existing-deployments.html",
+              "title": "Integrating CMOS with Existing Monitoring Stacks"
+            },
+            {
+              "module": "ROOT",
+              "path": "licensing.adoc",
+              "url": "/cmos/DOC-9847-new-nav/licensing.html",
+              "title": "Licensing"
+            },
+            {
+              "module": "ROOT",
+              "path": "prerequisite-and-setup.adoc",
+              "url": "/cmos/DOC-9847-new-nav/prerequisite-and-setup.html",
+              "title": "Prerequisites and System Requirements"
+            },
+            {
+              "module": "ROOT",
+              "path": "quickstart.adoc",
+              "url": "/cmos/DOC-9847-new-nav/quickstart.html",
+              "title": "Quick Start"
+            },
+            {
+              "module": "ROOT",
+              "path": "release-notes.adoc",
+              "url": "/cmos/DOC-9847-new-nav/release-notes.html",
+              "title": "Release Notes"
+            },
+            {
+              "module": "ROOT",
+              "path": "security-considerations.adoc",
+              "url": "/cmos/DOC-9847-new-nav/security-considerations.html",
+              "title": "Security Considerations"
+            },
+            {
+              "module": "ROOT",
+              "path": "support.adoc",
+              "url": "/cmos/DOC-9847-new-nav/support.html",
+              "title": "Feedback and support"
+            },
+            {
+              "module": "ROOT",
+              "path": "tutorial-host-level-metrics-node-exporter.adoc",
+              "url": "/cmos/DOC-9847-new-nav/tutorial-host-level-metrics-node-exporter.html",
+              "title": "Host Level Metrics with the Node Exporter"
+            },
+            {
+              "module": "ROOT",
+              "path": "tutorial-kubernetes.adoc",
+              "url": "/cmos/DOC-9847-new-nav/tutorial-kubernetes.html",
+              "title": "Configure CMOS for Kubernetes deployment"
+            },
+            {
+              "module": "ROOT",
+              "path": "tutorial-onpremise.adoc",
+              "url": "/cmos/DOC-9847-new-nav/tutorial-onpremise.html",
+              "title": "Configure CMOS for On-premises deployment"
+            },
+            {
+              "module": "ROOT",
+              "path": "tutorial-process-exporter.adoc",
+              "url": "/cmos/DOC-9847-new-nav/tutorial-process-exporter.html",
+              "title": "Process Exporter"
+            },
+            {
+              "module": "ROOT",
+              "path": "tutorial-pushgateway.adoc",
+              "url": "/cmos/DOC-9847-new-nav/tutorial-pushgateway.html",
+              "title": "Pushgateway"
+            },
+            {
+              "module": "ROOT",
+              "path": "tutorial-systemd-exporter.adoc",
+              "url": "/cmos/DOC-9847-new-nav/tutorial-systemd-exporter.html",
+              "title": "Systemd Exporter"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "home",
       "title": "Home",
       "latest": "master",
@@ -1456,6 +1649,12 @@
             },
             {
               "module": "ROOT",
+              "path": "howto-guide-couchbase-user-rbac.adoc",
+              "url": "/operator/2.3-beta/howto-guide-couchbase-user-rbac.html",
+              "title": "How-to Guide: Couchbase User RBAC"
+            },
+            {
+              "module": "ROOT",
               "path": "howto-manage-couchbase-logging.adoc",
               "url": "/operator/2.3-beta/howto-manage-couchbase-logging.html",
               "title": "Manage Couchbase Server Logging"
@@ -1563,12 +1762,6 @@
               "path": "howto-ui.adoc",
               "url": "/operator/2.3-beta/howto-ui.html",
               "title": "Access the Couchbase Server User Interface"
-            },
-            {
-              "module": "ROOT",
-              "path": "howto-user-authentication.adoc",
-              "url": "/operator/2.3-beta/howto-user-authentication.html",
-              "title": "Couchbase User Authentication Guide"
             },
             {
               "module": "ROOT",

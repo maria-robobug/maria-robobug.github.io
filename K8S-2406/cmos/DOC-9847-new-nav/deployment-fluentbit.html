@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Couchbase User RBAC | Couchbase Docs (Local)</title>
+<title>Fluent Bit deployment | Couchbase Docs (Local)</title>
 <link rel="stylesheet" href="../../_/css/site.css">
 <script src="../../_/js/vendor/jquery.js"></script>
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
 
 
-<meta name="dcterms.subject" content="operator">
-<meta name="dcterms.identifier" content="2.3-beta">
-<meta name="page-url" content="/operator/2.3-beta/concept-user-rbac.html">
+<meta name="dcterms.subject" content="cmos">
+<meta name="dcterms.identifier" content="DOC-9847-new-nav">
+<meta name="page-url" content="/cmos/DOC-9847-new-nav/deployment-fluentbit.html">
 <meta name="generator" content="Antora 3.0.1">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
 </head>
@@ -104,7 +104,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/couchbase-operator/docs/user/modules/ROOT/pages/concept-user-rbac.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/observability//docs/modules/ROOT/pages/deployment-fluentbit.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -162,17 +162,20 @@
 <div class="article-header">
 <nav class="crumbs" aria-label="breadcrumbs">
 <ul>
-<li class="crumb"><a href="overview.html">Autonomous Operator</a></li>
-<li class="crumb">Learn</li>
-<li class="crumb">Couchbase Cluster Concepts</li>
-<li class="crumb">Authentication and Authorization</li>
-<li class="crumb"><a href="concept-user-rbac.html">Couchbase User RBAC</a></li>
+<li class="crumb"><a href="index.html">Couchbase Monitoring and Observability Stack</a></li>
+<li class="crumb">Deployment</li>
+<li class="crumb"><a href="deployment-fluentbit.html">Fluent Bit deployment</a></li>
 </ul>
 </nav>
 </div>
 <article class="doc">
 <div class="page-heading-title">
-<h1 class="page">Couchbase User RBAC</h1>
+<h1 class="page">Fluent Bit deployment</h1>
+<div class="labels">
+<ul>
+<li class="status"><span>Developer Preview</span></li>
+</ul>
+</div>
 </div>
 <div class="contributor-list-box">
 <span class="last-commit-date" id="commitdate">    </span>
@@ -182,285 +185,137 @@
 <div class="sectionbody">
 <div class="quoteblock abstract">
 <blockquote>
-The Couchbase Autonomous Operator manages Couchbase Role-Based Access Control (RBAC) for the authorization of administrative users and groups.
+<a href="https://fluentbit.io/">Fluent Bit</a> is the recommended way to forward logs to CMOS from Couchbase Server instances.
 </blockquote>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<h2 id="kubernetes-usage"><a class="anchor" href="#kubernetes-usage"></a>Kubernetes usage</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Users are created when a <code>CouchbaseUser</code> resource is bound to one or more <code>CouchbaseGroup</code> resources using a <code>CouchbaseRoleBinding</code> resource.
-The <code>CouchbaseGroup</code> resource contains a set of roles that are to be applied to one or more users.</p>
-</div>
-<div id="image-user-binding-model" class="imageblock">
-<div class="content">
-<img src="_images/user-binding-default.png" alt="user binding default">
-</div>
-<div class="title">Figure 1. Basic User Role Binding</div>
+<p>Couchbase Autonomous Operator (CAO) versions 2.2 and greater already support Fluent Bit log forwarding.
+Refer to the <a href="https://docs.couchbase.com/operator/current/concept-couchbase-logging.html#log-forwarding">CAO documentation</a> for the full details.</p>
 </div>
 <div class="paragraph">
-<p>The Autonomous Operator only creates users that are bound to groups.
-Therefore, all three resources are required in order to create an authorized user.</p>
+<p>The main configuration required is providing the CMOS Loki endpoint as part of the <a href="https://docs.couchbase.com/operator/current/resource/couchbasecluster.html#couchbaseclusters-spec-servers-pod">Couchbase cluster configuration</a>.
+To do this, use Couchbase Fluent Bit <a href="https://github.com/couchbase/couchbase-fluent-bit#releases">versions 1.1.2 or greater</a> and supply the following annotations with appropriate values.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">            pod:
+                metadata:
+                    annotations:
+                        # Match all logs
+                        fluentbit.couchbase.com/loki_match: "*"
+                        # Send to this SVC
+                        fluentbit.couchbase.com/loki_host: loki.default</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A full example of integrating is available as part of the <a href="tutorial-kubernetes.html" class="xref page">Kubernetes example</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="user-role-binding"><a class="anchor" href="#user-role-binding"></a>User Role Binding</h2>
+<h2 id="on-premise-usage"><a class="anchor" href="#on-premise-usage"></a>On-premise usage</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A <code>CouchbaseRoleBinding</code> resource can bind multiple users to a single group.
-This model is similar to Kubernetes RBAC which allows multiple service accounts to inherit roles from a single resource.
-Separating user resources in this manner allows role definitions to easily be shared by multiple users.
-Consider the following example that creates user accounts for a developer and security admin with overlapping roles.</p>
-</div>
-<div id="multi-user-binding-model" class="imageblock">
-<div class="content">
-<img src="_images/multi-user-binding-example.png" alt="multi user binding example">
-</div>
-<div class="title">Figure 2. Shared User Roles</div>
+<p>Fluent Bit <a href="https://docs.fluentbit.io/manual/installation/supported-platforms">already provides various supported targets</a> so on-premise installation is straight forward.
+For full details, please refer to the <a href="https://docs.fluentbit.io/manual/installation/getting-started-with-fluent-bit">official documentation</a>.</p>
 </div>
 <div class="paragraph">
-<p>In the diagram above, two users are created with the following privileges:</p>
+<p>For CMOS needs we must do the following:</p>
 </div>
-<table id="table-example-roles" class="tableblock frame-all grid-all stretch">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install Fluent Bit.</p>
+</li>
+<li>
+<p>Configure Fluent Bit.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Step one is deploying the Fluent Bit binary with Couchbase Server and providing a startup script to launch it.
+Refer to the installation instructions above from Fluent Bit for this.</p>
+</div>
+<div class="paragraph">
+<p>Step two is configuring fluent bit with the <a href="https://github.com/couchbase/couchbase-fluent-bit/tree/main/conf">configuration</a> provided by the official Couchbase Fluent Bit image. You can either clone the repository or just copy over the configuration file.
+The key is to get all the configuration into the expected location for the local Fluent Bit to use, refer to the deployment guide from Fluent Bit for full details for the specific targets.
+Whilst this is intended primarily for CAO deployments and not officially supported on-premise, it will function there as well.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ git clone --depth 1 https://github.com/couchbase/couchbase-fluent-bit.git
+$ cp -R conf/* &lt;config directory for Fluent Bit on this OS&gt;</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="container-deployment"><a class="anchor" href="#container-deployment"></a>Container deployment</h3>
+<div class="paragraph">
+<p>A simplified solution would be to deploy the container solution explicitly with local volume mounts for the Couchbase Server logs.
+An <a href="https://github.com/couchbase/couchbase-fluent-bit/tree/main/tools/loki-stack">existing example</a> and <a href="https://blog.couchbase.com/using-fluent-bit-for-log-forwarding-processing-with-couchbase-server/">blog post</a> is available in the Couchbase Fluent Bit repository to show a complete stack.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ docker run --rm -d --name logger -v /opt/couchbase/var/lib/couchbase/logs/:/opt/couchbase/var/lib/couchbase/logs/:ro -e COUCHBASE_LOGS=/opt/couchbase/var/lib/couchbase/logs/ -e LOKI_MATCH="*" -e LOKI_HOST="127.0.0.1" couchbase/fluent-bit:1.1.3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Replace <code>LOKI_HOST</code> here with your actual DNS name or IP address for CMOS.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="loki-configuration-for-fluent-bit"><a class="anchor" href="#loki-configuration-for-fluent-bit"></a>Loki configuration for Fluent Bit</h3>
+<div class="paragraph">
+<p>Similar to the Kubernetes set up, make sure to set the environment variables to the appropriate values when Fluent Bit is launched.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Loki configuration for Fluent Bit</caption>
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 66.6667%;">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Role</th>
-<th class="tableblock halign-left valign-top">Privileges</th>
+<th class="tableblock halign-left valign-top">Variable name</th>
+<th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Application Developer</strong></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p><strong>data_reader+writer:</strong> Read/write access to data on all buckets</p>
-</li>
-<li>
-<p><strong>replication_admin:</strong> XDCR and web console access</p>
-</li>
-</ul>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LOKI_HOST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The (resolvable) hostname to send the logs to, i.e. where CMOS is running or another Loki stack if you want to integrate with that.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Security Administrator</strong></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p><strong>security_admin:</strong> Management of user roles</p>
-</li>
-<li>
-<p><strong>replication_admin:</strong> XDCR and bucket data access</p>
-</li>
-</ul>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LOKI_PORT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The port open on <code>LOKI_HOST</code> for Loki to receive logs, defaults to 3100 if not provided.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LOKI_MATCH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The set of logs to match to send to Loki, this can be a wildcard or specific logs in the format <code>couchbase.log.&lt;file&gt;</code>.</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="managing-groups"><a class="anchor" href="#managing-groups"></a>Managing Groups</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The <code>CouchbaseGroup</code> represents a collection of administrative and bucket roles which can be applied to users.
-There is a direct association between the <code>CouchbaseGroup</code> resource and <a href="../../server/7.1/learn/security/authorization-overview.html" class="xref page">Couchbase Server RBAC groups</a> such that Couchbase Server RBAC groups are created and deleted when corresponding <code>CouchbaseGroup</code> resources are created and deleted.</p>
-</div>
-<div class="paragraph">
-<p>Whenever users are bound to a group, the Autonomous Operator ensures that the corresponding Couchbase Server RBAC group exists with the requested roles, and then proceeds to add the requested users to the group.</p>
-</div>
-<div class="sect2">
-<h3 id="setting-roles"><a class="anchor" href="#setting-roles"></a>Setting Roles</h3>
-<div class="paragraph">
-<p>Roles within a <code>CouchbaseGroup</code> resource can be added, removed, or changed.
-Users only need to be bound once, and will automatically inherit any future changes to the roles in the group.</p>
-</div>
-<div class="paragraph">
-<p>By default, bucket roles provide a user with access to all buckets.
-Buckets resources can be specified under the buckets property of each role,  This will add a role for each bucket specified.
-The following example demonstrates how to restrict data writing to the default bucket, while allowing the user to read from any bucket.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: couchbase.com/v2
-kind: CouchbaseGroup
-metadata:
-  name: datarole
-spec:
-  roles:
-  - name: data_reader
-  - name: data_writer
-    buckets:
-      name: default
-      kind: CouchbaseBucket</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In versions Couchbase Server greater than 7.0.0, bucket roles can be specified for buckets, scopes and collections.  In Couchbase Server versions before 7.0.0, these settings will be ignored.
-The following example demonstrates how to restrict data writing to the default bucket, scope and collection, while allowing the user to read from all scopes and collections within the default bucket.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: couchbase.com/v2
-kind: CouchbaseGroup
-metadata:
-  name: datarole
-spec:
-  roles:
-  - name: data_reader
-    buckets:
-      name: default
-      kind: CouchbaseBucket
-  - name: data_writer
-    buckets:
-      name: default
-      kind: CouchbaseBucket
-    scopes:
-      name: default
-      kind: CouchbaseScope
-    collections:
-      name: default
-      kind: CouchbaseCollection</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Multiple Buckets, Scopes and Collections can be specified.  However, <code>CouchbaseScopeGroup</code> and <code>CouchbaseCollectionGroup</code> can also be utilized to create roles for many scope and collection combinations.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="referencing-ldap-groups"><a class="anchor" href="#referencing-ldap-groups"></a>Referencing LDAP Groups</h3>
-<div class="paragraph">
-<p>Couchbase Server provides LDAP integration which allows external user authentication.
-The Autonomous Operator can be used to enable this functionality when an <code>ldapGroupRef</code> is specified within the <code>CouchbaseGroup</code> resource.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: couchbase.com/v2
-kind: CouchbaseGroup
-metadata:
-  name: datarole
-spec:
-  ldapGroupRef: cn=mygroup,ou=Groups,dc=example,dc=com
-  roles:
-  - name: cluster_admin</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The example above demonstrates the creation of a Couchbase Server RBAC group which grants the <code>cluster_admin</code> role to all LDAP users within the reference group.</p>
-</div>
-<div class="paragraph">
-<p>Note that you&#8217;ll need to have LDAP connectivity configured in the <code>CouchbaseCluster</code> resource in order use this functionality.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="managing-users"><a class="anchor" href="#managing-users"></a>Managing Users</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>A user is created when it is bound to group.
-A user is also deleted whenever its corresponding <code>CouchbaseUser</code> resource is deleted, or if it is no longer bound to any groups.
-Therefore, the deletion of a <code>CouchbaseGroup</code> or <code>CouchbaseRoleBinding</code> resource may result in user deletion when doing so results in the user being unbound from a group.
-The reason why unbound users are deleted is because there are no clear privileges to apply to the user.</p>
-</div>
-<div class="sect2">
-<h3 id="label-selection"><a class="anchor" href="#label-selection"></a>Label Selection</h3>
-<div class="paragraph">
-<p>If you have more than one <code>CouchbaseCluster</code> resource deployed in the same namespace, you&#8217;ll need to use <a href="concept-label-selection.html" class="xref page">resource label selection</a> to ensure that users and groups get created on the correct cluster.
-Like with other Couchbase custom resources, this means specifying a label for RBAC resources which matches the corresponding label selector of the <code>CouchbaseCluster</code> resource that you want the resources aggregated to.</p>
-</div>
-<div class="paragraph">
-<p>It&#8217;s recommended that you start by adding a label selector to the <code>CouchbaseCluster</code> resource.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: couchbase.com/v2
-kind: CouchbaseCluster
-metadata:
-  name: my-cluster
-spec:
-  rbac:
-    managed: true
-    selector:
-      matchLabels:
-        cluster: my-cluster</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>CouchbaseCluster</code> resource configuration above will only select <code>CouchbaseUser</code> and <code>CouchbaseGroup</code> resources that are labeled with <code>cluster: my-cluster</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">---
-apiVersion: couchbase.com/v2
-kind: CouchbaseUser
-metadata:
-  name: my-user
-  labels:
-    cluster: my-cluster
-
----
-apiVersion: couchbase.com/v2
-kind: CouchbaseGroup
-metadata:
-  name: my-group
-  labels:
-    cluster: my-cluster</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Note that <code>CouchbaseRoleBinding</code> resources don&#8217;t support labels and don&#8217;t directly utilize label selection.
-Instead, the Autonomous Operator looks at the names of the users and groups specified in the <code>CouchbaseRoleBinding</code> resource.
-If those names match the <code>CouchbaseUser</code> and <code>CouchbaseGroup</code> resources that are both being selected by the same cluster, then they will be bound together.
-Therefore, so long as the <code>CouchbaseUser</code> and <code>CouchbaseGroup</code> resources have the same label, the users and groups specified in the <code>CouchbaseRoleBinding</code> resource will be bound together.</p>
-</div>
-<div class="admonitionblock note">
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Users and groups must match the labels of the same cluster when being bound together, otherwise a scheduling conflict will occur if one cluster is only selecting a user but not selecting the group it belongs to.
+<div class="paragraph">
+<p>In addition to the above Loki specific configuration make sure to set the <a href="https://github.com/couchbase/couchbase-fluent-bit#configuration">environment variables Fluent Bit requires</a>.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://github.com/couchbase/couchbase-fluent-bit/tree/main/tools/loki-stack">example</a> and <a href="https://blog.couchbase.com/using-fluent-bit-for-log-forwarding-processing-with-couchbase-server/">blog post</a> cover this as well in more detail.</p>
+</div>
 </td>
 </tr>
 </table>
 </div>
-<div class="sect3">
-<h4 id="example-label-selection"><a class="anchor" href="#example-label-selection"></a>Example Label Selection</h4>
-<div class="paragraph">
-<p>The following diagram shows an example of users and groups partitioned across a multi-cluster deployment.</p>
-</div>
-<div id="image-user-label-example" class="imageblock">
-<div class="content">
-<img src="_images/user-label-example.png" alt="user label example">
-</div>
-<div class="title">Figure 3. User and Group Selection Across Clusters</div>
-</div>
-<div class="paragraph">
-<p>In the example above, the individual users are each selected by different clusters, and each bound to cluster-specific groups.
-However, each user is also bound to a shared XDCR group that is selected by both clusters.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="related-links"><a class="anchor" href="#related-links"></a>Related Links</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>How-to guide:</strong> <a href="howto-guide-couchbase-user-rbac.html" class="xref page">Couchbase User RBAC</a></p>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -537,7 +392,7 @@ However, each user is also bound to a shared XDCR group that is selected by both
 </footer>
 <script src="../../_/js/site-navigation-data.js"></script>
 <script id="page-navigation-group" type="application/json">
-{"title":"Autonomous Operator","components":["operator"],"latestVersions":{"operator":"2.3-beta"}}
+{"title":"CMOS","components":["cmos"],"latestVersions":{"cmos":"DOC-9847-new-nav"}}
 </script>
 <template id="run-code-panel">
 <div class="action-panel">

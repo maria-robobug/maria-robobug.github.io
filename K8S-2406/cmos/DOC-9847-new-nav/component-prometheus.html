@@ -4,20 +4,19 @@
 <meta charset="utf-8">
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Couchbase on Containers, Kubernetes, and Cloud | Couchbase Docs (Local)</title>
-<link rel="canonical" href="https://maria-robobug.github.io/home/cloud.html">
-<link rel="stylesheet" href="../_/css/site.css">
-<script src="../_/js/vendor/jquery.js"></script>
+<title>Prometheus | Couchbase Docs (Local)</title>
+<link rel="stylesheet" href="../../_/css/site.css">
+<script src="../../_/js/vendor/jquery.js"></script>
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
 
 
-<meta name="dcterms.subject" content="home">
-<meta name="dcterms.identifier" content="master">
-<meta name="page-url" content="/home/cloud.html">
+<meta name="dcterms.subject" content="cmos">
+<meta name="dcterms.identifier" content="DOC-9847-new-nav">
+<meta name="page-url" content="/cmos/DOC-9847-new-nav/component-prometheus.html">
 <meta name="generator" content="Antora 3.0.1">
-<link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
 </head>
-<body class="landing-page">
+<body class="article">
 <header class="header fixed-top">
   <div class="header-top-row">
       <div class="container">
@@ -25,13 +24,13 @@
               <ul class="navbar-brand-list">
                 <li class="brand-logo">
                   <a class="navbar-brand" href="https://www.couchbase.com">
-                    <img src="../_/img/couchbase-logo.svg" alt="Couchbase" />
+                    <img src="../../_/img/couchbase-logo.svg" alt="Couchbase" />
                   </a>
                 </li>
                 <li>
                   <a class="navbar-brand cb-documentation" href="https://maria-robobug.github.io/home/index.html">
-                    <img src="../_/img/cb-documentation.svg" alt="Couchbase Documentation" class="cb-docs" />
-                    <img src="../_/img/cb-docs-hover.svg" alt="Couchbase Documentation" class="hide cb-hover-docs" />
+                    <img src="../../_/img/cb-documentation.svg" alt="Couchbase Documentation" class="cb-docs" />
+                    <img src="../../_/img/cb-docs-hover.svg" alt="Couchbase Documentation" class="hide cb-hover-docs" />
                   </a>
                 </li>
               </ul>
@@ -56,22 +55,22 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="server.html">
+                    <a class="nav-link" href="../../home/server.html">
                       Server
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="mobile.html">
+                    <a class="nav-link" href="../../home/mobile.html">
                       Mobile
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../cloud-native-database/index.html">
+                    <a class="nav-link" href="../../cloud-native-database/index.html">
                       Cloud-Native
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="sdk.html">
+                    <a class="nav-link" href="../../home/sdk.html">
                       SDKs
                     </a>
                   </li>
@@ -94,92 +93,156 @@
    </div>
 </header>
 <div class="body container">
+<aside class="nav left-sidebar">
+  <div class="nav-container">
+    <a href="#" class="menu-expand-toggle"><span>Navigation</span><i class="fas fa-times-circle"></i><i class="fas fa-chevron-circle-left"></i></a>
+  </div>
+</aside>
+<aside class="toc sidebar"
+      data-title="Contents"
+      data-levels="1">
+  <div class="sidebar-box">
+    <div class="tools" role="navigation">
+<ul>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/observability//docs/modules/ROOT/pages/component-prometheus.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+</ul>
+</div>
+    <div class="toc-menu"></div>
+    <div class="is-this-helpful-box">
+      <h4> Is this page helpful?</h4>
+      <div class="btn-row">
+        <a href="#" class="like-btn helpful-btn" id="yesBtn" data-page-rating="like" >
+                <i class="far fa-thumbs-up"></i>
+            Yes
+
+            </a>
+        <a href="#" class="dislike-btn helpful-btn" id="noBtn"  data-page-rating="dislike"> <i class="far fa-thumbs-down"></i> No</a>
+      </div>
+      <div class="any-feedback">
+        <a href="#" class="btn any-feedback-btn" id="myCustomTrigger">Leave Additional Feedback? </a>
+      </div>
+      <div class="dialog-box" id="dialogBox">
+        <form>
+            <div class="form-group " id="additionalFeedbackBox">
+              <textarea class="input-control feed-back-msg" rows="8" placeholder="Any Additonal Feedback?"></textarea>
+
+              <div class="action-btn-row ">
+                <a href="#" class="skip-btn" id="skipBtnMsg">Skip</a>
+                  <button class="submit-btn btn blue-btn disabled" > Submit  </button>
+                  <a href="#" class="info-btn"><i class="fas fa-info-circle"></i></a>
+              </div>
+
+
+            </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+</aside>
+
+<div class="feedback-modal modal-popup">
+  <div class="modal-popup-dialogue">
+    <div class="popup-header">
+      <a href="#" class="close-popup"><i class="fa fa-times"></i></a>
+    </div>
+    <div class="popup-content">
+      <p>
+        Please use the form below to provide your feedback. Because your feedback is valuable to us,
+         the information you submit in this form is recorded in our issue tracking system (JIRA), which is publicly available.
+        You can track the status of your feedback using the ticket number displayed in the dialog once you submit the form.
+      </p>
+    </div>
+  </div>
+</div>
+
 <main class="article" data-ceiling="topbar">
-<article class="doc landing-page-doc">
-<h1 class="sect0">Couchbase on Containers, Kubernetes, and Cloud</h1>
-<div class="paragraph">
-<p>Couchbase Server is designed to run in the most popular cloud and container environments. Deploy Couchbase in the cloud for its unique data model flexibility, elastic scalability, high performance, and 24x365 availability.</p>
+<div class="article-header">
+<nav class="crumbs" aria-label="breadcrumbs">
+<ul>
+<li class="crumb"><a href="index.html">Couchbase Monitoring and Observability Stack</a></li>
+<li class="crumb">Components</li>
+<li class="crumb">Metrics</li>
+<li class="crumb"><a href="component-prometheus.html">Prometheus</a></li>
+</ul>
+</nav>
+</div>
+<article class="doc">
+<div class="page-heading-title">
+<h1 class="page">Prometheus</h1>
+<div class="labels">
+<ul>
+<li class="status"><span>Developer Preview</span></li>
+</ul>
+</div>
+</div>
+<div class="contributor-list-box">
+<span class="last-commit-date" id="commitdate">    </span>
+<ul id="contributorList"></ul>
+<span  id="otherContributor"> + </span>
+</div><div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
+<blockquote>
+Prometheus server in CMOS stack helps to scrape Couchbase Server metrics and generate alerts on them.
+</blockquote>
+</div>
+</div>
 </div>
 <div class="sect1">
-<h2>Couchbase Capella (Database-as-a-Service)</h2>
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
-<div class="card-row two-column-row">
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph content">
-<div class="title"></div>
-<p><a href="https://docs.couchbase.com/cloud/index.html">Couchbase Capella</a> is a fully-managed database as a service designed from the ground up to take the complexity out of deploying, managing, scaling, and securing Couchbase in the public cloud. With just a few clicks, you can store, query, and analyze any amount of data, all on the cloud service provider of your choice.</p>
+<div class="paragraph">
+<p><a href="https://prometheus.io" target="_blank" rel="noopener">Prometheus</a> is a leading open-source monitoring solution which has become the industry standard for metrics collection and alert generation on cloud platforms.
+With Prometheus, multi-dimensional metric data can be collected from multiple endpoints and stored as time series data along with optional labels.</p>
 </div>
 <div class="paragraph">
-<p><a href="#cloud::index.adoc" class="xref unresolved">Go to Couchbase Capella Docs</a></p>
+<p>In a distributed environment, metrics need to be collected in real-time from various sources and alerts need to be triggered based on data trends and threshold deviations.
+As part of the Couchbase Monitoring and Observability Stack (CMOS), Prometheus Server comes with a set of built-in standard rules to create alerts on metrics scraped from Couchbase Server and other CMOS components.</p>
 </div>
-</div>
-<div class="sect5 column">
-<h6></h6>
-<div class="videoblock media-left">
+<div class="imageblock">
 <div class="content">
-<iframe src="https://www.youtube.com/embed/bNOq6OeMCr4?rel=0" frameborder="0" allowfullscreen></iframe>
+<img src="_images/component-prometheus.png" alt="component prometheus">
 </div>
+<div class="title">Figure 1. Prometheus server in CMOS</div>
 </div>
-</div>
+<div class="paragraph">
+<p>From Couchbase Server 7, detailed metric endpoints are exposed via a <a href="https://docs.couchbase.com/server/current/introduction/whats-new.html#scalable-statistics" target="_blank" rel="noopener">Prometheus instance</a> built into the server.
+Using a CMOS Prometheus Server that sits outside of the Couchbase Cluster, monitoring can be easily accomplished at scale.
+The CMOS Prometheus Server, when configured, scrapes metrics from Couchbase Server targets along with other components in the stack.
+Alerts are generated based on standard alerting rules that are forwarded to the Alert Manager instance running in the CMOS stack.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2>Couchbase Cloud-Native Database</h2>
+<h2 id="get-started"><a class="anchor" href="#get-started"></a>Get Started</h2>
 <div class="sectionbody">
-<div class="card-row two-column-row">
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph content">
-<div class="title"></div>
-<p>Couchbase Cloud-Native Database is the culmination of Couchbase Server and native integration with cloud-native open source technologies such as Kubernetes, Prometheus, Helm, CNI, CoreDNS, Operator Framework, Ceph, Gluster, Istio Service Mesh, Open Service Broker API, and Open Telemetry.</p>
-</div>
 <div class="paragraph">
-<p><a href="../cloud-native-database/index.html" class="xref page">Go to Couchbase Cloud-Native Database</a></p>
-</div>
-</div>
-<div class="sect5 column">
-<h6></h6>
-<div class="imageblock media-left">
-<div class="content">
-<img src="_images/kubernetes_2.svg" alt="kubernetes 2" width="500">
+<p>The CMOS Prometheus Server is included and enabled by default in CMOS.
+It ships with a default set of Couchbase specific standard alerting rules that trigger alerts, allowing administrators to quickly and easily take actions to mitigate issues.
+Prometheus in CMOS can be deployed <a href="tutorial-onpremise.html" class="xref page">on premise</a> or using <a href="tutorial-kubernetes.html" class="xref page">kubernetes</a>.
+Check out the reference <a href="architecture.html" class="xref page">Couchbase Monitoring Observability Stack</a>(CMOS) architecture to learn more.
+Learn more about how to further customize Prometheus to scrape metrics from other targets and create new rules in the <a href="https://prometheus.io/docs/introduction/first_steps" target="_blank" rel="noopener">first steps</a>.</p>
 </div>
 </div>
 </div>
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph content">
-<div class="title">Couchbase Autonomous Operator</div>
-<p>The Couchbase Autonomous Operator provides native integration of Couchbase Server with open source Kubernetes and Red Hat OpenShift. It enables you to automate the management of common Couchbase tasks such as the configuration, creation, scaling, and recovery of Couchbase clusters. By reducing the complexity of running a Couchbase cluster, it lets you focus on the desired configuration and not worry about the details of manual deployment and life-cycle management.</p>
-</div>
-<div class="paragraph">
-<p><a href="../operator/2.3-beta/overview.html" class="xref page">Go to Couchbase Autonomous Operator</a></p>
-</div>
-</div>
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph content">
-<div class="title">Couchbase Service Broker</div>
-<p>The Service Broker implements the <a href="https://www.openservicebrokerapi.org/" target="_blank" rel="noopener">Open Service Broker API</a>. It is a simple web-service that creates Kubernetes resources on demand as requested by the API.</p>
-</div>
-<div class="paragraph">
-<p><a href="#service-broker::index.adoc" class="xref unresolved">Go to Couchbase Service Broker</a></p>
-</div>
-</div>
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph">
-<div class="title">Couchbase Monitoring and Observability Stack</div>
-<p><span class="status">Developer Preview</span></p>
-</div>
-<div class="paragraph content">
-<p>The Couchbase Monitoring and Observability Stack (CMOS) is a simple, out-of-the-box solution based on industry standard tooling to observe the state of your Couchbase cluster.</p>
-</div>
-<div class="paragraph">
-<p><a href="../cmos/DOC-9847-new-nav/index.html" class="xref page">Go to Couchbase Monitoring and Observability Stack</a></p>
-</div>
-</div>
+<div class="sect1">
+<h2 id="links"><a class="anchor" href="#links"></a>Links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>On Premise Tutorial: <a href="tutorial-onpremise.html" class="xref page">Deploy CMOS on Premise</a></p>
+</li>
+<li>
+<p>Kubernetes Tutorial: <a href="tutorial-kubernetes.html" class="xref page">Deploy CMOS on Kubernetes</a></p>
+</li>
+<li>
+<p>Prometheus: <a href="https://prometheus.io/docs/introduction/first_steps" target="_blank" rel="noopener">First Steps</a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -192,7 +255,7 @@
       <div class="col">
         <div class="footer-logo">
           <a href="https://www.couchbase.com" class="icon">
-            <img src="../_/img/couchbase-logo.svg" alt="Couchbase">
+            <img src="../../_/img/couchbase-logo.svg" alt="Couchbase">
           </a>
         </div>
       </div>
@@ -254,6 +317,10 @@
     </div>
   </div>
 </footer>
+<script src="../../_/js/site-navigation-data.js"></script>
+<script id="page-navigation-group" type="application/json">
+{"title":"CMOS","components":["cmos"],"latestVersions":{"cmos":"DOC-9847-new-nav"}}
+</script>
 <template id="run-code-panel">
 <div class="action-panel">
   <form class="action-panel-control" method="POST" action="https://couchbase.live/run" target="run-code-output">
@@ -269,9 +336,9 @@
   <iframe class="run-code-output" name="run-code-output"></iframe>
 </div>
 </template>
-<script id="site-script" src="../_/js/site.js"></script>
-<script defer src="../_/js/vendor/fontawesome-icon-defs.js"></script>
-<script defer src="../_/js/vendor/fontawesome.js" data-search-pseudo-elements="true"></script>
-<script async src="../_/js/vendor/highlight.js"></script>
+<script id="site-script" src="../../_/js/site.js"></script>
+<script defer src="../../_/js/vendor/fontawesome-icon-defs.js"></script>
+<script defer src="../../_/js/vendor/fontawesome.js" data-search-pseudo-elements="true"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
 </body>
 </html>

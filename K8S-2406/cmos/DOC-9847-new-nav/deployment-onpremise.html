@@ -4,20 +4,19 @@
 <meta charset="utf-8">
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cloud-Native Database | Couchbase Docs (Local)</title>
-<link rel="canonical" href="https://maria-robobug.github.io/cloud-native-database/index.html">
-<link rel="stylesheet" href="../_/css/site.css">
-<script src="../_/js/vendor/jquery.js"></script>
+<title>On-premise deployment | Couchbase Docs (Local)</title>
+<link rel="stylesheet" href="../../_/css/site.css">
+<script src="../../_/js/vendor/jquery.js"></script>
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
 
 
-<meta name="dcterms.subject" content="cloud-native-database">
-<meta name="dcterms.identifier" content="master">
-<meta name="page-url" content="/cloud-native-database/index.html">
+<meta name="dcterms.subject" content="cmos">
+<meta name="dcterms.identifier" content="DOC-9847-new-nav">
+<meta name="page-url" content="/cmos/DOC-9847-new-nav/deployment-onpremise.html">
 <meta name="generator" content="Antora 3.0.1">
-<link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
 </head>
-<body class="landing-page">
+<body class="article">
 <header class="header fixed-top">
   <div class="header-top-row">
       <div class="container">
@@ -25,13 +24,13 @@
               <ul class="navbar-brand-list">
                 <li class="brand-logo">
                   <a class="navbar-brand" href="https://www.couchbase.com">
-                    <img src="../_/img/couchbase-logo.svg" alt="Couchbase" />
+                    <img src="../../_/img/couchbase-logo.svg" alt="Couchbase" />
                   </a>
                 </li>
                 <li>
                   <a class="navbar-brand cb-documentation" href="https://maria-robobug.github.io/home/index.html">
-                    <img src="../_/img/cb-documentation.svg" alt="Couchbase Documentation" class="cb-docs" />
-                    <img src="../_/img/cb-docs-hover.svg" alt="Couchbase Documentation" class="hide cb-hover-docs" />
+                    <img src="../../_/img/cb-documentation.svg" alt="Couchbase Documentation" class="cb-docs" />
+                    <img src="../../_/img/cb-docs-hover.svg" alt="Couchbase Documentation" class="hide cb-hover-docs" />
                   </a>
                 </li>
               </ul>
@@ -56,22 +55,22 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../home/server.html">
+                    <a class="nav-link" href="../../home/server.html">
                       Server
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../home/mobile.html">
+                    <a class="nav-link" href="../../home/mobile.html">
                       Mobile
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="../../cloud-native-database/index.html">
                       Cloud-Native
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="../home/sdk.html">
+                    <a class="nav-link" href="../../home/sdk.html">
                       SDKs
                     </a>
                   </li>
@@ -105,7 +104,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-cloud-native//modules/ROOT/pages/index.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/observability//docs/modules/ROOT/pages/deployment-onpremise.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -160,169 +159,119 @@
 </div>
 
 <main class="article" data-ceiling="topbar">
-<article class="doc landing-page-doc">
-<h1 class="sect0">Couchbase Cloud-Native Database</h1>
-<div class="card-row">
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph content">
-<p>The Couchbase Cloud-Native Database is the native integration of Couchbase Server with cloud-native technologies, facilitated by the Couchbase Autonomous Operator.
-This integration empowers organizations to build and run scalable stateful applications in modern, dynamic environments such as public, private, and hybrid clouds.
-Containers, service meshes, microservices, immutable infrastructure, and declarative APIs exemplify this approach.</p>
+<div class="article-header">
+<nav class="crumbs" aria-label="breadcrumbs">
+<ul>
+<li class="crumb"><a href="index.html">Couchbase Monitoring and Observability Stack</a></li>
+<li class="crumb">Deployment</li>
+<li class="crumb"><a href="deployment-onpremise.html">On-premise deployment</a></li>
+</ul>
+</nav>
+</div>
+<article class="doc">
+<div class="page-heading-title">
+<h1 class="page">On-premise deployment</h1>
+<div class="labels">
+<ul>
+<li class="status"><span>Developer Preview</span></li>
+</ul>
 </div>
 </div>
-<div class="sect5 column">
-<h6></h6>
-<div class="imageblock media-left">
+<div class="contributor-list-box">
+<span class="last-commit-date" id="commitdate">    </span>
+<ul id="contributorList"></ul>
+<span  id="otherContributor"> + </span>
+</div><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>A working example is <a href="https://github.com/couchbaselabs/observability/tree/main/examples/containers/" target="_blank" rel="noopener">provided</a> based on a docker compose stack to run up a single node Couchbase cluster with the microlith all correctly configured.</p>
+</div>
+<div class="paragraph">
+<p>The basic steps are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install a container runtime for your platform, for example on Ubuntu details are here: <a href="https://docs.docker.com/engine/install/ubuntu/" class="bare">https://docs.docker.com/engine/install/ubuntu/</a></p>
+</li>
+<li>
+<p>Run the microlith container up: <code>docker run --name=couchbase-grafana --rm -d -P couchbase-observability</code></p>
+</li>
+<li>
+<p>Configure the cluster to talk to it by providing credentials to Prometheus and cluster monitor tools.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Prometheus end points and credentials can be added to the <a href="https://github.com/couchbaselabs/observability/tree/main/microlith/dynamic/prometheus/couchbase/targets.json" target="_blank" rel="noopener">config file</a> mounted into the container above. This is periodically rescanned and new end points added.</p>
+</div>
+<div class="listingblock">
 <div class="content">
-<img src="_images/kubernettes_2.svg" alt="kubernettes 2" width="400">
-</div>
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">[
+    {
+      "targets": [
+        "exporter:9091"
+      ],
+      "labels": {
+        "job": "db1",
+        "container": "exporter"
+      }
+    }
+]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The Couchbase Cloud-Native Database is the culmination of Couchbase Server and native integration with cloud-native open-source technologies such as Kubernetes, Prometheus, Helm, CNI, CoreDNS, Operator Framework, Ceph, Gluster, Istio Service Mesh, and the Open Service Broker API.</p>
+<p>The cluster monitor currently requires configuration via a bespoke REST API:
+<code>curl -u "${CLUSTER_MONITOR_USER}:${CLUSTER_MONITOR_PWD}" -X POST -d '{ "user": "'"${COUCHBASE_USER}"'", "password": "'"${COUCHBASE_PWD}"'", "host": "'"${COUCHBASE_ENDPOINT}"'" }' "${CLUSTER_MONITOR_ENDPOINT}/api/v1/clusters"</code></p>
 </div>
-<div class="imageblock">
+<div class="ulist">
+<ul>
+<li>
+<p>COUCHBASE_ENDPOINT should be set to a node that you want to monitor in a Couchbase cluster.</p>
+</li>
+<li>
+<p>COUCHBASE_USER &amp; COUCHBASE_PWD are the credentials for accesing that cluster.</p>
+</li>
+<li>
+<p>CLUSTER_MONITOR_ENDPOINT is the mapping to port 7196 of the container we started, e.g. <code><a href="http://localhost:7196" class="bare">http://localhost:7196</a></code>. In the container run line above we map to dynamic ports so grab them using <code>docker container port couchbase-grafana 7196</code> and use that value in the URL or alternatively use the Nginx reverse-proxy URL <code><a href="http://localhost:8080/couchbase" class="bare">http://localhost:8080/couchbase</a></code>.</p>
+</li>
+<li>
+<p>CLUSTER_MONITOR_USER &amp; CLUSTER_MONITOR_PWD are the credentials for the cluster monitor tool, defaults to a <code>admin:password</code> but can be set differently using these variables when launching the container.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As an example to configure a new cluster node to be monitored:</p>
+</div>
+<div class="listingblock">
 <div class="content">
-<img src="_images/cloud-native-overview.png" alt="cloud native overview">
+<pre>CLUSTER_MONITOR_USER=admin
+CLUSTER_MONITOR_PWD=password
+CLUSTER_MONITOR_ENDPOINT=http://localhost:$(docker container port couchbase-grafana 7196)
+COUCHBASE_USER=Administrator
+COUCHBASE_PWD=password
+COUCHBASE_ENDPOINT=http://db2:8091
+curl -u "${CLUSTER_MONITOR_USER}:${CLUSTER_MONITOR_PWD}" -X POST -d '{ "user": "'"${COUCHBASE_USER}"'", "password": "'"${COUCHBASE_PWD}"'", "host": "'"${COUCHBASE_ENDPOINT}"'" }' "${CLUSTER_MONITOR_ENDPOINT}/api/v1/clusters"</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><br>
-<br></p>
+<p>We can also run with a directory containing shell scripts that do the above: <code>-v $PWD/microlith/dynamic/healthcheck/:/etc/healthcheck/</code>
+This will be re-scanned periodically and any scripts in it run.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2>Couchbase Autonomous Operator for Kubernetes</h2>
+<h2 id="next-steps"><a class="anchor" href="#next-steps"></a>Next steps</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>The Autonomous Operator is the core product in the Couchbase Cloud-Native Database that has been integrated with various cloud-native technologies as depicted in the diagram above.
-The Autonomous Operator is a pre-requisite to be able to use the cloud-native integrations.</p>
-</div>
-<div class="paragraph">
-<p><a href="../operator/2.3-beta/overview.html" class="xref page">Couchbase Autonomous Operator</a></p>
-</div>
-<div class="paragraph">
-<p><br></p>
-</div>
-<div class="card-row two-column-row">
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph content">
-<div class="title">Couchbase Prometheus Exporter</div>
-<p>Prometheus has become the de facto standard for monitoring, especially for Kubernetes deployments.
-With Couchbase Exporter for Prometheus, users can standardize and centralize their monitoring with Prometheus and Grafana for visualization.</p>
-</div>
-<div class="paragraph">
-<p><a href="prometheus-overview.html" class="xref page">Couchbase Prometheus Exporter</a></p>
-</div>
-</div>
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph content">
-<div class="title">Fluent Bit</div>
-<p>Fluent Bit has become a de facto standard for lightweight log processing and forwarding, allowing for the collection of data like metrics and logs from different sources, enriching them with filters, and sending them to multiple destinations.
-It&#8217;s the preferred choice for containerized environments like Kubernetes. Logs can be forwarded from multiple Couchbase clusters to a centralized logging solution with a standard structure.</p>
-</div>
-<div class="paragraph">
-<p><a href="fluent-bit-overview.html" class="xref page">Fluent Bit</a></p>
-</div>
-</div>
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph">
-<div class="title">Couchbase Monitoring and Observability Stack</div>
-<p><span class="status">Developer Preview</span></p>
-</div>
-<div class="paragraph content">
-<p>The Couchbase Monitoring and Observability Stack (CMOS) is a simple, out-of-the-box solution based on industry standard tooling to observe the state of your Couchbase cluster.</p>
-</div>
-<div class="paragraph">
-<p><a href="../cmos/DOC-9847-new-nav/index.html" class="xref page">Couchbase Monitoring and Observability Stack</a></p>
-</div>
-</div>
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph content">
-<div class="title">Couchbase Helm Charts</div>
-<p>An integration with Helm simplifies the user experience through an alternate way of installing the Couchbase Autonomous Operator.</p>
-</div>
-<div class="paragraph">
-<p>Couchbase provides official Helm charts that deploy various aspects of the Couchbase Cloud-Native Database.
-The main chart can be used to deploy the whole system or just individual components.</p>
-</div>
-<div class="paragraph">
-<p><br></p>
-</div>
-<div class="paragraph">
-<p><a href="helm-overview.html" class="xref page">Couchbase Helm Charts</a></p>
-</div>
-</div>
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph content">
-<div class="title">Couchbase Service Broker</div>
-<p>An integration with the Open Service Broker API that provides an alternate way of installing Couchbase Server via the Couchbase Autonomous Operator at the cluster-scope, as well as the namespace-scope.
-This separation of cluster-scope and namespace-scope provides robust brokered services.
-Couchbase Service Broker provides a mechanism that allows platform engineers to easily curate a marketplace of services that can be consumed by applications running across many Kubernetes clusters by building on top of the diverse ecosystem of services available today, no matter what platform they’re running on (AKS, EKS, GKE, or On-prem).</p>
-</div>
-<div class="paragraph">
-<p><a href="#service-broker::index.adoc" class="xref unresolved">service-broker::index.adoc</a></p>
-</div>
-</div>
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph content">
-<div class="title">Istio</div>
-<p>Istio is a service mesh that may be used when combining multiple microservices together in the deployments behind applications.
-A service mesh can, transparent to your services, add security, observability, traffic management, and other capabilities.</p>
-</div>
-<div class="paragraph">
-<p><a href="istio-overview.html" class="xref page">Istio</a></p>
-</div>
-</div>
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph content">
-<div class="title">Container Network Interface</div>
-<p>Couchbase Autonomous Operator supports Container Network Interface (CNI), which  consists of a specification and libraries for writing plugins to configure network interfaces in Linux containers, along with a number of supported plugins.</p>
-</div>
-<div class="paragraph">
-<p><a href="container-network-interface-overview.html" class="xref page">Container Network Interface</a></p>
-</div>
-</div>
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph content">
-<div class="title">Persistent Volumes</div>
-<p>Persistent volumes are a fundamental part of stateful applications such as databases that require some form of persistent storage to avoid data loss.
-Even stateless microservices have some dependency on persistent data stores where the data persists beyond the container, pod, or host.  The Couchbase Autonomous Operator supports persistent volumes for Couchbase Server deployments.</p>
-</div>
-<div class="paragraph">
-<p><a href="persistent-volumes-overview.html" class="xref page">Persistent Volumes</a></p>
-</div>
-</div>
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph content">
-<div class="title">CoreDNS</div>
-<p>TLS support inside of the Kubernetes cluster is driven by CoreDNS, which is a graduated project in the CNCF landscape.
-The Couchbase Autonomous Operator supports CoreDNS.</p>
-</div>
-<div class="paragraph">
-<p><a href="coredns-overview.html" class="xref page">CoreDNS</a></p>
-</div>
-</div>
-<div class="sect5 column">
-<h6></h6>
-<div class="paragraph content">
-<div class="title">Certified Kubernetes Platforms</div>
-<p>The Couchbase Autonomous Operator is compatible with, and runs on, several popular Kubernetes platforms such as  Microsoft Azure Kubernetes Service, AWS Elastic Kubernetes Service, Google Kubernetes Engine.</p>
-</div>
-<div class="paragraph">
-<p><a href="kubernetes-platforms-overview.html" class="xref page">Certified Kubernetes Platforms</a></p>
-</div>
-</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="deployment-fluentbit.html" class="xref page">Fluent Bit deployment</a></p>
+</li>
+<li>
+<p><a href="tutorial-onpremise.html" class="xref page">On-premise example</a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -335,7 +284,7 @@ The Couchbase Autonomous Operator supports CoreDNS.</p>
       <div class="col">
         <div class="footer-logo">
           <a href="https://www.couchbase.com" class="icon">
-            <img src="../_/img/couchbase-logo.svg" alt="Couchbase">
+            <img src="../../_/img/couchbase-logo.svg" alt="Couchbase">
           </a>
         </div>
       </div>
@@ -397,9 +346,9 @@ The Couchbase Autonomous Operator supports CoreDNS.</p>
     </div>
   </div>
 </footer>
-<script src="../_/js/site-navigation-data.js"></script>
+<script src="../../_/js/site-navigation-data.js"></script>
 <script id="page-navigation-group" type="application/json">
-{"title":"Cloud-Native","components":["cloud-native-database"],"url":"/cloud-native-database/index.html","latestVersions":{"cloud-native-database":"master"}}
+{"title":"CMOS","components":["cmos"],"latestVersions":{"cmos":"DOC-9847-new-nav"}}
 </script>
 <template id="run-code-panel">
 <div class="action-panel">
@@ -416,9 +365,9 @@ The Couchbase Autonomous Operator supports CoreDNS.</p>
   <iframe class="run-code-output" name="run-code-output"></iframe>
 </div>
 </template>
-<script id="site-script" src="../_/js/site.js"></script>
-<script defer src="../_/js/vendor/fontawesome-icon-defs.js"></script>
-<script defer src="../_/js/vendor/fontawesome.js" data-search-pseudo-elements="true"></script>
-<script async src="../_/js/vendor/highlight.js"></script>
+<script id="site-script" src="../../_/js/site.js"></script>
+<script defer src="../../_/js/vendor/fontawesome-icon-defs.js"></script>
+<script defer src="../../_/js/vendor/fontawesome.js" data-search-pseudo-elements="true"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
 </body>
 </html>
