@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Index Service Metrics | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/metrics-reference/index-service-metrics.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="A list of the metrics provided by the Index Service.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/metrics-reference/pages/index-service-metrics.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/metrics-reference/pages/index-service-metrics.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -191,7 +192,7 @@ A list of the metrics provided by the Index Service.
 </blockquote>
 </div>
 <div class="paragraph">
-<p>The following Index-Service metrics can be queried by means of the REST APIs described in <a href="../rest-api/rest-statistics.html" class="xref page">Getting Cluster Statistics</a>.</p>
+<p>The following Index-Service metrics can be queried by means of the REST APIs described in <a href="../rest-api/rest-statistics.html" class="xref page">Statistics</a>.</p>
 </div>
 <div class="paragraph">
 <p>See also the metrics provided in <a href="all-services-metrics.html" class="xref page">Metrics for All Services</a>; which are indeed for <em>all</em> Couchbase-Server services, and so support the Index Service.</p>
@@ -210,8 +211,9 @@ This section is currently under construction.
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_avg_drain_rate"><a class="anchor" href="#index_avg_drain_rate"></a><code>index_avg_drain_rate</code></h3>
+<div class="sect1">
+<h2 id="index_avg_drain_rate"><a class="anchor" href="#index_avg_drain_rate"></a><code>index_avg_drain_rate</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -222,8 +224,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_avg_item_size"><a class="anchor" href="#index_avg_item_size"></a><code>index_avg_item_size</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_avg_item_size"><a class="anchor" href="#index_avg_item_size"></a><code>index_avg_item_size</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: bytes</p>
 </div>
@@ -234,8 +238,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Average size of each index item. Per index.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_avg_scan_latency"><a class="anchor" href="#index_avg_scan_latency"></a><code>index_avg_scan_latency</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_avg_scan_latency"><a class="anchor" href="#index_avg_scan_latency"></a><code>index_avg_scan_latency</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: nanoseconds</p>
 </div>
@@ -246,8 +252,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Average time (in nanoseconds) to serve a scan request. Per index.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_cache_hits"><a class="anchor" href="#index_cache_hits"></a><code>index_cache_hits</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_cache_hits"><a class="anchor" href="#index_cache_hits"></a><code>index_cache_hits</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -258,8 +266,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_cache_misses"><a class="anchor" href="#index_cache_misses"></a><code>index_cache_misses</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_cache_misses"><a class="anchor" href="#index_cache_misses"></a><code>index_cache_misses</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -270,8 +280,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_data_size"><a class="anchor" href="#index_data_size"></a><code>index_data_size</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_data_size"><a class="anchor" href="#index_data_size"></a><code>index_data_size</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: bytes</p>
 </div>
@@ -282,8 +294,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Bytes in memory used by Index across all indexes and buckets.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_data_size_on_disk"><a class="anchor" href="#index_data_size_on_disk"></a><code>index_data_size_on_disk</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_data_size_on_disk"><a class="anchor" href="#index_data_size_on_disk"></a><code>index_data_size_on_disk</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -294,8 +308,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_disk_size"><a class="anchor" href="#index_disk_size"></a><code>index_disk_size</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_disk_size"><a class="anchor" href="#index_disk_size"></a><code>index_disk_size</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: bytes</p>
 </div>
@@ -306,8 +322,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Bytes on disk used by Index across all indexes and buckets.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_frag_percent"><a class="anchor" href="#index_frag_percent"></a><code>index_frag_percent</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_frag_percent"><a class="anchor" href="#index_frag_percent"></a><code>index_frag_percent</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -318,8 +336,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_items_count"><a class="anchor" href="#index_items_count"></a><code>index_items_count</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_items_count"><a class="anchor" href="#index_items_count"></a><code>index_items_count</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number</p>
 </div>
@@ -330,8 +350,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Current total number of indexed documents</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_log_space_on_disk"><a class="anchor" href="#index_log_space_on_disk"></a><code>index_log_space_on_disk</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_log_space_on_disk"><a class="anchor" href="#index_log_space_on_disk"></a><code>index_log_space_on_disk</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -342,8 +364,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_memory_quota"><a class="anchor" href="#index_memory_quota"></a><code>index_memory_quota</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_memory_quota"><a class="anchor" href="#index_memory_quota"></a><code>index_memory_quota</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>:</p>
 </div>
@@ -354,8 +378,10 @@ This section is currently under construction.
 <p><strong>Description</strong>:</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_memory_used"><a class="anchor" href="#index_memory_used"></a><code>index_memory_used</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_memory_used"><a class="anchor" href="#index_memory_used"></a><code>index_memory_used</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: bytes</p>
 </div>
@@ -366,8 +392,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Total memory used by the index.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_memory_used_total"><a class="anchor" href="#index_memory_used_total"></a><code>index_memory_used_total</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_memory_used_total"><a class="anchor" href="#index_memory_used_total"></a><code>index_memory_used_total</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>:</p>
 </div>
@@ -378,8 +406,10 @@ This section is currently under construction.
 <p><strong>Description</strong>:</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_num_docs_indexed"><a class="anchor" href="#index_num_docs_indexed"></a><code>index_num_docs_indexed</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_num_docs_indexed"><a class="anchor" href="#index_num_docs_indexed"></a><code>index_num_docs_indexed</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number/sec</p>
 </div>
@@ -390,8 +420,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of documents indexed by the indexer per second.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_num_docs_pending"><a class="anchor" href="#index_num_docs_pending"></a><code>index_num_docs_pending</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_num_docs_pending"><a class="anchor" href="#index_num_docs_pending"></a><code>index_num_docs_pending</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -402,8 +434,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_num_docs_queued"><a class="anchor" href="#index_num_docs_queued"></a><code>index_num_docs_queued</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_num_docs_queued"><a class="anchor" href="#index_num_docs_queued"></a><code>index_num_docs_queued</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number</p>
 </div>
@@ -414,8 +448,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of documents queued to be indexed at the Indexer. Per Index.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_num_requests"><a class="anchor" href="#index_num_requests"></a><code>index_num_requests</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_num_requests"><a class="anchor" href="#index_num_requests"></a><code>index_num_requests</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number/sec</p>
 </div>
@@ -426,8 +462,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of requests served by the indexer per second</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_num_rows_returned"><a class="anchor" href="#index_num_rows_returned"></a><code>index_num_rows_returned</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_num_rows_returned"><a class="anchor" href="#index_num_rows_returned"></a><code>index_num_rows_returned</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number/sec</p>
 </div>
@@ -438,8 +476,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of index items scanned by the indexer per second across all indexes.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_num_rows_scanned"><a class="anchor" href="#index_num_rows_scanned"></a><code>index_num_rows_scanned</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_num_rows_scanned"><a class="anchor" href="#index_num_rows_scanned"></a><code>index_num_rows_scanned</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -450,8 +490,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_raw_data_size"><a class="anchor" href="#index_raw_data_size"></a><code>index_raw_data_size</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_raw_data_size"><a class="anchor" href="#index_raw_data_size"></a><code>index_raw_data_size</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -462,8 +504,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_recs_in_mem"><a class="anchor" href="#index_recs_in_mem"></a><code>index_recs_in_mem</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_recs_in_mem"><a class="anchor" href="#index_recs_in_mem"></a><code>index_recs_in_mem</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -474,8 +518,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_recs_on_disk"><a class="anchor" href="#index_recs_on_disk"></a><code>index_recs_on_disk</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_recs_on_disk"><a class="anchor" href="#index_recs_on_disk"></a><code>index_recs_on_disk</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -486,8 +532,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_resident_percent"><a class="anchor" href="#index_resident_percent"></a><code>index_resident_percent</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_resident_percent"><a class="anchor" href="#index_resident_percent"></a><code>index_resident_percent</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: percent</p>
 </div>
@@ -498,8 +546,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Percentage of index data resident in memory. Per index.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_scan_bytes_read"><a class="anchor" href="#index_scan_bytes_read"></a><code>index_scan_bytes_read</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_scan_bytes_read"><a class="anchor" href="#index_scan_bytes_read"></a><code>index_scan_bytes_read</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: bytes/sec</p>
 </div>
@@ -510,8 +560,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of bytes/sec scanned by the index.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="index_total_scan_duration"><a class="anchor" href="#index_total_scan_duration"></a><code>index_total_scan_duration</code></h3>
+</div>
+<div class="sect1">
+<h2 id="index_total_scan_duration"><a class="anchor" href="#index_total_scan_duration"></a><code>index_total_scan_duration</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -520,6 +572,7 @@ This section is currently under construction.
 </div>
 <div class="paragraph">
 <p><strong>Description</strong>: NA</p>
+</div>
 </div>
 </div>
 </article>

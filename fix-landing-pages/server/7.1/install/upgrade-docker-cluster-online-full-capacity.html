@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Status and Events | Couchbase Docs (Local)</title>
+<title>Upgrade an Online Docker Cluster, Full Capacity | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/install/upgrade-docker-cluster-online-full-capacity.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
@@ -12,7 +13,7 @@
 
 <meta name="dcterms.subject" content="server">
 <meta name="dcterms.identifier" content="7.1">
-<meta name="page-url" content="/server/7.1/rest-api/status-and-events-overview.html">
+<meta name="page-url" content="/server/7.1/install/upgrade-docker-cluster-online-full-capacity.html">
 <meta name="generator" content="Antora 3.0.1">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
@@ -104,7 +105,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/rest-api/pages/status-and-events-overview.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/install/pages/upgrade-docker-cluster-online-full-capacity.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -163,18 +164,271 @@
 <nav class="crumbs" aria-label="breadcrumbs">
 <ul>
 <li class="crumb"><a href="../introduction/intro.html">Couchbase Server</a></li>
-<li class="crumb"><a href="status-and-events-overview.html">Status and Events</a></li>
+<li class="crumb">Install &amp; Upgrade</li>
+<li class="crumb"><a href="upgrade.html">Upgrade</a></li>
+<li class="crumb"><a href="upgrade-procedures.html">Upgrade Procedures</a></li>
+<li class="crumb"><a href="upgrade-cluster-online.html">Cluster Online</a></li>
+<li class="crumb"><a href="upgrade-docker-cluster-online-full-capacity.html">Upgrade an Online Docker Cluster, Full Capacity</a></li>
 </ul>
 </nav>
 </div>
 <article class="doc">
 <div class="page-heading-title">
-<h1 class="page">Status and Events</h1>
+<h1 class="page">Upgrade an Online Docker Cluster, Full Capacity</h1>
 </div>
 <div class="contributor-list-box">
 <span class="last-commit-date" id="commitdate">    </span>
 <ul id="contributorList"></ul>
 <span  id="otherContributor"> + </span>
+</div><div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
+<blockquote>
+A Docker cluster with multiple nodes can be upgraded live, while maintaining full capacity.
+</blockquote>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="understanding-the-full-capacity-upgrade"><a class="anchor" href="#understanding-the-full-capacity-upgrade"></a>Understanding the Full Capacity Upgrade</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The context and overall requirements for upgrading a live cluster without the introduction of one or more additional nodes are described in <a href="upgrade-procedure-selection.html" class="xref page">Upgrade-Procedure Selection</a>: this  explains the node-by-node upgrade of the cluster, using the <em>swap rebalance</em> process to minimize overhead.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+It is not possible to upgrade a Docker cluster with a single node.
+A second node will needed to ensure data is transferred.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The precise steps for this procedure are detailed on this page, below.
+A full understanding of the information in <a href="upgrade-procedure-selection.html" class="xref page">Upgrade-Procedure Selection</a> should be acquired, before proceeding.
+Yous should also be familiar with using <a href="getting-started-docker.html" class="xref page">Docker commands to create nodes</a>.
+The procedure assumes that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The cluster to be upgraded must continue to serve data throughout the cluster-upgrade process.</p>
+</li>
+<li>
+<p>A single, additional node can be created to act as a <em>swap</em> node.</p>
+</li>
+<li>
+<p>During the cluster-upgrade process, <em>swap</em> nodes and <em>upgraded</em> nodes will be introduced to the cluster by the <em>node-addition</em> procedure; while <em>failed over spare nodes</em> and <em>nodes to be upgraded</em> will be withdrawn from the cluster by means of the <em>node removal</em> and <em>swap rebalance</em> procedures.</p>
+<div class="paragraph">
+<p>For information on node-addition, see <a href="../learn/clusters-and-availability/nodes.html#clusters" class="xref page">Clusters</a>.
+For information on node-removal, see <a href="../learn/clusters-and-availability/removal.html" class="xref page">Removal</a>.
+For information on <em>swap rebalance</em>, see <a href="upgrade-procedure-selection.html#swap-rebalance" class="xref page">Swap Rebalance</a>.</p>
+</div>
+</li>
+<li>
+<p>Nodes will be upgraded <em>one at a time</em>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="prepare-the-cluster"><a class="anchor" href="#prepare-the-cluster"></a>1. Prepare the Cluster</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Carry out a <em>full</em> backup of the cluster&#8217;s data.
+This can be done using the <a href="../rest-api/backup-trigger-backup.html" class="xref page">REST-API</a> or the <a href="../manage/manage-backup-and-restore/manage-backup-and-restore.html" class="xref page">Backup Service</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-the-spare-node"><a class="anchor" href="#create-the-spare-node"></a>2. Create the Spare Node</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Use the standard Docker tools to create your node. (For more information read <a href="getting-started-docker.html" class="xref page">Install Couchbase Server Using Docker</a>).
+In this case, you will create a node that can act as cluster manager. For example:</p>
+</div>
+<div id="docker-create-sparenode" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">docker run -d --name sparenode -p 28091-28096:8091-8096 -p 11310-11311:11210-11211 couchbase:latest</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>will create a new node (<code>sparenode</code>) using the latest Couchbase server image.
+Note that the port mappings have been set so as not to clash with the external port settings of the existing node that is managing the cluster.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The node must be created as managing cluster.
+Later on, the existing managing node will be removed and upgraded, so the new node will be needed to communicate with the cluster.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="add-the-spare-node-to-the-cluster-and-rebalance-the-cluster"><a class="anchor" href="#add-the-spare-node-to-the-cluster-and-rebalance-the-cluster"></a>3. Add the Spare Node to the Cluster and Rebalance the Cluster</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The new node must be added to the cluster, then the cluster must be rebalanced. This can be done through the administration console, or the REST-API.
+(For information on adding nodes and rebalancing, read <a href="../manage/manage-nodes/add-node-and-rebalance.html" class="xref page">Add a Node and Rebalance</a>).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Ensure that the <code>sparenode</code> can be used to access the cluster through the administration console.
+It will use the same IP address, but a different port number.
+(In the <a href="#docker-create-sparenode">example above</a>, this is defined as <code>28091</code>).
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="remove-node-for-upgrading"><a class="anchor" href="#remove-node-for-upgrading"></a>4. Remove a Node For Upgrading</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using the <code>sparenode</code>, remove one of the nodes for upgrading from the cluster and rebalance the cluster.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="delete-the-node-container"><a class="anchor" href="#delete-the-node-container"></a>5. Delete the Node Container</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>docker</code> command is used to delete the node and its associated volume.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">docker rm -f nodename
+docker volume prune</code></pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Re-using existing volumes</div>
+<div class="paragraph">
+<p>You cannot re-use existing volumes when replacing a docker container, so it is not possible to use the same data set by pointing the new container at an existing volume.</p>
+</div>
+<div class="paragraph">
+<p><strong>This does mean that it is not possible to upgrade a Docker Couchbase container with only a single node available for use.</strong></p>
+</div>
+<div class="paragraph">
+<p>To prevent unusable volumes from building up during upgrades, it&#8217;s important to delete the unused volumes during the process to decrease the chances of running out of disk space.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrade-the-node-container"><a class="anchor" href="#upgrade-the-node-container"></a>6. Upgrade the Node Container</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The command used to upgrade the node depends on whether it is a standard node, or the node that used to administer the cluster. When recreating the container for the administration node, the <code>docker</code> command must set up the ports to match the settings of the node that has been removed.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_standard-node"></a>Standard Node</p>
+</li>
+<li>
+<p><a id="tabset1_administration-node"></a>Administration Node</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_standard-node">
+<div class="paragraph">
+<p>The following command will create a new container for the standard node.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">docker run -d --name nodename couchbase:latest</code></pre>
+</div>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_administration-node">
+<div class="paragraph">
+<p>The following command will create a new container for the administration node.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">docker run -d --name nodename -p 8091-8096:8091-8096 -p 11210-11211:11210-11211 couchbase:latest</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the external port addresses match those of the administration node that has been removed.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="add-new-node-and-rebalance"><a class="anchor" href="#add-new-node-and-rebalance"></a>7. Add the New Node to the Cluster and Rebalance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Use the <code>sparenode</code> to add the new node to the cluster, then rebalance the cluster.
+This can be done through the administration console, or the REST-API.
+(For information on adding nodes and rebalancing, read <a href="../manage/manage-nodes/add-node-and-rebalance.html" class="xref page">Add a Node and Rebalance</a>).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="repeat-for-all-nodes-in-cluster"><a class="anchor" href="#repeat-for-all-nodes-in-cluster"></a>8. Repeat for all nodes in cluster</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now repeat steps from [<a href="#remove-node-for-upgrading">Section 4</a>] to [<a href="#add-new-node-and-rebalance">Section 7</a>] to remove and upgrade each node in the cluster, except the spare node used for administration.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+Care should be taken not to remove the spare node by mistake; this is the node that is used for adding the other nodes and rebalancing.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="remove-the-spare-node"><a class="anchor" href="#remove-the-spare-node"></a>9. Remove the Spare Node</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The upgraded administration node can be used to remove the spare node from the cluster and rebalance the cluster.
+Once this has been done, then the <code>docker</code> command can be used to remove the spare node&#8217;s container and volume.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">docker rm -f sparenode
+docker volume prune</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The cluster is now fully upgraded.</p>
+</div>
+</div>
 </div>
 </article>
 </main>

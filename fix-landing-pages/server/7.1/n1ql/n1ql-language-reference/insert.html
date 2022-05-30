@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>INSERT | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/n1ql/n1ql-language-reference/insert.html">
 <link rel="stylesheet" href="../../../../_/css/site.css">
 <script src="../../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="Use the INSERT statement to insert one or more new documents into an existing keyspace.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/n1ql/pages/n1ql-language-reference/insert.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/pages/n1ql-language-reference/insert.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -717,7 +718,7 @@ For details, see <a href="select-syntax.html" class="xref page">SELECT Syntax</a
 <div class="listingblock">
 <div class="title">Query</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/dml/insert-select.n1ql">INSERT INTO `travel-sample`.inventory.airport (KEY UUID(), VALUE _airport)
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/dml/insert-select.n1ql">INSERT INTO `travel-sample`.inventory.airport (KEY UUID(), VALUE _airport)
     SELECT _airport FROM `travel-sample`.inventory.airport _airport
     WHERE airportname = "Heathrow"
 RETURNING *;</code></pre>
@@ -726,7 +727,7 @@ RETURNING *;</code></pre>
 <div class="listingblock">
 <div class="title">Results</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/dml/insert-select.jsonc">[
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/dml/insert-select.jsonc">[
   {
     "airport": {
       "airportname": "Heathrow",
@@ -1059,7 +1060,7 @@ The returning clause specifies the function <code>META().id</code> to return the
 <div class="listingblock">
 <div class="title">Query</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/dml/insert-value.n1ql">INSERT INTO `travel-sample`.inventory.airline ( KEY, VALUE )
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/dml/insert-value.n1ql">INSERT INTO `travel-sample`.inventory.airline ( KEY, VALUE )
   VALUES
   (
     "k001",
@@ -1071,7 +1072,7 @@ RETURNING META().id as docid, *;</code></pre>
 <div class="listingblock">
 <div class="title">Results</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/dml/insert-value.jsonc">{
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/dml/insert-value.jsonc">{
   "requestID": "df5846b1-1044-4b1f-ae8a-979be25282d1",
   "signature": {
       "*": "*",
@@ -1112,7 +1113,7 @@ RETURNING META().id as docid, *;</code></pre>
 <div class="listingblock">
 <div class="title">Query</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/dml/insert-doc.n1ql">INSERT INTO `travel-sample`.inventory.airline (KEY,VALUE)
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/dml/insert-doc.n1ql">INSERT INTO `travel-sample`.inventory.airline (KEY,VALUE)
   VALUES ( "1025",
             {     "callsign": "MY-AIR",
                   "country": "United States",
@@ -1128,7 +1129,7 @@ RETURNING *;</code></pre>
 <div class="listingblock">
 <div class="title">Results</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/dml/insert-doc.jsonc">{
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/dml/insert-doc.jsonc">{
   "requestID": "c3bd0276-5d7d-425f-98f9-b333b9ae4302",
   "signature": {
       "*": "*"
@@ -1173,7 +1174,7 @@ The VALUES keyword itself is optional in the second and later iterations of the 
 <div class="listingblock">
 <div class="title">Query</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/dml/insert-batch.n1ql">INSERT INTO `travel-sample`.inventory.airline (KEY,VALUE)
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/dml/insert-batch.n1ql">INSERT INTO `travel-sample`.inventory.airline (KEY,VALUE)
 VALUES ( "airline_4444",
     { "callsign": "MY-AIR",
       "country": "United States",
@@ -1196,7 +1197,7 @@ RETURNING *;</code></pre>
 <div class="listingblock">
 <div class="title">Results</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/dml/insert-batch.jsonc">{
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/dml/insert-batch.jsonc">{
   "requestID": "2fabc03a-ea9b-49fd-a044-6ef667381311",
   "signature": {
       "*": "*"

@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generated": 1653921109306,
+  "generated": 1653921533931,
   "url": "https://maria-robobug.github.io",
   "components": [
     {
@@ -10273,7 +10273,6 @@
       "versions": [
         {
           "version": "7.1",
-          "displayVersion": "7.1 Prerelease",
           "url": "/server/7.1/introduction/intro.html",
           "pages": [
             {
@@ -10846,6 +10845,12 @@
               "path": "couchbase-aws-marketplace.adoc",
               "url": "/server/7.1/cloud/couchbase-aws-marketplace.html",
               "title": "Deploy Couchbase Server Using AWS Marketplace"
+            },
+            {
+              "module": "cloud",
+              "path": "couchbase-aws-syncgateway-deployment.adoc",
+              "url": "/server/7.1/cloud/couchbase-aws-syncgateway-deployment.html",
+              "title": "Deploy Couchbase Sync Gateway Using AWS Marketplace"
             },
             {
               "alias": true,
@@ -11583,6 +11588,12 @@
             },
             {
               "module": "eventing",
+              "path": "eventing-rbac.adoc",
+              "url": "/server/7.1/eventing/eventing-rbac.html",
+              "title": "Eventing Role-Based Access Control (RBAC)"
+            },
+            {
+              "module": "eventing",
               "path": "eventing-statistics.adoc",
               "url": "/server/7.1/eventing/eventing-statistics.html",
               "title": "Statistics"
@@ -11635,6 +11646,12 @@
               "path": "fts-advanced-settings-CBFT-ENV-OPTIONS.adoc",
               "url": "/server/7.1/fts/fts-advanced-settings-CBFT-ENV-OPTIONS.html",
               "title": "CBFT_ENV_OPTIONS"
+            },
+            {
+              "module": "fts",
+              "path": "fts-advanced-settings-disable-file-transfer-rebalance.adoc",
+              "url": "/server/7.1/fts/fts-advanced-settings-disable-file-transfer-rebalance.html",
+              "title": "disableFileTransferRebalance"
             },
             {
               "module": "fts",
@@ -12973,6 +12990,12 @@
               "path": "upgrade-cluster-online.adoc",
               "url": "/server/7.1/install/upgrade-cluster-online.html",
               "title": "Upgrade an Online Cluster"
+            },
+            {
+              "module": "install",
+              "path": "upgrade-docker-cluster-online-full-capacity.adoc",
+              "url": "/server/7.1/install/upgrade-docker-cluster-online-full-capacity.html",
+              "title": "Upgrade an Online Docker Cluster, Full Capacity"
             },
             {
               "module": "install",
@@ -14382,11 +14405,6 @@
             },
             {
               "module": "metrics-reference",
-              "path": "partial/data-service-metrics-list.adoc",
-              "url": "/server/7.1/metrics-reference/partial/data-service-metrics-list.html"
-            },
-            {
-              "module": "metrics-reference",
               "path": "query-service-metrics.adoc",
               "url": "/server/7.1/metrics-reference/query-service-metrics.html",
               "title": "Query Service Metrics"
@@ -15692,6 +15710,12 @@
             },
             {
               "module": "rest-api",
+              "path": "rest-cluster-init-and-provisioning.adoc",
+              "url": "/server/7.1/rest-api/rest-cluster-init-and-provisioning.html",
+              "title": "Cluster Initialization and Provisioning"
+            },
+            {
+              "module": "rest-api",
               "path": "rest-cluster-intro.adoc",
               "url": "/server/7.1/rest-api/rest-cluster-intro.html",
               "title": "Cluster API"
@@ -15701,6 +15725,12 @@
               "path": "rest-cluster-joinnode.adoc",
               "url": "/server/7.1/rest-api/rest-cluster-joinnode.html",
               "title": "Joining Nodes to Clusters"
+            },
+            {
+              "module": "rest-api",
+              "path": "rest-cluster-manualfailover-intro.adoc",
+              "url": "/server/7.1/rest-api/rest-cluster-manualfailover-intro.html",
+              "title": "Manual Failover"
             },
             {
               "module": "rest-api",
@@ -15738,6 +15768,12 @@
               "path": "rest-configure-ldap.adoc",
               "url": "/server/7.1/rest-api/rest-configure-ldap.html",
               "title": "Configure LDAP"
+            },
+            {
+              "module": "rest-api",
+              "path": "rest-configure-memory.adoc",
+              "url": "/server/7.1/rest-api/rest-configure-memory.html",
+              "title": "Configuring Memory"
             },
             {
               "module": "rest-api",
@@ -15782,6 +15818,12 @@
               "path": "rest-endpoints-all.adoc",
               "url": "/server/7.1/rest-api/rest-intro.html",
               "title": "REST API reference"
+            },
+            {
+              "module": "rest-api",
+              "path": "rest-establish-credentials.adoc",
+              "url": "/server/7.1/rest-api/rest-establish-credentials.html",
+              "title": "Establishing Credentials"
             },
             {
               "module": "rest-api",
@@ -15881,6 +15923,12 @@
             },
             {
               "module": "rest-api",
+              "path": "rest-initialize-node.adoc",
+              "url": "/server/7.1/rest-api/rest-initialize-node.html",
+              "title": "Initializing a Node"
+            },
+            {
+              "module": "rest-api",
               "path": "rest-intro.adoc",
               "url": "/server/7.1/rest-api/rest-intro.html",
               "title": "REST API reference"
@@ -15917,6 +15965,18 @@
             },
             {
               "module": "rest-api",
+              "path": "rest-name-cluster.adoc",
+              "url": "/server/7.1/rest-api/rest-name-cluster.html",
+              "title": "Naming a Cluster"
+            },
+            {
+              "module": "rest-api",
+              "path": "rest-name-node.adoc",
+              "url": "/server/7.1/rest-api/rest-name-node.html",
+              "title": "Naming a Node"
+            },
+            {
+              "module": "rest-api",
               "path": "rest-node-failover.adoc",
               "url": "/server/7.1/rest-api/rest-node-failover.html",
               "title": "Performing Hard Failover"
@@ -15928,16 +15988,18 @@
               "title": "Getting Information on Nodes"
             },
             {
+              "alias": true,
               "module": "rest-api",
               "path": "rest-node-index-path.adoc",
-              "url": "/server/7.1/rest-api/rest-node-index-path.html",
-              "title": "Setting Storage Paths"
+              "url": "/server/7.1/rest-api/rest-initialize-node.html",
+              "title": "Initializing a Node"
             },
             {
+              "alias": true,
               "module": "rest-api",
               "path": "rest-node-memory-quota.adoc",
-              "url": "/server/7.1/rest-api/rest-node-memory-quota.html",
-              "title": "Setting Memory Quota"
+              "url": "/server/7.1/rest-api/rest-configure-memory.html",
+              "title": "Configuring Memory"
             },
             {
               "alias": true,
@@ -15960,10 +16022,11 @@
               "title": "Getting Bucket Statistics"
             },
             {
+              "alias": true,
               "module": "rest-api",
               "path": "rest-node-services.adoc",
-              "url": "/server/7.1/rest-api/rest-node-services.html",
-              "title": "Enabling Couchbase Server Services"
+              "url": "/server/7.1/rest-api/rest-adding-and-removing-nodes.html",
+              "title": "Node Addition and Removal"
             },
             {
               "module": "rest-api",
@@ -16072,6 +16135,12 @@
               "path": "rest-set-up-alternate-address.adoc",
               "url": "/server/7.1/rest-api/rest-set-up-alternate-address.html",
               "title": "Managing Alternate Addresses"
+            },
+            {
+              "module": "rest-api",
+              "path": "rest-set-up-services.adoc",
+              "url": "/server/7.1/rest-api/rest-set-up-services.html",
+              "title": "Assigning Services"
             },
             {
               "module": "rest-api",
@@ -16246,12 +16315,6 @@
               "path": "security-encrypted-access.adoc",
               "url": "/server/7.1/rest-api/deprecated-security-apis/upload-retrieve-root-cert.html",
               "title": "Upload and Retrieve the Root Certificate"
-            },
-            {
-              "module": "rest-api",
-              "path": "status-and-events-overview.adoc",
-              "url": "/server/7.1/rest-api/status-and-events-overview.html",
-              "title": "Status and Events"
             },
             {
               "module": "rest-api",

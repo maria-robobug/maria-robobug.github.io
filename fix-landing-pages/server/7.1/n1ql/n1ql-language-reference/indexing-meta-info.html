@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Indexing Metadata Information | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/n1ql/n1ql-language-reference/indexing-meta-info.html">
 <link rel="stylesheet" href="../../../../_/css/site.css">
 <script src="../../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="Couchbase Server allows indexing on selected metadata fields, for example the expiration and CAS properties.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/n1ql/pages/n1ql-language-reference/indexing-meta-info.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/pages/n1ql-language-reference/indexing-meta-info.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -236,7 +237,7 @@ For details, refer to <a href="../../../../java-sdk/3.3/howtos/kv-operations.htm
 <div class="listingblock">
 <div class="title">Index</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/n1ql-language-reference/meta-idx-expire.n1ql">CREATE INDEX idx_airline_expire ON `travel-sample`.inventory.airline (META().expiration);</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/n1ql-language-reference/meta-idx-expire.n1ql">CREATE INDEX idx_airline_expire ON `travel-sample`.inventory.airline (META().expiration);</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -272,7 +273,7 @@ LIMIT 2;</code></pre>
 <div class="listingblock">
 <div class="title">Index</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/n1ql-language-reference/meta-idx-id.n1ql">CREATE INDEX idx_hotel_id ON `travel-sample`.inventory.hotel (META().id);</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/n1ql-language-reference/meta-idx-id.n1ql">CREATE INDEX idx_hotel_id ON `travel-sample`.inventory.hotel (META().id);</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -307,7 +308,7 @@ LIMIT 2;</code></pre>
 <div class="listingblock">
 <div class="title">Index</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/n1ql-language-reference/meta-idx-cas.n1ql">CREATE INDEX idx_hotel_cas ON `travel-sample`.inventory.hotel (META().cas);</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/n1ql-language-reference/meta-idx-cas.n1ql">CREATE INDEX idx_hotel_cas ON `travel-sample`.inventory.hotel (META().cas);</code></pre>
 </div>
 </div>
 <div class="listingblock">

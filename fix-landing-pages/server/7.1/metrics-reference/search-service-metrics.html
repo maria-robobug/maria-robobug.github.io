@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Search Service Metrics | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/metrics-reference/search-service-metrics.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="A list of the metrics provided by the Search Service.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/metrics-reference/pages/search-service-metrics.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/metrics-reference/pages/search-service-metrics.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -191,7 +192,7 @@ A list of the metrics provided by the Search Service.
 </blockquote>
 </div>
 <div class="paragraph">
-<p>The following Search Service metrics can be queried by means of the REST APIs described in <a href="../rest-api/rest-statistics.html" class="xref page">Getting Cluster Statistics</a>.</p>
+<p>The following Search Service metrics can be queried by means of the REST APIs described in <a href="../rest-api/rest-statistics.html" class="xref page">Statistics</a>.</p>
 </div>
 <div class="paragraph">
 <p>See also the metrics provided in <a href="all-services-metrics.html" class="xref page">Metrics for All Services</a>; which are indeed for <em>all</em> Couchbase-Server services, and so support the Search Service.</p>
@@ -210,8 +211,9 @@ This section is currently under construction.
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_avg_grpc_queries_latency"><a class="anchor" href="#fts_avg_grpc_queries_latency"></a><code>fts_avg_grpc_queries_latency</code></h3>
+<div class="sect1">
+<h2 id="fts_avg_grpc_queries_latency"><a class="anchor" href="#fts_avg_grpc_queries_latency"></a><code>fts_avg_grpc_queries_latency</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -222,8 +224,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_avg_internal_queries_latency"><a class="anchor" href="#fts_avg_internal_queries_latency"></a><code>fts_avg_internal_queries_latency</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_avg_internal_queries_latency"><a class="anchor" href="#fts_avg_internal_queries_latency"></a><code>fts_avg_internal_queries_latency</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -234,8 +238,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_avg_queries_latency"><a class="anchor" href="#fts_avg_queries_latency"></a><code>fts_avg_queries_latency</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_avg_queries_latency"><a class="anchor" href="#fts_avg_queries_latency"></a><code>fts_avg_queries_latency</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: millisecond</p>
 </div>
@@ -246,8 +252,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Average milliseconds to answer a Search query. Per index. (measured from avg_queries_latency)</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_batch_bytes_added"><a class="anchor" href="#fts_batch_bytes_added"></a><code>fts_batch_bytes_added</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_batch_bytes_added"><a class="anchor" href="#fts_batch_bytes_added"></a><code>fts_batch_bytes_added</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -258,8 +266,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_batch_bytes_removed"><a class="anchor" href="#fts_batch_bytes_removed"></a><code>fts_batch_bytes_removed</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_batch_bytes_removed"><a class="anchor" href="#fts_batch_bytes_removed"></a><code>fts_batch_bytes_removed</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -270,8 +280,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_curr_batches_blocked_by_herder"><a class="anchor" href="#fts_curr_batches_blocked_by_herder"></a><code>fts_curr_batches_blocked_by_herder</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_curr_batches_blocked_by_herder"><a class="anchor" href="#fts_curr_batches_blocked_by_herder"></a><code>fts_curr_batches_blocked_by_herder</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number</p>
 </div>
@@ -282,8 +294,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: DCP batches blocked by throttler due to high memory consumption.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_doc_count"><a class="anchor" href="#fts_doc_count"></a><code>fts_doc_count</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_doc_count"><a class="anchor" href="#fts_doc_count"></a><code>fts_doc_count</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number</p>
 </div>
@@ -294,8 +308,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of documents examined. Per index. (measured from doc_count)</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_num_bytes_used_disk"><a class="anchor" href="#fts_num_bytes_used_disk"></a><code>fts_num_bytes_used_disk</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_num_bytes_used_disk"><a class="anchor" href="#fts_num_bytes_used_disk"></a><code>fts_num_bytes_used_disk</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: bytes</p>
 </div>
@@ -306,8 +322,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Bytes stored on disk for all Search indexes in this bucket.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_num_bytes_used_disk_by_root"><a class="anchor" href="#fts_num_bytes_used_disk_by_root"></a><code>fts_num_bytes_used_disk_by_root</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_num_bytes_used_disk_by_root"><a class="anchor" href="#fts_num_bytes_used_disk_by_root"></a><code>fts_num_bytes_used_disk_by_root</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -318,8 +336,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_num_bytes_used_ram"><a class="anchor" href="#fts_num_bytes_used_ram"></a><code>fts_num_bytes_used_ram</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_num_bytes_used_ram"><a class="anchor" href="#fts_num_bytes_used_ram"></a><code>fts_num_bytes_used_ram</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: bytes</p>
 </div>
@@ -330,8 +350,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Bytes of RAM used by Search across all indexes and all buckets on this server.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_num_files_on_disk"><a class="anchor" href="#fts_num_files_on_disk"></a><code>fts_num_files_on_disk</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_num_files_on_disk"><a class="anchor" href="#fts_num_files_on_disk"></a><code>fts_num_files_on_disk</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number</p>
 </div>
@@ -342,8 +364,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of search files on disk across all partitions.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_num_mutations_to_index"><a class="anchor" href="#fts_num_mutations_to_index"></a><code>fts_num_mutations_to_index</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_num_mutations_to_index"><a class="anchor" href="#fts_num_mutations_to_index"></a><code>fts_num_mutations_to_index</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number</p>
 </div>
@@ -354,8 +378,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of mutations not yet indexed. Per index. (measured from num_mutations_to_index)</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_num_pindexes_actual"><a class="anchor" href="#fts_num_pindexes_actual"></a><code>fts_num_pindexes_actual</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_num_pindexes_actual"><a class="anchor" href="#fts_num_pindexes_actual"></a><code>fts_num_pindexes_actual</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number</p>
 </div>
@@ -366,8 +392,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of index partitions. Per index. (including replica partitions, measured from num_pindexes_actual)</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_num_pindexes_target"><a class="anchor" href="#fts_num_pindexes_target"></a><code>fts_num_pindexes_target</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_num_pindexes_target"><a class="anchor" href="#fts_num_pindexes_target"></a><code>fts_num_pindexes_target</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number</p>
 </div>
@@ -378,8 +406,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of index partitions expected. Per index. (including replica partitions, measured from num_pindexes_target)</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_num_recs_to_persist"><a class="anchor" href="#fts_num_recs_to_persist"></a><code>fts_num_recs_to_persist</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_num_recs_to_persist"><a class="anchor" href="#fts_num_recs_to_persist"></a><code>fts_num_recs_to_persist</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number</p>
 </div>
@@ -390,8 +420,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of index records not yet persisted to disk. Per index. (measured from num_recs_to_persist)</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_num_root_filesegments"><a class="anchor" href="#fts_num_root_filesegments"></a><code>fts_num_root_filesegments</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_num_root_filesegments"><a class="anchor" href="#fts_num_root_filesegments"></a><code>fts_num_root_filesegments</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number</p>
 </div>
@@ -402,8 +434,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of file segments in the index across all partitions. (measured from num_root_filesegments)</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_num_root_memorysegments"><a class="anchor" href="#fts_num_root_memorysegments"></a><code>fts_num_root_memorysegments</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_num_root_memorysegments"><a class="anchor" href="#fts_num_root_memorysegments"></a><code>fts_num_root_memorysegments</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number</p>
 </div>
@@ -414,8 +448,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of memory segments in the index across all partitions. (measured from num_root_memorysegments)</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_pct_cpu_gc"><a class="anchor" href="#fts_pct_cpu_gc"></a><code>fts_pct_cpu_gc</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_pct_cpu_gc"><a class="anchor" href="#fts_pct_cpu_gc"></a><code>fts_pct_cpu_gc</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -426,8 +462,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_batches_flushed_on_maxops"><a class="anchor" href="#fts_tot_batches_flushed_on_maxops"></a><code>fts_tot_batches_flushed_on_maxops</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_batches_flushed_on_maxops"><a class="anchor" href="#fts_tot_batches_flushed_on_maxops"></a><code>fts_tot_batches_flushed_on_maxops</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -438,8 +476,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_batches_flushed_on_timer"><a class="anchor" href="#fts_tot_batches_flushed_on_timer"></a><code>fts_tot_batches_flushed_on_timer</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_batches_flushed_on_timer"><a class="anchor" href="#fts_tot_batches_flushed_on_timer"></a><code>fts_tot_batches_flushed_on_timer</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -450,8 +490,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_bleve_dest_closed"><a class="anchor" href="#fts_tot_bleve_dest_closed"></a><code>fts_tot_bleve_dest_closed</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_bleve_dest_closed"><a class="anchor" href="#fts_tot_bleve_dest_closed"></a><code>fts_tot_bleve_dest_closed</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -462,8 +504,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_bleve_dest_opened"><a class="anchor" href="#fts_tot_bleve_dest_opened"></a><code>fts_tot_bleve_dest_opened</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_bleve_dest_opened"><a class="anchor" href="#fts_tot_bleve_dest_opened"></a><code>fts_tot_bleve_dest_opened</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -474,8 +518,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_grpc_listeners_closed"><a class="anchor" href="#fts_tot_grpc_listeners_closed"></a><code>fts_tot_grpc_listeners_closed</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_grpc_listeners_closed"><a class="anchor" href="#fts_tot_grpc_listeners_closed"></a><code>fts_tot_grpc_listeners_closed</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -486,8 +532,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_grpc_listeners_opened"><a class="anchor" href="#fts_tot_grpc_listeners_opened"></a><code>fts_tot_grpc_listeners_opened</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_grpc_listeners_opened"><a class="anchor" href="#fts_tot_grpc_listeners_opened"></a><code>fts_tot_grpc_listeners_opened</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -498,8 +546,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_grpc_queryreject_on_memquota"><a class="anchor" href="#fts_tot_grpc_queryreject_on_memquota"></a><code>fts_tot_grpc_queryreject_on_memquota</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_grpc_queryreject_on_memquota"><a class="anchor" href="#fts_tot_grpc_queryreject_on_memquota"></a><code>fts_tot_grpc_queryreject_on_memquota</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -510,8 +560,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_grpcs_listeners_closed"><a class="anchor" href="#fts_tot_grpcs_listeners_closed"></a><code>fts_tot_grpcs_listeners_closed</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_grpcs_listeners_closed"><a class="anchor" href="#fts_tot_grpcs_listeners_closed"></a><code>fts_tot_grpcs_listeners_closed</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -522,8 +574,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_grpcs_listeners_opened"><a class="anchor" href="#fts_tot_grpcs_listeners_opened"></a><code>fts_tot_grpcs_listeners_opened</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_grpcs_listeners_opened"><a class="anchor" href="#fts_tot_grpcs_listeners_opened"></a><code>fts_tot_grpcs_listeners_opened</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -534,8 +588,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_http_limitlisteners_closed"><a class="anchor" href="#fts_tot_http_limitlisteners_closed"></a><code>fts_tot_http_limitlisteners_closed</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_http_limitlisteners_closed"><a class="anchor" href="#fts_tot_http_limitlisteners_closed"></a><code>fts_tot_http_limitlisteners_closed</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -546,8 +602,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_http_limitlisteners_opened"><a class="anchor" href="#fts_tot_http_limitlisteners_opened"></a><code>fts_tot_http_limitlisteners_opened</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_http_limitlisteners_opened"><a class="anchor" href="#fts_tot_http_limitlisteners_opened"></a><code>fts_tot_http_limitlisteners_opened</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -558,8 +616,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_https_limitlisteners_closed"><a class="anchor" href="#fts_tot_https_limitlisteners_closed"></a><code>fts_tot_https_limitlisteners_closed</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_https_limitlisteners_closed"><a class="anchor" href="#fts_tot_https_limitlisteners_closed"></a><code>fts_tot_https_limitlisteners_closed</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -570,8 +630,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_https_limitlisteners_opened"><a class="anchor" href="#fts_tot_https_limitlisteners_opened"></a><code>fts_tot_https_limitlisteners_opened</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_https_limitlisteners_opened"><a class="anchor" href="#fts_tot_https_limitlisteners_opened"></a><code>fts_tot_https_limitlisteners_opened</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -582,8 +644,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_queryreject_on_memquota"><a class="anchor" href="#fts_tot_queryreject_on_memquota"></a><code>fts_tot_queryreject_on_memquota</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_queryreject_on_memquota"><a class="anchor" href="#fts_tot_queryreject_on_memquota"></a><code>fts_tot_queryreject_on_memquota</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -594,8 +658,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_remote_grpc"><a class="anchor" href="#fts_tot_remote_grpc"></a><code>fts_tot_remote_grpc</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_remote_grpc"><a class="anchor" href="#fts_tot_remote_grpc"></a><code>fts_tot_remote_grpc</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -606,8 +672,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_remote_grpc_tls"><a class="anchor" href="#fts_tot_remote_grpc_tls"></a><code>fts_tot_remote_grpc_tls</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_remote_grpc_tls"><a class="anchor" href="#fts_tot_remote_grpc_tls"></a><code>fts_tot_remote_grpc_tls</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -618,8 +686,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_remote_http"><a class="anchor" href="#fts_tot_remote_http"></a><code>fts_tot_remote_http</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_remote_http"><a class="anchor" href="#fts_tot_remote_http"></a><code>fts_tot_remote_http</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -630,8 +700,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_tot_remote_http2"><a class="anchor" href="#fts_tot_remote_http2"></a><code>fts_tot_remote_http2</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_tot_remote_http2"><a class="anchor" href="#fts_tot_remote_http2"></a><code>fts_tot_remote_http2</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -642,8 +714,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_bytes_indexed"><a class="anchor" href="#fts_total_bytes_indexed"></a><code>fts_total_bytes_indexed</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_bytes_indexed"><a class="anchor" href="#fts_total_bytes_indexed"></a><code>fts_total_bytes_indexed</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: bytes/sec</p>
 </div>
@@ -654,8 +728,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Search bytes indexed per second for all Search indexes in this bucket.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_bytes_query_results"><a class="anchor" href="#fts_total_bytes_query_results"></a><code>fts_total_bytes_query_results</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_bytes_query_results"><a class="anchor" href="#fts_total_bytes_query_results"></a><code>fts_total_bytes_query_results</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: bytes/sec</p>
 </div>
@@ -666,8 +742,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Bytes returned in results per second. Per index. (measured from total_bytes_query_results)</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_compaction_written_bytes"><a class="anchor" href="#fts_total_compaction_written_bytes"></a><code>fts_total_compaction_written_bytes</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_compaction_written_bytes"><a class="anchor" href="#fts_total_compaction_written_bytes"></a><code>fts_total_compaction_written_bytes</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: bytes/sec</p>
 </div>
@@ -678,8 +756,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Compaction bytes written per second. Per index. (measured from total_compaction_written_bytes)</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_gc"><a class="anchor" href="#fts_total_gc"></a><code>fts_total_gc</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_gc"><a class="anchor" href="#fts_total_gc"></a><code>fts_total_gc</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -690,8 +770,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_grpc_internal_queries"><a class="anchor" href="#fts_total_grpc_internal_queries"></a><code>fts_total_grpc_internal_queries</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_grpc_internal_queries"><a class="anchor" href="#fts_total_grpc_internal_queries"></a><code>fts_total_grpc_internal_queries</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -702,8 +784,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_grpc_queries_error"><a class="anchor" href="#fts_total_grpc_queries_error"></a><code>fts_total_grpc_queries_error</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_grpc_queries"><a class="anchor" href="#fts_total_grpc_queries"></a><code>fts_total_grpc_queries</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -714,8 +798,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_grpc_queries_slow"><a class="anchor" href="#fts_total_grpc_queries_slow"></a><code>fts_total_grpc_queries_slow</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_grpc_queries_error"><a class="anchor" href="#fts_total_grpc_queries_error"></a><code>fts_total_grpc_queries_error</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -726,8 +812,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_grpc_queries_timeout"><a class="anchor" href="#fts_total_grpc_queries_timeout"></a><code>fts_total_grpc_queries_timeout</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_grpc_queries_slow"><a class="anchor" href="#fts_total_grpc_queries_slow"></a><code>fts_total_grpc_queries_slow</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -738,8 +826,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_internal_queries"><a class="anchor" href="#fts_total_internal_queries"></a><code>fts_total_internal_queries</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_grpc_queries_timeout"><a class="anchor" href="#fts_total_grpc_queries_timeout"></a><code>fts_total_grpc_queries_timeout</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -750,8 +840,24 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_queries"><a class="anchor" href="#fts_total_queries"></a><code>fts_total_queries</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_internal_queries"><a class="anchor" href="#fts_total_internal_queries"></a><code>fts_total_internal_queries</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Units</strong>: NA</p>
+</div>
+<div class="paragraph">
+<p><strong>Labels</strong>: bucket, scope, collection, index</p>
+</div>
+<div class="paragraph">
+<p><strong>Description</strong>: NA</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="fts_total_queries"><a class="anchor" href="#fts_total_queries"></a><code>fts_total_queries</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number/sec</p>
 </div>
@@ -762,8 +868,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Search queries per second for all Search indexes in this bucket.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_queries_error"><a class="anchor" href="#fts_total_queries_error"></a><code>fts_total_queries_error</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_queries_error"><a class="anchor" href="#fts_total_queries_error"></a><code>fts_total_queries_error</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number/sec</p>
 </div>
@@ -774,8 +882,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of queries per second (including timeouts) that resulted in errors. Per index. (measured from total_queries_error)</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_queries_rejected_by_herder"><a class="anchor" href="#fts_total_queries_rejected_by_herder"></a><code>fts_total_queries_rejected_by_herder</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_queries_rejected_by_herder"><a class="anchor" href="#fts_total_queries_rejected_by_herder"></a><code>fts_total_queries_rejected_by_herder</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number</p>
 </div>
@@ -786,8 +896,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of queries rejected by throttler due to high memory consumption.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_queries_slow"><a class="anchor" href="#fts_total_queries_slow"></a><code>fts_total_queries_slow</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_queries_slow"><a class="anchor" href="#fts_total_queries_slow"></a><code>fts_total_queries_slow</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number/sec</p>
 </div>
@@ -798,8 +910,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of slow queries (&gt; 5s to run) per second. Per index. (measured from total_queries_slow)</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_queries_timeout"><a class="anchor" href="#fts_total_queries_timeout"></a><code>fts_total_queries_timeout</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_queries_timeout"><a class="anchor" href="#fts_total_queries_timeout"></a><code>fts_total_queries_timeout</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number/sec</p>
 </div>
@@ -810,8 +924,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of queries that timeout per second. Per index. (measured from total_queries_timeout)</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_request_time"><a class="anchor" href="#fts_total_request_time"></a><code>fts_total_request_time</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_request_time"><a class="anchor" href="#fts_total_request_time"></a><code>fts_total_request_time</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -822,8 +938,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: NA</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_term_searchers"><a class="anchor" href="#fts_total_term_searchers"></a><code>fts_total_term_searchers</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_term_searchers"><a class="anchor" href="#fts_total_term_searchers"></a><code>fts_total_term_searchers</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: number/sec</p>
 </div>
@@ -834,8 +952,10 @@ This section is currently under construction.
 <p><strong>Description</strong>: Number of term searchers started per second. Per index. (measured from total_term_searchers)</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="fts_total_term_searchers_finished"><a class="anchor" href="#fts_total_term_searchers_finished"></a><code>fts_total_term_searchers_finished</code></h3>
+</div>
+<div class="sect1">
+<h2 id="fts_total_term_searchers_finished"><a class="anchor" href="#fts_total_term_searchers_finished"></a><code>fts_total_term_searchers_finished</code></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><strong>Units</strong>: NA</p>
 </div>
@@ -844,6 +964,7 @@ This section is currently under construction.
 </div>
 <div class="paragraph">
 <p><strong>Description</strong>: NA</p>
+</div>
 </div>
 </div>
 </article>

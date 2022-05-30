@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Reading Data | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/guides/reading-data.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="How to read documents in Couchbase.">
@@ -114,7 +115,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/guides/pages/reading-data.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/pages/reading-data.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -271,7 +272,7 @@ Refer to <a href="../manage/manage-settings/install-sample-buckets.html" class="
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/guides/examples/kv/kv-cbc.sh#L19-L21">cbc cat hotel-123 -u Administrator -P password -U couchbase://localhost/travel-sample \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L19-L21">cbc cat hotel-123 -u Administrator -P password -U couchbase://localhost/travel-sample \
 	--scope='inventory' \
 	--collection='hotel'</code></pre>
 </div>
@@ -518,7 +519,7 @@ If the document doesn&#8217;t exist, the SDK will return a <code>DocumentNotFoun
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/guides/examples/kv/kv-cbc.sh#L25-L28">cbc cat hotel-123 -u Administrator -P password -U couchbase://localhost/travel-sample \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/kv/kv-cbc.sh#L25-L28">cbc cat hotel-123 -u Administrator -P password -U couchbase://localhost/travel-sample \
 	--scope='inventory' \
 	--collection='hotel' \
 	--expiry=60</code></pre>

@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Query Block Hints | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/n1ql/n1ql-language-reference/query-hints.html">
 <link rel="stylesheet" href="../../../../_/css/site.css">
 <script src="../../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="Query block hints are hints that apply to an entire query block.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/n1ql/pages/n1ql-language-reference/query-hints.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/pages/n1ql-language-reference/query-hints.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -193,7 +194,8 @@ Query block hints are hints that apply to an entire query block.
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Currently N1QL supports only one query block hint: ORDERED.</p>
+<p>A query hint is a type of <a href="optimizer-hints.html" class="xref page">optimizer hint</a>.
+Currently N1QL supports only one query block hint: ORDERED.</p>
 </div>
 <div class="paragraph">
 <p>There are two possible formats for each optimizer hint: simple syntax and JSON syntax.
@@ -212,7 +214,7 @@ If not specified, the optimizer determines the optimal join order.</p>
 <h3 id="simple-syntax"><a class="anchor" href="#simple-syntax"></a>Simple Syntax</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-ebnf hljs" data-lang="ebnf" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/partials/grammar/hints.ebnf#L32">ordered-hint-simple ::= 'ORDERED'</code></pre>
+<pre class="highlightjs highlight"><code class="language-ebnf hljs" data-lang="ebnf" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/partials/grammar/hints.ebnf#L32">ordered-hint-simple ::= 'ORDERED'</code></pre>
 </div>
 </div>
 <div class="imageblock text-left">
@@ -229,7 +231,7 @@ You may only use this hint once within the hint comment.</p>
 <h3 id="json-syntax"><a class="anchor" href="#json-syntax"></a>JSON Syntax</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-ebnf hljs" data-lang="ebnf" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/partials/grammar/hints.ebnf#L64">ordered-hint-json ::= '"ordered"' ':' 'true'</code></pre>
+<pre class="highlightjs highlight"><code class="language-ebnf hljs" data-lang="ebnf" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/partials/grammar/hints.ebnf#L64">ordered-hint-json ::= '"ordered"' ':' 'true'</code></pre>
 </div>
 </div>
 <div class="imageblock text-left">
@@ -244,36 +246,139 @@ The value of this property must be set to <code>true</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="examples"><a class="anchor" href="#examples"></a>Examples</h3>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
+<h3 id="ordered-examples"><a class="anchor" href="#ordered-examples"></a>Examples</h3>
+<div class="paragraph">
+<p>For the examples in this section, it is assumed that the cost-based optimizer is active, and all optimizer statistics are up-to-date.</p>
+</div>
+<div id="ex-ordered-simple" class="exampleblock">
 <div class="title">ORDERED hint&#8201;&#8212;&#8201;simple syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT /*+ ORDERED */ *
-FROM `travel-sample`.inventory.route AS rte
-JOIN `travel-sample`.inventory.airport AS apt
-  ON rte.destinationairport = apt.faa
-NEST `travel-sample`.inventory.landmark AS lmk
-  ON apt.city = lmk.city
-LIMIT 5;</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
 <div class="listingblock">
+<div class="title">Query</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/ordered-hint.n1ql#L6-L13">SELECT /*+ ORDERED */
+       a.airportname AS source, r.id AS route, l.name AS airline
+FROM `travel-sample`.inventory.airport AS a
+JOIN `travel-sample`.inventory.route AS r <i class="conum" data-value="1"></i><b>(1)</b>
+  ON r.sourceairport = a.faa
+JOIN `travel-sample`.inventory.airline AS l <i class="conum" data-value="2"></i><b>(2)</b>
+  ON r.airlineid = META(l).id
+WHERE l.name = "40-Mile Air";</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Join the <code>airport</code> keyspace to the <code>route</code> keyspace.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Join the resulting dataset to the <code>airline</code> keyspace.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div id="ex-ordered-json" class="exampleblock">
 <div class="title">ORDERED hint&#8201;&#8212;&#8201;JSON syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT /*+ {"ordered": true} */ *
-FROM `travel-sample`.inventory.route AS rte
-JOIN `travel-sample`.inventory.airport AS apt
-  ON rte.destinationairport = apt.faa
-NEST `travel-sample`.inventory.landmark AS lmk
-  ON apt.city = lmk.city
-LIMIT 5;</code></pre>
+<div class="listingblock">
+<div class="title">Query</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/ordered-hint.n1ql#L17-L24">SELECT /*+ {"ordered": true} */
+       a.airportname AS source, r.id AS route, l.name AS airline
+FROM `travel-sample`.inventory.airport AS a
+JOIN `travel-sample`.inventory.route AS r <i class="conum" data-value="1"></i><b>(1)</b>
+  ON r.sourceairport = a.faa
+JOIN `travel-sample`.inventory.airline AS l <i class="conum" data-value="2"></i><b>(2)</b>
+  ON r.airlineid = META(l).id
+WHERE l.name = "40-Mile Air";</code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Join the <code>airport</code> keyspace to the <code>route</code> keyspace.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Join the resulting dataset to the <code>airline</code> keyspace.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you examine the plan for this query, or the query in the previous example, you can see that the joins are ordered just as they were written.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/join-order-hint.png" alt="Query plan with ORDERED hint">
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Join the <code>airport</code> keyspace to the <code>route</code> keyspace.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Join the resulting dataset to the <code>airline</code> keyspace.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div id="ex-ordered-opt" class="exampleblock">
+<div class="title">Optimized join ordering</div>
+<div class="content">
+<div class="paragraph">
+<p>For further insight into join enumeration, consider the following query, which is equivalent to the previous two examples, but without the ORDERED hint.</p>
+</div>
+<div class="listingblock">
+<div class="title">Query</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/ordered-hint.n1ql#L28-L34">SELECT a.airportname AS source, r.id AS route, l.name AS airline
+FROM `travel-sample`.inventory.airport AS a
+JOIN `travel-sample`.inventory.route AS r <i class="conum" data-value="1"></i><b>(1)</b>
+  ON r.sourceairport = a.faa
+JOIN `travel-sample`.inventory.airline AS l <i class="conum" data-value="2"></i><b>(2)</b>
+  ON r.airlineid = META(l).id
+WHERE l.name = "40-Mile Air";</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Join the <code>airport</code> keyspace to the <code>route</code> keyspace.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Join the resulting dataset to the <code>airline</code> keyspace.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you examine the plan for this query, you can see that because there is no hint, the optimizer has re-ordered the joins.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/join-order-optimize.png" alt="Query plan with optimized join order">
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Join the <code>airline</code> keyspace to the <code>route</code> keyspace.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Join the resulting dataset to the <code>airport</code> keyspace.</td>
+</tr>
+</table>
 </div>
 </div>
 </div>

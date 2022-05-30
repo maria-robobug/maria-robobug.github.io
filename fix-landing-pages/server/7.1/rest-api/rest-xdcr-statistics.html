@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Getting XDCR Stats | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/rest-api/rest-xdcr-statistics.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="Requests for XDCR statistics about a destination cluster are performed on the source cluster.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/rest-api/pages/rest-xdcr-statistics.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/rest-api/pages/rest-xdcr-statistics.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -294,11 +295,11 @@ You need to provide a properly URL-encoded URI string for the destination endpoi
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>docs_processed</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Number of documents processed by pipeline.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of documents processed by pipeline, since the start or resumption of the current replication</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>docs_written</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Number of documents written to the destination cluster via XDCR.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of documents written to the destination cluster, since the start or resumption of the current replication.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>meta_latency_wt</code></p></td>
@@ -331,7 +332,12 @@ XDCR uses this for conflict resolution prior to sending the document into the re
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>wtavg_docs_latency</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Weighted average latency for sending replicated changes to destination cluster.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The average time-period to elapse between
+the point at which a document is be ready to be sent from the source to the target,
+and the point at which the source receives confirmation from the target that the
+document has been received and successfully written.
+The average is calculated continuously, from the sum of the elapsed time-periods for the last 1000 documents
+to have been sent and acknowledged.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>wtavg_meta_latency</code></p></td>

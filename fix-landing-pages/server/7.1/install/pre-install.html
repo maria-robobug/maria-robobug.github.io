@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>System Resource Requirements | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/install/pre-install.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="Although resource requirements will largely depend on the size and resource demands of your Couchbase deployment, there are some minimum and recommended specifications that you should follow.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/install/pages/pre-install.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/install/pages/pre-install.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -183,6 +184,19 @@
 Although resource requirements will largely depend on the size and resource demands of your Couchbase deployment, there are some minimum and recommended specifications that you should follow.
 </blockquote>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_x86-processors"></a>x86 Processors</p>
+</li>
+<li>
+<p><a id="tabset1_arm-processors"></a>ARM Processors</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_x86-processors">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 18.1818%;">
@@ -225,6 +239,52 @@ Although resource requirements will largely depend on the size and resource dema
 </tr>
 </tbody>
 </table>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_arm-processors">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 18.1818%;">
+<col style="width: 40.909%;">
+<col style="width: 40.9092%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Minimum Specifications*</th>
+<th class="tableblock halign-left valign-top">Recommended Specifications**</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CPU</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 Ghz dual core 64bit ARM v8 CPU</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.5 Ghz quad core 64bit ARM v8 CPU</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>RAM</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4 GB (physical)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16 GB (physical) and above</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Storage (disk space)</strong></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>8 GB (block-based; HDD, SSD, EBS, iSCSI)</p>
+</div>
+<div class="paragraph">
+<p>Network file systems such as CIFS and NFS are not supported.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>16 GB and above (block-based; HDD, SSD, EBS, iSCSI)</p>
+</div>
+<div class="paragraph">
+<p>Network file systems such as CIFS and NFS are not supported.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>*<em>You can reduce the CPU and RAM resources below the Minimum Specifications for development and testing purposes.
 Resources can be as low as 1 GB of free RAM beyond operating system requirements, and a single CPU core.

@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>What&#8217;s New in Version 7.1? | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/introduction/whats-new.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="Couchbase is the modern database for enterprise applications. Couchbase Server 7.1 combines the strengths of relational databases with the flexibility, performance, and scale of Couchbase.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/introduction/pages/whats-new.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/introduction/pages/whats-new.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -196,12 +197,105 @@ Couchbase is the modern database for enterprise applications. Couchbase Server 7
 <p>This section describes the new features and enhancements in this release.</p>
 </div>
 <div class="sect2">
+<h3 id="analytics-service-high-availability"><a class="anchor" href="#analytics-service-high-availability"></a>Analytics Service: High Availability</h3>
+<div class="paragraph">
+<p>Prior to Couchbase Server Version 7.1, Analytics Service data was not replicated.
+This meant that when an Analytics node failed over, the Analytics Service stopped working cluster-wide.
+If the failed-over Analytics node was then recovered, data ingestion had to begin again from scratch.</p>
+</div>
+<div class="paragraph">
+<p>Analytics shadow data may now be replicated up to 3 times.
+When replicas exist, and an Analytics node fails over, the Analytics Service continues to work: one of the replicas is promoted to serve the shadow data that was stored on the failed over node.
+If the failed-over Analytics node is then recovered, the shadow data on the recovered node is updated from the promoted replica.</p>
+</div>
+<div class="paragraph">
+<p>Analytics replicas can be managed using the user interface, the <code>setting-analytics</code> command line tool, or the Analytics Settings REST API.
+For further details, refer to <a href="../manage/manage-settings/general-settings.html" class="xref page">General Settings</a>.</p>
+</div>
+<div class="paragraph">
+<p>Analytics replicas can also be monitored using the Analytics Cluster Status REST API.
+Refer to <a href="#analytics:rest-admin.adoc#cluster-status" class="xref unresolved">Cluster Status</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="analytics-service-analytics-views-and-tabular-analytics-views"><a class="anchor" href="#analytics-service-analytics-views-and-tabular-analytics-views"></a>Analytics Service: Analytics Views and Tabular Analytics Views</h3>
+<div class="paragraph">
+<p>Analytics now supports <em>Analytics views</em>, which are virtual Analytics collections derived from actual stored Analytics collections.
+Analytics views might be used to present a subset of the stored data, or to present a join or other transformation of stored data for some particular purpose.
+Queries may operate on Analytics views in exactly the same way as they do on real stored data.</p>
+</div>
+<div class="paragraph">
+<p>Analytics also supports <em>tabular Analytics views</em>, a type of view that presents data in the form of a table with uniform rows and columns and with a well-defined schema.
+Tabular views enables Analytics to interact with software tools that are designed for relational databases, such as <a href="https://www.tableau.com" target="_blank" rel="noopener">Tableau</a>.</p>
+</div>
+<div class="paragraph">
+<p>For further details on Analytics views and tabular Analytics views, refer to <a href="#analytics:5a_views.adoc" class="xref unresolved">analytics:5a_views.adoc</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tableau-connector"><a class="anchor" href="#tableau-connector"></a>Tableau Connector</h3>
+<div class="paragraph">
+<p>The new Tableau Connector provides integration between Couchbase Analytics tabular views and the Tableau interactive data visualization platform.
+Refer to <a href="#tableau-connector::index.adoc" class="xref unresolved">tableau-connector::index.adoc</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="analytics-service-external-datasets-on-azure-blob-storage"><a class="anchor" href="#analytics-service-external-datasets-on-azure-blob-storage"></a>Analytics Service: External Datasets on Azure Blob Storage</h3>
+<div class="paragraph">
+<p>The Analytics Service now supports external datasets on Azure Blob storage.
+These may be managed using the UI or the Analytics Links REST API.
+Refer to <a href="#analytics:manage-links.adoc" class="xref unresolved">analytics:manage-links.adoc</a> and <a href="#analytics:rest-links.adoc" class="xref unresolved">analytics:rest-links.adoc</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="analytics-service-array-indexes"><a class="anchor" href="#analytics-service-array-indexes"></a>Analytics Service: Array Indexes</h3>
+<div class="paragraph">
+<p>Analytics now provides <em>array indexes</em>, which enable you to index values within an array, or fields within an object nested in an array.
+In Analytics, array indexes are not meant to serve as covering indexes.
+Instead, array indexes are simply meant to accelerate queries involving multi-valued fields.
+For further details, refer to <a href="#analytics:7_using_index.adoc" class="xref unresolved">analytics:7_using_index.adoc</a>.</p>
+</div>
+<div class="paragraph">
+<p>The data definition language has been extended to support the creating and dropping of array indexes.
+Refer to <a href="#analytics:5_ddl.adoc" class="xref unresolved">analytics:5_ddl.adoc</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="query-service-join-enumeration"><a class="anchor" href="#query-service-join-enumeration"></a>Query Service: Join Enumeration</h3>
+<div class="paragraph">
+<p>Prior to Couchbase Server Version 7.1, the cost-based optimizer was unable to rewrite queries to use the optimal join order.
+Joins were performed in the order in which they are specified in the query, and no reordering of joins was considered.</p>
+</div>
+<div class="paragraph">
+<p>The cost-based optimizer may now consider different join orders, and can choose the optimal join order based on cost information.
+This is the default behavior when the cost-based optimizer is active and the optimizer statistics are up-to-date.
+Refer to <a href="../n1ql/n1ql-language-reference/cost-based-optimizer.html" class="xref page">Cost-Based Optimizer</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can use an optimizer hint, if required, to over-ride the cost-based optimizer and specify that the query should use the join order as written.
+Refer to <a href="../n1ql/n1ql-language-reference/query-hints.html" class="xref page">Query Block Hints</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="query-service-optimizer-hints"><a class="anchor" href="#query-service-optimizer-hints"></a>Query Service: Optimizer Hints</h3>
+<div class="paragraph">
+<p>You can now include optimizer hints within queries to supply directives to the optimizer.
+Optimizer hints request that the optimizer should consider specific indexes, join methods, join ordering, and so on, when creating the plan for a query.
+This may be useful in situations where the optimizer is not able to come up with the preferred plan, due to lack of optimizer statistics, high level of skew in data, data correlations, and so on.</p>
+</div>
+<div class="paragraph">
+<p>You can supply hints to the operator within a specially-formatted hint comment, similar to the type of hint comment found in many relational databases.
+Many optimizer hints have legacy equivalents using the USE clause.
+For further details, refer to <a href="../n1ql/n1ql-language-reference/optimizer-hints.html" class="xref page">Optimizer Hints</a>.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="multiple-root-certificates"><a class="anchor" href="#multiple-root-certificates"></a>Multiple Root Certificates</h3>
 <div class="paragraph">
 <p>Prior to Couchbase Server Version 7.1, a Couchbase-Server cluster could maintain at most <em>one</em> root certificate: all nodes and all clients were obliged to rely on this certificate&#8217;s authority.
 From version 7.1, Couchbase Server permits multiple root certificates to be maintained in a <em>trust store</em> for the cluster.
 This allows an individual node either to use a CA that is also used by one or more other nodes; or to use a CA that is used by no other node.
-This may be used during CA certificate rotation: a new CA is uploaded, node certificates are changed one by one, and finally, the old CA is removed.</p>
+This procedure may be used during CA certificate rotation: a new CA is uploaded, node certificates are changed one by one, and finally, the old CA is removed.</p>
 </div>
 <div class="paragraph">
 <p>Couchbase Server additionally uses its list of trusted certificates to verify:</p>
@@ -228,6 +322,15 @@ This may be used during CA certificate rotation: a new CA is uploaded, node cert
 <div class="paragraph">
 <p>Note that prior to Couchbase Server Version 7.1, node-to-node encryption, which is managed by means of the Couchbase CLI, needed to be <em>disabled</em> before management of either <em>root</em> or <em>intermediate</em> certificates could be performed.
 This restriction is lifted in version 7.1: therefore, root and intermediate certificates <em>can</em> now be managed while node-to-node encryption is enabled.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="eventing-service-full-role-based-access-control-rbac-support"><a class="anchor" href="#eventing-service-full-role-based-access-control-rbac-support"></a>Eventing Service: Full Role-Based Access Control (RBAC) support</h3>
+<div class="paragraph">
+<p>Prior to Couchbase Server Version 7.1, running Functions under the Eventing Service required admin permissions of either "Full Admin" or "Full Eventing Admin".</p>
+</div>
+<div class="paragraph">
+<p>This limiting restriction is lifted in version 7.1.  Now any user can securely create or manage Eventing Functions provided they have proper RBAC permissions configured.</p>
 </div>
 </div>
 <div class="sect2">
@@ -293,7 +396,7 @@ This provides improved performance when failover and rebalance occur on the sour
 <h3 id="arm-support"><a class="anchor" href="#arm-support"></a>ARM Support</h3>
 <div class="paragraph">
 <p>Amazon Linux is now supported on the ARM platform.
-See <a href="../release-notes/relnotes.html" class="xref page">Release Notes for Couchbase Server 7.1</a> and <a href="../install/install-platforms.html" class="xref page">Supported Platforms</a></p>
+See <a href="../release-notes/relnotes.html" class="xref page">Release Notes for Couchbase Server 7.1</a> and <a href="../install/install-platforms.html" class="xref page">Supported Platforms</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -304,7 +407,7 @@ See <a href="../release-notes/relnotes.html" class="xref page">Release Notes for
 <div class="paragraph">
 <p>The new Magma Storage Engine has been added to 7.1 as an Enterprise Edition feature, allowing for higher performance with very large datasets.
 Magma is a disk-based engine, so is highly suited to datasets that will not fit in available memory.
-You can find more details on Magma in <a href="../learn/buckets-memory-and-storage/storage-engines.html" class="xref page">Storage Engines</a></p>
+You can find more details on Magma in <a href="../learn/buckets-memory-and-storage/storage-engines.html" class="xref page">Storage Engines</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -317,11 +420,11 @@ For information, see <a href="../learn/services-and-indexes/indexes/storage-mode
 <div class="sect2">
 <h3 id="improved-auto-failover"><a class="anchor" href="#improved-auto-failover"></a>Improved Auto-Failover</h3>
 <div class="paragraph">
-<p>Automatic Failover can now failover several nodes concurrently and automatic failover of index services is now supported.
-Improvements have also been made to rebalancing algorithms so that active buckets, services and replicas will be spread across different server groups even when server groups are unequal.</p>
+<p>Automatic Failover can now fail several nodes over concurrently; additionally, automatic failover of index services is supported.
+Improvements have also been made to rebalancing algorithms, so that active buckets, services, and replicas will be spread across different server groups, even when server groups are unequal.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="../learn/clusters-and-availability/automatic-failover.html" class="xref page">Automatic Failover</a> and <a href="../learn/clusters-and-availability/groups.html" class="xref page">Server Group Awareness</a></p>
+<p>See <a href="../learn/clusters-and-availability/automatic-failover.html" class="xref page">Automatic Failover</a> and <a href="../learn/clusters-and-availability/groups.html" class="xref page">Server Group Awareness</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -330,11 +433,13 @@ Improvements have also been made to rebalancing algorithms so that active bucket
 <dl>
 <dt class="hdlist1">Scope Hierarchy Support</dt>
 <dd>
-<p>The JavaScript libraries can now be stored within collection scopes, allowing access to be restricted to users with the necessary security permissions. For more information, see the section on <a href="../javascript-udfs/javascript-functions-with-couchbase.html#libraries-and-scopes" class="xref page">libraries and scopes</a> in <a href="../javascript-udfs/javascript-functions-with-couchbase.html" class="xref page">JavaScript Functions with Couchbase</a></p>
+<p>The JavaScript libraries can now be stored within collection scopes, allowing access to be restricted to users with the necessary security permissions.
+For more information, see the section on <a href="../javascript-udfs/javascript-functions-with-couchbase.html#libraries-and-scopes" class="xref page">libraries and scopes</a> in <a href="../javascript-udfs/javascript-functions-with-couchbase.html" class="xref page">JavaScript Functions with Couchbase</a>.</p>
 </dd>
 <dt class="hdlist1">N1QL Support</dt>
 <dd>
-<p>JavaScript functions can run N1QL statements using either a function call (<code>N1QL(…)</code>) or by embedding the N1QL statement directly in the JavaScript code. See <a href="../javascript-udfs/calling-n1ql-from-javascript.html" class="xref page">Calling N1QL from JavaScript</a> for more information.</p>
+<p>JavaScript functions can run N1QL statements using either a function call (<code>N1QL(…)</code>) or by embedding the N1QL statement directly in the JavaScript code.
+See <a href="../javascript-udfs/calling-n1ql-from-javascript.html" class="xref page">Calling N1QL from JavaScript</a> for more information.</p>
 </dd>
 <dt class="hdlist1">UI Support</dt>
 <dd>
@@ -362,7 +467,8 @@ For more details, see the <a href="../tools/udfs-ui.html" class="xref page">User
 <dt class="hdlist1">File-Based Rebalance in FTS</dt>
 <dd>
 <p>Prior to version&#160;7.1, FTS index partitions were rebuilt from scratch on each node during rebalance operations.
-Under version&#160;7.1, the index partition files are copied to the nodes, allowing for faster rebalancing.</p>
+Under version&#160;7.1, the index partition files are copied to the nodes, allowing for faster rebalancing.
+File-based rebalancing can be enabled and disabled through a REST-API call described in the <a href="../fts/fts-advanced-settings-disable-file-transfer-rebalance.html" class="xref page">Disable File Transfer Balance API call</a> document.</p>
 </dd>
 <dt class="hdlist1">Increase in the Number of Full-Text Indexes Supported</dt>
 <dd>
@@ -397,23 +503,29 @@ See <a href="../n1ql/n1ql-language-reference/indexing-arrays.html#query-predicat
 <dl>
 <dt class="hdlist1">Direct Backup to Google Cloud Platform (GCP) Cloud Storage</dt>
 <dd>
-<p>The cbbackupmr CLI and the Backup Service now supports direct backup to GCP cloud storage.  See <a href="#backup-restore:cbbackupmgr-cloud.adoc" class="xref unresolved">backup-restore:cbbackupmgr-cloud.adoc</a></p>
+<p>The cbbackupmr CLI and the Backup Service now supports direct backup to GCP cloud storage.
+See <a href="#backup-restore:cbbackupmgr-cloud.adoc" class="xref unresolved">backup-restore:cbbackupmgr-cloud.adoc</a>.</p>
 </dd>
 <dt class="hdlist1">Resume option for cbbackupmgr restore</dt>
 <dd>
-<p>The --resume option for cbbackupmgr restore allows you to resume a restore that has failed due to a temporary environmental issue.  See <a href="#backup-restore:cbbackupmgr-restore.adoc" class="xref unresolved">backup-restore:cbbackupmgr-restore.adoc</a></p>
+<p>The --resume option for cbbackupmgr restore allows you to resume a restore that has failed due to a temporary environmental issue.
+See <a href="#backup-restore:cbbackupmgr-restore.adoc" class="xref unresolved">backup-restore:cbbackupmgr-restore.adoc</a>.</p>
 </dd>
 <dt class="hdlist1">[Developer Preview] Direct Backup to Azure Blob Containers</dt>
 <dd>
-<p>The cbbackupmgr CLI direct backup to Azure blob containers is available for Developer Preview in 7.1.  See <a href="#backup-restore:cbbackupmgr-cloud.adoc" class="xref unresolved">backup-restore:cbbackupmgr-cloud.adoc</a></p>
+<p>The cbbackupmgr CLI direct backup to Azure blob containers is available for Developer Preview in 7.1.
+See <a href="#backup-restore:cbbackupmgr-cloud.adoc" class="xref unresolved">backup-restore:cbbackupmgr-cloud.adoc</a>.</p>
 </dd>
 <dt class="hdlist1">[Developer Preview] Encrypted Backups</dt>
 <dd>
-<p>Encrypted backups is available for Developer Preview in 7.1 with both cbbackupmgr CLI and the Backup Service. See <a href="#backup-restore:cbbackupmgr-encryption.adoc" class="xref unresolved">backup-restore:cbbackupmgr-encryption.adoc</a></p>
+<p>Encrypted backups is available for Developer Preview in 7.1 with both cbbackupmgr CLI and the Backup Service.
+See <a href="#backup-restore:cbbackupmgr-encryption.adoc" class="xref unresolved">backup-restore:cbbackupmgr-encryption.adoc</a>.</p>
 </dd>
 <dt class="hdlist1">[Deprecation Reminder] cbbackup and cbrestore</dt>
 <dd>
-<p>The cbbackup and cbrestore utilities have been deprecated for the Community Edition (CE) since 7.0, and they will be removed in the future.  (For the Enterprise Edition, cbbackup and cbrestore have been deprecated since 5.0.) The cbbackupmgr CLI can be used on both CE and EE.</p>
+<p>The cbbackup and cbrestore utilities have been deprecated for the Community Edition (CE) since 7.0, and they will be removed in the future.
+(For the Enterprise Edition, cbbackup and cbrestore have been deprecated since 5.0.)
+The cbbackupmgr CLI can be used on both CE and EE.</p>
 </dd>
 </dl>
 </div>

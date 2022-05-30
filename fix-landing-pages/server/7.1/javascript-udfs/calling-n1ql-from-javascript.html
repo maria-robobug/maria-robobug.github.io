@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Calling N1QL from JavaScript | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/javascript-udfs/calling-n1ql-from-javascript.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="Executing N1QL statements from Javascript functions.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/javascript-udfs/pages/calling-n1ql-from-javascript.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/javascript-udfs/pages/calling-n1ql-from-javascript.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -209,7 +210,7 @@ Executing N1QL statements from Javascript functions.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/javascript-udfs/examples/add-airline-inline-call.js">function addAirline() {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/javascript-udfs/examples/add-airline-inline-call.js">function addAirline() {
     var q = insert into airport values("1200", 
         {"id": 1200, 
             "type": "airline", 
@@ -230,7 +231,7 @@ Executing N1QL statements from Javascript functions.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/javascript-udfs/examples/add-airline-n1ql-call.js">function addAirline() {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/javascript-udfs/examples/add-airline-n1ql-call.js">function addAirline() {
     var q = N1QL("insert into airport values(1200, " +
         "{\"id\": 1200," +
         " \"type\": \"airline\"," +
@@ -265,7 +266,7 @@ For example, this statement:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/javascript-udfs/examples/add-airline-with-side-effect.n1ql">SELECT "true" AS response WHERE AddAirline() = "missing";</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/javascript-udfs/examples/add-airline-with-side-effect.n1ql">SELECT "true" AS response WHERE AddAirline() = "missing";</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -297,7 +298,7 @@ In the next example, we&#8217;re going to retrieve a list of the hotels stored i
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/javascript-udfs/examples/select-hotels-inline.js">function selectHotels() {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/javascript-udfs/examples/select-hotels-inline.js">function selectHotels() {
     
     var q = SELECT * FROM `travel-sample`.`inventory`.`hotel`;    <i class="conum" data-value="1"></i><b>(1)</b>
     var res = [];
@@ -395,7 +396,7 @@ Parameters can either be <em>positional</em> or <em>named</em>.</p>
 <p>The parameters are applied to the statement in the order they appear in the list.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/javascript-udfs/examples/add-airline-positional-pararamers.js">function addAirlineWithPositionalParameters(name, callsign, country) {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/javascript-udfs/examples/add-airline-positional-pararamers.js">function addAirlineWithPositionalParameters(name, callsign, country) {
     var q = N1QL("insert into `travel-sample`.`inventory`.`airport` values(\"1600\", " +
         "{\"id\": $1, " +
         "\"type\": $2, " +
@@ -414,7 +415,7 @@ Parameters can either be <em>positional</em> or <em>named</em>.</p>
 <p>The parameters are given a mnemonic name attached to the value, so they can be included directly in the N1QL statement.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/javascript-udfs/examples/add-airline-named-parameters.js">function addAirlineWithNamedParameters(name, callsign, country) {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/javascript-udfs/examples/add-airline-named-parameters.js">function addAirlineWithNamedParameters(name, callsign, country) {
     var q = insert into `travel-sample`.`inventory`.`airport` values("1700", 
         {"id": 1700, 
             "type": "airline", 
@@ -556,7 +557,7 @@ This can be demonstrated using a recursive call sequence as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/javascript-udfs/examples/do-recursion.js">function doRecursion() {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/javascript-udfs/examples/do-recursion.js">function doRecursion() {
     
     var q = N1QL("EXECUTE FUNCTION doRecursion()")
     
@@ -568,7 +569,7 @@ This can be demonstrated using a recursive call sequence as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/javascript-udfs/examples/execute-do-recursion.n1ql">EXECUTE FUNCTION doRecursion();</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/javascript-udfs/examples/execute-do-recursion.n1ql">EXECUTE FUNCTION doRecursion();</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -576,7 +577,7 @@ This can be demonstrated using a recursive call sequence as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/javascript-udfs/examples/do-recursion-response.jsonc">[
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/javascript-udfs/examples/do-recursion-response.jsonc">[
   {
     "code": 10109,
     "msg": "Error executing function 'doRecursion' (my-library:doRecursion)",

@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Cascade Delete | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/eventing/eventing-examples-cascade-delete.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="This example illustrates how to leverage the Eventing Service to perform a cascade delete operation.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/eventing/pages/eventing-examples-cascade-delete.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/eventing/pages/eventing-examples-cascade-delete.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -208,6 +209,9 @@ Within the buckets we need three (3) keyspaces <strong>'bulk.data.users'</strong
 (we loosely follow this <a href="eventing-buckets-to-collections.html#single-tenancy" class="xref page">organization</a>).</p>
 </div>
 <div class="paragraph">
+<p>For the Function Scope or RBAC grouping, we will use the <strong>'bulk.data'</strong>, assuming you have the role of either "Full Admin" or "Eventing Full Admin". For standard or non-privileged users refer to <a href="eventing-rbac.html" class="xref page">Eventing Role-Based Access Control</a>.</p>
+</div>
+<div class="paragraph">
 <p><em>If you run a version of Couchbase prior to 7.0 you can just create the buckets <strong>'users'</strong>, <strong>'transactions'</strong>, and <strong>'metadata'</strong> and run this example.  Furthermore if your cluster was subsequently upgraded from say 6.6.2 to 7.0 your data would be moved to <strong>'users._default._default'</strong>, <strong>'transactions._default._default'</strong>, and <strong>'metadata._default._default'</strong> and your Eventing Function would be seamlessly upgraded to use the new keyspaces and continue to run correctly.</em></p>
 </div>
 <div class="paragraph">
@@ -239,6 +243,9 @@ The <strong>ADD FUNCTION</strong> dialog appears.</p>
 <p>In the <strong>ADD FUNCTION</strong> dialog, for individual Function elements provide the below information:</p>
 <div class="ulist">
 <ul>
+<li>
+<p>For the <strong>Function Scope</strong> drop-down, select <strong>'bulk.data'</strong> as the RBAC grouping.</p>
+</li>
 <li>
 <p>For the <strong>Listen To Location</strong> drop-down, select <strong>bulk</strong>, <strong>data</strong>, <strong>users</strong> as the keyspace.</p>
 </li>
@@ -343,6 +350,11 @@ function OnDelete(meta) {
 </li>
 <li>
 <p>From the <strong>Eventing</strong> screen, click the <strong>delete_orphaned_txns</strong> function to select it, then click <strong>Deploy</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/cascadedel_03a_deploy.png" alt="cascadedel 03a deploy" width="100%">
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -437,9 +449,9 @@ CREATE PRIMARY INDEX `transactions` ON  `bulk`.`data`.`transactions`;</code></pr
 SELECT count(*) FROM `bulk`.`data`.`transactions`;</code></pre>
 </div>
 </div>
-<div class="imageblock unresolved">
+<div class="imageblock">
 <div class="content">
-<img src="cascadedel_05a_counts.png" alt="cascadedel 05a counts" width="100%">
+<img src="_images/cascadedel_05a_counts.png" alt="cascadedel 05a counts" width="100%">
 </div>
 </div>
 </li>
@@ -490,9 +502,9 @@ SELECT count(*) FROM `bulk`.`data`.`transactions`;</code></pre>
 <div class="paragraph">
 <p>After executing the above N1QL statement you should see a table showing counts as follows:</p>
 </div>
-<div class="imageblock unresolved">
+<div class="imageblock">
 <div class="content">
-<img src="cascadedel_08_remainingcounts.png" alt="cascadedel 08 remainingcounts" width="100%">
+<img src="_images/cascadedel_08_remainingcounts.png" alt="cascadedel 08 remainingcounts" width="100%">
 </div>
 </div>
 </li>
@@ -510,7 +522,7 @@ SELECT count(*) FROM `bulk`.`data`.`transactions`;</code></pre>
 <p>The most recent or top line should be similar to the following:</p>
 <div class="listingblock">
 <div class="content">
-<pre>2021-07-17T12:16:10.692-07:00 [INFO] "OnDelete: removed orphaned transactions for:" "user_100"</pre>
+<pre>2022-04-17T12:16:10.692-07:00 [INFO] "OnDelete: removed orphaned transactions for:" "user_100"</pre>
 </div>
 </div>
 </li>
@@ -518,11 +530,11 @@ SELECT count(*) FROM `bulk`.`data`.`transactions`;</code></pre>
 <p>The next four lines came from the OnUpdate handler of the <strong>delete_orphaned_txns</strong> Eventing function and show when you created your users. If you eliminate the function OnUpdate(doc, meta) {&#8230;&#8203;} handler in your Eventing function you would not get the below messages.</p>
 <div class="listingblock">
 <div class="content">
-<pre>2021-07-17T11:58:55.663-07:00 [INFO] "OnUpdate NOOP id: user_103 document:" {"age":"28","name":"jerry springer","user_id":103}
-2021-07-17T11:58:55.663-07:00 [INFO] "OnUpdate NOOP id: user_100 document:" {"age":"30","name":"john doe","user_id":100}
-2021-07-17T11:58:55.663-07:00 [INFO] "OnUpdate NOOP id: user_102 document:" {"age":"47","name":"jenny jones","user_id":102}
-2021-07-17T11:58:55.662-07:00 [INFO] "OnUpdate NOOP id: user_101 document:" {"age":"20","name":"frank smith","user_id":101}
-2021-07-17T11:58:55.662-07:00 [INFO] "OnUpdate NOOP id: user_50 document:" {"age":"77","name":"jeff shoemaker","user_id":50}</pre>
+<pre>2022-04-17T11:58:55.663-07:00 [INFO] "OnUpdate NOOP id: user_103 document:" {"age":"28","name":"jerry springer","user_id":103}
+2022-04-17T11:58:55.663-07:00 [INFO] "OnUpdate NOOP id: user_100 document:" {"age":"30","name":"john doe","user_id":100}
+2022-04-17T11:58:55.663-07:00 [INFO] "OnUpdate NOOP id: user_102 document:" {"age":"47","name":"jenny jones","user_id":102}
+2022-04-17T11:58:55.662-07:00 [INFO] "OnUpdate NOOP id: user_101 document:" {"age":"20","name":"frank smith","user_id":101}
+2022-04-17T11:58:55.662-07:00 [INFO] "OnUpdate NOOP id: user_50 document:" {"age":"77","name":"jeff shoemaker","user_id":50}</pre>
 </div>
 </div>
 </li>
@@ -546,7 +558,7 @@ SELECT count(*) FROM `bulk`.`data`.`transactions`;</code></pre>
 <p>Delete all Users in collection <code>bulk</code>.<code>data</code>.<code>users</code> as follows (because you have no WHERE clause you will get a warning just ignore it and hit <strong>Continue</strong>) :</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">DELETE FROM `bulk`.`data`.`users;</code></pre>
+<pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">DELETE FROM `bulk`.`data`.`users`;</code></pre>
 </div>
 </div>
 </li>
@@ -586,10 +598,10 @@ SELECT count(*) FROM `bulk`.`data`.`transactions`;</code></pre>
 <p>The most recent four lines should be similar to the statements:</p>
 <div class="listingblock">
 <div class="content">
-<pre>2021-07-17T12:27:35.280-07:00 [INFO] "OnDelete: removed orphaned transactions for:" "user_102"
-2021-07-17T12:27:35.276-07:00 [INFO] "OnDelete: removed orphaned transactions for:" "user_101"
-2021-07-17T12:27:35.271-07:00 [INFO] "OnDelete: user_id &lt; 100, kept orphaned transactions for:" "user_50"
-2021-07-17T12:27:35.271-07:00 [INFO] "OnDelete: removed orphaned transactions for:" "user_103"</pre>
+<pre>2022-04-17T12:27:35.280-07:00 [INFO] "OnDelete: removed orphaned transactions for:" "user_102"
+2022-04-17T12:27:35.276-07:00 [INFO] "OnDelete: removed orphaned transactions for:" "user_101"
+2022-04-17T12:27:35.271-07:00 [INFO] "OnDelete: user_id &lt; 100, kept orphaned transactions for:" "user_50"
+2022-04-17T12:27:35.271-07:00 [INFO] "OnDelete: removed orphaned transactions for:" "user_103"</pre>
 </div>
 </div>
 </li>

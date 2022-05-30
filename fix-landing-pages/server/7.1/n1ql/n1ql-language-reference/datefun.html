@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Date Functions | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/n1ql/n1ql-language-reference/datefun.html">
 <link rel="stylesheet" href="../../../../_/css/site.css">
 <script src="../../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="N1QL date functions return the system clock value or manipulate the datetime values, which are represented as a string or an integer.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/n1ql/pages/n1ql-language-reference/datefun.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/pages/n1ql-language-reference/datefun.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -197,22 +198,24 @@ These functions are very useful for manipulating dates in datasets with various 
 <p>Datetime values are always tied to a specific timezone, either explicitly in the date value, or implicitly in the application.
 The date functions in N1QL therefore support multiple different timezones.</p>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>UTC</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="utc"><a class="anchor" href="#utc"></a>UTC</h3>
+<div class="paragraph">
 <p>UTC, The Coordinated Universal Time is the primary time standard by which the world regulates clocks and time.
 It is defined as the time at 0° longitude and is consistent, as it does not take into account daylight savings time.
 You can read further about UTC at <a href="https://www.timeanddate.com/time/aboututc.html" class="bare" target="_blank" rel="noopener">https://www.timeanddate.com/time/aboututc.html</a>.</p>
+</div>
 <div class="paragraph">
 <p>All N1QL functions which accept a timezone as an argument also accept <code>UTC</code>.</p>
 </div>
-</dd>
-<dt class="hdlist1"><strong>IANA Timezones</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="iana-timezones"><a class="anchor" href="#iana-timezones"></a>IANA Timezones</h3>
+<div class="paragraph">
 <p>Many applications operate across multiple different time zones and may not necessarily use <code>UTC</code>.
 Therefore, it is important for the database to be able to handle and manipulate dates in these time zones in a consistent manner.
 Many date functions take the time zone as an additional argument.</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -279,12 +282,12 @@ N1QL take this into account when converting dates.</p>
 </tr>
 </tbody>
 </table>
-</dd>
-<dt class="hdlist1"><strong>Local System Timezone</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="local-system-timezone"><a class="anchor" href="#local-system-timezone"></a>Local System Timezone</h3>
+<div class="paragraph">
 <p>Many functions default to using the local timezone of the system, which will be one of the IANA timezones.</p>
-</dd>
-</dl>
+</div>
 </div>
 </div>
 </div>
@@ -296,25 +299,66 @@ N1QL take this into account when converting dates.</p>
 N1QL is then able to represent the passed date as a standardized date object internally.
 In general, functions whose name contains the word <code>STR</code> are designed to use string formats while <code>MILLIS</code> functions are designed to use Epoch/UNIX timestamps.</p>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><a id="unix-time"></a><strong>Epoch/UNIX Timestamps</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="unix-time"><a class="anchor" href="#unix-time"></a>Epoch/UNIX Timestamps</h3>
+<div class="paragraph">
 <p>Epoch/UNIX time is the number of seconds (or milliseconds) that have elapsed since <code>1970-01-01T00:00:00.000Z</code> (Thursday, 1 January 1970 at midnight), not including leap seconds.
 This can be useful for numeric and timezone agnostic representations of dates.
-While Epoch/UNIX time can be represented in either seconds or milliseconds, <strong>all N1QL date functions specifically treat Epoch/UNIX timestamps as milliseconds</strong>.
-For example, the date <code>2017-01-31T10:02:07Z</code> would equate to an Epoch/UNIX timestamp of 1485856927000.</p>
-</dd>
-<dt class="hdlist1"><a id="date-string"></a><strong>Date String Formats</strong></dt>
-<dd>
-<p>In many cases, dates are not stored as Epoch/UNIX timestamp but instead as more human-readable formats, such as <code>2006-01-02T15:04:05.567+08:00</code>.
-Therefore, N1QL also provides convenience methods to allow you to manipulate and convert dates in string format.
-All date formats follow the <a href="https://www.w3.org/TR/NOTE-datetime" target="_blank" rel="noopener">ISO-8601 standard</a>.</p>
+While Epoch/UNIX time can be represented in either seconds or milliseconds, <em>all N1QL date functions specifically treat Epoch/UNIX timestamps as milliseconds</em>.
+For example, the date <code>2017-01-31T10:02:07Z</code> would equate to an Epoch/UNIX timestamp of <code>1485856927000</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="date-string"><a class="anchor" href="#date-string"></a>Date String Formats</h3>
 <div class="paragraph">
-<p>The supported string formats are composed of the following components:</p>
+<p>In many cases, dates are not stored as Epoch/UNIX timestamp but instead as more human-readable formats, such as <code>2006-01-02T15:04:05.567+08:00</code>.
+Therefore, N1QL also provides convenience methods to allow you to manipulate and convert dates in string format.</p>
+</div>
+<div class="paragraph">
+<p>N1QL accepts format strings following several conventions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>ISO-8601 example dates</strong>, e.g. <code>1111-11-11</code>.</p>
+</li>
+<li>
+<p><strong>Date string component codes</strong>, e.g. <code>YYYY-MM-DD</code>.</p>
+</li>
+<li>
+<p><strong>Go language native dates</strong>, e.g. specifically <code>2006-01-02</code> for year, month, and day.</p>
+</li>
+<li>
+<p><strong>Percent-style date format specifiers</strong>, e.g. <code>%Y-%m-%d</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Only a single style can be used at a time in a specified format string.</p>
+</div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_iso-8601-dates"></a>ISO-8601 Dates</p>
+</li>
+<li>
+<p><a id="tabset1_date-string-codes"></a>Date String Codes</p>
+</li>
+<li>
+<p><a id="tabset1_go-reference-dates"></a>Go Reference Dates</p>
+</li>
+<li>
+<p><a id="tabset1_percent-style-dates"></a>Percent-Style Dates</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_iso-8601-dates">
+<div class="paragraph">
+<p><a href="https://www.w3.org/TR/NOTE-datetime" target="_blank" rel="noopener">ISO-8601</a> example dates are composed of the following date components.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Date String Components</caption>
 <colgroup>
 <col style="width: 40%;">
 <col style="width: 20%;">
@@ -324,59 +368,59 @@ All date formats follow the <a href="https://www.w3.org/TR/NOTE-datetime" target
 <tr>
 <th class="tableblock halign-left valign-top">Component</th>
 <th class="tableblock halign-left valign-top">Code</th>
-<th class="tableblock halign-left valign-top">Example</th>
+<th class="tableblock halign-left valign-top">Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Year</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YYYY</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2006</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any four-digit integer from <code>1111</code> to <code>9999</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Month (of the year)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MM</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">01</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any two digit integer from <code>01</code> to <code>12</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Day (of the month)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">02</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any two digit integer from <code>01</code> to <code>31</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Hour (of the day)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hh</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any two-digit integer from <code>00</code> to <code>23</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Minute (of the hour)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">mm</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any two-digit integer from <code>00</code> to <code>59</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Second (of the minute)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ss</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">05</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any two-digit integer from <code>00</code> to <code>59</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Millisecond (of the second)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Millisecond (of the second)&#8201;&#8212;&#8201;output only</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">567</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any three-digit integer from <code>000</code> to <code>999</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Time Zone (as UTC offset)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TZD</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>-08:00</p>
-</div>
-<div class="admonitionblock note">
+<td class="tableblock halign-left valign-top"><p class="tableblock">UTC offset in the format &plusmn;hh:mm</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-A UTC offset of 0 (+00:00) can just be specified as <code>Z</code>
+A UTC offset of 0 (+00:00) can just be specified as <code>Z</code>.
 </td>
 </tr>
 </table>
@@ -385,11 +429,10 @@ A UTC offset of 0 (+00:00) can just be specified as <code>Z</code>
 </tbody>
 </table>
 <div class="paragraph">
-<p>The following table shows all of the accepted string date formats for N1QL date functions, using the date components specified above.
-In cases where the timezone is not specified, the local system time is assumed:</p>
+<p>To specify a date format, you must put together example component values, as specified above, to create one of the following date formats.
+ISO-8601 date formats are very specific; they must contain the correct components in the correct order, with punctuation exactly as shown.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Date String Examples</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 66.6667%;">
@@ -403,105 +446,572 @@ In cases where the timezone is not specified, the local system time is assumed:<
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YYYY-MM-DDThh:mm:ss.sTZD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2006-01-02T15:04:05.999+00:00 or 2006-01-02T15:04:05.999Z</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>1111-12-31T23:00:59.999+00:00</code> or <code>1111-12-31T23:00:59.999Z</code></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YYYY-MM-DDThh:mm:ssTZD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2006-01-02T15:04:05+00:00 or 2006-01-02T15:04:05Z</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>1111-12-31T23:00:59+00:00</code> or <code>1111-12-31T23:00:59Z</code></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YYYY-MM-DDThh:mm:ss.s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2006-01-02T15:04:05.999</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>1111-12-31T23:00:59.999</code></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YYYY-MM-DDThh:mm:ss</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2006-01-02T15:04:05</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>1111-12-31T23:00:59</code></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YYYY-MM-DD hh:mm:ss.sTZD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2006-01-02 15:04:05.999+00:00 or 2006-01-02 15:04:05.999Z</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>1111-12-31 23:00:59.999+00:00</code> or <code>1111-12-31 23:00:59.999Z</code></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YYYY-MM-DD hh:mm:ssTZD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2006-01-02 15:04:05+00:00 or 2006-01-02 15:04:05Z</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>1111-12-31 23:00:59+00:00</code> or <code>1111-12-31 23:00:59Z</code></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YYYY-MM-DD hh:mm:ss.s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2006-01-02 15:04:05.999</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>1111-12-31 23:00:59.999</code></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YYYY-MM-DD hh:mm:ss</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2006-01-02 15:04:05</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>1111-12-31 23:00:59</code></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YYYY-MM-DD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2006-01-02</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>1111-12-31</code></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hh:mm:ss.sTZD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15:04:05.999+00:00 or 15:04:05.999Z</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>23:00:59.999+00:00</code> or <code>23:00:59.999Z</code></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hh:mm:ssTZD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15:04:05+00:00 or 15:04:05Z</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>23:00:59+00:00</code> or <code>23:00:59Z</code></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hh:mm:ss.s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15:04:05.999</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>23:00:59.999</code></p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">hh:mm:ss</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15:04:05</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code>23:00:59</code></p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
-<div class="admonitionblock note">
+<div class="paragraph">
+<p>The examples above use arbitrary values for the date components.
+You can use any valid values in your date components, as long as the date format contains the correct combination of components and punctuation.</p>
+</div>
+<div class="paragraph">
+<p>Note, however, that if you use Go reference date values as the date components, the example date is interpreted as a <a href="#date-string">Go reference date</a>, rather than an ISO-8601 example date.
+This may cause some date formats to be interpreted differently to what you expect.
+For example, the date format <code>2006-02-01</code> is interpreted as a Go reference date, where <code>02</code> is the day and <code>01</code> is the month.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_date-string-codes">
+<div class="paragraph">
+<p>For greater flexibility, you can specify a date format using date string codes.
+These are based on the alphabetic format codes from the <a href="https://www.w3.org/TR/NOTE-datetime" target="_blank" rel="noopener">ISO-8601</a> standard, with some extensions.
+The date string codes are given below.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Code</th>
+<th class="tableblock halign-left valign-top">Component</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CC</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit century</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>YYYY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4-digit century and year</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>YY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit year <sup>[<a href="#default-values">note</a>]</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit month</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit day</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>hh</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit hour, 00-23</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit hour, 00-23</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit minute, 00-59</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ss</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit second, 00-59</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>s</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fraction of a second (down to millisecond)&#8201;&#8212;&#8201;output only</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TZD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time Zone (as UTC offset)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To specify a date format, you can put the date string components together in any order, along with any other characters as required.</p>
+</div>
+<div class="paragraph">
+<p>Characters which are not part of the format specification are matched literally and produced unaltered, with the exception of Unicode U+0020, i.e. space <code>" "</code>, which matches any single character when parsing, and is produced unaltered on output.
+For example, <code>YYYY MM DD</code> parses <code>2021-06-28</code>, <code>2021/06/28</code>, <code>2021.06.28</code>, etc.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_go-reference-dates">
+<div class="paragraph">
+<p>You can specify a date format using <a href="https://golang.org/pkg/time/#pkg-constants" target="_blank" rel="noopener">Go language date components</a>.
+The available reference date components are given below.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Component</th>
+<th class="tableblock halign-left valign-top">Reference Date</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Year</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2006</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4-digit century and year</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>06</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit year <sup>[<a href="#default-values">note</a>]</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock">Month</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unpadded month</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>01</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zero-padded 2-digit month</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>January</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Full English month name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Jan</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Abbreviated English month name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="7"><p class="tableblock">Day</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unpadded day of the month</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Space-padded 2-digit day of the month</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>02</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zero-padded 2-digit day of the month</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Monday</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Full English day name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Mon</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Abbreviated English day name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>__2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Space-padded 3-digit day of the year</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>002</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zero-padded 3-digit day of the year</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Hour</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unpadded hour, 1-12</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>03</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zero-padded 2-digit hour, 01-12</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>15</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zero-padded 2-digit hour, 00-23</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">AM or PM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AM or PM (upper case)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pm</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">am or pm (lower case)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Minute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>4</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unpadded minute, 0-59</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>04</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zero-padded minute, 00-59</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Second</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>5</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unpadded second, 0-59</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>05</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zero-padded second, 00-59</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Fraction of a second</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>,000</code> (one or<br>
+<code>.000</code> more zeros)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fraction of a second, to the given number of decimal places</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>,999</code> (one or<br>
+<code>.999</code> more nines)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fraction of a second, to the given number of decimal places, with trailing zeros removed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Time zone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-07</code><br>
+<code>-0700</code><br>
+<code>-07:00</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time Zone (as UTC offset)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Z07</code><br>
+<code>Z0700</code><br>
+<code>Z07:00</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time Zone (as UTC offset);<br>
+a UTC offset of 0 (+00:00) is output as <code>Z</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To specify a date format, you can put the reference date components together in any order, along with any other characters as required.</p>
+</div>
+<div class="paragraph">
+<p>Characters which are not part of the format specification are matched literally and produced unaltered, with the exception of Unicode U+0020, i.e. space <code>" "</code>, which matches any single character when parsing, and is produced unaltered on output.
+For example, <code>2006 01 02</code> parses <code>2021-06-28</code>, <code>2021/06/28</code>, <code>2021.06.28</code>, etc.</p>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_percent-style-dates">
+<div class="paragraph">
+<p>Date and time functions also accept <code>printf</code>-style format specifiers for date formats, based on the Unix <a href="https://man7.org/linux/man-pages/man1/date.1.html" target="_blank" rel="noopener">date</a> command.
+Format specifiers begin with a percent character <code>%</code> and take the following form:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ebnf hljs" data-lang="ebnf">format-specifier ::= '%' ( '%' | ( '-' | '_' | '0' | '^' )? width? element)</code></pre>
+</div>
+</div>
+<div class="imageblock text-left">
+<div class="content">
+<img src="../_images/n1ql-language-reference/format-specifier.png" alt="format specifier">
+</div>
+</div>
+<div class="paragraph">
+<p>The optional hyphen (<code>-</code>), underscore (<code>&lowbar;</code>), or zero (<code>0</code>) characters specify the padding for number fields.</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+hyphen <code>-</code>
+</td>
+<td class="hdlist2">
+<p>No padding for numeric date components.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+underscore <code>_</code>
+</td>
+<td class="hdlist2">
+<p>Padding with spaces for numeric date components.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+zero <code>0</code>
+</td>
+<td class="hdlist2">
+<p>Padding with zeros for numeric date components&#8201;&#8212;&#8201;the default.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The optional circumflex (<code>^</code>) character specifies case insensitivity when parsing text date components, or a preference for upper case when outputting text date components.</p>
+</div>
+<div class="paragraph">
+<p>The <em>width</em> is accepted but ignored for parsing, and is used for output.
+However, it should rarely be needed, as elements have common or expected default widths.</p>
+</div>
+<div class="paragraph">
+<p>The <em>element</em> is a single character which specifies a date component or an entire date format.
+The elements are given in the table below.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Element</th>
+<th class="tableblock halign-left valign-top">Meaning</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>D</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Short form date, YYYY-MM-DD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2021-06-28</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>F</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Long form date, YYYY-MM-DDThh:mm:ss.sTZD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2021-06-28T19:22:59.123+01:00</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Y</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4-digit century and year</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2021</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>C</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit century</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>20</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>y</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit year <sup>[<a href="#default-values">note</a>]</sup></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>21</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit month</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>01</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>B</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Full English month name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>January</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>b</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Abbreviated English month name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Jan</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>d</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit day</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>28</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>A</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Full English day name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Monday</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>a</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Abbreviated English day name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Mon</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>f</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">English ordinal number suffix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>st</code> (as in <code>1st</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>H</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit hour, 00-23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>19</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>I</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit hour, 01-12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>07</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>p</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AM or PM (upper case)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PM</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>P</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">am or pm (lower case)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pm</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>M</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit minute, 00-59</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>22</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>S</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2-digit second, 00-59</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>59</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>R</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24-hour hour and minute (same as <code>%H:%M</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>19:22</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24-hour time (same as <code>%H:%M:%S</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>19:22:59</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>N</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fraction of a second (down to nanosecond)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>123</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>z</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When parsing, matches a time zone in any supported format&#8201;&#8212;&#8201;&plusmn;hh, &plusmn;hhmm,
+&plusmn;hh:mm, zone name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>+01</code><br>
+  <code>+0100</code><br>
+  <code>+01:00</code><br>
+  <code>Europe/Paris</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For output, produces time zone in &plusmn;hh:mm format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>+01:00</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>Z</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When parsing, matches a time zone in any supported format&#8201;&#8212;&#8201;&plusmn;hh, &plusmn;hhmm,
+&plusmn;hh:mm, zone name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>+01</code><br>
+  <code>+0100</code><br>
+  <code>+01:00</code><br>
+  <code>Europe/Paris</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For output, produces time zone name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Europe/Paris</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>s</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seconds since 1970-01-01 00:00:00 UTC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1624904579</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To specify a date format, you can put the format specifiers together in any order, along with any other characters as required.
+If you need to include a literal percent symbol in the date format, use the special format specifier <code>%%</code>.</p>
+</div>
+<div class="paragraph">
+<p>Characters which are not part of the format specification are matched literally and produced unaltered, with the exception of Unicode U+0020, i.e. space <code>" "</code>, which matches any single character when parsing, and is produced unaltered on output.
+For example, <code>%Y %m %d</code> parses <code>2021-06-28</code>, <code>2021/06/28</code>, <code>2021.06.28</code>, and so on.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="default-values" class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
+<div class="title">Default Values</div>
 <div class="paragraph">
-<p>Currently N1QL only accepts numeric format strings with valid values for each component.
-For example, you should pass something like <code>"1111-11-11"</code> as the date format rather than <code>"YYYY-MM-DD"</code>, this has the same effect as passing in any other valid date in the same format (such as <code>"2017-01-31"</code>).</p>
-</div>
-<div class="paragraph">
-<p>If the date string does not explicitly declare the value of a component, then a value of 0 is assumed.
-For example <code>2016-02-07</code> is equivalent to <code>2016-02-07T00:00:00</code>.
-This is with the exception of the time zone, which if unspecified in the date string will default to the local system time zone.</p>
-</div>
-<div class="paragraph">
-<p>N1QL is very specific as to what it accepts as a valid date format, below are a few examples:</p>
+<p>If the date string does not explicitly declare the value of a component, then the following default values are assumed:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>"01:01:01"</code> - Valid</p>
+<p>The month and day default to 1.</p>
 </li>
 <li>
-<p><code>"hh:mm:ss"</code> - Invalid</p>
+<p>The century (when not specified by year) defaults to 19 if year is greater than or equal to 69, or 20 otherwise.</p>
 </li>
 <li>
-<p><code>"01:01:01.111"</code> - Valid</p>
+<p>All other numeric components default to 0.</p>
 </li>
 <li>
-<p><code>"01:01.111"</code> - Invalid</p>
-</li>
-<li>
-<p><code>"2017-01-31"</code> - Valid</p>
-</li>
-<li>
-<p><code>"2017-01-86"</code> - Invalid</p>
+<p>The time zone defaults to the local local system time zone.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>In cases where the timezone is not specified, the local system time is assumed.</p>
+</div>
+<div class="paragraph">
+<p>For example, <code>2016-02-07</code> is equivalent to <code>2016-02-07T00:00:00</code> and parsing just <code>16</code> as the year is equivalent to <code>2016-01-01T00:00:00</code> in the local system time zone.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
@@ -509,67 +1019,20 @@ This is with the exception of the time zone, which if unspecified in the date st
 <h2 id="manipulating-components"><a class="anchor" href="#manipulating-components"></a>Manipulating Date Components</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Dates are composed of multiple different components such as the day, year, month etc.
-It is important for applications to be able to manipulate particular components of a date.
-Functions such as <a href="#fn-date-add-str">DATE_ADD_STR()</a> accept a <code>part</code> argument, which is the component to adjust.
-Below is a list of accepted parts, these are expressed as strings and are not case-sensitive:</p>
+<p>Dates are composed of multiple different components such as the day, year, month, etc.
+It is important for applications to be able to extract and manipulate particular components of a date, so that these can be used in N1QL queries.
+Functions such as <a href="#fn-date-add-str">DATE_ADD_STR()</a> accept a <code>part</code> argument, which is the component to adjust.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>millennium</code></p>
-</li>
-<li>
-<p><code>century</code></p>
-</li>
-<li>
-<p><code>decade</code></p>
-</li>
-<li>
-<p><code>year</code></p>
-</li>
-<li>
-<p><code>quarter</code></p>
-</li>
-<li>
-<p><code>month</code></p>
-</li>
-<li>
-<p><code>week</code></p>
-</li>
-<li>
-<p><code>day</code></p>
-</li>
-<li>
-<p><code>hour</code></p>
-</li>
-<li>
-<p><code>minute</code></p>
-</li>
-<li>
-<p><code>second</code></p>
-</li>
-<li>
-<p><code>millisecond</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="extracting-components"><a class="anchor" href="#extracting-components"></a>Extracting Date Components</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>It is important for applications to be able to extract the specific component of the timestamps, such as day, year, month, hours, minutes, or seconds, so that these can be used in N1QL queries.
-The following are the supported date parts that can be passed to the date extraction functions.
+<p>The following are the supported date parts that can be passed to date manipulation functions.
 These date parts are expressed as strings and are not case-sensitive, so <code>year</code> is regarded the same as <code>YeAr</code>.
-For all examples, the date being used is <code>2006-01-02T15:04:05.999Z</code></p>
+For all examples, the date being used is <code>2006-01-02T15:04:05.999Z</code>.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Timestamp Components</caption>
+<caption class="title">Table 2. Date and Time Components</caption>
 <colgroup>
-<col style="width: 18.1818%;">
-<col style="width: 54.5454%;">
+<col style="width: 27.2727%;">
+<col style="width: 45.4545%;">
 <col style="width: 9.0909%;">
 <col style="width: 9.0909%;">
 <col style="width: 9.091%;">
@@ -585,37 +1048,38 @@ For all examples, the date being used is <code>2006-01-02T15:04:05.999Z</code></
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">millennium</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The millennium (1000 year period), which begins at 0 BCE.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>millennium</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The millennium (1000 year period), counting from the start of year 0, which is equivalent to 1 BCE.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">century</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The century (100 year period), which begins at 0 BCE.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>century</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The century (100 year period), counting from the start of year 0, which is equivalent to 1 BCE.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">21</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">decade</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The decade (10 year period).
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>decade</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The decade (10 year period), counting from the start of year 0, which is equivalent to 1 BCE.
 This is calculated as <code>floor(year / 10)</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">year</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The Gregorian year, which begins at 0 BCE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>year</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The proleptic Gregorian year.
+The year 0 is equivalent to 1 BCE.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2006</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">iso_year</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The ISO-8601 week number of the year.
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>iso_year</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The ISO-8601 year.
 Each ISO-8601 year begins with the Monday of the week containing the 4th of January, so in early January and late December the ISO year may differ from the Gregorian year.
 Should be used in conjunction with <code>iso_week</code> to get consistent results.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
@@ -623,7 +1087,7 @@ Should be used in conjunction with <code>iso_week</code> to get consistent resul
 <td class="tableblock halign-left valign-top"><p class="tableblock">2006</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quarter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>quarter</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The number of the quarter (3 month period) of the year.
 January-March (inclusive) is 1 while October-December (inclusive) is 4.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -631,7 +1095,7 @@ January-March (inclusive) is 1 while October-December (inclusive) is 4.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">month</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>month</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The number of the month of the year.
 January is 1 and December is 12.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -639,7 +1103,7 @@ January is 1 and December is 12.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">week</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>week</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The number of the week of the year.
 This is the ceiling value of the day of the year divided by 7.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -647,11 +1111,11 @@ This is the ceiling value of the day of the year divided by 7.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">iso_week</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>iso_week</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The number of the week of the year, based on the ISO definition.
 ISO weeks start on Mondays and the first week of a year contains January 4 of that year.
 In other words, the first Thursday of a year will always be in week 1 of that year.
-This results in some different results between week and <code>iso_week</code>, based on the input date.</p>
+This results in some different results between <code>week</code> and <code>iso_week</code>, based on the input date.</p>
 <p class="tableblock">For example the <code>iso_week</code> of <code>2006-01-08T15:04:05.999Z</code> is 1, while the <code>week</code> is 2.
 Should be used in conjunction with <code>iso_year</code> to get consistent results.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
@@ -659,70 +1123,70 @@ Should be used in conjunction with <code>iso_year</code> to get consistent resul
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">day</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>day</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The day of the month.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">31</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">day_of_year or doy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>day_of_year</code> or <code>doy</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The day of the year.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">366</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">day_of_week or dow</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>day_of_week</code> or <code>dow</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The day of the week.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">hour</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>hour</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The hour of the day.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">minute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>minute</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The minute of the hour.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">59</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">second</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>second</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The second of the minute.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">59</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">millisecond</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>millisecond</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The millisecond of the second.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">999</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">999</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">timezone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timezone</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The offset from UTC in seconds.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-43200</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">43200</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">timezone_hour</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timezone_hour</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The hour component of the offset from UTC.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-12</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">timezone_minute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timezone_minute</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The minute component of the offset from UTC.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-59</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">59</p></td>
@@ -771,40 +1235,47 @@ Similarly, if any of the arguments are <code>NULL</code> then <code>NULL</code> 
 <div class="sect1">
 <h2 id="fn-date-clock-local"><a class="anchor" href="#fn-date-clock-local"></a>CLOCK_LOCAL([fmt])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description"><a class="anchor" href="#description"></a>Description</h3>
+<div class="paragraph">
 <p>The current time (at function evaluation time) of the machine that the query service is running on, in the specified string format.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>fmt</strong></dt>
+<dt class="hdlist1">fmt</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
-<p><strong>Optional argument</strong>, if no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
+<p><strong>Optional argument</strong>.
+If no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value"><a class="anchor" href="#return-value"></a>Return Value</h3>
+<div class="paragraph">
 <p>A date string in the format specified representing the local system time.</p>
-</dd>
-<dt class="hdlist1"><strong>Limitations</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="limitations"><a class="anchor" href="#limitations"></a>Limitations</h3>
+<div class="paragraph">
 <p><code>CLOCK_LOCAL()</code> cannot be used as part of an index definition, this includes the indexed fields and the <code>WHERE</code> clause of the index.</p>
+</div>
 <div class="paragraph">
 <p>If this function is called multiple times within the same query then the values returned may differ, particularly if the query takes a long time to run.
 To avoid inconsistencies between multiple calls to <code>CLOCK_LOCAL()</code> within a single query, use <a href="#fn-date-now-local">NOW_LOCAL()</a> instead.</p>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="examples"><a class="anchor" href="#examples"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT CLOCK_LOCAL() as full_date,
@@ -812,12 +1283,10 @@ To avoid inconsistencies between multiple calls to <code>CLOCK_LOCAL()</code> wi
        CLOCK_LOCAL('1111-11-11') as short_date;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">[
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
     "full_date": "2018-01-23T13:57:29.847-08:00",
     "invalid_date": "2018-01-23T13:57:29.847-08:00",
@@ -826,48 +1295,54 @@ To avoid inconsistencies between multiple calls to <code>CLOCK_LOCAL()</code> wi
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-clock-millis"><a class="anchor" href="#fn-date-clock-millis"></a>CLOCK_MILLIS()</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-2"><a class="anchor" href="#description-2"></a>Description</h3>
+<div class="paragraph">
 <p>The current time as an Epoch/UNIX timestamp.
 Its fractional part represents nanoseconds, but the additional precision beyond milliseconds may not be consistent or guaranteed on all platforms.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-2"><a class="anchor" href="#arguments-2"></a>Arguments</h3>
+<div class="paragraph">
 <p>This function accepts no arguments.</p>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="return-value-2"><a class="anchor" href="#return-value-2"></a>Return Value</h3>
+<div class="paragraph">
 <p>A single float value (with 3 decimal places) representing the system time as Epoch/UNIX time.</p>
-</dd>
-<dt class="hdlist1"><strong>Limitations</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="limitations-2"><a class="anchor" href="#limitations-2"></a>Limitations</h3>
+<div class="paragraph">
 <p><code>CLOCK_MILLIS()</code> cannot be used as part of an index definition, this includes the indexed fields and the <code>WHERE</code> clause of the index.</p>
+</div>
 <div class="paragraph">
 <p>If this function is called multiple times within the same query then the values returned may differ, particularly if the query takes a long time to run.
 To avoid inconsistencies between multiple calls to <code>CLOCK_MILLIS()</code> within a single query, use <a href="#fn-date-now-millis">NOW_MILLIS()</a> instead.</p>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="examples-2"><a class="anchor" href="#examples-2"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT CLOCK_MILLIS() AS CurrentTime;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -876,49 +1351,56 @@ To avoid inconsistencies between multiple calls to <code>CLOCK_MILLIS()</code> w
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-clock-str"><a class="anchor" href="#fn-date-clock-str"></a>CLOCK_STR([fmt])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-3"><a class="anchor" href="#description-3"></a>Description</h3>
+<div class="paragraph">
 <p>The current time (at function evaluation time) of the machine that the query service is running on, in the specified string format.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-3"><a class="anchor" href="#arguments-3"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>fmt</strong></dt>
+<dt class="hdlist1">fmt</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.
 .</p>
 <div class="paragraph">
-<p><strong>Optional argument</strong>, if no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
+<p><strong>Optional argument</strong>.
+If no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-3"><a class="anchor" href="#return-value-3"></a>Return Value</h3>
+<div class="paragraph">
 <p>A date string in the format specified representing the system time.</p>
-</dd>
-<dt class="hdlist1"><strong>Limitations</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="limitations-3"><a class="anchor" href="#limitations-3"></a>Limitations</h3>
+<div class="paragraph">
 <p><code>CLOCK_STR()</code> cannot be used as part of an index definition, this includes the indexed fields and the <code>WHERE</code> clause of the index.</p>
+</div>
 <div class="paragraph">
 <p>If this function is called multiple times within the same query then the values returned may differ, particularly if the query takes a long time to run.
 To avoid inconsistencies between multiple calls to <code>CLOCK_STR()</code> within a single query, use <a href="#fn-date-now-str">NOW_STR()</a> instead.</p>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="examples-3"><a class="anchor" href="#examples-3"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT CLOCK_STR() as full_date,
@@ -926,10 +1408,8 @@ To avoid inconsistencies between multiple calls to <code>CLOCK_STR()</code> with
        CLOCK_STR('1111-11-11') as short_date;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -940,49 +1420,54 @@ To avoid inconsistencies between multiple calls to <code>CLOCK_STR()</code> with
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-clock-tz"><a class="anchor" href="#fn-date-clock-tz"></a>CLOCK_TZ(tz [, fmt])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-4"><a class="anchor" href="#description-4"></a>Description</h3>
+<div class="paragraph">
 <p>The current time (at function evaluation time) in the timezone given by the timezone argument passed to the function.
 This time is the local system time converted to the specified timezone.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-4"><a class="anchor" href="#arguments-4"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>tz</strong></dt>
+<dt class="hdlist1">tz</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to convert the local time to.</p>
 <div class="paragraph">
 <p>If this argument is not a valid timezone then <code>null</code> is returned as the result.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>fmt</strong></dt>
+<dt class="hdlist1">fmt</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
-<p><strong>Optional argument</strong>, if no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
+<p><strong>Optional argument</strong>.
+If no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-4"><a class="anchor" href="#return-value-4"></a>Return Value</h3>
+<div class="paragraph">
 <p>An date string in the format specified representing the system time in the specified timezone.</p>
-</dd>
-<dt class="hdlist1"><strong>Limitations</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="limitations-4"><a class="anchor" href="#limitations-4"></a>Limitations</h3>
+<div class="paragraph">
 <p>As this function converts the local time, it may not accurately represent the true time in that timezone.</p>
+</div>
 <div class="paragraph">
 <p><code>CLOCK_TZ()</code> cannot be used as part of an index definition, this includes the indexed fields and the <code>WHERE</code> clause of the index.</p>
 </div>
@@ -990,9 +1475,11 @@ This time is the local system time converted to the specified timezone.</p>
 <p>If this function is called multiple times within the same query then the values returned may differ, particularly if the query takes a long time to run.
 To avoid inconsistencies between multiple calls to <code>CLOCK_TZ()</code> within a single query, use <a href="#fn-date-now-tz">NOW_TZ()</a> instead.</p>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="examples-4"><a class="anchor" href="#examples-4"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT CLOCK_TZ('UTC') as UTC_full_date,
@@ -1002,10 +1489,8 @@ To avoid inconsistencies between multiple calls to <code>CLOCK_TZ()</code> withi
        CLOCK_TZ('US/Pacific') as us_west;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -1018,43 +1503,48 @@ To avoid inconsistencies between multiple calls to <code>CLOCK_TZ()</code> withi
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-clock-utc"><a class="anchor" href="#fn-date-clock-utc"></a>CLOCK_UTC([fmt])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-5"><a class="anchor" href="#description-5"></a>Description</h3>
+<div class="paragraph">
 <p>The current time in UTC.
 This time is the local system time converted to UTC.
 This function is provided for convenience and is the same as <code>CLOCK_TZ('UTC')</code>.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-5"><a class="anchor" href="#arguments-5"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>fmt</strong></dt>
+<dt class="hdlist1">fmt</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
-<p><strong>Optional argument</strong>, if no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
+<p><strong>Optional argument</strong>.
+If no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-5"><a class="anchor" href="#return-value-5"></a>Return Value</h3>
+<div class="paragraph">
 <p>An date string in the format specified representing the system time in UTC.</p>
-</dd>
-<dt class="hdlist1"><strong>Limitations</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="limitations-5"><a class="anchor" href="#limitations-5"></a>Limitations</h3>
+<div class="paragraph">
 <p>As this function converts the local time, it may not accurately represent the true time in UTC.</p>
+</div>
 <div class="paragraph">
 <p><code>CLOCK_UTC()</code> cannot be used as part of an index definition, this includes the indexed fields and the <code>WHERE</code> clause of the index.</p>
 </div>
@@ -1062,18 +1552,18 @@ This function is provided for convenience and is the same as <code>CLOCK_TZ('UTC
 <p>If this function is called multiple times within the same query then the values returned may differ, particularly if the query takes a long time to run.
 To avoid inconsistencies between multiple calls to <code>CLOCK_UTC()</code> within a single query, use <a href="#fn-date-now-utc">NOW_UTC()</a> instead.</p>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="examples-5"><a class="anchor" href="#examples-5"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT CLOCK_UTC() as full_date, CLOCK_UTC('1111-11-11') as short_date;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -1083,36 +1573,37 @@ To avoid inconsistencies between multiple calls to <code>CLOCK_UTC()</code> with
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-add-millis"><a class="anchor" href="#fn-date-add-millis"></a>DATE_ADD_MILLIS(date1, n, part)</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-6"><a class="anchor" href="#description-6"></a>Description</h3>
+<div class="paragraph">
 <p>Performs date arithmetic on a particular component of an Epoch/UNIX timestamp value.
 This calculation is specified by the arguments <code>n</code> and <code>part</code>.</p>
-<div class="paragraph">
-<p>For example, a value of 3 for <code>n</code> and a value of <code>day</code> for <code>part</code> would add 3 days to the date specified by <code>date1</code>.</p>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+<div class="paragraph">
+<p>+
+For example, a value of 3 for <code>n</code> and a value of <code>day</code> for <code>part</code> would add 3 days to the date specified by <code>date1</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-6"><a class="anchor" href="#arguments-6"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing an Epoch/UNIX timestamp in milliseconds.</p>
 <div class="paragraph">
 <p>If this argument is not an integer then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>n</strong></dt>
+<dt class="hdlist1">n</dt>
 <dd>
 <p>The value to increment the date component by.
 This value must be an integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, and may be negative to perform date subtraction.</p>
@@ -1120,7 +1611,7 @@ This value must be an integer, or any valid <a href="index.html" class="xref pag
 <p>If a non-integer is passed to the function then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>part</strong></dt>
+<dt class="hdlist1">part</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
@@ -1129,13 +1620,17 @@ This value must be an integer, or any valid <a href="index.html" class="xref pag
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-6"><a class="anchor" href="#return-value-6"></a>Return Value</h3>
+<div class="paragraph">
 <p>An integer, representing the result of the calculation as an Epoch/UNIX timestamp in milliseconds.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-6"><a class="anchor" href="#examples-6"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_ADD_MILLIS(1463284740000, 3, 'day') as add_3_days,
@@ -1144,10 +1639,8 @@ This value must be an integer, or any valid <a href="index.html" class="xref pag
        DATE_ADD_MILLIS(1463284740000, -3, 'year') as sub_3_years;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -1159,31 +1652,31 @@ This value must be an integer, or any valid <a href="index.html" class="xref pag
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-add-str"><a class="anchor" href="#fn-date-add-str"></a>DATE_ADD_STR(date1, n, part)</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-7"><a class="anchor" href="#description-7"></a>Description</h3>
+<div class="paragraph">
 <p>Performs date arithmetic on a date string.
 This calculation is specified by the arguments <code>n</code> and <code>part</code>.
 For example a value of 3 for <code>n</code> and a value of <code>day</code> for <code>part</code> would add 3 days to the date specified by <code>date1</code>.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-7"><a class="anchor" href="#arguments-7"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the date in a <a href="#date-string">supported date format</a>.</p>
 </dd>
-<dt class="hdlist1"><strong>n</strong></dt>
+<dt class="hdlist1">n</dt>
 <dd>
 <p>The value to increment the date component by.
 This value must be an integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, and may be negative to perform date subtraction.</p>
@@ -1191,7 +1684,7 @@ This value must be an integer, or any valid <a href="index.html" class="xref pag
 <p>If a non-integer is passed to the function then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>part</strong></dt>
+<dt class="hdlist1">part</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
@@ -1200,13 +1693,17 @@ This value must be an integer, or any valid <a href="index.html" class="xref pag
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-7"><a class="anchor" href="#return-value-7"></a>Return Value</h3>
+<div class="paragraph">
 <p>An integer representing the result of the calculation as an Epoch/UNIX timestamp in milliseconds.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-7"><a class="anchor" href="#examples-7"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_ADD_STR('2016-05-15 03:59:00Z', 3, 'day') as add_3_days,
@@ -1215,10 +1712,8 @@ This value must be an integer, or any valid <a href="index.html" class="xref pag
        DATE_ADD_STR('2016-05-15 03:59:00Z', -3, 'year') as sub_3_years;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -1230,27 +1725,27 @@ This value must be an integer, or any valid <a href="index.html" class="xref pag
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-diff-millis"><a class="anchor" href="#fn-date-diff-millis"></a>DATE_DIFF_MILLIS(date1, date2, part)</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-8"><a class="anchor" href="#description-8"></a>Description</h3>
+<div class="paragraph">
 <p>Finds the elapsed time between two Epoch/UNIX timestamps.
 This elapsed time is measured from the date specified by <code>date2</code> to the date specified by <code>date1</code>.
 If <code>date1</code> is greater than <code>date2</code>, then the value returned will be positive, otherwise the value returned will be negative.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-8"><a class="anchor" href="#arguments-8"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the value that is subtracted from <code>date1</code>.</p>
@@ -1258,7 +1753,7 @@ This is the value that is subtracted from <code>date1</code>.</p>
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>date2</strong></dt>
+<dt class="hdlist1">date2</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.</p>
 <div class="paragraph">
@@ -1268,7 +1763,7 @@ This is the value that is subtracted from <code>date1</code>.</p>
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>part</strong></dt>
+<dt class="hdlist1">part</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
@@ -1277,13 +1772,17 @@ This is the value that is subtracted from <code>date1</code>.</p>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-8"><a class="anchor" href="#return-value-8"></a>Return Value</h3>
+<div class="paragraph">
 <p>An integer representing the elapsed time (based on the specified <code>part</code>) between both dates.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-8"><a class="anchor" href="#examples-8"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_DIFF_MILLIS(1463543940000, 1463284740000, 'day') as add_3_days,
@@ -1292,10 +1791,8 @@ This is the value that is subtracted from <code>date1</code>.</p>
        DATE_DIFF_MILLIS(1368590340000, 1463284740000, 'year') as sub_3_years;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -1307,27 +1804,27 @@ This is the value that is subtracted from <code>date1</code>.</p>
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-diff-str"><a class="anchor" href="#fn-date-diff-str"></a>DATE_DIFF_STR(date1, date2, part)</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-9"><a class="anchor" href="#description-9"></a>Description</h3>
+<div class="paragraph">
 <p>Finds the elapsed time between two dates specified as formatted strings.
 This elapsed time is measured from the date specified by <code>date2</code> to the date specified by <code>date1</code>.
 If <code>date1</code> is greater than <code>date2</code> then the value returned will be positive, otherwise the value returned will be negative.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-9"><a class="anchor" href="#arguments-9"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the value that is subtracted from <code>date1</code>.</p>
@@ -1335,7 +1832,7 @@ This is the value that is subtracted from <code>date1</code>.</p>
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>date2</strong></dt>
+<dt class="hdlist1">date2</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.</p>
 <div class="paragraph">
@@ -1345,7 +1842,7 @@ This is the value that is subtracted from <code>date1</code>.</p>
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>part</strong></dt>
+<dt class="hdlist1">part</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
@@ -1354,14 +1851,21 @@ This is the value that is subtracted from <code>date1</code>.</p>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-9"><a class="anchor" href="#return-value-9"></a>Return Value</h3>
+<div class="paragraph">
 <p>An integer representing the elapsed time (based on the specified <code>part</code>) between both dates.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
-<p><strong>Example 1:</strong> Find the day difference and year difference between two strings.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-9"><a class="anchor" href="#examples-9"></a>Examples</h3>
+<div class="exampleblock">
+<div class="title">Example 1</div>
+<div class="content">
+<div class="paragraph">
+<p>Find the day difference and year difference between two strings.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_DIFF_STR('2016-05-18T03:59:00Z', '2016-05-15 03:59:00Z', 'day') as add_3_days,
@@ -1370,10 +1874,8 @@ This is the value that is subtracted from <code>date1</code>.</p>
        DATE_DIFF_STR('2013-05-15T03:59:00Z', '2016-05-15 03:59:00Z', 'year') as sub_3_years;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -1385,8 +1887,13 @@ This is the value that is subtracted from <code>date1</code>.</p>
 ]</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2</div>
+<div class="content">
 <div class="paragraph">
-<p><strong>Example 2:</strong> List all hotel documents that were reviewed between two dates.</p>
+<p>List all hotel documents that were reviewed between two dates.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1445,8 +1952,10 @@ WHERE reviews[0].date BETWEEN "2013-01-01 %" AND "2014-01-01 %";</code></pre>
     "date": "2013-05-08 17:54:41 +0300",
     "name": "Alberta House B&amp;B"
   },
-...
+  // ...
 ]</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1461,32 +1970,30 @@ When querying between two dates, you must specify the full date (with time and t
 </tr>
 </table>
 </div>
-</dd>
-</dl>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-format-str"><a class="anchor" href="#fn-date-format-str"></a>DATE_FORMAT_STR(date1, fmt)</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-10"><a class="anchor" href="#description-10"></a>Description</h3>
+<div class="paragraph">
 <p>Converts datetime strings from one supported date string format to a different supported date string format.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-10"><a class="anchor" href="#arguments-10"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.</p>
 <div class="paragraph">
 <p>If this argument is not a valid date string then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>fmt</strong></dt>
+<dt class="hdlist1">fmt</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
@@ -1495,13 +2002,17 @@ When querying between two dates, you must specify the full date (with time and t
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-10"><a class="anchor" href="#return-value-10"></a>Return Value</h3>
+<div class="paragraph">
 <p>A date string in the format specified.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-10"><a class="anchor" href="#examples-10"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_FORMAT_STR('2016-05-15T00:00:23+00:00', '1111-11-11') as full_to_short,
@@ -1509,10 +2020,8 @@ When querying between two dates, you must specify the full date (with time and t
        DATE_FORMAT_STR('01:10:05', '1111-11-11T01:01:01Z') as time_to_full;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -1523,25 +2032,25 @@ When querying between two dates, you must specify the full date (with time and t
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-part-millis"><a class="anchor" href="#fn-date-part-millis"></a>DATE_PART_MILLIS(date1, part [, tz])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-11"><a class="anchor" href="#description-11"></a>Description</h3>
+<div class="paragraph">
 <p>Extracts the value of a given date component from an Epoch/UNIX timestamp value.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-11"><a class="anchor" href="#arguments-11"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the value that is subtracted from <code>date1</code>.</p>
@@ -1549,30 +2058,35 @@ This is the value that is subtracted from <code>date1</code>.</p>
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>part</strong></dt>
+<dt class="hdlist1">part</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
 <p>If an invalid part is passed to the function, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>tz</strong></dt>
+<dt class="hdlist1">tz</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to convert the local time to.</p>
 <div class="paragraph">
-<p><strong>Optional argument</strong>, defaults to the system timezone if not specified.
+<p><strong>Optional argument</strong>.
+Defaults to the system timezone if not specified.
 If an incorrect time zone is provided, then <code>null</code> is returned.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-11"><a class="anchor" href="#return-value-11"></a>Return Value</h3>
+<div class="paragraph">
 <p>An integer representing the value of the component extracted from the timestamp.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-11"><a class="anchor" href="#examples-11"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_PART_MILLIS(1463284740000, 'day') as day_local,
@@ -1583,10 +2097,8 @@ If an incorrect time zone is provided, then <code>null</code> is returned.</p>
        DATE_PART_MILLIS(1463284740000, 'year') as year;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -1600,25 +2112,25 @@ If an incorrect time zone is provided, then <code>null</code> is returned.</p>
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-part-str"><a class="anchor" href="#fn-date-part-str"></a>DATE_PART_STR(date1, part)</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-12"><a class="anchor" href="#description-12"></a>Description</h3>
+<div class="paragraph">
 <p>Extracts the value of a given date component from a date string.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-12"><a class="anchor" href="#arguments-12"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the value that is subtracted from <code>date1</code>.</p>
@@ -1626,7 +2138,7 @@ This is the value that is subtracted from <code>date1</code>.</p>
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>part</strong></dt>
+<dt class="hdlist1">part</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
@@ -1635,13 +2147,17 @@ This is the value that is subtracted from <code>date1</code>.</p>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-12"><a class="anchor" href="#return-value-12"></a>Return Value</h3>
+<div class="paragraph">
 <p>An integer representing the value of the component extracted from the timestamp.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-12"><a class="anchor" href="#examples-12"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_PART_STR('2016-05-15T03:59:00Z', 'day') as day,
@@ -1651,10 +2167,8 @@ This is the value that is subtracted from <code>date1</code>.</p>
        DATE_PART_STR('2016-05-15T03:59:00Z', 'year') as year;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -1667,26 +2181,26 @@ This is the value that is subtracted from <code>date1</code>.</p>
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-range-millis"><a class="anchor" href="#fn-date-range-millis"></a>DATE_RANGE_MILLIS(date1, date2, part [,n])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-13"><a class="anchor" href="#description-13"></a>Description</h3>
+<div class="paragraph">
 <p>Generates an array of dates from the start date specified by <code>date1</code> and the end date specified by <code>date2</code>, as Epoch/UNIX timestamps.
 The difference between each subsequent generated date can be adjusted.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-13"><a class="anchor" href="#arguments-13"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the value that is subtracted from <code>date1</code>.</p>
@@ -1694,7 +2208,7 @@ This is the value that is subtracted from <code>date1</code>.</p>
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>date2</strong></dt>
+<dt class="hdlist1">date2</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.</p>
 <div class="paragraph">
@@ -1704,50 +2218,58 @@ This is the value that is subtracted from <code>date1</code>.</p>
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>part</strong></dt>
+<dt class="hdlist1">part</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
 <p>If an invalid part is passed to the function, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>n</strong></dt>
+<dt class="hdlist1">n</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing the value by which to increment the part component for each generated date.</p>
 <div class="paragraph">
-<p><strong>Optional argument</strong>, if not specified, this defaults to 1.
+<p><strong>Optional argument</strong>.
+If not specified, this defaults to 1.
 If a value which is not an integer is specified, then <code>null</code> is returned.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-13"><a class="anchor" href="#return-value-13"></a>Return Value</h3>
+<div class="paragraph">
 <p>An array of integers representing the generated dates, as Epoch/UNIX timestamps, between <code>date1</code> and <code>date2</code>.</p>
-</dd>
-<dt class="hdlist1"><strong>Limitations</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="limitations-6"><a class="anchor" href="#limitations-6"></a>Limitations</h3>
+<div class="paragraph">
 <p>It is possible to generate very large arrays using this function.
 In some cases the query engine may be unable to process all of these and cause excessive resource consumption.
 It is therefore recommended that you first validate the inputs to this function to ensure that the generated result is a reasonable size.</p>
+</div>
 <div class="paragraph">
 <p>If the start date is greater than the end date passed to the function then an error will not be thrown, but the result array will be empty.
 An array of descending dates can be generated by setting the start date greater than the end date and specifying a negative value for <code>n</code>.</p>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
-<p><strong>Example 1:</strong> Range of milliseconds by month.</p>
+</div>
+<div class="sect2">
+<h3 id="examples-13"><a class="anchor" href="#examples-13"></a>Examples</h3>
+<div class="exampleblock">
+<div class="title">Example 1</div>
+<div class="content">
+<div class="paragraph">
+<p>Range of milliseconds by month.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_RANGE_MILLIS(1480752000000, 1475478000000, 'month', -1) as Milliseconds;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -1759,18 +2281,21 @@ An array of descending dates can be generated by setting the start date greater 
 ]</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2</div>
+<div class="content">
 <div class="paragraph">
-<p><strong>Example 1b:</strong> Range of milliseconds by previous month.</p>
+<p>Range of milliseconds by previous month.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_RANGE_MILLIS(1480752000000, 1449129600000, 'month', -1) as Months;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -1792,26 +2317,26 @@ An array of descending dates can be generated by setting the start date greater 
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-range-str"><a class="anchor" href="#fn-date-range-str"></a>DATE_RANGE_STR(start_date, end_date, date_interval [, quantity_int ])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-14"><a class="anchor" href="#description-14"></a>Description</h3>
+<div class="paragraph">
 <p>Generates an array of date strings between the start date and end date, calculated by the interval and quantity values.
 The input dates can be in any of the <a href="#date-string">supported date formats</a>.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-14"><a class="anchor" href="#arguments-14"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>start_date</strong></dt>
+<dt class="hdlist1">start_date</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
 This is the date used as the start date of the array generation.</p>
@@ -1819,7 +2344,7 @@ This is the date used as the start date of the array generation.</p>
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>end_date</strong></dt>
+<dt class="hdlist1">end_date</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
 This is the date used as the end date of the array generation, and this value is exclusive, that is, the end date will not be included in the result.</p>
@@ -1827,30 +2352,33 @@ This is the date used as the end date of the array generation, and this value is
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>date_interval</strong></dt>
+<dt class="hdlist1">date_interval</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> of the date to increment.</p>
 <div class="paragraph">
 <p>If an invalid part is passed to the function, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>quantity_int</strong></dt>
+<dt class="hdlist1">quantity_int</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing the value by which to increment the interval component for each generated date.</p>
 <div class="paragraph">
-<p><strong>Optional argument</strong>, if not specified, this defaults to 1.
+<p><strong>Optional argument</strong>.
+If not specified, this defaults to 1.
 If a value which is not an integer is specified, then <code>null</code> is returned.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-14"><a class="anchor" href="#return-value-14"></a>Return Value</h3>
+<div class="paragraph">
 <p>An array of strings representing the generated dates, as date strings, between <code>start_date</code> and <code>end_date</code>.</p>
-</dd>
-<dt class="hdlist1"><strong>Limitations</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="limitations-7"><a class="anchor" href="#limitations-7"></a>Limitations</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1868,19 +2396,23 @@ To ensure that both dates have the same format, you should use <a href="#fn-date
 </li>
 </ul>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
-<p><strong>Example 1:</strong> Ranges by quarters.</p>
+</div>
+<div class="sect2">
+<h3 id="examples-14"><a class="anchor" href="#examples-14"></a>Examples</h3>
+<div class="exampleblock">
+<div class="title">Example 1</div>
+<div class="content">
+<div class="paragraph">
+<p>Ranges by quarters.</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">SELECT DATE_RANGE_STR('2015-11-30T15:04:05.999', '2017-04-14T15:04:06.998', 'quarter') AS Quarters;</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_RANGE_STR('2015-11-30T15:04:05.999', '2017-04-14T15:04:06.998', 'quarter')
+AS Quarters;</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Results:</p>
 </div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -1896,18 +2428,22 @@ To ensure that both dates have the same format, you should use <a href="#fn-date
 ]</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2</div>
+<div class="content">
 <div class="paragraph">
-<p><strong>Example 2:</strong> Ranges by a single day.</p>
+<p>Ranges by a single day.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">SELECT DATE_RANGE_STR('2016-01-01T15:04:05.999', '2016-01-05T15:04:05.998', 'day', 1) as Days;</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_RANGE_STR('2016-01-01T15:04:05.999', '2016-01-05T15:04:05.998', 'day', 1)
+AS Days;</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Results:</p>
 </div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -1921,18 +2457,22 @@ To ensure that both dates have the same format, you should use <a href="#fn-date
 ]</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 3</div>
+<div class="content">
 <div class="paragraph">
-<p><strong>Example 3:</strong> Ranges by four months.</p>
+<p>Ranges by four months.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">SELECT DATE_RANGE_STR('2018-01-01','2019-01-01', 'month', 4) as Months;</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_RANGE_STR('2018-01-01','2019-01-01', 'month', 4)
+AS Months;</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Results:</p>
 </div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -1945,18 +2485,22 @@ To ensure that both dates have the same format, you should use <a href="#fn-date
 ]</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4</div>
+<div class="content">
 <div class="paragraph">
-<p><strong>Example 4:</strong> Ranges by previous days.</p>
+<p>Ranges by previous days.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_RANGE_STR('2016-01-05T15:04:05.999', '2016-01-01T15:04:06.998', 'day', -1) as Previous;</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_RANGE_STR('2016-01-05T15:04:05.999', '2016-01-01T15:04:06.998', 'day', -1)
+AS Previous;</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Results:</p>
 </div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -1970,18 +2514,22 @@ To ensure that both dates have the same format, you should use <a href="#fn-date
 ]</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 5</div>
+<div class="content">
 <div class="paragraph">
-<p><strong>Example 5:</strong> Ranges by month.</p>
+<p>Ranges by month.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_RANGE_STR('2015-01-01T01:01:01', '2015-12-11T00:00:00', 'month', 1) as Months;</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_RANGE_STR('2015-01-01T01:01:01', '2015-12-11T00:00:00', 'month', 1)
+AS Months;</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Results:</p>
 </div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2003,25 +2551,25 @@ To ensure that both dates have the same format, you should use <a href="#fn-date
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-trunc-millis"><a class="anchor" href="#fn-date-trunc-millis"></a>DATE_TRUNC_MILLIS(date1, part)</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-15"><a class="anchor" href="#description-15"></a>Description</h3>
+<div class="paragraph">
 <p>Truncates an Epoch/UNIX timestamp up to the specified date component.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-15"><a class="anchor" href="#arguments-15"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the date used as the date to truncate.</p>
@@ -2029,27 +2577,34 @@ This is the date used as the date to truncate.</p>
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>part</strong></dt>
+<dt class="hdlist1">part</dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> to truncate to.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> to truncate to.
+This function accepts the components <code>millennium</code>, <code>century</code>, <code>decade</code>, <code>year</code>, <code>quarter</code>, <code>month</code>, <code>week</code>, and <code>iso_week</code>.</p>
 <div class="paragraph">
 <p>If an invalid part is specified, then <code>null</code> is returned.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-15"><a class="anchor" href="#return-value-15"></a>Return Value</h3>
+<div class="paragraph">
 <p>An integer representing the truncated timestamp in Epoch/UNIX time.</p>
-</dd>
-<dt class="hdlist1"><strong>Limitations</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="limitations-8"><a class="anchor" href="#limitations-8"></a>Limitations</h3>
+<div class="paragraph">
 <p>In some cases, where the timestamp is smaller than the duration of the provided part, this function returns the incorrect result.
 It is recommended that you do not use this function for very small Epoch/UNIX timestamps.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-15"><a class="anchor" href="#examples-15"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_TRUNC_MILLIS(1463284740000, 'day') as day,
@@ -2057,10 +2612,8 @@ It is recommended that you do not use this function for very small Epoch/UNIX ti
        DATE_TRUNC_MILLIS(1463284740000, 'year') as year;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2071,25 +2624,25 @@ It is recommended that you do not use this function for very small Epoch/UNIX ti
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-trunc-str"><a class="anchor" href="#fn-date-trunc-str"></a>DATE_TRUNC_STR(date1, part)</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-16"><a class="anchor" href="#description-16"></a>Description</h3>
+<div class="paragraph">
 <p>Truncates a date string up to the specified date component.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-16"><a class="anchor" href="#arguments-16"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
 This is the date that is truncated.</p>
@@ -2097,22 +2650,27 @@ This is the date that is truncated.</p>
 <p>If this argument is not a valid date format, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>part</strong></dt>
+<dt class="hdlist1">part</dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> to truncate to.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#manipulating-components">component</a> to truncate to.
+This function accepts the components <code>millennium</code>, <code>century</code>, <code>decade</code>, <code>year</code>, <code>quarter</code>, <code>month</code>, <code>week</code>, and <code>iso_week</code>.</p>
 <div class="paragraph">
 <p>If an invalid part is specified, then <code>null</code> is returned.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-16"><a class="anchor" href="#return-value-16"></a>Return Value</h3>
+<div class="paragraph">
 <p>A date string representing the truncated date.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-16"><a class="anchor" href="#examples-16"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DATE_TRUNC_STR('2016-05-18T03:59:00Z', 'day') as day,
@@ -2120,10 +2678,8 @@ This is the date that is truncated.</p>
        DATE_TRUNC_STR('2016-05-18T03:59:00Z', 'year') as year;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2134,41 +2690,45 @@ This is the date that is truncated.</p>
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-duration-to-str"><a class="anchor" href="#fn-date-duration-to-str"></a>DURATION_TO_STR(duration)</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-17"><a class="anchor" href="#description-17"></a>Description</h3>
+<div class="paragraph">
 <p>Converts a number into a human-readable time duration with units.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-17"><a class="anchor" href="#arguments-17"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>duration</strong></dt>
+<dt class="hdlist1">duration</dt>
 <dd>
 <p>A number, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a number, which represents the duration to convert to a string.
-This value is specified in nanoseconds (<code>1x10-9 seconds</code>).</p>
+This value is specified in nanoseconds (1&times;10<sup>-9</sup> seconds).</p>
 <div class="paragraph">
 <p>If a value which is not a number is specified, then <code>null</code> is returned.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-17"><a class="anchor" href="#return-value-17"></a>Return Value</h3>
+<div class="paragraph">
 <p>A string representing the human-readable duration.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-17"><a class="anchor" href="#examples-17"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT DURATION_TO_STR(2000) as microsecs,
@@ -2176,10 +2736,8 @@ This value is specified in nanoseconds (<code>1x10-9 seconds</code>).</p>
        DURATION_TO_STR(2000000000) as secs;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2190,51 +2748,52 @@ This value is specified in nanoseconds (<code>1x10-9 seconds</code>).</p>
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-millis"><a class="anchor" href="#fn-date-millis"></a>MILLIS(date1)</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-18"><a class="anchor" href="#description-18"></a>Description</h3>
+<div class="paragraph">
 <p>Converts a date string to Epoch/UNIX milliseconds.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-18"><a class="anchor" href="#arguments-18"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
 This is the date to convert to Epoch/UNIX milliseconds.</p>
 <div class="paragraph">
-<p>If this argument is not a valid date format.
-then <code>null</code> is returned.</p>
+<p>If this argument is not a valid date format, then <code>null</code> is returned.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-18"><a class="anchor" href="#return-value-18"></a>Return Value</h3>
+<div class="paragraph">
 <p>An integer representing the date string converted to Epoch/UNIX milliseconds.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-18"><a class="anchor" href="#examples-18"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT MILLIS("2016-05-15T03:59:00Z") as DateStringInMilliseconds;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2243,8 +2802,8 @@ then <code>null</code> is returned.</p>
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2259,17 +2818,17 @@ then <code>null</code> is returned.</p>
 <div class="sect1">
 <h2 id="fn-date-millis-to-str"><a class="anchor" href="#fn-date-millis-to-str"></a>MILLIS_TO_STR(date1 [, fmt ])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-19"><a class="anchor" href="#description-19"></a>Description</h3>
+<div class="paragraph">
 <p>Converts an Epoch/UNIX timestamp into the specified date string format.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-19"><a class="anchor" href="#arguments-19"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the date to convert.</p>
@@ -2277,27 +2836,34 @@ This is the date to convert.</p>
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>fmt</strong></dt>
+<dt class="hdlist1">fmt</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
-<p><strong>Optional argument</strong>, if unspecified or an incorrect format is specified, then this defaults to the combined full date and time.</p>
+<p><strong>Optional argument</strong>.
+If unspecified or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-19"><a class="anchor" href="#return-value-19"></a>Return Value</h3>
+<div class="paragraph">
 <p>A date string representing the local date in the specified format.</p>
-</dd>
-<dt class="hdlist1"><strong>Limitations</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="limitations-9"><a class="anchor" href="#limitations-9"></a>Limitations</h3>
+<div class="paragraph">
 <p>In some cases, where the timestamp is smaller than the duration of the provided part, this function returns the incorrect result.
 It is recommended that you do not use this function for very small Epoch/UNIX timestamps.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-19"><a class="anchor" href="#examples-19"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT MILLIS_TO_STR(1463284740000) as full_date,
@@ -2305,10 +2871,8 @@ It is recommended that you do not use this function for very small Epoch/UNIX ti
        MILLIS_TO_STR(1463284740000, '1111-11-11') as short_date;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2319,25 +2883,25 @@ It is recommended that you do not use this function for very small Epoch/UNIX ti
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-millis-to-tz"><a class="anchor" href="#fn-date-millis-to-tz"></a>MILLIS_TO_TZ(date1, tz [, fmt])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-20"><a class="anchor" href="#description-20"></a>Description</h3>
+<div class="paragraph">
 <p>Converts an Epoch/UNIX timestamp into the specified time zone in the specified date string format.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-20"><a class="anchor" href="#arguments-20"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the date to convert.</p>
@@ -2345,30 +2909,36 @@ This is the date to convert.</p>
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>tz</strong></dt>
+<dt class="hdlist1">tz</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to convert the local time to.
-<strong>Optional argument</strong>, defaults to the system timezone if not specified.</p>
+<strong>Optional argument</strong>.
+Defaults to the system timezone if not specified.</p>
 <div class="paragraph">
 <p>If an incorrect time zone is provided, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>fmt</strong></dt>
+<dt class="hdlist1">fmt</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
-<p><strong>Optional argument</strong>, if no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
+<p><strong>Optional argument</strong>.
+If no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-20"><a class="anchor" href="#return-value-20"></a>Return Value</h3>
+<div class="paragraph">
 <p>A date string representing the date in the specified timezone in the specified format..</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-20"><a class="anchor" href="#examples-20"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT MILLIS_TO_TZ(1463284740000, 'America/New_York') as est,
@@ -2376,10 +2946,8 @@ This is the date to convert.</p>
 	   MILLIS_TO_TZ(1463284740000, 'UTC') as utc;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2390,25 +2958,25 @@ This is the date to convert.</p>
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-millis-to-utc"><a class="anchor" href="#fn-date-millis-to-utc"></a>MILLIS_TO_UTC(date1 [, fmt])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-21"><a class="anchor" href="#description-21"></a>Description</h3>
+<div class="paragraph">
 <p>Converts an Epoch/UNIX timestamp into local time in the specified date string format.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-21"><a class="anchor" href="#arguments-21"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing a Epoch/UNIX timestamp in milliseconds.
 This is the date to convert to UTC.</p>
@@ -2416,22 +2984,27 @@ This is the date to convert to UTC.</p>
 <p>If this argument is not an integer, then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>fmt</strong></dt>
+<dt class="hdlist1">fmt</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
-<p><strong>Optional argument</strong>, if unspecified or an incorrect format is specified, then this defaults to the combined full date and time.</p>
+<p><strong>Optional argument</strong>.
+If unspecified or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-21"><a class="anchor" href="#return-value-21"></a>Return Value</h3>
+<div class="paragraph">
 <p>A date string representing the date in UTC in the specified format.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-21"><a class="anchor" href="#examples-21"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT MILLIS_TO_UTC(1463284740000) as full_date,
@@ -2439,10 +3012,8 @@ This is the date to convert to UTC.</p>
        MILLIS_TO_UTC(1463284740000, '1111-11-11') as short_date;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2453,8 +3024,8 @@ This is the date to convert to UTC.</p>
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2469,39 +3040,49 @@ This is the date to convert to UTC.</p>
 <div class="sect1">
 <h2 id="fn-date-now-local"><a class="anchor" href="#fn-date-now-local"></a>NOW_LOCAL([fmt])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-22"><a class="anchor" href="#description-22"></a>Description</h3>
+<div class="paragraph">
 <p>The timestamp of the query as date string in the system timezone.
 Will not vary during a query.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-22"><a class="anchor" href="#arguments-22"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>fmt</strong></dt>
+<dt class="hdlist1">fmt</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
-<p><strong>Optional argument</strong>, if no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
+<p><strong>Optional argument</strong>.
+If no format or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-22"><a class="anchor" href="#return-value-22"></a>Return Value</h3>
+<div class="paragraph">
 <p>A date time string in the format specified.</p>
-</dd>
-<dt class="hdlist1"><strong>Limitations</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="limitations-10"><a class="anchor" href="#limitations-10"></a>Limitations</h3>
+<div class="paragraph">
 <p>If this function is called multiple times within the same query it will always return the same time.
 If you wish to use the system time when the function is evaluated, use <a href="#fn-date-clock-local">CLOCK_LOCAL()</a> instead.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
-<p><strong>Example 1:</strong> Various arguments of NOW_LOCAL().</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-22"><a class="anchor" href="#examples-22"></a>Examples</h3>
+<div class="exampleblock">
+<div class="title">Example 1</div>
+<div class="content">
+<div class="paragraph">
+<p>Various arguments of NOW_LOCAL().</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT NOW_LOCAL() as full_date,
@@ -2509,10 +3090,8 @@ If you wish to use the system time when the function is evaluated, use <a href="
        NOW_LOCAL('1111-11-11') as short_date;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2523,18 +3102,21 @@ If you wish to use the system time when the function is evaluated, use <a href="
 ]</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2</div>
+<div class="content">
 <div class="paragraph">
-<p>Example 2: Difference between NOW_LOCAL() and CLOCK_LOCAL().</p>
+<p>Difference between NOW_LOCAL() and CLOCK_LOCAL().</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT NOW_LOCAL(), NOW_LOCAL(), NOW_LOCAL(), NOW_LOCAL(), NOW_LOCAL(), CLOCK_LOCAL();</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2548,46 +3130,55 @@ If you wish to use the system time when the function is evaluated, use <a href="
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-now-millis"><a class="anchor" href="#fn-date-now-millis"></a>NOW_MILLIS()</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-23"><a class="anchor" href="#description-23"></a>Description</h3>
+<div class="paragraph">
 <p>The timestamp of the query as an Epoch/UNIX timestamp.
 Will not vary during a query.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-23"><a class="anchor" href="#arguments-23"></a>Arguments</h3>
+<div class="paragraph">
 <p>This function accepts no arguments.</p>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="return-value-23"><a class="anchor" href="#return-value-23"></a>Return Value</h3>
+<div class="paragraph">
 <p>A floating point number representing the Epoch/UNIX timestamp of the query.</p>
-</dd>
-<dt class="hdlist1"><strong>Limitations</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="limitations-11"><a class="anchor" href="#limitations-11"></a>Limitations</h3>
+<div class="paragraph">
 <p>If this function is called multiple times within the same query it will always return the same time.
 If you wish to use the system time when the function is evaluated, use <a href="#fn-date-clock-millis">CLOCK_MILLIS()</a> instead.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
-<p><strong>Example 1:</strong> The time now in milliseconds.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-23"><a class="anchor" href="#examples-23"></a>Examples</h3>
+<div class="exampleblock">
+<div class="title">Example 1</div>
+<div class="content">
+<div class="paragraph">
+<p>The time now in milliseconds.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT NOW_MILLIS() as NowInMilliseconds;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2596,18 +3187,21 @@ If you wish to use the system time when the function is evaluated, use <a href="
 ]</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2</div>
+<div class="content">
 <div class="paragraph">
-<p><strong>Example 2:</strong> Difference between NOW_MILLIS() and CLOCK_MILLIS().</p>
+<p>Difference between NOW_MILLIS() and CLOCK_MILLIS().</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT NOW_MILLIS(), NOW_MILLIS(), NOW_MILLIS(), NOW_MILLIS(), CLOCK_MILLIS();</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2619,54 +3213,64 @@ If you wish to use the system time when the function is evaluated, use <a href="
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-now-tz"><a class="anchor" href="#fn-date-now-tz"></a>NOW_TZ(tz [, fmt])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-24"><a class="anchor" href="#description-24"></a>Description</h3>
+<div class="paragraph">
 <p>The timestamp of the query as date string in the specified timezone.
 Will not vary during a query.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-24"><a class="anchor" href="#arguments-24"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>tz</strong></dt>
+<dt class="hdlist1">tz</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to convert the query timestamp to.</p>
 <div class="paragraph">
 <p>If an incorrect time zone is provided then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>fmt</strong></dt>
+<dt class="hdlist1">fmt</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
-<p><strong>Optional argument</strong>, if unspecified or an incorrect format is specified, then this defaults to the combined full date and time.</p>
+<p><strong>Optional argument</strong>.
+If unspecified or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-24"><a class="anchor" href="#return-value-24"></a>Return Value</h3>
+<div class="paragraph">
 <p>A date string in the format specified representing the timestamp of the query in the specified timezone.</p>
-</dd>
-<dt class="hdlist1"><strong>Limitations</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="limitations-12"><a class="anchor" href="#limitations-12"></a>Limitations</h3>
+<div class="paragraph">
 <p>If this function is called multiple times within the same query it will always return the same time.
 If you wish to use the system time when the function is evaluated, use <a href="#fn-date-clock-tz">CLOCK_TZ()</a> instead.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
-<p><strong>Example 1:</strong> Various arguments for NOW_TZ().</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-24"><a class="anchor" href="#examples-24"></a>Examples</h3>
+<div class="exampleblock">
+<div class="title">Example 1</div>
+<div class="content">
+<div class="paragraph">
+<p>Various arguments for NOW_TZ().</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT NOW_TZ('invalid tz') as invalid_tz,
@@ -2675,10 +3279,8 @@ If you wish to use the system time when the function is evaluated, use <a href="
        NOW_TZ('UTC', '1111-11-11') as utc_short_date;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2690,18 +3292,21 @@ If you wish to use the system time when the function is evaluated, use <a href="
 ]</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2</div>
+<div class="content">
 <div class="paragraph">
-<p><strong>Example 2:</strong> Difference between NOW_TZ() and CLOCK_TZ().</p>
+<p>Difference between NOW_TZ() and CLOCK_TZ().</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT NOW_TZ('UTC'), NOW_TZ('UTC'), NOW_TZ('UTC'), CLOCK_TZ('UTC');</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2713,47 +3318,57 @@ If you wish to use the system time when the function is evaluated, use <a href="
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-now-str"><a class="anchor" href="#fn-date-now-str"></a>NOW_STR([fmt])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-25"><a class="anchor" href="#description-25"></a>Description</h3>
+<div class="paragraph">
 <p>The timestamp of the query as date string in the system timezone.
 Will not vary during a query.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-25"><a class="anchor" href="#arguments-25"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>fmt</strong></dt>
+<dt class="hdlist1">fmt</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
-<p><strong>Optional argument</strong>, if unspecified or an incorrect format is specified, then this defaults to the combined full date and time.</p>
+<p><strong>Optional argument</strong>.
+If unspecified or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-25"><a class="anchor" href="#return-value-25"></a>Return Value</h3>
+<div class="paragraph">
 <p>A date string in the format specified representing the timestamp of the query.</p>
-</dd>
-<dt class="hdlist1"><strong>Limitations</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="limitations-13"><a class="anchor" href="#limitations-13"></a>Limitations</h3>
+<div class="paragraph">
 <p>If this function is called multiple times within the same query it will always return the same time.
 If you wish to use the system time when the function is evaluated, use <a href="#fn-date-clock-str">CLOCK_STR()</a> instead.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
-<p><strong>Example 1:</strong> Various arguments for NOW_STR().</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-25"><a class="anchor" href="#examples-25"></a>Examples</h3>
+<div class="exampleblock">
+<div class="title">Example 1</div>
+<div class="content">
+<div class="paragraph">
+<p>Various arguments for NOW_STR().</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT NOW_STR() as full_date,
@@ -2761,10 +3376,8 @@ If you wish to use the system time when the function is evaluated, use <a href="
        NOW_STR('1111-11-11') as short_date;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2775,18 +3388,21 @@ If you wish to use the system time when the function is evaluated, use <a href="
 ]</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2</div>
+<div class="content">
 <div class="paragraph">
-<p><strong>Example 2:</strong> Difference between NOW_STR() and CLOCK_STR().</p>
+<p>Difference between NOW_STR() and CLOCK_STR().</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT NOW_STR(), NOW_STR(), NOW_STR(), NOW_STR(), NOW_STR(), NOW_STR(), CLOCK_STR();</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2801,56 +3417,64 @@ If you wish to use the system time when the function is evaluated, use <a href="
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-now-utc"><a class="anchor" href="#fn-date-now-utc"></a>NOW_UTC([fmt])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-26"><a class="anchor" href="#description-26"></a>Description</h3>
+<div class="paragraph">
 <p>The timestamp of the query as date string in UTC.
 Will not vary during a query.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-26"><a class="anchor" href="#arguments-26"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>fmt</strong></dt>
+<dt class="hdlist1">fmt</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a <a href="#date-string">supported date format</a> to output the result as.</p>
 <div class="paragraph">
-<p><strong>Optional argument</strong>, if unspecified or an incorrect format is specified, then this defaults to the combined full date and time.</p>
+<p><strong>Optional argument</strong>.
+If unspecified or an incorrect format is specified, then this defaults to the combined full date and time.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-26"><a class="anchor" href="#return-value-26"></a>Return Value</h3>
+<div class="paragraph">
 <p>A date string in the format specified representing the timestamp of the query in UTC.</p>
-</dd>
-<dt class="hdlist1"><strong>Limitations</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="limitations-14"><a class="anchor" href="#limitations-14"></a>Limitations</h3>
+<div class="paragraph">
 <p>If this function is called multiple times within the same query it will always return the same time.
 If you wish to use the system time when the function is evaluated, use <a href="#fn-date-clock-utc">CLOCK_MILLIS()</a> instead.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
-<p><strong>Example 1:</strong> The current UTC time.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-26"><a class="anchor" href="#examples-26"></a>Examples</h3>
+<div class="exampleblock">
+<div class="title">Example 1</div>
+<div class="content">
+<div class="paragraph">
+<p>The current UTC time.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT NOW_UTC() as CurrentUTC;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2859,18 +3483,21 @@ If you wish to use the system time when the function is evaluated, use <a href="
 ]</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2</div>
+<div class="content">
 <div class="paragraph">
-<p><strong>Example 2:</strong> Difference between NOW_UTC() and CLOCK_UTC().</p>
+<p>Difference between NOW_UTC() and CLOCK_UTC().</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT NOW_UTC(), NOW_UTC(), NOW_UTC(), NOW_UTC(), NOW_UTC(), NOW_UTC(), NOW_UTC(), CLOCK_UTC();</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2886,20 +3513,20 @@ If you wish to use the system time when the function is evaluated, use <a href="
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-str-to-duration"><a class="anchor" href="#fn-date-str-to-duration"></a>STR_TO_DURATION(duration)</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-27"><a class="anchor" href="#description-27"></a>Description</h3>
+<div class="paragraph">
 <p>Converts a string representation of a time duration into nanoseconds.
 This accepts the following units:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -2922,12 +3549,12 @@ This accepts the following units:</p>
 </li>
 </ul>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="arguments-27"><a class="anchor" href="#arguments-27"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>duration</strong></dt>
+<dt class="hdlist1">duration</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the duration to convert.</p>
 <div class="paragraph">
@@ -2936,13 +3563,17 @@ This accepts the following units:</p>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-27"><a class="anchor" href="#return-value-27"></a>Return Value</h3>
+<div class="paragraph">
 <p>A single integer representing the duration in nanoseconds.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-27"><a class="anchor" href="#examples-27"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT STR_TO_DURATION('1h') as hour,
@@ -2953,10 +3584,8 @@ STR_TO_DURATION('1ns') as nanosecond,
 STR_TO_DURATION('1s') as second;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -2970,50 +3599,61 @@ STR_TO_DURATION('1s') as second;</code></pre>
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="fn-date-str-to-millis"><a class="anchor" href="#fn-date-str-to-millis"></a>STR_TO_MILLIS(date1)</h2>
+<h2 id="fn-date-str-to-millis"><a class="anchor" href="#fn-date-str-to-millis"></a>STR_TO_MILLIS(date1 [, format])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-28"><a class="anchor" href="#description-28"></a>Description</h3>
+<div class="paragraph">
 <p>Converts a date string to Epoch/UNIX milliseconds.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-28"><a class="anchor" href="#arguments-28"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
-<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
-This is the date to convert to Epoch/UNIX milliseconds.</p>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the date to convert to Epoch/UNIX milliseconds.</p>
 <div class="paragraph">
 <p>If this argument is not a valid date format, then <code>null</code> is returned.</p>
 </div>
 </dd>
+<dt class="hdlist1">format</dt>
+<dd>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the expected format of the input date string, using the <a href="https://golang.org/pkg/time/#pkg-constants" target="_blank" rel="noopener">Go language reference date</a>.</p>
+<div class="paragraph">
+<p><strong>Optional argument</strong>.
+If not specified, the input date string must be in a <a href="#date-string">supported date format</a>.
+If an incorrect format is provided, then <code>null</code> is returned.</p>
+</div>
+</dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-28"><a class="anchor" href="#return-value-28"></a>Return Value</h3>
+<div class="paragraph">
 <p>An integer representing the date string converted to Epoch/UNIX milliseconds.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-28"><a class="anchor" href="#examples-28"></a>Examples</h3>
+<div class="exampleblock">
+<div class="title">Example 1</div>
+<div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT STR_TO_MILLIS("2016-05-15T03:59:00Z") as Milliseconds;</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT STR_TO_MILLIS("2016-05-15T03:59:00Z") AS Milliseconds;</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Results:</p>
 </div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -3022,26 +3662,47 @@ This is the date to convert to Epoch/UNIX milliseconds.</p>
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT STR_TO_MILLIS("19/08/2011 6:33:23+0000", "02/01/2006 15:04:05Z0700")
+AS Milliseconds;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Results</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "Milliseconds": 1313735603000
+  }
+]</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-str-to-utc"><a class="anchor" href="#fn-date-str-to-utc"></a>STR_TO_UTC(date1)</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-29"><a class="anchor" href="#description-29"></a>Description</h3>
+<div class="paragraph">
 <p>Converts a date string into the equivalent date in UTC.
 The output date format follows the date format of the date passed as input.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-29"><a class="anchor" href="#arguments-29"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
 This is the date to convert to UTC.</p>
@@ -3051,23 +3712,25 @@ This is the date to convert to UTC.</p>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-29"><a class="anchor" href="#return-value-29"></a>Return Value</h3>
+<div class="paragraph">
 <p>A single date string representing the date string converted to UTC.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-29"><a class="anchor" href="#examples-29"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT STR_TO_UTC('1111-11-11T00:00:00+08:00') as full_date,
 STR_TO_UTC('1111-11-11') as short_date;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -3077,26 +3740,26 @@ STR_TO_UTC('1111-11-11') as short_date;</code></pre>
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="fn-date-str-to-tz"><a class="anchor" href="#fn-date-str-to-tz"></a>STR_TO_TZ(date1, tz)</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-30"><a class="anchor" href="#description-30"></a>Description</h3>
+<div class="paragraph">
 <p>Converts a date string to its equivalent in the specified timezone.
 The output date format follows the date format of the date passed as input.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-30"><a class="anchor" href="#arguments-30"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date1</strong></dt>
+<dt class="hdlist1">date1</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
 This is the date to convert to UTC.</p>
@@ -3104,7 +3767,7 @@ This is the date to convert to UTC.</p>
 <p>If this argument is not a valid date format then <code>null</code> is returned.</p>
 </div>
 </dd>
-<dt class="hdlist1"><strong>tz</strong></dt>
+<dt class="hdlist1">tz</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to convert the local time to.</p>
 <div class="paragraph">
@@ -3113,13 +3776,17 @@ This is the date to convert to UTC.</p>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-30"><a class="anchor" href="#return-value-30"></a>Return Value</h3>
+<div class="paragraph">
 <p>A single date string representing the date string converted to the specified timezone.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-30"><a class="anchor" href="#examples-30"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT STR_TO_TZ('1111-11-11T00:00:00+08:00', 'America/New_York') as est,
@@ -3127,10 +3794,8 @@ This is the date to convert to UTC.</p>
     STR_TO_TZ('1111-11-11', 'UTC') as utc_short;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -3141,8 +3806,8 @@ This is the date to convert to UTC.</p>
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -3157,47 +3822,50 @@ This is the date to convert to UTC.</p>
 <div class="sect1">
 <h2 id="weekday_millisexpr-tz"><a class="anchor" href="#weekday_millisexpr-tz"></a>WEEKDAY_MILLIS(expr [, tz ])</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-31"><a class="anchor" href="#description-31"></a>Description</h3>
+<div class="paragraph">
 <p>Converts a date string to its equivalent in the specified timezone.
 The output date format follows the date format of the date passed as input.</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-31"><a class="anchor" href="#arguments-31"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>expr</strong></dt>
+<dt class="hdlist1">expr</dt>
 <dd>
 <p>An integer, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to an integer, representing an Epoch/UNIX timestamp in milliseconds.</p>
 </dd>
-<dt class="hdlist1"><strong>tz</strong></dt>
+<dt class="hdlist1">tz</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the <a href="#date-timezone">timezone</a> to for the expr argument.</p>
 <div class="paragraph">
-<p><strong>Optional argument</strong>, defaults to the system timezone if not specified.
+<p><strong>Optional argument</strong>.
+Defaults to the system timezone if not specified.
 If an incorrect time zone is provided then <code>null</code> is returned.</p>
 </div>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-31"><a class="anchor" href="#return-value-31"></a>Return Value</h3>
+<div class="paragraph">
 <p>A single date string representing the date string converted to the specified timezone.</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-31"><a class="anchor" href="#examples-31"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT WEEKDAY_MILLIS(1486237655742, 'America/Tijuana') as Day;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -3206,27 +3874,27 @@ If an incorrect time zone is provided then <code>null</code> is returned.</p>
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="weekday_strdate"><a class="anchor" href="#weekday_strdate"></a>WEEKDAY_STR(date)</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong>Description</strong></dt>
-<dd>
+<div class="sect2">
+<h3 id="description-32"><a class="anchor" href="#description-32"></a>Description</h3>
+<div class="paragraph">
 <p>Returns the day of the week string value from the input date string.
 Returns the weekday name from the input date in Unix timestamp.
 Note that his function returns the string value of the day of the week, where <a href="#fn-date-part-str">DATE_PART_STR()</a> with part = "dow" returns an integer value of the weekday (0-6).</p>
-</dd>
-<dt class="hdlist1"><strong>Arguments</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-32"><a class="anchor" href="#arguments-32"></a>Arguments</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><strong>date</strong></dt>
+<dt class="hdlist1">date</dt>
 <dd>
 <p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing a date in a <a href="#date-string">supported date format</a>.
 This is the date to convert to UTC.</p>
@@ -3236,22 +3904,24 @@ This is the date to convert to UTC.</p>
 </dd>
 </dl>
 </div>
-</dd>
-<dt class="hdlist1"><strong>Return Value</strong></dt>
-<dd>
+</div>
+<div class="sect2">
+<h3 id="return-value-32"><a class="anchor" href="#return-value-32"></a>Return Value</h3>
+<div class="paragraph">
 <p>The text string name of the day of the week, such as "Monday" or "Friday".</p>
-</dd>
-<dt class="hdlist1"><strong>Examples</strong></dt>
-<dd>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-32"><a class="anchor" href="#examples-32"></a>Examples</h3>
+<div class="exampleblock">
+<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT WEEKDAY_STR('2017-02-05') as Day;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Results:</p>
-</div>
 <div class="listingblock">
+<div class="title">Results</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
   {
@@ -3260,8 +3930,8 @@ This is the date to convert to UTC.</p>
 ]</code></pre>
 </div>
 </div>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </div>
 </div>

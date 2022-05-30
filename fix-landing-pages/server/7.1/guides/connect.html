@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Connecting to Couchbase | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/guides/connect.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="How to connect to a Couchbase Cluster.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/guides/pages/connect.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/pages/connect.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -351,7 +352,7 @@ When running Couchbase in a production environment, the latter is always recomme
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/guides/examples/connect/connect-cbc.sh#L4-L6">cbc ping -u Administrator -P password -U couchbase://localhost/travel-sample \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/connect/connect-cbc.sh#L4-L6">cbc ping -u Administrator -P password -U couchbase://localhost/travel-sample \
 	--count=1 \
 	--table</code></pre>
 </div>
@@ -624,7 +625,7 @@ Before using X.509 certificate based authentication, you should run through the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/guides/examples/connect/connect-cbc.sh#L10-L12">cbc ping -v -U "couchbases://127.0.0.1/travel-sample?certpath=ca.pem" \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/connect/connect-cbc.sh#L10-L12">cbc ping -v -U "couchbases://127.0.0.1/travel-sample?certpath=ca.pem" \
 	--count=1 \
 	--table</code></pre>
 </div>
@@ -843,7 +844,7 @@ Cluster cluster = Cluster.connect("127.0.0.1", clusterOptions(authenticator));</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/guides/examples/connect/connect-cbc.sh#L16-L19">cbc ping -u username -P "passworD#1" \
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/examples/connect/connect-cbc.sh#L16-L19">cbc ping -u username -P "passworD#1" \
 	-U "couchbases://cb.oawlpi4audpc6jp5.cloud.couchbase.com/travel-sample?certpath=cert.pem" \
 	--count=1 \
 	--table</code></pre>

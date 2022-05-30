@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Aggregate Functions | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/n1ql/n1ql-language-reference/aggregatefun.html">
 <link rel="stylesheet" href="../../../../_/css/site.css">
 <script src="../../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="Aggregate functions take multiple values from documents, perform calculations, and return a single value as the result.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/n1ql/pages/n1ql-language-reference/aggregatefun.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/pages/n1ql-language-reference/aggregatefun.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -471,13 +472,13 @@ FROM `travel-sample`.inventory.hotel;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/functions/avg.n1ql">SELECT AVG(geo.alt) AS AverageAltitude FROM `travel-sample`.inventory.airport;</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/functions/avg.n1ql">SELECT AVG(geo.alt) AS AverageAltitude FROM `travel-sample`.inventory.airport;</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Results</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/functions/avg.jsonc">[
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/functions/avg.jsonc">[
   {
     "AverageAltitude": 870.1651422764228
   }
@@ -493,7 +494,7 @@ FROM `travel-sample`.inventory.hotel;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/functions/avg-all.n1ql">SELECT AVG(ALL stops) AS AvgAllStops FROM `travel-sample`.inventory.route;</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/functions/avg-all.n1ql">SELECT AVG(ALL stops) AS AvgAllStops FROM `travel-sample`.inventory.route;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -501,7 +502,7 @@ FROM `travel-sample`.inventory.hotel;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/functions/avg-distinct.n1ql">SELECT AVG(DISTINCT stops) AS AvgDistinctStops FROM `travel-sample`.inventory.route;</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/functions/avg-distinct.n1ql">SELECT AVG(DISTINCT stops) AS AvgDistinctStops FROM `travel-sample`.inventory.route;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -886,13 +887,13 @@ FROM `travel-sample`.inventory.airport;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/functions/min-num.n1ql">SELECT MIN(geo.lat) AS MinLatitude FROM `travel-sample`.inventory.hotel;</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/functions/min-num.n1ql">SELECT MIN(geo.lat) AS MinLatitude FROM `travel-sample`.inventory.hotel;</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Results</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/functions/min-num.jsonc">[
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/functions/min-num.jsonc">[
   {
     "MinLatitude": 32.68092
   }
@@ -911,13 +912,13 @@ FROM `travel-sample`.inventory.airport;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/functions/min-string.n1ql">SELECT MIN(name) AS MinName FROM `travel-sample`.inventory.hotel;</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/functions/min-string.n1ql">SELECT MIN(name) AS MinName FROM `travel-sample`.inventory.hotel;</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Results</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/functions/min-string.jsonc">[
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/functions/min-string.jsonc">[
   {
     "MinName": "'La Mirande Hotel"
   }
@@ -940,14 +941,14 @@ To avoid this symbol confusion, you can specify letters only, as in the followin
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/functions/min-filter.n1ql">SELECT MIN(name) FILTER (WHERE SUBSTR(name,0)&gt;="A") AS MinName
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/functions/min-filter.n1ql">SELECT MIN(name) FILTER (WHERE SUBSTR(name,0)&gt;="A") AS MinName
 FROM `travel-sample`.inventory.hotel;</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Results</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/functions/min-filter.jsonc">[
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/functions/min-filter.jsonc">[
   {
     "MinName": "AIRE NATURELLE LE GROZEAU Aire naturelle"
   }

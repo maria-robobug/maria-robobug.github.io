@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>GROUP BY Clause | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/n1ql/n1ql-language-reference/groupby.html">
 <link rel="stylesheet" href="../../../../_/css/site.css">
 <script src="../../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="The GROUP BY clause arranges aggregate values into groups, based on one or more fields.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/n1ql/pages/n1ql-language-reference/groupby.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/pages/n1ql-language-reference/groupby.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -321,7 +322,7 @@ For more details, refer to <a href="selectintro.html#index-selection" class="xre
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/select/group-by.n1ql">SELECT city City, COUNT(DISTINCT name) LandmarkCount
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/group-by.n1ql">SELECT city City, COUNT(DISTINCT name) LandmarkCount
 FROM `travel-sample`.inventory.landmark
 GROUP BY city
 ORDER BY LandmarkCount DESC
@@ -331,7 +332,7 @@ LIMIT 4;</code></pre>
 <div class="listingblock">
 <div class="title">Results</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/select/group-by.jsonc">[
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/group-by.jsonc">[
   {
     "City": "San Francisco",
     "LandmarkCount": 797
@@ -358,7 +359,7 @@ LIMIT 4;</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/select/group-by-letting.n1ql">SELECT city City, COUNT(DISTINCT name) LandmarkCount
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/group-by-letting.n1ql">SELECT city City, COUNT(DISTINCT name) LandmarkCount
 FROM `travel-sample`.inventory.landmark
 GROUP BY city
 LETTING MinimumThingsToSee = 400
@@ -368,7 +369,7 @@ HAVING COUNT(DISTINCT name) &gt; MinimumThingsToSee;</code></pre>
 <div class="listingblock">
 <div class="title">Results</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/select/group-by-letting.jsonc">[
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/group-by-letting.jsonc">[
   {
     "City": "London",
     "LandmarkCount": 443
@@ -387,7 +388,7 @@ HAVING COUNT(DISTINCT name) &gt; MinimumThingsToSee;</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/select/group-by-having.n1ql">SELECT city City, COUNT(DISTINCT name) LandmarkCount
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/group-by-having.n1ql">SELECT city City, COUNT(DISTINCT name) LandmarkCount
 FROM `travel-sample`.inventory.landmark
 GROUP BY city
 HAVING COUNT(DISTINCT name) &gt; 180;</code></pre>
@@ -396,7 +397,7 @@ HAVING COUNT(DISTINCT name) &gt; 180;</code></pre>
 <div class="listingblock">
 <div class="title">Results</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/select/group-by-having.jsonc">[
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/group-by-having.jsonc">[
   {
     "City": "London",
     "LandmarkCount": 443
@@ -435,7 +436,7 @@ The above <code>HAVING</code> clause must use the <a href="aggregatefun.html" cl
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/select/group-by-compare-having.n1ql">SELECT city City, COUNT(DISTINCT name) LandmarkCount
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/group-by-compare-having.n1ql">SELECT city City, COUNT(DISTINCT name) LandmarkCount
 FROM `travel-sample`.inventory.landmark
 GROUP BY city
 HAVING city &gt; "S"
@@ -445,7 +446,7 @@ ORDER BY city;</code></pre>
 <div class="listingblock">
 <div class="title">Results</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/select/group-by-compare.jsonc">[
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/group-by-compare.jsonc">[
   {
     "City": "Sacramento",
     "LandmarkCount": 2
@@ -475,7 +476,7 @@ ORDER BY city;</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/select/group-by-compare-where.n1ql">SELECT city City, COUNT(DISTINCT name) LandmarkCount
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/group-by-compare-where.n1ql">SELECT city City, COUNT(DISTINCT name) LandmarkCount
 FROM `travel-sample`.inventory.landmark
 WHERE city &gt; "S"
 GROUP BY city
@@ -485,7 +486,7 @@ ORDER BY city;</code></pre>
 <div class="listingblock">
 <div class="title">Results</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/select/group-by-compare.jsonc">[
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/group-by-compare.jsonc">[
   {
     "City": "Sacramento",
     "LandmarkCount": 2
@@ -528,7 +529,7 @@ The <code>WHERE</code> clause is faster because <code>WHERE</code> gets processe
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/select/group-by-alias.n1ql">SELECT Hemisphere, COUNT(DISTINCT name) AS LandmarkCount
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/group-by-alias.n1ql">SELECT Hemisphere, COUNT(DISTINCT name) AS LandmarkCount
 FROM `travel-sample`.inventory.landmark AS l
 GROUP BY CASE
   WHEN l.geo.lon &lt;0 THEN "West"
@@ -539,7 +540,7 @@ END AS Hemisphere;</code></pre>
 <div class="listingblock">
 <div class="title">Results</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/select/group-by-alias.jsonc">[
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/group-by-alias.jsonc">[
   {
     "Hemisphere": "East",
     "LandmarkCount": 459

@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Index Placement | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/guides/place-index.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="How to place indexes on specified nodes, create index replicas, and partition indexes.">
@@ -114,7 +115,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/guides/pages/place-index.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/pages/place-index.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -261,7 +262,7 @@ The node name must include the cluster administration port, by default 8091.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/n1ql-language-reference/create-idx-node.n1ql">CREATE INDEX idx_airport_over1000
+<pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/n1ql-language-reference/create-idx-node.n1ql">CREATE INDEX idx_airport_over1000
   ON `travel-sample`.inventory.airport(geo.alt)
   WHERE geo.alt &gt; 1000
   USING GSI
@@ -303,7 +304,7 @@ If you don&#8217;t specify the number of partitions, the index has 8 partitions.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/n1ql-language-reference/partition-idx.n1ql">CREATE INDEX idx ON `travel-sample`.inventory.airline
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/n1ql-language-reference/partition-idx.n1ql">CREATE INDEX idx ON `travel-sample`.inventory.airline
 (country, name, id)
  PARTITION BY HASH(META().id);</code></pre>
 </div>
@@ -351,7 +352,7 @@ The value of this attribute must be less than or equal to the number of index no
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/learn/examples/services-and-indexes/indexes/replication-num.n1ql">CREATE INDEX country_idx ON `travel-sample`.inventory.airport(country, city)
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/learn/examples/services-and-indexes/indexes/replication-num.n1ql">CREATE INDEX country_idx ON `travel-sample`.inventory.airport(country, city)
 WITH {"num_replica": 2};</code></pre>
 </div>
 </div>
@@ -381,7 +382,7 @@ Each node name must include the cluster administration port, by default 8091.</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/learn/examples/services-and-indexes/indexes/replication-nodes.n1ql">CREATE INDEX country_idx ON `travel-sample`.inventory.airport(country, city)
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/learn/examples/services-and-indexes/indexes/replication-nodes.n1ql">CREATE INDEX country_idx ON `travel-sample`.inventory.airport(country, city)
 WITH {"nodes": ["node1:8091", "node2:8091", "node3:8091"]};</code></pre>
 </div>
 </div>
@@ -437,7 +438,7 @@ You can also perform the same alterations to a partitioned index and any replica
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/n1ql-language-reference/alter-idx-move.n1ql">ALTER INDEX def_inventory_airport_faa ON `travel-sample`.inventory.airport
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/n1ql-language-reference/alter-idx-move.n1ql">ALTER INDEX def_inventory_airport_faa ON `travel-sample`.inventory.airport
 WITH {"action": "move", "nodes": ["192.168.10.11:8091"]};</code></pre>
 </div>
 </div>

@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Object Functions | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/n1ql/n1ql-language-reference/objectfun.html">
 <link rel="stylesheet" href="../../../../_/css/site.css">
 <script src="../../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="You can use object functions to evaluate objects, perform computations on attributes in an object, and to return a new object based on a transformation.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/n1ql/pages/n1ql-language-reference/objectfun.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/pages/n1ql-language-reference/objectfun.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -337,10 +338,147 @@ If any of the input objects contain the same attribute name, the attribute from 
 </div>
 </div>
 <div class="sect1">
+<h2 id="fn-obj-field"><a class="anchor" href="#fn-obj-field"></a>OBJECT_FIELD(<code>object</code>, <code>field</code>)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>(Introduced in Couchbase Server 7.1)</em></p>
+</div>
+<div class="sect2">
+<h3 id="description-3"><a class="anchor" href="#description-3"></a>Description</h3>
+<div class="paragraph">
+<p>This function returns the value of the specified field within the given object.
+A field in this context may be any attribute or element, nested at any level within the object.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-3"><a class="anchor" href="#arguments-3"></a>Arguments</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">expr</dt>
+<dd>
+<p>An expression representing an object.</p>
+</dd>
+<dt class="hdlist1">field</dt>
+<dd>
+<p>A string, or any valid <a href="index.html" class="xref page">expression</a> which evaluates to a string, representing the path to a field within the object.</p>
+<div class="paragraph">
+<p>You can use <a href="nestedops.html" class="xref page">nested operators</a> to specify the path to a nested attribute or element.
+If any attribute names within the field path contain special characters, they must be escaped using backticks (<code>``</code>).</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="return-value-3"><a class="anchor" href="#return-value-3"></a>Return Value</h3>
+<div class="paragraph">
+<p>The value of the specified field.
+If the object does not exist, or the field cannot be found within the object at the specified location, the function returns NULL.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-3"><a class="anchor" href="#examples-3"></a>Examples</h3>
+<div id="obj-field-ex1" class="exampleblock">
+<div class="title">Top-Level Fields</div>
+<div class="content">
+<div class="paragraph">
+<p>This example returns the complete values of the specified attributes at the top level of the object.</p>
+</div>
+<div class="listingblock">
+<div class="title">Query</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT OBJECT_FIELD(hotel, "public_likes") AS `array`,
+       OBJECT_FIELD(hotel, "vacancy") AS `boolean`,
+       OBJECT_FIELD(hotel, "id") AS `number`,
+       OBJECT_FIELD(hotel, "geo") AS `object`,
+       OBJECT_FIELD(hotel, "name") AS `string`
+FROM `travel-sample`.inventory.hotel
+LIMIT 1;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Results</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "array": [
+      "Julius Tromp I",
+      "Corrine Hilll",
+      "Jaeden McKenzie",
+      "Vallie Ryan",
+      "Brian Kilback",
+      "Lilian McLaughlin",
+      "Ms. Moses Feeney",
+      "Elnora Trantow"
+    ],
+    "boolean": true,
+    "number": 10025,
+    "object": {
+      "accuracy": "RANGE_INTERPOLATED",
+      "lat": 51.35785,
+      "lon": 0.55818
+    },
+    "string": "Medway Youth Hostel"
+  }
+]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="obj-field-ex2" class="exampleblock">
+<div class="title">Nested Fields</div>
+<div class="content">
+<div class="paragraph">
+<p>This example specifies a nested array element and a nested object attribute at different depths in the hierarchy.
+In the path to the nested object attribute, the final attribute name is escaped, as it contains special characters.</p>
+</div>
+<div class="listingblock">
+<div class="title">Query</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT
+  OBJECT_FIELD(hotel, "reviews[1]")
+    AS array_element,
+  OBJECT_FIELD(hotel, "reviews[1].ratings.`Business service (e.g., internet access)`")
+    AS object_attribute
+FROM `travel-sample`.inventory.hotel
+LIMIT 1;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Results</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "array_element": {
+      "author": "Barton Marks",
+      "content": "We found the hotel de la Monnaie through Interval ...",
+      "date": "2015-03-02 19:56:13 +0300",
+      "ratings": {
+        "Business service (e.g., internet access)": 4,
+        "Check in / front desk": 4,
+        "Cleanliness": 4,
+        "Location": 4,
+        "Overall": 4,
+        "Rooms": 3,
+        "Service": 3,
+        "Value": 5
+      }
+    },
+    "object_attribute": 4
+  }
+]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="fn-obj-inner-pairs"><a class="anchor" href="#fn-obj-inner-pairs"></a>OBJECT_INNER_PAIRS(<code>expression</code>)</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="description-3"><a class="anchor" href="#description-3"></a>Description</h3>
+<h3 id="description-4"><a class="anchor" href="#description-4"></a>Description</h3>
 <div class="paragraph">
 <p>This function returns an array of objects, containing the names and values of each attribute in the input object.
 It is particularly useful when iterating over multiple objects in an array, as it collates the values from similarly-named attributes into a single nested array.</p>
@@ -351,7 +489,7 @@ For an illustration, refer to the examples below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="arguments-3"><a class="anchor" href="#arguments-3"></a>Arguments</h3>
+<h3 id="arguments-4"><a class="anchor" href="#arguments-4"></a>Arguments</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">expression</dt>
@@ -362,7 +500,7 @@ For an illustration, refer to the examples below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="return-value-3"><a class="anchor" href="#return-value-3"></a>Return Value</h3>
+<h3 id="return-value-4"><a class="anchor" href="#return-value-4"></a>Return Value</h3>
 <div class="paragraph">
 <p>An array of objects, each containing two attributes:</p>
 </div>
@@ -383,7 +521,7 @@ For an illustration, refer to the examples below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="examples-3"><a class="anchor" href="#examples-3"></a>Examples</h3>
+<h3 id="examples-4"><a class="anchor" href="#examples-4"></a>Examples</h3>
 <div id="obj-inner-pairs-ex1" class="exampleblock">
 <div class="title">Single object</div>
 <div class="content">
@@ -481,7 +619,7 @@ SELECT OBJECT_INNER_PAIRS(special_flights[*]) AS inner_pairs;</code></pre>
 <h2 id="fn-obj-inner-values"><a class="anchor" href="#fn-obj-inner-values"></a>OBJECT_INNER_VALUES(<code>expression</code>)</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="description-4"><a class="anchor" href="#description-4"></a>Description</h3>
+<h3 id="description-5"><a class="anchor" href="#description-5"></a>Description</h3>
 <div class="paragraph">
 <p>This function returns an array, containing the values of each attribute in the input object.
 It is particularly useful when iterating over multiple objects in an array, as it collates the values from similarly-named attributes into a single nested array.</p>
@@ -492,7 +630,7 @@ For an illustration, refer to the examples below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="arguments-4"><a class="anchor" href="#arguments-4"></a>Arguments</h3>
+<h3 id="arguments-5"><a class="anchor" href="#arguments-5"></a>Arguments</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">expression</dt>
@@ -503,14 +641,14 @@ For an illustration, refer to the examples below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="return-value-4"><a class="anchor" href="#return-value-4"></a>Return Value</h3>
+<h3 id="return-value-5"><a class="anchor" href="#return-value-5"></a>Return Value</h3>
 <div class="paragraph">
 <p>An array of the values contained within the source object.
 The values in the array are sorted by the corresponding attribute names in the source object, in N1QL collation order.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="examples-4"><a class="anchor" href="#examples-4"></a>Examples</h3>
+<h3 id="examples-5"><a class="anchor" href="#examples-5"></a>Examples</h3>
 <div id="obj-inner-values-ex1" class="exampleblock">
 <div class="title">Single object</div>
 <div class="content">
@@ -590,14 +728,14 @@ SELECT OBJECT_INNER_VALUES(special_flights[*]) AS inner_values;</code></pre>
 <p><em>Equivalent</em>: <a href="metafun.html#len" class="xref page">LEN()</a></p>
 </div>
 <div class="sect2">
-<h3 id="description-5"><a class="anchor" href="#description-5"></a>Description</h3>
+<h3 id="description-6"><a class="anchor" href="#description-6"></a>Description</h3>
 <div class="paragraph">
 <p>This function returns the number of name-value pairs in the object.
 It only counts the top-level attributes and does not recurse into nested objects.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="arguments-5"><a class="anchor" href="#arguments-5"></a>Arguments</h3>
+<h3 id="arguments-6"><a class="anchor" href="#arguments-6"></a>Arguments</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">expression</dt>
@@ -608,7 +746,7 @@ It only counts the top-level attributes and does not recurse into nested objects
 </div>
 </div>
 <div class="sect2">
-<h3 id="return-value-5"><a class="anchor" href="#return-value-5"></a>Return Value</h3>
+<h3 id="return-value-6"><a class="anchor" href="#return-value-6"></a>Return Value</h3>
 <div class="paragraph">
 <p>An integer.</p>
 </div>
@@ -617,7 +755,7 @@ It only counts the top-level attributes and does not recurse into nested objects
 </div>
 </div>
 <div class="sect2">
-<h3 id="examples-5"><a class="anchor" href="#examples-5"></a>Examples</h3>
+<h3 id="examples-6"><a class="anchor" href="#examples-6"></a>Examples</h3>
 <div id="obj-length-ex" class="exampleblock">
 <div class="content">
 <div class="listingblock">
@@ -645,14 +783,14 @@ It only counts the top-level attributes and does not recurse into nested objects
 <h2 id="fn-obj-names"><a class="anchor" href="#fn-obj-names"></a>OBJECT_NAMES(<code>expression</code>)</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="description-6"><a class="anchor" href="#description-6"></a>Description</h3>
+<h3 id="description-7"><a class="anchor" href="#description-7"></a>Description</h3>
 <div class="paragraph">
 <p>This function returns an array, containing the names of each attribute in the input object.
 It is particularly useful when iterating over multiple objects in an array, as it collates similar attribute names.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="arguments-6"><a class="anchor" href="#arguments-6"></a>Arguments</h3>
+<h3 id="arguments-7"><a class="anchor" href="#arguments-7"></a>Arguments</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">expression</dt>
@@ -663,14 +801,14 @@ It is particularly useful when iterating over multiple objects in an array, as i
 </div>
 </div>
 <div class="sect2">
-<h3 id="return-value-6"><a class="anchor" href="#return-value-6"></a>Return Value</h3>
+<h3 id="return-value-7"><a class="anchor" href="#return-value-7"></a>Return Value</h3>
 <div class="paragraph">
 <p>An array of the attribute names contained within the source object.
 The attribute names are sorted in N1QL collation order.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="examples-6"><a class="anchor" href="#examples-6"></a>Examples</h3>
+<h3 id="examples-7"><a class="anchor" href="#examples-7"></a>Examples</h3>
 <div id="obj-names-ex1" class="exampleblock">
 <div class="title">Single object</div>
 <div class="content">
@@ -733,10 +871,10 @@ SELECT OBJECT_NAMES(special_flights[*]) AS names;</code></pre>
 <h2 id="fn-obj-pairs"><a class="anchor" href="#fn-obj-pairs"></a>OBJECT_PAIRS(<code>expression</code>)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><em>Alias</em>: <strong>OBJECT_OUTER_PAIRS(expression)</strong></p>
+<p><em>Alias</em>: <strong>OBJECT_OUTER_PAIRS(<code>expression</code>)</strong></p>
 </div>
 <div class="sect2">
-<h3 id="description-7"><a class="anchor" href="#description-7"></a>Description</h3>
+<h3 id="description-8"><a class="anchor" href="#description-8"></a>Description</h3>
 <div class="paragraph">
 <p>This function returns an array of objects, containing the names and values of each attribute in the input object.
 It is particularly useful when iterating over multiple objects in an array, as it collates the values from similarly-named attributes into a single nested array.</p>
@@ -747,7 +885,7 @@ For an illustration, refer to the examples below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="arguments-7"><a class="anchor" href="#arguments-7"></a>Arguments</h3>
+<h3 id="arguments-8"><a class="anchor" href="#arguments-8"></a>Arguments</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">expression</dt>
@@ -758,7 +896,7 @@ For an illustration, refer to the examples below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="return-value-7"><a class="anchor" href="#return-value-7"></a>Return Value</h3>
+<h3 id="return-value-8"><a class="anchor" href="#return-value-8"></a>Return Value</h3>
 <div class="paragraph">
 <p>An array of objects, each containing two attributes:</p>
 </div>
@@ -779,7 +917,7 @@ For an illustration, refer to the examples below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="examples-7"><a class="anchor" href="#examples-7"></a>Examples</h3>
+<h3 id="examples-8"><a class="anchor" href="#examples-8"></a>Examples</h3>
 <div id="obj-pairs-ex1" class="exampleblock">
 <div class="title">Single object</div>
 <div class="content">
@@ -879,16 +1017,552 @@ SELECT OBJECT_PAIRS(special_flights[*]) AS outer_pairs;</code></pre>
 </div>
 </div>
 <div class="sect1">
+<h2 id="fn-obj-pairs-nested"><a class="anchor" href="#fn-obj-pairs-nested"></a>OBJECT_PAIRS_NESTED(<code>object</code> [, <code>options</code>])</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>(Introduced in Couchbase Server 7.1)</em></p>
+</div>
+<div class="sect2">
+<h3 id="description-9"><a class="anchor" href="#description-9"></a>Description</h3>
+<div class="paragraph">
+<p>Similar to <a href="#fn-obj-pairs">OBJECT_PAIRS()</a>, this function returns an array of objects, containing the names and values of each field in the input object.
+A field in this context may be any attribute or element, nested at any level within the object.</p>
+</div>
+<div class="paragraph">
+<p>This function may be useful when iterating over multiple objects in an array, as it collates and unnests the values from similarly-named fields across all objects in the input array.
+In this case, the function returns a null entry from any object which does not contain the shared field name, rather like an OUTER JOIN.
+For an illustration, refer to the examples below.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-9"><a class="anchor" href="#arguments-9"></a>Arguments</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">object</dt>
+<dd>
+<p>An expression representing an object.</p>
+</dd>
+<dt class="hdlist1">options</dt>
+<dd>
+<p>[Optional] An object containing the following possible parameters:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">composites</dt>
+<dd>
+<p>A boolean.
+If <code>true</code>, every level of every nested field is displayed; if <code>false</code>, only the deepest possible nested fields are returned.
+Default <code>false</code>.</p>
+</dd>
+<dt class="hdlist1">pattern</dt>
+<dd>
+<p>A regular expression used to filter the returned paths.
+The pattern is matched against the composite path names, not the individual field names.</p>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="return-value-9"><a class="anchor" href="#return-value-9"></a>Return Value</h3>
+<div class="paragraph">
+<p>An array of objects, each containing two attributes:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">name</dt>
+<dd>
+<p>The full path to every possible field within the source object, subject to the specified options.</p>
+<div class="paragraph">
+<p>The result uses <a href="nestedops.html" class="xref page">nested operators</a> to specify the path to all nested attributes or elements.
+If any attribute names within a field path contain special characters, they are escaped using backticks (<code>``</code>).</p>
+</div>
+</dd>
+<dt class="hdlist1">val</dt>
+<dd>
+<p>The value of an attribute in the source object; or an array, containing the collated values of similarly-named attributes in the source objects.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The objects in the array are sorted by attribute name, in N1QL collation order.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-9"><a class="anchor" href="#examples-9"></a>Examples</h3>
+<div id="obj-pairs-nested-ex1" class="exampleblock">
+<div class="title">Single object</div>
+<div class="content">
+<div class="listingblock">
+<div class="title">Query</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">WITH input AS ({
+ "attribute": {"first-part": 1, "second-part": 2}
+})
+SELECT OBJECT_PAIRS_NESTED(input) AS nested_pairs,
+       OBJECT_PAIRS_NESTED(input, {"composites": true}) AS nested_pairs_comp,
+       OBJECT_PAIRS_NESTED(input, {"pattern": "first"}) AS nested_pairs_pattern;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Results</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "nested_pairs": [
+      {
+        "name": "attribute.first-part",
+        "val": 1
+      },
+      {
+        "name": "attribute.second-part",
+        "val": 2
+      }
+    ],
+    "nested_pairs_comp": [
+      {
+        "name": "attribute",
+        "val": {
+          "first-part": 1,
+          "second-part": 2
+        }
+      },
+      {
+        "name": "attribute.first-part",
+        "val": 1
+      },
+      {
+        "name": "attribute.second-part",
+        "val": 2
+      }
+    ],
+    "nested_pairs_pattern": [
+      {
+        "name": "attribute.first-part",
+        "val": 1
+      }
+    ]
+  }
+]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="obj-pairs-nested-ex2" class="exampleblock">
+<div class="title">Iterating over objects in an array</div>
+<div class="content">
+<div class="paragraph">
+<p>In this example, notice that where the source objects have similarly-named attributes, the values from each of those attributes are collated into a single array in the output.
+Each collated array is then unnested to show the name and value of its elements.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">WITH special_flights AS ([{"flight": "AI444", "utc": "4:44:44", "codename": "green"},
+                          {"flight": "AI333", "utc": "3:33:33", "alert": "red"},
+                          {"flight": "AI222", "utc": "2:22:22", "codename": "yellow"}])
+SELECT OBJECT_PAIRS_NESTED(special_flights[*], {"composites": true}) AS nested_pairs;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Results</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "nested_pairs": [
+      {
+        "name": "alert",
+        "val": [
+          null,
+          "red",
+          null
+        ]
+      },
+      {
+        "name": "alert[0]",
+        "val": null
+      },
+      {
+        "name": "alert[1]",
+        "val": "red"
+      },
+      {
+        "name": "alert[2]",
+        "val": null
+      },
+      {
+        "name": "codename",
+        "val": [
+          "green",
+          null,
+          "yellow"
+        ]
+      },
+      {
+        "name": "codename[0]",
+        "val": "green"
+      },
+      {
+        "name": "codename[1]",
+        "val": null
+      },
+      {
+        "name": "codename[2]",
+        "val": "yellow"
+      },
+      {
+        "name": "flight",
+        "val": [
+          "AI444",
+          "AI333",
+          "AI222"
+        ]
+      },
+      {
+        "name": "flight[0]",
+        "val": "AI444"
+      },
+      {
+        "name": "flight[1]",
+        "val": "AI333"
+      },
+      {
+        "name": "flight[2]",
+        "val": "AI222"
+      },
+      {
+        "name": "utc",
+        "val": [
+          "4:44:44",
+          "3:33:33",
+          "2:22:22"
+        ]
+      },
+      {
+        "name": "utc[0]",
+        "val": "4:44:44"
+      },
+      {
+        "name": "utc[1]",
+        "val": "3:33:33"
+      },
+      {
+        "name": "utc[2]",
+        "val": "2:22:22"
+      }
+    ]
+  }
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Compare this example with <a href="#obj-pairs-ex2">OBJECT_PAIRS() Example 2</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="fn-obj-paths"><a class="anchor" href="#fn-obj-paths"></a>OBJECT_PATHS(<code>object</code> [, <code>options</code>] )</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>(Introduced in Couchbase Server 7.1)</em></p>
+</div>
+<div class="sect2">
+<h3 id="description-10"><a class="anchor" href="#description-10"></a>Description</h3>
+<div class="paragraph">
+<p>This function returns the paths to all the fields within an object.
+A field in this context may be any attribute or element, nested at any level within the object.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="arguments-10"><a class="anchor" href="#arguments-10"></a>Arguments</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">object</dt>
+<dd>
+<p>An expression representing an object.</p>
+</dd>
+<dt class="hdlist1">options</dt>
+<dd>
+<p>[Optional] An object containing the following possible parameters:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">composites</dt>
+<dd>
+<p>A boolean.
+If <code>true</code>, every level of every nested field is displayed; if <code>false</code>, only the deepest possible nested fields are returned.
+Default <code>true</code>.</p>
+</dd>
+<dt class="hdlist1">arraysubscript</dt>
+<dd>
+<p>A boolean.
+If <code>true</code>, array subscripts are returned; if <code>false</code>, array subscripts are replaced by <code>*</code>.
+Default <code>true</code>.</p>
+</dd>
+<dt class="hdlist1">unique</dt>
+<dd>
+<p>A boolean.
+If <code>true</code>, duplicate field names are collapsed to single unique field name; if <code>false</code>, all duplicate field names are returned.
+Typically used when arrays are expanded and array subscripts are not returned.
+Default <code>true</code>.</p>
+</dd>
+<dt class="hdlist1">pattern</dt>
+<dd>
+<p>A regular expression used to filter the returned paths.
+Used in conjunction with the following setting.</p>
+</dd>
+<dt class="hdlist1">patternspace</dt>
+<dd>
+<p>A string literal with two possible values.
+Default <code>"path"</code>.</p>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code>"field"</code>
+</td>
+<td class="hdlist2">
+<p>The pattern is matched against individual field names.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>"path"</code>
+</td>
+<td class="hdlist2">
+<p>The pattern is matched against composite path names.</p>
+</td>
+</tr>
+</table>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="return-value-10"><a class="anchor" href="#return-value-10"></a>Return Value</h3>
+<div class="paragraph">
+<p>An array containing the full path to every possible field within the source object, subject to the specified options.</p>
+</div>
+<div class="paragraph">
+<p>The result uses <a href="nestedops.html" class="xref page">nested operators</a> to specify the path to all nested attributes or elements.
+If any attribute names within a field path contain special characters, they are escaped using backticks (<code>``</code>).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If <code>object</code> is MISSING, the function returns a MISSING value.</p>
+</li>
+<li>
+<p>If <code>object</code> is not an object, the function returns a NULL value.</p>
+</li>
+<li>
+<p>If <code>options</code> is not an object, the function returns a NULL value.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="examples-10"><a class="anchor" href="#examples-10"></a>Examples</h3>
+<div id="obj-paths-ex1" class="exampleblock">
+<div class="title">Composite paths</div>
+<div class="content">
+<div class="listingblock">
+<div class="title">Query</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">WITH input AS ({
+  "attribute": {"first-part": 1, "second-part": 2}
+})
+SELECT OBJECT_PATHS(input, {"composites": true}) AS composite,
+       OBJECT_PATHS(input, {"composites": false}) AS non_composite;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Results</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "composite": [
+      "attribute",
+      "attribute.first-part",
+      "attribute.second-part"
+    ],
+    "non_composite": [
+      "attribute.first-part",
+      "attribute.second-part"
+    ]
+  }
+]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="obj-paths-ex2" class="exampleblock">
+<div class="title">Array subscripts and unique field names</div>
+<div class="content">
+<div class="listingblock">
+<div class="title">Query</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">WITH input AS ({
+  "attribute": [ { "name": "elem1"}, {"name": "elem2"}]
+})
+SELECT
+  OBJECT_PATHS(input, {"arraysubscript": true})
+    AS subscripts,
+  OBJECT_PATHS(input, {"arraysubscript": false, "unique": false})
+    AS no_subscripts_not_unique,
+  OBJECT_PATHS(input, {"arraysubscript": false, "unique": true})
+    AS no_subscripts_unique;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Results</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "no_subscripts_not_unique": [
+      "attribute",
+      "attribute[*].name",
+      "attribute[*].name"
+    ],
+    "no_subscripts_unique": [
+      "attribute",
+      "attribute[*].name"
+    ],
+    "subscripts": [
+      "attribute",
+      "attribute[0].name",
+      "attribute[1].name"
+    ]
+  }
+]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="obj-paths-ex3" class="exampleblock">
+<div class="title">Pattern matching and pattern space</div>
+<div class="content">
+<div class="paragraph">
+<p>This example searches for strings beginning with "n" in the given object paths.</p>
+</div>
+<div class="listingblock">
+<div class="title">Query</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">WITH input AS ({
+  "attribute": {"name": "elem1"}
+})
+SELECT
+  OBJECT_PATHS(input)
+    AS all_paths,
+  OBJECT_PATHS(input, {"pattern": "^n", "patternspace": "field"})
+    AS field_starts_with_n,
+  OBJECT_PATHS(input, {"pattern": "^n", "patternspace": "path"})
+    AS path_starts_with_n;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Results</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "all_paths": [
+      "attribute",
+      "attribute.name"
+    ],
+    "field_starts_with_n": [
+      "attribute.name"
+    ],
+    "path_starts_with_n": []
+  }
+]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="obj-paths-ex4" class="exampleblock">
+<div class="title">Complex example</div>
+<div class="content">
+<div class="listingblock">
+<div class="title">Query</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">SELECT OBJECT_PATHS(hotel, {"composites": false, "arraysubscript": false}) AS paths
+FROM `travel-sample`.inventory.hotel
+LIMIT 1;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Results</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "paths": [
+      "address",
+      "alias",
+      "checkin",
+      "checkout",
+      "city",
+      "country",
+      "description",
+      "directions",
+      "email",
+      "fax",
+      "free_breakfast",
+      "free_internet",
+      "free_parking",
+      "geo.accuracy",
+      "geo.lat",
+      "geo.lon",
+      "id",
+      "name",
+      "pets_ok",
+      "phone",
+      "price",
+      "public_likes",
+      "reviews[*].author",
+      "reviews[*].content",
+      "reviews[*].date",
+      "reviews[*].ratings[*].Cleanliness",
+      "reviews[*].ratings[*].Location",
+      "reviews[*].ratings[*].Overall",
+      "reviews[*].ratings[*].Rooms",
+      "reviews[*].ratings[*].Service",
+      "reviews[*].ratings[*].Value",
+      "reviews[*].ratings[*].`Business service (e.g., internet access)`",
+      "reviews[*].ratings[*].`Check in / front desk`",
+      "state",
+      "title",
+      "tollfree",
+      "type",
+      "url",
+      "vacancy"
+    ]
+  }
+]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="fn-obj-put"><a class="anchor" href="#fn-obj-put"></a>OBJECT_PUT(<code>object</code>, <code>attr_key</code>, <code>attr_value</code>)</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="description-8"><a class="anchor" href="#description-8"></a>Description</h3>
+<h3 id="description-11"><a class="anchor" href="#description-11"></a>Description</h3>
 <div class="paragraph">
 <p>This function adds new or updates existing attributes and values to a given object.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="arguments-8"><a class="anchor" href="#arguments-8"></a>Arguments</h3>
+<h3 id="arguments-11"><a class="anchor" href="#arguments-11"></a>Arguments</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">object</dt>
@@ -907,7 +1581,7 @@ SELECT OBJECT_PAIRS(special_flights[*]) AS outer_pairs;</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="return-value-8"><a class="anchor" href="#return-value-8"></a>Return Value</h3>
+<h3 id="return-value-11"><a class="anchor" href="#return-value-11"></a>Return Value</h3>
 <div class="paragraph">
 <p>The updated object.</p>
 </div>
@@ -929,7 +1603,7 @@ SELECT OBJECT_PAIRS(special_flights[*]) AS outer_pairs;</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="examples-8"><a class="anchor" href="#examples-8"></a>Examples</h3>
+<h3 id="examples-11"><a class="anchor" href="#examples-11"></a>Examples</h3>
 <div id="obj-put-ex" class="exampleblock">
 <div class="content">
 <div class="listingblock">
@@ -969,13 +1643,13 @@ LIMIT 1;</code></pre>
 <h2 id="fn-obj-rename"><a class="anchor" href="#fn-obj-rename"></a>OBJECT_RENAME(<code>input_obj</code>, <code>old_field</code>, <code>new_field</code>)</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="description-9"><a class="anchor" href="#description-9"></a>Description</h3>
+<h3 id="description-12"><a class="anchor" href="#description-12"></a>Description</h3>
 <div class="paragraph">
 <p>Renames the attribute <code>old_field</code> to <code>new_field</code> in the JSON input object <code>input_obj</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="arguments-9"><a class="anchor" href="#arguments-9"></a>Arguments</h3>
+<h3 id="arguments-12"><a class="anchor" href="#arguments-12"></a>Arguments</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">input_obj</dt>
@@ -994,14 +1668,14 @@ LIMIT 1;</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="return-value-9"><a class="anchor" href="#return-value-9"></a>Return Value</h3>
+<h3 id="return-value-12"><a class="anchor" href="#return-value-12"></a>Return Value</h3>
 <div class="paragraph">
 <p>The input object with the new attribute name.
 Note that if the new attribute name already exists in the input object, the original attribute with that name is replaced.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="examples-9"><a class="anchor" href="#examples-9"></a>Examples</h3>
+<h3 id="examples-12"><a class="anchor" href="#examples-12"></a>Examples</h3>
 <div id="obj-rename-ex" class="exampleblock">
 <div class="title">Changing a field name</div>
 <div class="content">
@@ -1050,7 +1724,7 @@ LIMIT 1;</code></pre>
 <h2 id="fn-obj-remove"><a class="anchor" href="#fn-obj-remove"></a>OBJECT_REMOVE(<code>object</code>, <code>attr_key</code>)</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="description-10"><a class="anchor" href="#description-10"></a>Description</h3>
+<h3 id="description-13"><a class="anchor" href="#description-13"></a>Description</h3>
 <div class="paragraph">
 <p>This function removes the specified attribute and corresponding values from the given object.</p>
 </div>
@@ -1071,7 +1745,7 @@ LIMIT 1;</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="return-value-10"><a class="anchor" href="#return-value-10"></a>Return Value</h3>
+<h3 id="return-value-13"><a class="anchor" href="#return-value-13"></a>Return Value</h3>
 <div class="paragraph">
 <p>The input object without the removed attribute.</p>
 </div>
@@ -1087,7 +1761,7 @@ LIMIT 1;</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="examples-10"><a class="anchor" href="#examples-10"></a>Examples</h3>
+<h3 id="examples-13"><a class="anchor" href="#examples-13"></a>Examples</h3>
 <div id="obj-remove-ex1" class="exampleblock">
 <div class="content">
 <div class="listingblock">
@@ -1149,13 +1823,13 @@ LIMIT 1;</code></pre>
 <h2 id="fn-obj-replace"><a class="anchor" href="#fn-obj-replace"></a>OBJECT_REPLACE(<code>input_obj</code>, <code>old_value</code>, <code>new_value</code>)</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="description-11"><a class="anchor" href="#description-11"></a>Description</h3>
+<h3 id="description-14"><a class="anchor" href="#description-14"></a>Description</h3>
 <div class="paragraph">
 <p>Replaces all occurrences of the value <code>value_old</code> to <code>value_new</code> in the JSON input object <code>input_obj</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="arguments-10"><a class="anchor" href="#arguments-10"></a>Arguments</h3>
+<h3 id="arguments-13"><a class="anchor" href="#arguments-13"></a>Arguments</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">input_obj</dt>
@@ -1174,13 +1848,13 @@ LIMIT 1;</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="return-value-11"><a class="anchor" href="#return-value-11"></a>Return Value</h3>
+<h3 id="return-value-14"><a class="anchor" href="#return-value-14"></a>Return Value</h3>
 <div class="paragraph">
 <p>The JSON object <code>input_obj</code> with replaced values.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="examples-11"><a class="anchor" href="#examples-11"></a>Examples</h3>
+<h3 id="examples-14"><a class="anchor" href="#examples-14"></a>Examples</h3>
 <div id="obj-replace-ex" class="exampleblock">
 <div class="title">Replace any occurrences of "airline" with "airplane"</div>
 <div class="content">
@@ -1229,13 +1903,13 @@ LIMIT 1;</code></pre>
 <h2 id="fn-obj-unwrap"><a class="anchor" href="#fn-obj-unwrap"></a>OBJECT_UNWRAP(<code>expression</code>)</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="description-12"><a class="anchor" href="#description-12"></a>Description</h3>
+<h3 id="description-15"><a class="anchor" href="#description-15"></a>Description</h3>
 <div class="paragraph">
 <p>This function enables you to unwrap an object without knowing the name of the attribute.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="arguments-11"><a class="anchor" href="#arguments-11"></a>Arguments</h3>
+<h3 id="arguments-14"><a class="anchor" href="#arguments-14"></a>Arguments</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">expression</dt>
@@ -1246,7 +1920,7 @@ LIMIT 1;</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="return-value-12"><a class="anchor" href="#return-value-12"></a>Return Value</h3>
+<h3 id="return-value-15"><a class="anchor" href="#return-value-15"></a>Return Value</h3>
 <div class="paragraph">
 <p>If the argument is an object with exactly one attribute, this function returns the value in the attribute.
 If the argument is MISSING, it returns MISSING.
@@ -1254,7 +1928,7 @@ For all other cases, it returns NULL.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="examples-12"><a class="anchor" href="#examples-12"></a>Examples</h3>
+<h3 id="examples-15"><a class="anchor" href="#examples-15"></a>Examples</h3>
 <div id="obj-unwrap-ex" class="exampleblock">
 <div class="content">
 <div class="listingblock">
@@ -1285,13 +1959,13 @@ For all other cases, it returns NULL.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="fn-obj-values"><a class="anchor" href="#fn-obj-values"></a>OBJECT_VALUES(expression)</h2>
+<h2 id="fn-obj-values"><a class="anchor" href="#fn-obj-values"></a>OBJECT_VALUES(<code>expression</code>)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><em>Alias</em>: <strong>OBJECT_OUTER_VALUES(expression)</strong></p>
+<p><em>Alias</em>: <strong>OBJECT_OUTER_VALUES(<code>expression</code>)</strong></p>
 </div>
 <div class="sect2">
-<h3 id="description-13"><a class="anchor" href="#description-13"></a>Description</h3>
+<h3 id="description-16"><a class="anchor" href="#description-16"></a>Description</h3>
 <div class="paragraph">
 <p>This function returns an array, containing the values of each attribute in the input object.
 It is particularly useful when iterating over multiple objects in an array, as it collates the values from similarly-named attributes into a single nested array.</p>
@@ -1302,7 +1976,7 @@ For an illustration, refer to the examples below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="arguments-12"><a class="anchor" href="#arguments-12"></a>Arguments</h3>
+<h3 id="arguments-15"><a class="anchor" href="#arguments-15"></a>Arguments</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">expression</dt>
@@ -1313,14 +1987,14 @@ For an illustration, refer to the examples below.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="return-value-13"><a class="anchor" href="#return-value-13"></a>Return Value</h3>
+<h3 id="return-value-16"><a class="anchor" href="#return-value-16"></a>Return Value</h3>
 <div class="paragraph">
 <p>An array of the values contained within the source object.
 The values in the array are sorted by the corresponding attribute names in the source object, in N1QL collation order.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="examples-13"><a class="anchor" href="#examples-13"></a>Examples</h3>
+<h3 id="examples-16"><a class="anchor" href="#examples-16"></a>Examples</h3>
 <div id="obj-values-ex1" class="exampleblock">
 <div class="title">Single object</div>
 <div class="content">

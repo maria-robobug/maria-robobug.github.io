@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>USE Clause | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/n1ql/n1ql-language-reference/hints.html">
 <link rel="stylesheet" href="../../../../_/css/site.css">
 <script src="../../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="The &lt;code&gt;USE&lt;/code&gt; clause enables you to specify that the query should use particular keys, or a particular index.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/n1ql/pages/n1ql-language-reference/hints.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/pages/n1ql-language-reference/hints.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -494,19 +495,18 @@ In Couchbase Server 6.6 Community Edition and later, this hint is ignored if the
 <div class="title">Example 3. Use a specified Global Secondary Index</div>
 <div class="content">
 <div class="paragraph">
-<p>Create an index of airlines and destination airports, and then use it in a query for flights originating in San Francisco.</p>
+<p>This example uses the index <code>def_inventory_route_route_src_dst_day</code>, which is installed with the <code>travel-sample</code> bucket.</p>
+</div>
+<div class="paragraph">
+<p>The following query hints that the optimizer should select the specified index for the keyspace <code>`travel-sample`.inventory.route</code>.</p>
 </div>
 <div class="listingblock">
+<div class="title">INDEX hint</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/n1ql-language-reference/create-idx-hints.n1ql">CREATE INDEX idx_destinations
-ON `travel-sample`.inventory.route (airlineid, airline, destinationairport);</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/n1ql-language-reference/select-idx-hints.n1ql">SELECT airlineid, airline, sourceairport, destinationairport
-FROM `travel-sample`.inventory.route USE INDEX (idx_destinations USING GSI)
-WHERE sourceairport = "SFO";</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/select/index-legacy.n1ql#L5-L8">SELECT id FROM `travel-sample`.inventory.route
+USE INDEX (def_inventory_route_route_src_dst_day USING GSI)
+WHERE sourceairport = "SFO"
+LIMIT 1;</code></pre>
 </div>
 </div>
 </div>

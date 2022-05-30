@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Deferring Indexes | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/guides/defer-index.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="How to create deferred indexes and build them later.">
@@ -114,7 +115,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/guides/pages/defer-index.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/guides/pages/defer-index.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -281,7 +282,7 @@ A N1QL statement enables you to create indexes in <em>any</em> collection and sc
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/n1ql-language-reference/create-idx-defer-1.n1ql">CREATE INDEX idx_landmark_country
+<pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/n1ql-language-reference/create-idx-defer-1.n1ql">CREATE INDEX idx_landmark_country
   ON `travel-sample`.inventory.landmark(country)
   USING GSI
   WITH {"defer_build":true};</code></pre>
@@ -289,7 +290,7 @@ A N1QL statement enables you to create indexes in <em>any</em> collection and sc
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/n1ql-language-reference/create-idx-defer-2.n1ql">CREATE INDEX idx_landmark_name 
+<pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/n1ql-language-reference/create-idx-defer-2.n1ql">CREATE INDEX idx_landmark_name 
   ON `travel-sample`.inventory.landmark(name)
   USING GSI
   WITH {"defer_build":true};</code></pre>
@@ -297,7 +298,7 @@ A N1QL statement enables you to create indexes in <em>any</em> collection and sc
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/n1ql-language-reference/create-idx-defer-3.n1ql">CREATE PRIMARY INDEX idx_landmark_primary
+<pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/n1ql-language-reference/create-idx-defer-3.n1ql">CREATE PRIMARY INDEX idx_landmark_primary
   ON `travel-sample`.inventory.landmark
   USING GSI
   WITH {"defer_build":true};</code></pre>
@@ -547,7 +548,7 @@ A N1QL statement enables you to build indexes in <em>any</em> collection and sco
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/n1ql-language-reference/build-idx-single.n1ql">BUILD INDEX ON `travel-sample`.inventory.landmark(idx_landmark_country) USING GSI;</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/n1ql-language-reference/build-idx-single.n1ql">BUILD INDEX ON `travel-sample`.inventory.landmark(idx_landmark_country) USING GSI;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -555,7 +556,7 @@ A N1QL statement enables you to build indexes in <em>any</em> collection and sco
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="https://github.com/maria-robobug/docs-server/blob/40657b15e9bde0cbe64c1a3ef673f81ac9136bf5/modules/n1ql/examples/n1ql-language-reference/build-idx-multiple.n1ql">BUILD INDEX ON `travel-sample`.inventory.hotel(idx_landmark_name, idx_landmark_primary);</code></pre>
+<pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/examples/n1ql-language-reference/build-idx-multiple.n1ql">BUILD INDEX ON `travel-sample`.inventory.hotel(idx_landmark_name, idx_landmark_primary);</code></pre>
 </div>
 </div>
 <div class="paragraph">

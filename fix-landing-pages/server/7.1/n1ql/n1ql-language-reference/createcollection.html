@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>CREATE COLLECTION | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/n1ql/n1ql-language-reference/createcollection.html">
 <link rel="stylesheet" href="../../../../_/css/site.css">
 <script src="../../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="The &lt;code&gt;CREATE COLLECTION&lt;/code&gt; statement enables you to create a named collection within a scope.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/n1ql/pages/n1ql-language-reference/createcollection.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/pages/n1ql-language-reference/createcollection.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -175,11 +176,6 @@
 <article class="doc">
 <div class="page-heading-title">
 <h1 class="page">CREATE COLLECTION</h1>
-<div class="labels">
-<ul>
-<li class="status"><span>Couchbase Server 7.0</span></li>
-</ul>
-</div>
 </div>
 <div class="contributor-list-box">
 <span class="last-commit-date" id="commitdate">    </span>
@@ -199,12 +195,13 @@ The <code>CREATE COLLECTION</code> statement enables you to create a named colle
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre>create-collection ::= CREATE COLLECTION [ [ <em>namespace</em> ':' ] <em>bucket</em> '.' <em>scope</em> '.' ] <em>collection</em></pre>
+<pre class="highlightjs highlight"><code class="language-ebnf hljs" data-lang="ebnf" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/partials/grammar/ddl.ebnf#L33-L34">create-collection ::= 'CREATE' 'COLLECTION' ( ( namespace ':' )? bucket '.' scope '.' )?
+                      collection ( 'IF' 'NOT' 'EXISTS' )?</code></pre>
 </div>
 </div>
-<div class="imageblock">
+<div class="imageblock text-left">
 <div class="content">
-<img src="../_images/n1ql-language-reference/create-collection.png" alt="'CREATE' 'COLLECTION' ( ( namespace ':' )? bucket '.' scope '.' )? collection">
+<img src="../_images/n1ql-language-reference/create-collection.png" alt="create collection">
 </div>
 </div>
 <div class="dlist">
@@ -243,13 +240,10 @@ For example, <code>default:`travel-sample`</code> indicates the <code>travel-sam
 </tr>
 </table>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="location"><a class="anchor" href="#location"></a>Specifying the Location</h3>
 <div class="paragraph">
-<p>To specify the collection, you may do one of the following:</p>
+<p>To specify the location of the collection, you may do one of the following:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -268,6 +262,29 @@ For example, <code>default:`travel-sample`</code> indicates the <code>travel-sam
 <p>When you specify a collection name without a path, you must set the <a href="../n1ql-intro/sysinfo.html#query-context" class="xref page">query context</a> to indicate the required namespace, bucket, and scope.
 If you specify a collection name by itself without setting a valid query context, an error is generated.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="if-not-exists"><a class="anchor" href="#if-not-exists"></a>IF NOT EXISTS Clause</h3>
+<div class="paragraph">
+<p>The optional <code>IF NOT EXISTS</code> clause enables the statement to complete successfully when the specified collection already exists.
+If a collection with the same name already exists within the specified scope, then:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If this clause is not present, an error is generated.</p>
+</li>
+<li>
+<p>If this clause is present, the statement does nothing and completes without error.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>It is important to note that the scope must exist before you can create the collection, whether the scope is specified in the statement itself or implied by the query context.
 If the scope does not exist, an error is generated.

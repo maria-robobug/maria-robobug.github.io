@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Eventing REST API | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/eventing/eventing-api.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="The Eventing REST API, available by default at port 8096, provides the methods available to work with and manipulate Couchbase Eventing Functions.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/eventing/pages/eventing-api.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/eventing/pages/eventing-api.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -200,6 +201,28 @@ Changes to the Eventing Function definition files made outside of this REST API 
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>As of version 7.1 Eventing now supports full <a href="eventing-rbac.html" class="xref page">Eventing Role-Based Access Control</a> (RBAC).</p>
+</div>
+<div class="paragraph">
+<p>If the sample REST API shows two forms:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The first format is for privileged Eventing functions with a "Function Scope" of <strong>*.*</strong>; these functions can only be made or managed by users with the "Full Admin", "Eventing Full Admin" role.
+In addition this is the default "Function Scope" for all functions after an upgrade from a prior version.
+The creditionals for these examples will be "Administrator:password".</p>
+</li>
+<li>
+<p>The second format uses RBAC and you must pass the parameters <strong>bucket=[fs_bucket]&amp;scope=[fs_scope]</strong> to specify the <strong>bucket</strong> and the <strong>scope</strong> of the "Function Scope" to the REST call.  In addition, due to the use or <strong>&amp;</strong> and <strong>?</strong> characters, you will need to quote your REST call on the command line.
+The creditionals for these examples will be "anyAuthedUser:password" (although "Administrator:password" can also use this form).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If the sample REST API shows just a single format, then the REST API call does not require the parameters <strong>bucket=[fs_bucket]&amp;scope=[fs_scope]</strong> and the action is fully determined by the <strong>username</strong> and <strong>password</strong> credentials passed to the REST call.</p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 1. Eventing Functions API (basic activation/deactivation)</caption>
 <colgroup>
@@ -232,6 +255,11 @@ A deploy CURL example is provided for reference.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/deploy</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/deploy?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
+</div>
 </div></div></td>
 </tr>
 <tr>
@@ -250,6 +278,11 @@ An undeploy CURL example is provided for reference.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/undeploy</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/undeploy?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -270,6 +303,11 @@ A pause CURL example is provided for reference.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/pause</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/pause?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
+</div>
 </div></div></td>
 </tr>
 <tr>
@@ -288,6 +326,11 @@ A resume CURL example is provided for reference.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/resume</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/resume?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -327,6 +370,11 @@ The POST data or POST data file must be a single JSON object or an array contain
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST  -d @./[sample_name].json http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST  -d @./[sample_name].json 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
+</div>
 </div></div></td>
 </tr>
 <tr>
@@ -346,7 +394,7 @@ The POST data or POST data file must be either a single JSON object or an array 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST  -d @./[array_of_functions].json http://Administrator:password@192.168.1.5:8096/api/v1/functions</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST  -d @./[array_of_functions].json http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -368,7 +416,7 @@ Note if any Function&#8217;s language_compatibility field is missing the value w
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST  -d @./[array_of_functions].json http://Administrator:password@192.168.1.5:8096/api/v1/import</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST  -d @./[array_of_functions].json http://anyAuthedUser:password@192.168.1.5:8096/api/v1/import</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -392,6 +440,11 @@ However any changes to the function definition made to the file outside the UI a
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
+</div>
 </div></div></td>
 </tr>
 <tr>
@@ -402,6 +455,11 @@ However any changes to the function definition made to the file outside the UI a
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name] -o [sample_name].json</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]?bucket=[fs_bucket]&amp;scope=[fs_scope]' -o [sample_name].json</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -414,6 +472,9 @@ Provides an array of definitions of all Functions available in the cluster.
 The Functions could be in any state: deployed, undeployed, or paused.
 If saved to a file the function definitions can be imported into the cluster or a different cluster.
 However any changes to the function definition made to the file outside the UI are discouraged.</p>
+</div>
+<div class="paragraph">
+<p>If this API is run as a non-Administrator the return set will be filtered via RBAC to just the "Function Scopes" the user has access too.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -423,7 +484,7 @@ However any changes to the function definition made to the file outside the UI a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/functions</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -434,7 +495,7 @@ However any changes to the function definition made to the file outside the UI a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/functions -o array_of_functions.json</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions -o array_of_functions.json</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -446,6 +507,9 @@ However any changes to the function definition made to the file outside the UI a
 Exported functions are always set to undeployed state at the time of export, regardless of the state in the cluster at time of export.
 If saved to a file the function definitions can be imputed into the cluster or a different cluster.
 However any changes to the function definition made to the file outside the UI are discouraged.</p>
+</div>
+<div class="paragraph">
+<p>If this API is run as a non-Administrator the return set will be filtered via RBAC to just the "Function Scopes" the user has access too.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -455,7 +519,7 @@ However any changes to the function definition made to the file outside the UI a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/export</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://anyAuthedUser:password@192.168.1.5:8096/api/v1/export</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -466,7 +530,7 @@ However any changes to the function definition made to the file outside the UI a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/export -o array_of_functions.json</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://anyAuthedUser:password@192.168.1.5:8096/api/v1/export -o array_of_functions.json</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -487,6 +551,11 @@ WARNING: Use this API with caution as it is irreversible.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XDELETE http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XDELETE 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
+</div>
 </div></div></td>
 </tr>
 <tr>
@@ -495,6 +564,9 @@ WARNING: Use this API with caution as it is irreversible.</p>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Deletes multiple Functions (<strong>as in all Functions</strong>) from the cluster.
 WARNING: Use this API with caution as it is irreversible.</p>
+</div>
+<div class="paragraph">
+<p>If this API is run as a non-Administrator the deleted set will be filtered via RBAC to just the "Function Scopes" the user has access too.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -504,7 +576,7 @@ WARNING: Use this API with caution as it is irreversible.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XDELETE http://Administrator:password@192.168.1.5:8096/api/v1/functions</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XDELETE http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -523,7 +595,12 @@ However any changes to the function definition made to the file outside the UI a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -535,6 +612,11 @@ However any changes to the function definition made to the file outside the UI a
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings -o [sample_name].json</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings?bucket=[fs_bucket]&amp;scope=[fs_scope]' -o [sample_name].json</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -563,6 +645,11 @@ Note that you must always specify <strong>deployment_status</strong> (deployed/u
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST -d '{"deployment_status":false,"processing_status":false,"worker_count":6}' http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST -d '{"deployment_status":false,"processing_status":false,"worker_count":6}' 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
+</div>
 </div></div></td>
 </tr>
 <tr>
@@ -573,6 +660,11 @@ Note that you must always specify <strong>deployment_status</strong> (deployed/u
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST -d '{"deployment_status":false,"processing_status":false,"app_log_max_files":5,"app_log_max_size":10485760}' http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST -d '{"deployment_status":false,"processing_status":false,"app_log_max_files":5,"app_log_max_size":10485760}' 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -585,6 +677,11 @@ Note that you must always specify <strong>deployment_status</strong> (deployed/u
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST -d '{"deployment_status":true,"processing_status":false,"timer_context_size":2048}' http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST -d '{"deployment_status":true,"processing_status":false,"timer_context_size":2048}' 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
+</div>
 </div></div></td>
 </tr>
 <tr>
@@ -595,6 +692,11 @@ Note that you must always specify <strong>deployment_status</strong> (deployed/u
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST -d '{"deployment_status":true,"processing_status":true,"worker_count":8}' http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST -d '{"deployment_status":true,"processing_status":true,"worker_count":8}' 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -613,7 +715,12 @@ However any changes to the function definition made to the file outside the UI a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/config</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/config</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/config?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -625,6 +732,11 @@ However any changes to the function definition made to the file outside the UI a
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/config -o [sample_name].json</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/config?bucket=[fs_bucket]&amp;scope=[fs_scope]' -o [sample_name].json</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -645,6 +757,11 @@ You can only change these values if a function is in the undeployed state and th
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/config -d '{ "source_bucket": "bulk", "cust01": "orders", "source_collection": "customer01", "metadata_bucket": "rr100", "metadata_scope": "eventing", "metadata_collection": "metadata" }'</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/config?bucket=[fs_bucket]&amp;scope=[fs_scope]' -d '{ "source_bucket": "bulk", "cust01": "orders", "source_collection": "customer01", "metadata_bucket": "rr100", "metadata_scope": "eventing", "metadata_collection": "metadata" }'</code></pre>
+</div>
 </div></div></td>
 </tr>
 <tr>
@@ -655,6 +772,11 @@ You can only change these values if a function is in the undeployed state and th
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/config -d @./[sample_name].json</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/config?bucket=[fs_bucket]&amp;scope=[fs_scope]' -d @./[sample_name].json</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -677,6 +799,11 @@ However any changes to the function definition made to the file outside the UI a
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/appcode</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/appcode?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
+</div>
 </div></div></td>
 </tr>
 <tr>
@@ -687,6 +814,11 @@ However any changes to the function definition made to the file outside the UI a
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/appcode -o [sample_name].json</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/appcode?bucket=[fs_bucket]&amp;scope=[fs_scope]' -o [sample_name].json</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -707,7 +839,12 @@ to avoid potential encoding issues due to string escaping.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST http://Administrator:password@192.168.1.5:8096/api/v1/functions/aa/appcode --data-binary 'function OnUpdate(doc, meta) { log("id",meta.id); }'</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/appcode --data-binary 'function OnUpdate(doc, meta) { log("id",meta.id); }'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/appcode?bucket=[fs_bucket]&amp;scope=[fs_scope]' --data-binary 'function OnUpdate(doc, meta) { log("id",meta.id); }'</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -721,12 +858,22 @@ to avoid potential encoding issues due to string escaping.</p>
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/import --data-binary @./[sample_name].json</code></pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/import?bucket=[fs_bucket]&amp;scope=[fs_scope]' --data-binary @./[sample_name].json</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>or</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/import --upload-file ./[sample_name].json</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/import?bucket=[fs_bucket]&amp;scope=[fs_scope]' --upload-file ./[sample_name].json</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -754,6 +901,9 @@ to avoid potential encoding issues due to string escaping.</p>
 <p>Returns a list (array) of all Eventing Functions showing their corresponding <strong>composite_status</strong>.
 A Function&#8217;s status can have one of the following values - <em>undeployed</em>, <em>deploying</em>, <em>deployed</em>, <em>undeploying</em>, <em>paused</em>, and '<em>pausing</em>.
 Note, there is no value of <em>resuming</em> when resuming a paused Eventing Function the <strong>composite_status</strong> will return <em>deploying</em> until it reaches the <em>deployed</em> state.</p>
+</div>
+<div class="paragraph">
+<p>If this API is run as a non-Administrator the return set will be filtered via RBAC to just the "Function Scopes" the user has access too.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -763,7 +913,7 @@ Note, there is no value of <em>resuming</em> when resuming a paused Eventing Fun
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/status</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://anyAuthedUser:password@192.168.1.5:8096/api/v1/status</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -784,6 +934,11 @@ Note, there is no value of <em>resuming</em> when resuming a paused Eventing Fun
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/status/[sample_name]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/status/[sample_name]?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -826,6 +981,11 @@ Note, there is no value of <em>resuming</em> when resuming a paused Eventing Fun
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/getAppLog?name=[sample_name]</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/getAppLog?name=[sample_name]&amp;bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
+</div>
 </div></div></td>
 </tr>
 <tr>
@@ -837,6 +997,11 @@ Note, there is no value of <em>resuming</em> when resuming a paused Eventing Fun
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/getAppLog?name=[sample_name]&amp;aggregate=true</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/getAppLog?name=[sample_name]&amp;aggregate=true&amp;bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
+</div>
 </div></div></td>
 </tr>
 <tr>
@@ -847,6 +1012,11 @@ Note, there is no value of <em>resuming</em> when resuming a paused Eventing Fun
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/getAppLog?name=[sample_name]&amp;aggregate=true&amp;size=2048</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/getAppLog?name=[sample_name]&amp;aggregate=true&amp;size=2048&amp;bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -874,6 +1044,9 @@ Note, there is no value of <em>resuming</em> when resuming a paused Eventing Fun
 <p>Returns a list (array) of the names of all Eventing Functions in the cluster.
 The returned list can also be filtered by the following: <strong>deployed</strong> status <em>true</em> or <em>false</em> (in this case paused is considered deployed),
 <strong>source_bucket</strong> filter by the bucket with the listen to keyspace, and <strong>function_type</strong> <em>notsbm</em> or <em>sbm</em> (the later if the functions that modifies its own listen to keyspace).</p>
+</div>
+<div class="paragraph">
+<p>If this API is run as a non-Administrator the return set will be filtered via RBAC to just the "Function Scopes" the user has access too.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -883,7 +1056,7 @@ The returned list can also be filtered by the following: <strong>deployed</stron
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/list/functions</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://anyAuthedUser:password@192.168.1.5:8096/api/v1/list/functions</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -893,6 +1066,9 @@ The returned list can also be filtered by the following: <strong>deployed</stron
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Returns a list (array) of the names of all deployed (or paused) Eventing Functions in the cluster.
 Note, if we had specified <em>deployed=false</em> we would get all undeployed functions.</p>
+</div>
+<div class="paragraph">
+<p>If this API is run as a non-Administrator the return set will be filtered via RBAC to just the "Function Scopes" the user has access too.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -902,7 +1078,7 @@ Note, if we had specified <em>deployed=false</em> we would get all undeployed fu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/list/functions/query?deployed=true</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://anyAuthedUser:password@192.168.1.5:8096/api/v1/list/functions/query?deployed=true</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -911,6 +1087,9 @@ Note, if we had specified <em>deployed=false</em> we would get all undeployed fu
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em class="path">/api/v1/list/functions/query?source_bucket=[bucket_name]</em></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Returns a list (array) of the names of Eventing Functions in the cluster that have a source keyspace under a particular bucket.</p>
+</div>
+<div class="paragraph">
+<p>If this API is run as a non-Administrator the return set will be filtered via RBAC to just the "Function Scopes" the user has access too.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -920,7 +1099,7 @@ Note, if we had specified <em>deployed=false</em> we would get all undeployed fu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/list/functions/query?source_bucket=[bucket_name]</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://anyAuthedUser:password@192.168.1.5:8096/api/v1/list/functions/query?source_bucket=[bucket_name]</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -929,6 +1108,9 @@ Note, if we had specified <em>deployed=false</em> we would get all undeployed fu
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em class="path">/api/v1/list/functions/query?function_type=sbm</em></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Returns a list (array) of the names of Eventing Functions in the cluster that modify their own a source keyspace.</p>
+</div>
+<div class="paragraph">
+<p>If this API is run as a non-Administrator the return set will be filtered via RBAC to just the "Function Scopes" the user has access too.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -938,7 +1120,28 @@ Note, if we had specified <em>deployed=false</em> we would get all undeployed fu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/list/functions/query?function_type=sbm</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://anyAuthedUser:password@192.168.1.5:8096/api/v1/list/functions/query?function_type=sbm</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em class="path">/api/v1/list/functions/query?function_type=notsbm</em></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Returns a list (array) of the names of Eventing Functions in the cluster that <strong>do not</strong> modify their own a source keyspace.</p>
+</div>
+<div class="paragraph">
+<p>If this API is run as a non-Administrator the return set will be filtered via RBAC to just the "Function Scopes" the user has access too.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Sample API (status):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://anyAuthedUser:password@192.168.1.5:8096/api/v1/list/functions/query?function_type=notsbm</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -967,6 +1170,9 @@ Note, if we had specified <em>deployed=false</em> we would get all undeployed fu
 The response shows all global Eventing settings.  There are currently just two settings:
 <strong>enable_debugger</strong> (default value of false) and <strong>ram_quota</strong> (default value of 256 MB).
 Both of these settings can also be adjusted via the UI.</p>
+</div>
+<div class="paragraph">
+<p>Any user Administrator or non-Administrator can read the configuration.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -976,7 +1182,7 @@ Both of these settings can also be adjusted via the UI.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/config</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://anyAuthedUser:password@192.168.1.5:8096/api/v1/config</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -987,6 +1193,9 @@ Both of these settings can also be adjusted via the UI.</p>
 <p>Modify global configuration.
 During an edit, settings provided are merged. Unspecified attributes retain their prior values.
 The response indicates whether the Eventing service must be restarted for the new changes to take effect.</p>
+</div>
+<div class="paragraph">
+<p>Only users with Administrator roles can alter the configuration.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1034,6 +1243,9 @@ The response indicates whether the Eventing service must be restarted for the ne
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Retrieve all statistics for the node.
 This will return the full statistics set inclusive of events processing, events remaining, execution, failure, latency, worker PIDs and sequence processed.</p>
+</div>
+<div class="paragraph">
+<p>If this API is run as a non-Administrator the return set will be filtered via RBAC to just the "Function Scopes" the user has access too.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1058,7 +1270,7 @@ Omitting the parameter <code>type=full</code> will exclude <code>dcp_event_backl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/stats</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://anyAuthedUser:password@192.168.1.5:8096/api/v1/stats</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -1069,7 +1281,7 @@ Omitting the parameter <code>type=full</code> will exclude <code>dcp_event_backl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/api/v1/stats?type=full</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://anyAuthedUser:password@192.168.1.5:8096/api/v1/stats?type=full</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -1090,6 +1302,11 @@ This will return the subset of statistics for the node.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/getExecutionStats?name=[function_name]</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/getExecutionStats?name=[function_name]&amp;bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
+</div>
 </div></div></td>
 </tr>
 <tr>
@@ -1109,6 +1326,11 @@ This will return the subset of statistics for the node.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/getLatencyStats?name=[function_name]</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/getLatencyStats?name=[function_name]&amp;bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
+</div>
 </div></div></td>
 </tr>
 <tr>
@@ -1127,6 +1349,11 @@ This will return the subset of statistics for the node.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET http://Administrator:password@192.168.1.5:8096/getFailureStats?name=[function_name]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XGET 'http://anyAuthedUser:password@192.168.1.5:8096/getFailureStats?name=[function_name]&amp;bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -1164,6 +1391,11 @@ A deploy/resume CURL example is provided for reference.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST -d '{"deployment_status":true,"processing_status":true}' http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST -d '{"deployment_status":true,"processing_status":true}' 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
+</div>
 </div></div></td>
 </tr>
 <tr>
@@ -1182,6 +1414,11 @@ An undeploy CURL example is provided for reference.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST -d '{"deployment_status":false,"processing_status":false}' http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST -d '{"deployment_status":false,"processing_status":false}' 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -1202,6 +1439,11 @@ A pause CURL example is provided for reference.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST -d '{"deployment_status":true,"processing_status":false}' http://Administrator:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">curl -XPOST -d '{"deployment_status":true,"processing_status":false}' 'http://anyAuthedUser:password@192.168.1.5:8096/api/v1/functions/[sample_name]/settings?bucket=[fs_bucket]&amp;scope=[fs_scope]'</code></pre>
 </div>
 </div></div></td>
 </tr>

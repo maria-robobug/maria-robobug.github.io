@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>XDCR Advanced Settings | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/xdcr-reference/xdcr-advanced-settings.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="XDCR performance can be fine-tuned.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/xdcr-reference/pages/xdcr-advanced-settings.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/xdcr-reference/pages/xdcr-advanced-settings.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -256,16 +257,21 @@ Note that the computation and persistence of checkpoint documents use considerab
 <td class="tableblock halign-left valign-top"><p class="tableblock">XDCR Batch Count</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the document batching count, in the range of 500 to 10000.
 The default is 500.</p>
-<p class="tableblock">In general, increasing this value by 2 or 3 times improves XDCR transmission-rates, since larger batches of data are sent in the specified interval. Overall replication performance is correspondingly improved, provided that disk-persistence can be adequately managed on the target cluster.
-(Note that the volume or reads and writes may be significantly greater on clusters that function both as sources and targets for bidirectional replication.)</p></td>
+<p class="tableblock">As with XDCR Batch <em>Size</em> (explained immediately below), increasing this value by 2 or 3 times typically improves XDCR transmission-rates, since larger batches of data are sent in the specified interval.
+Overall replication performance is correspondingly improved, provided that disk-persistence can be adequately managed on the target cluster. (Note that the volume or reads and writes may be significantly greater on clusters that function both as sources and targets for bidirectional replication.)</p>
+<p class="tableblock">Depending on the size of the documents, a batch is complete when either the count or size is reached first.
+For example, given the default settings of 500 and 2048 for count and size,
+if 500 documents of 1 Kb each are received, a batch will be completed and sent, even though the batch itself has only a size of 500 Kb, which is less than the default setting of 2048.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">XDCR Batch Size (kilobytes)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies the document batching size, in the range of 10 to 10000 (kilobytes).
 The default is 2048.</p>
-<p class="tableblock">In general, increasing this value by 2 or 3 times improves XDCR transmission-rates, since larger batches of data are sent in the specified interval.
-Overall replication performance is correspondingly improved, provided that disk-persistence can be adequately managed on the target cluster.
-(Note that the volume or reads and writes may be significantly greater on clusters that function both as sources and targets for bidirectional replication.)</p></td>
+<p class="tableblock">As with XDCR Batch <em>Count</em> (explained immediately above), increasing this value by 2 or 3 times typically improves XDCR transmission-rates, since larger batches of data are sent in the specified interval.
+Overall replication performance is correspondingly improved, provided that disk-persistence can be adequately managed on the target cluster.</p>
+<p class="tableblock">Depending on the size of the documents, a batch is complete when either the count or size is reached first.
+For example, given the default settings of 500 and 2048 for count and size,
+if 500 documents of 1 Kb each are received, a batch will be completed and sent, even though the batch itself has only a size of 500 Kb, which is less than the default setting of 2048.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">XDCR Failure Retry Interval</p></td>

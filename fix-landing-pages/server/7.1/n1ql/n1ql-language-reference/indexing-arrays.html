@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Array Indexing | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/n1ql/n1ql-language-reference/indexing-arrays.html">
 <link rel="stylesheet" href="../../../../_/css/site.css">
 <script src="../../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="Array Indexing adds the capability to create global indexes on array elements and optimizes the execution of queries involving array elements.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/n1ql/pages/n1ql-language-reference/indexing-arrays.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/pages/n1ql-language-reference/indexing-arrays.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -195,72 +196,23 @@ You can now create an index of array elements ranging from plain scalar values t
 <div class="sect1">
 <h2 id="syntax"><a class="anchor" href="#syntax"></a>Syntax</h2>
 <div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre>create-index ::= CREATE INDEX <a href="#index-name">index-name</a> ON <a href="#keyspace-ref">keyspace-ref</a> '(' <a href="#index-key">index-key</a> [ <a href="#index-order">index-order</a> ] [ ','
-                 <a href="#index-key">index-key</a> [ <a href="#index-order">index-order</a> ] ]* ')' [ <a href="#where-clause">where-clause</a> ] [ <a href="#index-using">index-using</a> ] [ <a href="#index-with">index-with</a> ]</pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../_images/n1ql-language-reference/create-index-array.png" alt="'CREATE' 'INDEX' index-name 'ON' keyspace-ref '(' index-key index-order? ( ',' index-key index-order? )* ')' where-clause? index-using? index-with?">
-</div>
-</div>
-<div id="index-name" class="dlist">
-<dl>
-<dt class="hdlist1">index-name</dt>
-<dd>
-<p>Specify a unique name to identify the index.</p>
-</dd>
-</dl>
-</div>
-<div class="sect2">
-<h3 id="keyspace-ref"><a class="anchor" href="#keyspace-ref"></a>Keyspace Reference</h3>
-<div class="listingblock">
-<div class="content">
-<pre>keyspace-ref ::= <a href="#keyspace-path">keyspace-path</a> | <a href="#keyspace-partial">keyspace-partial</a></pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../_images/n1ql-language-reference/keyspace-ref.png" alt="keyspace-path | keyspace-partial">
-</div>
-</div>
-<div id="keyspace-path" class="listingblock">
-<div class="content">
-<pre>keyspace-path ::= [ <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">namespace</a> ':' ] <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">bucket</a> [ '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">scope</a> '.' <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a> ]</pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../_images/n1ql-language-reference/keyspace-path.png" alt="( namespace ':' )? bucket ( '.' scope '.' collection )?">
-</div>
-</div>
-<div id="keyspace-partial" class="listingblock">
-<div class="content">
-<pre>keyspace-partial ::= <a href="../n1ql-intro/sysinfo.html#logical-hierarchy" class="xref page">collection</a></pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../_images/n1ql-language-reference/keyspace-partial.png" alt="collection">
-</div>
+<div class="paragraph">
+<p>To create an array index, the overall syntax is the same as for a global secondary index.
+The distinguishing feature is the use of an array expression as an index key.</p>
 </div>
 <div class="paragraph">
-<p>The simple name or fully-qualified name of the keyspace on which to create the index.
-Refer to the <a href="createindex.html#keyspace-ref" class="xref page">CREATE INDEX</a> statement for details of the syntax.</p>
-</div>
+<p>Refer to the <a href="createindex.html" class="xref page">CREATE INDEX</a> statement for details of the syntax.</p>
 </div>
 <div class="sect2">
 <h3 id="index-key"><a class="anchor" href="#index-key"></a>Index Key</h3>
 <div class="listingblock">
 <div class="content">
-<pre>index-key ::= <a href="#index-key-args">expr</a> | <a href="#array-expr">array-expr</a></pre>
+<pre class="highlightjs highlight"><code class="language-ebnf hljs" data-lang="ebnf" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/partials/grammar/ddl.ebnf#L71">index-key ::= expr | array-expr</code></pre>
 </div>
 </div>
-<div class="imageblock">
+<div class="imageblock text-left">
 <div class="content">
-<img src="../_images/n1ql-language-reference/index-key.png" alt="expr | array-expr">
+<img src="../_images/n1ql-language-reference/index-key.png" alt="index key">
 </div>
 </div>
 <div class="paragraph">
@@ -274,6 +226,10 @@ This constitutes an index-key for the index.</p>
 <p>A <a href="index.html" class="xref page">N1QL expression</a> over any fields in the document.
 This cannot use constant expressions, aggregate functions, or sub-queries.</p>
 </dd>
+<dt class="hdlist1">array-expr</dt>
+<dd>
+<p>Refer to <a href="#array-expr">Array Expression</a> below.</p>
+</dd>
 </dl>
 </div>
 </div>
@@ -281,13 +237,16 @@ This cannot use constant expressions, aggregate functions, or sub-queries.</p>
 <h3 id="array-expr"><a class="anchor" href="#array-expr"></a>Array Expression</h3>
 <div class="listingblock">
 <div class="content">
-<pre>array_expr ::= <a href="#full-array-expr">full-array-expr</a> | <a href="#simple-array-expr">simple-array-expr</a></pre>
+<pre class="highlightjs highlight"><code class="language-ebnf hljs" data-lang="ebnf" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/partials/grammar/ddl.ebnf#L79">array-expr ::= full-array-expr | simple-array-expr</code></pre>
 </div>
 </div>
-<div class="imageblock">
+<div class="imageblock text-left">
 <div class="content">
-<img src="../_images/n1ql-language-reference/array-expr.png" alt="full-array-expr | simple-array-expr">
+<img src="../_images/n1ql-language-reference/array-expr.png" alt="array expr">
 </div>
+</div>
+<div class="paragraph">
+<p>The array expression can be either a <a href="#full-array-expr">full array expression</a>, which includes an <code>ARRAY</code> operator, or a <a href="#simple-array-expr">simple array expression</a>, which does not.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -337,13 +296,14 @@ In Couchbase Server 6.0.1 and later, the UNNEST scan can generate index spans on
 <h4 id="full-array-expr"><a class="anchor" href="#full-array-expr"></a>Full Array Expression</h4>
 <div class="listingblock">
 <div class="content">
-<pre>full-array-expr ::= ( ALL | DISTINCT ) ARRAY <a href="#full-array-expr-args">var-expr</a> FOR <a href="#full-array-expr-args">var</a> ( IN | WITHIN ) <a href="#full-array-expr-args">expr</a> [ ','
-                    <a href="#full-array-expr-args">var</a> ( IN | WITHIN ) <a href="#full-array-expr-args">expr</a> ]* [ WHEN <a href="#full-array-expr-args">cond</a> ] END</pre>
+<pre class="highlightjs highlight"><code class="language-ebnf hljs" data-lang="ebnf" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/partials/grammar/ddl.ebnf#L83-L85">full-array-expr ::= ( 'ALL' | 'DISTINCT' ) 'ARRAY' var-expr
+                    'FOR' var ( 'IN' | 'WITHIN' ) expr
+                    ( ',' var ( 'IN' | 'WITHIN' ) expr )* ( 'WHEN' cond )? 'END'</code></pre>
 </div>
 </div>
-<div class="imageblock">
+<div class="imageblock text-left">
 <div class="content">
-<img src="../_images/n1ql-language-reference/full-array-expr.png" alt="( 'ALL' | 'DISTINCT' ) 'ARRAY' var-expr 'FOR' var ( 'IN' | 'WITHIN' ) expr ( ',' var ( 'IN' | 'WITHIN' ) expr )* ( 'WHEN' cond )? 'END'">
+<img src="../_images/n1ql-language-reference/full-array-expr.png" alt="full array expr">
 </div>
 </div>
 <div class="paragraph">
@@ -389,12 +349,12 @@ See <a href="#examples">Examples</a> below.
 <h4 id="simple-array-expr"><a class="anchor" href="#simple-array-expr"></a>Simple Array Expression</h4>
 <div class="listingblock">
 <div class="content">
-<pre>simple-array-expr ::= ( ALL | DISTINCT ) <a href="#simple-array-expr-args">expr</a></pre>
+<pre class="highlightjs highlight"><code class="language-ebnf hljs" data-lang="ebnf" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/n1ql/partials/grammar/ddl.ebnf#L89">simple-array-expr ::= ( 'ALL' | 'DISTINCT' ) expr</code></pre>
 </div>
 </div>
-<div class="imageblock">
+<div class="imageblock text-left">
 <div class="content">
-<img src="../_images/n1ql-language-reference/simple-array-expr.png" alt="( 'ALL' | 'DISTINCT' ) expr">
+<img src="../_images/n1ql-language-reference/simple-array-expr.png" alt="simple array expr">
 </div>
 </div>
 <div class="paragraph">
@@ -409,102 +369,6 @@ In this case, all elements of the array are indexed.</p>
 </dd>
 </dl>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="index-order"><a class="anchor" href="#index-order"></a>Index Order</h3>
-<div class="listingblock">
-<div class="content">
-<pre>index-order ::= ASC | DESC</pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../_images/n1ql-language-reference/index-order.png" alt="'ASC' | 'DESC'">
-</div>
-</div>
-<div class="paragraph">
-<p>Specifies the sort order of the index key.</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>ASC</code></dt>
-<dd>
-<p>The index key is sorted in ascending order.</p>
-</dd>
-<dt class="hdlist1"><code>DESC</code></dt>
-<dd>
-<p>The index key is sorted in descending order.</p>
-</dd>
-</dl>
-</div>
-<div class="paragraph">
-<p>This clause is optional; if omitted, the default is <code>ASC</code>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="where-clause"><a class="anchor" href="#where-clause"></a>WHERE Clause</h3>
-<div class="listingblock">
-<div class="content">
-<pre>where-clause ::= WHERE <a href="#where-clause-args">cond</a></pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../_images/n1ql-language-reference/where-clause.png" alt="'WHERE' cond">
-</div>
-</div>
-<div id="where-clause-args" class="dlist">
-<dl>
-<dt class="hdlist1">cond</dt>
-<dd>
-<p>Specifies WHERE clause predicates to qualify the subset of documents to include in the index.</p>
-</dd>
-</dl>
-</div>
-</div>
-<div class="sect2">
-<h3 id="index-using"><a class="anchor" href="#index-using"></a>USING Clause</h3>
-<div class="listingblock">
-<div class="content">
-<pre>index-using ::= USING GSI</pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../_images/n1ql-language-reference/index-using.png" alt="'USING' 'GSI'">
-</div>
-</div>
-<div class="paragraph">
-<p>The index type for an array index must be Global Secondary Index (GSI).
-The <code>USING GSI</code> keywords are optional and may be omitted.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="index-with"><a class="anchor" href="#index-with"></a>WITH Clause</h3>
-<div class="listingblock">
-<div class="content">
-<pre>index-with ::= WITH <a href="#index-with-args">expr</a></pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../_images/n1ql-language-reference/index-with.png" alt="'WITH' expr">
-</div>
-</div>
-<div class="paragraph">
-<p>Use the WITH clause to specify additional options.</p>
-</div>
-<div id="index-with-args" class="dlist">
-<dl>
-<dt class="hdlist1">expr</dt>
-<dd>
-<p>An object specifying additional options for the query.</p>
-</dd>
-</dl>
-</div>
-<div class="paragraph">
-<p>See the <a href="createindex.html" class="xref page">CREATE INDEX</a> statement for more details on the syntax.</p>
 </div>
 </div>
 </div>
@@ -524,7 +388,6 @@ The <code>USING GSI</code> keywords are optional and may be omitted.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">DISTINCT ARRAY f(x) FOR x IN expr1 END; <i class="conum" data-value="1"></i><b>(1)</b>
-
 DISTINCT ARRAY f(x) FOR x WITHIN expr1 END; <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
 </div>
 </div>
@@ -534,7 +397,6 @@ DISTINCT ARRAY f(x) FOR x WITHIN expr1 END; <i class="conum" data-value="2"></i>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-n1ql hljs" data-lang="n1ql">ANY x IN expr2 SATISFIES g(x) END; <i class="conum" data-value="3"></i><b>(3)</b>
-
 ANY x WITHIN expr2 SATISFIES g(x) END <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
 </div>
 </div>
@@ -665,7 +527,7 @@ AND (v.day=1) END; <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
   sourceairport, destinationairport, stops);</code></pre>
 </div>
 </div>
-<div id="Q3" class="listingblock">
+<div id="Q3A" class="listingblock">
 <div class="title">Query A: Find the weekday Delta flights FROM SFO to ATL</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">SELECT META(r).id
@@ -673,11 +535,13 @@ AND (v.day=1) END; <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
   WHERE r.sourceairport = "SFO" <i class="conum" data-value="1"></i><b>(1)</b>
     AND r.destinationairport = "ATL" <i class="conum" data-value="2"></i><b>(2)</b>
     AND ANY s IN r.schedule SATISFIES s.day BETWEEN 1 AND 5 <i class="conum" data-value="3"></i><b>(3)</b>
-    AND s.flight LIKE "DL%" END; <i class="conum" data-value="4"></i><b>(4)</b>
-
-Partial Explain :
-
-"spans": [
+    AND s.flight LIKE "DL%" END; <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Partial Explain Plan</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JSON hljs" data-lang="JSON">"spans": [
              {
                  "exact": true,
                  "range": [
@@ -702,7 +566,7 @@ Partial Explain :
                      {
                          "high": "\"ATL\"",
                          "inclusion": 3,
-                         "index_key": "`destinationairport`", == <i class="conum" data-value="2"></i><b>(2)</b>
+                         "index_key": "`destinationairport`", <i class="conum" data-value="2"></i><b>(2)</b>
                          "low": "\"ATL\""
                      }
 
@@ -712,17 +576,17 @@ Partial Explain :
 </div>
 </div>
 <div class="paragraph">
-<p>In this example, the query is able to use <code>ixf_sched</code> index, pass all the predicate information to index scan, and cover the query.</p>
+<p>In this example, <a href="#Q3A">Query A</a> is able to use the <code>ixf_sched</code> index defined by the <a href="#C3">Index</a>, pass all the predicate information to index scan, and cover the query.</p>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td><code>r.sourceairport = "SFO"</code> able to match and pass to IndexScan.</td>
+<td><code>r.sourceairport = "SFO"</code> is able to match and pass to IndexScan.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td><code>r.destinationairport = "ATL"</code> able to match and pass to IndexScan.</td>
+<td><code>r.destinationairport = "ATL"</code> is able to match and pass to IndexScan.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -734,8 +598,8 @@ Partial Explain :
 </tr>
 </table>
 </div>
-<div id="Q3" class="listingblock">
-<div class="title">Query B: Find the weekday delta flights FROM SFO TO ATL</div>
+<div id="Q3B" class="listingblock">
+<div class="title">Query B: Find the weekday Delta flights from SFO to ATL</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">SELECT  s.day, s.flight,r.sourceairport, r.destinationairport, r.stops
 FROM `travel-sample`.inventory.route AS r
@@ -748,8 +612,8 @@ LIMIT 3;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This query performs a covering UNNEST IndexScan, by applying all the predicates, using <code>ixf_sched</code>.
- Even though the ORDER BY key uses an array index key, it can use index order, and pass LIMIT and OFFSET to the indexer.</p>
+<p>This query performs a covering UNNEST IndexScan, by applying all the predicates, using the <code>ixf_sched</code> index defined by the <a href="#C3">Index</a>.
+Even though the ORDER BY key uses an array index key, it can use index order, and pass LIMIT and OFFSET to the indexer.</p>
 </div>
 </div>
 </div>
@@ -792,7 +656,7 @@ SET schedule[0] = {"day" : 7, "special_flights" :
 WHERE destinationairport = "CDG" AND sourceairport = "TLV";</code></pre>
 </div>
 </div>
-<div id="C5" class="listingblock">
+<div id="C5i" class="listingblock">
 <div class="title">Index I: Create a partial index on a nested array <code class="var">special_flights</code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">CREATE INDEX idx_nested ON `travel-sample`.inventory.route
@@ -810,7 +674,7 @@ WHERE destinationairport = "CDG" AND sourceairport = "TLV";</code></pre>
 </tr>
 </table>
 </div>
-<div id="Q5" class="listingblock">
+<div id="Q5A" class="listingblock">
 <div class="title">Query A: Use nested ANY operator to use the index</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">SELECT count(*) FROM `travel-sample`.inventory.route
@@ -820,10 +684,10 @@ END;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This query uses <code>idx_nested</code>.
-This query returns 3 results, as there are 3 routes with special flights.</p>
+<p>This query uses the index <code>idx_nested</code> defined by <a href="#C5i">Index I</a>.
+It returns 3 results, as there are 3 routes with special flights.</p>
 </div>
-<div id="Q5" class="listingblock">
+<div id="Q5B" class="listingblock">
 <div class="title">Query B: Use UNNEST operators to use the index</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">SELECT count(*) FROM `travel-sample`.inventory.route
@@ -833,10 +697,10 @@ WHERE y.flight IS NOT NULL;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This query uses <code>idx_nested</code>.
+<p>This query uses the index <code>idx_nested</code> defined by <a href="#C5i">Index I</a>.
 It returns 6 results, as there are 3 routes with 2 special flights each.</p>
 </div>
-<div id="C5" class="listingblock">
+<div id="C5ii" class="listingblock">
 <div class="title">Index II: Create a partial index on a nested array <code class="var">special_flights</code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">CREATE INDEX ixf_sched_nested ON `travel-sample`.inventory.route
@@ -846,7 +710,7 @@ It returns 6 results, as there are 3 routes with 2 special flights each.</p>
     FOR s IN schedule END);</code></pre>
 </div>
 </div>
-<div id="Q5" class="listingblock">
+<div id="Q5C" class="listingblock">
 <div class="title">Query C: Use nested ANY operator to use the index</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">SELECT RAW count(1)
@@ -859,9 +723,9 @@ WHERE ANY s IN schedule
 </div>
 </div>
 <div class="paragraph">
-<p>This query performs a covering UNNEST IndexScan, by applying the predicates on both levels of the ARRAY, using <code>ixf_sched_nested</code>.</p>
+<p>This query performs a covering UNNEST IndexScan, by applying the predicates on both levels of the ARRAY, using the index <code>ixf_sched_nested</code> defined by <a href="#C5ii">Index II</a>.</p>
 </div>
-<div id="Q5" class="listingblock">
+<div id="Q5D" class="listingblock">
 <div class="title">Query D: Use UNNEST operators to use the index</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">SELECT RAW count(1)
@@ -872,7 +736,7 @@ WHERE sf.flight IS NOT NULL AND s.day = 7;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This query performs a covering UNNEST IndexScan, by applying the predicates on both levels of the ARRAY, using <code>ixf_sched_nested</code>; and uses index aggregation.</p>
+<p>This query performs a covering UNNEST IndexScan, by applying the predicates on both levels of the ARRAY, using the index <code>ixf_sched_nested</code> defined by <a href="#C5ii">Index II</a>; and uses index aggregation.</p>
 </div>
 </div>
 </div>
@@ -905,7 +769,7 @@ WHERE ANY v in schedule SATISFIES [v.flight, v.day] = ["US681", 2] END;</code></
 ON `travel-sample`.inventory.route (ALL schedule);</code></pre>
 </div>
 </div>
-<div id="Q6" class="listingblock">
+<div id="Q7A" class="listingblock">
 <div class="title">Query A: Find details of all route documents matching a specific schedule</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">SELECT * FROM `travel-sample`.inventory.route
@@ -921,7 +785,7 @@ SATISFIES v = {"day":2, "flight": "US681", "utc": "19:20:00"} END; <i class="con
 </tr>
 </table>
 </div>
-<div id="Q6" class="listingblock">
+<div id="Q7B" class="listingblock">
 <div class="title">Query B: Find details of all route documents matching a specific schedule</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">SELECT * FROM `travel-sample`.inventory.route t
@@ -930,10 +794,10 @@ WHERE sch = {"day":2, "flight": "US681", "utc": "19:20:00"};</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This is a variant of <a href="#Q6">Query</a> using UNNEST in the SELECT statement.</p>
+<p>This is a variant of <a href="#Q7A">Query A</a> using UNNEST in the SELECT statement.</p>
 </div>
-<div id="Q7" class="listingblock">
-<div class="title">Query C: Alternative with FLATTEN_KEYS of index <code>ixf_sched</code></div>
+<div id="Q7C" class="listingblock">
+<div class="title">Query C: Alternative using an index with FLATTEN_KEYS</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">SELECT META(r).id
 FROM `travel-sample`.inventory.route AS r
@@ -941,7 +805,7 @@ WHERE ANY v IN r.schedule SATISFIES v.day = 2 AND v.flight = "US681" END;</code>
 </div>
 </div>
 <div class="paragraph">
-<p>This query performs a covering IndexScan, by applying all the predicates, using <code>ixf_sched</code>.
+<p>This query performs a covering IndexScan, by applying all the predicates, using <code>ixf_sched</code> defined by the <a href="#C3">Index</a> in <a href="#example-3">Example 3</a>.
 The query-syntax is intuitive, since the multiple fields within the array have not required complex indexing.</p>
 </div>
 </div>
@@ -964,7 +828,7 @@ For instance, in <a href="#example-1">Example 1</a>, the <a href="#C1">Index</a>
 <div id="example-8" class="exampleblock">
 <div class="title">Example 8. Covering Array Index</div>
 <div class="content">
-<div id="C8" class="listingblock">
+<div id="C8i" class="listingblock">
 <div class="title">Index I: Creating a Covering Array Index</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">CREATE INDEX idx_sched_cover ON `travel-sample`.inventory.route
@@ -978,14 +842,14 @@ In the SELECT or DML WHERE clause, Covering Array Indexes can be used by the fol
 <div class="ulist">
 <ul>
 <li>
-<p>ANY: As shown in <a href="#Q7">Query C</a> below.</p>
+<p>ANY: As shown in <a href="#Q8A">Query A</a> below.</p>
 </li>
 <li>
-<p>ANY AND EVERY: As shown in <a href="#Q7A">[Q7A]</a> (a variant of <a href="#Q7">Query C</a>) below.</p>
+<p>ANY AND EVERY: As shown in <a href="#Q8B">Query B</a> (a variant of <a href="#Q8A">Query A</a>) below.</p>
 </li>
 </ul>
 </div>
-<div id="Q8" class="listingblock">
+<div id="Q8A" class="listingblock">
 <div class="title">Query A: Covering Array Index using the ANY clause</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">EXPLAIN SELECT meta().id FROM `travel-sample`.inventory.route
@@ -997,7 +861,7 @@ WHERE ANY v IN schedule SATISFIES v.flight LIKE 'UA%' END;</code></pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>In this example, <a href="#Q7">Query C</a> needs <a href="#C7">Index</a> to cover it because the query predicate refers to the array <code>schedule</code> in the ANY operator.</td>
+<td>In this example, <a href="#Q8A">Query A</a> needs <a href="#C8i">Index I</a> to cover it because the query predicate refers to the array <code>schedule</code> in the ANY operator.</td>
 </tr>
 </table>
 </div>
@@ -1025,7 +889,7 @@ WHERE ANY v IN schedule SATISFIES v.flight LIKE 'UA%' END;</code></pre>
               "cover (any `v` in (`route`.`schedule`) satisfies ((`v`.`flight`) like \"UA%\") end)": true
             },
             "index": "idx_sched_cover",
-      ...
+          // ...
           }
         }
       ]
@@ -1034,7 +898,7 @@ WHERE ANY v IN schedule SATISFIES v.flight LIKE 'UA%' END;</code></pre>
 ]</code></pre>
 </div>
 </div>
-<div id="Q8" class="listingblock">
+<div id="Q8B" class="listingblock">
 <div class="title">Query B: Covering Array Index using the ANY AND EVERY clause</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">EXPLAIN SELECT meta().id FROM `travel-sample`.inventory.route
@@ -1062,7 +926,7 @@ WHERE ANY AND EVERY v IN schedule SATISFIES v.flight LIKE 'UA%' END;</code></pre
             ],
             "filter": "any and every `v` in cover ((`route`.`schedule`)) satisfies ((`v`.`flight`) like \"UA%\") end",
             "index": "idx_sched_cover",
-      ...
+          // ...
           }
         }
       ]
@@ -1071,7 +935,7 @@ WHERE ANY AND EVERY v IN schedule SATISFIES v.flight LIKE 'UA%' END;</code></pre
 ]</code></pre>
 </div>
 </div>
-<div id="Q8" class="listingblock">
+<div id="Q8C" class="listingblock">
 <div class="title">Query C: Covering Array Index using the UNNEST clause and aliasing</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">EXPLAIN SELECT meta(t).id FROM `travel-sample`.inventory.route t
@@ -1101,7 +965,7 @@ WHERE v.flight LIKE 'UA%';</code></pre>
             ],
             "filter": "is_array(cover ((`t`.`schedule`)))",
             "index": "idx_sched_cover",
-      ...
+          // ...
           }
         }
       ]
@@ -1118,27 +982,27 @@ WHERE v.flight LIKE 'UA%';</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>In this example, <a href="#Q7">Query C</a> has the following limitation: the collection operator EVERY cannot use array indexes or covering array indexes because the EVERY operator needs to apply the SATISFIES predicate to all elements in the array, including the case where an array has zero elements.</p>
+<p>In this example, <a href="#Q8A">Query A</a> has the following limitation: the collection operator EVERY cannot use array indexes or covering array indexes because the EVERY operator needs to apply the SATISFIES predicate to all elements in the array, including the case where an array has zero elements.</p>
 </div>
 <div class="paragraph">
 <p>As items cannot be indexed, it is not possible to index MISSING items, so the EVERY operator is evaluated in the N1QL engine and cannot leverage the array index scan.</p>
 </div>
 <div class="paragraph">
-<p>For example, <a href="#Q7C">[Q7C]</a> below uses the primary index <code>def_inventory_route_primary</code> ignoring the <a href="hints.html#use-index-clause" class="xref page">USE INDEX hint</a> to use the array indexes.
-(Note that in this example, <a href="#C7">Index</a> defines a DISTINCT array index while <a href="#C7C">Index II</a> defines an ALL array index, and both are ignored).</p>
+<p>For example, <a href="#Q8D">Query D</a> below uses the primary index <code>def_inventory_route_primary</code> ignoring the <a href="hints.html#use-index-clause" class="xref page">USE INDEX</a> hint to use the array indexes.
+(Note that in this example, <a href="#C8i">Index I</a> defines a DISTINCT array index while <a href="#C8ii">Index II</a> defines an ALL array index, and both are ignored).</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div id="C7C" class="listingblock">
+<div id="C8ii" class="listingblock">
 <div class="title">Index II: Non-array index with an ALL array index</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">CREATE INDEX idx_sched_cover_all ON `travel-sample`.inventory.route
     (ALL ARRAY v.flight FOR v IN schedule END, schedule);</code></pre>
 </div>
 </div>
-<div id="Q8" class="listingblock">
+<div id="Q8D" class="listingblock">
 <div class="title">Query D: Non-array index with an ALL array index</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">EXPLAIN SELECT meta().id FROM `travel-sample`.inventory.route
@@ -1158,7 +1022,7 @@ WHERE EVERY v IN schedule SATISFIES v.flight LIKE 'UA%' END;</code></pre>
           "#operator": "PrimaryScan3",
           "bucket": "travel-sample",
           "index": "def_inventory_route_primary",
-          ...
+        // ...
         }
       ]
     }
@@ -1225,7 +1089,7 @@ WHERE ANY v IN schedule SATISFIES v.flight LIKE 'UA%' END;</code></pre>
               "cover (any `v` in (`route`.`schedule`) satisfies ((`v`.`flight`) like \"UA%\") end)": true
             },
             "index": "idx_sched_cover_simple",
-            ...
+          // ...
           }
         }
       ]
@@ -1244,7 +1108,7 @@ WHERE ANY v IN schedule SATISFIES v.flight LIKE 'UA%' END;</code></pre>
 Note that the array cannot be reconstructed if on DISTINCT elements of the array are indexed.</p>
 </div>
 <div class="paragraph">
-<p>In this example, <a href="#Q8A">Query A</a> can be covered with the ALL index <code class="var">idx_sched_cover_simple_all</code> defined by the <a href="#C8A">[C8A]</a>, but <a href="#Q8B">[Q8B]</a> is not covered when using the DISTINCT index <code class="var">idx_sched_cover_simple</code> defined by the <a href="#C8">Index I</a> in <a href="#example-8">Example 8</a>.</p>
+<p>In this example, <a href="#Q10A">Query A</a> can be covered with the ALL index <code class="var">idx_sched_cover_simple_all</code> defined by the <a href="#C10">Index</a>, but <a href="#Q10B">Query B</a> is not covered when using the DISTINCT index <code class="var">idx_sched_cover_simple</code> defined by the <a href="#C9">Index</a> in <a href="#example-9">Example 9</a>.</p>
 </div>
 <div id="C10" class="listingblock">
 <div class="title">Index: UNNEST covered with the ALL index</div>
@@ -1253,7 +1117,7 @@ Note that the array cannot be reconstructed if on DISTINCT elements of the array
     (ALL ARRAY v.flight FOR v IN schedule END);</code></pre>
 </div>
 </div>
-<div id="Q8A" class="listingblock">
+<div id="Q10A" class="listingblock">
 <div class="title">Query A: UNNEST covered with the ALL index</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">EXPLAIN SELECT meta(t).id FROM `travel-sample`.inventory.route t
@@ -1303,14 +1167,14 @@ WHERE v.flight LIKE 'UA%';</code></pre>
           ],
           "using": "gsi"
         },
-...
+      // ...
       ]
     }
   }
 ]</code></pre>
 </div>
 </div>
-<div id="Q11" class="listingblock">
+<div id="Q10B" class="listingblock">
 <div class="title">Query B: UNNEST not covered when using the DISTINCT index</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-N1QL hljs" data-lang="N1QL">EXPLAIN SELECT meta(t).id FROM `travel-sample`.inventory.route t
@@ -1355,7 +1219,7 @@ WHERE v.flight LIKE 'UA%';</code></pre>
             ],
             "using": "gsi"
           }
-...
+        // ...
         }
       ]
     }

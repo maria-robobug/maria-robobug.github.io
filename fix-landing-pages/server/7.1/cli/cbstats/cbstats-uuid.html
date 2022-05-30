@@ -5,9 +5,10 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>uuid | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/cli/cbstats/cbstats-uuid.html">
 <link rel="stylesheet" href="../../../../_/css/site.css">
 <script src="../../../../_/js/vendor/jquery.js"></script>
-<meta name="description" content="Provides the UUID for a server node.">
+<meta name="description" content="Provides the UUID for a bucket.">
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
 
 
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/cli/pages/cbstats/cbstats-uuid.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/cli/pages/cbstats/cbstats-uuid.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -183,7 +184,7 @@
 <div class="sectionbody">
 <div class="quoteblock abstract">
 <blockquote>
-Provides the UUID for a server node.
+Provides the UUID for a bucket.
 </blockquote>
 </div>
 </div>
@@ -205,7 +206,7 @@ Provides the UUID for a server node.
 <h2 id="description"><a class="anchor" href="#description"></a>Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This command provides the UUIDs for a server node.</p>
+<p>Provides the UUID for a bucket.</p>
 </div>
 </div>
 </div>
@@ -214,17 +215,22 @@ Provides the UUID for a server node.
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 60%;">
-<col style="width: 20%;">
+<col style="width: 25%;">
+<col style="width: 75%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Option</th>
 <th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top"><code>-b</code></th>
 </tr>
 </thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>-b &lt;bucket-name&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This flag and value are required: if they are omitted, an error is returned.
+The <code>bucket-name</code> must be the name of a bucket currently defined on the cluster of which the specified <code>host</code> is a member.</p></td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -236,7 +242,7 @@ Provides the UUID for a server node.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>cbstats 10.5.2.54:11210 uuid</pre>
+<pre>/opt/couchbase/bin/cbstats localhost:11210 uuid -b travel-sample</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -244,7 +250,7 @@ Provides the UUID for a server node.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>uuid: 8a741dd4e271ff88c0b609dd43497d74</pre>
+<pre> uuid: 027ea0ff4684d631c491ecfbb812ac6a</pre>
 </div>
 </div>
 </div>

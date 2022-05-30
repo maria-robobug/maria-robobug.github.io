@@ -5,6 +5,7 @@
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Cancel or Overwrite a Timer | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/server/7.1/eventing/eventing-examples-cancel-overwrite-timer.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="Demonstrate the functionality for canceling or overwriting an Eventing Timer.">
@@ -105,7 +106,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="https://github.com/maria-robobug/docs-server/edit/release/7.1/modules/eventing/pages/eventing-examples-cancel-overwrite-timer.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-server//modules/eventing/pages/eventing-examples-cancel-overwrite-timer.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -214,6 +215,9 @@ Create the buckets with a minimum size of 100MB.
 For information on buckets, see <a href="../manage/manage-buckets/create-bucket.html" class="xref page">Create a Bucket</a>.
 Within the buckets we need three (3) keyspaces <strong>'bulk.data.source'</strong>, <strong>'bulk.data.target'</strong>, and <strong>'rr100.eventing.metadata'</strong>
 (we loosely follow this <a href="eventing-buckets-to-collections.html#single-tenancy" class="xref page">organization</a>).</p>
+</div>
+<div class="paragraph">
+<p>For the Function Scope or RBAC grouping, we will use the <strong>'bulk.data'</strong>, assuming you have the role of either "Full Admin" or "Eventing Full Admin". For standard or non-privileged users refer to <a href="eventing-rbac.html" class="xref page">Eventing Role-Based Access Control</a>.</p>
 </div>
 <div class="paragraph">
 <p><em>If you run a version of Couchbase prior to 7.0 you can just create the buckets <strong>'source'</strong>, <strong>'target'</strong>, and <strong>'metadata'</strong> and run this example.  Furthermore if your cluster was subsequently upgraded from say 6.6.2 to 7.0 your data would be moved to <strong>'source._default._default'</strong>, <strong>'target._default._default'</strong>, and <strong>'metadata._default._default'</strong> and your Eventing Function would be seamlessly upgraded to use the new keyspaces and continue to run correctly.</em></p>
@@ -343,6 +347,9 @@ The <strong>ADD FUNCTION</strong> dialog appears.</p>
 <p>In the <strong>ADD FUNCTION</strong> dialog, for individual Function elements provide the below information:</p>
 <div class="ulist">
 <ul>
+<li>
+<p>For the <strong>Function Scope</strong> drop-down, select <strong>'bulk.data'</strong> as the RBAC grouping.</p>
+</li>
 <li>
 <p>For the <strong>Listen To Location</strong> drop-down, select <strong>bulk</strong>, <strong>data</strong>, <strong>source</strong> as the keyspace.</p>
 </li>
@@ -550,7 +557,7 @@ function OnUpdate(doc,meta) {
 <p>Here we see from the Application log that we created a timer.</p>
 <div class="listingblock">
 <div class="content">
-<pre>2021-07-18T09:42:46.776-07:00 [INFO] "From OnUpdate: creating timer" "type_of_interest::1"</pre>
+<pre>2022-05-10T16:06:54.226-07:00 [INFO] "From OnUpdate: creating timer" "type_of_interest::1 "</pre>
 </div>
 </div>
 <div class="imageblock text-left">
@@ -570,7 +577,7 @@ function OnUpdate(doc,meta) {
 <p>Here we see the timer fired and executed the callback <strong>DocTimerCallback</strong> near our scheduled time.</p>
 <div class="listingblock">
 <div class="content">
-<pre>2021-07-18T09:43:52.571-07:00 [INFO] "From DocTimerCallback: timer fired" {"docId":"type_of_interest::1","random_text":"arbitrary text","tmr_time_to_fire":"2021-07-18T16:43:46.776Z"}</pre>
+<pre>2022-05-10T16:08:01.804-07:00 [INFO] "From DocTimerCallback: timer fired" {"docId":"type_of_interest::1 ","random_text":"arbitrary text","tmr_time_to_fire":"2022-05-10T23:07:54.226Z"}</pre>
 </div>
 </div>
 <div class="imageblock text-left">
@@ -601,7 +608,7 @@ function OnUpdate(doc,meta) {
 <pre>{
   "docId": "type_of_interest::1",
   "random_text": "arbitrary text",
-  "tmr_time_to_fire": "2021-07-18T16:43:46.776Z"
+  "tmr_time_to_fire": "2022-05-10T23:07:54.226Z"
 }</pre>
 </div>
 </div>
@@ -669,7 +676,7 @@ function OnUpdate(doc,meta) {
 <p>Here we see from the Application log that we once again created a timer.</p>
 <div class="listingblock">
 <div class="content">
-<pre>2021-07-18T09:57:45.376-07:00 [INFO] "From OnUpdate: creating timer" "type_of_interest::1"</pre>
+<pre>2022-05-10T16:10:14.326-07:00 [INFO] "From OnUpdate: creating timer" "type_of_interest::1 "</pre>
 </div>
 </div>
 </li>
@@ -721,7 +728,7 @@ function OnUpdate(doc,meta) {
 <p>Here we see from the Application log the timer was canceled and will never fire.</p>
 <div class="listingblock">
 <div class="content">
-<pre>2021-07-18T09:58:32.078-07:00 [INFO] "From OnUpdate: cancel request, timer was canceled" "type_of_interest::1"</pre>
+<pre>2022-05-10T16:11:21.429-07:00 [INFO] "From OnUpdate: cancel request, timer was canceled" "type_of_interest::1 "</pre>
 </div>
 </div>
 </li>
@@ -782,7 +789,7 @@ function OnUpdate(doc,meta) {
 <p>Here we see from the Application log that we created a timer.</p>
 <div class="listingblock">
 <div class="content">
-<pre>2021-07-18T09:59:29.076-07:00 [INFO] "From OnUpdate: creating timer" "type_of_interest::1"</pre>
+<pre>2022-05-10T16:12:07.126-07:00 [INFO] "From OnUpdate: creating timer" "type_of_interest::1 "</pre>
 </div>
 </div>
 </li>
@@ -834,7 +841,7 @@ function OnUpdate(doc,meta) {
 <p>Here we see from the Application log the timer was overwritten and will fire at a later time.</p>
 <div class="listingblock">
 <div class="content">
-<pre>2021-07-18T10:00:07.176-07:00 [INFO] "From OnUpdate: overwriting timer with same reference" "type_of_interest::1"</pre>
+<pre>2022-05-10T16:12:57.125-07:00 [INFO] "From OnUpdate: overwriting timer with same reference" "type_of_interest::1 "</pre>
 </div>
 </div>
 </li>
@@ -852,7 +859,7 @@ function OnUpdate(doc,meta) {
 <p>Here we see the timer fired and executed the callback <strong>DocTimerCallback</strong> near our scheduled time.</p>
 <div class="listingblock">
 <div class="content">
-<pre>2021-07-18T10:01:08.590-07:00 [INFO] "From DocTimerCallback: timer fired" {"docId":"type_of_interest::1","random_text":"arbitrary text","tmr_time_to_fire":"2021-07-18T17:01:07.176Z"}</pre>
+<pre>2022-05-10T16:14:05.811-07:00 [INFO] "From DocTimerCallback: timer fired" {"docId":"type_of_interest::1 ","random_text":"arbitrary text","tmr_time_to_fire":"2022-05-10T23:13:57.125Z"}</pre>
 </div>
 </div>
 </li>
@@ -868,9 +875,9 @@ function OnUpdate(doc,meta) {
 <div class="listingblock">
 <div class="content">
 <pre>{
-  "docId": "type_of_interest::1",
+  "docId": "type_of_interest::1 ",
   "random_text": "arbitrary text",
-  "tmr_time_to_fire": "2021-07-18T17:01:07.176Z"
+  "tmr_time_to_fire": "2022-05-10T23:13:57.125Z"
 }</pre>
 </div>
 </div>
