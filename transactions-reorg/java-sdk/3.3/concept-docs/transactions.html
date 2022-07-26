@@ -10,7 +10,7 @@
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="A high-level overview of Distributed ACID Transactions with Couchbase.">
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
-        <link rel="prev" href="full-text-search-overview.html">
+        <link rel="prev" href="../howtos/transactions-tracing.html">
         <link rel="next" href="transactions-cleanup.html">
 
 
@@ -177,8 +177,8 @@
 <nav class="crumbs" aria-label="breadcrumbs">
 <ul>
 <li class="crumb"><a href="../hello-world/overview.html">Java SDK</a></li>
-<li class="crumb">Learn</li>
-<li class="crumb"><a href="transactions.html">Transactions</a></li>
+<li class="crumb">Transactions</li>
+<li class="crumb"><a href="transactions.html">Key Concepts</a></li>
 </ul>
 </nav>
 </div>
@@ -207,7 +207,7 @@ A high-level overview of Distributed ACID Transactions with Couchbase.
 <div class="sectionbody">
 <div class="paragraph">
 <p>Couchbase Distributed <a href="../../../server/7.1/learn/data/transactions.html#overview" class="xref page">ACID (atomic, consistent, isolated, and durable)</a> Transactions allow applications to perform a series of database operations as a single unit&#8201;&#8212;&#8201;meaning operations are either committed together or all undone.
-Transactions are distributed and work across multiple documents, scopes, and collections, which can reside on multiple nodes.</p>
+Transactions are distributed and work across multiple documents, buckets, scopes, and collections, which can reside on multiple nodes.</p>
 </div>
 </div>
 </div>
@@ -280,7 +280,7 @@ In this way, all changes are invisible to all parts of Couchbase until the commi
 These include an asynchronous cleanup process that is started with the first transaction, and scans for expired transactions created by any application, on the relevant collections.</p>
 </div>
 <div class="paragraph">
-<p>The cleanup process is detailed in <a href="#concept-docs:transactions-error-cleanup.adoc#background-cleanup" class="xref unresolved">Error Handling</a>.</p>
+<p>The cleanup process is detailed in the <a href="transactions-cleanup.html" class="xref page">Cleanup</a> page.</p>
 </div>
 </div>
 <div class="sect2">
@@ -357,16 +357,12 @@ try {
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="title">Couchbase Server</div>
-As of Couchbase Server 7.0, <a href="https://www.couchbase.com/products/n1ql">SQL++ (formerly N1QL)</a> queries may be used inside the transaction lambda, freely mixed with key-value operations.
+Couchbase transactions can be initiated programmatically through the SDK, or by using the Query service directly with <code>BEGIN TRANSACTION</code>.
+The latter is intended for those using Query via the REST API, or using the Couchbase UI, and it is strongly recommended that application writers instead use the SDK.
+This provides these benefits:
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>Couchbase transactions can be initiated programmatically through the SDK, or by using the Query service directly with <code>BEGIN TRANSACTION</code>.
-The latter is intended for those using Query via the REST API, or using the Couchbase UI, and it is strongly recommended that application writers instead use the SDK.
-This provides these benefits:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -404,83 +400,35 @@ The operation will behave identically, and this implementation detail can largel
 <div class="ulist">
 <ul>
 <li>
-<p>These converted key-value operations are likely to be slightly slower, as the query service is optimized for statements involving multiple documents.
+<p>These converted key-value operations are likely to be slightly slower, as the Query service is optimized for statements involving multiple documents.
 Those looking for the maximum possible performance are recommended to put key-value operations before the first query in the lambda, if possible.</p>
 </li>
 <li>
-<p>Those using non-blocking mechanisms to achieve concurrency should be aware that the converted key-value operations are subject to the same parallelism restrictions mentioned above, e.g. they will not be executed in parallel by the query service.</p>
+<p>Those using non-blocking mechanisms to achieve concurrency should be aware that the converted key-value operations are subject to the same parallelism restrictions mentioned above, e.g. they will not be executed in parallel by the Query service.</p>
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="single-query-transactions"><a class="anchor" href="#single-query-transactions"></a>Single Query Transactions</h4>
-<div class="paragraph">
-<p>Single query transactions can be useful if you need to do large, bulk-loading transactions.</p>
 </div>
-<div class="paragraph">
-<p>The Query service maintains where required some in-memory state for each document in a transaction, that is freed on commit or rollback.
-For most use-cases this presents no issue, but there are some workloads, such as bulk loading many documents, where this could exceed the server resources allocated to the service.
-Solutions to this include breaking the workload up into smaller batches, and allocating additional memory to the query service.
-Alternatively, single query transaction, described here, may be used.</p>
 </div>
-<div class="paragraph">
-<p>Single query transactions have these characteristics:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>They have greatly reduced memory usage inside the query service.</p>
-</li>
-<li>
-<p>As the name suggests, they consist of exactly one query, and no key-value operations.</p>
-</li>
-</ul>
+<div class="sect1">
+<h2 id="concurrency-with-non-transactional-writes"><a class="anchor" href="#concurrency-with-non-transactional-writes"></a>Concurrency with Non-Transactional Writes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Couchbase transactions require a degree of co-operation from an application.
+Specifically, the application should ensure that non-transactional writes are never done concurrently with transactional writes, on the same document.</p>
 </div>
 <div class="paragraph">
-<p>You will see reference elsewhere in Couchbase documentation to the <code>tximplicit</code> query parameter.
-Single query transactions internally are setting this parameter.
-In addition, they provide automatic error and retry handling.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/howtos/examples/TransactionsExample.java#L626-L637">try {
-    var result = cluster.query(bulkLoadStatement, QueryOptions.queryOptions().asTransaction());
-} catch (TransactionCommitAmbiguousException e) {
-    throw logCommitAmbiguousError(e);
-} catch (TransactionFailedException e) {
-    throw logFailure(e);
-} catch (CouchbaseException e) {
-    // Any standard query errors can be raised here too, such as ParsingFailureException.  In these cases the
-    // transaction definitely did not reach commit point.
-    logger.warning("Transaction did not reach commit point");
-    throw e;
-}</code></pre>
-</div>
+<p>This requirement is to ensure that the strong key-value performance of Couchbase was not compromised.
+A key philosophy of Couchbase transactions is that you 'pay only for what you use'.</p>
 </div>
 <div class="paragraph">
-<p>You can also run a single query transaction against a particular <code>Scope</code> (these examples will exclude the full error handling for brevity):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/howtos/examples/TransactionsExample.java#L669-L672">Bucket travelSample = cluster.bucket("travel-sample");
-Scope inventory = travelSample.scope("inventory");
-
-inventory.query(bulkLoadStatement, QueryOptions.queryOptions().asTransaction());</code></pre>
-</div>
+<p>If two such writes <strong>do</strong> conflict then the behaviour is undefined: either write may 'win', overwriting the other.
+This still applies if the non-transactional write is using CAS.</p>
 </div>
 <div class="paragraph">
-<p>and configure it:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/howtos/examples/TransactionsExample.java#L680-L684">cluster.query(bulkLoadStatement, QueryOptions.queryOptions()
-        // Single query transactions will often want to increase the default timeout
-        .timeout(Duration.ofSeconds(360))
-        .asTransaction(singleQueryTransactionOptions()
-                .durabilityLevel(DurabilityLevel.PERSIST_TO_MAJORITY)));</code></pre>
-</div>
-</div>
-</div>
+<p>Note this only applies to <em>writes</em>.
+Any non-transactional <em>reads</em> concurrent with transactions are fine, and are at a Read Committed level.</p>
 </div>
 </div>
 </div>

@@ -107,7 +107,7 @@
 </aside>
 <aside class="toc sidebar"
       data-title="Contents"
-      data-levels="1">
+      data-levels="2">
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
@@ -192,7 +192,7 @@ Distributed ACID Transactions in Couchbase SDKs
 </div>
 <div class="paragraph">
 <p>Couchbase Distributed <a href="../../../server/7.1/learn/data/transactions.html#overview" class="xref page">ACID (atomic, consistent, isolated, and durable)</a> Transactions allow applications to perform a series of database operations as a single unit&#8201;&#8212;&#8201;meaning operations are either committed together or all undone.
-Transactions are distributed and work across multiple documents, scopes, and collections, which can reside on multiple nodes.</p>
+Transactions are distributed and work across multiple documents, buckets, scopes, and collections, which can reside on multiple nodes.</p>
 </div>
 </div>
 </div>
@@ -214,7 +214,7 @@ Transactions are distributed and work across multiple documents, scopes, and col
 <div class="content">
 <div class="paragraph">
 <p>When using a single node cluster (for example, during development), the default number of replicas for a newly created bucket is <strong>1</strong>.
-If left at this default, all key-value writes performed with durability will fail with a {durability-exception}.
+If left at this default, all key-value writes performed with durability will fail with a <code>DurabilityImpossibleException</code>.
 In turn, this will cause all transactions (which perform all key-value writes durably) to fail.
 This setting can be changed via:</p>
 </div>
@@ -256,12 +256,12 @@ For example, if you want to change the level of durability which must be attaine
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L21-L28">$options = new ClusterOptions();
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L20-L27">$options = new ClusterOptions();
 $options-&gt;credentials($CB_USER, $CB_PASS);
 
 $transactions_configuration = new TransactionsConfiguration();
-$transactions_configuration-&gt;durabilityLevel($durabilityLevel); // Couchbase\DurabilityLevel::PERSIST_TO_MAJORITY etc.
-$options-&gt;getTransactionsConfiguration($transactions_configuration);
+$transactions_configuration-&gt;durabilityLevel(Couchbase\DurabilityLevel::PERSIST_TO_MAJORITY);
+$options-&gt;transactionsConfiguration($transactions_configuration);
 
 $cluster = new Cluster($CB_HOST, $options);</code></pre>
 </div>
@@ -287,11 +287,11 @@ If durability is set to <code>None</code>, then ACID semantics are not guarantee
 <div class="paragraph">
 <p>To create a transaction, an application must supply its logic inside a <code>{lambda}</code>, including any conditional logic required.
 Once the {lambda} has successfully run to conclusion, the transaction will be automatically committed.
-If at any point an error occurs, the transaction will rollback and the {lambda} will be run again.</p>
+If at any point an error occurs, the transaction will rollback and the {lambda} may run again.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L74-L88">try {
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L77-L90">try {
   $cluster-&gt;transactions()-&gt;run(
     function (TransactionAttemptContext $ctx) {
       // `$ctx` is a TransactionAttemptContext which permits getting, inserting,
@@ -300,82 +300,70 @@ If at any point an error occurs, the transaction will rollback and the {lambda} 
       // Committing is implicit at the end of the lambda.
     }
   );
-} catch (\Couchbase\Exception\TransactionOperationFailedException $e) {
+} catch (\Couchbase\Exception\TransactionFailedException $e) {
   echo "Transaction did not reach commit point: $e\n";
-} catch (\Couchbase\Exception\TransactionException $e) {
-  // TODO check is this equivalent to TransactionCommitAmbiguousError as per Node examples?
+} catch (\Couchbase\Exception\TransactionCommitAmbiguousException $e) {
   echo "Transaction possibly committed: $e\n";
 }</code></pre>
 </div>
 </div>
 <div id="lambda-ops" class="paragraph">
-<p>The transaction lambda gets passed {lambda-attempt-ctx} object&#8201;&#8212;&#8201;generally referred to as <code>ctx</code> in these examples.
-Since the lambda could be rerun multiple times, it is important that it does not contain any side effects.
-In particular, you should never perform regular operations on a <code>Collection</code>, such as {collection-insert}, inside the lambda.
+<p>The transaction lambda gets passed a <code>TransactionAttemptContext</code> object&#8201;&#8212;&#8201;generally referred to as <code>ctx</code> in these examples.
+Since the {lambda} could be rerun multiple times, it is important that it does not contain any side effects.
+In particular, you should never perform regular operations on a <code>Collection</code>, such as <code>collection.insert()</code>, inside the lambda.
 Such operations may be performed multiple times, and will not be performed transactionally.
-Instead, you should perform these operations through the <code>ctx</code> object, e.g. {ctx-insert}.</p>
+Instead, you should perform these operations through the <code>ctx</code> object, e.g. <code>ctx.insert()</code>.</p>
 </div>
 <div class="paragraph">
 <p>The result of a transaction is represented by a <code>TransactionResult</code> object, which can be used to expose debugging and logging information to help track what happened during a transaction.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Here is a quick summary of the main transaction operations.
-They are described in more detail below.</p>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L92-L140">
-try {
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L95-L141">try {
   $cluster-&gt;transactions()-&gt;run(
     function (TransactionAttemptContext $ctx) use ($collection) {
       // Inserting a doc:
-      $ctx-&gt;insert($collection, 'doc-a', []);
+      $ctx-&gt;insert($collection, 'doc-c', []);
 
       // Getting documents:
       $docA = $ctx-&gt;get($collection, 'doc-a');
 
       // Replacing a doc:
       $docB = $ctx-&gt;get($collection, 'doc-b');
-      $content = $docB-&gt;content;
+      $content = $docB-&gt;content();
       $newContent = array_merge(
         ["transactions" =&gt; "are awesome"],
         $content
       );
-
       $ctx-&gt;replace($docB, $newContent);
 
       // Removing a doc:
       $docC = $ctx-&gt;get($collection, 'doc-c');
       $ctx-&gt;remove($docC);
 
-      // Performing a SELECT N1QL query against a scope:
+      // Performing a SELECT N1QL query:
+      $selectQuery = 'SELECT * FROM `travel-sample`.inventory.hotel WHERE country = $1 LIMIT 5';
       $qr = $ctx-&gt;query(
-        'SELECT * FROM hotel WHERE country = $1',
-        [
-          "scope" =&gt; "inventory",
-          "parameters" =&gt; ["United Kingdom"]
-        ]
+        $selectQuery,
+        TransactionQueryOptions::build()
+          -&gt;positionalParameters(["United Kingdom"])
       );
-      echo $qr-&gt;rows();
+      foreach ($qr-&gt;rows() as $row) {
+        printf("Name: %s, Country: %s\n", $row["hotel"]["name"], $row["hotel"]["country"]);
+      }
 
+      // Performing an UPDATE N1QL query:
+      $updateQuery = 'UPDATE `travel-sample`.inventory.route SET airlineid = $1 WHERE airline = $2 LIMIT 5';
       $ctx-&gt;query(
-        'UPDATE route SET airlineid = $1 WHERE airline = $2',
-        [
-          "scope" =&gt; "inventory",
-          "parameters" =&gt; ['airline_137', 'AF']
-        ]
+        $updateQuery,
+        TransactionQueryOptions::build()
+          -&gt;positionalParameters(['airline_137', 'AF'])
       );
     }
   );
-} catch (\Couchbase\Exception\TransactionOperationFailedException $e) {
+} catch (\Couchbase\Exception\TransactionFailedException $e) {
   echo "Transaction did not reach commit point: $e\n";
-} catch (\Couchbase\Exception\TransactionException $e) {
-  // TODO check is this equivalent to TransactionCommitAmbiguousError as per Node examples?
+} catch (\Couchbase\Exception\TransactionCommitAmbiguousException $e) {
   echo "Transaction possibly committed: $e\n";
 }</code></pre>
 </div>
@@ -433,11 +421,10 @@ In this way, all changes are invisible to all parts of Couchbase until the commi
 <h3 id="cleanup"><a class="anchor" href="#cleanup"></a>Cleanup</h3>
 <div class="paragraph">
 <p>There are safety mechanisms to ensure that leftover staged changes from a failed transaction cannot block live transactions indefinitely.
-These include an asynchronous cleanup process that is started with the creation of the <code>Transactions</code> object, and scans for expired transactions created by any application, on all buckets.
 These include an asynchronous cleanup process that is started with the first transaction, and scans for expired transactions created by any application, on the relevant collections.</p>
 </div>
 <div class="paragraph">
-<p>The cleanup process is detailed in <a href="#concept-docs:transactions-error-cleanup.adoc#background-cleanup" class="xref unresolved">Error Handling</a>.</p>
+<p>The cleanup process is detailed in the <a href="#concept-docs:transactions-cleanup.adoc" class="xref unresolved">concept-docs:transactions-cleanup.adoc</a> page.</p>
 </div>
 </div>
 <div class="sect2">
@@ -464,11 +451,11 @@ This provides an eventually consistent commit for non-transactional actors.</p>
 This is necessary so the transaction can check that the document is not involved in another transaction.
 If it is, then the transaction will handle this at the <code>$ctx&#8594;replace()</code> point.
 Generally, this involves rolling back what has been done so far, and retrying the lambda.
-Handling errors should be done through try/catch as in the example above.</p>
+Handling errors should be done through <code>try/catch</code> as in the example <a href="#Examples">above</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L190-L201">$cluster-&gt;transactions()-&gt;run(
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L194-L205">$cluster-&gt;transactions()-&gt;run(
   function (TransactionAttemptContext $ctx) use ($collection) {
     $doc = $ctx-&gt;get($collection, "doc-b");
     $content = $doc-&gt;content();
@@ -490,7 +477,7 @@ Handling errors should be done through try/catch as in the example above.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L208-L213">$cluster-&gt;transactions()-&gt;run(
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L213-L218">$cluster-&gt;transactions()-&gt;run(
   function (TransactionAttemptContext $ctx) use ($collection) {
     $doc = $ctx-&gt;get($collection, "docId");
     $ctx-&gt;remove($doc);
@@ -503,7 +490,7 @@ Handling errors should be done through try/catch as in the example above.</p>
 <h3 id="inserting"><a class="anchor" href="#inserting"></a>Inserting</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L220-L224">$cluster-&gt;transactions()-&gt;run(
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L226-L230">$cluster-&gt;transactions()-&gt;run(
   function (TransactionAttemptContext $ctx) use ($collection) {
     $adoc = $ctx-&gt;insert($collection, "docId", []);
   }
@@ -521,7 +508,7 @@ Handling errors should be done through try/catch as in the example above.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L164-L168">$cluster-&gt;transactions()-&gt;run(
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L166-L170">$cluster-&gt;transactions()-&gt;run(
   function (TransactionAttemptContext $ctx) use ($collection) {
     $docA = $ctx-&gt;get($collection, "doc-a");
   }
@@ -529,14 +516,14 @@ Handling errors should be done through try/catch as in the example above.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><code>get</code> will cause the transaction to fail with <code>TransactionOperationFailedException</code> (after rolling back any changes, of course).</p>
+<p>If the document does not exist, the transaction will fail with a <code>TransactionFailedException</code> (after rolling back any changes, of course).</p>
 </div>
 <div class="paragraph">
 <p>Gets will 'read your own writes', e.g. this will succeed:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L176-L183">$cluster-&gt;transactions()-&gt;run(
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L179-L186">$cluster-&gt;transactions()-&gt;run(
   function (TransactionAttemptContext $ctx) use ($collection) {
     $docId = 'docId';
     $ctx-&gt;insert($collection, $docId, []);
@@ -550,19 +537,17 @@ Handling errors should be done through try/catch as in the example above.</p>
 <h3 id="using-n1ql"><a class="anchor" href="#using-n1ql"></a>Using N1QL</h3>
 <div class="paragraph">
 <p>If you already use N1QL from the PHP SDK, then its use in transactions is very similar.
-it returns the same <code>QueryResult</code> you are used to, and takes most of the same options.</p>
+It returns the same <code>QueryResult</code> you are used to, and takes most of the same options.</p>
 </div>
 <div class="paragraph">
 <p>You must take care to write <code>$ctx&#8594;query()</code> inside the lambda however, rather than <code>$cluster&#8594;query()</code> or <code>$scope&#8594;query()</code>.</p>
 </div>
 <div class="paragraph">
-<p>An example of SELECTing some rows from the <code>travel-sample</code> bucket:</p>
+<p>An example of selecting some rows from the <code>travel-sample</code> bucket:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L231-L246">$inventory = $cluster-&gt;bucket('travel-sample')-&gt;scope('inventory');
-
-$cluster-&gt;transactions()-&gt;run(
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L242-L255">$cluster-&gt;transactions()-&gt;run(
   function (TransactionAttemptContext $ctx) {
     $st = "SELECT * FROM `travel-sample`.inventory.hotel WHERE country = $1";
     $qr = $ctx-&gt;query(
@@ -585,7 +570,7 @@ Just remember that since the lambda may be called multiple times, so may the met
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L276-L303">$cluster-&gt;transactions()-&gt;run(
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L286-L311">$cluster-&gt;transactions()-&gt;run(
   function (TransactionAttemptContext $ctx) use ($hotelChain, $country) {
     // Find all hotels of the chain
     $qr = $ctx-&gt;query(
@@ -593,7 +578,6 @@ Just remember that since the lambda may be called multiple times, so may the met
       TransactionQueryOptions::build()
         -&gt;positionalParameters([$hotelChain, $country])
     );
-    // -&gt;scopeQualifier("`travel-sample`.`inventory`"));
 
     // This function (not provided here) will use a trained machine learning model to provide a
     // suitable price based on recent customer reviews.
@@ -610,7 +594,6 @@ Just remember that since the lambda may be called multiple times, so may the met
       TransactionQueryOptions::build()
         -&gt;positionalParameters([$updatedPrice, $hotelChain, $country])
     );
-    // -&gt;scopeQualifier("`travel-sample`.`inventory`"));
   }
 );</code></pre>
 </div>
@@ -622,15 +605,21 @@ Just remember that since the lambda may be called multiple times, so may the met
 <p>As with Key-Value operations, N1QL queries support Read Your Own Writes.</p>
 </div>
 <div class="paragraph">
-<p>This example shows INSERTing a document and then SELECTing it again.</p>
+<p>This example shows inserting a document and then selecting it again.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L310-L316">$cluster-&gt;transactions()-&gt;run(
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L319-L331">$cluster-&gt;transactions()-&gt;run(
   function (TransactionAttemptContext $ctx) {
-    $ctx-&gt;query("INSERT INTO `travel-sample`.inventory.airline VALUES ('doc-c', {'hello':'world'})"); <i class="conum" data-value="1"></i><b>(1)</b>
-    $st = "SELECT `default`.* FROM `travel-sample`.inventory.airline WHERE META().id = 'doc-c'"; <i class="conum" data-value="2"></i><b>(2)</b>
-    $qr = $ctx-&gt;query($st);
+    // Query INSERT
+    $ctx-&gt;query(
+      "INSERT INTO `travel-sample`.inventory.airline VALUES ('doc-c', {'hello':'world'})" <i class="conum" data-value="1"></i><b>(1)</b>
+    );
+
+    // Query SELECT
+    $ctx-&gt;query(
+      "SELECT hello FROM `travel-sample`.inventory.airline WHERE META().id = 'doc-c'" <i class="conum" data-value="2"></i><b>(2)</b>
+    );
   }
 );</code></pre>
 </div>
@@ -639,7 +628,7 @@ Just remember that since the lambda may be called multiple times, so may the met
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The inserted document is only staged at this point. as the transaction has not yet committed.
+<td>The inserted document is only staged at this point, as the transaction has not yet committed.
 Other transactions, and other non-transactional actors, will not be able to see this staged insert yet.</td>
 </tr>
 <tr>
@@ -659,13 +648,14 @@ Other transactions, and other non-transactional actors, will not be able to see 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L323-L331">$cluster-&gt;transactions()-&gt;run(
-  function (TransactionAttemptContext $ctx) {
-    $qr = $ctx-&gt;query("UPDATE `travel-sample`.inventory.hotel SET price = 99.00 WHERE name LIKE \"Marriott%\"");
-    if ($qr-&gt;metaData()-&gt;metrics()["mutationCount"] != 2) {
-      // throw new \Exception("Mutation count not the expected amount.");
-      echo "WARN: Mutation count not the expected amount.\n";
-    }
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L339-L348">$cluster-&gt;transactions()-&gt;run(
+  function (TransactionAttemptContext $ctx) use ($collection) {
+    // Key-Value insert
+    $ctx-&gt;insert($collection, "doc-greeting", ["greeting" =&gt; "Hello World"]); <i class="conum" data-value="1"></i><b>(1)</b>
+
+    // Query SELECT 
+    $selectQuery = "SELECT greeting FROM `travel-sample`.inventory.airline WHERE META().id = 'doc-greeting'";
+    $ctx-&gt;query($selectQuery); <i class="conum" data-value="2"></i><b>(2)</b>
   }
 );</code></pre>
 </div>
@@ -678,7 +668,7 @@ Other transactions, and other non-transactional actors, will not be able to see 
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>But the SELECT can view it, as the insert was in the same transaction.</td>
+<td>But the SELECT can view it, as the insert is in the same transaction.</td>
 </tr>
 </table>
 </div>
@@ -686,12 +676,11 @@ Other transactions, and other non-transactional actors, will not be able to see 
 <div class="sect2">
 <h3 id="query-options"><a class="anchor" href="#query-options"></a>Query Options</h3>
 <div class="paragraph">
-<p>Query options can be provided via <code>TransactionsQueryOptions</code>, which provides a subset of the options in the PHP SDK&#8217;s <code>QueryOptions</code>.</p>
+<p>Query options can be provided via <code>TransactionQueryOptions</code>, which provides a subset of the options in the PHP SDK&#8217;s <code>QueryOptions</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L338-L350">
-$cluster-&gt;transactions()-&gt;run(
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L356-L367">$cluster-&gt;transactions()-&gt;run(
   function (TransactionAttemptContext $ctx) {
     $txQo = TransactionQueryOptions::build()
       -&gt;readonly(false)
@@ -706,42 +695,44 @@ $cluster-&gt;transactions()-&gt;run(
 </div>
 </div>
 <div class="paragraph">
-<p>See the <a href="n1ql-queries-with-sdk.html#query-options" class="xref page">QueryOptions documentation</a> for full details on the supported parameters.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="query-performance-advice"><a class="anchor" href="#query-performance-advice"></a>Query Performance Advice</h3>
-<div class="paragraph">
-<p>This section is optional reading, and only for those looking to maximize transactions performance.</p>
-</div>
-<div class="paragraph">
-<p>After the first query statement in a transaction, subsequent Key-Value operations in the lambda are converted into N1QL and executed by the query service rather than the Key-Value data service.
-The operation will behave identically, and this implementation detail can largely be ignored, except for this caveat:</p>
+<p>Some of the supported options are:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>These converted Key-Value operations are likely to be slightly slower, as the query service is optimised for statements involving multiple documents.
-Those looking for the maximum possible performance are recommended to put Key-Value operations before the first query in the lambda, if possible.</p>
+<p>adHoc</p>
+</li>
+<li>
+<p>clientContextId</p>
+</li>
+<li>
+<p>pipelineBatch</p>
+</li>
+<li>
+<p>pipelineCap</p>
+</li>
+<li>
+<p>profile</p>
+</li>
+<li>
+<p>raw</p>
+</li>
+<li>
+<p>readonly</p>
+</li>
+<li>
+<p>scanCap</p>
+</li>
+<li>
+<p>scanConsistency</p>
+</li>
+<li>
+<p>scanWaitMilliseconds</p>
 </li>
 </ul>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L357-L369">try {
-  $cluster-&gt;transactions()-&gt;run(
-    function (TransactionAttemptContext $ctx) {
-      $bulkLoadStatement = "..."; // a bulk-loading N1QL statement not provided here
-
-      $ctx-&gt;query($bulkLoadStatement);
-    }
-  );
-} catch (\Couchbase\Exception\TransactionOperationFailedException $e) {
-  echo "Transaction did not reach commit point\n";
-} catch (\Couchbase\Exception\TransactionException $e) {
-  echo "Transaction possibly committed\n";
-}</code></pre>
-</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.couchbase.com/sdk-api/couchbase-php-client/classes/Couchbase-TransactionQueryOptions.html">TransactionQueryOptions API</a> for full details on the supported parameters.</p>
 </div>
 </div>
 </div>
@@ -767,7 +758,7 @@ The changes will also be committed (or "unstaged") so they are visible to non-tr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L390-L440">function playerHitsMonster($damage, $playerId, $monsterId, $cluster, $collection)
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L410-L458">function playerHitsMonster($damage, $playerId, $monsterId, $cluster, $collection)
 {
   try {
     $cluster-&gt;transactions()-&gt;run(
@@ -789,8 +780,7 @@ The changes will also be committed (or "unstaged") so they are visible to non-tr
           $experienceForKillingMonster = $monsterContent["experienceWhenKilled"];
           $playerExperience = $playerContent["experience"];
           $playerNewExperience = $playerExperience + $experienceForKillingMonster;
-          $playerNewLevel =
-            calculateLevelForExperience($playerNewExperience);
+          $playerNewLevel = calculateLevelForExperience($playerNewExperience);
 
           $playerContent['experience'] = $playerNewExperience;
           $playerContent['level'] = $playerNewLevel;
@@ -799,7 +789,7 @@ The changes will also be committed (or "unstaged") so they are visible to non-tr
         }
       }
     );
-  } catch (\Couchbase\Exception\TransactionOperationFailedException $e) {
+  } catch (\Couchbase\Exception\TransactionFailedException $e) {
     echo "Transaction did not reach commit point\n";
     // The operation failed. Both the monster and the player will be untouched.
     //
@@ -807,8 +797,7 @@ The changes will also be committed (or "unstaged") so they are visible to non-tr
     // or player not existing (as get is used), or a persistent
     // failure to be able to commit the transaction, for example on
     // prolonged node failure.
-  } catch (\Couchbase\Exception\TransactionException $e) {
-    // TODO check is this equivalent to TransactionCommitAmbiguousError as per Node examples?
+  } catch (\Couchbase\Exception\TransactionCommitAmbiguousException $e) {
     // Indicates the state of a transaction ended as ambiguous and may or
     // may not have committed successfully.
     //
@@ -820,18 +809,13 @@ The changes will also be committed (or "unstaged") so they are visible to non-tr
 }</code></pre>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="concurrency-with-non-transactional-writes"><a class="anchor" href="#concurrency-with-non-transactional-writes"></a>Concurrency with Non-Transactional Writes</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>This release of transactions for Couchbase requires a degree of co-operation from the application.
+<p>Couchbase transactions require a degree of co-operation from an application.
 Specifically, the application should ensure that non-transactional writes are never done concurrently with transactional writes, on the same document.</p>
 </div>
 <div class="paragraph">
 <p>This requirement is to ensure that the strong key-value performance of Couchbase was not compromised.
-A key philosophy of our transactions is that you 'pay only for what you use'.</p>
+A key philosophy of Couchbase transactions is that you 'pay only for what you use'.</p>
 </div>
 <div class="paragraph">
 <p>If two such writes <strong>do</strong> conflict then the behaviour is undefined: either write may 'win', overwriting the other.
@@ -847,7 +831,7 @@ Any non-transactional <em>reads</em> concurrent with transactions are fine, and 
 <h2 id="rollback"><a class="anchor" href="#rollback"></a>Rollback</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If an exception is thrown, either by the application from the lambda, or by the transactions library, then that attempt is rolled back.
+<p>If an exception is thrown by the application from the lambda, then that attempt is rolled back.
 The transaction logic may or may not be retried, depending on the exception.</p>
 </div>
 <div class="paragraph">
@@ -855,22 +839,23 @@ The transaction logic may or may not be retried, depending on the exception.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L469-L485">try {
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L469-L486">$costOfItem = 10;
+
+try {
   $cluster-&gt;transactions()-&gt;run(
     function (TransactionAttemptContext $ctx) use ($collection, $costOfItem) {
       $customer = $ctx-&gt;get($collection, "customer-name");
 
       if ($customer-&gt;content()["balance"] &lt; $costOfItem) {
-        throw new \InsufficientBalanceError("Transaction failed, customer does not have enough funds.");
+        throw new \InsufficientBalanceException("Transaction failed, customer does not have enough funds.");
       }
       // else continue transaction
     }
   );
-} catch (\Couchbase\Exception\TransactionOperationFailedException $e) {
-  // This exception can only be thrown at the commit point, after the
-  // BalanceInsufficient logic has been passed
-} catch (InsufficientBalanceError $e) {
-  echo "user had insufficient balance";
+} catch (\Couchbase\Exception\TransactionFailedException $e) {
+  echo "Transaction did not reach commit point: $e\n";
+} catch (\Couchbase\Exception\TransactionCommitAmbiguousException $e) {
+  echo "Transaction possibly committed: $e\n";
 }</code></pre>
 </div>
 </div>
@@ -890,18 +875,18 @@ These situations include:</p>
 <p>Attempting to insert a document that already exists.</p>
 </li>
 <li>
-<p>Calling {ctx-get} on a document key that does not exist (if the resultant exception is not caught).</p>
+<p>Calling <code>ctx.get()</code> on a document key that does not exist (if the resultant exception is not caught).</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>Once one of these errors occurs, the current attempt is irrevocably failed (though the transaction may retry the lambda to make a new attempt).
-It is not possible for the application to catch the failure and continue (with the exception of {ctx-get} raising an error).
+It is not possible for the application to catch the failure and continue (with the exception of <code>ctx.get()</code> raising an error).
 Once a failure has occurred, all other operations tried in this attempt (including commit) will instantly fail.</p>
 </div>
 <div class="paragraph">
 <p>Transactions, as they are multi-stage and multi-document, also have a concept of partial success or failure.
-This is signalled to the application through the {error-unstaging-complete}, described later.</p>
+This is signalled to the application through the <code>TransactionResult.unstagingComplete</code> property, described later.</p>
 </div>
 <div class="paragraph">
 <p>There are three exceptions that transactions can raise to an application:</p>
@@ -909,15 +894,95 @@ This is signalled to the application through the {error-unstaging-complete}, des
 <div class="ulist">
 <ul>
 <li>
-<p><code>{transaction-failed}</code></p>
+<p><code>TransactionFailedException</code></p>
 </li>
 <li>
-<p><code>{transaction-expired}</code></p>
+<p><code>TransactionExpiredException</code></p>
 </li>
 <li>
-<p><code>{transaction-commit-ambiguous}</code></p>
+<p><code>TransactionCommitAmbiguousException</code></p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>These are some of the exceptions that Couchbase transactions can raise to the application: <code>TransactionFailedException</code>, <code>TransactionExpiredException</code> and <code>TransactionCommitAmbiguousException</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="transactionfailedexception-and-transactionexpiredexception"><a class="anchor" href="#transactionfailedexception-and-transactionexpiredexception"></a>TransactionFailedException and TransactionExpiredException</h3>
+<div class="paragraph">
+<p>The transaction definitely did not reach the commit point.
+<code>TransactionFailedException</code> indicates a fast-failure whereas <code>TransactionExpiredException</code> indicates that retries were made until the timeout was reached, but this distinction is not normally important to an application and generally <code>TransactionExpiredException</code> does not need to be handled individually.</p>
+</div>
+<div class="paragraph">
+<p>Either way, an attempt will have been made to rollback all changes.
+This attempt may or may not have been successful, but the results of this will have no impact on the protocol or other actors.
+No changes from the transaction will be visible, both to transactional and non-transactional actors.</p>
+</div>
+<div class="sect3">
+<h4 id="handling"><a class="anchor" href="#handling"></a>Handling</h4>
+<div class="paragraph">
+<p>Generally, debugging exactly why a given transaction failed requires review of the logs, so it is suggested that the application log these on failure.
+The application may want to try the transaction again later.
+Alternatively, if transaction completion time is not a priority, then transaction timeouts (which default to 15 seconds) can be extended across the board through <code>TransactionsConfiguration</code>.</p>
+</div>
+<div class="paragraph">
+<p>This will allow the protocol more time to get past any transient failures (for example, those caused by a cluster rebalance).
+The tradeoff to consider with longer timeouts, is that documents that have been staged by a transaction are effectively locked from modification from other transactions, until the timeout has been reached.</p>
+</div>
+<div class="paragraph">
+<p>Note that the timeout is not guaranteed to be followed precisely.
+For example, if the application were to do a long blocking operation inside the lambda (which should be avoided), then timeout can only trigger after this finishes.
+Similarly, if the transaction attempts a key-value operation close to the timeout, and that key-value operation times out, then the transaction timeout may be exceeded.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="transactioncommitambiguousexception"><a class="anchor" href="#transactioncommitambiguousexception"></a>TransactionCommitAmbiguousException</h3>
+<div class="paragraph">
+<p>Each transaction has a 'single point of truth' that is updated atomically to reflect whether it is committed.</p>
+</div>
+<div class="paragraph">
+<p>However, it is not always possible for the protocol to become 100% certain that the operation was successful, before the transaction expires.
+This potential ambiguity is unavoidable in any distributed system; a classic example is a network failure happening just after an operation was sent from a client to a server.
+The client will not get a response back and cannot know if the server received and executed the operation.</p>
+</div>
+<div class="paragraph">
+<p>The ambiguity is particularly important at the point of the atomic commit, as the transaction may or may not have reached the commit point.  Couchbase transactions will raise <code>TransactionCommitAmbiguousException</code> to indicate this state.
+It should be rare to receive this error.</p>
+</div>
+<div class="paragraph">
+<p>If the transaction had in fact successfully reached the commit point, then the transaction will be fully completed ("unstaged") by the asynchronous cleanup process at some point in the future.
+With default settings this will usually be within a minute, but whatever underlying fault has caused the <code>TransactionCommitAmbiguousException</code> may lead to it taking longer.</p>
+</div>
+<div class="paragraph">
+<p>If the transaction had not in fact reached the commit point, then the asynchronous cleanup process will instead attempt to roll it back at some point in the future.</p>
+</div>
+<div class="sect3">
+<h4 id="handling-2"><a class="anchor" href="#handling-2"></a>Handling</h4>
+<div class="paragraph">
+<p>This error can be challenging for an application to handle.
+As with <code>TransactionFailedException</code> it is recommended that it at least writes any logs from the transaction, for future debugging.
+It may wish to retry the transaction at a later point, or extend transactional timeouts (as detailed above) to give the protocol additional time to resolve the ambiguity.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="transactionresult-unstagingcomplete"><a class="anchor" href="#transactionresult-unstagingcomplete"></a>TransactionResult.unstagingComplete</h3>
+<div class="paragraph">
+<p>This boolean flag indicates whether all documents were able to be unstaged (committed).</p>
+</div>
+<div class="paragraph">
+<p>For most use-cases it is not an issue if it is false.
+All transactional actors will still read all the changes from this transaction, as though it had committed fully.
+The cleanup process is asynchronously working to complete the commit, so that it will be fully visible to non-transactional actors.</p>
+</div>
+<div class="paragraph">
+<p>The flag is provided for those rare use-cases where the application requires the commit to be fully visible to non-transactional actors, before it may continue.
+In this situation the application can raise an error here, or poll all documents involved until they reflect the mutations.</p>
+</div>
+<div class="paragraph">
+<p>If you regularly see this flag false, consider increasing the transaction timeout to reduce the possibility that the transaction times out during the commit.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="full-error-handling-example"><a class="anchor" href="#full-error-handling-example"></a>Full Error Handling Example</h3>
@@ -926,7 +991,7 @@ This is signalled to the application through the {error-unstaging-complete}, des
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L492-L512">try {
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/transactions-example.php#L494-L514">try {
   $result = $cluster-&gt;transactions()-&gt;run(
     function (TransactionAttemptContext $ctx) use ($collection, $costOfItem) {
       // ... transactional code here ...
@@ -942,13 +1007,92 @@ This is signalled to the application through the {error-unstaging-complete}, des
     // still working to complete the commit.)
     // The next step is application-dependent.
   }
-} catch (\Couchbase\Exception\TransactionOperationFailedException $e) {
+} catch (\Couchbase\Exception\TransactionFailedException $e) {
   echo "Transaction did not reach commit point\n";
-} catch (\Couchbase\Exception\TransactionException $e) {
+} catch (\Couchbase\Exception\TransactionCommitAmbiguousException $e) {
   echo "Transaction possibly committed\n";
 }</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Transactions will try to clean up after themselves in the advent of failures.
+However, there are situations that inevitably created failed, or 'lost' transactions, such as an application crash.</p>
+</div>
+<div class="paragraph">
+<p>This requires an asynchronous cleanup task, described in this section.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="background-cleanup"><a class="anchor" href="#background-cleanup"></a>Background Cleanup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The first transaction triggered by an application will spawn a background cleanup task, whose job it is to periodically scan for expired transactions and clean them up.
+It does this by scanning a subset of the Active Transaction Record (ATR) transaction metadata documents, for each collection used by any transactions.</p>
+</div>
+<div class="paragraph">
+<p>The default settings are tuned to find expired transactions reasonably quickly, while creating negligible impact from the background reads required by the scanning process.
+To be exact, with default settings it will generally find expired transactions within 60 seconds, and use less than 20 reads per second, per collection of metadata documents being checked.
+This is unlikely to impact performance on any cluster, but the settings may be <a href="#tuning-cleanup">tuned</a> as desired.</p>
+</div>
+<div class="paragraph">
+<p>All applications connected to the same cluster and running transactions will share in the cleanup, via a low-touch communication protocol on the <code>_txn:client-record</code> metadata document that will be created in each collection in the cluster involved with transaction metadata.
+This document is visible and should not be modified externally as it is maintained automatically.
+All ATRs will be distributed between all cleanup clients, so increasing the number of applications will not increase the reads required for scanning.</p>
+</div>
+<div class="paragraph">
+<p>An application may cleanup transactions created by another application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+It is important to understand that if an application is not running, then cleanup is not running.
+This is particularly relevant to developers running unit tests or similar.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="tuning-cleanup"><a class="anchor" href="#tuning-cleanup"></a>Configuring Cleanup</h3>
+<div class="paragraph">
+<p>The cleanup settings can be configured as so:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Setting</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cleanupWindow()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60 seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This determines how long a cleanup 'run' is; that is, how frequently this client will check its subset of ATR documents.  It is perfectly valid for the application to change this setting, which is at a conservative default.  Decreasing this will cause expiration transactions to be found more swiftly (generally, within this cleanup window), with the tradeoff of increasing the number of reads per second used for the scanning process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>disableLostAttemptCleanup()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is the thread that takes part in the distributed cleanup process described above, that cleans up expired transactions created by any client.  It is strongly recommended that it is left enabled.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>disableClientAttemptCleanup()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This thread is for cleaning up transactions created just by this client.  The client will preferentially aim to send any transactions it creates to this thread, leaving transactions for the distributed cleanup process only when it is forced to (for example, on an application crash).  It is strongly recommended that it is left enabled.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="monitoring-cleanup"><a class="anchor" href="#monitoring-cleanup"></a>Monitoring Cleanup</h3>

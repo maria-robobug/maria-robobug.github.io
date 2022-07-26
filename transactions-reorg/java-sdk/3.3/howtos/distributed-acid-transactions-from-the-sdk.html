@@ -10,13 +10,13 @@
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="A practical guide on using Couchbase Distributed ACID transactions, via the Java SDK.">
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
-        <link rel="prev" href="concurrent-document-mutations.html">
-        <link rel="next" href="transactions-tracing.html">
+        <link rel="prev" href="view-queries-with-sdk.html">
+        <link rel="next" href="transactions-single-query.html">
 
 
 
 
-                    <link rel="next" href="transactions-tracing.html">
+                    <link rel="next" href="transactions-single-query.html">
 
         
 <meta name="dcterms.subject" content="java-sdk">
@@ -177,8 +177,8 @@
 <nav class="crumbs" aria-label="breadcrumbs">
 <ul>
 <li class="crumb"><a href="../hello-world/overview.html">Java SDK</a></li>
-<li class="crumb">Advanced Data Operations</li>
-<li class="crumb"><a href="distributed-acid-transactions-from-the-sdk.html">Transactions</a></li>
+<li class="crumb">Transactions</li>
+<li class="crumb"><a href="distributed-acid-transactions-from-the-sdk.html">How-to Guide</a></li>
 </ul>
 </nav>
 </div>
@@ -313,78 +313,12 @@ This setting can be changed via:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The default configuration should be appropriate for most use-cases.
-If needed, transactions can be globally configured at the point of creating the <code>Cluster</code>.
-As usual with <code>Cluster</code> configuration, you can either explicitly create and manage the <code>ClusterEnvironment</code> yourself:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/howtos/examples/TransactionsExample.java#L85-L99">ClusterEnvironment env = ClusterEnvironment.builder()
-        .transactionsConfig(TransactionsConfig.durabilityLevel(DurabilityLevel.PERSIST_TO_MAJORITY)
-                .cleanupConfig(TransactionsCleanupConfig.cleanupWindow(Duration.ofSeconds(30)))
-                .queryConfig(TransactionsQueryConfig.scanConsistency(QueryScanConsistency.NOT_BOUNDED)))
-        .build();
-
-Cluster cluster = Cluster.connect("localhost", ClusterOptions.clusterOptions("username", "password")
-        .environment(env));
-
-// Use the cluster
-// ...
-
-// Shutdown
-cluster.disconnect();
-env.shutdown();</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>or alternatively use this lambda syntax, which leads to the <code>ClusterEnvironment</code> being owned and managed by the <code>Cluster</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/howtos/examples/TransactionsExample.java#L105-L116">Cluster cluster = Cluster.connect("localhost", ClusterOptions.clusterOptions("username", "password")
-        .environment(env -&gt; env.transactionsConfig(TransactionsConfig
-                .durabilityLevel(DurabilityLevel.PERSIST_TO_MAJORITY)
-                .cleanupConfig(TransactionsCleanupConfig
-                        .cleanupWindow(Duration.ofSeconds(30)))
-                .queryConfig(TransactionsQueryConfig
-                        .scanConsistency(QueryScanConsistency.NOT_BOUNDED)))));
-// Use the cluster
-// ...
-
-// Shutdown
-cluster.disconnect();</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The default configuration will perform all writes with the durability setting <code>Majority</code>, ensuring that each write is available in-memory on the majority of replicas before the transaction continues.
-There are two higher durability settings available that will additionally wait for all mutations to be written to physical storage on either the active or the majority of replicas, before continuing.
-This further increases safety, at a cost of additional latency.</p>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-A level of <code>None</code> is present but its use is discouraged and unsupported.
-If durability is set to <code>None</code>, then ACID semantics are not guaranteed.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="creating-a-transaction"><a class="anchor" href="#creating-a-transaction"></a>Creating a Transaction</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>To create a transaction, an application must supply its logic inside a <code>lambda</code>, including any conditional logic required.
 Once the lambda has successfully run to conclusion, the transaction will be automatically committed.
-If at any point an error occurs, the transaction will rollback and the lambda will be run again.</p>
+If at any point an error occurs, the transaction will rollback and the lambda may run again.</p>
 </div>
 <div class="paragraph">
 <p>You can create transactions either <em>synchronously</em> or <em>asynchronously</em> (using the <a href="https://projectreactor.io/">Project Reactor</a> reactive library).</p>
@@ -1142,6 +1076,98 @@ Non-blocking mechanisms can be used to perform multiple concurrent query stateme
 </tr>
 </table>
 </div>
+<div class="sect2">
+<h3 id="non-transactional-writes"><a class="anchor" href="#non-transactional-writes"></a>Non-Transactional Writes</h3>
+<div class="paragraph">
+<p>To ensure key-value performance is not compromised, and to avoid conflicting writes, applications should <strong>never</strong> perform non-transactional <em>writes</em> concurrently with transactional ones, on the same document.</p>
+</div>
+<div class="paragraph">
+<p>You can verify this when debugging your application by subscribing to the client&#8217;s event logger and checking for any <code>IllegalDocumentStateEvent</code> events.
+These events are raised when a non-transactional write has been detected and overridden.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/howtos/examples/TransactionsExample.java#L424-L429">cluster.environment().eventBus().subscribe(event -&gt; {
+    if (event instanceof IllegalDocumentStateEvent) {
+        // log this event for review
+        log(((TransactionEvent) event).logs());
+    }
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The event contains the key of the document involved, to aid the application with debugging.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="../concept-docs/transactions.html#concurrency-with-non-transactional-writes" class="xref page">Concurrency with Non-Transactional Writes</a> to learn more.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The default configuration should be appropriate for most use-cases.
+If needed, transactions can be globally configured at the point of creating the <code>Cluster</code>.
+As usual with <code>Cluster</code> configuration, you can either explicitly create and manage the <code>ClusterEnvironment</code> yourself:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/howtos/examples/TransactionsExample.java#L85-L99">ClusterEnvironment env = ClusterEnvironment.builder()
+        .transactionsConfig(TransactionsConfig.durabilityLevel(DurabilityLevel.PERSIST_TO_MAJORITY)
+                .cleanupConfig(TransactionsCleanupConfig.cleanupWindow(Duration.ofSeconds(30)))
+                .queryConfig(TransactionsQueryConfig.scanConsistency(QueryScanConsistency.NOT_BOUNDED)))
+        .build();
+
+Cluster cluster = Cluster.connect("localhost", ClusterOptions.clusterOptions("username", "password")
+        .environment(env));
+
+// Use the cluster
+// ...
+
+// Shutdown
+cluster.disconnect();
+env.shutdown();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or alternatively use this lambda syntax, which leads to the <code>ClusterEnvironment</code> being owned and managed by the <code>Cluster</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-java//modules/howtos/examples/TransactionsExample.java#L105-L116">Cluster cluster = Cluster.connect("localhost", ClusterOptions.clusterOptions("username", "password")
+        .environment(env -&gt; env.transactionsConfig(TransactionsConfig
+                .durabilityLevel(DurabilityLevel.PERSIST_TO_MAJORITY)
+                .cleanupConfig(TransactionsCleanupConfig
+                        .cleanupWindow(Duration.ofSeconds(30)))
+                .queryConfig(TransactionsQueryConfig
+                        .scanConsistency(QueryScanConsistency.NOT_BOUNDED)))));
+// Use the cluster
+// ...
+
+// Shutdown
+cluster.disconnect();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default configuration will perform all writes with the durability setting <code>Majority</code>, ensuring that each write is available in-memory on the majority of replicas before the transaction continues.
+There are two higher durability settings available that will additionally wait for all mutations to be written to physical storage on either the active or the majority of replicas, before continuing.
+This further increases safety, at a cost of additional latency.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+A level of <code>None</code> is present but its use is discouraged and unsupported.
+If durability is set to <code>None</code>, then ACID semantics are not guaranteed.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1153,7 +1179,7 @@ Non-blocking mechanisms can be used to perform multiple concurrent query stateme
 <p>Learn more about <a href="../concept-docs/transactions.html" class="xref page">Distributed ACID Transactions</a>.</p>
 </li>
 <li>
-<p>Check out the SDK <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/index.html">API Reference</a>.</p>
+<p>Check out the SDK <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/transactions/package-summary.html">API Reference</a>.</p>
 </li>
 </ul>
 </div>
@@ -1164,7 +1190,7 @@ Non-blocking mechanisms can be used to perform multiple concurrent query stateme
 
                 <span>&nbsp;</span>
         
-                    <span class="next"><a href="transactions-tracing.html">Tracing</a></span>
+                    <span class="next"><a href="transactions-single-query.html">Single Query Transactions</a></span>
 
 </article>
 </main>

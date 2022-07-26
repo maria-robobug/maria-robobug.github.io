@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generated": 1658336186471,
+  "generated": 1658855930153,
   "url": "https://maria-robobug.github.io",
   "components": [
     {
@@ -4205,6 +4205,12 @@
               "path": "subdocument-operations.adoc",
               "url": "/java-sdk/3.3/howtos/subdocument-operations.html",
               "title": "Sub-Document Operations with the Java SDK"
+            },
+            {
+              "module": "howtos",
+              "path": "transactions-single-query.adoc",
+              "url": "/java-sdk/3.3/howtos/transactions-single-query.html",
+              "title": "Single Query Transactions"
             },
             {
               "module": "howtos",

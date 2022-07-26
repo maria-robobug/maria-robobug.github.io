@@ -192,7 +192,7 @@ A practical guide to using Couchbase&#8217;s distributed ACID transactions, via 
 </div>
 <div class="paragraph">
 <p>Couchbase Distributed <a href="../../../server/7.1/learn/data/transactions.html#overview" class="xref page">ACID (atomic, consistent, isolated, and durable)</a> Transactions allow applications to perform a series of database operations as a single unit&#8201;&#8212;&#8201;meaning operations are either committed together or all undone.
-Transactions are distributed and work across multiple documents, scopes, and collections, which can reside on multiple nodes.</p>
+Transactions are distributed and work across multiple documents, buckets, scopes, and collections, which can reside on multiple nodes.</p>
 </div>
 <div class="paragraph">
 <p>Below we show you how to create Transactions, step-by-step.
@@ -369,7 +369,7 @@ If durability is set to <code>None</code>, then ACID semantics are not guarantee
 <div class="paragraph">
 <p>To create a transaction, an application must supply its logic inside a <code>{lambda}</code>, including any conditional logic required.
 Once the {lambda} has successfully run to conclusion, the transaction will be automatically committed.
-If at any point an error occurs, the transaction will rollback and the {lambda} will be run again.</p>
+If at any point an error occurs, the transaction will rollback and the {lambda} may run again.</p>
 </div>
 <div class="paragraph">
 <p>As with the Couchbase .NET Client, you should use the library asynchronusly using the async/await keywords (the exceptions will be explained later in <a href="#Error Handling">[Error Handling]</a>):</p>
@@ -412,7 +412,7 @@ Do not use fire-and-forget tasks under any circumstances.</p>
 </div>
 <div id="lambda-ops" class="paragraph">
 <p>The transaction lambda gets passed an <code>AttemptContext</code> object&#8201;&#8212;&#8201;generally referred to as <code>ctx</code> in these examples.
-Since the lambda could be rerun multiple times, it is important that it does not contain any side effects.
+Since the {lambda} could be rerun multiple times, it is important that it does not contain any side effects.
 In particular, you should never perform regular operations on a <code>Collection</code>, such as <code>collection.InsertAsync()</code>, inside the lambda.
 Such operations may be performed multiple times, and will not be performed transactionally.
 Instead, you should perform these operations through the <code>ctx</code> object, e.g. <code>ctx.InsertAsync()</code>.</p>
@@ -517,7 +517,7 @@ In this way, all changes are invisible to all parts of Couchbase until the commi
 These include an asynchronous cleanup process that is started with the creation of the <code>Transactions</code> object, and scans for expired transactions created by any application, on all buckets.</p>
 </div>
 <div class="paragraph">
-<p>The cleanup process is detailed in <a href="#concept-docs:transactions-error-cleanup.adoc#background-cleanup" class="xref unresolved">Error Handling</a>.</p>
+<p>The cleanup process is detailed in the <a href="#concept-docs:transactions-cleanup.adoc" class="xref unresolved">concept-docs:transactions-cleanup.adoc</a> page.</p>
 </div>
 </div>
 <div class="sect2">
@@ -885,33 +885,6 @@ await transactions.QueryAsync&lt;object&gt;(bulkLoadStatement, SingleQueryTransa
 // using the lambda style
 await transactions.QueryAsync&lt;object&gt;(bulkLoadStatement, config =&gt; config.ExpirationTime(TimeSpan.FromSeconds(360)));</code></pre>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="query-with-kv-roles"><a class="anchor" href="#query-with-kv-roles"></a>Query with KV Roles</h3>
-<div class="paragraph">
-<p>To execute a key-value operation within a transaction, users must have the relevant <em>Administrative</em> or <em>Data</em> RBAC roles, and permissions on the relevant buckets, scopes, and collections.</p>
-</div>
-<div class="paragraph">
-<p>Similarly, to run a query statement within a transaction, users must have the relevant <em>Administrative</em> or <em>Query &amp; Index</em> RBAC roles, and permissions on the relevant buckets, scopes and collections.</p>
-</div>
-<div class="paragraph">
-<p>Refer to <a href="#learn:security/roles.adoc" class="xref unresolved">Roles</a> for details.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Query Mode</div>
-When a transaction executes a query statement, the transaction enters query mode, which means that the query is executed with the user&#8217;s query permissions.
-Any key-value operations which are executed by the transaction <em>after</em> the query statement are <em>also</em> executed with the user&#8217;s query permissions.
-These may or may not be different to the user&#8217;s data permissions; if they are different, you may get unexpected results.
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
