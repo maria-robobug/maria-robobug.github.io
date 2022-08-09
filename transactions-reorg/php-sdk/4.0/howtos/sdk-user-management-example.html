@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://maria-robobug.github.io/php-sdk/4.0/howtos/sdk-user-management-example.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
-<meta name="description" content="The Java SDK lets you create &lt;em&gt;users&lt;/em&gt;, assign them &lt;em&gt;roles&lt;/em&gt; and associated &lt;em&gt;privileges&lt;/em&gt;, and remove them from the system.">
+<meta name="description" content="The PHP SDK lets you create &lt;em&gt;users&lt;/em&gt;, assign them &lt;em&gt;roles&lt;/em&gt; and associated &lt;em&gt;privileges&lt;/em&gt;, and remove them from the system.">
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
 
 
@@ -170,6 +170,8 @@
 <nav class="crumbs" aria-label="breadcrumbs">
 <ul>
 <li class="crumb"><a href="../hello-world/overview.html">PHP SDK</a></li>
+<li class="crumb">Managing Couchbase</li>
+<li class="crumb"><a href="provisioning-cluster-resources.html">Provisioning Cluster Resources</a></li>
 <li class="crumb"><a href="sdk-user-management-example.html">User Management</a></li>
 </ul>
 </nav>
@@ -186,7 +188,7 @@
 <div class="sectionbody">
 <div class="quoteblock abstract">
 <blockquote>
-The Java SDK lets you create <em>users</em>, assign them <em>roles</em> and associated <em>privileges</em>, and remove them from the system.
+The PHP SDK lets you create <em>users</em>, assign them <em>roles</em> and associated <em>privileges</em>, and remove them from the system.
 </blockquote>
 </div>
 </div>
@@ -196,9 +198,9 @@ The Java SDK lets you create <em>users</em>, assign them <em>roles</em> and asso
 <div class="sectionbody">
 <div class="paragraph">
 <p>Users who have been assigned the <strong>Admin</strong> role for the cluster are able to create, edit, and remove users.
-The Java SDK provides APIs to support these activities.
+The PHP SDK provides APIs to support these activities.
 A high-level summary of the APIs can be found in <a href="../concept-docs/sdk-user-management-overview.html" class="xref page">User-Management</a>,
-and details of all options in the <a href="https://docs.couchbase.com/sdk-api/couchbase-java-client/com/couchbase/client/java/manager/user/UserManager.html">UserManager API docs</a>.</p>
+and details of all options in the <a href="https://docs.couchbase.com/sdk-api/couchbase-php-client/classes/Couchbase-Management-UserManager.html">UserManager API docs</a>.</p>
 </div>
 </div>
 </div>
@@ -211,13 +213,39 @@ and details of all options in the <a href="https://docs.couchbase.com/sdk-api/co
 <div class="listingblock">
 <div class="title">Creating Users</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/howtos/pages/sdk-user-management-example.adoc - include::example$UserManagementExample.java[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/provisioning-resources-users.php#L29-L47">$roles = [
+    // Roles required for reading data from bucket
+    Role::build()-&gt;setName("data_reader")-&gt;setBucket("*"),
+    Role::build()-&gt;setName("query_select")-&gt;setBucket("*"),
+    // Roles required for writing data to bucket
+    Role::build()-&gt;setName("data_writer")-&gt;setBucket("travel-sample"),
+    Role::build()-&gt;setName("query_insert")-&gt;setBucket("travel-sample"),
+    Role::build()-&gt;setName("query_delete")-&gt;setBucket("travel-sample"),
+    // Roles required for idx creation on bucket
+    Role::build()-&gt;setName("query_manage_index")-&gt;setBucket("travel-sample"),
+];
+
+$user = new User();
+$user-&gt;setUsername("test-user");
+$user-&gt;setDisplayName("Test User");
+$user-&gt;setRoles($roles);
+$user-&gt;setPassword("test-passw0rd!");
+
+$userMgr-&gt;upsertUser($user);</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Listing Users</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/howtos/pages/sdk-user-management-example.adoc - include::example$UserManagementExample.java[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/provisioning-resources-users.php#L54-L62">$userMetadata = $userMgr-&gt;getAllUsers();
+foreach ($userMetadata as &amp;$u) {
+    printf("User's display name: %s\n", $u-&gt;user()-&gt;displayName());
+
+    $userRoles = $u-&gt;user()-&gt;roles();
+    foreach ($userRoles as &amp;$role) {
+        printf("\tUser has role %s, applicable to bucket %s\n", $role-&gt;name(), $role-&gt;bucket());
+    }
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -225,7 +253,38 @@ and details of all options in the <a href="https://docs.couchbase.com/sdk-api/co
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/howtos/pages/sdk-user-management-example.adoc - include::example$UserManagementExample.java[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/provisioning-resources-users.php#L69-L100">$options = new ClusterOptions();
+$options-&gt;credentials("test-user", "test-passw0rd!");
+$userCluster = new Cluster("couchbase://localhost", $options);
+
+# For Server versions 6.5 or later you do not need to open a bucket here
+$userBucket = $userCluster-&gt;bucket("travel-sample");
+$collection = $userBucket-&gt;defaultCollection();
+
+# create primary idx for testing purposes
+$createPrimaryQueryIndexOpts = new CreateQueryPrimaryIndexOptions();
+$createPrimaryQueryIndexOpts-&gt;ignoreIfExists(true);
+
+$userCluster-&gt;queryIndexes()-&gt;createPrimaryIndex("travel-sample", $createPrimaryQueryIndexOpts);
+
+# test k/v operations
+$airline10 = $collection-&gt;get("airline_10");
+printf("Airline 10: %s", $airline10-&gt;contentAs(RawJsonTranscoder::getInstance()));
+
+$airline11 = [
+    "callsign" =&gt; "MILE-AIR",
+    "iata" =&gt; "Q5", "id" =&gt; 11,
+    "name" =&gt; "40-Mile Air",
+    "type" =&gt; "airline"
+];
+$collection-&gt;upsert("airline11", $airline11);
+
+# test query operations
+$queryResult = $userCluster-&gt;query("SELECT * FROM `travel-sample` LIMIT 5;");
+foreach ($queryResult-&gt;rows() as &amp;$row) {
+    print("\nQuery Row:\n");
+    print_r($row);
+}</code></pre>
 </div>
 </div>
 </div>

@@ -474,15 +474,14 @@ On all other platforms, the OS-configured time is used (and you need to tune it 
 <dd>
 <p>Cluster Option: <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/html/P_Couchbase_ClusterOptions_NumKvConnections.htm"><code>NumKvConnections(int)</code></a></p>
 <div class="paragraph">
-<p>Default:  <code>1</code></p>
+<p>Default:  <code>2</code></p>
 </div>
 <div class="paragraph">
 <p>The number of actual endpoints (sockets) to open per node in the cluster against the Key/Value service.
 By default, for every node in the cluster one socket is opened where all traffic is pushed through.
 That way the SDK implicitly benefits from network batching characteristics when the workload increases.
 If you suspect based on profiling and benchmarking that the socket is saturated you can think about slightly increasing it to have more "parallel pipelines".
-This might be especially helpful if you need to push large documents through it.
-The recommendation is keeping it at 1 unless there is other evidence.</p>
+This might be especially helpful if you need to push large documents through it.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -501,7 +500,7 @@ The recommendation is keeping it at 1 unless there is other evidence.</p>
 <dd>
 <p>Cluster Option: <code>MaxHttpConnections(int)</code></p>
 <div class="paragraph">
-<p>Default:  <code>0</code></p>
+<p>Default:  <code>5</code></p>
 </div>
 </dd>
 </dl>

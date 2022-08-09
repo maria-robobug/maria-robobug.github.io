@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generated": 1658934346968,
+  "generated": 1660052125608,
   "url": "https://maria-robobug.github.io",
   "components": [
     {
@@ -1923,6 +1923,24 @@
             },
             {
               "module": "concept-docs",
+              "path": "transactions-cleanup.adoc",
+              "url": "/dotnet-sdk/3.3/concept-docs/transactions-cleanup.html",
+              "title": "Cleanup"
+            },
+            {
+              "module": "concept-docs",
+              "path": "transactions-error-handling.adoc",
+              "url": "/dotnet-sdk/3.3/concept-docs/transactions-error-handling.html",
+              "title": "Error Handling"
+            },
+            {
+              "module": "concept-docs",
+              "path": "transactions.adoc",
+              "url": "/dotnet-sdk/3.3/concept-docs/transactions.html",
+              "title": "Distributed ACID Transactions"
+            },
+            {
+              "module": "concept-docs",
               "path": "understanding-views.adoc",
               "url": "/dotnet-sdk/3.3/concept-docs/understanding-views.html",
               "title": "MapReduce Views"
@@ -2136,6 +2154,24 @@
             },
             {
               "module": "howtos",
+              "path": "observability-metrics.adoc",
+              "url": "/dotnet-sdk/3.3/howtos/observability-metrics.html",
+              "title": "Observability Metrics Reporting"
+            },
+            {
+              "module": "howtos",
+              "path": "observability-orphan-logger.adoc",
+              "url": "/dotnet-sdk/3.3/howtos/observability-orphan-logger.html",
+              "title": "Orphaned Requests Logging"
+            },
+            {
+              "module": "howtos",
+              "path": "observability-tracing.adoc",
+              "url": "/dotnet-sdk/3.3/howtos/observability-tracing.html",
+              "title": "Request Tracing"
+            },
+            {
+              "module": "howtos",
               "path": "provisioning-cluster-resources.adoc",
               "url": "/dotnet-sdk/3.3/howtos/provisioning-cluster-resources.html",
               "title": "Provisioning Cluster Resources"
@@ -2169,6 +2205,12 @@
               "path": "tracing-from-the-sdk.adoc",
               "url": "/dotnet-sdk/3.3/howtos/tracing-from-the-sdk.html",
               "title": "Tracing from the .NET SDK"
+            },
+            {
+              "module": "howtos",
+              "path": "transactions-single-query.adoc",
+              "url": "/dotnet-sdk/3.3/howtos/transactions-single-query.html",
+              "title": "Single Query Transactions"
             },
             {
               "module": "howtos",
@@ -2249,6 +2291,12 @@
               "path": "migrating-sdk-code-to-3.n.adoc",
               "url": "/dotnet-sdk/3.3/project-docs/migrating-sdk-code-to-3.n.html",
               "title": "Migrating from SDK2 to SDK3 API"
+            },
+            {
+              "module": "project-docs",
+              "path": "performance.adoc",
+              "url": "/dotnet-sdk/3.3/project-docs/performance.html",
+              "title": "Performance Best Practices"
             },
             {
               "alias": true,
@@ -2660,6 +2708,13 @@
               "path": "threshold-logging.adoc",
               "url": "/dotnet-sdk/3.3/concept-docs/response-time-observability.html",
               "title": "Request Tracing and Metrics"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "tracing-from-the-sdk.adoc",
+              "url": "/dotnet-sdk/3.3/howtos/observability-tracing.html",
+              "title": "Request Tracing"
             },
             {
               "alias": true,
@@ -7358,13 +7413,6 @@
               "path": "sdk-release-notes.adoc",
               "url": "/php-sdk/4.0/project-docs/sdk-release-notes.html",
               "title": "Couchbase PHP Release Notes"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "sdk-user-management-example.adoc",
-              "url": "/php-sdk/4.0/howtos/sdk-user-management-example.html",
-              "title": "User Management"
             },
             {
               "alias": true,

@@ -447,25 +447,29 @@ For example, if a document represents a user, and the application is simply upda
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">      int maxRetries = 10;
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">var maxRetries = 10;
 
-      for (int i = 0; i &lt; maxRetries; i++) {
-        // Get the current document contents
-        GetResult getResult = collection.get("user-id");
+for (var i = 0; i &lt; maxRetries; i++)
+{
+    // Get the current document contents
+    var getResult = await collection.GetAsync("user-id");
 
-        // Increment a count on the user
-        JsonObject content = getResult.contentAsObject();
-        content.put("visitCount", content.getLong("visitCount") + 1);
+    // Increment a count on the user
+    var content = getResult.ContentAs&lt;JObject&gt;();
+    content["visitCount"] = content["visitCount"].Value&lt;long&gt;() + 1;
 
-        try {
-          // Attempt to replace the document with cas
-          collection.replace("user-id", content, replaceOptions().cas(getResult.cas()));
-          break;
-        } catch (CasMismatchException ex) {
-          // continue the loop on cas mismatch to try again
-          // note that any other exception will be raised and break the loop as well
-        }
-      }</code></pre>
+    try
+    {
+        // Attempt to replace the document with cas
+        await collection.ReplaceAsync("user-id", content, options =&gt; options.Cas(getResult.Cas));
+        break;
+    }
+    catch (CasMismatchException ex)
+    {
+        // continue the loop on cas mismatch to try again
+        // note that any other exception will be raised and break the loop as well
+    }
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -573,19 +577,16 @@ The following blocks show how to use <code>lock</code> and <code>unlock</code> o
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">      GetResult getAndLockResult = collection.getAndLock("key", Duration.ofSeconds(2));
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp">var getAndLockResult = await collection.GetAndLockAsync("key", TimeSpan.FromSeconds(2));
 
-      long lockedCas = getAndLockResult.cas();
+var lockedCas = getAndLockResult.Cas;
 
-      /* an example of simply unlocking the document:
-      collection.unlock("key", lockedCas);
-       */
+/* an example of simply unlocking the document:
+   await collection.UnlockAsync("key", lockedCas);
+*/
 
-      collection.replace("key", "new value", replaceOptions().cas(lockedCas));</code></pre>
+await collection.ReplaceAsync("key", "new value", options =&gt; options.Cas(lockedCas));</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>(For the .NET equivalent, refer to the <a href="https://docs.couchbase.com/sdk-api/couchbase-net-client/api/Couchbase.KeyValue.GetAndLockOptions.html">API documentation</a>.)</p>
 </div>
 <div class="paragraph">
 <p>The handler will unlock the item either via an explicit unlock operation (<code class="api">unlock</code>) or implicitly via modifying the item with the correct CAS.</p>

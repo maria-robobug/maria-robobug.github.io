@@ -214,16 +214,16 @@ For example, if you wish to manage a cluster from a setup script, or if you are 
 <p>QueryIndexManager&#8201;&#8212;&#8201;<a href="https://docs.couchbase.com/sdk-api/couchbase-php-client/classes/Couchbase-Cluster.html#method_queryIndexes"><code>Cluster::queryIndexes()</code></a></p>
 </li>
 <li>
-<p>AnalyticsIndexManager&#8201;&#8212;&#8201;[<code>Cluster::analyticsIndexes()</code>]</p>
+<p>AnalyticsIndexManager&#8201;&#8212;&#8201;<a href="https://docs.couchbase.com/sdk-api/couchbase-php-client/classes/Couchbase-Cluster.html#method_analyticsIndexes"><code>Cluster::analyticsIndexes()</code></a></p>
 </li>
 <li>
-<p>SearchIndexManager&#8201;&#8212;&#8201;<a href="https://pkg.go.dev/github.com/couchbase/gocb/v2?tab=doc#Cluster.SearchIndexes"><code>Cluster::searchIndexes()</code></a></p>
+<p>SearchIndexManager&#8201;&#8212;&#8201;<a href="https://docs.couchbase.com/sdk-api/couchbase-php-client/classes/Couchbase-Cluster.html#method_searchIndexes"><code>Cluster::searchIndexes()</code></a></p>
 </li>
 <li>
-<p>CollectionManager&#8201;&#8212;&#8201;<a href="https://pkg.go.dev/github.com/couchbase/gocb/v2?tab=doc#Bucket.Collections"><code>Bucket::collections()</code></a></p>
+<p>CollectionManager&#8201;&#8212;&#8201;<a href="https://docs.couchbase.com/sdk-api/couchbase-php-client/classes/Couchbase-Bucket.html#method_collections"><code>Bucket::collections()</code></a></p>
 </li>
 <li>
-<p> ViewIndexManager&#8201;&#8212;&#8201;<a href="https://pkg.go.dev/github.com/couchbase/gocb/v2?tab=doc#Bucket.ViewIndexes"><code>Bucket::viewIndexes()</code></a></p>
+<p>ViewIndexManager&#8201;&#8212;&#8201;<a href="https://docs.couchbase.com/sdk-api/couchbase-php-client/classes/Couchbase-Bucket.html#method_viewIndexes"><code>Bucket::viewIndexes()</code></a></p>
 </li>
 </ul>
 </div>
@@ -235,6 +235,40 @@ For example, if you wish to manage a cluster from a setup script, or if you are 
 </td>
 <td class="content">
 When using a Couchbase version earlier than 6.5, you must create a valid Bucket connection using <code>Cluster::bucket(name)</code> before you can use cluster level managers.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Since SDK 4.0 uses the <code>Couchbase++</code> library rather than <code>libcouchbase</code>, some management APIs have not been fully implemented, in particular:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AnalyticsIndexManager</code></p>
+</li>
+<li>
+<p><code>SearchIndexManager</code></p>
+</li>
+<li>
+<p><code>ViewIndexManager</code></p>
+</li>
+<li>
+<p><code>CollectionManager</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Any attempt to use them will raise an <code>UnsupportedOperationException</code> error.
+The APIs will be available in a future 4.x release.</p>
+</div>
 </td>
 </tr>
 </table>
@@ -259,7 +293,7 @@ $bucketMgr = $cluster-&gt;buckets();</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>BucketSettings</code> object is used for creating and updating buckets, and for exposing information about existing buckets.</p>
+<p>The <code>BucketSettings</code> class is used for creating and updating buckets, and for exposing information about existing buckets.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -399,106 +433,6 @@ You may enable bucket flushing on a per-bucket basis using the Couchbase Web Con
 </div>
 </div>
 <div class="sect1">
-<h2 id="collection-management"><a class="anchor" href="#collection-management"></a>Collection Management</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The CollectionManager interface may be used to create and delete scopes and collections from the Couchbase cluster.
-It is instantiated through the <code>Bucket.collections()</code> method.
-Refer to the <a href="https://docs.couchbase.com/sdk-api/couchbase-php-client/classes/Couchbase-CollectionManager.html"><code>CollectionManager</code> API documentation</a>
-for further details.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/collection-manager.php#L31-L36">$options = new \Couchbase\ClusterOptions();
-$options-&gt;credentials("scopeAdmin", "password");
-$cluster = new \Couchbase\Cluster("localhost", $options);
-$bucket = $cluster-&gt;bucket("travel-sample");
-
-$collections = $bucket-&gt;collections();</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can create a scope:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/collection-manager.php#L41-L46">try {
-    $collections-&gt;createScope("example-scope");
-}
-catch (Exception $e) {
-    print $e;
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can then create a collection within that scope:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/collection-manager.php#L51-L60">$collection = new \Couchbase\CollectionSpec();
-$collection-&gt;setName("example-collection");
-$collection-&gt;setScopeName("example-scope");
-
-try {
-    $collections-&gt;createCollection($collection);
-}
-catch (Exception $e) {
-    print $e;
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Finally, you can drop unneeded collections and scopes:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php">$collections-&gt;dropCollection($collection);
-
-$collections-&gt;dropScope("example-scope");</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Note that the most minimal permissions to create and drop a Scope or Collection is
-<a href="../../../server/7.1/learn/security/roles.html#manage-scopes" class="xref page">Manage Scopes</a>
-along with <a href="../../../server/7.1/learn/security/roles.html#data-reader" class="xref page">Data Reader</a>.</p>
-</div>
-<div class="paragraph">
-<p>You can create users with the appropriate RBAC programmatically:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php">$users = $cluster-&gt;users();
-
-$user = new \Couchbase\User();
-$user-&gt;setUsername("scopeAdmin");
-$user-&gt;setDisplayName("Manage Scopes [travel-sample]");
-$user-&gt;setPassword("password");
-$user-&gt;setRoles([
-    (new \Couchbase\Role)-&gt;setName("scope_admin")-&gt;setBucket("travel-sample"),
-    (new \Couchbase\Role)-&gt;setName("data_reader")-&gt;setBucket("travel-sample")
-]);
-
-$users-&gt;upsertUser($user);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can enumerate Scopes and Collections using the <code>CollectionManager</code> and the properties of the <code>ScopeSpec</code> and <code>CollectionSpec</code> objects retrieved.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/collection-manager.php#L65-L72">$scopes = $collections-&gt;getAllScopes();
-foreach ($scopes as $scope) {
-    print "Scope {$scope-&gt;name()}\n";
-    
-    foreach ($scope-&gt;collections() as $collection) {
-        print " - {$collection-&gt;name()}\n";
-    }
-}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="index-management"><a class="anchor" href="#index-management"></a>Index Management</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -511,13 +445,13 @@ For those occasions when you do, index management operations can be performed wi
 <p>QueryIndexManager&#8201;&#8212;&#8201;<a href="https://docs.couchbase.com/sdk-api/couchbase-php-client/classes/Couchbase-Cluster.html#method_queryIndexes"><code>Cluster::queryIndexes()</code></a></p>
 </li>
 <li>
-<p>AnalyticsIndexManager&#8201;&#8212;&#8201;[<code>Cluster::analyticsIndexes()</code>]</p>
+<p>AnalyticsIndexManager&#8201;&#8212;&#8201;<a href="https://docs.couchbase.com/sdk-api/couchbase-php-client/classes/Couchbase-Cluster.html#method_analyticsIndexes"><code>Cluster::analyticsIndexes()</code></a></p>
 </li>
 <li>
-<p>SearchIndexManager&#8201;&#8212;&#8201;<a href="https://pkg.go.dev/github.com/couchbase/gocb/v2?tab=doc#Cluster.SearchIndexes"><code>Cluster::searchIndexes()</code></a></p>
+<p>SearchIndexManager&#8201;&#8212;&#8201;<a href="https://docs.couchbase.com/sdk-api/couchbase-php-client/classes/Couchbase-Cluster.html#method_searchIndexes"><code>Cluster::searchIndexes()</code></a></p>
 </li>
 <li>
-<p> ViewIndexManager&#8201;&#8212;&#8201;<a href="https://pkg.go.dev/github.com/couchbase/gocb/v2?tab=doc#Bucket.ViewIndexes"><code>Bucket::viewIndexes()</code></a></p>
+<p>ViewIndexManager&#8201;&#8212;&#8201;<a href="https://docs.couchbase.com/sdk-api/couchbase-php-client/classes/Couchbase-Bucket.html#method_viewIndexes"><code>Bucket::viewIndexes()</code></a></p>
 </li>
 </ul>
 </div>
@@ -528,11 +462,15 @@ For those occasions when you do, index management operations can be performed wi
 <h3 id="queryindexmanager"><a class="anchor" href="#queryindexmanager"></a>QueryIndexManager</h3>
 <div class="paragraph">
 <p>The <code>QueryIndexManager</code> interface contains the means for managing indexes used for queries.
-It can be instantiated through the <code>Cluster.query_indexes()</code> method.</p>
+It can be instantiated through the <code>Cluster::queryIndexes()</code> method.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">Unresolved include directive in modules/howtos/pages/provisioning-cluster-resources.adoc - include::howtos:example$query_index_manager.py[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/query-index-manager.php#L17-L21">$options = new ClusterOptions();
+$options-&gt;credentials("Administrator", "password");
+$cluster = new Cluster("couchbase://localhost", $options);
+
+$queryIndexMgr = $cluster-&gt;queryIndexes();</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -562,22 +500,29 @@ See the <a href="../../../server/7.1/learn/security/roles.html#query-manage-inde
 </table>
 </div>
 <div class="paragraph">
-<p>The example below shows how to create a simple primary index, restricted to a named scope and collection, by calling the <code>create_primary_index()</code> method.
+<p>The example below shows how to create a simple primary index, restricted to a named scope and collection, by calling the <code>createPrimaryIndex()</code> method.
 Note that you cannot provide a named scope or collection separately, both must be set for the <code>QueryIndexManager</code> to create an index on the relevant keyspace path.</p>
 </div>
 <div class="listingblock">
 <div class="title">Creating a primary index</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">Unresolved include directive in modules/howtos/pages/provisioning-cluster-resources.adoc - include::howtos:example$query_index_manager.py[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/query-index-manager.php#L34-L41">$options = new CreateQueryPrimaryIndexOptions();
+$options-&gt;scopeName("tenant_agent_01");
+$options-&gt;collectionName("users");
+// Set this if you wish to use a custom name
+// $options-&gt;indexName("custom_name");
+$options-&gt;ignoreIfExists(true);
+
+$queryIndexMgr-&gt;createPrimaryIndex("travel-sample", $options);</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>When a primary index name is not specified, the SDK will create the index as <code>#primary</code> by default.
-However, if you wish to provide a custom name, you can simply set a <code>index_name</code> property in the <code>CreatePrimaryQueryIndexOptions</code> class.</p>
+However, if you wish to provide a custom name, you can simply set an <code>indexName</code> property in the <code>CreatePrimaryQueryIndexOptions</code> class.</p>
 </div>
 <div class="paragraph">
-<p>You may have noticed that the example also sets the <code>ignore_if_exists</code> boolean flag.
-When set to <code>True</code>, this optional argument ensures that an error is not thrown if an index under the same name already exists.</p>
+<p>You may have noticed that the example also sets the <code>ignoreIfExists</code> boolean flag.
+When set to <code>true</code>, this optional argument ensures that an error is not thrown if an index under the same name already exists.</p>
 </div>
 <div class="paragraph">
 <p>Creating a <em>secondary</em> index follows a similar approach, with some minor differences:</p>
@@ -585,50 +530,70 @@ When set to <code>True</code>, this optional argument ensures that an error is n
 <div class="listingblock">
 <div class="title">Creating a secondary index</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">Unresolved include directive in modules/howtos/pages/provisioning-cluster-resources.adoc - include::howtos:example$query_index_manager.py[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/query-index-manager.php#L50-L54">$options = new CreateQueryIndexOptions();
+$options-&gt;scopeName("tenant_agent_01");
+$options-&gt;collectionName("users");
+
+$queryIndexMgr-&gt;createIndex("travel-sample", "tenant_agent_01_users_email", ["preferred_email"], $options);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>create_index()</code> method requires an index name to be provided, along with the fields to create the index on.
+<p>The <code>createIndex()</code> method requires an index name to be provided, along with the fields to create the index on.
 Like the <em>primary</em> index, you can restrict a <em>secondary</em> index to a named scope and collection by passing some options.</p>
 </div>
 <div class="paragraph">
 <p>Indexes can easily take a long time to build if they contain a lot of documents.
 In these situations, it is more ideal to build indexes in the background.
-To achieve this we can use the <code>deferred</code> boolean option, and set it to <code>True</code>.</p>
+To achieve this we can use the <code>deferred</code> boolean option, and set it to <code>true</code>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Deferring index creation</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">Unresolved include directive in modules/howtos/pages/provisioning-cluster-resources.adoc - include::howtos:example$query_index_manager.py[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/query-index-manager.php#L66-L86">// Create a deferred index
+$createOpts = new CreateQueryIndexOptions();
+$createOpts-&gt;scopeName("tenant_agent_01");
+$createOpts-&gt;collectionName("users");
+$createOpts-&gt;deferred(true);
+
+$queryIndexMgr-&gt;createIndex("travel-sample", "tenant_agent_01_users_phone", ["preferred_phone"], $createOpts);
+
+// Build any deferred indexes within `travel-sample`.tenant_agent_01.users
+$deferredOpts = new BuildQueryIndexesOptions();
+$deferredOpts-&gt;scopeName("tenant_agent_01");
+$deferredOpts-&gt;collectionName("users");
+
+$queryIndexMgr-&gt;buildDeferredIndexes("travel-sample", $deferredOpts);
+
+// Wait for indexes to come online
+$watchOpts = new WatchQueryIndexesOptions();
+$watchOpts-&gt;scopeName("tenant_agent_01");
+$watchOpts-&gt;collectionName("users");
+
+$queryIndexMgr-&gt;watchIndexes("travel-sample", ["tenant_agent_01_users_phone"], 30000, $watchOpts);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To delete a query index you can use the <code>drop_index()</code> or <code>drop_primary_index()</code> methods.
+<p>To delete a query index you can use the <code>dropIndex()</code> or <code>dropPrimaryIndex()</code> methods.
 Which one you use depends on the type of query index you wish to drop from the database.</p>
 </div>
 <div class="listingblock">
 <div class="title">Deleting an index</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">Unresolved include directive in modules/howtos/pages/provisioning-cluster-resources.adoc - include::howtos:example$query_index_manager.py[]</code></pre>
+<pre class="highlightjs highlight"><code class="language-php hljs" data-lang="php" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-php//modules/howtos/examples/query-index-manager.php#L97-L109">// Drop a primary index
+$options = new DropQueryPrimaryIndexOptions();
+$options-&gt;scopeName("tenant_agent_01");
+$options-&gt;collectionName("users");
+
+$queryIndexMgr-&gt;dropPrimaryIndex("travel-sample", $options);
+
+// Drop a secondary index
+$options = new DropQueryIndexOptions();
+$options-&gt;scopeName("tenant_agent_01");
+$options-&gt;collectionName("users");
+
+$queryIndexMgr-&gt;dropIndex("travel-sample", "tenant_agent_01_users_email", $options);</code></pre>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="view-management"><a class="anchor" href="#view-management"></a>View Management</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Views are stored in design documents.
-The SDK provides convenient methods to create, retrieve, and remove design documents.
-To set up views, you create design documents that contain one or more view definitions, and then insert the design documents into a bucket.
-Each view in a design document is represented by a name and a set of MapReduce functions.
-The mandatory map function describes how to select and transform the data from the bucket, and the optional reduce function describes how to aggregate the results.</p>
-</div>
-<div class="paragraph">
-<p>In the SDK, design documents are represented by the <code>DesignDocument</code> and <code>View</code> objects.
-All operations on design documents are performed on the <code>ViewIndexManager</code> instance:</p>
 </div>
 </div>
 </div>

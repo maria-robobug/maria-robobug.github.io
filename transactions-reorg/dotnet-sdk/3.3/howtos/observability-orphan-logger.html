@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Slow Operations Logging | Couchbase Docs (Local)</title>
-<link rel="canonical" href="https://maria-robobug.github.io/dotnet-sdk/3.3/howtos/slow-operations-logging.html">
+<title>Orphaned Requests Logging | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/dotnet-sdk/3.3/howtos/observability-orphan-logger.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
-<meta name="description" content="Tracing information on slow operations can be found in the logs as threshold logging, orphan logging, and other span metrics.">
+<meta name="description" content="In addition to request tracing and metrics reporting, logging orphaned requests provides additional insight into why an operation might have timed out (or got cancelled for a different reason).">
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
 
 
 <meta name="dcterms.subject" content="dotnet-sdk">
 <meta name="dcterms.identifier" content="3.3">
-<meta name="page-url" content="/dotnet-sdk/3.3/howtos/slow-operations-logging.html">
+<meta name="page-url" content="/dotnet-sdk/3.3/howtos/observability-orphan-logger.html">
 <meta name="generator" content="Antora 3.0.1">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
@@ -111,7 +111,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/pages/slow-operations-logging.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/pages/observability-orphan-logger.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -172,13 +172,13 @@
 <li class="crumb"><a href="../hello-world/overview.html">.NET SDK</a></li>
 <li class="crumb">Errors &amp; Diagnostics</li>
 <li class="crumb">Observability</li>
-<li class="crumb"><a href="slow-operations-logging.html">Slow Operations Logging</a></li>
+<li class="crumb"><a href="observability-orphan-logger.html">Orphan Requests Logging</a></li>
 </ul>
 </nav>
 </div>
 <article class="doc">
 <div class="page-heading-title">
-<h1 class="page">Slow Operations Logging</h1>
+<h1 class="page">Orphaned Requests Logging</h1>
 </div>
 <div class="contributor-list-box">
 <span class="last-commit-date" id="commitdate">    </span>
@@ -188,27 +188,132 @@
 <div class="sectionbody">
 <div class="quoteblock abstract">
 <blockquote>
-Tracing information on slow operations can be found in the logs as threshold logging, orphan logging, and other span metrics.
-Change the settings to alter how much information you collect
+In addition to request tracing and metrics reporting, logging orphaned requests provides additional insight into why an operation might have timed out (or got cancelled for a different reason).
 </blockquote>
 </div>
 <div class="paragraph">
-<p>To improve debuggability certain metrics are automatically measured and logged.
-These include slow queries, responses taking beyond a certain threshold, and orphanned responses.</p>
+<p>While tracing and metrics can also be consumed through external interfaces, getting information about orphaned requests only works through the built-in mechanisms.</p>
+</div>
+<div class="paragraph">
+<p>The way it works is that every time a response is in the process of being completed, when the SDK detects that the original caller is not listening anymore (likely because of a timeout), it will send this "orphaned" response to a reporting utility which aggregates all responses and in regular intervals logs them in a specific format.</p>
+</div>
+<div class="paragraph">
+<p>When you spot a <code>TimeoutException</code> in your log file, you can look for the output of the <code>OrphanReporter</code> and correlate the information.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="threshold-logging-reporting"><a class="anchor" href="#threshold-logging-reporting"></a>Threshold Logging Reporting</h2>
+<h2 id="output-format"><a class="anchor" href="#output-format"></a>Output Format</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Threshold logging is the recording of slow operations&#8201;&#8212;&#8201;useful for diagnosing when and where problems occur in a distributed environment.</p>
+<p>The <code>OrphanReporter</code> raises an <code>OrphansRecordedEvent</code> which in turn is going to be logged alongside all other SDK logs.
+Since orphans usually indicate a state that is not desirable, the log level for those events is <code>WARN</code>.
+By default they will be aggregated and logged every 10 seconds, but the event will be skipped if there are no orphans to report.
+This makes sure that the log line will appear close to the corresponding <code>TimeoutException</code> in the logs, while not spamming the log file if there is nothing to report.
+See the next section on how to customize this behavior.</p>
 </div>
-<div class="sect2">
-<h3 id="configuring-threshold-logging"><a class="anchor" href="#configuring-threshold-logging"></a>Configuring Threshold Logging</h3>
 <div class="paragraph">
-<p>To configure threshold logging, adjust the <a href="../ref/client-settings.html#general-options" class="xref page">ThresholdRequestTracer</a>.
-You should expect to see output in JSON format in the logs for the services encountering problems:</p>
+<p>The actual body of the message consists of the text <code>Orphaned requests found</code>, followed by a compact JSON representation of the aggregated orphans.
+The following code snippet shows a prettified version of such a JSON blob:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+   {
+      "top":[
+         {
+            "b":"travel-sample",
+            "r":"127.0.0.1:11210",
+            "s":"get",
+            "c":"9DACF45F00000001/0000000077CB4DAA",
+            "d":8,
+            "t":2500,
+            "i":"0x6af7",
+            "l":"127.0.0.1:62836"
+         },
+         {
+            "b":"travel-sample",
+            "r":"127.0.0.1:11210",
+            "s":"get",
+            "c":"9DACF45F00000001/0000000077CB4DAA",
+            "d":8,
+            "t":2500,
+            "i":"0x5dcf",
+            "l":"127.0.0.1:62836"
+         },
+         {
+            "b":"travel-sample",
+            "r":"127.0.0.1:11210",
+            "s":"get",
+            "c":"9DACF45F00000001/0000000077CB4DAA",
+            "d":15,
+            "t":2500,
+            "i":"0x38f",
+            "l":"127.0.0.1:62836"
+         }
+      ],
+      "service":"kv",
+      "count":3
+   }
+]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The fields are kept compact so that the logs don&#8217;t get too big, but since they are abbreviations it is handy to have the following table available for reference:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. JSON Output Format Descriptions</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>b</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the bucket</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>r</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remote hostname if dispatched</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>l</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Local hostname if dispatched</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>s</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name/type of the request</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>c</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Channel ID to correlate with the server logs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>d</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The server duration in microseconds if present</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>t</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The configured timeout in milliseconds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>i</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The operation ID (i.e. opaque for Key/Value)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Please note that in future releases this format is planned to change for easier readability, so we do not provide any stability guarantees on the logging output format and it might change between minor versions.</p>
+</div>
+<div class="paragraph">
+<p>If you want to enable the new output format, for now you have to set the <code>com.couchbase.orphanReporterNewOutputFormat</code> system property to <code>true</code>.
+Once enabled, the overall new structure looks like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -225,10 +330,7 @@ You should expect to see output in JSON format in the logs for the services enco
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>total_count</code> represents the total amount of over-threshold recorded items in each interval per service.
-The number of entries in “top_requests” is configured by the <code>sampleSize</code>.
-The service placeholder is replaced with each service&#8201;&#8212;&#8201;“kv”, “query”, etc.
-Each entry looks like this, with all fields populated:</p>
+<p>Each individual request has the following format:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -238,17 +340,122 @@ Each entry looks like this, with all fields populated:</p>
   "last_dispatch_duration_us": 40,
   "total_dispatch_duration_us": 40,
   "last_server_duration_us": 2,
+  "timeout_ms": 75000,
   "operation_name": "upsert",
-  "last_local_id": "66388CF5BFCF7522/18CC8791579B567C,
+  "last_local_id": "66388CF5BFCF7522/18CC8791579B567C",
   "operation_id": "0x23",
   "last_local_socket": "10.211.55.3:52450",
   "last_remote_socket": "10.112.180.101:11210"
 }</code></pre>
 </div>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Experimental JSON Output Format Descriptions</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>total_duration_us</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The duration of the orphaned request.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>encode_duration_us</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The duration of the encode span, if present.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>last_dispatch_duration_us</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The duration of the last dispatch span if present.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>total_dispatch_duration_us</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The duration of all dispatch spans, summed up.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>last_server_duration_us</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The server duration attribute of the last dispatch span, if present.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>operation_name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the outer request span, with “cb.” prefix removed.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>last_local_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The local_id from the last dispatch span, if present.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>operation_id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The operation_id from the outer request span, if present.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>last_local_socket</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The local_address from the last dispatch span, if present.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>last_remote_socket</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The remote_address from the last dispatch span, if present.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timeout_ms</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The operation timeout in milliseconds.</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
-<p>If a field is not present (because for example dispatch did not happen), it will not be included.</p>
+<p>If a field is not available, it will not be included in the output.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The orphan logger can be configured through the <code>OrphanReporterConfig</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following properties can be configured:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. OrphanReporterConfig Properties</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>emitInterval</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The interval where found orphans are emitted.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sampleSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of samples to store per service.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>queueLength</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1024</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum buffer size of orphans to store to pick up for the reporter.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>In addition to those properties, if you want to try out the new logging format you can set the <code>com.couchbase.orphanReporterNewOutputFormat</code> system property to <code>true</code>.</p>
 </div>
 </div>
 </div>

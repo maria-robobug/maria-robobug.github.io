@@ -8,10 +8,17 @@
 <link rel="canonical" href="https://maria-robobug.github.io/dotnet-sdk/3.3/howtos/distributed-acid-transactions-from-the-sdk.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
-<meta name="description" content="A practical guide to using Couchbase&#x27;s distributed ACID transactions, via the .NET API.">
+<meta name="description" content="A practical guide to using Couchbase&#x27;s distributed ACID transactions, via the .NET SDK.">
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
+        <link rel="prev" href="view-queries-with-sdk.html">
+        <link rel="next" href="transactions-single-query.html">
 
 
+
+
+                    <link rel="next" href="transactions-single-query.html">
+
+        
 <meta name="dcterms.subject" content="dotnet-sdk">
 <meta name="dcterms.identifier" content="3.3">
 <meta name="page-url" content="/dotnet-sdk/3.3/howtos/distributed-acid-transactions-from-the-sdk.html">
@@ -170,8 +177,8 @@
 <nav class="crumbs" aria-label="breadcrumbs">
 <ul>
 <li class="crumb"><a href="../hello-world/overview.html">.NET SDK</a></li>
-<li class="crumb">Advanced Data Operations</li>
-<li class="crumb"><a href="distributed-acid-transactions-from-the-sdk.html">Distributed ACID Transactions</a></li>
+<li class="crumb">Transactions</li>
+<li class="crumb"><a href="distributed-acid-transactions-from-the-sdk.html">How-to Guide</a></li>
 </ul>
 </nav>
 </div>
@@ -187,40 +194,83 @@
 <div class="sectionbody">
 <div class="quoteblock abstract">
 <blockquote>
-A practical guide to using Couchbase&#8217;s distributed ACID transactions, via the .NET API.
+A practical guide to using Couchbase&#8217;s distributed ACID transactions, via the .NET SDK.
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Couchbase Distributed <a href="../../../server/7.1/learn/data/transactions.html#overview" class="xref page">ACID (atomic, consistent, isolated, and durable)</a> Transactions allow applications to perform a series of database operations as a single unit&#8201;&#8212;&#8201;meaning operations are either committed together or all undone.
-Transactions are distributed and work across multiple documents, buckets, scopes, and collections, which can reside on multiple nodes.</p>
+<p>This guide will show you examples of how to perform multi-document ACID (atomic, consistent, isolated, and durable) database transactions within your application, using the Couchbase .NET SDK and transactions library.</p>
 </div>
 <div class="paragraph">
-<p>Below we show you how to create Transactions, step-by-step.
-You may also want to start with our <a href="https://github.com/couchbaselabs/couchbase-transactions-dotnet-examples">transactions examples repository</a>,
-which features useful downloadable examples of using Distributed Transactions.</p>
-</div>
-<div class="paragraph">
-<p>API Docs are available <a href="https://docs.couchbase.com/sdk-api/couchbase-transactions-dotnet/">online</a>.</p>
+<p>Refer to the <a href="#concept-docs:transactions">Distributed ACID Transactions</a> concept material for a high-level overview.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="requirements"><a class="anchor" href="#requirements"></a>Requirements</h2>
+<h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2>
 <div class="sectionbody">
-<div class="ulist">
+<div class="tabset is-loading">
+<div class="ulist tabs">
 <ul>
 <li>
-<p>Couchbase Server 6.6.2 or above.</p>
+<p><a id="tabset1_couchbase-capella"></a>Couchbase Capella</p>
 </li>
 <li>
-<p>Couchbase .NET client 3.2.3 or above.
-It is recommended you use the package on NuGet.
-.Single Node Cluster</p>
+<p><a id="tabset1_couchbase-server"></a>Couchbase Server</p>
 </li>
 </ul>
 </div>
-<div class="exampleblock">
 <div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_couchbase-capella">
+<div class="ulist">
+<ul>
+<li>
+<p>Couchbase Capella account.</p>
+</li>
+<li>
+<p>You should know how to perform <a href="kv-operations.html" class="xref page">key-value</a> or <a href="n1ql-queries-with-sdk.html" class="xref page">query</a> operations with the SDK.</p>
+</li>
+<li>
+<p>Your application should have the relevant roles and permissions on the required buckets, scopes, and collections, to perform transactional operations.
+Refer to the <a href="../../../cloud/organizations/organization-projects-overview.html" class="xref page">Organizations &amp; Access</a> page for more details.</p>
+</li>
+<li>
+<p>If your application is using <a href="../concept-docs/xattr.html" class="xref page">extended attributes (XATTRs)</a>, you should avoid using the XATTR field <code>txn</code>&#8201;&#8212;&#8201;this is reserved for Couchbase use.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_couchbase-server">
+<div class="ulist">
+<ul>
+<li>
+<p>Couchbase Server (6.6.2 or above).</p>
+</li>
+<li>
+<p>You should know how to perform <a href="kv-operations.html" class="xref page">key-value</a> or <a href="n1ql-queries-with-sdk.html" class="xref page">query</a> operations with the SDK.</p>
+</li>
+<li>
+<p>Your application should have the relevant roles and permissions on the required buckets, scopes, and collections, to perform transactional operations.
+Refer to the <a href="../../../server/7.1/learn/security/roles.html" class="xref page">Roles</a> page for more details.</p>
+</li>
+<li>
+<p>If your application is using <a href="../concept-docs/xattr.html" class="xref page">extended attributes (XATTRs)</a>, you should avoid using the XATTR field <code>txn</code>&#8201;&#8212;&#8201;this is reserved for Couchbase use.</p>
+</li>
+<li>
+<p>NTP should be configured so nodes of the Couchbase cluster are in sync with time.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="title">Single Node Cluster</div>
 <div class="paragraph">
 <p>When using a single node cluster (for example, during development), the default number of replicas for a newly created bucket is <strong>1</strong>.
 If left at this default, all key-value writes performed with durability will fail with a <code>DurabilityImpossibleException</code>.
@@ -243,72 +293,75 @@ This setting can be changed via:</p>
 <div class="paragraph">
 <p>If the bucket already exists, then the server needs to be rebalanced for the setting to take affect.</p>
 </div>
+</td>
+</tr>
+</table>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="getting-started"><a class="anchor" href="#getting-started"></a>Getting Started</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="transactions-library"><a class="anchor" href="#transactions-library"></a>Transactions Library</h3>
 <div class="paragraph">
 <p>Couchbase transactions require no additional components or services to be configured.
 Simply add the transactions library into your project.
-Version 1.1.0 was release October 29th, 2021.
+Version <code>1.1.0</code> was released October 29th, 2021.<br>
 See the <a href="../project-docs/distributed-transactions-dotnet-release-notes.html" class="xref page">Release Notes</a> for the latest version.</p>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset2_nuget"></a>NuGet</p>
+</li>
+<li>
+<p><a id="tabset2_cli"></a>CLI</p>
+</li>
+<li>
+<p><a id="tabset2_csproj-file"></a>.csproj file</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset2_nuget">
 <div class="paragraph">
-<p>With NuGut this can be accomplished by using the NuGet Package Manager in your IDE:</p>
+<p>With NuGet this can be accomplished by using the NuGet Package Manager in your IDE:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">PM &gt; Install-Package Couchbase.Transactions -Version 1.1.0</code></pre>
+<pre>PM &gt; Install-Package Couchbase.Transactions -Version 1.1.0</pre>
 </div>
 </div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_cli">
 <div class="paragraph">
-<p>Or via the CLI</p>
+<p>You can also install the library with the dotnet CLI.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">dotnet add package Couchbase.Transactions --version 1.1.0</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ dotnet add package Couchbase.Transactions --version 1.1.0</code></pre>
 </div>
 </div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset2_csproj-file">
 <div class="paragraph">
-<p>Or by using PackageReference in your .csproj file:</p>
+<p>If you&#8217;re using a .csproj file, add this <code>PackageReference</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">&lt;PackageReference Include="Couchbase.Transactions" Version="1.1.0" /&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;PackageReference Include="Couchbase.Transactions" Version="1.1.0" /&gt;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>A complete simple NuGet example is available on our <a href="https://github.com/couchbaselabs/couchbase-transactions-dotnet-examples">transactions examples repository</a>.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="initializing-transactions"><a class="anchor" href="#initializing-transactions"></a>Initializing Transactions</h2>
+<h2 id="creating-a-transaction"><a class="anchor" href="#creating-a-transaction"></a>Creating a Transaction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Here are all imports used by the following examples:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L2-L11">using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Couchbase.KeyValue;
-using Couchbase.Query;
-using Couchbase.Transactions.Config;
-using Couchbase.Transactions.Error;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Linq;</code></pre>
-</div>
-</div>
-<div class="paragraph">
 <p>The starting point is the <code>Transactions</code> object.
-It is very important that the application ensures that only one of these is created per cluster, as it performs automated background clean-up processes that should not be duplicated.
-In dependency injection context, this instance should be injected as a singleton.</p>
+It is very important that an application ensures that only one of these is created per cluster, as it performs automated background clean-up processes that should not be duplicated.
+In a dependency injection context, this instance should be injected as a singleton.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -316,113 +369,20 @@ In dependency injection context, this instance should be injected as a singleton
 var options = new ClusterOptions().WithCredentials("Administrator", "password");
 var cluster = await Cluster.ConnectAsync("couchbase://localhost", options).ConfigureAwait(false);
 var bucket = await cluster.BucketAsync("default").ConfigureAwait(false);
-var collection = bucket.DefaultCollection();
+var collection = await bucket.ScopeAsync("inventory").CollectionAsync("airport").ConfigureAwait(false);
 
 // Create the single Transactions object
 var transactions = Transactions.Create(cluster, TransactionConfigBuilder.Create());</code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="multiple-transactions-objects"><a class="anchor" href="#multiple-transactions-objects"></a>Multiple Transactions Objects</h3>
 <div class="paragraph">
-<p>Generally an application will need just one <code>Transactions</code> object, and in fact the library will usually warn if more are created.
-Each <code>Transactions</code> object uses some resources, including a thread-pool.</p>
-</div>
-<div class="paragraph">
-<p>There is one rare exception where an application may need to create multiple <code>Transactions</code> objects, which is covered in <a href="#Custom Metadata Collections">[Custom Metadata Collections]</a>.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Transactions can optionally be configured at the point of creating the <code>Transactions</code> object:</p>
+<p>To create a transaction, an application must supply its logic inside a <code>lambda</code>, including any conditional logic required.
+Once the lambda has successfully run to conclusion, the transaction will be automatically committed.
+If at any point an error occurs, the transaction will rollback and the lambda may run again.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L54-L57">var transactions = Transactions.Create(_cluster,
-    TransactionConfigBuilder.Create()
-        .DurabilityLevel(DurabilityLevel.PersistToMajority)
-        .Build());</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The default configuration will perform all writes with the durability setting <code>Majority</code>, ensuring that each write is available in-memory on the majority of replicas before the transaction continues.
-There are two higher durability settings available that will additionally wait for all mutations to be written to physical storage on either the active or the majority of replicas, before continuing.
-This further increases safety, at a cost of additional latency.</p>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-A level of <code>None</code> is present but its use is discouraged and unsupported.
-If durability is set to <code>None</code>, then ACID semantics are not guaranteed.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>To create a transaction, an application must supply its logic inside a <code>{lambda}</code>, including any conditional logic required.
-Once the {lambda} has successfully run to conclusion, the transaction will be automatically committed.
-If at any point an error occurs, the transaction will rollback and the {lambda} may run again.</p>
-</div>
-<div class="paragraph">
-<p>As with the Couchbase .NET Client, you should use the library asynchronusly using the async/await keywords (the exceptions will be explained later in <a href="#Error Handling">[Error Handling]</a>):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L84-L110">try
-{
-    await _transactions.RunAsync(async (ctx)=&gt;
-    {
-        // 'ctx' is an AttemptContext, which permits getting, inserting,
-        // removing and replacing documents, along with committing and
-        // rolling back the transaction.
-
-        // ... Your transaction logic here ...
-
-        // This call is optional - if you leave it off, the transaction
-        // will be committed anyway.
-        await ctx.CommitAsync().ConfigureAwait(false);
-    }).ConfigureAwait(false);
-}
-catch (TransactionCommitAmbiguousException e)
-{
-    // The application will of course want to use its own logging rather
-    // than Console.WriteLine
-    Console.Error.WriteLine("Transaction possibly committed");
-    Console.Error.WriteLine(e);
-}
-catch (TransactionFailedException e)
-{
-    Console.Error.WriteLine("Transaction did not reach commit point");
-    Console.Error.WriteLine(e);
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The asynchronous API allows you to use the thread pool, which can help you scale with excellent efficiency.
-However, operations inside an individual transaction should be kept in-order and executed using <code>await</code> immediately.
-Do not use fire-and-forget tasks under any circumstances.</p>
-</div>
-<div id="lambda-ops" class="paragraph">
-<p>The transaction lambda gets passed an <code>AttemptContext</code> object&#8201;&#8212;&#8201;generally referred to as <code>ctx</code> in these examples.
-Since the {lambda} could be rerun multiple times, it is important that it does not contain any side effects.
-In particular, you should never perform regular operations on a <code>Collection</code>, such as <code>collection.InsertAsync()</code>, inside the lambda.
-Such operations may be performed multiple times, and will not be performed transactionally.
-Instead, you should perform these operations through the <code>ctx</code> object, e.g. <code>ctx.InsertAsync()</code>.</p>
-</div>
-<div class="paragraph">
-<p>The result of a transaction is represented by a <code>TransactionResult</code> object, which can be used to expose debugging and logging information to help track what happened during a transaction.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L117-L153">try
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L135-L171">try
 {
     var result = await _transactions.RunAsync(async (ctx) =&gt;
     {
@@ -461,886 +421,57 @@ catch (TransactionFailedException e)
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>A core idea of Couchbase transactions is that an application supplies the logic for the transaction inside a <em>lambda</em>, including any conditional logic required, and the transaction is then automatically committed.
-If a transient error occurs, such as a temporary conflict with another transaction, then the transaction will rollback what has been done so far and run the lambda again.
-The application does not have to do these retries and error handling itself.</p>
-</div>
-<div class="paragraph">
-<p>Each run of the lambda is called an <code>attempt</code>, inside an overall <code>transaction</code>.</p>
-</div>
-<div class="sect2">
-<h3 id="active-transaction-record-entries"><a class="anchor" href="#active-transaction-record-entries"></a>Active Transaction Record Entries</h3>
-<div class="paragraph">
-<p>The first mechanic is that each of these attempts adds an entry to a metadata document in the Couchbase cluster.
-These metadata documents:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Are named Active Transaction Records, or ATRs.</p>
-</li>
-<li>
-<p>Are created and maintained automatically.</p>
-</li>
-<li>
-<p>Begin with <code>_txn:atr-</code>.</p>
-</li>
-<li>
-<p>Each contain entries for multiple attempts.</p>
-</li>
-<li>
-<p>Are viewable, and <em>should not be modified externally</em>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Each such ATR entry stores some metadata and, crucially, whether the attempt has committed or not.
-In this way, the entry acts as the single point of truth for the transaction, which is essential for providing an 'atomic commit' during reads.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="staged-mutations"><a class="anchor" href="#staged-mutations"></a>Staged Mutations</h3>
-<div class="paragraph">
-<p>The second mechanic is that mutating a document inside a transaction, does not directly change the body of the document.
-Instead, the post-transaction version of the document is staged alongside the document (technically in its <a href="../concept-docs/xattr.html" class="xref page">extended attributes (XATTRs)</a>).
-In this way, all changes are invisible to all parts of Couchbase until the commit point is reached.</p>
-</div>
-<div class="paragraph">
-<p>These staged document changes effectively act as a lock against other transactions trying to modify the document, preventing write-write conflicts.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="cleanup"><a class="anchor" href="#cleanup"></a>Cleanup</h3>
-<div class="paragraph">
-<p>There are safety mechanisms to ensure that leftover staged changes from a failed transaction cannot block live transactions indefinitely.
-These include an asynchronous cleanup process that is started with the creation of the <code>Transactions</code> object, and scans for expired transactions created by any application, on all buckets.</p>
-</div>
-<div class="paragraph">
-<p>The cleanup process is detailed in the <a href="#concept-docs:transactions-cleanup.adoc" class="xref unresolved">concept-docs:transactions-cleanup.adoc</a> page.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="committing"><a class="anchor" href="#committing"></a>Committing</h3>
-<div class="paragraph">
-<p>Only once the lambda has successfully run to conclusion, will the attempt be committed.
-This updates the ATR entry, which is used as a signal by transactional actors to use the post-transaction version of a document from its XATTRs.
-Hence, updating the ATR entry is an 'atomic commit' switch for the transaction.</p>
-</div>
-<div class="paragraph">
-<p>After this commit point is reached, the individual documents will be committed (or "unstaged").
-This provides an eventually consistent commit for non-transactional actors.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="key-value-mutations"><a class="anchor" href="#key-value-mutations"></a>Key-Value Mutations</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="replacing"><a class="anchor" href="#replacing"></a>Replacing</h3>
-<div class="paragraph">
-<p>Replacing a document requires awaiting a <code>TransactionGetResult</code> returned from <code>ctx.GetAsync()</code>, <code>ctx.InsertAsync()</code>, or another <code>ctx.ReplaceAsync()</code> call first.
-This is necessary to ensure that the document is not involved in another transaction.
-(If it is, then the transaction will handle this, generally by rolling back what has been done so far, and retrying the lambda.)</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L195-L201">await _transactions.RunAsync(async ctx =&gt;
-{
-    var anotherDoc = await ctx.GetAsync(_collection, "anotherDoc").ConfigureAwait(false);
-    var content = anotherDoc.ContentAs&lt;dynamic&gt;();
-    content.put("transactions", "are awesome");
-    _ = await ctx.ReplaceAsync(anotherDoc, content);
-}).ConfigureAwait(false);</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="removing"><a class="anchor" href="#removing"></a>Removing</h3>
-<div class="paragraph">
-<p>As with replaces, removing a document requires awaiting a <code>TransactionGetResult</code> from a previous transaction operation first.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L208-L212">await _transactions.RunAsync(async ctx =&gt;
-{
-    var anotherDoc = await ctx.GetAsync(_collection, "anotherDoc").ConfigureAwait(false);
-    await ctx.RemoveAsync(anotherDoc).ConfigureAwait(false);
-}).ConfigureAwait(false);</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="inserting"><a class="anchor" href="#inserting"></a>Inserting</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L160-L164">await _transactions.RunAsync(async ctx =&gt;
-{
-    var insertedDoc = await ctx.InsertAsync(_collection, "docId", new { }).ConfigureAwait(false);
-}).ConfigureAwait(false);</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="key-value-reads"><a class="anchor" href="#key-value-reads"></a>Key-Value Reads</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>There are two ways to get a document, <code>GetAsync</code> and <code>GetOptionalAsync</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L171-L175">await _transactions.RunAsync(async ctx =&gt;
-{
-    var docId = "a-doc";
-    var docOpt = await ctx.GetAsync(_collection, docId).ConfigureAwait(false);
-}).ConfigureAwait(false);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><code>GetAsync</code> will cause the transaction to fail with <code>TransactionFailedException</code> (after rolling back any changes, of course).
-It is provided as a convenience method so the developer does not have to check for <code>null</code> if the document must exist for the transaction to succeed.</p>
-</div>
-<div class="paragraph">
-<p>Gets will 'read your own writes', e.g. this will succeed:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L182-L188">await _transactions.RunAsync(async ctx =&gt;
-{
-    var docId = "docId";
-    _ = await ctx.InsertAsync(_collection, docId, new { }).ConfigureAwait(false);
-    var doc = await ctx.GetAsync(_collection, docId).ConfigureAwait(false);
-    Console.WriteLine((object) doc.ContentAs&lt;dynamic&gt;());
-}).ConfigureAwait(false);</code></pre>
-</div>
-</div>
-<div class="sect2">
-<h3 id="using-n1ql"><a class="anchor" href="#using-n1ql"></a>Using N1QL</h3>
-<div class="paragraph">
-<p>If you already use N1QL from the .NET SDK, then its use in transactions is very similar.
-It returns the same <code>IQueryResult&lt;T&gt;</code> you are used to, and takes most of the same options.</p>
-</div>
-<div class="paragraph">
-<p>You must take care to write <code>ctx.QueryAsync()</code> inside the lambda however, rather than <code>cluster.QueryAsync()</code> or <code>scope.QueryAsync()</code>.</p>
-</div>
-<div class="paragraph">
-<p>An example of selecting some rows from the <code>travel-sample</code> bucket:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L484-L493">var st = "SELECT * FROM `travel-sample`.inventory.hotel WHERE country = $1";
-var transactionResult = await transactions.RunAsync(async ctx =&gt; {
-    IQueryResult&lt;object&gt; qr = await ctx.QueryAsync&lt;object&gt;(st,
-        new TransactionQueryOptions().Parameter("United Kingdom"));
-
-    await foreach (var result in qr.Rows)
-    {
-        Console.Out.WriteLine($"result = {result}", result);
-    }
-});</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Rather than specifying the full "`travel-sample`.inventory.hotel" name each time, it is easier to pass a reference to the inventory <code>IScope</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L499-L508">IBucket travelSample = await cluster.BucketAsync("travel-sample");
-IScope inventory = travelSample.Scope("inventory");
-
-var transactionResult = await transactions.RunAsync(async ctx =&gt;
-{
-    var st = "SELECT * FROM `travel-sample`.inventory.hotel WHERE country = $1";
-    IQueryResult&lt;object&gt; qr = await ctx.QueryAsync&lt;object&gt;(st,
-        options: new TransactionQueryOptions().Parameter("United Kingdom"),
-        scope: inventory);
-});</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>An example using a <code>IScope</code> for an UPDATE:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L516-L528">var hotelChain = "http://marriot%";
-var country = "United States";
-
-await transactions.RunAsync(async ctx =&gt; {
-    var qr = await ctx.QueryAsync&lt;object&gt;(
-        statement: "UPDATE hotel SET price = $price WHERE url LIKE $url AND country = $country",
-        configure: options =&gt; options.Parameter("price", 99.99m)
-                          .Parameter("url", hotelChain)
-                          .Parameter("country", country),
-        scope: inventory);
-
-    Console.Out.WriteLine($"Records Updated = {qr?.MetaData.Metrics.MutationCount}");
-});</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>And an example combining SELECTs and UPDATEs.
-It&#8217;s possible to call regular C# methods from the lambda, as shown here, permitting complex logic to be performed.
-Just remember that since the lambda may be called multiple times, so may the method.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L539-L555">await transactions.RunAsync(async ctx =&gt; {
-    // Find all hotels of the chain
-    IQueryResult&lt;Review&gt; qr = await ctx.QueryAsync&lt;Review&gt;(
-        statement: "SELECT reviews FROM hotel WHERE url LIKE $1 AND country = $2",
-        configure: options =&gt; options.Parameter(hotelChain).Parameter(country),
-        scope: inventory);
-
-    // This function (not provided here) will use a trained machine learning model to provide a
-    // suitable price based on recent customer reviews.
-    var updatedPrice = PriceFromRecentReviews(qr);
-
-    // Set the price of all hotels in the chain
-    await ctx.QueryAsync&lt;object&gt;(
-        statement: "UPDATE hotel SET price = $1 WHERE url LIKE $2 AND country = $3",
-            configure: options =&gt; options.Parameter(hotelChain, country, updatedPrice),
-            scope: inventory);
-});</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="read-your-own-writes"><a class="anchor" href="#read-your-own-writes"></a>Read Your Own Writes</h3>
-<div class="paragraph">
-<p>As with Key-Value operations, N1QL queries support Read Your Own Writes.</p>
-</div>
-<div class="paragraph">
-<p>This example shows inserting a document and then selecting it again.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L561-L568">await transactions.RunAsync(async ctx =&gt; {
-    await ctx.QueryAsync&lt;object&gt;("INSERT INTO `default` VALUES ('doc', {'hello':'world'})", TransactionQueryConfigBuilder.Create());  <i class="conum" data-value="1"></i><b>(1)</b>
-
-    // Performing a 'Read Your Own Write'
-    var st = "SELECT `default`.* FROM `default` WHERE META().id = 'doc'"; <i class="conum" data-value="2"></i><b>(2)</b>
-    IQueryResult&lt;object&gt; qr = await ctx.QueryAsync&lt;object&gt;(st, TransactionQueryConfigBuilder.Create());
-    Console.Out.WriteLine($"ResultCount = {qr?.MetaData.Metrics.ResultCount}");
-});</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The inserted document is only staged at this point. as the transaction has not yet committed.
-Other transactions, and other non-transactional actors, will not be able to see this staged insert yet.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>But the SELECT can, as we are reading a mutation staged inside the same transaction.</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="mixing-key-value-and-n1ql"><a class="anchor" href="#mixing-key-value-and-n1ql"></a>Mixing Key-Value and N1QL</h3>
-<div class="paragraph">
-<p>Key-Value operations and queries can be freely intermixed, and will interact with each other as you would expect.</p>
-</div>
-<div class="paragraph">
-<p>In this example we insert a document with Key-Value, and read it with a SELECT.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L630-L637">await transactions.RunAsync(async ctx =&gt; {
-    _ = await ctx.InsertAsync(collection, "doc", new { Hello = "world" }); <i class="conum" data-value="1"></i><b>(1)</b>
-
-    // Performing a 'Read Your Own Write'
-    var st = "SELECT `default`.* FROM `default` WHERE META().id = 'doc'"; <i class="conum" data-value="2"></i><b>(2)</b>
-    var qr = await ctx.QueryAsync&lt;object&gt;(st);
-    Console.Out.WriteLine($"ResultCount = {qr?.MetaData.Metrics.ResultCount}");
-});</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>As with the 'Read Your Own Writes' example, here the insert is only staged, and so it is not visible to other transactions or non-transactional actors.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>But the SELECT can view it, as the insert was in the same transaction.</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="query-options"><a class="anchor" href="#query-options"></a>Query Options</h3>
-<div class="paragraph">
-<p>Query options can be provided via <code>TransactionQueryOptions</code>, which provides a subset of the options in the .NET SDK&#8217;s <code>QueryOptions</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L643-L646">await transactions.RunAsync(async ctx =&gt; {
-    await ctx.QueryAsync&lt;object&gt;("INSERT INTO `default` VALUES ('doc', {'hello':'world'})",
-            new TransactionQueryOptions().FlexIndex(true));
-});</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The supported options are:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Parameter</p>
-</li>
-<li>
-<p>ScanConsistency</p>
-</li>
-<li>
-<p>FlexIndex</p>
-</li>
-<li>
-<p>Serializer</p>
-</li>
-<li>
-<p>ClientContextId</p>
-</li>
-<li>
-<p>ScanWait</p>
-</li>
-<li>
-<p>ScanCap</p>
-</li>
-<li>
-<p>PipelineBatch</p>
-</li>
-<li>
-<p>PipelineCap</p>
-</li>
-<li>
-<p>Readonly</p>
-</li>
-<li>
-<p>AdHoc</p>
-</li>
-<li>
-<p>Raw</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>See the <a href="n1ql-queries-with-sdk.html#query-options" class="xref page">QueryOptions documentation</a> for details on these.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L574-L597">var bulkLoadStatement = "&lt;a bulk-loading N1QL statement&gt;";
-
-try
-{
-    SingleQueryTransactionResult&lt;object&gt; result = await transactions.QueryAsync&lt;object&gt;(bulkLoadStatement);
-
-    IQueryResult&lt;object&gt; queryResult = result.QueryResult;
-}
-catch (TransactionCommitAmbiguousException e)
-{
-    Console.Error.WriteLine("Transaction possibly committed");
-    foreach (var log in e.Result.Logs)
-    {
-        Console.Error.WriteLine(log);
-    }
-}
-catch (TransactionFailedException e)
-{
-    Console.Error.WriteLine("Transaction did not reach commit point");
-    foreach (var log in e.Result.Logs)
-    {
-        Console.Error.WriteLine(log);
-    }
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can also run a single query transaction against a particular <code>IScope</code> (these examples will exclude the full error handling for brevity):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L605-L608">IBucket travelSample = await cluster.BucketAsync("travel-sample");
-IScope inventory = travelSample.Scope("inventory");
-
-await transactions.QueryAsync&lt;object&gt;(bulkLoadStatement, scope: inventory);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>and configure it:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L617-L623">// with the Builder pattern.
-await transactions.QueryAsync&lt;object&gt;(bulkLoadStatement, SingleQueryTransactionConfigBuilder.Create()
-    // Single query transactions will often want to increase the default timeout
-    .ExpirationTime(TimeSpan.FromSeconds(360)));
-
-// using the lambda style
-await transactions.QueryAsync&lt;object&gt;(bulkLoadStatement, config =&gt; config.ExpirationTime(TimeSpan.FromSeconds(360)));</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="committing-2"><a class="anchor" href="#committing-2"></a>Committing</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Committing is automatic: if there is no explicit call to <code>ctx.CommitAsync()</code> at the end of the transaction logic callback, and no exception is thrown, it will be committed.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L219-L226">var result = await _transactions.RunAsync(async (ctx) =&gt;
-{
-    var doc = await ctx.GetAsync(_collection, "anotherDoc").ConfigureAwait(false);
-    var content = doc.ContentAs&lt;JObject&gt;();
-    content.Add("transactions", "are awesome");
-
-    await ctx.ReplaceAsync(doc, content).ConfigureAwait(false);
-}).ConfigureAwait(false);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>As described above, as soon as the transaction is committed, all its changes will be atomically visible to reads from other transactions.
-The changes will also be committed (or "unstaged") so they are visible to non-transactional actors, in an eventually consistent fashion.</p>
-</div>
-<div class="paragraph">
-<p>Commit is final: after the transaction is committed, it cannot be rolled back, and no further operations are allowed on it.</p>
-</div>
-<div class="paragraph">
-<p>An asynchronous cleanup process ensures that once the transaction reaches the commit point, it will be fully committed&#8201;&#8212;&#8201;even if the application crashes.</p>
-</div>
-<div class="paragraph">
-<p>A complete version of this example is available on our <a href="https://github.com/couchbaselabs/couchbase-transactions-dotnet-examples">GitHub transactions examples page</a>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L234-L306">try
-{
-    await _transactions.RunAsync(async (ctx) =&gt;
-    {
-        _logger.LogInformation(
-            "Starting transaction, player {playerId} is hitting monster {monsterId} for {damage} points of damage.",
-            playerId, monsterId, damage);
-
-        var monster = await ctx.GetAsync(_collection, monsterId).ConfigureAwait(false);
-        var player = await ctx.GetAsync(_collection, playerId).ConfigureAwait(false);
-
-        var monsterContent = monster.ContentAs&lt;JObject&gt;();
-        var playerContent = player.ContentAs&lt;JObject&gt;();
-
-        var monsterHitPoints = monsterContent.GetValue("hitpoints").ToObject&lt;int&gt;();
-        var monsterNewHitPoints = monsterHitPoints - damage;
-
-        _logger.LogInformation(
-            "Monster {monsterId} had {monsterHitPoints} hitpoints, took {damage} damage, now has {monsterNewHitPoints} hitpoints.",
-            monsterId, monsterHitPoints, damage, monsterNewHitPoints);
-
-        if (monsterNewHitPoints &lt;= 0)
-        {
-            // Monster is killed.  The remove is just for demoing, and a more realistic example would set a
-            // "dead" flag or similar.
-
-            await ctx.RemoveAsync(monster).ConfigureAwait(false);
-
-            // The player earns experience for killing the monster
-            var experienceForKillingMonster =
-                monsterContent.GetValue("experienceWhenKilled").ToObject&lt;int&gt;();
-            var playerExperience = playerContent.GetValue("experiance").ToObject&lt;int&gt;();
-            var playerNewExperience = playerExperience + experienceForKillingMonster;
-            var playerNewLevel = CalculateLevelForExperience(playerNewExperience);
-
-            _logger.LogInformation(
-                "Monster {monsterId} was killed.  Player {playerId} gains {experienceForKillingMonster} experience, now has level {playerNewLevel}.",
-                monsterId, playerId, experienceForKillingMonster, playerNewLevel);
-
-            playerContent["experience"] = playerNewExperience;
-            playerContent["level"] = playerNewLevel;
-
-            await ctx.ReplaceAsync(player, playerContent).ConfigureAwait(false);
-        }
-        else
-        {
-            _logger.LogInformation("Monster {monsterId} is damaged but alive.", monsterId);
-
-            // Monster is damaged but still alive
-            monsterContent.Add("hitpoints", monsterNewHitPoints);
-
-            await ctx.ReplaceAsync(monster, monsterContent).ConfigureAwait(false);
-        }
-
-        _logger.LogInformation("About to commit transaction");
-
-    }).ConfigureAwait(false);
-}
-catch (TransactionCommitAmbiguousException e)
-{
-    _logger.LogWarning("Transaction possibly committed:{0}{1}", Environment.NewLine, e);
-}
-catch (TransactionFailedException e)
-{
-    // The operation timed out (the default timeout is 15 seconds) despite multiple attempts to commit the
-    // transaction logic.   Both the monster and the player will be untouched.
-
-    // This situation should be very rare.  It may be reasonable in this situation to ignore this particular
-    // failure, as the downside is limited to the player experiencing a temporary glitch in a fast-moving MMO.
-
-    // So, we will just log the error
-    _logger.LogWarning("Transaction did not reach commit:{0}{1}", Environment.NewLine, e);
-}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="rollback"><a class="anchor" href="#rollback"></a>Rollback</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>If an exception is thrown, either by the application from the lambda, or by the transactions library, then that attempt is rolled back.
-The transaction logic may or may not be retried, depending on the exception.</p>
-</div>
-<div class="paragraph">
-<p>If the transaction is not retried then it will throw a <code>TransactionFailedException</code> exception, and its <code>Cause</code> property can be used for more details on the failure.</p>
-</div>
-<div class="paragraph">
-<p>The application can use this to signal why it triggered a rollback, as so:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L340-L363">
-try
-{
-    await _transactions.RunAsync(async ctx =&gt;
-    {
-        var customer = await ctx.GetAsync(_collection, "customer-name").ConfigureAwait(false);
-
-        if (customer.ContentAs&lt;dynamic&gt;().balance &lt; costOfItem) throw new BalanceInsufficientException();
-        // else continue transaction
-    }).ConfigureAwait(false);
-}
-catch (TransactionCommitAmbiguousException e)
-{
-    // This exception can only be thrown at the commit point, after the
-    // BalanceInsufficient logic has been passed, so there is no need to
-    // check getCause here.
-    Console.Error.WriteLine("Transaction possibly committed");
-    Console.Error.WriteLine(e);
-}
-catch (TransactionFailedException e)
-{
-    Console.Error.WriteLine("Transaction did not reach commit point");
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The transaction can also be explicitly rolled back:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L321-L329">await _transactions.RunAsync(async (ctx) =&gt; {
-    var customer = await ctx.GetAsync(_collection, "customer-name").ConfigureAwait(false);
-
-    if (customer.ContentAs&lt;dynamic&gt;().balance &lt; costOfItem)
-    {
-        await ctx.RollbackAsync().ConfigureAwait(false);
-    }
-    // else continue transaction
-}).ConfigureAwait(false);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In this case, if <code>ctx.RollbackAsync()</code> is reached, then the transaction will be regarded as successfully rolled back and no TransactionFailed will be thrown.</p>
-</div>
-<div class="paragraph">
-<p>After a transaction is rolled back, it cannot be committed, no further operations are allowed on it, and the library will not try to automatically commit it at the end of the code block.</p>
-</div>
-<div class="paragraph">
-<p>There can be situations where total failure is indicated to the application via errors.
-These situations include:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Any error thrown by a transaction lambda, either deliberately or through an application logic bug.</p>
-</li>
-<li>
-<p>Attempting to insert a document that already exists.</p>
-</li>
-<li>
-<p>Calling <code>ctx.GetAsync()</code> on a document key that does not exist (if the resultant exception is not caught).</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Once one of these errors occurs, the current attempt is irrevocably failed (though the transaction may retry the lambda to make a new attempt).
-It is not possible for the application to catch the failure and continue (with the exception of <code>ctx.GetAsync()</code> raising an error).
-Once a failure has occurred, all other operations tried in this attempt (including commit) will instantly fail.</p>
-</div>
-<div class="paragraph">
-<p>Transactions, as they are multi-stage and multi-document, also have a concept of partial success or failure.
-This is signalled to the application through the <code>TransactionResult.UnstagingComplete</code> property, described later.</p>
-</div>
-<div class="paragraph">
-<p>There are three exceptions that transactions can raise to an application:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>TransactionFailedException</code></p>
-</li>
-<li>
-<p><code>TransactionExpiredException</code></p>
-</li>
-<li>
-<p><code>TransactionCommitAmbiguousException</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>There are three exceptions that Couchbase transactions can raise to the application:
-<code>TransactionFailedException</code>, <code>TransactionExpiredException</code> and <code>TransactionCommitAmbiguousException</code>.
-All exceptions derive from <code>TransactionFailedException</code> for backwards-compatibility purposes.</p>
-</div>
-<div class="sect2">
-<h3 id="transactionfailedexception-and-transactionexpiredexception"><a class="anchor" href="#transactionfailedexception-and-transactionexpiredexception"></a>TransactionFailedException and TransactionExpiredException</h3>
-<div class="paragraph">
-<p>The transaction definitely did not reach the commit point.
-<code>TransactionFailedException</code> indicates a fast-failure whereas <code>TransactionExpiredException</code> indicates that retries were made until the timeout was reached, but this distinction is not normally important to an application and generally <code>TransactionExpiredException</code> does not need to be handled individually.</p>
-</div>
-<div class="paragraph">
-<p>Either way, an attempt will have been made to rollback all changes.
-This attempt may or may not have been successful, but the results of this will have no impact on the protocol or other actors.
-No changes from the transaction will be visible, both to transactional and non-transactional actors.</p>
-</div>
-<div class="sect3">
-<h4 id="handling"><a class="anchor" href="#handling"></a>Handling</h4>
-<div class="paragraph">
-<p>Generally, debugging exactly why a given transaction failed requires review of the logs, so it is suggested that the application log these on failure.
-The application may want to try the transaction again later.
-Alternatively, if transaction completion time is not a priority, then transaction timeouts (which default to 15 seconds) can be extended across the board through <code>TransactionConfigBuilder</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L64-L66">Transactions transactions = Transactions.Create(_cluster, TransactionConfigBuilder.Create()
-    .ExpirationTime(TimeSpan.FromSeconds(120))
-    .Build());</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This will allow the protocol more time to get past any transient failures (for example, those caused by a cluster rebalance).
-The tradeoff to consider with longer timeouts, is that documents that have been staged by a transaction are effectively locked from modification from other transactions, until the timeout has been reached.</p>
-</div>
-<div class="paragraph">
-<p>Note that the timeout is not guaranteed to be followed precisely.
-For example, if the application were to do a long blocking operation inside the lambda (which should be avoided), then timeout can only trigger after this finishes.
-Similarly, if the transaction attempts a key-value operation close to the timeout, and that key-value operation times out, then the transaction timeout may be exceeded.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="transactioncommitambiguousexception"><a class="anchor" href="#transactioncommitambiguousexception"></a>TransactionCommitAmbiguousException</h3>
-<div class="paragraph">
-<p>Each transaction has a 'single point of truth' that is updated atomically to reflect whether it is committed.</p>
-</div>
-<div class="paragraph">
-<p>However, it is not always possible for the protocol to become 100% certain that the operation was successful, before the transaction expires.
-This potential ambiguity is unavoidable in any distributed system; a classic example is a network failure happening just after an operation was sent from a client to a server.
-The client will not get a response back and cannot know if the server received and executed the operation.</p>
-</div>
-<div class="paragraph">
-<p>The ambiguity is particularly important at the point of the atomic commit, as the transaction may or may not have reached the commit point.  Couchbase transactions will raise <code>TransactionCommitAmbiguousException</code> to indicate this state.
-It should be rare to receive this error.</p>
-</div>
-<div class="paragraph">
-<p>If the transaction had in fact successfully reached the commit point, then the transaction will be fully completed ("unstaged") by the asynchronous cleanup process at some point in the future.
-With default settings this will usually be within a minute, but whatever underlying fault has caused the <code>TransactionCommitAmbiguousException</code> may lead to it taking longer.</p>
-</div>
-<div class="paragraph">
-<p>If the transaction had not in fact reached the commit point, then the asynchronous cleanup process will instead attempt to roll it back at some point in the future.</p>
-</div>
-<div class="sect3">
-<h4 id="handling-2"><a class="anchor" href="#handling-2"></a>Handling</h4>
-<div class="paragraph">
-<p>This error can be challenging for an application to handle.
-As with <code>TransactionFailedException</code> it is recommended that it at least writes any logs from the transaction, for future debugging.
-It may wish to retry the transaction at a later point, or extend transactional timeouts (as detailed above) to give the protocol additional time to resolve the ambiguity.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="transactionresult-unstagingcomplete"><a class="anchor" href="#transactionresult-unstagingcomplete"></a>TransactionResult.UnstagingComplete</h3>
-<div class="paragraph">
-<p>This boolean flag indicates whether all documents were able to be unstaged (committed).</p>
-</div>
-<div class="paragraph">
-<p>For most use-cases it is not an issue if it is false.
-All transactional actors will still read all the changes from this transaction, as though it had committed fully.
-The cleanup process is asynchronously working to complete the commit, so that it will be fully visible to non-transactional actors.</p>
-</div>
-<div class="paragraph">
-<p>The flag is provided for those rare use-cases where the application requires the commit to be fully visible to non-transactional actors, before it may continue.
-In this situation the application can raise an error here, or poll all documents involved until they reflect the mutations.</p>
-</div>
-<div class="paragraph">
-<p>If you regularly see this flag false, consider increasing the transaction timeout to reduce the possibility that the transaction times out during the commit.</p>
-</div>
-<div class="paragraph">
-<p>Similar to <code>TransactionResult</code>, <code>SingleQueryTransactionResult</code> also has an <code>UnstagingComplete</code> property.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="full-error-handling-example"><a class="anchor" href="#full-error-handling-example"></a>Full Error Handling Example</h3>
-<div class="paragraph">
-<p>Pulling all of the above together, this is the suggested best practice for error handling:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L370-L413">try
-{
-    var result = await _transactions.RunAsync(async (ctx) =&gt; {
-        // ... transactional code here ...
-    });
-
-    // The transaction definitely reached the commit point. Unstaging
-    // the individual documents may or may not have completed
-
-    if (result.UnstagingComplete)
-    {
-        // Operations with non-transactional actors will want
-        // unstagingComplete() to be true.
-        await _cluster.QueryAsync&lt;dynamic&gt;(" ... N1QL ... ",
-            new QueryOptions()).ConfigureAwait(false);
-
-        var documentKey = "a document key involved in the transaction";
-        var getResult = await _collection.GetAsync(documentKey).ConfigureAwait(false);
-    }
-    else
-    {
-        // This step is completely application-dependent.  It may
-        // need to throw its own exception, if it is crucial that
-        // result.unstagingComplete() is true at this point.
-        // (Recall that the asynchronous cleanup process will
-        // complete the unstaging later on).
-    }
-}
-catch (TransactionCommitAmbiguousException err)
-{
-    // The transaction may or may not have reached commit point
-    Console.Error.WriteLine("Transaction returned TransactionCommitAmbiguous and" +
-            " may have succeeded, logs:");
-
-    // Of course, the application will want to use its own logging rather
-    // than Console.Error
-    Console.Error.WriteLine(err);
-}
-catch (TransactionFailedException err)
-{
-    // The transaction definitely did not reach commit point
-    Console.Error.WriteLine("Transaction failed with TransactionFailed, logs:");
-    Console.Error.WriteLine(err);
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Transactions will try to clean up after themselves in the advent of failures.
-However, there are situations that inevitably created failed, or 'lost' transactions, such as an application crash.</p>
-</div>
-<div class="paragraph">
-<p>This requires an asynchronous cleanup task, described in this section.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="background-cleanup"><a class="anchor" href="#background-cleanup"></a>Background Cleanup</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Creating the <code>Transactions</code> object spawns a background cleanup task, whose job it is to periodically scan for expired transactions and clean them up.
-It does this by scanning a subset of the Active Transaction Record (ATR) transaction metadata documents, on each bucket.
-As you&#8217;ll recall from <a href="#mechanics">earlier</a>, an entry for each transaction attempt exists in one of these documents.
-They are removed during cleanup or at some time after successful completion.</p>
-</div>
-<div class="paragraph">
-<p>The default settings are tuned to find expired transactions reasonably quickly, while creating negligible impact from the background reads required by the scanning process.
-To be exact, with default settings it will generally find expired transactions within 60 seconds, and use less than 20 reads per second, per collection of metadata documents being checked.
-This is unlikely to impact performance on any cluster, but the settings may be <a href="#tuning-cleanup">tuned</a> as desired.</p>
-</div>
-<div class="paragraph">
-<p>All applications connected to the same cluster and running transactions will share in the cleanup, via a low-touch communication protocol on the <code>_txn:client-record</code> metadata document that will be created in each collection in the cluster involved with transaction metadata.
-This document is visible and should not be modified externally as it is maintained automatically.
-All ATRs will be distributed between all cleanup clients, so increasing the number of applications will not increase the reads required for scanning.</p>
+<div id="lambda-ops" class="paragraph">
+<p>The transaction lambda gets passed an <code>AttemptContext</code> object&#8201;&#8212;&#8201;generally referred to as <code>ctx</code> in these examples.
+Since the lambda could be rerun multiple times, it is important that it does not contain any side effects.
+In particular, you should never perform regular operations on a <code>Collection</code>, such as <code>collection.InsertAsync()</code>, inside the lambda.
+Such operations may be performed multiple times, and will not be performed transactionally.
+Instead, you should perform these operations through the <code>ctx</code> object, e.g. <code>ctx.InsertAsync()</code>.</p>
 </div>
 <div class="paragraph">
-<p>An application may cleanup transactions created by another application.</p>
+<p>The result of a transaction is represented by a <code>TransactionResult</code> object, which can be used to expose debugging and logging information to help track what happened during a transaction.</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-It is important to understand that if an application is not running, then cleanup is not running.
-This is particularly relevant to developers running unit tests or similar.
+<div class="paragraph">
+<p>As with the Couchbase .NET Client, you should use the transactions library asynchronously using the async/await keywords.
+The asynchronous API allows you to use the thread pool, which can help you scale with excellent efficiency.
+However, operations inside an individual transaction should be kept in-order and executed using <code>await</code> immediately.
+Do not use fire-and-forget tasks under any circumstances.</p>
+</div>
 </td>
 </tr>
 </table>
 </div>
-<div class="sect2">
-<h3 id="tuning-cleanup"><a class="anchor" href="#tuning-cleanup"></a>Configuring Cleanup</h3>
 <div class="paragraph">
-<p>The cleanup settings can be configured as so:</p>
+<p>In the event that a transaction fails, your application could run into the following errors:</p>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Setting</th>
-<th class="tableblock halign-left valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CleanupWindow</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">60 seconds</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This determines how long a cleanup 'run' is; that is, how frequently this client will check its subset of ATR documents.  It is perfectly valid for the application to change this setting, which is at a conservative default.  Decreasing this will cause expiration transactions to be found more swiftly (generally, within this cleanup window), with the tradeoff of increasing the number of reads per second used for the scanning process.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CleanupLostAttempts</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is the thread that takes part in the distributed cleanup process described above, that cleans up expired transactions created by any client.  It is strongly recommended that it is left enabled.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CleanupClientAttempts</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This thread is for cleaning up transactions created just by this client.  The client will preferentially aim to send any transactions it creates to this thread, leaving transactions for the distributed cleanup process only when it is forced to (for example, on an application crash).  It is strongly recommended that it is left enabled.</p></td>
-</tr>
-</tbody>
-</table>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TransactionCommitAmbiguousException</code></p>
+</li>
+<li>
+<p><code>TransactionFailedException</code></p>
+</li>
+</ul>
 </div>
+<div class="paragraph">
+<p>Refer to <a href="../concept-docs/transactions-error-handling.html#transaction_errors" class="xref page">Error Handling</a> for more details on these.</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="logging"><a class="anchor" href="#logging"></a>Logging</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="logging"><a class="anchor" href="#logging"></a>Logging</h3>
 <div class="paragraph">
 <p>To aid troubleshooting, each transaction maintains a list of log entries, which can be logged on failure like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L420-L434">try
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L435-L449">try
 {
     var result = await transactions.RunAsync(async ctx =&gt; {
         // ... transactional code here ...
@@ -1358,7 +489,7 @@ catch (TransactionFailedException err)
 </div>
 </div>
 <div class="paragraph">
-<p>A failed transaction can involve dozens, even hundreds, of lines of logging, so the application may prefer to write failed transactions into a separate file.</p>
+<p>A failed transaction can involve dozens, even hundreds, of lines of logging, so it may be preferable to write failed transactions into a separate file.</p>
 </div>
 <div class="paragraph">
 <p>Please see the <a href="collecting-information-and-logging.html" class="xref page">.NET SDK logging documentation</a> for details.</p>
@@ -1368,7 +499,7 @@ catch (TransactionFailedException err)
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L441-L473">//Logging dependencies
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L456-L488">//Logging dependencies
 var services = new ServiceCollection();
 services.AddLogging(builder =&gt;
 {
@@ -1403,69 +534,439 @@ catch (TransactionFailedException err)
 }</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>As described earlier, transactions automatically create and use metadata documents.
-By default, these are created in the default collection of the bucket of the first mutated document in the transaction.
-Optionally, you can instead specify a collection to store the metadata documents.
-Most users will not need to use this functionality, and can continue to use the default behavior.
-They are provided for these use-cases:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The metadata documents contain, for documents involved in each transaction, the document&#8217;s key and the name of the bucket, scope and collection it exists on.
-In some deployments this may be sensitive data.</p>
-</li>
-<li>
-<p>You wish to remove the default collections.
-Before doing this, you should ensure that all existing transactions using metadata documents in the default collections have finished.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Custom metadata collections are enabled with:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L652-L654">ICouchbaseCollection metadataCollection = null; // this is a Collection opened by your code earlier
-Transactions transactionsWithCustomMetadataCollection = Transactions.Create(cluster,
-        TransactionConfigBuilder.Create().MetadataCollection(metadataCollection));</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>When specified:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Any transactions created from this <code>Transactions</code> object, will create and use metadata in that collection.</p>
-</li>
-<li>
-<p>The asynchronous cleanup started by this <code>Transactions</code> object will be looking for expired transactions only in this collection.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>You need to ensure that this application has RBAC data read and write privileges to it, and should not delete the collection subsequently as it can interfere with existing transactions.
-You can use an existing collection or create a new one.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="further-reading"><a class="anchor" href="#further-reading"></a>Further Reading</h2>
+<h2 id="key-value-operations"><a class="anchor" href="#key-value-operations"></a>Key-Value Operations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can perform transactional database operations using familiar key-value CRUD methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>C</strong>reate - <code>InsertAsync()</code></p>
+</li>
+<li>
+<p><strong>R</strong>ead - <code>GetAsync()</code> or <code>GetOptionalAsync()</code></p>
+</li>
+<li>
+<p><strong>U</strong>pdate - <code>ReplaceAsync()</code></p>
+</li>
+<li>
+<p><strong>D</strong>elete - <code>RemoveAsync()</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As mentioned <a href="#lambda-ops">previously</a>, make sure your application uses the transactional key-value operations inside the lambda&#8201;&#8212;&#8201;such as <code>ctx.InsertAsync()</code>, rather than <code>collection.InsertAsync()</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="insert"><a class="anchor" href="#insert"></a>Insert</h3>
+<div class="paragraph">
+<p>To insert a document within a transaction lambda, simply call <code>ctx.InsertAsync()</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L178-L182">await _transactions.RunAsync(async ctx =&gt;
+{
+    var insertedDoc = await ctx.InsertAsync(_collection, "docId", new { }).ConfigureAwait(false);
+}).ConfigureAwait(false);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="get"><a class="anchor" href="#get"></a>Get</h3>
+<div class="paragraph">
+<p>There are two ways to get a document, <code>GetAsync</code> and <code>GetOptionalAsync</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L189-L193">await _transactions.RunAsync(async ctx =&gt;
+{
+    var docId = "a-doc";
+    var docOpt = await ctx.GetAsync(_collection, docId).ConfigureAwait(false);
+}).ConfigureAwait(false);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>GetAsync</code> may return a <code>TransactionFailedException</code> if a document doesn&#8217;t exist, for example.
+It is provided as a convenience method, so a developer does not have to check for <code>null</code> if the document must exist for the transaction to succeed&#8201;&#8212;&#8201;which is the case with <code>GetAsyncOptional</code>.</p>
+</div>
+<div class="paragraph">
+<p>Gets will "Read Your Own Writes", e.g. this will succeed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L200-L206">await _transactions.RunAsync(async ctx =&gt;
+{
+    var docId = "docId";
+    _ = await ctx.InsertAsync(_collection, docId, new { }).ConfigureAwait(false);
+    var doc = await ctx.GetAsync(_collection, docId).ConfigureAwait(false);
+    Console.WriteLine((object) doc.ContentAs&lt;dynamic&gt;());
+}).ConfigureAwait(false);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Of course, no other transaction will be able to read that inserted document, until this transaction reaches the commit point.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="replace"><a class="anchor" href="#replace"></a>Replace</h3>
+<div class="paragraph">
+<p>Replacing a document requires awaiting a <code>TransactionGetResult</code> returned from <code>ctx.GetAsync()</code>, <code>ctx.InsertAsync()</code>, or another <code>ctx.ReplaceAsync()</code> call first.
+This is necessary to ensure that the document is not involved in another transaction.
+If it is, then the transaction will handle this, generally by rolling back what has been done so far, and retrying the lambda.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L213-L219">await _transactions.RunAsync(async ctx =&gt;
+{
+    var anotherDoc = await ctx.GetAsync(_collection, "anotherDoc").ConfigureAwait(false);
+    var content = anotherDoc.ContentAs&lt;dynamic&gt;();
+    content.put("transactions", "are awesome");
+    _ = await ctx.ReplaceAsync(anotherDoc, content);
+}).ConfigureAwait(false);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="remove"><a class="anchor" href="#remove"></a>Remove</h3>
+<div class="paragraph">
+<p>As with replaces, removing a document requires awaiting a <code>TransactionGetResult</code> from a previous transaction operation first.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L226-L230">await _transactions.RunAsync(async ctx =&gt;
+{
+    var anotherDoc = await ctx.GetAsync(_collection, "anotherDoc").ConfigureAwait(false);
+    await ctx.RemoveAsync(anotherDoc).ConfigureAwait(false);
+}).ConfigureAwait(false);</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sql-queries"><a class="anchor" href="#sql-queries"></a>SQL++ Queries</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you already use <a href="https://www.couchbase.com/products/n1ql">SQL++ (formerly N1QL)</a>, then its use in transactions is very similar.
+A query returns the same <code>IQueryResult&lt;T&gt;</code> you are used to, and takes most of the same options.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As mentioned <a href="#lambda-ops">previously</a>, make sure your application uses the transactional query operations inside the lambda&#8201;&#8212;&#8201;such as <code>ctx.QueryAsync()</code>, rather than <code>cluster.QueryAsync()</code> or <code>scope.QueryAsync()</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here is an example of selecting some rows from the <code>travel-sample</code> bucket:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L514-L523">IBucket travelSample = await cluster.BucketAsync("travel-sample");
+IScope inventory = travelSample.Scope("inventory");
+
+var transactionResult = await transactions.RunAsync(async ctx =&gt;
+{
+    var st = "SELECT * FROM `travel-sample`.inventory.hotel WHERE country = $1";
+    IQueryResult&lt;object&gt; qr = await ctx.QueryAsync&lt;object&gt;(st,
+        options: new TransactionQueryOptions().Parameter("United Kingdom"),
+        scope: inventory);
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An example using a <code>IScope</code> for an UPDATE:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L531-L543">var hotelChain = "http://marriot%";
+var country = "United States";
+
+await transactions.RunAsync(async ctx =&gt; {
+    var qr = await ctx.QueryAsync&lt;object&gt;(
+        statement: "UPDATE hotel SET price = $price WHERE url LIKE $url AND country = $country",
+        configure: options =&gt; options.Parameter("price", 99.99m)
+                          .Parameter("url", hotelChain)
+                          .Parameter("country", country),
+        scope: inventory);
+
+    Console.Out.WriteLine($"Records Updated = {qr?.MetaData.Metrics.MutationCount}");
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And an example combining <code>SELECT</code> and <code>UPDATE</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L554-L570">await transactions.RunAsync(async ctx =&gt; {
+    // Find all hotels of the chain
+    IQueryResult&lt;Review&gt; qr = await ctx.QueryAsync&lt;Review&gt;(
+        statement: "SELECT reviews FROM hotel WHERE url LIKE $1 AND country = $2",
+        configure: options =&gt; options.Parameter(hotelChain).Parameter(country),
+        scope: inventory);
+
+    // This function (not provided here) will use a trained machine learning model to provide a
+    // suitable price based on recent customer reviews.
+    var updatedPrice = PriceFromRecentReviews(qr);
+
+    // Set the price of all hotels in the chain
+    await ctx.QueryAsync&lt;object&gt;(
+        statement: "UPDATE hotel SET price = $1 WHERE url LIKE $2 AND country = $3",
+            configure: options =&gt; options.Parameter(hotelChain, country, updatedPrice),
+            scope: inventory);
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see from the snippet above, it is possible to call regular C# methods from the lambda, permitting complex logic to be performed.
+Just remember that since the lambda may be called multiple times, so may the method.</p>
+</div>
+<div class="paragraph">
+<p>Like key-value operations, queries support "Read Your Own Writes".
+This example shows inserting a document and then selecting it again:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L576-L586">await transactions.RunAsync(async ctx =&gt; {
+    await ctx.QueryAsync&lt;object&gt;(
+        "INSERT INTO `default` VALUES ('doc', {'hello':'world'})",
+        TransactionQueryConfigBuilder.Create()
+    );  <i class="conum" data-value="1"></i><b>(1)</b>
+
+    // Performing a 'Read Your Own Write'
+    var st = "SELECT `default`.* FROM `default` WHERE META().id = 'doc'"; <i class="conum" data-value="2"></i><b>(2)</b>
+    IQueryResult&lt;object&gt; qr = await ctx.QueryAsync&lt;object&gt;(st, TransactionQueryConfigBuilder.Create());
+    Console.Out.WriteLine($"ResultCount = {qr?.MetaData.Metrics.ResultCount}");
+});</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The inserted document is only staged at this point, as the transaction has not yet committed.<br>
+Other transactions, and other non-transactional actors, will not be able to see this staged insert yet.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>But the <code>SELECT</code> can, as we are reading a mutation staged inside the same transaction.</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="query-options"><a class="anchor" href="#query-options"></a>Query Options</h3>
+<div class="paragraph">
+<p>Query options can be provided via <code>TransactionQueryOptions</code> object:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L661-L664">await transactions.RunAsync(async ctx =&gt; {
+    await ctx.QueryAsync&lt;object&gt;("INSERT INTO `default` VALUES ('doc', {'hello':'world'})",
+            new TransactionQueryOptions().FlexIndex(true));
+});</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Supported Transaction Query Options</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Parameter(Object)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows to set positional arguments for a parameterized query.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Parameters(Object[])</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows you to set named arguments for a parameterized query.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ScanConsistency(QueryScanConsistency)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets a different scan consistency for this query.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>FlexIndex(Boolean)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tells the query engine to use a flex index (utilizing the search service).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Serializer(ITypeSerializer)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows to use a different serializer for the decoding of the rows.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ClientContextId(String)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets a context ID returned by the service for debugging purposes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ScanWait(TimeSpan)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows to specify a maximum scan wait time.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ScanCap(Int32)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies a maximum cap on the query scan size.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PipelineBatch(Int32)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the batch size for the query pipeline.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PipelineCap(Int32)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the cap for the query pipeline.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Readonly(Boolean)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tells the client and server that this query is readonly.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AdHoc(Boolean)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set to false will prepare the query and later execute the prepared statement.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Raw(String, Object)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Escape hatch to add arguments that are not covered by these options.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mixing-key-value-and-sql"><a class="anchor" href="#mixing-key-value-and-sql"></a>Mixing Key-Value and SQL++</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Key-Value and SQL++ query operations can be freely intermixed, and will interact with each other as you would expect.
+In this example we insert a document with a key-value operation, and read it with a <code>SELECT</code> query.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L648-L655">await transactions.RunAsync(async ctx =&gt; {
+    _ = await ctx.InsertAsync(collection, "doc", new { Hello = "world" }); <i class="conum" data-value="1"></i><b>(1)</b>
+
+    // Performing a 'Read Your Own Write'
+    var st = "SELECT `default`.* FROM `default` WHERE META().id = 'doc'"; <i class="conum" data-value="2"></i><b>(2)</b>
+    var qr = await ctx.QueryAsync&lt;object&gt;(st);
+    Console.Out.WriteLine($"ResultCount = {qr?.MetaData.Metrics.ResultCount}");
+});</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The key-value insert operation is only staged, and so it is not visible to other transactions or non-transactional actors.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>But the <code>SELECT</code> can view it, as the insert was in the same transaction.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Query Mode</div>
+<div class="paragraph">
+<p>When a transaction executes a query statement, the transaction enters <strong>query mode</strong>, which means that the query is executed with the user&#8217;s query permissions.
+Any <strong>key-value</strong> operations which are executed by the transaction <em>after</em> the query statement are <em>also</em> executed with the user&#8217;s query permissions.
+These may or may not be different to the user&#8217;s data permissions; if they are different, you may get unexpected results.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The default configuration should be appropriate for most use-cases.
+If needed, transactions can optionally be configured at the point of creating the <code>Transactions</code> object:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-csharp hljs" data-lang="csharp" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-dotnet//modules/howtos/examples/TransactionsExample.cs#L54-L57">var transactions = Transactions.Create(_cluster,
+    TransactionConfigBuilder.Create()
+        .DurabilityLevel(DurabilityLevel.PersistToMajority)
+        .Build());</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default configuration will perform all writes with the durability setting <code>Majority</code>, ensuring that each write is available in-memory on the majority of replicas before the transaction continues.
+There are two higher durability settings available that will additionally wait for all mutations to be written to physical storage on either the active or the majority of replicas, before continuing.
+This further increases safety, at a cost of additional latency.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+A level of <code>None</code> is present but its use is discouraged and unsupported.
+If durability is set to <code>None</code>, then ACID semantics are not guaranteed.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="additional-resources"><a class="anchor" href="#additional-resources"></a>Additional Resources</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p>There&#8217;s plenty of explanation about how Transactions work in Couchbase in our <a href="../../../server/7.1/learn/data/transactions.html" class="xref page">Transactions documentation</a>.</p>
+<p>Learn more about <a href="../concept-docs/transactions.html" class="xref page">Distributed ACID Transactions</a>.</p>
 </li>
 <li>
-<p>You can find further code examples on our <a href="https://github.com/couchbaselabs/couchbase-transactions-dotnet-examples">transactions examples repository</a>.</p>
+<p>Check out the Couchbase Transactions library <a href="https://docs.couchbase.com/sdk-api/couchbase-transactions-dotnet/">API Reference</a>.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
+
+        <nav class="pagination">
+
+                <span>&nbsp;</span>
+        
+                    <span class="next"><a href="transactions-single-query.html">Single Query Transactions</a></span>
+
 </article>
 </main>
 </div>

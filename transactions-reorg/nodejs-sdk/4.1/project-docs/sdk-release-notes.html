@@ -211,6 +211,55 @@ For example, to install version 3.2.4:</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="version-4-1-1-13-june-2022"><a class="anchor" href="#version-4-1-1-13-june-2022"></a>Version 4.1.1 (13 June 2022)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Version 4.1.1 is the next minor release of the fourth generation Node.js SDK, bringing a number of improvements.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ npm install couchbase@4.1.1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="http://docs.couchbase.com/sdk-api/couchbase-node-client-4.1.1/">API Reference</a></p>
+</div>
+<div class="sect2">
+<h3 id="fixed-issues"><a class="anchor" href="#fixed-issues"></a>Fixed Issues</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated to latest dependencies.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="known-issues"><a class="anchor" href="#known-issues"></a>Known Issues</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://issues.couchbase.com/browse/JSCBC-1011">JSCBC-1011</a>:
+Core IO logging is not forwarded through to Node.js.</p>
+</li>
+<li>
+<p><a href="http://issues.couchbase.com/browse/JSCBC-1040">JSCBC-1040</a>:
+Distributed tracing is not yet supported.</p>
+</li>
+<li>
+<p><a href="http://issues.couchbase.com/browse/JSCBC-1041">JSCBC-1041</a>:
+Replica reads are not yet supported.</p>
+</li>
+<li>
+<p><a href="http://issues.couchbase.com/browse/JSCBC-1042">JSCBC-1042</a>:
+Legacy durability operations are not yet supported.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="version-4-1-0-28-april-2022"><a class="anchor" href="#version-4-1-0-28-april-2022"></a>Version 4.1.0 (28 April 2022)</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -235,7 +284,7 @@ For example, to install version 3.2.4:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues"><a class="anchor" href="#fixed-issues"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-2"><a class="anchor" href="#fixed-issues-2"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -252,18 +301,28 @@ Fixed issue with query parameters being double-encoded.</p>
 </li>
 <li>
 <p><a href="http://issues.couchbase.com/browse/JSCBC-1058">JSCBC-1058</a>:
-Switched to using auto-generated bindings.
-Fixed issue with durable operations not using user timeouts.
-Fixed issue with creating indexes with no conditions.
-Mark all new SDK 3.4 APIs as committed.
-Updated to latest dependencies.
-Various minor fixes.</p>
+Switched to using auto-generated bindings.</p>
+</li>
+<li>
+<p>Fixed issue with durable operations not using user timeouts.</p>
+</li>
+<li>
+<p>Fixed issue with creating indexes with no conditions.</p>
+</li>
+<li>
+<p>Mark all new SDK 3.4 APIs as committed.</p>
+</li>
+<li>
+<p>Updated to latest dependencies.</p>
+</li>
+<li>
+<p>Various minor fixes.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="known-issues"><a class="anchor" href="#known-issues"></a>Known Issues</h3>
+<h3 id="known-issues-2"><a class="anchor" href="#known-issues-2"></a>Known Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -318,7 +377,7 @@ Legacy durability operations are not yet supported.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-2"><a class="anchor" href="#fixed-issues-2"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-3"><a class="anchor" href="#fixed-issues-3"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -345,7 +404,7 @@ first_error_message/first_error_code are no longer available on error contexts.<
 </div>
 </div>
 <div class="sect2">
-<h3 id="known-issues-2"><a class="anchor" href="#known-issues-2"></a>Known Issues</h3>
+<h3 id="known-issues-3"><a class="anchor" href="#known-issues-3"></a>Known Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -388,7 +447,7 @@ Double-encoding issue when performing search queries.</p>
 <p><a href="http://docs.couchbase.com/sdk-api/couchbase-node-client-3.2.4/">API Reference</a></p>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-3"><a class="anchor" href="#fixed-issues-3"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-4"><a class="anchor" href="#fixed-issues-4"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -451,7 +510,7 @@ Added support for AWS Graviton2.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-4"><a class="anchor" href="#fixed-issues-4"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-5"><a class="anchor" href="#fixed-issues-5"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -501,7 +560,7 @@ Updated SSL failure error messaging to improve debugging experience.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-5"><a class="anchor" href="#fixed-issues-5"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-6"><a class="anchor" href="#fixed-issues-6"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -563,7 +622,7 @@ Added support for worker threads.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-6"><a class="anchor" href="#fixed-issues-6"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-7"><a class="anchor" href="#fixed-issues-7"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -672,7 +731,7 @@ Added support for compound data-verse names.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-7"><a class="anchor" href="#fixed-issues-7"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-8"><a class="anchor" href="#fixed-issues-8"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -813,7 +872,7 @@ Updated scopes/collections APIs to match latest specification.</p>
 <p><a href="http://docs.couchbase.com/sdk-api/couchbase-node-client-3.1.3/">API Reference</a></p>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-8"><a class="anchor" href="#fixed-issues-8"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-9"><a class="anchor" href="#fixed-issues-9"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -850,7 +909,7 @@ Fixed memory leak due to missing cell dereferences.</p>
 <p><a href="http://docs.couchbase.com/sdk-api/couchbase-node-client-3.1.2/">API Reference</a></p>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-9"><a class="anchor" href="#fixed-issues-9"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-10"><a class="anchor" href="#fixed-issues-10"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -891,7 +950,7 @@ Fixed some query errors returning the incorrect errors.</p>
 <p><a href="http://docs.couchbase.com/sdk-api/couchbase-node-client-3.1.1/">API Reference</a></p>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-10"><a class="anchor" href="#fixed-issues-10"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-11"><a class="anchor" href="#fixed-issues-11"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -960,7 +1019,7 @@ Added option to disable search scoring.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-11"><a class="anchor" href="#fixed-issues-11"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-12"><a class="anchor" href="#fixed-issues-12"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1031,7 +1090,7 @@ Added support for pinging at a cluster level.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-12"><a class="anchor" href="#fixed-issues-12"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-13"><a class="anchor" href="#fixed-issues-13"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1117,7 +1176,7 @@ Added auto generation of TypeScript types using JSDoc.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-13"><a class="anchor" href="#fixed-issues-13"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-14"><a class="anchor" href="#fixed-issues-14"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1160,7 +1219,7 @@ Improved view scan consistency handling.</p>
 <p><a href="http://docs.couchbase.com/sdk-api/couchbase-node-client-3.0.5/">API Reference</a></p>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-14"><a class="anchor" href="#fixed-issues-14"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-15"><a class="anchor" href="#fixed-issues-15"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1189,7 +1248,7 @@ Improved view scan consistency handling.</p>
 <p><a href="http://docs.couchbase.com/sdk-api/couchbase-node-client-3.0.4/">API Reference</a></p>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-15"><a class="anchor" href="#fixed-issues-15"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-16"><a class="anchor" href="#fixed-issues-16"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1216,7 +1275,7 @@ Fixed binary data being interpreted as UTF-8.</p>
 <p><a href="http://docs.couchbase.com/sdk-api/couchbase-node-client-3.0.3/">API Reference</a></p>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-16"><a class="anchor" href="#fixed-issues-16"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-17"><a class="anchor" href="#fixed-issues-17"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1252,7 +1311,7 @@ Don&#8217;t swap in a bucket name when none is used.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="known-issues-3"><a class="anchor" href="#known-issues-3"></a>Known Issues</h3>
+<h3 id="known-issues-4"><a class="anchor" href="#known-issues-4"></a>Known Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1280,7 +1339,7 @@ This has been corrected in 3.0.4.</p>
 <p><a href="http://docs.couchbase.com/sdk-api/couchbase-node-client-3.0.2/">API Reference</a></p>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-17"><a class="anchor" href="#fixed-issues-17"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-18"><a class="anchor" href="#fixed-issues-18"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1332,7 +1391,7 @@ Fixed custom search query timeouts causing query failures.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="known-issues-4"><a class="anchor" href="#known-issues-4"></a>Known Issues</h3>
+<h3 id="known-issues-5"><a class="anchor" href="#known-issues-5"></a>Known Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1370,7 +1429,7 @@ This has been corrected in 3.0.4.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-18"><a class="anchor" href="#fixed-issues-18"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-19"><a class="anchor" href="#fixed-issues-19"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1423,7 +1482,7 @@ Fixed inconsistent metrics data from query service.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="known-issues-5"><a class="anchor" href="#known-issues-5"></a>Known Issues</h3>
+<h3 id="known-issues-6"><a class="anchor" href="#known-issues-6"></a>Known Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1461,7 +1520,7 @@ This has been corrected in 3.0.4.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-19"><a class="anchor" href="#fixed-issues-19"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-20"><a class="anchor" href="#fixed-issues-20"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1508,7 +1567,7 @@ Marked defaultScope, scope, and collection methods uncommitted.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="known-issues-6"><a class="anchor" href="#known-issues-6"></a>Known Issues</h3>
+<h3 id="known-issues-7"><a class="anchor" href="#known-issues-7"></a>Known Issues</h3>
 <div class="ulist">
 <ul>
 <li>
