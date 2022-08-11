@@ -242,7 +242,7 @@ for the <em>Replace</em> example:</p>
 <p>Expiration sets an explicit time to live (TTL) for a document.
 We&#8217;ll discuss modifying <code>Expiration</code> in more details <a href="#expiration-ttl">below</a>.
 For a discussion of item (Document) <em>vs</em> Bucket expiration, see the
-<a href="#7.0@server:learn:buckets-memory-and-storage/expiration.adoc#expiration-bucket-versus-item" class="xref unresolved">Expiration Overview page</a>.</p>
+<a href="#7.1@server:learn:buckets-memory-and-storage/expiration.adoc#expiration-bucket-versus-item" class="xref unresolved">Expiration Overview page</a>.</p>
 </div>
 </div>
 </div>
@@ -392,8 +392,19 @@ Using <code>touch()</code>, you can set expiration values on documents to handle
 );</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Unresolved include directive in modules/howtos/pages/kv-operations.adoc - include::7.0@sdk:shared:partial$documents.adoc[]</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the absolute value of the expiry is less than 30 days (such as <code>60 * 60 * 24 * 30</code>), it is considered an <em>offset</em>.
+If the value is greater, it is considered an <em>absolute time stamp</em>.
+For more on expiration see the <a href="../concept-docs/documents.html#setting-document-expiration" class="xref page">expiration section</a> of our documents discussion doc.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -451,8 +462,16 @@ Increment &amp; Decrement are considered part of the ‘binary’ API and as suc
 </tr>
 </table>
 </div>
+<div class="sect2">
+<h3 id="atomicity-across-data-centers"><a class="anchor" href="#atomicity-across-data-centers"></a>Atomicity Across Data Centers</h3>
 <div class="paragraph">
-<p>Unresolved include directive in modules/howtos/pages/kv-operations.adoc - include::7.1@sdk:shared:partial$atomic.adoc[]</p>
+<p>If you are using <a href="../../../server/7.1/manage/manage-xdcr/xdcr-management-overview.html" class="xref page">Cross Data Center Replication</a> (XDCR), be sure to avoid modifying the same counter in more than one datacenter.
+If the same counter is modified in multiple datacenters between replications, the counter will no longer be atomic, and its value can change in unspecified ways.</p>
+</div>
+<div class="paragraph">
+<p>A counter must be incremented or decremented by only a single datacenter.
+Each datacenter must have its own set of counters that it uses&#8201;&#8212;&#8201;a possible implementation would be including a datacenter name in the counter document ID.</p>
+</div>
 </div>
 </div>
 </div>
@@ -460,7 +479,7 @@ Increment &amp; Decrement are considered part of the ‘binary’ API and as suc
 <h2 id="scoped-kv-operations"><a class="anchor" href="#scoped-kv-operations"></a>Scoped KV Operations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>It is possible to perform scoped key value operations on named <a href="#7.0@server:learn:data/scopes-and-collections.adoc" class="xref unresolved"><code>Collections</code></a> <em>with Couchbase Server release, 7.0</em>.</p>
+<p>It is possible to perform scoped key value operations on named <a href="../../../server/7.1/learn/data/scopes-and-collections.html" class="xref page"><code>Collections</code></a> <em>with Couchbase Server release, 7.0</em>.</p>
 </div>
 <div class="paragraph">
 <p>Here is an example showing an upsert in the <code>users</code> collection, which lives in the <code>travel-sample.tenant_agent_00</code> keyspace:</p>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Untitled | Couchbase Docs (Local)</title>
+<title>Working with Collections | Couchbase Docs (Local)</title>
 <link rel="canonical" href="https://maria-robobug.github.io/nodejs-sdk/4.1/howtos/working-with-collections.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
@@ -175,12 +175,94 @@
 </nav>
 </div>
 <article class="doc">
+<div class="page-heading-title">
+<h1 class="page">Working with Collections</h1>
+</div>
 <div class="contributor-list-box">
 <span class="last-commit-date" id="commitdate">    </span>
 <ul id="contributorList"></ul>
 <span  id="otherContributor"> + </span>
-</div><div class="paragraph">
-<p>Unresolved include directive in modules/howtos/pages/working-with-collections.adoc - include::7.0@sdk:shared:partial$working-with-collections.adoc[]</p>
+</div><div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
+<blockquote>
+The 3.x API SDKs all work with all features of Collections and Scopes.
+</blockquote>
+</div>
+<div class="paragraph">
+<p>The <a href="../../../server/7.1/learn/data/scopes-and-collections.html" class="xref page">Collections feature</a> in Couchbase Server 7.x is fully implemented in the
+3.x API versions of the Couchbase SDKs.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When working with versions earlier than 7.0, the <code>defaultcollection</code> is used from the SDK.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Read more about <a href="../concept-docs/collections.html" class="xref page">Collections and Scopes</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sample-application"><a class="anchor" href="#sample-application"></a>Sample Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="../hello-world/sample-application.html" class="xref page">Travel Sample Application</a> has been updated with a motivating example for Collections - a multi-tenanted travel application.
+Imagine that we are providing a white-label Flight and Hotel booking service
+to multiple travel agents. Each tenant agent will get the same underlying
+service, but interact only with their own data.</p>
+</div>
+<div class="paragraph">
+<p>The <code>travel-sample</code> bucket has been split into <em>Scopes</em> for multiple tenant
+travel agents (for example <code>tenant_agent_00</code>, <code>tenant_agent_01</code>, &#8230;&#8203;) and
+a shared <code>inventory</code> which is further subdivided into <em>Collections</em> such as
+<code>hotels</code> and <code>airports</code>.</p>
+</div>
+<div class="paragraph">
+<p>Read more about the new travel-sample <a href="../ref/travel-app-data-model.html" class="xref page">Data Model</a>.</p>
+</div>
+<div class="paragraph">
+<p>The app is currently implemented for the following SDKs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#2.3@go-sdk:hello-world:sample-application.adoc" class="xref unresolved">Go</a></p>
+</li>
+<li>
+<p><a href="#3.2@java-sdk:hello-world:sample-application.adoc" class="xref unresolved">Java</a></p>
+</li>
+<li>
+<p><a href="#3.2@java-sdk:hello-world:spring-data-sample-application.adoc" class="xref unresolved">Java Spring Data</a></p>
+</li>
+<li>
+<p><a href="#3.2@dotnet-sdk:hello-world:sample-application.adoc" class="xref unresolved">.NET</a></p>
+</li>
+<li>
+<p><a href="#3.2@nodejs-sdk:hello-world:sample-application.adoc" class="xref unresolved">Node.js</a></p>
+</li>
+<li>
+<p><a href="#3.2@php-sdk:hello-world:sample-application.adoc" class="xref unresolved">PHP</a></p>
+</li>
+<li>
+<p><a href="#3.2@python-sdk:hello-world:sample-application.adoc" class="xref unresolved">Python</a></p>
+</li>
+<li>
+<p><a href="#1.2@scala-sdk:hello-world:sample-application.adoc" class="xref unresolved">Scala</a></p>
+</li>
+<li>
+<p><a href="#3.2@ruby-sdk:hello-world:sample-application.adoc" class="xref unresolved">Ruby</a></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </article>
 </main>

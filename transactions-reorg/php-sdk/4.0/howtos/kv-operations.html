@@ -529,8 +529,16 @@ Increment &amp; Decrement are considered part of the ‘binary’ API and as suc
 </tr>
 </table>
 </div>
+<div class="sect2">
+<h3 id="atomicity-across-data-centers"><a class="anchor" href="#atomicity-across-data-centers"></a>Atomicity Across Data Centers</h3>
 <div class="paragraph">
-<p>Unresolved include directive in modules/howtos/pages/kv-operations.adoc - include::7.1@sdk:shared:partial$atomic.adoc[]</p>
+<p>If you are using <a href="../../../server/7.1/manage/manage-xdcr/xdcr-management-overview.html" class="xref page">Cross Data Center Replication</a> (XDCR), be sure to avoid modifying the same counter in more than one datacenter.
+If the same counter is modified in multiple datacenters between replications, the counter will no longer be atomic, and its value can change in unspecified ways.</p>
+</div>
+<div class="paragraph">
+<p>A counter must be incremented or decremented by only a single datacenter.
+Each datacenter must have its own set of counters that it uses&#8201;&#8212;&#8201;a possible implementation would be including a datacenter name in the counter document ID.</p>
+</div>
 </div>
 </div>
 </div>

@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generated": 1660053746141,
+  "generated": 1660233173997,
   "url": "https://maria-robobug.github.io",
   "components": [
     {
@@ -4898,7 +4898,15 @@
             {
               "module": "concept-docs",
               "path": "certificate-based-authentication.adoc",
-              "url": "/nodejs-sdk/4.1/concept-docs/certificate-based-authentication.html"
+              "url": "/nodejs-sdk/4.1/concept-docs/certificate-based-authentication.html",
+              "title": "Certificate-Based Authentication"
+            },
+            {
+              "alias": true,
+              "module": "concept-docs",
+              "path": "choosing-the-right-service.adoc",
+              "url": "/nodejs-sdk/4.1/concept-docs/data-services.html",
+              "title": "Services&#8201;&#8212;&#8201;Choosing the Right One"
             },
             {
               "module": "concept-docs",
@@ -4927,7 +4935,8 @@
             {
               "module": "concept-docs",
               "path": "data-services.adoc",
-              "url": "/nodejs-sdk/4.1/concept-docs/data-services.html"
+              "url": "/nodejs-sdk/4.1/concept-docs/data-services.html",
+              "title": "Services&#8201;&#8212;&#8201;Choosing the Right One"
             },
             {
               "module": "concept-docs",
@@ -4944,7 +4953,8 @@
             {
               "module": "concept-docs",
               "path": "encryption.adoc",
-              "url": "/nodejs-sdk/4.1/concept-docs/encryption.html"
+              "url": "/nodejs-sdk/4.1/concept-docs/encryption.html",
+              "title": "Field Level Encryption"
             },
             {
               "module": "concept-docs",
@@ -4955,13 +4965,21 @@
             {
               "module": "concept-docs",
               "path": "full-text-search-overview.adoc",
-              "url": "/nodejs-sdk/4.1/concept-docs/full-text-search-overview.html"
+              "url": "/nodejs-sdk/4.1/concept-docs/full-text-search-overview.html",
+              "title": "Full Text Search Overview"
             },
             {
               "module": "concept-docs",
               "path": "health-check.adoc",
               "url": "/nodejs-sdk/4.1/concept-docs/health-check.html",
               "title": "Health Check"
+            },
+            {
+              "alias": true,
+              "module": "concept-docs",
+              "path": "http-services.adoc",
+              "url": "/nodejs-sdk/4.1/concept-docs/data-services.html",
+              "title": "Services&#8201;&#8212;&#8201;Choosing the Right One"
             },
             {
               "alias": true,
@@ -4985,7 +5003,8 @@
             {
               "module": "concept-docs",
               "path": "rbac.adoc",
-              "url": "/nodejs-sdk/4.1/concept-docs/rbac.html"
+              "url": "/nodejs-sdk/4.1/concept-docs/rbac.html",
+              "title": "RBAC"
             },
             {
               "module": "concept-docs",
@@ -4996,7 +5015,8 @@
             {
               "module": "concept-docs",
               "path": "sdk-user-management-overview.adoc",
-              "url": "/nodejs-sdk/4.1/concept-docs/sdk-user-management-overview.html"
+              "url": "/nodejs-sdk/4.1/concept-docs/sdk-user-management-overview.html",
+              "title": "User Management"
             },
             {
               "alias": true,
@@ -5008,18 +5028,45 @@
             {
               "module": "concept-docs",
               "path": "subdocument-operations.adoc",
-              "url": "/nodejs-sdk/4.1/concept-docs/subdocument-operations.html"
+              "url": "/nodejs-sdk/4.1/concept-docs/subdocument-operations.html",
+              "title": "Sub-Document API"
+            },
+            {
+              "module": "concept-docs",
+              "path": "transactions-cleanup.adoc",
+              "url": "/nodejs-sdk/4.1/concept-docs/transactions-cleanup.html",
+              "title": "Cleanup"
+            },
+            {
+              "module": "concept-docs",
+              "path": "transactions-error-handling.adoc",
+              "url": "/nodejs-sdk/4.1/concept-docs/transactions-error-handling.html",
+              "title": "Error Handling"
+            },
+            {
+              "module": "concept-docs",
+              "path": "transactions.adoc",
+              "url": "/nodejs-sdk/4.1/concept-docs/transactions.html",
+              "title": "Distributed ACID Transactions"
             },
             {
               "module": "concept-docs",
               "path": "understanding-views.adoc",
-              "url": "/nodejs-sdk/4.1/concept-docs/understanding-views.html"
+              "url": "/nodejs-sdk/4.1/concept-docs/understanding-views.html",
+              "title": "MapReduce Views"
             },
             {
               "module": "concept-docs",
               "path": "xattr.adoc",
               "url": "/nodejs-sdk/4.1/concept-docs/xattr.html",
               "title": "Extended Attributes"
+            },
+            {
+              "alias": true,
+              "module": "hello-world",
+              "path": "cbc.adoc",
+              "url": "/nodejs-sdk/4.1/hello-world/webui-cli-access.html",
+              "title": "Browser and CLI Access"
             },
             {
               "module": "hello-world",
@@ -5059,7 +5106,8 @@
             {
               "module": "hello-world",
               "path": "webui-cli-access.adoc",
-              "url": "/nodejs-sdk/4.1/hello-world/webui-cli-access.html"
+              "url": "/nodejs-sdk/4.1/hello-world/webui-cli-access.html",
+              "title": "Browser and CLI Access"
             },
             {
               "module": "howtos",
@@ -5137,7 +5185,8 @@
             {
               "module": "howtos",
               "path": "json.adoc",
-              "url": "/nodejs-sdk/4.1/howtos/json.html"
+              "url": "/nodejs-sdk/4.1/howtos/json.html",
+              "title": "Choosing &amp; Using a JSON Library"
             },
             {
               "module": "howtos",
@@ -5210,6 +5259,16 @@
             },
             {
               "module": "howtos",
+              "path": "transactions-single-query.adoc",
+              "url": "/nodejs-sdk/4.1/howtos/transactions-single-query.html"
+            },
+            {
+              "module": "howtos",
+              "path": "transactions-tracing.adoc",
+              "url": "/nodejs-sdk/4.1/howtos/transactions-tracing.html"
+            },
+            {
+              "module": "howtos",
               "path": "transcoders-nonjson.adoc",
               "url": "/nodejs-sdk/4.1/howtos/transcoders-nonjson.html",
               "title": "Transcoders &amp; Non-JSON Documents"
@@ -5217,7 +5276,8 @@
             {
               "module": "howtos",
               "path": "troubleshooting-cloud-connections.adoc",
-              "url": "/nodejs-sdk/4.1/howtos/troubleshooting-cloud-connections.html"
+              "url": "/nodejs-sdk/4.1/howtos/troubleshooting-cloud-connections.html",
+              "title": "Troubleshooting Cloud Connections During Development"
             },
             {
               "module": "howtos",
@@ -5228,7 +5288,8 @@
             {
               "module": "howtos",
               "path": "working-with-collections.adoc",
-              "url": "/nodejs-sdk/4.1/howtos/working-with-collections.html"
+              "url": "/nodejs-sdk/4.1/howtos/working-with-collections.html",
+              "title": "Working with Collections"
             },
             {
               "module": "project-docs",
@@ -5265,7 +5326,8 @@
             {
               "module": "project-docs",
               "path": "metadoc-about-these-sdk-docs.adoc",
-              "url": "/nodejs-sdk/4.1/project-docs/metadoc-about-these-sdk-docs.html"
+              "url": "/nodejs-sdk/4.1/project-docs/metadoc-about-these-sdk-docs.html",
+              "title": "About the SDK Docs"
             },
             {
               "module": "project-docs",
@@ -5317,12 +5379,14 @@
             {
               "module": "ref",
               "path": "glossary.adoc",
-              "url": "/nodejs-sdk/4.1/ref/glossary.html"
+              "url": "/nodejs-sdk/4.1/ref/glossary.html",
+              "title": "Glossary of SDK-related Terms"
             },
             {
               "module": "ref",
               "path": "travel-app-data-model.adoc",
-              "url": "/nodejs-sdk/4.1/ref/travel-app-data-model.html"
+              "url": "/nodejs-sdk/4.1/ref/travel-app-data-model.html",
+              "title": "Travel App Data Model"
             },
             {
               "alias": true,
@@ -5418,6 +5482,20 @@
             {
               "alias": true,
               "module": "ROOT",
+              "path": "encryption.adoc",
+              "url": "/nodejs-sdk/4.1/concept-docs/encryption.html",
+              "title": "Field Level Encryption"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "full-text-search-overview.adoc",
+              "url": "/nodejs-sdk/4.1/concept-docs/full-text-search-overview.html",
+              "title": "Full Text Search Overview"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
               "path": "getting-started.adoc",
               "url": "/nodejs-sdk/4.1/hello-world/start-using-sdk.html",
               "title": "Install and Start Using the Node.js SDK with Couchbase Server"
@@ -5467,6 +5545,13 @@
             {
               "alias": true,
               "module": "ROOT",
+              "path": "managing-views.adoc",
+              "url": "/nodejs-sdk/4.1/concept-docs/understanding-views.html",
+              "title": "MapReduce Views"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
               "path": "migrate.adoc",
               "url": "/nodejs-sdk/4.1/project-docs/migrating-sdk-code-to-3.n.html",
               "title": "Migrating to SDK API 3"
@@ -5491,6 +5576,13 @@
               "path": "overview.adoc",
               "url": "/nodejs-sdk/4.1/project-docs/compatibility.html",
               "title": "Compatibility of Couchbase Features, Couchbase Server Versions, and the Couchbase Node.js SDK"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "querying-views.adoc",
+              "url": "/nodejs-sdk/4.1/concept-docs/understanding-views.html",
+              "title": "MapReduce Views"
             },
             {
               "alias": true,
@@ -5551,6 +5643,13 @@
             {
               "alias": true,
               "module": "ROOT",
+              "path": "sdk-user-management-overview.adoc",
+              "url": "/nodejs-sdk/4.1/concept-docs/sdk-user-management-overview.html",
+              "title": "User Management"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
               "path": "sdk-xattr-example.adoc",
               "url": "/nodejs-sdk/4.1/howtos/subdocument-operations.html",
               "title": "Sub-Document Operations with the Node.js SDK"
@@ -5596,6 +5695,13 @@
               "path": "view-queries-with-sdk.adoc",
               "url": "/nodejs-sdk/4.1/howtos/view-queries-with-sdk.html",
               "title": "MapReduce Views Using the Node.js SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "webui-cli-access.adoc",
+              "url": "/nodejs-sdk/4.1/hello-world/webui-cli-access.html",
+              "title": "Browser and CLI Access"
             }
           ]
         }

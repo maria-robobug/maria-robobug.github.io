@@ -196,16 +196,114 @@ When the unexpected happens, take a step-by-step approach.
 <h2 id="general-approach-to-node-js-exceptions"><a class="anchor" href="#general-approach-to-node-js-exceptions"></a>General Approach to Node.js Exceptions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved include directive in modules/concept-docs/pages/errors.adoc - include::7.0@sdk:shared:partial$errors.adoc[]</p>
+<p>All Couchbase specific exceptions are derived from <code>CouchbaseException</code>.
+These unrecoverable errors are left to the application developer to handle&#8201;&#8212;&#8201;practical approaches to this are covered in our
+practical error handling doc.
+All the other Exception types used are part of the JDK, including <code>IllegalArgumentException</code>, <code>TimeoutException</code> and others.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/concept-docs/pages/errors.adoc - include::7.0@sdk:shared:partial$errors.adoc[]</p>
+<p>See our <a href="../howtos/error-handling.html" class="xref page">practical error handling docs</a> for some of the approaches to take.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="durable-writes"><a class="anchor" href="#durable-writes"></a>Durable Writes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A durable write fails in the following situations:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><em>Server timeout exceeded</em>.
+The active node aborts the durable write, instructs all replica nodes also to abort the pending write, and informs the client that the durable write has had an ambiguous result.
+See <a href="../../../server/7.1/learn/data/durability.html#handling-ambiguous-results" class="xref page">Handling Ambiguous Results</a>, below.</p>
+</li>
+<li>
+<p><em>Replica node fails while SyncWrite is pending (that is, before the active node can identify whether the node hosted a replica)</em>.
+If enough alternative replica nodes can be identified, the durable write can proceed.
+Otherwise, the active node waits until a server-side timeout has expired; then aborts the durable write, and duly informs the client that the durable write has had an ambiguous result.</p>
+</li>
+<li>
+<p><em>Active node fails while SyncWrite is pending</em>.
+This disconnects the client, which must assume that the result of the durable write has proved ambiguous.
+If the active node is failed over, a replica is promoted from a replica node: depending on how advanced the durable write was at the time of active-node failure, the durable write may proceed.</p>
+</li>
+<li>
+<p><em>Write while SyncWrite is pending</em>.
+A client that attempts a durable or an asynchronous write on a key whose value is currently undergoing a durable write receives a <code>SYNC_WRITE_IN_PROGRESS</code> message, to indicate that the new write cannot currently proceed.
+The client may retry.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="handling-ambiguous-results"><a class="anchor" href="#handling-ambiguous-results"></a>Handling Ambiguous Results</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Couchbase Server informs the client of an ambiguous result whenever Couchbase Server cannot confirm that an intended commit was successful.
+This situation may be caused by node-failure, network-failure, or timeout.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/concept-docs/pages/errors.adoc - include::7.0@sdk:shared:partial$errors.adoc[]</p>
+<p>If a client receives notification of an ambiguous result, and the attempted durable write is <em>idempotent</em>, the durable write can be re-attempted.
+If the attempted durable write is <em>not</em> idempotent, the options are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Verify the current state of the saved data; and re-attempt the durable write if appropriate.</p>
+</li>
+<li>
+<p>Return an error to the user.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/concept-docs/pages/errors.adoc - include::7.0@sdk:shared:partial$errors.adoc[]</p>
+<p>Further discussion of handling ambiguous results can be found in our <a href="durability-replication-failure-considerations.html#ambiguity" class="xref page">Durability &amp; Failure discussion</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="health-check"><a class="anchor" href="#health-check"></a>Health Check</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Distributed systems are not easy to debug.
+One cause of errors to try to eliminate, or quickly diagnose to deal with, is those caused by the network.
+Our <a href="health-check.html" class="xref page">Health Check API</a> offers status and diagnostics on your cluster&#8217;s network, and can be used, for example, to diagnose network latencies that are behind timeout errors.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="threshold-orphan-logging"><a class="anchor" href="#threshold-orphan-logging"></a>Threshold &amp; Orphan Logging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Observability is provided by the SDK in the following ways:</p>
+</div>
+<div class="sect2">
+<h3 id="threshold-logging"><a class="anchor" href="#threshold-logging"></a>Threshold Logging</h3>
+<div class="paragraph">
+<p>Threshold logging is the recording of slow operations&#8201;&#8212;&#8201;useful for diagnosing when and where problems occur in a distributed environment.
+It is enabled by default.</p>
+</div>
+<div class="paragraph">
+<p>You will see this information turning up in the logs something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">Threshold Log: {"service":"kv","count":2,"top":[{"operation_name":"Insert","total_us":161679},{"operation_name":"Upsert","total_us":161451}]}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And as tracing values such as <code>total_us</code>, the duration of the total time taken for the operation, expressed as microseconds.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="orphaned-response-reporting"><a class="anchor" href="#orphaned-response-reporting"></a>Orphaned Response Reporting</h3>
+<div class="paragraph">
+<p>Special reporting capabilities which explicitly collect information about responses which have been abandoned (i.e. timed out) at the time when the SDK tries to complete them.
+This is also enabled by default.</p>
+</div>
 </div>
 </div>
 </div>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Untitled | Couchbase Docs (Local)</title>
+<title>Services&#8201;&#8212;&#8201;Choosing the Right One | Couchbase Docs (Local)</title>
 <link rel="canonical" href="https://maria-robobug.github.io/nodejs-sdk/4.1/concept-docs/data-services.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
@@ -175,12 +175,152 @@
 </nav>
 </div>
 <article class="doc">
+<div class="page-heading-title">
+<h1 class="page">Services&#8201;&#8212;&#8201;Choosing the Right One</h1>
+</div>
 <div class="contributor-list-box">
 <span class="last-commit-date" id="commitdate">    </span>
 <ul id="contributorList"></ul>
 <span  id="otherContributor"> + </span>
-</div><div class="paragraph">
-<p>Unresolved include directive in modules/concept-docs/pages/data-services.adoc - include::7.0@sdk:pages:partial$data-services.adoc[]</p>
+</div><div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
+<blockquote>
+Data in the Couchbase Data Platform can be accessed through Key Value (KV) Operations (including the Sub-Document API), the Analytics Service, the Query Service, Full Text Search, or even MapReduce Views:
+how do you pick the right service for your application?
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Couchbase Data Platform features several services to enable efficient information retrieval at a speed and scale to suit every use case.
+Although each service uses a different API, exposed on a different port, and often addressing different protocols,
+the Couchbase SDKs abstract away many of the differences&#8201;&#8212;&#8201;offering consistency across different language SDKs where it is reasonable to do so.</p>
+</div>
+<div class="paragraph">
+<p>You can follow the links below for more information on the services with the Couchbase SDKs, or read on to see which use case matches which service.</p>
+</div>
+<div class="ulist">
+<div class="title">Couchbase Data Services</div>
+<ul>
+<li>
+<p><a href="../howtos/kv-operations.html" class="xref page">KV Operations</a></p>
+</li>
+<li>
+<p><a href="../howtos/subdocument-operations.html" class="xref page">Sub-Document API</a></p>
+</li>
+<li>
+<p><a href="analytics-for-sdk-users.html" class="xref page">Couchbase Analytics Service (CBAS)</a></p>
+</li>
+<li>
+<p><a href="n1ql-query.html" class="xref page">Query Service</a></p>
+</li>
+<li>
+<p><a href="full-text-search-overview.html" class="xref page">Full Text Search</a></p>
+</li>
+<li>
+<p><a href="understanding-views.html" class="xref page">MapReduce Views</a></p>
+</li>
+<li>
+<p><a href="../../../server/7.1/connectors/intro.html" class="xref page">Connectors</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="anchor" href="#use-cases"></a>Use Cases</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It’s an understandable temptation to reach for the familiar, and Couchbase’s SQL-like N1QL makes the Query service an easy starting point for many, but it’s important to take time to match your use case to the best tool for the job.</p>
+</div>
+<div class="sect2">
+<h3 id="known-documents"><a class="anchor" href="#known-documents"></a>Known documents</h3>
+<div class="paragraph">
+<p>When you already know the <em>Key</em> (ID) of the document, then <em>KV Operations</em> is by far the simplest way to retrieve or mutate it.
+The binary protocol used is far quicker than streaming JSON.</p>
+</div>
+<div class="paragraph">
+<p>If you know the path to the piece of information that you need within a JSON document, then <em>Sub-Document</em> operations will not only retrieve the information more quickly, but will reduce the amount of data that needs to be sent over the network.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="long-running-queries-big-data"><a class="anchor" href="#long-running-queries-big-data"></a>Long Running Queries &amp; Big Data</h3>
+<div class="paragraph">
+<p><a href="../../../server/7.1/learn/services-and-indexes/services/analytics-service.html" class="xref page">Couchbase Analytics Service (CBAS)</a> performs well on huge datasets, with complex aggregations, and uses the first commercial implementation of SQL++&#8201;&#8212;&#8201;<em>N1QL for Analytics</em>&#8201;&#8212;&#8201;which gives a similar query experience to our SQL-like N1QL language.
+CBAS supports workloads involving only SELECT (not INSERT or UPDATE), and uses local secondary indexes.
+Scalable performance comes from multi-node partitioned-parallel join, sort, aggregate, and grouped aggregate operators, and multiple storage devices (vbuckets over several nodes).</p>
+</div>
+<div class="paragraph">
+<p>Use the Analytics Service when you don’t know every aspect of the query in advance --
+for example, if the data access patterns change frequently, or you want to avoid creating an index for each data access pattern,
+or you want to run ad hoc queries for data exploration or visualization.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mutations"><a class="anchor" href="#mutations"></a>Mutations</h3>
+<div class="paragraph">
+<p>Use KV Operations - for better performance.
+Where your mutations are on just a path within the document, use the Sub-Document API.</p>
+</div>
+<div class="paragraph">
+<p>For the “update from a WHERE clause” with our Query Service,
+in which case you don’t know which documents would be altered,
+read the section on CAS and Concurrent Document Mutation to be aware of all of the implications.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="array-mutation"><a class="anchor" href="#array-mutation"></a>Array Mutation</h3>
+<div class="paragraph">
+<p>Sub-Doc allows appending, prepending, and inserting into arrays.
+For more sophisticated array operations, use N1QL’s <code>USEKEY</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="aggregation-reduce"><a class="anchor" href="#aggregation-reduce"></a>Aggregation / Reduce</h3>
+<div class="paragraph">
+<p>MapReduce Views uses distributed Map-Reduce for very fast aggregation operations (fast, because the indexes are pre-computed results)&#8201;&#8212;&#8201;ideal for pre-grouped aggregations, such as grouping temporal data sets (by day, by month, etc.).
+Views’ spatial support allows for fast searching over extensive geo-spatial data in Couchbase Data Platform 5.x&#8201;&#8212;&#8201;however, Spatial Views are no longer supported in Couchbase Server 6.x, and so are not found in SDK 3.x.
+Continuing improvements to our Query Service makes the latter usually a better choice,
+particularly as Views does not scale as well as the other services, lacking a global Index node.</p>
+</div>
+<div class="paragraph">
+<p>For queries over a larger number of documents, CBAS would be the best tool here,
+otherwise, for high throughput, simple queries, pick our Query Service.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fuzzy-searches"><a class="anchor" href="#fuzzy-searches"></a>Fuzzy searches</h3>
+<div class="paragraph">
+<p>Use the Full Text Search (FTS) service when you want to take advantage of natural-language querying.
+For phrase matching, over free-form text, or matching over word stems, FTS is a powerful solution.</p>
+</div>
+<div class="paragraph">
+<p>There are more concepts to learn, as FTS offers a very flexible service.
+In particular, care should be taken over building indexes, to stop them becoming unnecessarily large&#8201;&#8212;&#8201;see our <a href="../../../server/7.1/fts/fts-introduction.html" class="xref page">FTS documentation</a>.
+Once again, the SDK abstracts away much of the complexity from deeply nested queries, and the interface is similar to our Query Service.</p>
+</div>
+<div class="paragraph">
+<p>From Couchbase Server 6.5, <a href="../../../server/7.1/n1ql/n1ql-language-reference/searchfun.html" class="xref page">Search Functions</a> allow the use of FTS <em>within</em> N1QL queries.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="querying"><a class="anchor" href="#querying"></a>Querying</h3>
+<div class="paragraph">
+<p>For operational queries -- such as the front-end queries behind every page display or navigation&#8201;&#8212;&#8201;the Query Service is a natural fit.</p>
+</div>
+<div class="paragraph">
+<p>The Query Service using N1QL - SQL for JSON - is ideal for retrieving multiple documents that match specific queries.
+Data can be joined together, and Global Secondary Indexes can be used to speed up searches.
+It’s a powerful and flexible way of querying, retrieving, and updating data, using a familiar language, but if you know the document’s key, then regular KV (or Sub-Doc) operations will always be faster.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lowest-latency"><a class="anchor" href="#lowest-latency"></a>Lowest Latency</h3>
+<div class="paragraph">
+<p>Streaming in a distributed system is complex, and thus we do not make our internal streams and changes feed directly available.
+However, it is exposed through use of our <a href="#2.4@spark-connector::index.adoc" class="xref unresolved">Spark</a> or <a href="#3.4@kafka-connector::index.adoc" class="xref unresolved">Kafka</a> connectors, which give you a high level API to our low level primitives.</p>
+</div>
+</div>
+</div>
 </div>
 </article>
 </main>

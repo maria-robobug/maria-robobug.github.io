@@ -223,7 +223,7 @@ The sub-document operations described on this page are for <em>Key-Value</em> re
 <div class="paragraph">
 <p>In order to use sub-document operations you need to specify a <em>path</em> indicating the location of the sub-document.
 The <em>path</em> follows N1QL syntax (see <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html#story-h2-12" target="_blank" rel="noopener">below</a>,
-and <a href="#7.0@server:n1ql:n1ql-intro/queriesandresults.adoc" class="xref unresolved">N1QL Queries and Results</a>).
+and <a href="../../../server/7.1/n1ql/n1ql-intro/queriesandresults.html" class="xref page">N1QL Queries and Results</a>).
 Considering the document:</p>
 </div>
 <div class="listingblock">
@@ -841,8 +841,15 @@ Currently, paths cannot exceed 1024 characters, and cannot be more than 32 level
 </tr>
 </table>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="extended-attributes"><a class="anchor" href="#extended-attributes"></a>Extended Attributes</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved include directive in modules/howtos/pages/subdocument-operations.adoc - include::7.0@sdk:shared:partial$sdk-xattr-overview.adoc[]</p>
+<p>Extended Attributes (also known as XATTRs), built upon the Sub-Document API, allow developers to define application-specific metadata that will only be visible to those applications that request it or attempt to modify it.
+This might be, for example, meta-data specific to a programming framework that should be hidden by default from other frameworks or libraries, or possibly from other versions of the same framework.
+They are not intended for use in general applications, and data stored there cannot be accessed easily by some Couchbase services, such as Search.</p>
 </div>
 </div>
 </div>

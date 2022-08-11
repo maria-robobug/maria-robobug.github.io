@@ -476,8 +476,56 @@ which is the default encrypted port):</p>
 .%v.....4....m*...A.2I.1.&amp;.*,6+..#..#.5</pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-dns-srv-records"><a class="anchor" href="#using-dns-srv-records"></a>Using DNS SRV records</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved include directive in modules/howtos/pages/managing-connections.adoc - include::7.0@sdk:shared:partial$dnssrv-pars.adoc[]</p>
+<p>As an alternative to specifying multiple hosts in your program, you can get the actual bootstrap node list from a DNS SRV record.
+The following steps are necessary to make it work:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Set up your DNS server to respond properly from a DNS SRV request.</p>
+</li>
+<li>
+<p>Enable it on the SDK and point it towards the DNS SRV entry.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Your DNS server should be set up like this (one row for each bootstrap node):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>_couchbase._tcp.example.com.  3600  IN  SRV  0  0  11210  node1.example.com.
+_couchbase._tcp.example.com.  3600  IN  SRV  0  0  11210  node2.example.com.
+_couchbase._tcp.example.com.  3600  IN  SRV  0  0  11210  node3.example.com.</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The ordering, priorities, and weighting are completely ignored and should not be set on the records to avoid ambiguities.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you plan to use secure connections, you use <code>_couchbases</code> instead:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>_couchbases._tcp.example.com.  3600  IN  SRV  0  0  11207  node1.example.com.
+_couchbases._tcp.example.com.  3600  IN  SRV  0  0  11207  node2.example.com.
+_couchbases._tcp.example.com.  3600  IN  SRV  0  0  11207  node3.example.com.</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>The Node.js SDK always tries to use the SRV records, if the connection string contains a single hostname and the feature is not disabled explicitly with connection string option <code>dnssrv=off</code>.</p>
@@ -498,8 +546,27 @@ which is the default encrypted port):</p>
 <pre>81ms [If1e0caf208c1ff41] {11763} [INFO] (instance - L:202) DNS SRV lookup failed: LCB_ERR_UNKNOWN_HOST (1049). Ignore this if not relying on DNS SRV records</pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="working-in-the-cloud"><a class="anchor" href="#working-in-the-cloud"></a>Working in the Cloud</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved include directive in modules/howtos/pages/managing-connections.adoc - include::7.0@sdk:shared:partial$managing-connections.adoc[]</p>
+<p>For most use cases, connecting client software using a Couchbase SDK to the new <a href="https://docs.couchbase.com/cloud/clouds/clouds.html">Couchbase Capella service</a> is similar to connecting to an on-premises Couchbase Cluster.
+The use of DNS-SRV. Alternate Address, and TLS is covered above.</p>
+</div>
+<div class="paragraph">
+<p>We strongly recommend that the client and server <a href="../project-docs/compatibility.html#network-requirements" class="xref page">are in the same LAN-like environment</a> (e.g. AWS Availability Zone).
+As this may not always be possible during development, read the guidance on working with <a href="../ref/client-settings.html#commonly-used-options" class="xref page">constrained network environments</a>.
+More details on connecting your client code to Couchbase Capella can be found <a href="https://docs.couchbase.com/cloud/get-started/connect-to-cluster.html#locate-the-clusters-endpoints-and-built-in-sdk-examples">in the Cloud docs</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="troubleshooting-connections-to-cloud"><a class="anchor" href="#troubleshooting-connections-to-cloud"></a>Troubleshooting Connections to Cloud</h3>
+<div class="paragraph">
+<p>Some DNS caching providers (notably, home routers) can’t handle an SRV record that’s large&#8201;&#8212;&#8201;if you have DNS-SRV issues with such a set-up, reduce your DNS-SRV to only include three records.
+[<em>For development only, not production.</em>].
+Our <a href="troubleshooting-cloud-connections.html" class="xref page">Troubleshooting Cloud Connections</a> page will help you to diagnose this and other problems&#8201;&#8212;&#8201;as well as introducing the SDK doctor tool.</p>
+</div>
 </div>
 </div>
 </div>

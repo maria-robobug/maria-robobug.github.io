@@ -213,8 +213,136 @@ you may wish to skip to the <a href="#sdk4-specifics">SDK 4.0 specifics</a> belo
 </tr>
 </table>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="api-version"><a class="anchor" href="#api-version"></a>API Version</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved include directive in modules/project-docs/pages/migrating-sdk-code-to-3.n.adoc - include::7.0@sdk:shared:partial$api-version.adoc[]</p>
+<p>This release of the SDK is written to version 3.3 of the SDK API specification (and matching the features available in Couchbase 7.1 and earlier).
+For most developers, just using the latest version will be all that matters, and few will need to look at another of our SDKs.
+Just for those few that do, the table below shows each Couchbase SDK release version that matches the API version.</p>
+</div>
+<div class="paragraph">
+<p>Whilst these two numbers match for the C, .NET, Java, and Ruby SDKs, this is not the case for the others, as version numbers for individual SDKs are bumped up in line with <a href="https://semver.org/">Semantic Versioning</a>&#8201;&#8212;&#8201;check the <a href="#sdk-release-notes">release notes</a> of each SDK for individual details.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. SDK API Versions</caption>
+<colgroup>
+<col style="width: 27.5862%;">
+<col style="width: 13.7931%;">
+<col style="width: 13.7931%;">
+<col style="width: 13.7931%;">
+<col style="width: 17.2413%;">
+<col style="width: 13.7932%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">API 2.7</th>
+<th class="tableblock halign-left valign-top">API 3.0</th>
+<th class="tableblock halign-left valign-top">API 3.1</th>
+<th class="tableblock halign-left valign-top">API 3.2</th>
+<th class="tableblock halign-left valign-top">API 3.3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C (libcouchbase)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">.NET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Go</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.5 &amp; 1.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.0 &amp; 2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.3 &amp; 2.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Java</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kotlin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node.js</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2 &amp; 4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PHP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Python</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ruby</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scala</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>SDK API 3.3</strong>: Introduced alongside Couchbase Server 7.1, adds Management API for Eventing and Index Management for Scopes &amp; Collections; extends Bucket Management API to support Custom Conflict Resolution and Storage Options; adds new platform support for Linux Alpine OS, Apple M1, and AWS Graviton2; provides improved error messages for better error handling. and an upgraded Spark Connector that runs on Spark 3.0 &amp; 3.1 Platform.</p>
+</div>
+<div class="paragraph">
+<p><strong>SDK API 3.2</strong>: Introduced alongside Couchbase Server 7.0, provides features in support of Scopes and Collections, extends capabilities around Open Telemetry API to instrument telemetry data, enhanced client side field level encryption to add an additional layer of security to protect sensitive data, adds new platform support such as Ubuntu 20.04 LTS.</p>
+</div>
+<div class="paragraph">
+<p><strong>SDK API 3.1</strong>: Introduced alongside Couchbase Server 6.6,  focuses on Bucket Management API, adds capabilities around Full Text Search features such-as  Geo-Polygon support, Flex Index, and Scoring.</p>
+</div>
+<div class="paragraph">
+<p><strong>SDK API 3.0</strong>: Introduced alongside Couchbase Server 6.5,  is a major overhaul from its predecessor, has simplified surface area, removed long-standing bugs and deprecated/removed old API, introduces new programming languages Scala and Ruby, written in anticipation to support Scopes and Collections.</p>
+</div>
+<div class="paragraph">
+<p><strong>SDK API 2.7</strong>: Introduced alongside Couchbase Server 6.0, with support for its new features such as the Analytics Service, improvements to Full Text Search, and support for more complex network configurations.</p>
 </div>
 </div>
 </div>
@@ -226,8 +354,25 @@ you may wish to skip to the <a href="#sdk4-specifics">SDK 4.0 specifics</a> belo
 As a migration guide, this document assumes you are familiar with the previous generation of the SDK and does not re-introduce SDK API 2 concepts.
 We recommend familiarizing yourself with the new SDK first by reading at least the <a href="../hello-world/start-using-sdk.html" class="xref page">getting started guide</a>, and browsing through the other chapters a little.</p>
 </div>
+<div class="sect2">
+<h3 id="terminology"><a class="anchor" href="#terminology"></a>Terminology</h3>
 <div class="paragraph">
-<p>Unresolved include directive in modules/project-docs/pages/migrating-sdk-code-to-3.n.adoc - include::7.0@sdk:shared:partial$migration.adoc[]</p>
+<p>The concept of a <code>Cluster</code> and a <code>Bucket</code> remain the same, but a fundamental new layer is introduced into the API: <code>Collections</code> and their <code>Scopes</code>.
+Collections are logical data containers inside a Couchbase bucket that let you group similar data just like a <em>Table</em> does in a relational database&#8201;&#8212;&#8201;although documents inside a collection do not need to have the same structure.
+Scopes allow the grouping of collections into a namespace, which is very usfeul when you have multilpe tenants acessing the same bucket.
+Couchbase Server includes support for collections as a <a href="#6.5@server:developer-preview:preview-mode.adoc" class="xref unresolved">developer preview</a> in version 6.5, and as a first class concept of the programming model from <a href="../../../server/7.1/learn/data/scopes-and-collections.html" class="xref page">version 7.0.</a></p>
+</div>
+<div class="paragraph">
+<p>Note that the SDKs include the feature from SDK 3.0, to allow easier migration.</p>
+</div>
+<div class="paragraph">
+<p>In the previous SDK generation, particularly with the <code>KeyValue</code> API, the focus has been on the codified concept of a <code>Document</code>.
+Documents were read and written and had a certain structure, including the <code>id</code>/<code>key</code>, content, expiry (<code>ttl</code>), and so forth.
+While the server still operates on the logical concept of documents, we found that this model in practice didn&#8217;t work so well for client code in certain edge cases.
+As a result we have removed the <code>Document</code> class/structure completely from the API.
+The new API follows a clear scheme: each command takes required arguments explicitly, and an option block for all optional values.
+The returned value is always of type <code>Result</code>.
+This avoids method overloading bloat in certain languages, and has the added benefit of making it easy to grasp APIs evenly across services.</p>
 </div>
 <div class="paragraph">
 <p>As an example here is a KeyValue document fetch:</p>
@@ -262,13 +407,41 @@ document = result.value;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/project-docs/pages/migrating-sdk-code-to-3.n.adoc - include::7.0@sdk:shared:partial$migration.adoc[]</p>
+<p>Since documents also fundamentally handled the serialization aspects of content, two new concepts are introduced: the <code>Serializer</code> and the <code>Transcoder</code>.
+Out of the box the SDKs ship with a JSON serializer which handles the encoding and decoding of JSON.
+You&#8217;ll find the serializer exposes the options for methods like N1QL queries and KeyValue subdocument operations,.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/project-docs/pages/migrating-sdk-code-to-3.n.adoc - include::7.0@sdk:shared:partial$migration.adoc[]</p>
+<p>The KV API extends the concept of the serializer to the <code>Transcoder</code>.
+Since you can also store non-JSON data inside a document, the <code>Transcoder</code> allows the writing of binary data as well.
+It handles the object/entity encoding and decoding, and if it happens to deal with JSON makes uses of the configured <code>Serializer</code> internally.
+See the <em>Serialization and Transcoding</em> section below for details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="what-to-look-out-for"><a class="anchor" href="#what-to-look-out-for"></a>What to look out for</h3>
+<div class="paragraph">
+<p>The SDKs are more proactive in retrying with certain errors and in certain situations, within the timeout budget given by the user&#8201;&#8212;&#8201;as an example, temporary failures or locked documents are now being retried by default&#8201;&#8212;&#8201;making it even easier to program against certain error cases.
+This behavior is customizable in a <code>RetryStrategy</code>, which can be overridden on a per operation basis for maximum flexibility if you need it.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/project-docs/pages/migrating-sdk-code-to-3.n.adoc - include::7.0@sdk:shared:partial$migration.adoc[]</p>
+<p>Note, most of the bootstrap sequence is now lazy (happening behind the scenes).
+For example, opening a bucket is not raising an error anymore, but it will only show up once you perform an actual operation.
+The reason behind this is to spare the application developer the work of having to do error handling in more places than needed.
+A bucket can go down 2ms after you opened it, so you have to handle request failures anyway.
+By delaying the error into the operation result itself, there is only one place to do the error handling.
+There will still be situations why you want to check if the resource you are accessing is available before continuing the bootstrap;
+for this, we have the diagnostics and ping commands at each level which allow you to perform those checks eagerly.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="language-specifics"><a class="anchor" href="#language-specifics"></a>Language Specifics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that you are familiar with the general theme of the migration, the next sections dive deep into the specifics.
+First, installation and configuration are covered, then we talk about exception handling, and then each service (i.e. Key/Value, Query,&#8230;&#8203;) is covered separately.</p>
 </div>
 </div>
 </div>
@@ -529,7 +702,7 @@ Operations are retried by default as described above with the default <code>Best
 <p>The following table describes the SDK API 2 KV calls and where they are now located in SDK API 3:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. KV API Changes</caption>
+<caption class="title">Table 2. KV API Changes</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -615,7 +788,7 @@ Operations are retried by default as described above with the default <code>Best
 <p>In addition, the datastructure APIs have been renamed and moved:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Datastructure API Changes</caption>
+<caption class="title">Table 3. Datastructure API Changes</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -967,7 +1140,7 @@ if (searchResult.meta.status.failed == 0) {
 The API has stayed mostly the same, the most important change is that <code>staleness</code> is unified under the <code>ViewConsistency</code> enum.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. View Staleness Mapping</caption>
+<caption class="title">Table 4. View Staleness Mapping</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1035,7 +1208,7 @@ Also, creating a N1QL index now lives in the <code>queryindexmanager</code>, whi
 <p>The following table provides a mapping from the SDK API 2 management APIs to those of SDK API 3:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. <code>clustermanager</code> changes</caption>
+<caption class="title">Table 5. <code>clustermanager</code> changes</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1098,7 +1271,7 @@ Also, creating a N1QL index now lives in the <code>queryindexmanager</code>, whi
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. <code>bucketmanager</code> changes</caption>
+<caption class="title">Table 6. <code>bucketmanager</code> changes</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1236,8 +1409,15 @@ They are available in 3.2, and will be available in a later 4.x release.</p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="comparing-older-documentation"><a class="anchor" href="#comparing-older-documentation"></a>Comparing Older Documentation</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved include directive in modules/project-docs/pages/migrating-sdk-code-to-3.n.adoc - include::7.1@sdk:shared:partial$archive.adoc[]</p>
+<p>You may want to visit documentation for older versions of the SDK, to help to understand application code that you are migrating.
+Versions that have reached end of life can be found in the <a href="https://docs-archive.couchbase.com/home/index.html">archive</a>.
+In the release notes pages of these older docs, you will also find links to the API reference for each no-longer-supported release.</p>
 </div>
 </div>
 </div>

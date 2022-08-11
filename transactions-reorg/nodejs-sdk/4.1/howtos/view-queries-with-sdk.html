@@ -183,19 +183,58 @@
 <span class="last-commit-date" id="commitdate">    </span>
 <ul id="contributorList"></ul>
 <span  id="otherContributor"> + </span>
-</div><div class="quoteblock abstract">
+</div><div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
 <blockquote>
 You can use MapReduce views to create queryable indexes in Couchbase Data Platform.
 </blockquote>
 </div>
-<div class="paragraph">
-<p>Unresolved include directive in modules/howtos/pages/view-queries-with-sdk.adoc - include::7.0@sdk:shared:partial$views.adoc[]</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Although still maintained and supported for legacy use, Views date from the earliest days of Couchbase Server development, and as such are rarely the best choice over, say, <a href="n1ql-queries-with-sdk.html" class="xref page">our Query service</a> if you are starting a fresh application.
+See our discussion document on <a href="../concept-docs/data-services.html" class="xref page">the best service for you to use</a>.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/howtos/pages/view-queries-with-sdk.adoc - include::7.0@sdk:shared:partial$views.adoc[]</p>
+<p>The normal CRUD methods allow you to look up a document by its ID.
+A MapReduce (<em>view</em> query) allows you to lookup one or more documents based on various criteria.
+MapReduce views are comprised of a <em>map</em> function that is executed once per document (this is done incrementally, so this is not run each time you query the view) and an optional <em>reduce</em> function that performs aggregation on the results of the <em>map</em> function.
+The <em>map</em> and <em>reduce</em> functions are stored on the server and written in JavaScript.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/howtos/pages/view-queries-with-sdk.adoc - include::7.0@sdk:shared:partial$views.adoc[]</p>
+<p>MapReduce queries can be further customized during query time to allow only a subset (or range) of the data to be returned.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+See the <a href="../../../server/7.1/learn/views/views-writing.html" class="xref page">Incremental MapReduce Views</a> and <a href="../../../server/7.1/learn/views/views-querying.html" class="xref page">Querying Data with Views</a> sections of the general documentation to learn more about views and their architecture.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="by-name-views"><a class="anchor" href="#by-name-views"></a>By Name Views</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following example is the definition of a <code>by_name</code> view in a <em>"beer"</em> design document.
+This view checks whether a document is a beer and has a name.
+If it does, it emits the beer&#8217;s name into the index.
+This view allows beers to be queried for by name.
+For example, it&#8217;s now possible to ask the question "What beers start with A?"</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -206,7 +245,10 @@ You can use MapReduce views to create queryable indexes in Couchbase Data Platfo
 </div>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/howtos/pages/view-queries-with-sdk.adoc - include::7.0@sdk:shared:partial$views.adoc[]</p>
+<p>The following example is the definition of a <code>by_name</code> view in a <em>"landmarks"</em> design document in the <em>"travel-sample"</em> sample dataset.
+This view checks whether a document is a landmark and has a name.
+If it does, it emits the landmark&#8217;s name into the index.
+This view allows landmarks to be queried for by its <em>"name"</em> field.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -216,7 +258,10 @@ You can use MapReduce views to create queryable indexes in Couchbase Data Platfo
 </div>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/howtos/pages/view-queries-with-sdk.adoc - include::7.0@sdk:shared:partial$views.adoc[]</p>
+<p>A Spatial View can instead be queried with a <code class="param">range</code> or <em>bounding box</em>.
+For example, let&#8217;s imagine we have stored landmarks with coordinates for their home city (eg.
+Paris, Vienna, Berlin and New York) under <code class="param">geo</code>, and each city&#8217;s coordinates is represented as two attributes, <code class="param">lon</code> and <code class="param">lat</code>.
+The following spatial view map function could be used to find landmarks within Europe, as a <em>"by_location"</em> view in a <em>"spatial"</em> design document:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -225,6 +270,8 @@ You can use MapReduce views to create queryable indexes in Couchbase Data Platfo
         emit([doc.geo.lon, doc.geo.lat], null);
     }
 }</code></pre>
+</div>
+</div>
 </div>
 </div>
 </article>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Untitled | Couchbase Docs (Local)</title>
+<title>MapReduce Views | Couchbase Docs (Local)</title>
 <link rel="canonical" href="https://maria-robobug.github.io/nodejs-sdk/4.1/concept-docs/understanding-views.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
@@ -176,12 +176,56 @@
 </nav>
 </div>
 <article class="doc">
+<div class="page-heading-title">
+<h1 class="page">MapReduce Views</h1>
+</div>
 <div class="contributor-list-box">
 <span class="last-commit-date" id="commitdate">    </span>
 <ul id="contributorList"></ul>
 <span  id="otherContributor"> + </span>
-</div><div class="paragraph">
-<p>Unresolved include directive in modules/concept-docs/pages/understanding-views.adoc - include::7.0@sdk:pages:partial$views.adoc[]</p>
+</div><div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
+<blockquote>
+You can use MapReduce views to create queryable indexes in Couchbase Server.
+</blockquote>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Although still maintained and supported for legacy use, Views date from the earliest days of Couchbase Server development, and as such are rarely the best choice over, say, <a href="n1ql-query.html" class="xref page">our Query service</a> for your application, see <a href="data-services.html" class="xref page">our guide to choosing the right service</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<h1 id="mapreduce-views" class="sect0"><a class="anchor" href="#mapreduce-views"></a>MapReduce Views</h1>
+<div class="paragraph">
+<p>Views are stored in design documents.
+The SDK provides convenient methods to create, retrieve, and remove design documents.
+To set up views, you create design documents that contain one or more view definitions, and then insert the design documents into a bucket.</p>
+</div>
+<div class="sect1">
+<h2 id="creating-design-documents"><a class="anchor" href="#creating-design-documents"></a>Creating design documents</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each view in a design document is represented by a name and a set of MapReduce functions.
+The mandatory map function describes how to select and transform the data from the bucket, and the optional reduce function describes how to aggregate the results.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="retrieving-design-documents"><a class="anchor" href="#retrieving-design-documents"></a>Retrieving design documents</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To inspect design documents, you can either retrieve them by name or iterate through a list of documents.</p>
+</div>
+</div>
 </div>
 </article>
 </main>

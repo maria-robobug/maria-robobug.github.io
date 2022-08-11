@@ -185,17 +185,68 @@
 <span  id="otherContributor"> + </span>
 </div><div id="preamble">
 <div class="sectionbody">
+<div class="quoteblock abstract">
+<blockquote>
+Discover how to program interactions with the Couchbase Server via the data, Query, and search services&#8201;&#8212;&#8201;using the Travel Sample Application with the built-in Travel Sample data Bucket.
+This version demonstrates various features of Couchbase, including the Collections feature new in Server 7.0.
+</blockquote>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quick-start"><a class="anchor" href="#quick-start"></a>Quick Start</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved include directive in modules/hello-world/pages/sample-application.adoc - include::7.0@sdk:shared:partial$sample-application.adoc[]</p>
+<p>Fetch the <a href="https://github.com/couchbaselabs/try-cb-nodejs">Couchbase Node.js SDK travel-sample Application REST Backend</a> from github:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">git clone https://github.com/couchbaselabs/try-cb-nodejs.git
+cd try-cb-nodejs</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/hello-world/pages/sample-application.adoc - include::7.0@sdk:shared:partial$sample-application.adoc[]</p>
+<p>With <a href="https://docs.docker.com/get-docker/">Docker</a> installed, you should now be able to run a bare-bones copy of Couchbase Server, load the travel-sample, add indexes, install the sample-application and its frontend, all by running a single command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">docker-compose up</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="running-the-code-against-your-own-development-couchbase-server"><a class="anchor" href="#running-the-code-against-your-own-development-couchbase-server"></a>Running the code against your own development Couchbase server.</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For Couchbase Server 7.1, make sure that you have at least one node each of data; query; index; and search.
+For a development box, mixing more than one of these on a single node (given enough memory resources) is perfectly acceptable.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/hello-world/pages/sample-application.adoc - include::7.0@sdk:shared:partial$sample-application.adoc[]</p>
+<p>If you have yet to install Couchbase Server in your development environment
+<a href="../../../server/7.1/getting-started/do-a-quick-install.html" class="xref page">start here</a>.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/hello-world/pages/sample-application.adoc - include::7.0@sdk:shared:partial$sample-application.adoc[]</p>
+<p>Then load up the Travel Sample Bucket, using either the
+<a href="../../../server/7.1/manage/manage-settings/install-sample-buckets.html#install-sample-buckets-with-the-ui" class="xref page">Web interface</a>
+or the
+<a href="../../../server/7.1/manage/manage-settings/install-sample-buckets.html#install-sample-buckets-with-the-cli" class="xref page">command line</a>.
+You will also need to
+<a href="#7.1@server:fts:fts-searching-from-the-ui.adoc#create-an-index" class="xref unresolved">create a Search Index</a>&#8201;&#8212;&#8201;Query indexes are taken care of by the Sample Bucket.</p>
+</div>
+<div class="paragraph">
+<p>See the README at <a href="https://github.com/couchbaselabs/try-cb-nodejs" class="bare">https://github.com/couchbaselabs/try-cb-nodejs</a> for full details of how to run and tweak the Node.js SDK travel-sample app.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-the-sample-app"><a class="anchor" href="#using-the-sample-app"></a>Using the Sample App</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Give yourself a username and password and click <strong>Register</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Now try out a few queries, and see Search in action for the hotel finder feature.</p>
 </div>
 </div>
 </div>
@@ -242,12 +293,23 @@ but also how to plug together all of the elements and build an application with 
 <div class="paragraph">
 <p>The <a href="https://github.com/couchbaselabs/try-cb-nodejs/blob/HEAD/index.js">index.js</a> file also contains the functions for handling users, registration, and N1QL queries.</p>
 </div>
-<div class="paragraph">
-<p>Unresolved include directive in modules/hello-world/pages/sample-application.adoc - include::7.0@sdk:shared:partial$sample-application.adoc[]</p>
 </div>
-<div class="paragraph">
-<p>Unresolved include directive in modules/hello-world/pages/sample-application.adoc - include::7.0@sdk:shared:partial$sample-application.adoc[]</p>
 </div>
+<div class="sect1">
+<h2 id="data-model"><a class="anchor" href="#data-model"></a>Data Model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>See the <a href="../ref/travel-app-data-model.html" class="xref page">Travel App Data Model</a> reference page for more information about the sample data set used.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rest-api"><a class="anchor" href="#rest-api"></a>REST API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can explore the REST API here in read-only mode, or once you are running the application, at the <code>/apidocs</code> endpoint.</p>
+</div>
+<div id="swagger-ui"></div>
 </div>
 </div>
 </article>
@@ -341,6 +403,60 @@ but also how to plug together all of the elements and build an application with 
 </div>
 </template>
 <script id="site-script" src="../../../_/js/site.js"></script>
+<link rel="stylesheet" href="https://couchbase-docs.s3.amazonaws.com/assets/swagger-ui-3.7/swagger-ui.css">
+<script src="https://couchbase-docs.s3.amazonaws.com/assets/swagger-ui-3.7/swagger-ui-bundle.js"></script>
+<script src="https://couchbase-docs.s3.amazonaws.com/assets/swagger-ui-3.7/swagger-ui-standalone-preset.js"></script>
+<script id="swagger-ui-script" data-url="https://raw.githubusercontent.com/couchbaselabs/try-cb-nodejs/HEAD/swagger.json">
+;(function (config) {
+  var initialHash = window.location.hash
+  var jumpToAnchorOnLoad = function () {
+    if (this.querySelector('.swagger-ui .swagger-ui')) {
+      var targetHash, targetId
+      if (initialHash.charAt(1) === '/') {
+        targetId = 'operations' + (initialHash.lastIndexOf('/') === 1 ? '-tag' : '') + initialHash.slice(1).replace(/[/]/g, '-')
+      } else {
+        targetHash = initialHash
+      }
+      Array.prototype.slice.call(this.querySelectorAll('.opblock-tag[id], .opblock[id]')).forEach(function (el) {
+        var id = el.id
+        el.removeAttribute('id')
+        if (targetId === id) targetHash = '#' + targetId
+        if (el.tagName === 'H4') {
+          el.parentNode.id = id
+        } else {
+          var wrapper = document.createElement('div')
+          wrapper.id = id
+          el.parentNode.insertBefore(wrapper, el)
+          wrapper.appendChild(el)
+        }
+      })
+      if (targetHash) {
+        setTimeout(function () {
+          window.location.hash = targetHash
+          if (targetId) window.history.pushState(null, null, initialHash)
+        }, 1250)
+      }
+    } else {
+      requestAnimationFrame(jumpToAnchorOnLoad)
+    }
+  }.bind(document.getElementById('swagger-ui'))
+  SwaggerUIBundle({
+    url: config.url,
+    dom_id: '#swagger-ui',
+    deepLinking: true,
+    presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
+    plugins: [SwaggerUIBundle.plugins.DownloadUrl],
+    layout: 'StandaloneLayout',
+    tagsSorter: 'alpha',
+    operationsSorter: 'alpha',
+    docExpansion: 'none',
+  })
+  if (initialHash && (initialHash.charAt(1) !== '/' || initialHash.length > 2)) {
+    if (initialHash.charAt(1) !== '/') window.location.hash = ''
+    jumpToAnchorOnLoad()
+  }
+})(document.getElementById('swagger-ui-script').dataset)
+</script>
 <script defer src="../../../_/js/vendor/fontawesome-icon-defs.js"></script>
 <script defer src="../../../_/js/vendor/fontawesome.js" data-search-pseudo-elements="true"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>

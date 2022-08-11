@@ -183,7 +183,9 @@
 <span class="last-commit-date" id="commitdate">    </span>
 <ul id="contributorList"></ul>
 <span  id="otherContributor"> + </span>
-</div><div class="quoteblock abstract">
+</div><div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
 <blockquote>
 Client settings
 </blockquote>
@@ -206,8 +208,43 @@ See <a href="../project-docs/migrating-sdk-code-to-3.n.html#sdk4-specifics" clas
 <p>Some details from the old <code>libcouchbase</code>
 <a href="https://docs.couchbase.com/sdk-api/couchbase-c-client/group__lcb-cntl-settings.html">settings list</a> may be useful for reference.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="commonly-used-options"><a class="anchor" href="#commonly-used-options"></a>Commonly Used Options</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved include directive in modules/ref/pages/client-settings.adoc - include::7.0@sdk:shared:partial$client-settings-wide-network.adoc[]</p>
+<p>The defaults above have been carefully considered and in general it is not recommended to make changes without expert guidance or careful testing of the change.
+Some options may be commonly used together in certain envionments or to achieve certain effects.</p>
+</div>
+<h3 id="constrained-network-environments" class="discrete">Constrained Network Environments</h3>
+<div class="paragraph">
+<p>Though <a href="../project-docs/compatibility.html#network-requirements" class="xref page">wide area network</a> (WAN) connections are not directly supported, some development and non-critical operations activities across a WAN are convenient.
+Most likely for connecting to Couchbase Capella, or Server running in your own cloud account, whilst developing from a laptop or other machine not located in the same data center.
+These settings are some you may want to consider adjusting:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Connect Timeout to 30s</p>
+</li>
+<li>
+<p>Key-Value Timeout to 5s</p>
+</li>
+<li>
+<p>Config Poll Interval to 10s</p>
+</li>
+<li>
+<p>Circuit Breaker ErrorThresholdPercentage to 75</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>A program using the SDK can also use the <code>waitUntilReady()</code> API call to handle all connection negotiations and related errors at one place.
+It may be useful to block in, for example, a basic console testing application for up to 30 seconds before proceeding in the program to perform data operations.
+See the API reference for further details.</p>
+</div>
+</div>
 </div>
 </article>
 </main>

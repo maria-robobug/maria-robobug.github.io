@@ -793,7 +793,7 @@ Generally, you will need to do <code>ctx.remove(&#8230;&#8203;).then(&#8230;&#82
 <div class="sectionbody">
 <div class="paragraph">
 <p>If you already use <a href="https://www.couchbase.com/products/n1ql">SQL++ (formerly N1QL)</a>, then its use in transactions is very similar.
-A query returns a <code>TransactionQueryResult</code> that is very similar to the <code>QueryResult</code> you are used to, and a query takes a <code>TransactionQueryOptions</code> that provides the majority of the same options as <code>QueryOptions</code>.</p>
+A query returns a <code>TransactionQueryResult</code> that is very similar to the <code>QueryResult</code> you are used to, and takes most of the same options.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -964,7 +964,7 @@ Other transactions, and other non-transactional actors, will not be able to see 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>profile(QueryProfile)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Allows to enable additional query profiling as part of the response.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows you to enable additional query profiling as part of the response.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>readonly(boolean)</code></p></td>

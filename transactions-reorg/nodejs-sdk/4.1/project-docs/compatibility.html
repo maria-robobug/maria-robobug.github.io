@@ -373,7 +373,7 @@ We intend to support it fully in later versions.
 <td class="tableblock halign-left valign-top" colspan="3"><p class="tableblock">Since 2.6</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Default Collections</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Collections</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Not Supported</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Developer Preview in 6.5-6.6, SDK 3.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since 3.0.7</p></td>
@@ -400,11 +400,89 @@ We intend to support it fully in later versions.
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="network-requirements"><a class="anchor" href="#network-requirements"></a>Network Requirements</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved include directive in modules/project-docs/pages/compatibility.adoc - include::7.0@sdk:shared:partial$network-requirements.adoc[]</p>
+<p>Couchbase SDKs are developed to be run in an environment with local area network (LAN) like throughput and latencies.
+While there is no technical issue that prevents the use across a wide area network (WAN), SDKs have certain thresholds around timeouts and behaviors to recover that will not be the same once the higher latency and possible bandwidth constraints and congestion of a WAN is introduced.
+Couchbase tests for correctness under LAN like conditions.
+For this reason, only LAN-like network environments are officially supported.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/project-docs/pages/compatibility.adoc - include::7.0@sdk:shared:partial$interface-stability-pars.adoc[]</p>
+<p>Couchbase does document, for purposes of convenience when developing and performing basic operational work, what may need to be tuned when network throughputs and latencies are higher.
+If you encounter issues, even with these tune-ables, you should attempt the same workload from a supported, LAN-like environment.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Running on AWS Lambda</div>
+<div class="paragraph">
+<p>AWS Lambda&#8217;s execution environment can freeze/thaw processes. Current Couchbase SDKs run background processing to check and adapt to topology changes in the Couchbase Cluster being used.
+Since the freeze does not allow this background processing and upon thaw the event-driven Couchbase SDKs may issue requests to an old topology, unexpected behavior including failures may occur.
+AWS λ does not provide a way to detect the freeze/thaw cycle. For this reason AWS λ is not currently a tested and supported platform for running current Couchbase SDKs.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="interface-stability"><a class="anchor" href="#interface-stability"></a>Interface Stability</h2>
+<div class="sectionbody">
+<div id="interface-stability-par" class="paragraph">
+<p>Couchbase SDKs indicate the stability of an API through documentation.
+Since there are different meanings when developers mention stability, we mean <strong>interface stability</strong>: how likely the interface is to change or be removed entirely.
+A stable interface is one that is guaranteed not to change between versions, meaning that you may use an API of a given SDK version and be assured that the given API will retain the same parameters and behavior in subsequent versions.
+An unstable interface is one which may appear to work or behave in a specific way within a given SDK version, but may change in its behavior or arguments in future SDK versions, causing odd application behavior or compiler/API usage errors.
+<strong>Implementation stability</strong> is implied to be more reliable at higher levels, but all are tested to the level that is appropriate for their stability.</p>
+</div>
+<div class="paragraph">
+<p>Couchbase uses three interface stability classifiers.
+You may find these classifiers appended as annotations or comments within documentation for each API:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Committed</strong>: This stability level is used to indicate the most stable interfaces that are guaranteed to be supported and remain stable between SDK versions.
+This is the default&#8201;&#8212;&#8201;unless otherwise stated in the documentation, each API has <strong>Committed</strong> status.</p>
+</li>
+<li>
+<p><strong>Uncommitted</strong>: This level is used to indicate APIs that are <em>unlikely</em> to change, but <em>may</em> still change as final consensus on their behavior has not yet been reached.
+<em>Uncommitted</em> APIs usually end up becoming stable APIs.</p>
+</li>
+<li>
+<p><strong>Volatile</strong>: This level is used to indicate experimental APIs that are still in flux and may likely be changed.
+It may also be used to indicate inherently private APIs that may be exposed, but "YMMV" (your mileage may vary) principles apply.
+<em>Volatile</em> APIs typically end up being promoted to <em>Uncommitted</em> after undergoing some modifications.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>APIs that are marked as <em>Committed</em> have a stable implementation.
+<em>Uncommitted</em> and <em>Volatile</em> APIs should be stable within the bounds of any known and often documented issues, but Couchbase has not made a commitment to these APIs and may not respond to reported defects with the same priority.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, take note of the following interface labels:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Deprecated</strong>: Any API marked deprecated may be removed in the next major version released.
+Couchbase recommends migrating from the deprecated API to the replacement as soon as possible.
+In rare instances, deprecated API may be rendered non-functional in a dot-minor release when the API cannot continue to be supported.</p>
+</li>
+<li>
+<p><strong>Internal</strong>: This level is used to indicate you should not rely on this API as it is not intended for use outside the module, even to other Couchbase components.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -537,8 +615,17 @@ Just for those few that do, the table below shows each Couchbase SDK release ver
 <div class="paragraph">
 <p><strong>SDK API 2.7</strong>: Introduced alongside Couchbase Server 6.0, with support for its new features such as the Analytics Service, improvements to Full Text Search, and support for more complex network configurations.</p>
 </div>
+<div class="sect5 column">
+<h6 id=""><a class="anchor" href="#"></a></h6>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="older-sdk-versions"><a class="anchor" href="#older-sdk-versions"></a>Older SDK Versions</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved include directive in modules/project-docs/pages/compatibility.adoc - include::7.1@sdk:shared:partial$archive.adoc[]</p>
+<p>Documentation on older, unsupported versions of the SDK&#8201;&#8212;&#8201;that have reached end-of-life&#8201;&#8212;&#8201;can be found in the <a href="https://docs-archive.couchbase.com/home/index.html">archive</a>.</p>
 </div>
 </div>
 </div>

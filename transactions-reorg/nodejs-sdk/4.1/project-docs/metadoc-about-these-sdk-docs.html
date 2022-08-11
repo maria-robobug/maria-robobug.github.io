@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Untitled | Couchbase Docs (Local)</title>
+<title>About the SDK Docs | Couchbase Docs (Local)</title>
 <link rel="canonical" href="https://maria-robobug.github.io/nodejs-sdk/4.1/project-docs/metadoc-about-these-sdk-docs.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
@@ -106,7 +106,7 @@
 </aside>
 <aside class="toc sidebar"
       data-title="Contents"
-      data-levels="1">
+      data-levels="2">
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
@@ -175,12 +175,169 @@
 </nav>
 </div>
 <article class="doc">
+<div class="page-heading-title">
+<h1 class="page">About the SDK Docs</h1>
+</div>
 <div class="contributor-list-box">
 <span class="last-commit-date" id="commitdate">    </span>
 <ul id="contributorList"></ul>
 <span  id="otherContributor"> + </span>
-</div><div class="paragraph">
-<p>Unresolved include directive in modules/project-docs/pages/metadoc-about-these-sdk-docs.adoc - include::7.0@sdk:pages:partial$about.adoc[]</p>
+</div><div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
+<blockquote>
+Meta documentation&#8201;&#8212;&#8201;what you might need to know to get the best from these docs, from their intent to their Information Architecture.
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Welcome to the <a href="compatibility.html#api-version" class="xref page">SDK 3.3</a> docs&#8201;&#8212;&#8201;this is an <em>afterword</em> to the documentation, rather than something most people will read as a <em>foreword</em>.
+Why so?
+On most occasions you will arrive at a page directly from a search engine, perhaps follow a link to another page or two, and then depart (with, we hope, your questions answererd).
+This page is to help with those occasions when you are unsure precisely what you want, but you are after understanding&#8201;&#8212;&#8201;so this page is a guide to the SDK docs, to help you to get the most from them.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="assumptions-presumptions"><a class="anchor" href="#assumptions-presumptions"></a>Assumptions &amp; Presumptions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Couchbase is a complex and powerful product, with many components.
+The SDKs interact with Couchbase Server and its various services; although some links are given to the pages for these services, gaining an understanding of them is not the principal aim of the SDK documentation,
+rather it is to gain an understanding of how to interact with them programmatically from the SDK,
+as many application programmers will have the task specced out for them.</p>
+</div>
+<div class="paragraph">
+<p>Some concepts, such as Role-Based Access Control, do need to be understood in greater depth&#8201;&#8212;&#8201;but this is documented <a href="../../../server/7.1/learn/security/roles.html" class="xref page">in the appropriate place in the Server docs</a>, and linked from the <a href="../hello-world/start-using-sdk.html" class="xref page">Getting Started Guide</a>.
+Furthermore, things which are essential in production can be a barrier to getting up and running quickly in order to try something out&#8201;&#8212;&#8201;so the <em>Full Admin</em> RBAC role is used in the <em>Hello World</em> code example, contrary to best practice (but this is, of course, called out).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started"><a class="anchor" href="#getting-started"></a>Getting Started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Getting Started section contains tutorial pages&#8201;&#8212;&#8201;in intention, if not always in style&#8201;&#8212;&#8201;covering <a href="../hello-world/start-using-sdk.html" class="xref page">how to install and start using</a> the SDK, as well as a longer <a href="../hello-world/sample-application.html" class="xref page">Sample Application</a> (which is not present for every SDK).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-to-work-with-the-sdk"><a class="anchor" href="#how-to-work-with-the-sdk"></a>How to Work With the SDK</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The next four sections are collections of practical, task-oriented pages, featuring snippets of code designed to help you with the individual pieces that will become your application.</p>
+</div>
+<div class="sect2">
+<h3 id="working-with-data"><a class="anchor" href="#working-with-data"></a>Working with Data</h3>
+<div class="paragraph">
+<p>This section deals with all of the main Couchbase Services: <a href="../howtos/kv-operations.html" class="xref page">The Data Service</a> (including <a href="../howtos/subdocument-operations.html" class="xref page">Sub-Document Operations</a>); the <a href="../howtos/n1ql-queries-with-sdk.html" class="xref page">Query Service</a>; the <a href="../howtos/analytics-using-sdk.html" class="xref page">Analytics Service</a>; Full-Text <a href="../howtos/full-text-searching-with-sdk.html" class="xref page">Search Service</a>; and <a href="../howtos/view-queries-with-sdk.html" class="xref page">MapReduce Views</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Some SDKs feature an additional <a href="#3.0@python-sdk:howtos:caching-example.adoc" class="xref unresolved">fully-worked, complete code example</a>.
+Others may be added at a later date.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="advanced-data-operations"><a class="anchor" href="#advanced-data-operations"></a>Advanced Data Operations</h3>
+<div class="paragraph">
+<p>In using the above services, there are several more advanced Couchbase and SDK features that may be advantageous or even critical to your app.
+Everything from <a href="../howtos/concurrent-async-apis.html" class="xref page">Asynchronous APIs</a> to <a href="../howtos/distributed-acid-transactions-from-the-sdk.html" class="xref page">Distributed Transactions</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-couchbase"><a class="anchor" href="#managing-couchbase"></a>Managing Couchbase</h3>
+<div class="paragraph">
+<p>In this section are collected practical documents grouped around the Management APIs, and around other management tasks, particularly those needed in getting your application talking to the Couchbase Server (<a href="../howtos/managing-connections.html" class="xref page">Managing Connections</a>), and <a href="../howtos/provisioning-cluster-resources.html" class="xref page">programmatically dealing with Cluster resources</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="errors-diagnostics"><a class="anchor" href="#errors-diagnostics"></a>Errors &amp; Diagnostics</h3>
+<div class="paragraph">
+<p><a href="../howtos/error-handling.html" class="xref page">Error handling</a> is an essential part of developing any application&#8201;&#8212;&#8201;as is <a href="../howtos/collecting-information-and-logging.html" class="xref page">logging</a>&#8201;&#8212;&#8201;but this section also includes some useful diagnostic tools, all too necessary in a distributed environment.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="concept-docs"><a class="anchor" href="#concept-docs"></a>Concept Docs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="../concept-docs/concepts.html" class="xref page">Learn</a> section is a collection of concept docs offering expansive background and context to key areas of the SDKs.
+These understanding-oriented docs are aimed at broadening coverage beyond the goal-oriented howtos, to clarify and illuminate each subject.
+They are a work in progress&#8201;&#8212;&#8201;with more breadth and depth to be added over time.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reference-docs"><a class="anchor" href="#reference-docs"></a>Reference Docs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The key reference doc is the API guide, which should be an accurate and complete source of truth for programming with the SDK&#8217;s API.
+Any error here should be filed directly against the individual SDKs bug tracker (JIRA), although a ticket against the docs <a href="https://issues.couchbase.com/projects/DOC/issues">here</a> will always be converted to the correct project.</p>
+</div>
+<div class="paragraph">
+<p>The first link in the navigation for the Reference Section is to the API Guide for the <em>latest version</em> of the SDK.
+Links to previous versions can be found with the <a href="sdk-release-notes.html" class="xref page">Release Notes</a>.</p>
+</div>
+<div class="paragraph">
+<p>Other reference material includes the <a href="../ref/client-settings.html" class="xref page">Client Settings</a> that can be adjusted, and a listing of all <a href="../ref/error-codes.html" class="xref page">Error Codes</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project-docs"><a class="anchor" href="#project-docs"></a>Project Docs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All of the above (tutorials, howtos, concept docs, and reference docs) help you directly in <em>using</em> the software, but there remain several decisions around managing your use of the software that can be grouped into documentation about the software <em>as a project</em>.
+Things like <a href="sdk-licenses.html" class="xref page">License Information</a> and <a href="compatibility.html" class="xref page">Compatibility</a> (with versions of Couchbase Server, with the language, or with the underlying platform).
+Here can also be found the <a href="sdk-release-notes.html" class="xref page">Release Notes</a>, and help in <a href="migrating-sdk-code-to-3.n.html" class="xref page">migrating</a> from the previous major release.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="another-route-through"><a class="anchor" href="#another-route-through"></a>Another Route Through?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each page contains several links to related pages in the docs, as well as to relevant sections of the latest generated API docs.
+Links are made to cover as many common user journeys as we could think of.
+For cases where we didn&#8217;t anticipate your needs, every page in each SDK is linked from the left-hand navigation, and the paragraphs above detail the broad purpose of these groupings and some of their content.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Several <em>non-pages</em> exist, in the sense that where a page found in one or more SDKs, such as the <em>Travel Sample Application</em>, is not available in one (or more) SDKs&#8201;&#8212;&#8201;as, for example, we have not made a <a href="#3.0@c-sdk:hello-world:sample-application.adoc" class="xref unresolved">libcouchbase Travel Sample Application</a>&#8201;&#8212;&#8201;then a page will still exist, so that when navigating between SDKs through either the dropdown nav, or changing ghe name in the URL bar, you will not find yourself facing a 404 error, and will still have access to the left-hand nvigation for that SDK.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="site-search"><a class="anchor" href="#site-search"></a>Site Search</h3>
+<div class="paragraph">
+<p>Our internal <em>Site Search</em> is an excellent resource for finding information across Couchbase components and (supported) versions.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="older-sdk-versions"><a class="anchor" href="#older-sdk-versions"></a>Older SDK Versions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All supported versions of the SDKs can be found in the doc set&#8201;&#8212;&#8201;use the dropdown version selector in the left-hand navigation to reach each one.
+Documentation on older, unsupported versions of the SDK&#8201;&#8212;&#8201;that have reached end-of-life&#8201;&#8212;&#8201;can be found in the <a href="https://docs-archive.couchbase.com/home/index.html">archive</a>.</p>
+</div>
+</div>
 </div>
 </article>
 </main>
