@@ -228,7 +228,7 @@ Transactions are distributed and work across multiple documents, buckets, scopes
 </div>
 </div>
 <div class="paragraph">
-<p>A core idea of Couchbase transactions is that an application supplies the logic for the transaction inside a `lambda`, including any conditional logic required, and the transaction is then automatically committed.
+<p>A core idea of Couchbase transactions is that an application supplies the logic for the transaction inside a <em>lambda</em>, including any conditional logic required, and the transaction is then automatically committed.
 If a transient error occurs, such as a temporary conflict with another transaction, then the transaction will rollback what has been done so far and run the lambda again.
 The application does not have to do these retries and error handling itself.</p>
 </div>

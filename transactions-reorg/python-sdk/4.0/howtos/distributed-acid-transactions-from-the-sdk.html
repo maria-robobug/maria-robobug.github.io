@@ -10,8 +10,15 @@
 <script src="../../../_/js/vendor/jquery.js"></script>
 <meta name="description" content="A practical guide to using Couchbase distributed ACID transactions with the Python SDK.">
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
+        <link rel="prev" href="view-queries-with-sdk.html">
+        <link rel="next" href="../concept-docs/transactions.html">
 
 
+
+
+                    <link rel="next" href="../concept-docs/transactions.html">
+
+        
 <meta name="dcterms.subject" content="python-sdk">
 <meta name="dcterms.identifier" content="4.0">
 <meta name="page-url" content="/python-sdk/4.0/howtos/distributed-acid-transactions-from-the-sdk.html">
@@ -170,8 +177,8 @@
 <nav class="crumbs" aria-label="breadcrumbs">
 <ul>
 <li class="crumb"><a href="../hello-world/overview.html">Python SDK</a></li>
-<li class="crumb">Advanced Data Operations</li>
-<li class="crumb"><a href="distributed-acid-transactions-from-the-sdk.html">Distributed ACID Transactions</a></li>
+<li class="crumb">Transactions</li>
+<li class="crumb"><a href="distributed-acid-transactions-from-the-sdk.html">How-to Guide</a></li>
 </ul>
 </nav>
 </div>
@@ -191,27 +198,79 @@ A practical guide to using Couchbase distributed ACID transactions with the Pyth
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Couchbase Distributed <a href="../../../server/7.1/learn/data/transactions.html#overview" class="xref page">ACID (atomic, consistent, isolated, and durable)</a> Transactions allow applications to perform a series of database operations as a single unit&#8201;&#8212;&#8201;meaning operations are either committed together or all undone.
-Transactions are distributed and work across multiple documents, buckets, scopes, and collections, which can reside on multiple nodes.</p>
+<p>This guide will show you examples of how to perform multi-document ACID (atomic, consistent, isolated, and durable) database transactions within your application, using the Couchbase Node.js SDK.</p>
+</div>
+<div class="paragraph">
+<p>Refer to the <a href="../concept-docs/transactions.html" class="xref page">Distributed ACID Transactions</a> concept material for a high-level overview.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="requirements"><a class="anchor" href="#requirements"></a>Requirements</h2>
+<h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2>
 <div class="sectionbody">
-<div class="ulist">
+<div class="tabset is-loading">
+<div class="ulist tabs">
 <ul>
 <li>
-<p>Couchbase Server 6.6.1 or above.</p>
+<p><a id="tabset1_couchbase-capella"></a>Couchbase Capella</p>
 </li>
 <li>
-<p>Couchbase Python SDK 4.0.0 or above.
-.Single Node Cluster</p>
+<p><a id="tabset1_couchbase-server"></a>Couchbase Server</p>
 </li>
 </ul>
 </div>
-<div class="exampleblock">
 <div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_couchbase-capella">
+<div class="ulist">
+<ul>
+<li>
+<p>Couchbase Capella account.</p>
+</li>
+<li>
+<p>You should know how to perform <a href="kv-operations.html" class="xref page">key-value</a> or <a href="n1ql-queries-with-sdk.html" class="xref page">query</a> operations with the SDK.</p>
+</li>
+<li>
+<p>Your application should have the relevant roles and permissions on the required buckets, scopes, and collections, to perform transactional operations.
+Refer to the <a href="../../../cloud/organizations/organization-projects-overview.html" class="xref page">Organizations &amp; Access</a> page for more details.</p>
+</li>
+<li>
+<p>If your application is using <a href="../concept-docs/xattr.html" class="xref page">extended attributes (XATTRs)</a>, you should avoid using the XATTR field <code>txn</code>&#8201;&#8212;&#8201;this is reserved for Couchbase use.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_couchbase-server">
+<div class="ulist">
+<ul>
+<li>
+<p>Couchbase Server (6.6.1 or above).</p>
+</li>
+<li>
+<p>You should know how to perform <a href="kv-operations.html" class="xref page">key-value</a> or <a href="n1ql-queries-with-sdk.html" class="xref page">query</a> operations with the SDK.</p>
+</li>
+<li>
+<p>Your application should have the relevant roles and permissions on the required buckets, scopes, and collections, to perform transactional operations.
+Refer to the <a href="../../../server/7.1/learn/security/roles.html" class="xref page">Roles</a> page for more details.</p>
+</li>
+<li>
+<p>If your application is using <a href="../concept-docs/xattr.html" class="xref page">extended attributes (XATTRs)</a>, you should avoid using the XATTR field <code>txn</code>&#8201;&#8212;&#8201;this is reserved for Couchbase use.</p>
+</li>
+<li>
+<p>NTP should be configured so nodes of the Couchbase cluster are in sync with time.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="title">Single Node Cluster</div>
 <div class="paragraph">
 <p>When using a single node cluster (for example, during development), the default number of replicas for a newly created bucket is <strong>1</strong>.
 If left at this default, all key-value writes performed with durability will fail with a <code>DurabilityImpossibleException</code>.
@@ -234,92 +293,23 @@ This setting can be changed via:</p>
 <div class="paragraph">
 <p>If the bucket already exists, then the server needs to be rebalanced for the setting to take affect.</p>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="getting-started"><a class="anchor" href="#getting-started"></a>Getting Started</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Couchbase transactions require no additional components or services to be configured.
-Simply <code>pip install</code> the most recent version of the SDK.
-You may, on occasion, need to import some enumerations for particular settings, but in basic cases nothing is needed.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Transactions can optionally be globally configured when configuring the <code>Cluster</code>.
-For example, if you want to change the level of durability which must be attained, this can be configured as part of the connect options:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L21-L26">opts = ClusterOptions(authenticator=PasswordAuthenticator("Administrator", "password"),
-                      transaction_config=TransactionConfig(
-                          durability=ServerDurability(DurabilityLevel.PERSIST_TO_MAJORITY))
-                      )
-
-cluster = Cluster.connect('couchbase://localhost', opts)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The default configuration will perform all writes with the durability setting <code>Majority</code>, ensuring that each write is available in-memory on the majority of replicas before the transaction continues.
-There are two higher durability settings available that will additionally wait for all mutations to be written to physical storage on either the active or the majority of replicas, before continuing.
-This further increases safety, at a cost of additional latency.</p>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-A level of <code>None</code> is present but its use is discouraged and unsupported.
-If durability is set to <code>None</code>, then ACID semantics are not guaranteed.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>To create a transaction, an application must supply its logic inside {intro-lambda}, including any conditional logic required.
-Once the {lambda} has successfully run to conclusion, the transaction will be automatically committed.
-If at any point an error occurs, the transaction will rollback and the {lambda} may run again.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L70-L88">def txn_logic_ex(ctx  # type: AttemptContext
-                 ):
-    """
-    … Your transaction logic here …
-    """
-
-try:
-    """
-    'txn_logic_ex' is a Python closure that takes an AttemptContext. The
-    AttemptContext permits getting, inserting, removing and replacing documents,
-    performing N1QL queries, etc.
-
-    Committing is implicit at the end of the closure.
-    """
-    cluster.transactions.run(txn_logic_ex)
-except TransactionFailed as ex:
-    print(f'Transaction did not reach commit point.  Error: {ex}')
-except TransactionCommitAmbiguous as ex:
-    print(f'Transaction possibly committed.  Error: {ex}')</code></pre>
+<p>Simply <code>pip install</code> the most recent version of the SDK.
+You may, on occasion, need to import some enumerations for particular settings, but in basic cases nothing is needed.</p>
 </div>
 </div>
-<div id="lambda-ops" class="paragraph">
-<p>The transaction {lambda} gets passed a <code>AttemptContext</code> object&#8201;&#8212;&#8201;generally referred to as <code>ctx</code> in these examples.
-Since the {lambda} could be rerun multiple times, it is important that it does not contain any side effects.
-In particular, you should never perform regular operations on a <code>Collection</code>, such as <code>collection.insert()</code>, inside the {lambda}.
-Such operations may be performed multiple times, and will not be performed transactionally.
-Instead, you should perform these operations through the <code>ctx</code> object, e.g. <code>ctx.insert()</code>.</p>
 </div>
+<div class="sect1">
+<h2 id="creating-a-transaction"><a class="anchor" href="#creating-a-transaction"></a>Creating a Transaction</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>The result of a transaction is represented by a <code>TransactionResult</code> object, which can be used to expose debugging and logging information to help track what happened during a transaction.</p>
+<p>To create a transaction, an application must supply its logic inside a <code>lambda</code>, including any conditional logic required.
+Once the lambda has successfully run to conclusion, the transaction will be automatically committed.
+If at any point an error occurs, the transaction will rollback and the lambda may run again.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -358,94 +348,136 @@ except TransactionCommitAmbiguous as ex:
     print(f'Transaction possibly committed.  Error: {ex}')</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>A core idea of Couchbase transactions is that an application supplies the logic for the transaction inside {intro-lambda}, including any conditional logic required, and the transaction is then automatically committed.
-If a transient error occurs, such as a temporary conflict with another transaction, then the transaction will rollback what has been done so far and run the {lambda} again.
-The application does not have to do these retries and error handling itself.</p>
+<div id="lambda-ops" class="paragraph">
+<p>The transaction lambda gets passed a <code>AttemptContext</code> object&#8201;&#8212;&#8201;generally referred to as <code>ctx</code> in these examples.
+Since the lambda could be rerun multiple times, it is important that it does not contain any side effects.
+In particular, you should never perform regular operations on a <code>Collection</code>, such as <code>collection.insert()</code>, inside the lambda.
+Such operations may be performed multiple times, and will not be performed transactionally.
+Instead, you should perform these operations through the <code>ctx</code> object, e.g. <code>ctx.insert()</code>.</p>
 </div>
 <div class="paragraph">
-<p>Each run of the {lambda} is called an <code>attempt</code>, inside an overall <code>transaction</code>.</p>
+<p>The result of a transaction is represented by a <code>TransactionResult</code> object, which can be used to expose debugging and logging information to help track what happened during a transaction.</p>
 </div>
-<div class="sect2">
-<h3 id="active-transaction-record-entries"><a class="anchor" href="#active-transaction-record-entries"></a>Active Transaction Record Entries</h3>
 <div class="paragraph">
-<p>The first mechanic is that each of these attempts adds an entry to a metadata document in the Couchbase cluster.
-These metadata documents:</p>
+<p>In the event that a transaction fails, your application could run into the following errors:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Are named Active Transaction Records, or ATRs.</p>
+<p><code>TransactionCommitAmbiguous</code></p>
 </li>
 <li>
-<p>Are created and maintained automatically.</p>
-</li>
-<li>
-<p>Begin with <code>_txn:atr-</code>.</p>
-</li>
-<li>
-<p>Each contain entries for multiple attempts.</p>
-</li>
-<li>
-<p>Are viewable, and <em>should not be modified externally</em>.</p>
+<p><code>TransactionFailed</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Each such ATR entry stores some metadata and, crucially, whether the attempt has committed or not.
-In this way, the entry acts as the single point of truth for the transaction, which is essential for providing an 'atomic commit' during reads.</p>
-</div>
+<p>Refer to <a href="../concept-docs/transactions-error-handling.html#transaction_errors" class="xref page">Error Handling</a> for more details on these.</p>
 </div>
 <div class="sect2">
-<h3 id="staged-mutations"><a class="anchor" href="#staged-mutations"></a>Staged Mutations</h3>
+<h3 id="logging"><a class="anchor" href="#logging"></a>Logging</h3>
 <div class="paragraph">
-<p>The second mechanic is that mutating a document inside a transaction, does not directly change the body of the document.
-Instead, the post-transaction version of the document is staged alongside the document (technically in its <a href="../concept-docs/xattr.html" class="xref page">extended attributes (XATTRs)</a>).
-In this way, all changes are invisible to all parts of Couchbase until the commit point is reached.</p>
+<p>To aid troubleshooting, raise the log level on the SDK.</p>
 </div>
 <div class="paragraph">
-<p>These staged document changes effectively act as a lock against other transactions trying to modify the document, preventing write-write conflicts.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="cleanup"><a class="anchor" href="#cleanup"></a>Cleanup</h3>
-<div class="paragraph">
-<p>There are safety mechanisms to ensure that leftover staged changes from a failed transaction cannot block live transactions indefinitely.
-These include an asynchronous cleanup process that is started with the first transaction, and scans for expired transactions created by any application, on the relevant collections.</p>
-</div>
-<div class="paragraph">
-<p>The cleanup process is detailed in the <a href="#concept-docs:transactions-cleanup.adoc" class="xref unresolved">concept-docs:transactions-cleanup.adoc</a> page.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="committing"><a class="anchor" href="#committing"></a>Committing</h3>
-<div class="paragraph">
-<p>Only once the {lambda} has successfully run to conclusion, will the attempt be committed.
-This updates the ATR entry, which is used as a signal by transactional actors to use the post-transaction version of a document from its XATTRs.
-Hence, updating the ATR entry is an 'atomic commit' switch for the transaction.</p>
-</div>
-<div class="paragraph">
-<p>After this commit point is reached, the individual documents will be committed (or "unstaged").
-This provides an eventually consistent commit for non-transactional actors.</p>
+<p>Please see the <a href="collecting-information-and-logging.html" class="xref page">Python SDK logging documentation</a> for details.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="key-value-mutations"><a class="anchor" href="#key-value-mutations"></a>Key-Value Mutations</h2>
+<h2 id="key-value-operations"><a class="anchor" href="#key-value-operations"></a>Key-Value Operations</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="replacing"><a class="anchor" href="#replacing"></a>Replacing</h3>
 <div class="paragraph">
-<p>Replacing a document requires a <code>ctx.get()</code> call first.
-This is necessary so the transaction can check that the document is not involved in another transaction.
-If it is, then the transaction will handle this at the <code>ctx.replace()</code> point.
-Generally, this involves rolling back what has been done so far, and retrying the lambda.
-Handling errors should be done through try/except as in the example above.</p>
+<p>You can perform transactional database operations using familiar key-value CRUD methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>C</strong>reate - <code>insert()</code></p>
+</li>
+<li>
+<p><strong>R</strong>ead - <code>get()</code></p>
+</li>
+<li>
+<p><strong>U</strong>pdate - <code>replace()</code></p>
+</li>
+<li>
+<p><strong>D</strong>elete - <code>remove()</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As mentioned <a href="#lambda-ops">previously</a>, make sure your application uses the transactional key-value operations inside the lambda&#8201;&#8212;&#8201;such as <code>ctx.insert()</code>, rather than <code>collection.insert()</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="insert"><a class="anchor" href="#insert"></a>Insert</h3>
+<div class="paragraph">
+<p>To insert a document within a transaction lambda, simply call <code>ctx.insert()</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L182-L188">def txn_logic(ctx):
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L219-L222">def txn_logic(ctx):
+    ctx.insert(collection, key, content)
+
+cluster.transactions.run(txn_logic)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="get"><a class="anchor" href="#get"></a>Get</h3>
+<div class="paragraph">
+<p>To retrieve a document from the database you can call <code>ctx.get()</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L228-L232">def txn_logic(ctx):
+    doc = ctx.get(collection, key)
+    doc_content = doc.content_as[dict]
+
+cluster.transactions.run(txn_logic)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>ctx.get()</code> will return a <code>TransactionGetResult</code> object, which is very similar to the <code>GetResult</code> you are used to.</p>
+</div>
+<div class="paragraph">
+<p>Gets will "Read Your Own Writes", e.g. this will succeed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L238-L243">def txn_logic(ctx):
+    ctx.insert(collection, key, content)
+    doc = ctx.get(collection, key)
+    doc_content = doc.content_as[dict]
+
+cluster.transactions.run(txn_logic)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Of course, no other transaction will be able to read that inserted document, until this transaction reaches the commit point.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="replace"><a class="anchor" href="#replace"></a>Replace</h3>
+<div class="paragraph">
+<p>Replacing a document requires a <code>ctx.get()</code> call first.
+This is necessary so the SDK can check that the document is not involved in another transaction, and take appropriate action if so.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L197-L203">def txn_logic(ctx):
     doc = ctx.get(collection, key)
     content = doc.content_as[dict]
     content['transactions'] = 'are awesome!'
@@ -456,26 +488,15 @@ cluster.transactions.run(txn_logic)</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="removing"><a class="anchor" href="#removing"></a>Removing</h3>
+<h3 id="remove"><a class="anchor" href="#remove"></a>Remove</h3>
 <div class="paragraph">
 <p>As with replaces, removing a document requires a <code>ctx.get()</code> call first.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L194-L198">def txn_logic(ctx):
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L209-L213">def txn_logic(ctx):
     doc = ctx.get(collection, key)
     ctx.remove(doc)
-
-cluster.transactions.run(txn_logic)</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="inserting"><a class="anchor" href="#inserting"></a>Inserting</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L204-L207">def txn_logic(ctx):
-    ctx.insert(collection, key, content)
 
 cluster.transactions.run(txn_logic)</code></pre>
 </div>
@@ -484,52 +505,32 @@ cluster.transactions.run(txn_logic)</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="key-value-reads"><a class="anchor" href="#key-value-reads"></a>Key-Value Reads</h2>
+<h2 id="sql-queries"><a class="anchor" href="#sql-queries"></a>SQL++ Queries</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>From a transaction context you may get a document:</p>
+<p>If you already use <a href="https://www.couchbase.com/products/n1ql">SQL++ (formerly N1QL)</a>, then its use in transactions is very similar.
+A query returns a <code>TransactionQueryResult</code> that is very similar to the <code>QueryResult</code> you are used to, and takes most of the same options.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As mentioned <a href="#lambda-ops">previously</a>, make sure your application uses the transactional query operations inside the lambda&#8201;&#8212;&#8201;such as <code>ctx.query()</code>, rather than <code>cluster.query()</code> or <code>scope.query()</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here is an example of selecting some rows from the <code>travel-sample</code> bucket:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L213-L217">def txn_logic(ctx):
-    doc = ctx.get(collection, key)
-    doc_content = doc.content_as[dict]
-
-cluster.transactions.run(txn_logic)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><code>get</code> may cause the transaction to fail with <code>TransactionFailed</code> (after rolling back any changes, of course).
-It is provided as a convenience method so the developer does not have to check the <code>Optional</code> if the document must exist for the transaction to succeed.</p>
-</div>
-<div class="paragraph">
-<p>Gets will 'read your own writes', e.g. this will succeed:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L223-L228">def txn_logic(ctx):
-    ctx.insert(collection, key, content)
-    doc = ctx.get(collection, key)
-    doc_content = doc.content_as[dict]
-
-cluster.transactions.run(txn_logic)</code></pre>
-</div>
-</div>
-<div class="sect2">
-<h3 id="using-n1ql"><a class="anchor" href="#using-n1ql"></a>Using N1QL</h3>
-<div class="paragraph">
-<p>If you already use N1QL from the Python SDK, then its use in transactions is very similar.
-It returns the same <code>QueryResult</code> you are used to, and takes most of the same options.</p>
-</div>
-<div class="paragraph">
-<p>You must take care to write <code>ctx.query()</code> inside the lambda however, rather than <code>cluster.query()</code> or <code>scope.query()</code>.</p>
-</div>
-<div class="paragraph">
-<p>An example of selecting some rows from the <code>travel-sample</code> bucket:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L234-L239">def txn_select(ctx):
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L249-L254">def txn_select(ctx):
     query_str = 'SELECT * FROM `travel-sample`.inventory.hotel WHERE country = "United Kingdom" LIMIT 2;'
     res = ctx.query(query_str)
     rows = [r for r in res.rows()]
@@ -538,13 +539,11 @@ cluster.transactions.run(txn_select)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>And an example combining SELECTs and UPDATEs.
-It&#8217;s possible to call regular Python functions from the lambda, as shown here, permitting complex logic to be performed.
-Just remember that since the lambda may be called multiple times, so may the method.</p>
+<p>And an example combining <code>SELECT</code> and an <code>UPDATE</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L271-L284">def txn_complex(ctx):
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L286-L299">def txn_complex(ctx):
     # find all hotels of the chain
     res = ctx.query(
         'SELECT reviews FROM `travel-sample`.inventory.hotel WHERE url = "http://marriot%" AND country = "United States"')
@@ -560,18 +559,17 @@ Just remember that since the lambda may be called multiple times, so may the met
 cluster.transactions.run(txn_complex)</code></pre>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="read-your-own-writes"><a class="anchor" href="#read-your-own-writes"></a>Read Your Own Writes</h3>
 <div class="paragraph">
-<p>As with Key-Value operations, N1QL queries support Read Your Own Writes.</p>
+<p>As you can see from the snippet above, it is possible to call regular Python methods from the lambda, permitting complex logic to be performed.
+Just remember that since the lambda may be called multiple times, so may the method.</p>
 </div>
 <div class="paragraph">
-<p>This example shows inserting a document and then selecting it again.</p>
+<p>Like key-value operations, queries support "Read Your Own Writes".
+This example shows inserting a document and then selecting it again:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L290-L296">def txn_logic(ctx):
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L305-L311">def txn_logic(ctx):
     ctx.query(
         "INSERT INTO `travel-sample` VALUES ('doc', {'hello':'world'})")  <i class="conum" data-value="1"></i><b>(1)</b>
     query_str = "SELECT hello FROM `travel-sample` WHERE META().id = 'doc'"  <i class="conum" data-value="2"></i><b>(2)</b>
@@ -584,27 +582,109 @@ cluster.transactions.run(txn_logic)</code></pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The inserted document is only staged at this point, as the transaction has not yet committed.
+<td>The inserted document is only staged at this point. as the transaction has not yet committed.<br>
 Other transactions, and other non-transactional actors, will not be able to see this staged insert yet.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>But the SELECT can, as we are reading a mutation staged inside the same transaction.</td>
+<td>But the <code>SELECT</code> can, as we are reading a mutation staged inside the same transaction.</td>
 </tr>
 </table>
 </div>
-</div>
 <div class="sect2">
-<h3 id="mixing-key-value-and-n1ql"><a class="anchor" href="#mixing-key-value-and-n1ql"></a>Mixing Key-Value and N1QL</h3>
+<h3 id="query-options"><a class="anchor" href="#query-options"></a>Query Options</h3>
 <div class="paragraph">
-<p>Key-Value operations and queries can be freely intermixed, and will interact with each other as you would expect.</p>
-</div>
-<div class="paragraph">
-<p>In this example we insert a document with Key-Value, and read it with a SELECT.</p>
+<p>Query options can be provided via <code>TransactionQueryOptions</code>, which provides a subset of the options in the Python SDK&#8217;s <code>QueryOptions</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L302-L309">def txn_logic(ctx):
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L330-L338">def txn_logic(ctx):
+    res = ctx.query(
+        "INSERT INTO `travel-sample` VALUES ('doc-abc', {'hello':'world'})",
+        TransactionQueryOptions(
+            profile=QueryProfile.TIMINGS
+        )
+    )
+
+cluster.transactions.run(txn_logic)</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Supported Transaction Query Options</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>positional_parameters(Iterable[JSONType])</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows to set positional arguments for a parameterized query.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>named_parameters(Dict[str, JSONType])</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows you to set named arguments for a parameterized query.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scan_consistency(QueryScanConsistency)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets a different scan consistency for this query.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>client_context_id(str)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets a context ID returned by the service for debugging purposes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scan_wait(timedelta)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows to specify a maximum scan wait time.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scan_cap(int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies a maximum cap on the query scan size.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pipeline_batch(int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the batch size for the query pipeline.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pipeline_cap(int)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the cap for the query pipeline.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>profile(Any)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows you to enable additional query profiling as part of the response.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>read_only(bool)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tells the client and server that this query is readonly.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>adhoc(bool)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set to false will prepare the query and later execute the prepared statement.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>raw(Dict[str, JSONType])</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Escape hatch to add arguments that are not covered by these options.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mixing-key-value-and-sql"><a class="anchor" href="#mixing-key-value-and-sql"></a>Mixing Key-Value and SQL++</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Key-Value operations and queries can be freely intermixed, and will interact with each other as you would expect.
+In this example we insert a document with a key-value operation, and read it with a <code>SELECT</code> query.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L317-L324">def txn_logic(ctx):
     collection = cluster.defaultCollection()
     ctx.insert(collection, 'doc-greeting',
                {'greeting': 'hello world'})  <i class="conum" data-value="1"></i><b>(1)</b>
@@ -618,462 +698,30 @@ cluster.transactions.run(txn_logic)</code></pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>As with the 'Read Your Own Writes' example, here the insert is only staged, and so it is not visible to other transactions or non-transactional actors.</td>
+<td>The key-value insert operation is only staged, and so it is not visible to other transactions or non-transactional actors.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>But the SELECT can view it, as the insert was in the same transaction.</td>
+<td>But the <code>SELECT</code> can view it, as the insert was in the same transaction.</td>
 </tr>
 </table>
 </div>
-</div>
-<div class="sect2">
-<h3 id="query-options"><a class="anchor" href="#query-options"></a>Query Options</h3>
-<div class="paragraph">
-<p>Query options can be provided via <code>TransactionQueryOptions</code>, which provides a subset of the options in the Python SDK&#8217;s <code>QueryOptions</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L315-L323">def txn_logic(ctx):
-    res = ctx.query(
-        "INSERT INTO `travel-sample` VALUES ('doc-abc', {'hello':'world'})",
-        TransactionQueryOptions(
-            profile=QueryProfile.TIMINGS
-        )
-    )
-
-cluster.transactions.run(txn_logic)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Some of the supported options are:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>scan_consistency</p>
-</li>
-<li>
-<p>client_context_id</p>
-</li>
-<li>
-<p>scan_wait</p>
-</li>
-<li>
-<p>scan_cap</p>
-</li>
-<li>
-<p>pipeline_batch</p>
-</li>
-<li>
-<p>pipeline_cap</p>
-</li>
-<li>
-<p>profile</p>
-</li>
-<li>
-<p>read_only</p>
-</li>
-<li>
-<p>adhoc</p>
-</li>
-<li>
-<p>raw</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>See the <a href="n1ql-queries-with-sdk.html#query-options" class="xref page">QueryOptions documentation</a> for details on these.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L329-L339">bulk_load_statement = ""  # a bulk-loading N1QL statement not provided here
-
-def txn_logic(ctx):
-    ctx.query(bulk_load_statement)
-
-try:
-    cluster.transactions.run(txn_logic)
-except TransactionFailed as ex:
-    print(f'Transaction did not reach commit point.  Error: {ex}')
-except TransactionCommitAmbiguous as ex:
-    print(f'Transaction possibly committed.  Error: {ex}')</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="committing-2"><a class="anchor" href="#committing-2"></a>Committing</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Committing is automatic at the end of the code block with the transaction context.
-If no exception is thrown, it will be committed.
-If you want to rollback the transaction, simply throw an exception.
-Transactions may rollback from the transaction logic itself, various failure conditions, or from your application logic by throwing an exception.</p>
-</div>
-<div class="paragraph">
-<p>As soon as the transaction is committed, all its changes will be atomically visible to reads from other transactions.
-The changes will also be committed (or "unstaged") so they are visible to non-transactional actors, in an eventually consistent fashion.</p>
-</div>
-<div class="paragraph">
-<p>Commit is final: after the transaction is committed, it cannot be rolled back, and no further operations are allowed on it.</p>
-</div>
-<div class="paragraph">
-<p>An asynchronous cleanup process ensures that once the transaction reaches the commit point, it will be fully committed - even if the application crashes.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L356-L400">def player_hits_monster(damage, player_id, monster_id, cluster, collection):
-    try:
-        def txn_logic(ctx):
-            monster_doc = (ctx.get(collection, monster_id)
-                           ).content_as[dict]
-            player_doc = (ctx.get(collection, player_id)).content_as[dict]
-
-            monster_hit_points = monster_doc["hitpoints"]
-            monster_new_hitpoints = monster_hit_points - damage
-
-            if monster_new_hitpoints &lt;= 0:
-                # Monster is killed. The remove is just for demoing, and a more realistic
-                # example would set a "dead" flag or similar.
-                ctx.remove(monster_doc)
-
-                # The player earns experience for killing the monster
-                experience_for_killing_monster = monster_doc["experience_when_killed"]
-                player_experience = player_doc["experience"]
-                player_new_experience = player_experience + experience_for_killing_monster
-                player_new_level = calculate_level_for_experience(
-                    player_new_experience)
-
-                player_content = player_doc.copy()
-
-                player_content["experience"] = player_new_experience
-                player_content["level"] = player_new_level
-
-                ctx.replace(player_doc, player_content)
-        cluster.transactions.query(txn_logic)
-    except TransactionFailed as ex:
-        print(f'Transaction did not reach commit point.  Error: {ex}')
-        # The operation failed. Both the monster and the player will be untouched.
-        #
-        # Situations that can cause this would include either the monster
-        # or player not existing (as get is used), or a persistent
-        # failure to be able to commit the transaction, for example on
-        # prolonged node failure.
-    except TransactionCommitAmbiguous as ex:
-        print(f'Transaction possibly committed.  Error: {ex}')
-        # Indicates the state of a transaction ended as ambiguous and may or
-        # may not have committed successfully.
-        #
-        # Situations that may cause this would include a network or node failure
-        # after the transactions operations completed and committed, but before the
-        # commit result was returned to the client.</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Couchbase transactions require a degree of co-operation from an application.
-Specifically, the application should ensure that non-transactional writes are never done concurrently with transactional writes, on the same document.</p>
-</div>
-<div class="paragraph">
-<p>This requirement is to ensure that the strong key-value performance of Couchbase was not compromised.
-A key philosophy of Couchbase transactions is that you 'pay only for what you use'.</p>
-</div>
-<div class="paragraph">
-<p>If two such writes <strong>do</strong> conflict then the behaviour is undefined: either write may 'win', overwriting the other.
-This still applies if the non-transactional write is using CAS.</p>
-</div>
-<div class="paragraph">
-<p>Note this only applies to <em>writes</em>.
-Any non-transactional <em>reads</em> concurrent with transactions are fine, and are at a Read Committed level.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="rollback"><a class="anchor" href="#rollback"></a>Rollback</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>If an exception is thrown, either by the application from the lambda, or by the transaction internally, then that attempt is rolled back.
-The transaction logic may or may not be retried, depending on the exception.</p>
-</div>
-<div class="paragraph">
-<p>If the transaction is not retried then it will throw an exception, and its <code>message</code> property can be used to inspect the details of the failure.</p>
-</div>
-<div class="paragraph">
-<p>The application can use this to signal why it triggered a rollback, as so:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L428-L443">try:
-    def txn_logic(ctx):
-        customer = ctx.get(collection, "customer-name")
-
-        if customer.content_as[dict]["balance"] &lt; cost_of_item:
-            raise InsufficientBalanceException()
-
-        # else continue transaction
-    cluster.transactions.run(txn_logic)
-except TransactionCommitAmbiguous:
-    # This exception can only be thrown at the commit point, after the
-    # BalanceInsufficient logic has been passed, so there is no need to
-    # check the cause property here.
-    pass
-except InsufficientBalanceException as e:
-    raise InsufficientBalanceException("user had Insufficient balance", e)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>After a transaction is rolled back, it cannot be committed, no further operations are allowed on it, and the system will not try to automatically commit it at the end of the code block.</p>
-</div>
-<div class="paragraph">
-<p>There can be situations where total failure is indicated to the application via errors.
-These situations include:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Any error thrown by a transaction {lambda}, either deliberately or through an application logic bug.</p>
-</li>
-<li>
-<p>Attempting to insert a document that already exists.</p>
-</li>
-<li>
-<p>Calling <code>ctx.get()</code> on a document key that does not exist (if the resultant exception is not caught).</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Once one of these errors occurs, the current attempt is irrevocably failed (though the transaction may retry the {lambda} to make a new attempt).
-It is not possible for the application to catch the failure and continue (with the exception of <code>ctx.get()</code> raising an error).
-Once a failure has occurred, all other operations tried in this attempt (including commit) will instantly fail.</p>
-</div>
-<div class="paragraph">
-<p>Transactions, as they are multi-stage and multi-document, also have a concept of partial success or failure.
-This is signalled to the application through the <code>TransactionResult.unstaging_complete</code> property, described later.</p>
-</div>
-<div class="paragraph">
-<p>There are three exceptions that transactions can raise to an application:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>TransactionFailed</code></p>
-</li>
-<li>
-<p><code>TransactionExpired</code></p>
-</li>
-<li>
-<p><code>TransactionCommitAmbiguous</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>These are some of the exceptions that Couchbase transactions can raise to the application: <code>TransactionFailed</code>, <code>TransactionExpired</code> and <code>TransactionCommitAmbiguous</code>.</p>
-</div>
-<div class="sect2">
-<h3 id="transactionfailed-and-transactionexpired"><a class="anchor" href="#transactionfailed-and-transactionexpired"></a>TransactionFailed and TransactionExpired</h3>
-<div class="paragraph">
-<p>The transaction definitely did not reach the commit point.
-<code>TransactionFailed</code> indicates a fast-failure whereas <code>TransactionExpired</code> indicates that retries were made until the timeout was reached, but this distinction is not normally important to an application and generally <code>TransactionExpired</code> does not need to be handled individually.</p>
-</div>
-<div class="paragraph">
-<p>Either way, an attempt will have been made to rollback all changes.
-This attempt may or may not have been successful, but the results of this will have no impact on the protocol or other actors.
-No changes from the transaction will be visible, both to transactional and non-transactional actors.</p>
-</div>
-<div class="sect3">
-<h4 id="handling"><a class="anchor" href="#handling"></a>Handling</h4>
-<div class="paragraph">
-<p>Generally, debugging exactly why a given transaction failed requires review of the logs, so it is suggested that the application log these on failure.
-The application may want to try the transaction again later.
-Alternatively, if transaction completion time is not a priority, then transaction timeouts (which default to 15 seconds) can be extended across the board through <code>TransactionsConfig</code>.</p>
-</div>
-<div class="paragraph">
-<p>This will allow the protocol more time to get past any transient failures (for example, those caused by a cluster rebalance).
-The tradeoff to consider with longer timeouts, is that documents that have been staged by a transaction are effectively locked from modification from other transactions, until the timeout has been reached.</p>
-</div>
-<div class="paragraph">
-<p>Note that the timeout is not guaranteed to be followed precisely.
-For example, if the application were to do a long blocking operation inside the {lambda} (which should be avoided), then timeout can only trigger after this finishes.
-Similarly, if the transaction attempts a key-value operation close to the timeout, and that key-value operation times out, then the transaction timeout may be exceeded.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="transactioncommitambiguous"><a class="anchor" href="#transactioncommitambiguous"></a>TransactionCommitAmbiguous</h3>
-<div class="paragraph">
-<p>Each transaction has a 'single point of truth' that is updated atomically to reflect whether it is committed.</p>
-</div>
-<div class="paragraph">
-<p>However, it is not always possible for the protocol to become 100% certain that the operation was successful, before the transaction expires.
-This potential ambiguity is unavoidable in any distributed system; a classic example is a network failure happening just after an operation was sent from a client to a server.
-The client will not get a response back and cannot know if the server received and executed the operation.</p>
-</div>
-<div class="paragraph">
-<p>The ambiguity is particularly important at the point of the atomic commit, as the transaction may or may not have reached the commit point.  Couchbase transactions will raise <code>TransactionCommitAmbiguous</code> to indicate this state.
-It should be rare to receive this error.</p>
-</div>
-<div class="paragraph">
-<p>If the transaction had in fact successfully reached the commit point, then the transaction will be fully completed ("unstaged") by the asynchronous cleanup process at some point in the future.
-With default settings this will usually be within a minute, but whatever underlying fault has caused the <code>TransactionCommitAmbiguous</code> may lead to it taking longer.</p>
-</div>
-<div class="paragraph">
-<p>If the transaction had not in fact reached the commit point, then the asynchronous cleanup process will instead attempt to roll it back at some point in the future.</p>
-</div>
-<div class="sect3">
-<h4 id="handling-2"><a class="anchor" href="#handling-2"></a>Handling</h4>
-<div class="paragraph">
-<p>This error can be challenging for an application to handle.
-As with <code>TransactionFailed</code> it is recommended that it at least writes any logs from the transaction, for future debugging.
-It may wish to retry the transaction at a later point, or extend transactional timeouts (as detailed above) to give the protocol additional time to resolve the ambiguity.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="transactionresult-unstaging_complete"><a class="anchor" href="#transactionresult-unstaging_complete"></a>TransactionResult.unstaging_complete</h3>
-<div class="paragraph">
-<p>This boolean flag indicates whether all documents were able to be unstaged (committed).</p>
-</div>
-<div class="paragraph">
-<p>For most use-cases it is not an issue if it is false.
-All transactional actors will still read all the changes from this transaction, as though it had committed fully.
-The cleanup process is asynchronously working to complete the commit, so that it will be fully visible to non-transactional actors.</p>
-</div>
-<div class="paragraph">
-<p>The flag is provided for those rare use-cases where the application requires the commit to be fully visible to non-transactional actors, before it may continue.
-In this situation the application can raise an error here, or poll all documents involved until they reflect the mutations.</p>
-</div>
-<div class="paragraph">
-<p>If you regularly see this flag false, consider increasing the transaction timeout to reduce the possibility that the transaction times out during the commit.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="full-error-handling-example"><a class="anchor" href="#full-error-handling-example"></a>Full Error Handling Example</h3>
-<div class="paragraph">
-<p>Pulling all of the above together, this is the suggested best practice for error handling:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L449-L470">try:
-    def txn_logic(ctx):
-        # ... transactional code here ...
-        pass
-    result = cluster.transactions.run(txn_logic)
-
-    # the transaction definitely reached the commit point. Unstaging
-    # the individual documents may or may not have completed
-
-    # TODO find python equivalent
-    # if(!result.unstaging_complete):
-    # In rare cases, the application may require the commit to have
-    # completed.  (Recall that the asynchronous cleanup process is
-    # still working to complete the commit.)
-    # The next step is application-dependent.
-except TransactionCommitAmbiguous as ex:
-    # The transaction may or may not have reached commit point
-    print(
-        f'Transaction returned TransactionCommitAmbiguous and may have succeeded.  Error: {ex}')
-except TransactionFailed as ex:
-    # The transaction definitely did not reach commit point
-    print(f'Transaction failed with TransactionFailed.  Error: {ex}')</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Transactions will try to clean up after themselves in the advent of failures.
-However, there are situations that inevitably created failed, or 'lost' transactions, such as an application crash.</p>
-</div>
-<div class="paragraph">
-<p>This requires an asynchronous cleanup task, described in this section.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="background-cleanup"><a class="anchor" href="#background-cleanup"></a>Background Cleanup</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The first transaction triggered by an application will spawn a background cleanup task, whose job it is to periodically scan for expired transactions and clean them up.
-It does this by scanning a subset of the Active Transaction Record (ATR) transaction metadata documents, for each collection used by any transactions.</p>
-</div>
-<div class="paragraph">
-<p>The default settings are tuned to find expired transactions reasonably quickly, while creating negligible impact from the background reads required by the scanning process.
-To be exact, with default settings it will generally find expired transactions within 60 seconds, and use less than 20 reads per second, per collection of metadata documents being checked.
-This is unlikely to impact performance on any cluster, but the settings may be <a href="#tuning-cleanup">tuned</a> as desired.</p>
-</div>
-<div class="paragraph">
-<p>All applications connected to the same cluster and running transactions will share in the cleanup, via a low-touch communication protocol on the <code>_txn:client-record</code> metadata document that will be created in each collection in the cluster involved with transaction metadata.
-This document is visible and should not be modified externally as it is maintained automatically.
-All ATRs will be distributed between all cleanup clients, so increasing the number of applications will not increase the reads required for scanning.</p>
-</div>
-<div class="paragraph">
-<p>An application may cleanup transactions created by another application.</p>
-</div>
-<div class="admonitionblock note">
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-It is important to understand that if an application is not running, then cleanup is not running.
-This is particularly relevant to developers running unit tests or similar.
+<div class="title">Query Mode</div>
+<div class="paragraph">
+<p>When a transaction executes a query statement, the transaction enters <strong>query mode</strong>, which means that the query is executed with the user&#8217;s query permissions.
+Any <strong>key-value</strong> operations which are executed by the transaction <em>after</em> the query statement are <em>also</em> executed with the user&#8217;s query permissions.
+These may or may not be different to the user&#8217;s data permissions; if they are different, you may get unexpected results.</p>
+</div>
 </td>
 </tr>
 </table>
-</div>
-<div class="sect2">
-<h3 id="tuning-cleanup"><a class="anchor" href="#tuning-cleanup"></a>Configuring Cleanup</h3>
-<div class="paragraph">
-<p>The cleanup settings can be configured as so:</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Setting</th>
-<th class="tableblock halign-left valign-top">Default</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cleanup_window</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">60 seconds</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This determines how long a cleanup 'run' is; that is, how frequently this client will check its subset of ATR documents.  It is perfectly valid for the application to change this setting, which is at a conservative default.  Decreasing this will cause expiration transactions to be found more swiftly (generally, within this cleanup window), with the tradeoff of increasing the number of reads per second used for the scanning process.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cleanup_lost_attempts</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is the thread that takes part in the distributed cleanup process described above, that cleans up expired transactions created by any client.  It is strongly recommended that it is left enabled.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cleanup_client_attempts</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This thread is for cleaning up transactions created just by this client.  The client will preferentially aim to send any transactions it creates to this thread, leaving transactions for the distributed cleanup process only when it is forced to (for example, on an application crash).  It is strongly recommended that it is left enabled.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="monitoring-cleanup"><a class="anchor" href="#monitoring-cleanup"></a>Monitoring Cleanup</h3>
-<div class="paragraph">
-<p>To monitor cleanup, increase the verbosity on the logging.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="logging"><a class="anchor" href="#logging"></a>Logging</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>To aid troubleshooting, raise the log level on the SDK.</p>
-</div>
-<div class="paragraph">
-<p>Please see the <a href="collecting-information-and-logging.html" class="xref page">Python SDK logging documentation</a> for details.</p>
 </div>
 </div>
 </div>
@@ -1096,8 +744,77 @@ This means the application must 'swallow' the error, but record that an error oc
 </li>
 </ul>
 </div>
+<div class="sect2">
+<h3 id="non-transactional-writes"><a class="anchor" href="#non-transactional-writes"></a>Non-Transactional Writes</h3>
+<div class="paragraph">
+<p>To ensure key-value performance is not compromised, and to avoid conflicting writes, applications should <strong>never</strong> perform non-transactional <em>writes</em> concurrently with transactional ones, on the same document.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="../concept-docs/transactions.html#concurrency-with-non-transactional-writes" class="xref page">Concurrency with Non-Transactional Writes</a> to learn more.</p>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The default configuration should be appropriate for most use-cases.
+Transactions can optionally be globally configured when configuring the <code>Cluster</code>.
+For example, if you want to change the level of durability which must be attained, this can be configured as part of the connect options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L22-L27">opts = ClusterOptions(authenticator=PasswordAuthenticator("Administrator", "password"),
+                      transaction_config=TransactionConfig(
+                          durability=ServerDurability(DurabilityLevel.PERSIST_TO_MAJORITY))
+                      )
+
+cluster = Cluster.connect('couchbase://localhost', opts)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default configuration will perform all writes with the durability setting <code>Majority</code>, ensuring that each write is available in-memory on the majority of replicas before the transaction continues.
+There are two higher durability settings available that will additionally wait for all mutations to be written to physical storage on either the active or the majority of replicas, before continuing.
+This further increases safety, at a cost of additional latency.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+A level of <code>None</code> is present but its use is discouraged and unsupported.
+If durability is set to <code>None</code>, then ACID semantics are not guaranteed.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="additional-resources"><a class="anchor" href="#additional-resources"></a>Additional Resources</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Learn more about <a href="../concept-docs/transactions.html" class="xref page">Distributed ACID Transactions</a>.</p>
+</li>
+<li>
+<p>Check out the SDK <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/">API Reference</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+        <nav class="pagination">
+
+                <span>&nbsp;</span>
+        
+                    <span class="next"><a href="../concept-docs/transactions.html">Key Concepts</a></span>
+
 </article>
 </main>
 </div>

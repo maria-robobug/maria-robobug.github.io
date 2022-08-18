@@ -4,17 +4,16 @@
 <meta charset="utf-8">
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Collecting Information &amp; Logging | Couchbase Docs (Local)</title>
-<link rel="canonical" href="https://maria-robobug.github.io/python-sdk/4.0/howtos/collecting-information-and-logging.html">
+<title>Untitled | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/python-sdk/4.0/howtos/transactions-tracing.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
-<meta name="description" content="Logging with the Python SDK.">
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
 
 
 <meta name="dcterms.subject" content="python-sdk">
 <meta name="dcterms.identifier" content="4.0">
-<meta name="page-url" content="/python-sdk/4.0/howtos/collecting-information-and-logging.html">
+<meta name="page-url" content="/python-sdk/4.0/howtos/transactions-tracing.html">
 <meta name="generator" content="Antora 3.0.1">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
@@ -111,7 +110,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/pages/collecting-information-and-logging.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/pages/transactions-tracing.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -170,127 +169,16 @@
 <nav class="crumbs" aria-label="breadcrumbs">
 <ul>
 <li class="crumb"><a href="../hello-world/overview.html">Python SDK</a></li>
-<li class="crumb">Errors &amp; Diagnostics</li>
-<li class="crumb"><a href="collecting-information-and-logging.html">Logging</a></li>
 </ul>
 </nav>
 </div>
 <article class="doc">
-<div class="page-heading-title">
-<h1 class="page">Collecting Information &amp; Logging</h1>
-</div>
 <div class="contributor-list-box">
 <span class="last-commit-date" id="commitdate">    </span>
 <ul id="contributorList"></ul>
 <span  id="otherContributor"> + </span>
-</div><div id="preamble">
-<div class="sectionbody">
-<div class="quoteblock abstract">
-<blockquote>
-Logging with the Python SDK.
-</blockquote>
-</div>
-<div class="paragraph">
-<p>The Python SDK allows logging via the standard <code>logging</code> module.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="enabling-logging"><a class="anchor" href="#enabling-logging"></a>Enabling Logging</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="title">Python Logging Module</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/logging_example.py#L3-L38">import logging
-import traceback
-from datetime import timedelta
-
-import couchbase
-from couchbase.auth import PasswordAuthenticator
-from couchbase.cluster import Cluster
-from couchbase.diagnostics import ServiceType
-from couchbase.exceptions import CouchbaseException
-from couchbase.options import ClusterOptions, WaitUntilReadyOptions
-
-# output log messages to example.log
-logging.basicConfig(filename='example.log',
-                    filemode='w', 
-                    level=logging.DEBUG,
-                    format='%(levelname)s::%(asctime)s::%(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S')
-
-logger = logging.getLogger()
-couchbase.configure_logging(logger.name, level=logger.level)
-
-cluster = Cluster('couchbase://localhost',
-                  ClusterOptions(PasswordAuthenticator("Administrator", "password")))
-
-cluster.wait_until_ready(timedelta(seconds=3),
-                         WaitUntilReadyOptions(service_types=[ServiceType.KeyValue, ServiceType.Query]))
-
-logger.info('Cluster ready.')
-
-bucket = cluster.bucket("travel-sample")
-coll = bucket.scope('inventory').collection('airline')
-try:
-    coll.get('not-a-key')
-except CouchbaseException:
-    logger.error(traceback.format_exc())</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="log-levels"><a class="anchor" href="#log-levels"></a>Log Levels</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You can increase the log level for greater verbosity (more information) in the logs:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>off&#8201;&#8212;&#8201;disables all logging, which is normally set by default.</p>
-</li>
-<li>
-<p>critical&#8201;&#8212;&#8201;important functionality not working.</p>
-</li>
-<li>
-<p>error&#8201;&#8212;&#8201;error messages.</p>
-</li>
-<li>
-<p>warn&#8201;&#8212;&#8201;error notifications.</p>
-</li>
-<li>
-<p>info&#8201;&#8212;&#8201;useful notices, not often.</p>
-</li>
-<li>
-<p>debug&#8201;&#8212;&#8201;diagnostic information, required to investigate problems.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="log-redaction"><a class="anchor" href="#log-redaction"></a>Log Redaction</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Redacting logs is a two-stage process.
-If you want to redact client logs (for example before handing them off to the Couchbase Support team) you first need to enable log redaction in your application.
-This is done through the <a href="https://docs.couchbase.com/sdk-api/couchbase-python-client/couchbase_api/options.html#clusteroptions"><code>ClusterOptions</code></a>, setting <code>log_redaction</code> to <code>True</code>.</p>
-</div>
-<div class="paragraph">
-<p>Once the SDK writes the logs with the tags to a file, you can then use the
-<a href="../../../server/7.1/cli/cbcli/cblogredaction.html" class="xref page"><code>cblogredaction</code> tool</a> to obfuscate the log.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>You may wish to read more on Log Redaction
-<a href="../../../server/7.1/manage/manage-logging/manage-logging.html#understanding_redaction" class="xref page">in the Server docs</a>.</p>
-</li>
-</ul>
-</div>
-</div>
+</div><div class="paragraph">
+<p>//// TODO: Check if this is still the case?</p>
 </div>
 </article>
 </main>

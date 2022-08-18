@@ -205,19 +205,47 @@ Basic authentication may also be used over a server-side TLS protected network c
 <p>Secrets are specified in the <code>CouchbaseCluster</code> resource, therefore they may have any name you choose. The format of individual secrets is discussed below.</p>
 </div>
 <div class="paragraph">
-<p>Please see the <a href="tutorial-tls.html" class="xref page">TLS certificate tutorial</a> for a simple guide to creating TLS certificates.</p>
+<p>See the <a href="tutorial-tls.html" class="xref page">TLS certificate tutorial</a> for a simple guide to creating TLS certificates.</p>
+</div>
+<div class="sect2">
+<h3 id="ca-secrets"><a class="anchor" href="#ca-secrets"></a>CA Secrets</h3>
+<div class="paragraph">
+<p>All CA secrets must contain the <code>tls.crt</code> field (as per the <code>kubernetes.io/tls</code> spec) and are used to form a trust pool.
+All other provided certificates must be signed by a certificate in the trust pool.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ kubectl create secret tls couchbase-server-ca \
+  --cert example/pki/ca.crt \
+  --key example/pki/private/ca.key</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When using Couchbase 7.0 and earlier, only one CA is supported, therefore all server and client certificates must be signed by the same root CA.
+Specifying multiple CA certificates with Couchbase Server 7.0 and earlier will result in undefined behavior.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="server-secret"><a class="anchor" href="#server-secret"></a>Server Secret</h3>
 <div class="paragraph">
-<p>Server secrets need to be mounted as a volume within the Couchbase Server pod with specific names. The certificate chain must be named <code>chain.pem</code> and the private key <code>pkey.key</code>.</p>
+<p>The Server secrets needs to be provided in the <code>kubernetes.io/tls</code> format.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ kubectl create secret generic couchbase-server-tls \
-  --from-file example/tls/certs/tls.crt \
-  --from-file example/tls/certs/tls.key \
-  --from-file example/tls/certs/ca.crt</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ kubectl create secret tls couchbase-server-tls \
+  --cert example/pki/issued/couchbase-server.crt \
+  --key example/pki/private/couchbase-server.key</code></pre>
 </div>
 </div>
 </div>
@@ -236,17 +264,19 @@ kind: CouchbaseCluster
 spec:
   networking:
     tls:
+      rootCAs:
+      - couchbase-server-ca
+      - couchbase-server-ca2 <i class="conum" data-value="1"></i><b>(1)</b>
       secretSource:
-        serverSecretName: couchbase-server-tls <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+        serverSecretName: couchbase-server-tls</code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td><a href="resource/couchbasecluster.html#couchbaseclusters-spec-networking-tls-secretsource-serversecretname" class="xref page"><code>couchbaseclusters.spec.networking.tls.secretSource.serverSecretName</code></a> defines a secret that will be mounted to all Couchbase Server pods.
-It contains the server wildcard certificate and its private key.
-As the private key is securely mounted to the pod by Kubernetes it is never exposed over the network.</td>
+<td><a href="resource/couchbasecluster.html#couchbaseclusters-spec-networking-tls-rootcas" class="xref page"><code>couchbaseclusters.spec.networking.tls.rootCAs</code></a>
+additional root CAs are added here.</td>
 </tr>
 </table>
 </div>

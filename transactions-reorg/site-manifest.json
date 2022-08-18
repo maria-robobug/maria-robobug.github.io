@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generated": 1660233173997,
+  "generated": 1660821936292,
   "url": "https://maria-robobug.github.io",
   "components": [
     {
@@ -7753,6 +7753,24 @@
             },
             {
               "module": "concept-docs",
+              "path": "transactions-cleanup.adoc",
+              "url": "/python-sdk/4.0/concept-docs/transactions-cleanup.html",
+              "title": "Cleanup"
+            },
+            {
+              "module": "concept-docs",
+              "path": "transactions-error-handling.adoc",
+              "url": "/python-sdk/4.0/concept-docs/transactions-error-handling.html",
+              "title": "Error Handling"
+            },
+            {
+              "module": "concept-docs",
+              "path": "transactions.adoc",
+              "url": "/python-sdk/4.0/concept-docs/transactions.html",
+              "title": "Distributed ACID Transactions"
+            },
+            {
+              "module": "concept-docs",
               "path": "understanding-views.adoc",
               "url": "/python-sdk/4.0/concept-docs/understanding-views.html",
               "title": "MapReduce Views"
@@ -7990,6 +8008,16 @@
               "path": "tracing-from-the-sdk.adoc",
               "url": "/python-sdk/4.0/howtos/tracing-from-the-sdk.html",
               "title": "Tracing from the Go SDK"
+            },
+            {
+              "module": "howtos",
+              "path": "transactions-single-query.adoc",
+              "url": "/python-sdk/4.0/howtos/transactions-single-query.html"
+            },
+            {
+              "module": "howtos",
+              "path": "transactions-tracing.adoc",
+              "url": "/python-sdk/4.0/howtos/transactions-tracing.html"
             },
             {
               "module": "howtos",

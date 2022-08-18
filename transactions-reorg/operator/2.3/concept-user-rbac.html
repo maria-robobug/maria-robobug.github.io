@@ -392,11 +392,12 @@ kind: CouchbaseCluster
 metadata:
   name: my-cluster
 spec:
-  rbac:
-    managed: true
-    selector:
-      matchLabels:
-        cluster: my-cluster</code></pre>
+  security:
+    rbac:
+      managed: true
+      selector:
+        matchLabels:
+          cluster: my-cluster</code></pre>
 </div>
 </div>
 <div class="paragraph">

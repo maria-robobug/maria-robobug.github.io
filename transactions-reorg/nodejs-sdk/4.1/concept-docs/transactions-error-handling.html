@@ -199,7 +199,7 @@ Handling transaction errors with Couchbase.
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Couchbase transactions will attempt to resolve many errors for you, through a combination of retrying individual operations and the application&#8217;s arrow function.
+<p>Couchbase transactions will attempt to resolve many errors for you, through a combination of retrying individual operations and the application&#8217;s lambda.
 This includes some transient server errors, and conflicts with other transactions.</p>
 </div>
 </div>
@@ -214,7 +214,7 @@ These situations include:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Any error thrown by a transaction arrow function, either deliberately or through an application logic bug.</p>
+<p>Any error thrown by a transaction lambda, either deliberately or through an application logic bug.</p>
 </li>
 <li>
 <p>Attempting to insert a document that already exists.</p>
@@ -225,7 +225,7 @@ These situations include:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Once one of these errors occurs, the current attempt is irrevocably failed (though the transaction may retry the arrow function to make a new attempt).
+<p>Once one of these errors occurs, the current attempt is irrevocably failed (though the transaction may retry the lambda to make a new attempt).
 It is not possible for the application to catch the failure and continue (with the exception of <code>ctx.get()</code> raising an error).
 Once a failure has occurred, all other operations tried in this attempt (including commit) will instantly fail.</p>
 </div>
@@ -273,7 +273,7 @@ The tradeoff to consider with longer timeouts, is that documents that have been 
 </div>
 <div class="paragraph">
 <p>Note that the timeout is not guaranteed to be followed precisely.
-For example, if the application were to do a long blocking operation inside the arrow function (which should be avoided), then timeout can only trigger after this finishes.
+For example, if the application were to do a long blocking operation inside the lambda (which should be avoided), then timeout can only trigger after this finishes.
 Similarly, if the transaction attempts a key-value operation close to the timeout, and that key-value operation times out, then the transaction timeout may be exceeded.</p>
 </div>
 </div>

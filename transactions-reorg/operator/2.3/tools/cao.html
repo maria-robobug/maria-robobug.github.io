@@ -359,7 +359,7 @@ with Istio injecton enabled.</p>
 cao certify
 
 # Run platform certification with a custom storage class
-cao certify -- -storage-class my-class
+cao certify -storage-class my-class
 
 # Run platform certification with private image repository
 cao certify --registry=https://index.docker.io/v1/,username,password
@@ -393,6 +393,16 @@ cao certify --namespace istio-enabled-namespace -- -istio</code></pre>
 <p>Force a cleanup of existing resources on start up.  These may have been left over from an earlier aborted run</p>
 </div>
 </dd>
+<dt class="hdlist1">--collected-log-level</dt>
+<dd>
+<p><strong>Type</strong>: int</p>
+<div class="paragraph">
+<p><strong>Default</strong>: 0</p>
+</div>
+<div class="paragraph">
+<p>Log level to be collected by cbopinfo</p>
+</div>
+</dd>
 <dt class="hdlist1">--fsgroup</dt>
 <dd>
 <p><strong>Type</strong>: int</p>
@@ -423,6 +433,16 @@ cao certify --namespace istio-enabled-namespace -- -istio</code></pre>
 <p>Pull Policy to use when downloading the Certification container</p>
 </div>
 </dd>
+<dt class="hdlist1">--ipv6</dt>
+<dd>
+<p><strong>Type</strong>: bool</p>
+<div class="paragraph">
+<p><strong>Default</strong>: false</p>
+</div>
+<div class="paragraph">
+<p>Force the use of IPv6 with Couchbase Server.</p>
+</div>
+</dd>
 <dt class="hdlist1">--parallel</dt>
 <dd>
 <p><strong>Type</strong>: int</p>
@@ -438,6 +458,13 @@ cao certify --namespace istio-enabled-namespace -- -istio</code></pre>
 <p><strong>Type</strong>: string</p>
 <div class="paragraph">
 <p>Allows container image registry configuration e.g. SERVER,USERNAME,PASSWORD.  This will be added as an image pull secret.  Can be specified multiple times.</p>
+</div>
+</dd>
+<dt class="hdlist1">--storage-class</dt>
+<dd>
+<p><strong>Type</strong>: string</p>
+<div class="paragraph">
+<p>Storage class to use for result artifacts and test volumes. The default storage class of the platform is used if not specified.</p>
 </div>
 </dd>
 <dt class="hdlist1">--timeout</dt>
@@ -627,6 +654,336 @@ need to manually collect these resources and include them in your
 support request.</p>
 </div>
 <div class="sect2">
+<h3 id="collected-resources"><a class="anchor" href="#collected-resources"></a>Collected Resources</h3>
+<div class="paragraph">
+<p>Collected resources are categorised based on log level and scope.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Log level</dt>
+<dd>
+<p>Required: Couchbase resources and those scoped to the cluster.</p>
+<div class="paragraph">
+<p>Sensitive: may include secrets, roles, etc</p>
+</div>
+</dd>
+<dt class="hdlist1">Scope</dt>
+<dd>
+<p>all: All resources found</p>
+<div class="paragraph">
+<p>cluster: All resources associated with a cluster</p>
+</div>
+<div class="paragraph">
+<p>name: All resources limited by cluster names</p>
+</div>
+<div class="paragraph">
+<p>namespace: All resources limited by namespace name</p>
+</div>
+<div class="paragraph">
+<p>group: All resources limited by resource name</p>
+</div>
+<div class="paragraph">
+<p>operator: Only the Operator deployment</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="sect3">
+<h4 id="log-level-required"><a class="anchor" href="#log-level-required"></a>Log Level - Required</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">CouchbaseCollectionGroup</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+</dd>
+<dt class="hdlist1">CouchbaseBucket</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+</dd>
+<dt class="hdlist1">CouchbaseEphemeralBucket</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+</dd>
+<dt class="hdlist1">CouchbaseMemcachedBucket</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+</dd>
+<dt class="hdlist1">CouchbaseReplication</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+</dd>
+<dt class="hdlist1">CouchbaseUser</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+</dd>
+<dt class="hdlist1">CouchbaseGroup</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+</dd>
+<dt class="hdlist1">CouchbaseRoleBinding</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+</dd>
+<dt class="hdlist1">CouchbaseBackup</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+</dd>
+<dt class="hdlist1">CouchbaseBackupRestore</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+</dd>
+<dt class="hdlist1">CouchbaseAutoscaler</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+</dd>
+<dt class="hdlist1">CouchbaseScope</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+</dd>
+<dt class="hdlist1">CouchbaseScopeGroup</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+</dd>
+<dt class="hdlist1">CouchbaseCollection</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+</dd>
+<dt class="hdlist1">Service</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: cluster</p>
+</div>
+</dd>
+<dt class="hdlist1">ConfigMap</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: cluster</p>
+</div>
+<div class="paragraph">
+<p>Reason: Used to determine issues with Couchbase Cluster state, server environment variables, and logging configuration</p>
+</div>
+</dd>
+<dt class="hdlist1">Endpoints</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: cluster</p>
+</div>
+</dd>
+<dt class="hdlist1">PodDisruptionBudget</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: cluster</p>
+</div>
+<div class="paragraph">
+<p>Reason: Used to determine issues with automatic Kubernetes upgrades</p>
+</div>
+</dd>
+<dt class="hdlist1">Pod</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: cluster</p>
+</div>
+</dd>
+<dt class="hdlist1">CronJob</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: cluster</p>
+</div>
+<div class="paragraph">
+<p>Reason: Used to determine issues with Cronjobs for scheduled backups</p>
+</div>
+</dd>
+<dt class="hdlist1">PersistentVolumeClaim</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: cluster</p>
+</div>
+<div class="paragraph">
+<p>Reason: Used to determine compatibility issues with underlying persistent volume</p>
+</div>
+</dd>
+<dt class="hdlist1">Job</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: cluster</p>
+</div>
+<div class="paragraph">
+<p>Reason: Used to determine issues with Jobs created for restoring from backup</p>
+</div>
+</dd>
+<dt class="hdlist1">CustomResourceDefinition</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: group</p>
+</div>
+<div class="paragraph">
+<p>Reason: Used to determine issues with installed CRD version against installed Operator and DAC version</p>
+</div>
+</dd>
+<dt class="hdlist1">CouchbaseCluster</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: name</p>
+</div>
+</dd>
+<dt class="hdlist1">Namespace</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: namespace</p>
+</div>
+</dd>
+<dt class="hdlist1">Deployment</dt>
+<dd>
+<p>Log Level: Required</p>
+<div class="paragraph">
+<p>Scope: operator</p>
+</div>
+<div class="paragraph">
+<p>Reason: Used to determine issues with Operator and Dynamic Admission Control deployments</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="log-level-sensitive"><a class="anchor" href="#log-level-sensitive"></a>Log Level - Sensitive</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">ServiceAccount</dt>
+<dd>
+<p>Log Level: Sensitive</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+</dd>
+<dt class="hdlist1">ClusterRole</dt>
+<dd>
+<p>Log Level: Sensitive</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+<div class="paragraph">
+<p>Reason: Used to determine whether RBAC Is correctly setup for the running Operator version.</p>
+</div>
+</dd>
+<dt class="hdlist1">Role</dt>
+<dd>
+<p>Log Level: Sensitive</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+<div class="paragraph">
+<p>Reason: Used to determine whether RBAC Is correctly setup for the running Operator version.</p>
+</div>
+</dd>
+<dt class="hdlist1">RoleBinding</dt>
+<dd>
+<p>Log Level: Sensitive</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+<div class="paragraph">
+<p>Reason: Used to determine whether RBAC Is correctly setup for the running Operator version.</p>
+</div>
+</dd>
+<dt class="hdlist1">Secret</dt>
+<dd>
+<p>Log Level: Sensitive</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+<div class="paragraph">
+<p>Reason: Used to determine issues with stored cluster passwords, TLS configurations and other private keys stored in secrets</p>
+</div>
+</dd>
+<dt class="hdlist1">PersistentVolume</dt>
+<dd>
+<p>Log Level: Sensitive</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+<div class="paragraph">
+<p>Reason: Used to determine compatibility issues with underlying persistent volume</p>
+</div>
+</dd>
+<dt class="hdlist1">Node</dt>
+<dd>
+<p>Log Level: Sensitive</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+<div class="paragraph">
+<p>Reason: Used to determine issues with orchestration platform and identify potential images problems</p>
+</div>
+</dd>
+<dt class="hdlist1">ClusterRoleBinding</dt>
+<dd>
+<p>Log Level: Sensitive</p>
+<div class="paragraph">
+<p>Scope: all</p>
+</div>
+<div class="paragraph">
+<p>Reason: Used to determine whether RBAC Is correctly setup for the running Operator version.</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="examples-2"><a class="anchor" href="#examples-2"></a>Examples</h3>
 <div class="listingblock">
 <div class="content">
@@ -643,7 +1000,10 @@ cao collect-logs --collectinfo --collectinfo-collect=all
 cao collect-logs --system
 
 # Collect all known resources, applying no filtering
-cao collect-logs --all</code></pre>
+cao collect-logs --all
+
+# Collect only required resources, filtering potentially sensitive information
+cao collect-logs --log-level 0</code></pre>
 </div>
 </div>
 </div>

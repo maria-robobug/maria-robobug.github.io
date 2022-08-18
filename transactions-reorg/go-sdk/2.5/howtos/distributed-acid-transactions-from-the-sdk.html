@@ -317,7 +317,7 @@ If durability is set to <code>None</code>, then ACID semantics are not guarantee
 </table>
 </div>
 <div class="paragraph">
-<p>To create a transaction, an application must supply its logic inside {intro-lambda}, including any conditional logic required.
+<p>To create a transaction, an application must supply its logic inside a <code>{lambda}</code>, including any conditional logic required.
 Once the {lambda} has successfully run to conclusion, the transaction will be automatically committed.
 If at any point an error occurs, the transaction will rollback and the {lambda} may run again.</p>
 </div>
@@ -449,12 +449,12 @@ if err != nil {
 </div>
 </div>
 <div class="paragraph">
-<p>A core idea of Couchbase transactions is that an application supplies the logic for the transaction inside {intro-lambda}, including any conditional logic required, and the transaction is then automatically committed.
-If a transient error occurs, such as a temporary conflict with another transaction, then the transaction will rollback what has been done so far and run the {lambda} again.
+<p>A core idea of Couchbase transactions is that an application supplies the logic for the transaction inside a <em>lambda</em>, including any conditional logic required, and the transaction is then automatically committed.
+If a transient error occurs, such as a temporary conflict with another transaction, then the transaction will rollback what has been done so far and run the lambda again.
 The application does not have to do these retries and error handling itself.</p>
 </div>
 <div class="paragraph">
-<p>Each run of the {lambda} is called an <code>attempt</code>, inside an overall <code>transaction</code>.</p>
+<p>Each run of the lambda is called an <code>attempt</code>, inside an overall <code>transaction</code>.</p>
 </div>
 <div class="sect2">
 <h3 id="active-transaction-record-entries"><a class="anchor" href="#active-transaction-record-entries"></a>Active Transaction Record Entries</h3>
@@ -510,7 +510,7 @@ These include an asynchronous cleanup process that is started with the first tra
 <div class="sect2">
 <h3 id="committing"><a class="anchor" href="#committing"></a>Committing</h3>
 <div class="paragraph">
-<p>Only once the {lambda} has successfully run to conclusion, will the attempt be committed.
+<p>Only once the lambda has successfully run to conclusion, will the attempt be committed.
 This updates the ATR entry, which is used as a signal by transactional actors to use the post-transaction version of a document from its XATTRs.
 Hence, updating the ATR entry is an 'atomic commit' switch for the transaction.</p>
 </div>
@@ -1213,7 +1213,7 @@ These situations include:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Any error thrown by a transaction {lambda}, either deliberately or through an application logic bug.</p>
+<p>Any error thrown by a transaction lambda, either deliberately or through an application logic bug.</p>
 </li>
 <li>
 <p>Attempting to insert a document that already exists.</p>
@@ -1224,7 +1224,7 @@ These situations include:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Once one of these errors occurs, the current attempt is irrevocably failed (though the transaction may retry the {lambda} to make a new attempt).
+<p>Once one of these errors occurs, the current attempt is irrevocably failed (though the transaction may retry the lambda to make a new attempt).
 It is not possible for the application to catch the failure and continue (with the exception of <code>ctx.Get()</code> raising an error).
 Once a failure has occurred, all other operations tried in this attempt (including commit) will instantly fail.</p>
 </div>
@@ -1284,7 +1284,7 @@ The tradeoff to consider with longer timeouts, is that documents that have been 
 </div>
 <div class="paragraph">
 <p>Note that the timeout is not guaranteed to be followed precisely.
-For example, if the application were to do a long blocking operation inside the {lambda} (which should be avoided), then timeout can only trigger after this finishes.
+For example, if the application were to do a long blocking operation inside the lambda (which should be avoided), then timeout can only trigger after this finishes.
 Similarly, if the transaction attempts a key-value operation close to the timeout, and that key-value operation times out, then the transaction timeout may be exceeded.</p>
 </div>
 </div>

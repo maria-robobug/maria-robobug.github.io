@@ -288,11 +288,11 @@ spec:
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td><code>spec.networking.exposedFeatures</code> selects the feature set of ports to expose external to the Kubernetes cluster. In this instance the xdcr feature set exposes the admin, data and index ports required for XDCR replication.</td>
+<td><code>spec.networking.exposedFeatures</code> selects the feature set of ports to expose external to the Kubernetes cluster. In this instance the XDCR feature set exposes the admin, data and index ports required for XDCR replication.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td><code>spec.networking.exposedFeatureServiceTemplate</code> type is set to NodePort which surfaces the exposed feature sets, per-pod, on the Kubernetes node network.
+<td><code>spec.networking.exposedFeatureServiceTemplate</code> type is set to <code>NodePort</code> which surfaces the exposed feature sets, per-pod, on the Kubernetes node network.
 This allows the cluster to escape the confines of any overlay network and be seen by the local cluster.</td>
 </tr>
 </table>
@@ -458,12 +458,12 @@ spec:
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td><code>spec.networking.adminConsoleServiceTemplate</code> type is set to NodePort surfacing the administrative console service on the Kubernetes node network.</td>
+<td><code>spec.networking.adminConsoleServiceTemplate</code> type is set to <code>NodePort</code> surfacing the administrative console service on the Kubernetes node network.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
 <td><code>spec.networking.exposedFeatures</code> selects the feature set of ports to expose external to the Kubernetes cluster.
-In this instance the xdcr feature set exposes the admin, data and index ports required for XDCR replication.</td>
+In this instance the XDCR feature set exposes the admin, data and index ports required for XDCR replication.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
