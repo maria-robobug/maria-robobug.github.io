@@ -201,7 +201,7 @@ For release notes, download links, and installation methods for 1.6 and earlier 
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ go get github.com/couchbase/gocb/v2@v2.5.0</code></pre>
+<pre class="highlightjs highlight"><code class="language-console hljs" data-lang="console">$ go get github.com/couchbase/gocb/v2@v2.5.2</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -226,6 +226,96 @@ Older versions may work, but are not supported.
 </div>
 </div>
 <div class="sect1">
+<h2 id="version-2-5-2-20-july-2022"><a class="anchor" href="#version-2-5-2-20-july-2022"></a>Version 2.5.2 (20 July 2022)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Version 2.5.2 is a maintenance release for the Go SDK 2.5.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.5.2?tab=doc">API Documentation</a></p>
+</div>
+<div class="sect2">
+<h3 id="new-features-and-behavioral-changes"><a class="anchor" href="#new-features-and-behavioral-changes"></a>New Features and Behavioral Changes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.couchbase.com/browse/GOCBC-1246">GOCBC-1246</a>:
+Added uncomitted stability support for <code>TransactionLogger</code> to <code>TransactionResult</code>.</p>
+</li>
+<li>
+<p><a href="https://issues.couchbase.com/browse/GOCBC-1314">GOCBC-1314</a>:
+Improved logging in the lost transactions process.</p>
+</li>
+<li>
+<p><a href="https://issues.couchbase.com/browse/GOCBC-1318">GOCBC-1318</a>:
+Changed <code>WaitUntilReady</code> to always wait for any explicitly defined services to be online.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fixed-issues"><a class="anchor" href="#fixed-issues"></a>Fixed Issues</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.couchbase.com/browse/GOCBC-1320">GOCBC-1320</a>:
+Fixed issue where vbucket hashing function wasn&#8217;t masking out the 16th bit of the key.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="version-2-5-1-22-june-2022"><a class="anchor" href="#version-2-5-1-22-june-2022"></a>Version 2.5.1 (22 June 2022)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Version 2.5.1 is a maintenance release for the Go SDK 2.5.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.5.1?tab=doc">API Documentation</a></p>
+</div>
+<div class="sect2">
+<h3 id="new-features-and-behavioral-changes-2"><a class="anchor" href="#new-features-and-behavioral-changes-2"></a>New Features and Behavioral Changes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.couchbase.com/browse/GOCBC-1159">GOCBC-1159</a>:
+Improved support for serverless environments.</p>
+</li>
+<li>
+<p><a href="https://issues.couchbase.com/browse/GOCBC-1250">GOCBC-1250</a>:
+Added support for single query transactions via <code>QueryOptions</code> <code>AsTransaction</code>.</p>
+</li>
+<li>
+<p><a href="https://issues.couchbase.com/browse/GOCBC-1298">GOCBC-1298</a>:
+Masked the underlying error reason for <code>TransactionOperationFailedError</code>.</p>
+</li>
+<li>
+<p><a href="https://issues.couchbase.com/browse/GOCBC-1213">GOCBC-1213</a>:
+Added uncommitted API level support for <code>UserManager</code> <code>ChangePassword</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fixed-issues-2"><a class="anchor" href="#fixed-issues-2"></a>Fixed Issues</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.couchbase.com/browse/GOCBC-1300">GOCBC-1300</a>:
+Fixed issue where transactions lost cleanup would not remove deleted collections from the cleanup list.</p>
+</li>
+<li>
+<p><a href="https://issues.couchbase.com/browse/GOCBC-1304">GOCBC-1304</a>:
+Fixed issue where transactions lost cleanup could temporarily block further responses being processed for a connection.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="version-2-5-0-28-april-2022"><a class="anchor" href="#version-2-5-0-28-april-2022"></a>Version 2.5.0 (28 April 2022)</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -235,7 +325,7 @@ Older versions may work, but are not supported.
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.5.0?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes"><a class="anchor" href="#new-features-and-behavioral-changes"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-3"><a class="anchor" href="#new-features-and-behavioral-changes-3"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -263,7 +353,7 @@ Removed <code>ServerDurationDisabled</code> from <code>ThresholdLoggingOptions</
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues"><a class="anchor" href="#fixed-issues"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-3"><a class="anchor" href="#fixed-issues-3"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -285,7 +375,7 @@ Fixed issue where <code>GetAllIndexes</code> could incorrectly omit the default 
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.4.1?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-2"><a class="anchor" href="#new-features-and-behavioral-changes-2"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-4"><a class="anchor" href="#new-features-and-behavioral-changes-4"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -309,7 +399,7 @@ Added <code>NewLoggingMeter</code> and <code>LoggingMeterOptions</code> for crea
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-2"><a class="anchor" href="#fixed-issues-2"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-4"><a class="anchor" href="#fixed-issues-4"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -343,7 +433,7 @@ Fixed issue where log redaction tags were not closed correctly.</p>
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.4.0?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-3"><a class="anchor" href="#new-features-and-behavioral-changes-3"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-5"><a class="anchor" href="#new-features-and-behavioral-changes-5"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -366,7 +456,7 @@ Integrated transactions into the SDK.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-3"><a class="anchor" href="#fixed-issues-3"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-5"><a class="anchor" href="#fixed-issues-5"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -388,7 +478,7 @@ Fixed issue where <code>MutateIn</code> was not setting durability level.</p>
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.3.5?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-4"><a class="anchor" href="#new-features-and-behavioral-changes-4"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-6"><a class="anchor" href="#new-features-and-behavioral-changes-6"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -418,7 +508,7 @@ Note: this is a breaking change, it not expected to impact any users.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-4"><a class="anchor" href="#fixed-issues-4"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-6"><a class="anchor" href="#fixed-issues-6"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -447,7 +537,7 @@ Fixed issue where a quota limit error was returned rather than rate limit error 
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.3.4?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-5"><a class="anchor" href="#new-features-and-behavioral-changes-5"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-7"><a class="anchor" href="#new-features-and-behavioral-changes-7"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -467,7 +557,7 @@ Added the ResponseBody field to QueryError, to allow easier debugging and error 
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-5"><a class="anchor" href="#fixed-issues-5"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-7"><a class="anchor" href="#fixed-issues-7"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -502,7 +592,7 @@ This fixed an issue with stuck deployments using the Eventing service, after upg
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.3.3?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-6"><a class="anchor" href="#new-features-and-behavioral-changes-6"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-8"><a class="anchor" href="#new-features-and-behavioral-changes-8"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -513,7 +603,7 @@ We no longer remove poller controller watcher from cluster config updates.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-6"><a class="anchor" href="#fixed-issues-6"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-8"><a class="anchor" href="#fixed-issues-8"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -539,7 +629,7 @@ Fixed issue where SSL certificates were be not verified when no root CAs were pr
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.3.2?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-7"><a class="anchor" href="#new-features-and-behavioral-changes-7"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-9"><a class="anchor" href="#new-features-and-behavioral-changes-9"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -554,7 +644,7 @@ Check error codes and fallback to parsing messages in query index management.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-7"><a class="anchor" href="#fixed-issues-7"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-9"><a class="anchor" href="#fixed-issues-9"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -580,7 +670,7 @@ Fixed issue where Search <code>ScanConsistency</code> was sending an incorrect v
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.3.1?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-8"><a class="anchor" href="#fixed-issues-8"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-10"><a class="anchor" href="#fixed-issues-10"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -614,7 +704,7 @@ Fixed issue where <code>GetAllScopes</code> would panic on HTTP request send fai
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.2.5?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-9"><a class="anchor" href="#fixed-issues-9"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-11"><a class="anchor" href="#fixed-issues-11"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -640,7 +730,7 @@ Fixed issue where <code>GetAllScopes</code> would panic on HTTP request send fai
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.3.0?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-8"><a class="anchor" href="#new-features-and-behavioral-changes-8"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-10"><a class="anchor" href="#new-features-and-behavioral-changes-10"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -682,7 +772,7 @@ Updated Query error handling to return an authentication error on error code 131
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-10"><a class="anchor" href="#fixed-issues-10"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-12"><a class="anchor" href="#fixed-issues-12"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -724,7 +814,7 @@ Fixed issue where benchmarks would not compile.</p>
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.2.4?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-11"><a class="anchor" href="#fixed-issues-11"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-13"><a class="anchor" href="#fixed-issues-13"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -762,7 +852,7 @@ Fixed issue where the <code>took</code> field in search metrics was parsed incor
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.2.3?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-9"><a class="anchor" href="#new-features-and-behavioral-changes-9"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-11"><a class="anchor" href="#new-features-and-behavioral-changes-11"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -785,7 +875,7 @@ During CCCP polling don&#8217;t retry request if the error is request cancelled.
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-12"><a class="anchor" href="#fixed-issues-12"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-14"><a class="anchor" href="#fixed-issues-14"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -819,7 +909,7 @@ Fixed issue where the poller controller could deadlock if a node reported a buck
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.2.2?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-10"><a class="anchor" href="#new-features-and-behavioral-changes-10"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-12"><a class="anchor" href="#new-features-and-behavioral-changes-12"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -842,7 +932,7 @@ Dropped log level to warn for when applying a cluster config object is preempted
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-13"><a class="anchor" href="#fixed-issues-13"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-15"><a class="anchor" href="#fixed-issues-15"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -868,7 +958,7 @@ Fixed issue where shutting down cluster config polling could lead to a panic.</p
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.2.1?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-11"><a class="anchor" href="#new-features-and-behavioral-changes-11"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-13"><a class="anchor" href="#new-features-and-behavioral-changes-13"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -887,7 +977,7 @@ Updated <code>MutateIn</code> to allow a blank path with <code>RemoveSpec</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-14"><a class="anchor" href="#fixed-issues-14"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-16"><a class="anchor" href="#fixed-issues-16"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -917,7 +1007,7 @@ Fixed issue where an extra, empty, origin was added to user roles on fetching th
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.2.1?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-12"><a class="anchor" href="#new-features-and-behavioral-changes-12"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-14"><a class="anchor" href="#new-features-and-behavioral-changes-14"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -936,7 +1026,7 @@ Updated <code>MutateIn</code> to allow a blank path with <code>RemoveSpec</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-15"><a class="anchor" href="#fixed-issues-15"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-17"><a class="anchor" href="#fixed-issues-17"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -967,7 +1057,7 @@ It brings enhancements and bug fixes over 2.1.8, and improves compatibility with
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.2.0?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-13"><a class="anchor" href="#new-features-and-behavioral-changes-13"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-15"><a class="anchor" href="#new-features-and-behavioral-changes-15"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1010,7 +1100,7 @@ Updated <code>BucketSettings</code> ephemeral eviction policies support to API s
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-16"><a class="anchor" href="#fixed-issues-16"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-18"><a class="anchor" href="#fixed-issues-18"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1040,7 +1130,7 @@ Fixed issue where bootstrapping against a non-kv node could never successfully f
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.1.8?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-14"><a class="anchor" href="#new-features-and-behavioral-changes-14"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-16"><a class="anchor" href="#new-features-and-behavioral-changes-16"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1059,7 +1149,7 @@ Changed the log level for retry strategy retries from info to debug.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-17"><a class="anchor" href="#fixed-issues-17"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-19"><a class="anchor" href="#fixed-issues-19"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1081,7 +1171,7 @@ Fixed issue some operations were being incorrectly sent to the retry orchestrato
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.1.7?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-15"><a class="anchor" href="#new-features-and-behavioral-changes-15"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-17"><a class="anchor" href="#new-features-and-behavioral-changes-17"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1113,7 +1203,7 @@ Added missing <code>Terms</code>, <code>DateRanges</code>, and <code>NumericRang
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-18"><a class="anchor" href="#fixed-issues-18"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-20"><a class="anchor" href="#fixed-issues-20"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1147,7 +1237,7 @@ Fixed issue where the <code>Map</code> datastructure was using invalid paths for
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.1.6?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-16"><a class="anchor" href="#new-features-and-behavioral-changes-16"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-18"><a class="anchor" href="#new-features-and-behavioral-changes-18"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1158,7 +1248,7 @@ Add ExpiryTime to GetResult, providing the point in time at which a document wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-19"><a class="anchor" href="#fixed-issues-19"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-21"><a class="anchor" href="#fixed-issues-21"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1192,7 +1282,7 @@ Fixed issue where setting the <code>network</code> connection string property to
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.1.5?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-17"><a class="anchor" href="#new-features-and-behavioral-changes-17"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-19"><a class="anchor" href="#new-features-and-behavioral-changes-19"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1209,7 +1299,7 @@ Note: The threshold logger is the default tracer used by the SDK.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-20"><a class="anchor" href="#fixed-issues-20"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-22"><a class="anchor" href="#fixed-issues-22"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1240,7 +1330,7 @@ Fixed issue where n1ql indexes were being created using prepared statements.</p>
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.1.4?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-18"><a class="anchor" href="#new-features-and-behavioral-changes-18"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-20"><a class="anchor" href="#new-features-and-behavioral-changes-20"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1259,7 +1349,7 @@ Adjusted the default max idle http connection timeout to be 4.5s from unlimited.
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-21"><a class="anchor" href="#fixed-issues-21"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-23"><a class="anchor" href="#fixed-issues-23"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1302,7 +1392,7 @@ Fixed issue where xattrs were being reordered when being moved to the front of t
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.1.3?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-22"><a class="anchor" href="#fixed-issues-22"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-24"><a class="anchor" href="#fixed-issues-24"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1324,7 +1414,7 @@ Fixed issue where <code>WaitUntilReady</code> at the <code>Cluster</code> level 
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.1.2?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-19"><a class="anchor" href="#new-features-and-behavioral-changes-19"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-21"><a class="anchor" href="#new-features-and-behavioral-changes-21"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1343,7 +1433,7 @@ Updated const declarations to add types to improve API reference.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-23"><a class="anchor" href="#fixed-issues-23"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-25"><a class="anchor" href="#fixed-issues-25"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1403,7 +1493,7 @@ The workaround for this is to not use the <code>Cluster</code> level <code>WaitU
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.1.1?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-20"><a class="anchor" href="#new-features-and-behavioral-changes-20"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-22"><a class="anchor" href="#new-features-and-behavioral-changes-22"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1434,7 +1524,7 @@ Re-enabled HTTP dispatch traces.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-24"><a class="anchor" href="#fixed-issues-24"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-26"><a class="anchor" href="#fixed-issues-26"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1492,7 +1582,7 @@ This release contains updating to a new major release of the core part of the SD
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.1.0?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-21"><a class="anchor" href="#new-features-and-behavioral-changes-21"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-23"><a class="anchor" href="#new-features-and-behavioral-changes-23"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1519,7 +1609,7 @@ Add support for the <code>WaitForReady</code> operation, support waiting for the
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.0.4?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-22"><a class="anchor" href="#new-features-and-behavioral-changes-22"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-24"><a class="anchor" href="#new-features-and-behavioral-changes-24"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1530,7 +1620,7 @@ Updated to the latest version of gocbconnstr.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-25"><a class="anchor" href="#fixed-issues-25"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-27"><a class="anchor" href="#fixed-issues-27"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1564,7 +1654,7 @@ Fixed issue where search consistency options were not being set in the request p
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.0.3?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-23"><a class="anchor" href="#new-features-and-behavioral-changes-23"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-25"><a class="anchor" href="#new-features-and-behavioral-changes-25"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1603,7 +1693,7 @@ Note that whilst this is a breaking change it was deemed best to break it and ma
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-26"><a class="anchor" href="#fixed-issues-26"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-28"><a class="anchor" href="#fixed-issues-28"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1629,7 +1719,7 @@ Fixed issue where opening a bucket with the same name twice led to incorrect beh
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.0.2?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-24"><a class="anchor" href="#new-features-and-behavioral-changes-24"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-26"><a class="anchor" href="#new-features-and-behavioral-changes-26"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1640,7 +1730,7 @@ Updated timeout behavior across the SDK to be consistent. If an operation level 
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-27"><a class="anchor" href="#fixed-issues-27"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-29"><a class="anchor" href="#fixed-issues-29"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1662,7 +1752,7 @@ Fixed issue with timeouts not being respected for HTTP requests, leading to them
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.0.1?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-25"><a class="anchor" href="#new-features-and-behavioral-changes-25"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-27"><a class="anchor" href="#new-features-and-behavioral-changes-27"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1681,7 +1771,7 @@ Improve error messages for the UserManager GetUser function.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="fixed-issues-28"><a class="anchor" href="#fixed-issues-28"></a>Fixed Issues</h3>
+<h3 id="fixed-issues-30"><a class="anchor" href="#fixed-issues-30"></a>Fixed Issues</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1747,7 +1837,7 @@ Fixed issue with cccp poller hanging if the get cluster config op timed out.</p>
 <p><a href="https://pkg.go.dev/github.com/couchbase/gocb/v2@v2.0.0?tab=doc">API Documentation</a></p>
 </div>
 <div class="sect2">
-<h3 id="new-features-and-behavioral-changes-26"><a class="anchor" href="#new-features-and-behavioral-changes-26"></a>New Features and Behavioral Changes</h3>
+<h3 id="new-features-and-behavioral-changes-28"><a class="anchor" href="#new-features-and-behavioral-changes-28"></a>New Features and Behavioral Changes</h3>
 <div class="ulist">
 <ul>
 <li>

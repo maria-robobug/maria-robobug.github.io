@@ -235,11 +235,6 @@ It is best to upgrade either the SDK or the Couchbase version you are using.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Server 5.5</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>✔</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>✔</strong></p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Server 6.0</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>✔</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>✔</strong></p></td>
@@ -266,6 +261,10 @@ See the notes there for Support details.</p>
 <p>At time of release, the Couchbase 3.3 Java SDK is fully compatible with Couchbase Capella, our fully-hosted database-as-a-service.
 To make development easier, the 3.3 SDK includes the Capella client certificate ready installed.</p>
 </div>
+<div class="paragraph">
+<p>Note, Capella is offered as a fully provisioned service, so the underlying version of Couchbase Server changes over time.
+For this reason, compatibility information between Capella and the SDK is available <a href="../../../cloud/reference/sdk-compatibility.html" class="xref page">on the Capella compatibility page</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -282,10 +281,13 @@ We recommend running the latest LTS version (i.e. at the time of writing JDK 17)
 Other versions may work&#8201;&#8212;&#8201;<em>but they are not tested and they are not supported</em>.</p>
 </div>
 <div class="paragraph">
-<p>The following JDK releases are supported:</p>
+<p>The following JDK releases are supported at time of 3.3 SDK release (April 2022):</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p><a href="https://adoptium.net/">OpenJDK 11</a> (Hotspot recommended) or <a href="https://www.oracle.com/java/technologies/downloads/#jdk11">Oracle JDK 11</a></p>
+</li>
 <li>
 <p><a href="https://adoptium.net/">OpenJDK 17 with HotSpot JVM</a> (recommended)</p>
 </li>
@@ -442,7 +444,7 @@ Since SDK 3.0 with With Java Transactions Library<sup class="footnote">[<a id="_
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since SDK 3.1, or since 3.0.7 with Java Transactions Library<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Default Collections</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Collections</p></td>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Not Supported</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Developer Preview in 6.5-6.6, SDK 3.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Since SDK 3.0.6</p></td>
@@ -499,7 +501,7 @@ The following table provides an overview.</p>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">SDC 4.0 - 4.2</th>
+<th class="tableblock halign-left valign-top">SDC 4.0 - 4.4</th>
 </tr>
 </thead>
 <tbody>
@@ -742,6 +744,18 @@ Just for those few that do, the table below shows each Couchbase SDK release ver
 </div>
 <div class="paragraph">
 <p><strong>SDK API 2.7</strong>: Introduced alongside Couchbase Server 6.0, with support for its new features such as the Analytics Service, improvements to Full Text Search, and support for more complex network configurations.</p>
+</div>
+<div class="sect5 column">
+<h6 id=""><a class="anchor" href="#"></a></h6>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="older-sdk-versions"><a class="anchor" href="#older-sdk-versions"></a>Older SDK Versions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Documentation on older, unsupported versions of the SDK&#8201;&#8212;&#8201;that have reached end-of-life&#8201;&#8212;&#8201;can be found in the <a href="https://docs-archive.couchbase.com/home/index.html">archive</a>.</p>
 </div>
 </div>
 </div>

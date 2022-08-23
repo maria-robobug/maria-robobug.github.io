@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generated": 1660828065999,
+  "generated": 1661252648401,
   "url": "https://maria-robobug.github.io",
   "components": [
     {
@@ -2914,6 +2914,24 @@
             },
             {
               "module": "concept-docs",
+              "path": "transactions-cleanup.adoc",
+              "url": "/go-sdk/2.5/concept-docs/transactions-cleanup.html",
+              "title": "Cleanup"
+            },
+            {
+              "module": "concept-docs",
+              "path": "transactions-error-handling.adoc",
+              "url": "/go-sdk/2.5/concept-docs/transactions-error-handling.html",
+              "title": "Error Handling"
+            },
+            {
+              "module": "concept-docs",
+              "path": "transactions.adoc",
+              "url": "/go-sdk/2.5/concept-docs/transactions.html",
+              "title": "Distributed ACID Transactions"
+            },
+            {
+              "module": "concept-docs",
               "path": "understanding-views.adoc",
               "url": "/go-sdk/2.5/concept-docs/understanding-views.html",
               "title": "MapReduce Views"
@@ -3139,6 +3157,16 @@
               "path": "tracing-from-the-sdk.adoc",
               "url": "/go-sdk/2.5/howtos/tracing-from-the-sdk.html",
               "title": "Tracing from the Go SDK"
+            },
+            {
+              "module": "howtos",
+              "path": "transactions-single-query.adoc",
+              "url": "/go-sdk/2.5/howtos/transactions-single-query.html"
+            },
+            {
+              "module": "howtos",
+              "path": "transactions-tracing.adoc",
+              "url": "/go-sdk/2.5/howtos/transactions-tracing.html"
             },
             {
               "module": "howtos",
@@ -11570,6 +11598,13 @@
               "path": "intro.adoc",
               "url": "/server/7.1/develop/intro.html",
               "title": "Developer&#8217;s Intro"
+            },
+            {
+              "alias": true,
+              "module": "developer-guide",
+              "path": "cas-concurrency.adoc",
+              "url": "/java-sdk/3.3/howtos/concurrent-document-mutations.html",
+              "title": "Concurrent Document Mutations"
             },
             {
               "alias": true,

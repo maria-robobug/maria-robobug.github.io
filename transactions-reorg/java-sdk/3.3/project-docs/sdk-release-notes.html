@@ -205,6 +205,320 @@ For release notes, download links, and installation methods for 2.7 and earlier 
 </div>
 </div>
 <div class="sect1">
+<h2 id="version-3-3-3-2-august-2022"><a class="anchor" href="#version-3-3-3-2-august-2022"></a>Version 3.3.3 (2 August 2022)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Version 3.3.3 is the fourth release of the 3.3 series, and is a maintenance release.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://packages.couchbase.com/clients/java/3.3.3/Couchbase-Java-Client-3.3.3.zip">Download</a> |
+<a href="https://docs.couchbase.com/sdk-api/couchbase-java-client-3.3.3/index.html">API Reference</a> |
+<a href="http://docs.couchbase.com/sdk-api/couchbase-core-io-2.3.3/">Core API Reference</a></p>
+</div>
+<div class="paragraph">
+<p>The supported and tested dependencies for this release are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>com.couchbase.client:<strong>java-client:3.3.3</strong></p>
+</li>
+<li>
+<p>com.couchbase.client:<strong>core-io:2.3.3</strong></p>
+</li>
+<li>
+<p>io.projectreactor:<strong>reactor-core:3.4.21</strong></p>
+</li>
+<li>
+<p>org.reactivestreams:<strong>reactive-streams:1.0.4</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Optional artifacts on top of this SDK version are tested for the following compatibilities:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Optional Artifact Version Compatibility</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Artifact</th>
+<th class="tableblock halign-left valign-top">Version</th>
+<th class="tableblock halign-left valign-top">Built Against</th>
+<th class="tableblock halign-left valign-top">API Stability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tracing-opentelemetry</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenTelemetry 1.13.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tracing-opentracing</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenTracing 0.33.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metrics-opentelemetry</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenTelemetry 1.13.0-alpha</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volatile</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metrics-micrometer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Micrometer 1.8.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volatile</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="improvements"><a class="anchor" href="#improvements"></a>Improvements</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.couchbase.com/browse/JVMCBC-1116">JVMCBC-1116</a>:
+Dependency versions have been increased.</p>
+</li>
+<li>
+<p><a href="https://issues.couchbase.com/browse/JVMCBC-1121">JVMCBC-1121</a>:
+In some rare cases&#8201;&#8212;&#8201;such as an application crash&#8201;&#8212;&#8201;a transaction is left for the async cleanup algorithm to finish;
+by default it will find this within one minute.
+In cases where this does not happen, this will trigger a warning after two hours&#8201;&#8212;&#8201;not the two days that was previously the case.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bug-fixes"><a class="anchor" href="#bug-fixes"></a>Bug Fixes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.couchbase.com/browse/JVMCBC-1110">JVMCBC-1110</a>:
+Transaction clients now reliably remove themselves from client records on shutdown.</p>
+</li>
+<li>
+<p><a href="https://issues.couchbase.com/browse/JVMCBC-1119">JVMCBC-1119</a>:
+The num (kv) nodesExt to equal number of nodes check can lead to otherwise healthy clusters being flagged as not ready.
+The check has been removed, and now the ` Bucket <code>waitUntilReady</code> will not timeout on these edge cases.</p>
+</li>
+<li>
+<p><a href="https://issues.couchbase.com/browse/JVMCBC-1120">JVMCBC-1120</a>:
+<code>ClusterConfig#allNodeAddresses</code> now takes global config into account&#8201;&#8212;&#8201;avoiding the triggering of some unnecessary reconfigurations.</p>
+</li>
+<li>
+<p><a href="https://issues.couchbase.com/browse/JVMCBC-1112">JVMCBC-1112</a>:
+Deprecated Reactor Processors have been replaced.</p>
+</li>
+<li>
+<p><a href="https://issues.couchbase.com/browse/JVMCBC-1115">JVMCBC-1115</a>:
+The SDK now allows for configurations with <em>only</em> TLS ports.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="version-3-3-2-6-july-2022"><a class="anchor" href="#version-3-3-2-6-july-2022"></a>Version 3.3.2 (6 July 2022)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Version 3.3.2 is the third release of the 3.3 series, and is a maintenance release.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://packages.couchbase.com/clients/java/3.3.2/Couchbase-Java-Client-3.3.2.zip">Download</a> |
+<a href="https://docs.couchbase.com/sdk-api/couchbase-java-client-3.3.2/index.html">API Reference</a> |
+<a href="http://docs.couchbase.com/sdk-api/couchbase-core-io-2.3.2/">Core API Reference</a></p>
+</div>
+<div class="paragraph">
+<p>The supported and tested dependencies for this release are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>com.couchbase.client:<strong>java-client:3.3.2</strong></p>
+</li>
+<li>
+<p>com.couchbase.client:<strong>core-io:2.3.2</strong></p>
+</li>
+<li>
+<p>io.projectreactor:<strong>reactor-core:3.4.17</strong></p>
+</li>
+<li>
+<p>org.reactivestreams:<strong>reactive-streams:1.0.3</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Optional artifacts on top of this SDK version are tested for the following compatibilities:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Optional Artifact Version Compatibility</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Artifact</th>
+<th class="tableblock halign-left valign-top">Version</th>
+<th class="tableblock halign-left valign-top">Built Against</th>
+<th class="tableblock halign-left valign-top">API Stability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tracing-opentelemetry</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenTelemetry 1.13.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tracing-opentracing</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenTracing 0.33.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metrics-opentelemetry</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenTelemetry 1.13.0-alpha</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volatile</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metrics-micrometer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Micrometer 1.8.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volatile</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="bug-fixes-2"><a class="anchor" href="#bug-fixes-2"></a>Bug Fixes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.couchbase.com/browse/JVMCBC-1103">JVMCBC-1103</a>:
+To reduce overhead, the <code>MAX_PARALLEL_FETCH</code> value in <code>KeyValueBucketRefresher</code> has been updated to only fetch one config per poll interval.</p>
+</li>
+<li>
+<p><a href="https://issues.couchbase.com/browse/JVMCBC-1104">JVMCBC-1104</a>:
+Fixed issue where the global refresher did not honor the config poll interval.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="version-3-3-1-8-june-2022"><a class="anchor" href="#version-3-3-1-8-june-2022"></a>Version 3.3.1 (8 June 2022)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Version 3.3.1 is the second release of the 3.3 series, and is a maintenance release.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://packages.couchbase.com/clients/java/3.3.1/Couchbase-Java-Client-3.3.1.zip">Download</a> |
+<a href="https://docs.couchbase.com/sdk-api/couchbase-java-client-3.3.1/index.html">API Reference</a> |
+<a href="http://docs.couchbase.com/sdk-api/couchbase-core-io-2.3.1/">Core API Reference</a></p>
+</div>
+<div class="paragraph">
+<p>The supported and tested dependencies for this release are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>com.couchbase.client:<strong>java-client:3.3.1</strong></p>
+</li>
+<li>
+<p>com.couchbase.client:<strong>core-io:2.3.1</strong></p>
+</li>
+<li>
+<p>io.projectreactor:<strong>reactor-core:3.4.17</strong></p>
+</li>
+<li>
+<p>org.reactivestreams:<strong>reactive-streams:1.0.3</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Optional artifacts on top of this SDK version are tested for the following compatibilities:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Optional Artifact Version Compatibility</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Artifact</th>
+<th class="tableblock halign-left valign-top">Version</th>
+<th class="tableblock halign-left valign-top">Built Against</th>
+<th class="tableblock halign-left valign-top">API Stability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tracing-opentelemetry</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenTelemetry 1.13.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tracing-opentracing</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenTracing 0.33.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Committed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metrics-opentelemetry</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenTelemetry 1.13.0-alpha</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volatile</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metrics-micrometer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Micrometer 1.8.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volatile</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="improvements-2"><a class="anchor" href="#improvements-2"></a>Improvements</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.couchbase.com/browse/JVMCBC-1089">JVMCBC-1089</a>:
+SDK users can now customize the <code>ConsoleLogger</code> format.</p>
+</li>
+<li>
+<p><a href="https://issues.couchbase.com/browse/JVMCBC-1093">JVMCBC-1093</a>:
+Previously, when a DNS SRV lookup failure occured, the SDK logged this as a <code>WARNING</code> along with a stack trace.
+The lookup failure is typically harmless, so the log message has now been downgraded to <code>INFO</code> level, without a stack trace.</p>
+</li>
+<li>
+<p><a href="https://issues.couchbase.com/browse/JVMCBC-1088">JVMCBC-1088</a>:
+Updated Netty to version <code>4.1.77.Final</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="version-3-3-0-26-april-2022"><a class="anchor" href="#version-3-3-0-26-april-2022"></a>Version 3.3.0 (26 April 2022)</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -254,7 +568,7 @@ For release notes, download links, and installation methods for 2.7 and earlier 
 <p>Optional artifacts on top of this SDK version are tested for the following compatibilities:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Optional Artifact Version Compatibility</caption>
+<caption class="title">Table 4. Optional Artifact Version Compatibility</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -297,7 +611,7 @@ For release notes, download links, and installation methods for 2.7 and earlier 
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="improvements"><a class="anchor" href="#improvements"></a>Improvements</h3>
+<h3 id="improvements-3"><a class="anchor" href="#improvements-3"></a>Improvements</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -394,7 +708,7 @@ Shutting down a ClusterEnvironment now correctly stops a <code>Meter</code> owne
 <p>Optional artifacts on top of this SDK version are tested for the following compatibilities:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Optional Artifact Version Compatibility</caption>
+<caption class="title">Table 5. Optional Artifact Version Compatibility</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -452,7 +766,7 @@ The environment now properly shuts down the <code>Meter</code> if it is owned an
 </div>
 </div>
 <div class="sect2">
-<h3 id="improvements-2"><a class="anchor" href="#improvements-2"></a>Improvements</h3>
+<h3 id="improvements-4"><a class="anchor" href="#improvements-4"></a>Improvements</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -507,7 +821,7 @@ Updated internal and external dependencies.</p>
 <p>Optional artifacts on top of this SDK version are tested for the following compatibilities:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Optional Artifact Version Compatibility</caption>
+<caption class="title">Table 6. Optional Artifact Version Compatibility</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -593,7 +907,7 @@ When implementing a custom <code>RetryStrategy</code>, a new overload of <code>R
 </div>
 </div>
 <div class="sect2">
-<h3 id="improvements-3"><a class="anchor" href="#improvements-3"></a>Improvements</h3>
+<h3 id="improvements-5"><a class="anchor" href="#improvements-5"></a>Improvements</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -668,7 +982,7 @@ Example usage:</p>
 <p>Optional artifacts on top of this SDK version are tested for the following compatibilities:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Optional Artifact Version Compatibility</caption>
+<caption class="title">Table 7. Optional Artifact Version Compatibility</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -750,7 +1064,7 @@ The SDK now throws a more descriptive <code>FeatureNotAvailableException</code> 
 </div>
 </div>
 <div class="sect2">
-<h3 id="improvements-4"><a class="anchor" href="#improvements-4"></a>Improvements</h3>
+<h3 id="improvements-6"><a class="anchor" href="#improvements-6"></a>Improvements</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -874,7 +1188,7 @@ This release introduces support for JDK 17.
 <p>Optional artifacts on top of this SDK version are tested for the following compatibilities:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Optional Artifact Version Compatibility</caption>
+<caption class="title">Table 8. Optional Artifact Version Compatibility</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -928,7 +1242,7 @@ This release introduces support for JDK 17.
 </div>
 </div>
 <div class="sect2">
-<h3 id="improvements-5"><a class="anchor" href="#improvements-5"></a>Improvements</h3>
+<h3 id="improvements-7"><a class="anchor" href="#improvements-7"></a>Improvements</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -993,7 +1307,7 @@ This helps with debugging.</p>
 <p>Optional artifacts on top of this SDK version are tested for the following compatibilities:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Optional Artifact Version Compatibility</caption>
+<caption class="title">Table 9. Optional Artifact Version Compatibility</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1036,7 +1350,7 @@ This helps with debugging.</p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="improvements-6"><a class="anchor" href="#improvements-6"></a>Improvements</h3>
+<h3 id="improvements-8"><a class="anchor" href="#improvements-8"></a>Improvements</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1082,7 +1396,7 @@ Support for error map v2 has been added to ensure the config can be parsed witho
 <p>Optional artifacts on top of this SDK version are tested for the following compatibilities:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Optional Artifact Version Compatibility</caption>
+<caption class="title">Table 10. Optional Artifact Version Compatibility</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1125,7 +1439,7 @@ Support for error map v2 has been added to ensure the config can be parsed witho
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="improvements-7"><a class="anchor" href="#improvements-7"></a>Improvements</h3>
+<h3 id="improvements-9"><a class="anchor" href="#improvements-9"></a>Improvements</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1209,7 +1523,7 @@ This fix removes need for <code>TargetedQueryRequest</code>.</p>
 <p>Optional artifacts on top of this SDK version are tested for the following compatibilities:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Optional Artifact Version Compatibility</caption>
+<caption class="title">Table 11. Optional Artifact Version Compatibility</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1265,7 +1579,7 @@ This issue will be addressed in 3.2.2.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes"><a class="anchor" href="#bug-fixes"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-3"><a class="anchor" href="#bug-fixes-3"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1284,7 +1598,7 @@ Fixed <code>NullPointerException</code> with <code>OpenTracing</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="improvements-8"><a class="anchor" href="#improvements-8"></a>Improvements</h3>
+<h3 id="improvements-10"><a class="anchor" href="#improvements-10"></a>Improvements</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1371,7 +1685,7 @@ It promotes to GA support for the scopes and collections provided by Couchbase S
 <p>Optional artifacts on top of this SDK version are tested for the following compatibilities:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. Optional Artifact Version Compatibility</caption>
+<caption class="title">Table 12. Optional Artifact Version Compatibility</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1427,7 +1741,7 @@ This issue will be addressed in 3.2.2.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes-2"><a class="anchor" href="#bug-fixes-2"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-4"><a class="anchor" href="#bug-fixes-4"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1583,7 +1897,7 @@ Update OpenTelemetry to 1.3.0.</p>
 <p>Optional artifacts on top of this SDK version are tested for the following compatibilities:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. Optional Artifact Version Compatibility</caption>
+<caption class="title">Table 13. Optional Artifact Version Compatibility</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1626,7 +1940,7 @@ Update OpenTelemetry to 1.3.0.</p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="bug-fixes-3"><a class="anchor" href="#bug-fixes-3"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-5"><a class="anchor" href="#bug-fixes-5"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1688,7 +2002,7 @@ Fixed an issue where <code>JsonValueSerializerWrapper</code> was unable to suppo
 <p>Optional artifacts on top of this SDK version are tested for the following compatibilities:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. Optional Artifact Version Compatibility</caption>
+<caption class="title">Table 14. Optional Artifact Version Compatibility</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1731,7 +2045,7 @@ Fixed an issue where <code>JsonValueSerializerWrapper</code> was unable to suppo
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="bug-fixes-4"><a class="anchor" href="#bug-fixes-4"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-6"><a class="anchor" href="#bug-fixes-6"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1758,7 +2072,7 @@ Gracefully handle cluster-level WaitUntilReady against clusters &lt; 6.5.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="improvements-9"><a class="anchor" href="#improvements-9"></a>Improvements</h3>
+<h3 id="improvements-11"><a class="anchor" href="#improvements-11"></a>Improvements</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1817,7 +2131,7 @@ Properly map server query timeout while streaming.</p>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes-5"><a class="anchor" href="#bug-fixes-5"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-7"><a class="anchor" href="#bug-fixes-7"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1832,7 +2146,7 @@ Only open one GCCCP connection per node.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="improvements-10"><a class="anchor" href="#improvements-10"></a>Improvements</h3>
+<h3 id="improvements-12"><a class="anchor" href="#improvements-12"></a>Improvements</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1899,7 +2213,7 @@ Improve bucket configuration handling (revEpoch).</p>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes-6"><a class="anchor" href="#bug-fixes-6"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-8"><a class="anchor" href="#bug-fixes-8"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1922,7 +2236,7 @@ Work around and fix a <code>OverflowException</code> with <code>PersistTo</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="improvements-11"><a class="anchor" href="#improvements-11"></a>Improvements</h3>
+<h3 id="improvements-13"><a class="anchor" href="#improvements-13"></a>Improvements</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1997,7 +2311,7 @@ Due to protocol level changes, Java SDK 3.1.4 and later are not compatible with 
 </table>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes-7"><a class="anchor" href="#bug-fixes-7"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-9"><a class="anchor" href="#bug-fixes-9"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2025,7 +2339,7 @@ More resilient handling of rebalances.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="improvements-12"><a class="anchor" href="#improvements-12"></a>Improvements</h3>
+<h3 id="improvements-14"><a class="anchor" href="#improvements-14"></a>Improvements</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2101,7 +2415,7 @@ Distinguish between CAS mismatch and DML failure on query error.</p>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="improvements-13"><a class="anchor" href="#improvements-13"></a>Improvements</h3>
+<h3 id="improvements-15"><a class="anchor" href="#improvements-15"></a>Improvements</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2500,7 +2814,7 @@ As the getPendingMutations method was previously uncallable due to the resulting
 </div>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes-8"><a class="anchor" href="#bug-fixes-8"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-10"><a class="anchor" href="#bug-fixes-10"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2676,7 +2990,7 @@ Support for scope-level analytics queries has been added (needs at least Server 
 </div>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes-9"><a class="anchor" href="#bug-fixes-9"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-11"><a class="anchor" href="#bug-fixes-11"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2759,7 +3073,7 @@ Deprecated <code>maxTTL</code> on BucketSettings in favor of <code>maxExpiry</co
 </div>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes-10"><a class="anchor" href="#bug-fixes-10"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-12"><a class="anchor" href="#bug-fixes-12"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2870,7 +3184,7 @@ Changed the default idle timeout to 4.5s for http connections, to support perfor
 </div>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes-11"><a class="anchor" href="#bug-fixes-11"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-13"><a class="anchor" href="#bug-fixes-13"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2963,7 +3277,7 @@ This will be available in a separate library for Enterprise Edition subscribers.
 </div>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes-12"><a class="anchor" href="#bug-fixes-12"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-14"><a class="anchor" href="#bug-fixes-14"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3021,7 +3335,7 @@ Bumped Netty dependency to 2.0.30, and reactor to 3.3.4</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes-13"><a class="anchor" href="#bug-fixes-13"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-15"><a class="anchor" href="#bug-fixes-15"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3111,7 +3425,7 @@ Updates OpenTelemetry to 0.3 (beta).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes-14"><a class="anchor" href="#bug-fixes-14"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-16"><a class="anchor" href="#bug-fixes-16"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3212,7 +3526,7 @@ Support added for new VATTR HELLO flag.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes-15"><a class="anchor" href="#bug-fixes-15"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-17"><a class="anchor" href="#bug-fixes-17"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3282,7 +3596,7 @@ The internal packaged <code>netty</code> dependency has been reduced to the mini
 </div>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes-16"><a class="anchor" href="#bug-fixes-16"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-18"><a class="anchor" href="#bug-fixes-18"></a>Bug Fixes</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3445,7 +3759,7 @@ The circuit breaker now has a customizable completion callback.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="bug-fixes-17"><a class="anchor" href="#bug-fixes-17"></a>Bug Fixes</h3>
+<h3 id="bug-fixes-19"><a class="anchor" href="#bug-fixes-19"></a>Bug Fixes</h3>
 <div class="paragraph">
 <p>The following list describes the API changes between 3.0.0 beta.2 and 3.0.0 GA.</p>
 </div>

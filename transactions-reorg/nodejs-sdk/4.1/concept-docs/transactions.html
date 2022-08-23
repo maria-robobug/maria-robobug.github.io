@@ -225,12 +225,12 @@ Transactions are distributed and work across multiple documents, buckets, scopes
 </div>
 </div>
 <div class="paragraph">
-<p>A core idea of Couchbase transactions is that an application supplies the logic for the transaction inside a <em>lambda</em>, including any conditional logic required, and the transaction is then automatically committed.
-If a transient error occurs, such as a temporary conflict with another transaction, then the transaction will rollback what has been done so far and run the lambda again.
+<p>A core idea of Couchbase transactions is that an application supplies the logic for the transaction inside an <code>arrow function</code>, including any conditional logic required, and the transaction is then automatically committed.
+If a transient error occurs, such as a temporary conflict with another transaction, then the transaction will rollback what has been done so far and run the arrow function again.
 The application does not have to do these retries and error handling itself.</p>
 </div>
 <div class="paragraph">
-<p>Each run of the lambda is called an <code>attempt</code>, inside an overall <code>transaction</code>.</p>
+<p>Each run of the arrow function is called an <code>attempt</code>, inside an overall <code>transaction</code>.</p>
 </div>
 <div class="sect2">
 <h3 id="active-transaction-record-entries"><a class="anchor" href="#active-transaction-record-entries"></a>Active Transaction Record Entries</h3>
@@ -286,7 +286,7 @@ These include an asynchronous cleanup process that is started with the first tra
 <div class="sect2">
 <h3 id="committing"><a class="anchor" href="#committing"></a>Committing</h3>
 <div class="paragraph">
-<p>Only once the lambda has successfully run to conclusion, will the attempt be committed.
+<p>Only once the arrow function has successfully run to conclusion, will the attempt be committed.
 This updates the ATR entry, which is used as a signal by transactional actors to use the post-transaction version of a document from its XATTRs.
 Hence, updating the ATR entry is an 'atomic commit' switch for the transaction.</p>
 </div>
@@ -356,7 +356,7 @@ This provides these benefits:</p>
 </li>
 <li>
 <p>It takes care of issuing <code>BEGIN TRANSACTION</code>, <code>END TRANSACTION</code>, <code>COMMIT</code> and <code>ROLLBACK</code> automatically.
-These become an implementation detail, and you should not use these statements inside the lambda.</p>
+These become an implementation detail, and you should not use these statements inside the arrow function.</p>
 </li>
 </ul>
 </div>
@@ -376,14 +376,14 @@ Specifically: <code>INSERT</code>, <code>UPSERT</code>, <code>DELETE</code>, <co
 <p>This section is optional reading, and only for those looking to maximize transactions performance.</p>
 </div>
 <div class="paragraph">
-<p>After the first query statement in a transaction, subsequent Key-Value operations in the lambda are converted into N1QL and executed by the Query service rather than the Key-Value data service.
+<p>After the first query statement in a transaction, subsequent Key-Value operations in the arrow function are converted into N1QL and executed by the Query service rather than the Key-Value data service.
 The operation will behave identically, and this implementation detail can largely be ignored, except for these two caveats:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p>These converted key-value operations are likely to be slightly slower, as the Query service is optimized for statements involving multiple documents.
-Those looking for the maximum possible performance are recommended to put key-value operations before the first query in the lambda, if possible.</p>
+Those looking for the maximum possible performance are recommended to put key-value operations before the first query in the arrow function, if possible.</p>
 </li>
 <li>
 <p>Those using non-blocking mechanisms to achieve concurrency should be aware that the converted key-value operations are subject to the same parallelism restrictions mentioned above, e.g. they will not be executed in parallel by the Query service.</p>

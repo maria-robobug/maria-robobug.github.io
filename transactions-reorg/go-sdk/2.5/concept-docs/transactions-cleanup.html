@@ -4,24 +4,26 @@
 <meta charset="utf-8">
 <meta http-equiv=content-security-policy content="default-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https:; worker-src blob:;">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Error Handling | Couchbase Docs (Local)</title>
-<link rel="canonical" href="https://maria-robobug.github.io/python-sdk/4.0/concept-docs/transactions-error-handling.html">
+<title>Cleanup | Couchbase Docs (Local)</title>
+<link rel="canonical" href="https://maria-robobug.github.io/go-sdk/2.5/concept-docs/transactions-cleanup.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
-<meta name="description" content="Handling transaction errors with Couchbase.">
+<meta name="description" content="The SDK takes care of failed or lost transactions, using an asynchronous cleanup background task.">
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
-        <link rel="prev" href="transactions-cleanup.html">
-        <link rel="next" href="../howtos/concurrent-async-apis.html">
+        <link rel="prev" href="transactions.html">
+        <link rel="next" href="transactions-error-handling.html">
 
 
 
-                    <link rel="prev" href="transactions-cleanup.html">
+                    <link rel="prev" href="transactions.html">
 
-        
 
-<meta name="dcterms.subject" content="python-sdk">
-<meta name="dcterms.identifier" content="4.0">
-<meta name="page-url" content="/python-sdk/4.0/concept-docs/transactions-error-handling.html">
+                    <link rel="next" href="transactions-error-handling.html">
+
+
+<meta name="dcterms.subject" content="go-sdk">
+<meta name="dcterms.identifier" content="2.5">
+<meta name="page-url" content="/go-sdk/2.5/concept-docs/transactions-cleanup.html">
 <meta name="generator" content="Antora 3.0.1">
 <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
 </head>
@@ -118,7 +120,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/concept-docs/pages/transactions-error-handling.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-go//modules/concept-docs/pages/transactions-cleanup.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -176,16 +178,16 @@
 <div class="article-header">
 <nav class="crumbs" aria-label="breadcrumbs">
 <ul>
-<li class="crumb"><a href="../hello-world/overview.html">Python SDK</a></li>
+<li class="crumb"><a href="../hello-world/overview.html">Go SDK</a></li>
 <li class="crumb">Transactions</li>
 <li class="crumb"><a href="transactions.html">Key Concepts</a></li>
-<li class="crumb"><a href="transactions-error-handling.html">Error Handling</a></li>
+<li class="crumb"><a href="transactions-cleanup.html">Cleanup</a></li>
 </ul>
 </nav>
 </div>
 <article class="doc">
 <div class="page-heading-title">
-<h1 class="page">Error Handling</h1>
+<h1 class="page">Cleanup</h1>
 </div>
 <div class="contributor-list-box">
 <span class="last-commit-date" id="commitdate">    </span>
@@ -195,175 +197,130 @@
 <div class="sectionbody">
 <div class="quoteblock abstract">
 <blockquote>
-Handling transaction errors with Couchbase.
+The SDK takes care of failed or lost transactions, using an asynchronous cleanup background task.
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Couchbase transactions will attempt to resolve many errors for you, through a combination of retrying individual operations and the application&#8217;s lambda.
-This includes some transient server errors, and conflicts with other transactions.</p>
+<p>Transactions will try to clean up after themselves in the advent of failures. However, there are situations that inevitably created failed, or 'lost' transactions, such as an application crash.</p>
+</div>
+<div class="paragraph">
+<p>This requires an asynchronous cleanup task, described in this section.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="transaction-errors"><a class="anchor" href="#transaction-errors"></a>Transaction Errors</h2>
+<h2 id="background-cleanup"><a class="anchor" href="#background-cleanup"></a>Background Cleanup</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There can be situations where total failure is indicated to the application via errors.
-These situations include:</p>
+<p>Calling <code>Connect</code> spawns a background cleanup task, whose job it is to periodically scan for expired transactions and clean them up.
+It does this by scanning a subset of the Active Transaction Record (ATR) transaction metadata documents, for each metadata collection used by any transactions.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Any error thrown by a transaction lambda, either deliberately or through an application logic bug.</p>
-</li>
-<li>
-<p>Attempting to insert a document that already exists.</p>
-</li>
-<li>
-<p>Calling <code>ctx.get()</code> on a document key that does not exist (if the resultant exception is not caught).</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Once one of these errors occurs, the current attempt is irrevocably failed (though the transaction may retry the lambda to make a new attempt).
-It is not possible for the application to catch the failure and continue (with the exception of <code>ctx.get()</code> raising an error).
-Once a failure has occurred, all other operations tried in this attempt (including commit) will instantly fail.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Unless there are any metadata collections registered (either from config or by running a transaction) then the background cleanup task will do no work and so is very lightweight.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Transactions, as they are multi-stage and multi-document, also have a concept of partial success or failure.
-This is signalled to the application through the <code>TransactionResult.unstaging_complete</code> property, described later.</p>
+<p>The default settings are tuned to find expired transactions reasonably quickly, while creating negligible impact from the background reads required by the scanning process.
+To be exact, with default settings it will generally find expired transactions within 60 seconds, and use less than 20 reads per second.
+This is unlikely to impact performance on any cluster, but the settings may be <a href="#tuning-cleanup">tuned</a> as desired.</p>
 </div>
 <div class="paragraph">
-<p>There are three errors that transactions can raise to an application:</p>
+<p>All applications connected to the same cluster and running <code>Transactions</code> will share in the cleanup, via a low-touch communication protocol on the <code>_txn:client-record</code> metadata document that will be created in each metadata collection used during transactions.
+This document is visible and should not be modified externally as is maintained automatically.
+All ATRs on a metadata collection will be distributed between all cleanup clients, so increasing the number of applications will not increase the reads required for scanning.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>TransactionFailed</code></p>
-</li>
-<li>
-<p><code>TransactionExpired</code></p>
-</li>
-<li>
-<p><code>TransactionCommitAmbiguous</code></p>
-</li>
-</ul>
+<div class="paragraph">
+<p>An application may cleanup transactions created by another application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>It is important to understand that if an application is not running, then cleanup is not running.
+This is particularly relevant to developers running unit tests or similar.</p>
+</div>
+<div class="paragraph">
+<p>If this is an issue, then developers may want to consider running a simple application at all times that just calls <code>Connect</code>, to guarantee that cleanup is running.
+When an application is used solely for cleanup it <strong>must</strong> register any collections to monitor via the <code>CleanupCollections</code> config option, otherwise the cleanup task will not do any work.
+Only the collections registered will be monitored.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
-<h3 id="transactionfailed-and-transactionexpired"><a class="anchor" href="#transactionfailed-and-transactionexpired"></a>TransactionFailed and TransactionExpired</h3>
+<h3 id="tuning-cleanup"><a class="anchor" href="#tuning-cleanup"></a>Configuring Cleanup</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Setting</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CleanupWindow</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60 seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This determines how long a cleanup 'run' is; that is, how frequently this client will check its subset of ATR documents. It is perfectly valid for the application to change this setting, which is at a conservative default. Decreasing this will cause expiration transactions to be found more swiftly (generally, within this cleanup window), with the tradeoff of increasing the number of reads per second used for the scanning process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DisableLostAttemptCleanup</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is the thread that takes part in the distributed cleanup process described above, that cleans up expired transactions created by any client. It is strongly recommended that it is left enabled.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DisableClientAttemptCleanup</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This thread is for cleaning up transactions created just by this client. The client will preferentially aim to send any transactions it creates to this thread, leaving transactions for the distributed cleanup process only when it is forced to (for example, on an application crash). It is strongly recommended that it is left enabled.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CleanupCollections</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[]TransactionKeyspace{}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is the set of additional collections that the lost transactions cleanup task will monitor</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="monitoring-cleanup"><a class="anchor" href="#monitoring-cleanup"></a>Monitoring Cleanup</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>The transaction definitely did not reach the commit point.
-<code>TransactionFailed</code> indicates a fast-failure whereas <code>TransactionExpired</code> indicates that retries were made until the timeout was reached, but this distinction is not normally important to an application and generally <code>TransactionExpired</code> does not need to be handled individually.</p>
-</div>
-<div class="paragraph">
-<p>Either way, an attempt will have been made to rollback all changes.
-This attempt may or may not have been successful, but the results of this will have no impact on the protocol or other actors.
-No changes from the transaction will be visible, both to transactional and non-transactional actors.</p>
-</div>
-<div class="sect3">
-<h4 id="handling"><a class="anchor" href="#handling"></a>Handling</h4>
-<div class="paragraph">
-<p>Generally, debugging exactly why a given transaction failed requires review of the logs, so it is suggested that the application log these on failure.
-The application may want to try the transaction again later.
-Alternatively, if transaction completion time is not a priority, then transaction timeouts (which default to 15 seconds) can be extended across the board through <code>TransactionsConfig</code>.</p>
-</div>
-<div class="paragraph">
-<p>This will allow the protocol more time to get past any transient failures (for example, those caused by a cluster rebalance).
-The tradeoff to consider with longer timeouts, is that documents that have been staged by a transaction are effectively locked from modification from other transactions, until the timeout has been reached.</p>
-</div>
-<div class="paragraph">
-<p>Note that the timeout is not guaranteed to be followed precisely.
-For example, if the application were to do a long blocking operation inside the lambda (which should be avoided), then timeout can only trigger after this finishes.
-Similarly, if the transaction attempts a key-value operation close to the timeout, and that key-value operation times out, then the transaction timeout may be exceeded.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="transactioncommitambiguous"><a class="anchor" href="#transactioncommitambiguous"></a>TransactionCommitAmbiguous</h3>
-<div class="paragraph">
-<p>Each transaction has a 'single point of truth' that is updated atomically to reflect whether it is committed.</p>
-</div>
-<div class="paragraph">
-<p>However, it is not always possible for the protocol to become 100% certain that the operation was successful, before the transaction expires.
-This potential ambiguity is unavoidable in any distributed system; a classic example is a network failure happening just after an operation was sent from a client to a server.
-The client will not get a response back and cannot know if the server received and executed the operation.</p>
-</div>
-<div class="paragraph">
-<p>The ambiguity is particularly important at the point of the atomic commit, as the transaction may or may not have reached the commit point.  Couchbase transactions will raise <code>TransactionCommitAmbiguous</code> to indicate this state.
-It should be rare to receive this error.</p>
-</div>
-<div class="paragraph">
-<p>If the transaction had in fact successfully reached the commit point, then the transaction will be fully completed ("unstaged") by the asynchronous cleanup process at some point in the future.
-With default settings this will usually be within a minute, but whatever underlying fault has caused the <code>TransactionCommitAmbiguous</code> may lead to it taking longer.</p>
-</div>
-<div class="paragraph">
-<p>If the transaction had not in fact reached the commit point, then the asynchronous cleanup process will instead attempt to roll it back at some point in the future.</p>
-</div>
-<div class="sect3">
-<h4 id="handling-2"><a class="anchor" href="#handling-2"></a>Handling</h4>
-<div class="paragraph">
-<p>This error can be challenging for an application to handle.
-As with <code>TransactionFailed</code> it is recommended that it at least writes any logs from the transaction, for future debugging.
-It may wish to retry the transaction at a later point, or extend transactional timeouts (as detailed above) to give the protocol additional time to resolve the ambiguity.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="transactionresult-unstaging_complete"><a class="anchor" href="#transactionresult-unstaging_complete"></a>TransactionResult.unstaging_complete</h3>
-<div class="paragraph">
-<p>This boolean flag indicates whether all documents were able to be unstaged (committed).</p>
+<p>To monitor cleanup, increase the verbosity on the logging.</p>
 </div>
 <div class="paragraph">
-<p>For most use-cases it is not an issue if it is false.
-All transactional actors will still read all the changes from this transaction, as though it had committed fully.
-The cleanup process is asynchronously working to complete the commit, so that it will be fully visible to non-transactional actors.</p>
-</div>
-<div class="paragraph">
-<p>The flag is provided for those rare use-cases where the application requires the commit to be fully visible to non-transactional actors, before it may continue.
-In this situation the application can raise an error here, or poll all documents involved until they reflect the mutations.</p>
-</div>
-<div class="paragraph">
-<p>If you regularly see this flag false, consider increasing the transaction timeout to reduce the possibility that the transaction times out during the commit.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="full-error-handling-example"><a class="anchor" href="#full-error-handling-example"></a>Full Error Handling Example</h3>
-<div class="paragraph">
-<p>Pulling all of the above together, this is the suggested best practice for error handling:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-python//modules/howtos/examples/transactions_example.py#L467-L483">try:
-    def txn_logic(ctx):
-        # ... transactional code here ...
-        pass
-    result = cluster.transactions.run(txn_logic)
-    if not result.unstaging_complete:
-        # In rare cases, the application may require the commit to have completed.
-        # (Recall that the asynchronous cleanup process is still working to complete the commit.)
-        # The next step is application-dependent.
-        print("do something...")
-except TransactionCommitAmbiguous as ex:
-    # The transaction may or may not have reached commit point
-    print(
-        f'Transaction returned TransactionCommitAmbiguous and may have succeeded.  Error: {ex}')
-except TransactionFailed as ex:
-    # The transaction definitely did not reach commit point
-    print(f'Transaction failed with TransactionFailed.  Error: {ex}')</code></pre>
-</div>
-</div>
+<p>Please see the <a href="../howtos/collecting-information-and-logging.html" class="xref page">Go SDK logging documentation</a> for details.</p>
 </div>
 </div>
 </div>
 
         <nav class="pagination">
 
-                    <span class="prev"><a href="transactions-cleanup.html">Cleanup</a></span>
+                    <span class="prev"><a href="transactions.html">Key Concepts</a></span>
 
 
-                <span>&nbsp;</span>
-            </nav>
-        </article>
+                    <span class="next"><a href="transactions-error-handling.html">Error Handling</a></span>
+
+</article>
 </main>
 </div>
 <footer class="footer">
