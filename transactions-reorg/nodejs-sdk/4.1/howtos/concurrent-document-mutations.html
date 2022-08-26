@@ -102,6 +102,12 @@
 <aside class="nav left-sidebar">
   <div class="nav-container">
     <a href="#" class="menu-expand-toggle"><span>Navigation</span><i class="fas fa-times-circle"></i><i class="fas fa-chevron-circle-left"></i></a>
+    <template id="page-versions" style="display: none">
+      <select class="version_list" data-component="nodejs-sdk">
+        <option value="4.1" data-url="concurrent-document-mutations.html" selected>4.1</option>
+        <option value="3.2" data-url="../../3.2/howtos/concurrent-document-mutations.html">3.2</option>
+      </select>
+    </template>
   </div>
 </aside>
 <aside class="toc sidebar"
@@ -110,7 +116,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/pages/concurrent-document-mutations.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="https://github.com/maria-robobug/docs-sdk-nodejs/edit/release/4.1/modules/howtos/pages/concurrent-document-mutations.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -447,7 +453,7 @@ For example, if a document represents a user, and the application is simply upda
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L341-L369">var maxRetries = 10;
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L341-L369">var maxRetries = 10;
 for (var i = 0; i &lt; maxRetries; ++i) {
     // Get the current document contents
     console.log("get " + i);
@@ -583,7 +589,7 @@ The following blocks show how to use <code>lock</code> and <code>unlock</code> o
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L382-L389">var result = await collection.getAndLock(key, 1000);
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L382-L389">var result = await collection.getAndLock(key, 1000);
 document = result.value;
 cas = result.cas;
 // if we decided not to update, unlock

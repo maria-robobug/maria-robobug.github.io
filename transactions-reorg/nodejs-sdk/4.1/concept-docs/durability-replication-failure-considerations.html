@@ -103,6 +103,12 @@
 <aside class="nav left-sidebar">
   <div class="nav-container">
     <a href="#" class="menu-expand-toggle"><span>Navigation</span><i class="fas fa-times-circle"></i><i class="fas fa-chevron-circle-left"></i></a>
+    <template id="page-versions" style="display: none">
+      <select class="version_list" data-component="nodejs-sdk">
+        <option value="4.1" data-url="durability-replication-failure-considerations.html" selected>4.1</option>
+        <option value="3.2" data-url="../../3.2/concept-docs/durability-replication-failure-considerations.html">3.2</option>
+      </select>
+    </template>
   </div>
 </aside>
 <aside class="toc sidebar"
@@ -111,7 +117,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/concept-docs/pages/durability-replication-failure-considerations.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="https://github.com/maria-robobug/docs-sdk-nodejs/edit/release/4.1/modules/concept-docs/pages/durability-replication-failure-considerations.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -291,7 +297,7 @@ Where the operation is an array append, or somesuch, then <a href="../../../serv
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Client Verified durability is supported in <a href="#3.2@durability-replication-failure-considerations.adoc#older-server-versions" class="xref unresolved">Node.js SDK 3.2</a> but not in 4.0.
+Client Verified durability is supported in <a href="../../3.2/concept-docs/durability-replication-failure-considerations.html#older-server-versions" class="xref page">Node.js SDK 3.2</a> but not in 4.0.
 Legacy support will be available in a later 4.x release.
 See the <a href="../project-docs/migrating-sdk-code-to-3.n.html#sdk4-specifics" class="xref page">SDK 4.0 migration considerations</a>.
 </td>

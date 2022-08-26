@@ -103,6 +103,12 @@
 <aside class="nav left-sidebar">
   <div class="nav-container">
     <a href="#" class="menu-expand-toggle"><span>Navigation</span><i class="fas fa-times-circle"></i><i class="fas fa-chevron-circle-left"></i></a>
+    <template id="page-versions" style="display: none">
+      <select class="version_list" data-component="nodejs-sdk">
+        <option value="4.1" data-url="analytics-using-sdk.html" selected>4.1</option>
+        <option value="3.2" data-url="../../3.2/howtos/analytics-using-sdk.html">3.2</option>
+      </select>
+    </template>
   </div>
 </aside>
 <aside class="toc sidebar"
@@ -111,7 +117,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/pages/analytics-using-sdk.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="https://github.com/maria-robobug/docs-sdk-nodejs/edit/release/4.1/modules/howtos/pages/analytics-using-sdk.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -213,7 +219,7 @@ Intentionally, the API for analytics is very similar to that of the query servic
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/analytics.js#L23-L26">var result = await cluster.analyticsQuery('SELECT "hello" AS greeting')
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/analytics.js#L23-L26">var result = await cluster.analyticsQuery('SELECT "hello" AS greeting')
 result.rows.forEach((row) =&gt; {
   console.log(row)
 })</code></pre>
@@ -230,7 +236,7 @@ Here is one example of each:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/analytics.js#L38-L40">var result = await cluster.analyticsQuery(
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/analytics.js#L38-L40">var result = await cluster.analyticsQuery(
   'SELECT airportname, country FROM airports WHERE country="France" LIMIT 3'
 )</code></pre>
 </div>
@@ -240,7 +246,7 @@ Here is one example of each:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/analytics.js#L45-L48">var result = await cluster.analyticsQuery(
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/analytics.js#L45-L48">var result = await cluster.analyticsQuery(
   'SELECT airportname, country FROM airports WHERE country = ? LIMIT 3',
   { parameters: ['France'] }
 )</code></pre>
@@ -251,7 +257,7 @@ Here is one example of each:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/analytics.js#L53-L56">var result = await cluster.analyticsQuery(
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/analytics.js#L53-L56">var result = await cluster.analyticsQuery(
   'SELECT airportname, country FROM airports WHERE country = $country LIMIT 3',
   { parameters: { country: 'France' } }
 )</code></pre>
@@ -302,7 +308,7 @@ The <code>priority</code> option, defaults to <code>false</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/analytics.js#L61-L67">var result = await cluster.analyticsQuery(
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/analytics.js#L61-L67">var result = await cluster.analyticsQuery(
   'SELECT airportname, country FROM airports WHERE country="France" LIMIT 3',
   {
     priority: true,
@@ -326,7 +332,7 @@ as you will have seen when working through our <a href="#7.1@server:analytics:pr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/analytics.js#L72-L76">  var result = await cluster.analyticsQuery('SELECT "hello" AS greeting')
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/analytics.js#L72-L76">  var result = await cluster.analyticsQuery('SELECT "hello" AS greeting')
 
   result.rows.forEach((row) =&gt; {
     console.log('Greeting: %s', row.greeting)
@@ -342,7 +348,7 @@ Here is a snippet printing out some metrics from a query:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/analytics.js#L81-L86">  var result = await cluster.analyticsQuery('SELECT "hello" AS greeting')
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/analytics.js#L81-L86">  var result = await cluster.analyticsQuery('SELECT "hello" AS greeting')
 
   console.log('Elapsed time: %d', result.meta.metrics.elapsedTime)
   console.log('Execution time: %d', result.meta.metrics.executionTime)
@@ -376,7 +382,7 @@ CREATE DATASET `travel-sample`.inventory.airport ON `travel-sample`.inventory.ai
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/analytics.js#L90-L92">  var result = await cluster.analyticsQuery(
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/analytics.js#L90-L92">  var result = await cluster.analyticsQuery(
     'SELECT airportname, country FROM `travel-sample`.inventory.airport WHERE country="France" LIMIT 3'
   )</code></pre>
 </div>

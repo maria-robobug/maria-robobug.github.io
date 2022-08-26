@@ -103,6 +103,12 @@
 <aside class="nav left-sidebar">
   <div class="nav-container">
     <a href="#" class="menu-expand-toggle"><span>Navigation</span><i class="fas fa-times-circle"></i><i class="fas fa-chevron-circle-left"></i></a>
+    <template id="page-versions" style="display: none">
+      <select class="version_list" data-component="nodejs-sdk">
+        <option value="4.1" data-url="migrating-sdk-code-to-3.n.html" selected>4.1</option>
+        <option value="3.2" data-url="../../3.2/project-docs/migrating-sdk-code-to-3.n.html">3.2</option>
+      </select>
+    </template>
   </div>
 </aside>
 <aside class="toc sidebar"
@@ -111,7 +117,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/project-docs/pages/migrating-sdk-code-to-3.n.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="https://github.com/maria-robobug/docs-sdk-nodejs/edit/release/4.1/modules/project-docs/pages/migrating-sdk-code-to-3.n.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -379,7 +385,7 @@ This avoids method overloading bloat in certain languages, and has the added ben
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L113-L114">const result = await collection.get(key);
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L113-L114">const result = await collection.get(key);
 document = result.value;</code></pre>
 </div>
 </div>
@@ -388,7 +394,7 @@ document = result.value;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/n1ql-queries.js#L34-L49">async function queryNamed() {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/n1ql-queries.js#L34-L49">async function queryNamed() {
   const query = `
     SELECT airportname, city FROM \`travel-sample\` 
     WHERE type=$TYPE 
@@ -473,7 +479,7 @@ Please see the <a href="sdk-release-notes.html" class="xref page">Release Notes<
 <h3 id="connection-to-the-cluster"><a class="anchor" href="#connection-to-the-cluster"></a>Connection to the Cluster</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/migrating.js#L43-L46">const options = { username:"Administrator", password:"password"};
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/migrating.js#L43-L46">const options = { username:"Administrator", password:"password"};
 cluster = await couchbase.connect( "http://127.0.0.1", options);
 bucket = cluster.bucket("travel-sample");
 collection = bucket.scope("inventory").collection("airport");</code></pre>
@@ -485,7 +491,7 @@ down for you&#8201;&#8212;&#8201;you need to do this manually at the end of the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/migrating.js#L262">cluster.close();</code></pre>
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/migrating.js#L262">cluster.close();</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -493,7 +499,7 @@ down for you&#8201;&#8212;&#8201;you need to do this manually at the end of the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/migrating.js#L67-L68">const options = { username:"Administrator", password:"password"};
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/migrating.js#L67-L68">const options = { username:"Administrator", password:"password"};
 cluster = await couchbase.connect( "http://127.0.0.1/?query_timeout=2000", options);</code></pre>
 </div>
 </div>
@@ -505,7 +511,7 @@ cluster = await couchbase.connect( "http://127.0.0.1/?query_timeout=2000", optio
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/connecting-cert-auth.js#L5-L18">// see sdk-examples/etc for creation of certificates
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/connecting-cert-auth.js#L5-L18">// see sdk-examples/etc for creation of certificates
 const here = process.cwd();
 const truststorepath = here + "/" + '../etc/x509-cert/SSLCA/clientdir/trust.pem';
 const certpath = here + "/" + '../etc/x509-cert/SSLCA/clientdir/client.pem';
@@ -558,7 +564,7 @@ cluster.close();</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/migrating.js">const options = { username:"Administrator", password:"password"};
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/migrating.js">const options = { username:"Administrator", password:"password"};
 cluster = await couchbase.connect( "http://127.0.0.1", options);
 bucket = cluster.bucket("travel-sample");
 collection = bucket.scope("inventory").collection("airport");
@@ -609,7 +615,7 @@ All of this has been unified in SDK API 3 under a single concept: serializers an
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/migrating.js#L109-L111">const  upsertResult = await collection.upsert("mydoc-id", { myvalue: "me"});
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/migrating.js#L109-L111">const  upsertResult = await collection.upsert("mydoc-id", { myvalue: "me"});
 const getResult = await collection.get("mydoc-id");
 console.log(getResult);</code></pre>
 </div>
@@ -619,7 +625,7 @@ console.log(getResult);</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/migrating.js#L118-L125">const content = Buffer.from("some data to become binary");
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/migrating.js#L118-L125">const content = Buffer.from("some data to become binary");
 const  upsertResult = await collection.upsert(
   "mydoc-id",
   content,
@@ -904,7 +910,7 @@ bucket.get("mydoc-id", 5000);</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/migrating.js#L132-L133">// SDK API 3 custom timeout
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/migrating.js#L132-L133">// SDK API 3 custom timeout
 const getResult = await collection.get( "airport_1254", {timeout : 2000});</code></pre>
 </div>
 </div>
@@ -961,7 +967,7 @@ queryResult.rows.forEach((row)=&gt;{
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/migrating.js#L141-L145">// SDK API 3 simple query
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/migrating.js#L141-L145">// SDK API 3 simple query
 const queryResult = await cluster.query("SELECT * FROM `travel-sample` WHERE city=$1 LIMIT 10", { parameters: ['Paris']});
 queryResult.rows.forEach((row)=&gt;{
    console.log(row);
@@ -974,7 +980,7 @@ The following shows how to do named and positional parameters in SDK API 3:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/migrating.js#L152-L161">// SDK API 3 named parameters
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/migrating.js#L152-L161">// SDK API 3 named parameters
 const queryResultNamed = await cluster.query("SELECT * FROM `travel-sample` WHERE city=$CITY LIMIT 10", { parameters: {CITY:'Paris'}});
 queryResultNamed.rows.forEach((row)=&gt;{
    console.log(row);
@@ -1027,7 +1033,7 @@ As with the Query service, parameters for the Analytics queries have moved into 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/migrating.js#L168-L172">// SDK API 3 simple analytics query
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/migrating.js#L168-L172">// SDK API 3 simple analytics query
 const analyticsResult = await cluster.analyticsQuery("select * from `travel-dataset` LIMIT 10");
 analyticsResult.rows.forEach((row)=&gt;{
    console.log(row);
@@ -1036,7 +1042,7 @@ analyticsResult.rows.forEach((row)=&gt;{
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/migrating.js#L179-L195">// SDK API 3 named parameters for analytics
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/migrating.js#L179-L195">// SDK API 3 named parameters for analytics
 const analyticsResult1 = await cluster.analyticsQuery(
   "select * from `travel-sample` where city = $CITY LIMIT 10",
   { parameters : { CITY : "Paris"}}
@@ -1094,7 +1100,7 @@ searchResult.rows.forEach((row)=&gt;{
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/migrating.js#L202-L217">    // SDK API 3 search query
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/migrating.js#L202-L217">    // SDK API 3 search query
     const ftsQuery =  couchbase.SearchQuery.match("airport");
     const searchResult = await cluster.searchQuery(
       "hotels",
@@ -1117,7 +1123,7 @@ if(res) console.log(res);
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/migrating.js#L224-L236">const ftsQuery =  couchbase.SearchQuery.match("airport");
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/migrating.js#L224-L236">const ftsQuery =  couchbase.SearchQuery.match("airport");
 const searchResult = await cluster.searchQuery(
   "hotels",
   ftsQuery,
@@ -1184,7 +1190,7 @@ query.rows.forEach((row)=&gt;{
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/migrating.js#L243-L251">// SDK API 3 view query
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/migrating.js#L243-L251">// SDK API 3 view query
 const viewResult = await bucket.viewQuery(
   "dev_airports",
   "airport_view",

@@ -430,14 +430,14 @@ cluster.queryIndexes().createIndex(
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/index-hello-world.js#L84-L86">await cluster
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/hello-world/examples/index-hello-world.js#L84-L86">await cluster
   .queryIndexes()
   .createPrimaryIndex('travel-sample', { name: '#primary', deferred: true })</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/index-hello-world.js#L90-L94">await cluster
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/hello-world/examples/index-hello-world.js#L90-L94">await cluster
   .queryIndexes()
   .createIndex('travel-sample', 'idx_name_email', ['name', 'email'], {
     deferred: true,
@@ -646,7 +646,7 @@ cluster.queryIndexes().watchIndexes(
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/hello-world/examples/index-hello-world.js#L100-L110">// Start building any deferred indexes which were previously created.
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/hello-world/examples/index-hello-world.js#L100-L110">// Start building any deferred indexes which were previously created.
 await cluster.queryIndexes().buildDeferredIndexes('travel-sample')
 
 // Wait for the deferred indexes to be ready for use.

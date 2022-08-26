@@ -346,7 +346,7 @@ macOS
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-csv hljs" data-lang="csv" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/import.csv">id,type,name
+<pre class="highlightjs highlight"><code class="language-csv hljs" data-lang="csv" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/import.csv">id,type,name
 20001,airline,CSV-air-1
 20002,airline,CSV-air-2</code></pre>
 </div>
@@ -358,7 +358,7 @@ macOS
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-tsv hljs" data-lang="tsv" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/import.tsv">id	type	name
+<pre class="highlightjs highlight"><code class="language-tsv hljs" data-lang="tsv" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/import.tsv">id	type	name
 20011	airline	TSV-air-1
 20012	airline	TSV-air-2</code></pre>
 </div>
@@ -373,7 +373,7 @@ macOS
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/import.json">[
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/import.json">[
 	{"id":20021, "type":"airline", "name":"JSON-air-1"},
 	{"id":20022, "type":"airline", "name":"JSON-air-2"},
 	{"id":20023, "type":"airline", "name":"JSON-air-3"}
@@ -387,7 +387,7 @@ macOS
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/import.jsonl">{"id":20031, "type":"airline", "name":"JSONL-air-1"}
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/import.jsonl">{"id":20031, "type":"airline", "name":"JSONL-air-1"}
 {"id":20032, "type":"airline", "name":"JSONL-air-2"}
 {"id":20033, "type":"airline", "name":"JSONL-air-3"}</code></pre>
 </div>
@@ -778,12 +778,12 @@ Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> o
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/import.js">const { parse: csvParser } = require('csv-parse');</code></pre>
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/import.js">const { parse: csvParser } = require('csv-parse');</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/import.js">const csvStream = (filename) =&gt;
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/import.js">const csvStream = (filename) =&gt;
   fs.createReadStream(filename)
   .pipe(
       csvParser({columns: true}))</code></pre>
@@ -791,7 +791,7 @@ Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> o
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/import.js">const tsvStream = (filename) =&gt;
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/import.js">const tsvStream = (filename) =&gt;
   fs.createReadStream(filename)
     .pipe(
       csvParser({
@@ -1068,7 +1068,7 @@ stream-json formats its output with a <code>{ key: &#8230;&#8203;, value: &#8230
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/import.js">const stream = require('stream'); 
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/import.js">const stream = require('stream'); 
 
 // for JSON
 const StreamArray = require('stream-json/streamers/StreamArray')
@@ -1079,7 +1079,7 @@ const {parser: jsonlParser} = require('stream-json/jsonl/Parser');</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/import.js">const map = (f) =&gt;
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/import.js">const map = (f) =&gt;
   new stream.Transform({
     objectMode: true,
     transform: (obj, _, next) =&gt; next(null, f(obj))
@@ -1093,7 +1093,7 @@ const jsonStream = (filename) =&gt;
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/import.js">const jsonlStream = (filename) =&gt;
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/import.js">const jsonlStream = (filename) =&gt;
   fs.createReadStream(filename)
     .pipe(jsonlParser())
     .pipe(map(obj =&gt; obj.value))</code></pre>
@@ -1250,7 +1250,7 @@ Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> o
 <div class="tab-pane" aria-labelledby="tabset5_node-js">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/import.js">const cluster = await couchbase.connect('couchbase://localhost', {
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/import.js">const cluster = await couchbase.connect('couchbase://localhost', {
   username: 'Administrator',
   password: 'password',
 })
@@ -1517,7 +1517,7 @@ Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> o
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/import.js">const importStream = async (stream) =&gt; {
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/import.js">const importStream = async (stream) =&gt; {
   for await (const doc of stream) {
     upsertDocument(doc)
   }
@@ -1529,7 +1529,7 @@ Click the GitHub button <span class="icon"><i class="fa fa-github"></i></span> o
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/import.js">const upsertDocument = async (doc) =&gt; {
+<pre class="highlightjs highlight"><code class="language-nodejs hljs" data-lang="nodejs" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/import.js">const upsertDocument = async (doc) =&gt; {
   try {
     // Build the key
     const key = `${doc.type}_${doc.id}`

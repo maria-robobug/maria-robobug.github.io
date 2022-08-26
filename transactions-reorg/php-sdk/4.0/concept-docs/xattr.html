@@ -184,23 +184,52 @@
 <span class="last-commit-date" id="commitdate">    </span>
 <ul id="contributorList"></ul>
 <span  id="otherContributor"> + </span>
-</div><div class="quoteblock abstract">
+</div><div id="preamble">
+<div class="sectionbody">
+<div class="quoteblock abstract">
 <blockquote>
 Extended Attributes (XATTR) are metadata that can be provided on a per-application basis.
 </blockquote>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-extended-attributes"><a class="anchor" href="#using-extended-attributes"></a>Using Extended Attributes</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved include directive in modules/concept-docs/pages/xattr.adoc - include::6.5@sdk:shared:partial$sdk-xattr-overview.adoc[]</p>
+<p>The SDK supports extended attributes by means of extensions to the <em>Sub-Document API</em>: so that extended attributes can be defined, searched for, edited, removed, and more.
+In order to specify that a subdocument operation should be performed on an extended rather than a regular attribute, an <code>xattr</code> flag should be set to <code>true</code>, by the calling application.
+For detailed information on the Subdocument API, see <a href="subdocument-operations.html" class="xref page">Subdocument Operations</a>, and the accompanying <a href="../howtos/subdocument-operations.html" class="xref page">practical doc</a>.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/concept-docs/pages/xattr.adoc - include::6.5@sdk:shared:partial$sdk-xattr-overview.adoc[]</p>
+<p>For more information, see <a href="../../../server/7.1/learn/data/extended-attributes-fundamentals.html" class="xref page">Extended Attributes</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The maximum content size for a document stored in Couchbase Server is 20MB.
+XATTRs&#8201;&#8212;&#8201;including Virtual XATTRs&#8201;&#8212;&#8201;will reduce the space available for the remainder of the document.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="virtual-extended-attributes"><a class="anchor" href="#virtual-extended-attributes"></a>Virtual Extended Attributes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>Virtual</em> extended attributes consist of metadata on an individual document: this can be retrieved by specifying <code>$document</code> as a search-path&#8201;&#8212;&#8201;see below.
+See <a href="../../../server/7.1/learn/data/extended-attributes-fundamentals.html#virtual-extended-attributes" class="xref page">the Virtual XATTR Section</a> for more information on the metadata that they expose.</p>
 </div>
 <div class="paragraph">
-<p>Unresolved include directive in modules/concept-docs/pages/xattr.adoc - include::6.5@sdk:shared:partial$sdk-xattr-overview.adoc[]</p>
+<p>These attributes are generated on-demand to expose storage-level document metadata, such as expiry to expose document expiration.
+For expiry using Virtual XATTR, use the following:</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">bucket.lookupIn(key).get("$document.exptime", new SubdocOptionsBuilder().xattr(true)).execute()</code></pre>
 </div>
 </div>
 </article>

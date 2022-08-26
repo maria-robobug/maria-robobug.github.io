@@ -102,6 +102,12 @@
 <aside class="nav left-sidebar">
   <div class="nav-container">
     <a href="#" class="menu-expand-toggle"><span>Navigation</span><i class="fas fa-times-circle"></i><i class="fas fa-chevron-circle-left"></i></a>
+    <template id="page-versions" style="display: none">
+      <select class="version_list" data-component="nodejs-sdk">
+        <option value="4.1" data-url="kv-operations.html" selected>4.1</option>
+        <option value="3.2" data-url="../../3.2/howtos/kv-operations.html">3.2</option>
+      </select>
+    </template>
   </div>
 </aside>
 <aside class="toc sidebar"
@@ -110,7 +116,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/pages/kv-operations.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="https://github.com/maria-robobug/docs-sdk-nodejs/edit/release/4.1/modules/howtos/pages/kv-operations.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -206,7 +212,7 @@ Here is the <em>Insert</em> operation at its simplest:</p>
 <div class="listingblock">
 <div class="title">Insert</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L144">const result = await collection.insert(key, document);</code></pre>
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L144">const result = await collection.insert(key, document);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -215,7 +221,7 @@ Here is the <em>Insert</em> operation at its simplest:</p>
 <div class="listingblock">
 <div class="title">Insert (with options)</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L159-L161">const result = await collection.insert(key, document,
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L159-L161">const result = await collection.insert(key, document,
     { timeout: 10000 } // 10 seconds
 );</code></pre>
 </div>
@@ -232,7 +238,7 @@ for the <em>Replace</em> example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L175-L178">const result = await collection.replace(key,
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L175-L178">const result = await collection.replace(key,
     document,
     { cas: cas, expiry: 60, timeout: 5000 }
 );</code></pre>
@@ -251,7 +257,7 @@ For a discussion of item (Document) <em>vs</em> Bucket expiration, see the
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L192-L199">let result = await collection.upsert(key, document,
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L192-L199">let result = await collection.upsert(key, document,
     {
         expiry: 60,
         persist_to: 1,
@@ -294,7 +300,7 @@ These trade offs, as well as which settings may be tuned, are discussed in the <
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L213-L219">let result = await collection.upsert(key, document,
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L213-L219">let result = await collection.upsert(key, document,
     {
         expiry: 60,  // 60 seconds,
         durabilityLevel: couchbase.DurabilityLevel.None, // Majority etc.
@@ -333,7 +339,7 @@ Where the number of operations or other circumstances make bandwidth a significa
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L113-L114">const result = await collection.get(key);
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L113-L114">const result = await collection.get(key);
 document = result.value;</code></pre>
 </div>
 </div>
@@ -343,7 +349,7 @@ document = result.value;</code></pre>
 <div class="listingblock">
 <div class="title">Get (with options)</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L128-L129">const result = await collection.get(key, { timeout: 1000 });
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L128-L129">const result = await collection.get(key, { timeout: 1000 });
 document = result.value;</code></pre>
 </div>
 </div>
@@ -358,7 +364,7 @@ document = result.value;</code></pre>
 <div class="listingblock">
 <div class="title">Remove (with options)</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L236-L243">const result = await collection.remove(key,
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L236-L243">const result = await collection.remove(key,
     {
         cas: cas,
         persist_to: 0,  // non-zero gives "not implemented"
@@ -379,7 +385,7 @@ Using <code>touch()</code>, you can set expiration values on documents to handle
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L258">const result = await collection.touch(key, 100); // 100 seconds</code></pre>
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L258">const result = await collection.touch(key, 100); // 100 seconds</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -387,7 +393,7 @@ Using <code>touch()</code>, you can set expiration values on documents to handle
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L271-L273">const result = await collection.touch(key, 100,  // 100 seconds
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L271-L273">const result = await collection.touch(key, 100,  // 100 seconds
     { timeout: 5000 } // 5 seconds
 );</code></pre>
 </div>
@@ -417,14 +423,14 @@ For more on expiration see the <a href="../concept-docs/documents.html#setting-d
 <div class="listingblock">
 <div class="title">Increment</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L284-L285">// increment binary value by 1
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L284-L285">// increment binary value by 1
 const result = await collection.binary().increment(binValKey, 1);</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Increment (with options)</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L293-L297">// increment binary value by 1, if binValKey doesn’t exist, seed it at 1000
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L293-L297">// increment binary value by 1, if binValKey doesn’t exist, seed it at 1000
 const result = await collection.binary().increment(binValKey, 1, {
     initial: 1000,
     timeout: 5000
@@ -434,14 +440,14 @@ const result = await collection.binary().increment(binValKey, 1, {
 <div class="listingblock">
 <div class="title">Decrement</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L309-L310">// decrement binary value by 1
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L309-L310">// decrement binary value by 1
 const result = await collection.binary().decrement(binValKey, 1);</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Decrement (with options)</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L322-L328">// decrement binary value by 1, if binValKey doesn’t exist, seed it at 1000
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L322-L328">// decrement binary value by 1, if binValKey doesn’t exist, seed it at 1000
 const result = await collection.binary().decrement(binValKey, 1,
     {
         initial: 1000,
@@ -492,7 +498,7 @@ const sampleBucket = sampleCluster.bucket("travel-sample");
 const sampleScope = sampleBucket.scope("tenant_agent_00");
 sampleColl = sampleScope.collection("users");
 
-[data-source-url=file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/kv-operations.js#L514-L515]
+[data-source-url=https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/kv-operations.js#L514-L515]
 let collDocument = { name: 'John Doe', preferred_email: 'johndoe111@test123.test' };
 result = await sampleColl.upsert(user, collDocument);</code></pre>
 </div>

@@ -937,7 +937,7 @@ if err != nil {
 <div class="sectionbody">
 <div class="paragraph">
 <p>Key-Value operations and queries can be freely intermixed, and will interact with each other as you would expect.
-In this example we insert a document with Key-Value, and read it with a <code>SELECT</code> query.</p>
+In this example we insert a document with a key-value operation, and read it with a <code>SELECT</code> query.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1036,7 +1036,8 @@ This means the application must 'swallow' the error, but record that an error oc
 <div class="sectionbody">
 <div class="paragraph">
 <p>The default configuration should be appropriate for most use-cases.
-Transactions can optionally be globally configured at the point of creating the <code>Cluster</code> object:</p>
+Transactions can optionally be globally configured at the point of creating the <code>Cluster</code> object.
+For example, if you want to change the level of durability which must be attained, this can be configured as part of the connect options:</p>
 </div>
 <div class="listingblock">
 <div class="content">

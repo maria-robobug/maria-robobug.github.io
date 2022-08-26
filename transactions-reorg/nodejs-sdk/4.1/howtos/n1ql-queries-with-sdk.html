@@ -103,6 +103,12 @@
 <aside class="nav left-sidebar">
   <div class="nav-container">
     <a href="#" class="menu-expand-toggle"><span>Navigation</span><i class="fas fa-times-circle"></i><i class="fas fa-chevron-circle-left"></i></a>
+    <template id="page-versions" style="display: none">
+      <select class="version_list" data-component="nodejs-sdk">
+        <option value="4.1" data-url="n1ql-queries-with-sdk.html" selected>4.1</option>
+        <option value="3.2" data-url="../../3.2/howtos/n1ql-queries-with-sdk.html">3.2</option>
+      </select>
+    </template>
   </div>
 </aside>
 <aside class="toc sidebar"
@@ -111,7 +117,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/pages/n1ql-queries-with-sdk.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="https://github.com/maria-robobug/docs-sdk-nodejs/edit/release/4.1/modules/howtos/pages/n1ql-queries-with-sdk.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -221,7 +227,7 @@ Note that both parameters and options are optional.</p>
 <div class="listingblock">
 <div class="title">Positional parameter example:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/n1ql-queries-scoped.js#L34-L48">async function queryPlaceholders() {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/n1ql-queries-scoped.js#L34-L48">async function queryPlaceholders() {
   const query = `
   SELECT airportname, city FROM \`travel-sample\`.inventory.airport
   WHERE city=$1
@@ -241,7 +247,7 @@ Note that both parameters and options are optional.</p>
 <div class="listingblock">
 <div class="title">Named parameter example:</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/n1ql-queries-scoped.js#L71-L85">async function queryNamed() {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/n1ql-queries-scoped.js#L71-L85">async function queryNamed() {
   const query = `
     SELECT airportname, city FROM \`travel-sample\`.inventory.airport
     WHERE city=$CITY;
@@ -268,7 +274,7 @@ Note that both parameters and options are optional.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/n1ql-queries-scoped.js#L52-L67">async function queryResults() {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/n1ql-queries-scoped.js#L52-L67">async function queryResults() {
   const query = `
   SELECT airportname, city FROM \`travel-sample\`.inventory.airport
   WHERE tz LIKE '%Los_Angeles'
@@ -318,7 +324,7 @@ CAS is stored as a 64-bit integer, which cannot be represented safely in javaScr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/devguide/examples/nodejs/n1ql-queries.js#L34-L49">async function queryNamed() {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/devguide/examples/nodejs/n1ql-queries.js#L34-L49">async function queryNamed() {
   const query = `
     SELECT airportname, city FROM \`travel-sample\` 
     WHERE type=$TYPE 

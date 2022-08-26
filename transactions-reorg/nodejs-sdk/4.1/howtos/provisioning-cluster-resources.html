@@ -103,6 +103,12 @@
 <aside class="nav left-sidebar">
   <div class="nav-container">
     <a href="#" class="menu-expand-toggle"><span>Navigation</span><i class="fas fa-times-circle"></i><i class="fas fa-chevron-circle-left"></i></a>
+    <template id="page-versions" style="display: none">
+      <select class="version_list" data-component="nodejs-sdk">
+        <option value="4.1" data-url="provisioning-cluster-resources.html" selected>4.1</option>
+        <option value="3.2" data-url="../../3.2/howtos/provisioning-cluster-resources.html">3.2</option>
+      </select>
+    </template>
   </div>
 </aside>
 <aside class="toc sidebar"
@@ -111,7 +117,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/pages/provisioning-cluster-resources.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="https://github.com/maria-robobug/docs-sdk-nodejs/edit/release/4.1/modules/howtos/pages/provisioning-cluster-resources.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -250,7 +256,7 @@ It is instantiated through the <code>Cluster.buckets()</code> method.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/provisioning.js#L12">const bucketMgr = cluster.buckets()</code></pre>
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/provisioning.js#L12">const bucketMgr = cluster.buckets()</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -336,7 +342,7 @@ In the case of the update, this is not necessarily the currently configured valu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/provisioning.js#L17-L24">await bucketMgr.createBucket({
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/provisioning.js#L17-L24">await bucketMgr.createBucket({
   name: 'hello',
   flushEnabled: false,
   replicaIndex: false,
@@ -351,7 +357,7 @@ In the case of the update, this is not necessarily the currently configured valu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/provisioning.js#L39-L42">var settings = await bucketMgr.getBucket('hello')
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/provisioning.js#L39-L42">var settings = await bucketMgr.getBucket('hello')
 settings.flushEnabled = true
 
 await bucketMgr.updateBucket(settings)</code></pre>
@@ -362,7 +368,7 @@ await bucketMgr.updateBucket(settings)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/provisioning.js#L50">await bucketMgr.dropBucket('hello')</code></pre>
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/provisioning.js#L50">await bucketMgr.dropBucket('hello')</code></pre>
 </div>
 </div>
 <div class="sect2">
@@ -378,7 +384,7 @@ You may enable bucket flushing on a per-bucket basis using the Couchbase Web Con
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/provisioning.js#L46">await bucketMgr.flushBucket('hello')</code></pre>
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/provisioning.js#L46">await bucketMgr.flushBucket('hello')</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -396,7 +402,7 @@ It is instantiated through the <code>Bucket.collections()</code> method.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/collection-manager.js#L36-L37">const bucket = cluster.bucket('travel-sample')
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/collection-manager.js#L36-L37">const bucket = cluster.bucket('travel-sample')
 const collectionMgr = bucket.collections()</code></pre>
 </div>
 </div>
@@ -405,7 +411,7 @@ const collectionMgr = bucket.collections()</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/collection-manager.js#L41-L49">try {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/collection-manager.js#L41-L49">try {
   await collectionMgr.createScope('example-scope')
 } catch (e) {
   if (e instanceof couchbase.ScopeExistsError) {
@@ -421,7 +427,7 @@ const collectionMgr = bucket.collections()</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/collection-manager.js">try {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/collection-manager.js">try {
   var collectionSpec = new couchbase.CollectionSpec({
     name: 'example-collection',
     scopeName: 'example-scope',
@@ -478,7 +484,7 @@ along with
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/collection-manager.js#L12-L23">const userMgr = clusterAdm.users()
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/collection-manager.js#L12-L23">const userMgr = clusterAdm.users()
 const bucketAdm = clusterAdm.bucket('travel-sample')
 
 await userMgr.upsertUser({
@@ -528,7 +534,7 @@ It can be instantiated through the <code>Cluster.queryIndexes()</code> method.</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/query-index-manager.js#L7-L11">const cluster = await couchbase.connect('couchbase://localhost', {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/query-index-manager.js#L7-L11">const cluster = await couchbase.connect('couchbase://localhost', {
   username: 'Administrator',
   password: 'password',
 })
@@ -568,7 +574,7 @@ Note that you cannot provide a named scope or collection separately, both must b
 <div class="listingblock">
 <div class="title">Creating a primary index</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/query-index-manager.js#L16-L22">await queryIndexMgr.createPrimaryIndex('travel-sample', {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/query-index-manager.js#L16-L22">await queryIndexMgr.createPrimaryIndex('travel-sample', {
   scopeName: 'tenant_agent_01',
   collectionName: 'users',
   // Set this is you wish to use a custom name
@@ -591,7 +597,7 @@ When set to <code>true</code>, this optional argument ensures that an error is n
 <div class="listingblock">
 <div class="title">Creating a secondary index</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/query-index-manager.js#L27-L36">try {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/query-index-manager.js#L27-L36">try {
   await queryIndexMgr.createIndex(
     'travel-sample',
     'tenant_agent_01_users_email',
@@ -615,7 +621,7 @@ To achieve this we can use the <code>deferred</code> boolean option, and set it 
 <div class="listingblock">
 <div class="title">Deferring index creation</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/query-index-manager.js#L41-L65">try {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/query-index-manager.js#L41-L65">try {
   // Create a deferred index
   await queryIndexMgr.createIndex(
     'travel-sample',
@@ -649,7 +655,7 @@ Which one you use depends on the type of query index you wish to drop from the d
 <div class="listingblock">
 <div class="title">Deleting an index</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/query-index-manager.js#L70-L81">// Drop a primary index
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/query-index-manager.js#L70-L81">// Drop a primary index
 await queryIndexMgr.dropPrimaryIndex('travel-sample', {
   scopeName: 'tenant_agent_01',
   collectionName: 'users',
@@ -682,7 +688,7 @@ All operations on design documents are performed on the <code>ViewIndexManager</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/provisioning-resources-views.js#L8-L14">  const cluster = await couchbase.connect('couchbase://localhost', {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/provisioning-resources-views.js#L8-L14">  const cluster = await couchbase.connect('couchbase://localhost', {
     username: 'Administrator',
     password: 'password',
   })
@@ -696,7 +702,7 @@ All operations on design documents are performed on the <code>ViewIndexManager</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/provisioning-resources-views.js#L18-L31">  let designDoc = new DesignDocument({
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/provisioning-resources-views.js#L18-L31">  let designDoc = new DesignDocument({
     name: 'dev_landmarks',
     views: {
       by_country: {
@@ -742,7 +748,7 @@ This specifies whether the design document should be created as development, or 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/provisioning-resources-views.js#L35-L40">  designDoc = await viewMgr.getDesignDocument('dev_landmarks')
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/provisioning-resources-views.js#L35-L40">  designDoc = await viewMgr.getDesignDocument('dev_landmarks')
   console.info(
     'Found design doc:',
     designDoc.name,
@@ -755,7 +761,7 @@ This specifies whether the design document should be created as development, or 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/provisioning-resources-views.js#L44">  await viewMgr.publishDesignDocument('landmarks')</code></pre>
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/provisioning-resources-views.js#L44">  await viewMgr.publishDesignDocument('landmarks')</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -763,7 +769,7 @@ This specifies whether the design document should be created as development, or 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/provisioning-resources-views.js#L48">  await viewMgr.dropDesignDocument('landmarks')</code></pre>
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/provisioning-resources-views.js#L48">  await viewMgr.dropDesignDocument('landmarks')</code></pre>
 </div>
 </div>
 </div>

@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generated": 1661252648401,
+  "generated": 1661522667640,
   "url": "https://maria-robobug.github.io",
   "components": [
     {
@@ -5061,24 +5061,6 @@
             },
             {
               "module": "concept-docs",
-              "path": "transactions-cleanup.adoc",
-              "url": "/nodejs-sdk/4.1/concept-docs/transactions-cleanup.html",
-              "title": "Cleanup"
-            },
-            {
-              "module": "concept-docs",
-              "path": "transactions-error-handling.adoc",
-              "url": "/nodejs-sdk/4.1/concept-docs/transactions-error-handling.html",
-              "title": "Error Handling"
-            },
-            {
-              "module": "concept-docs",
-              "path": "transactions.adoc",
-              "url": "/nodejs-sdk/4.1/concept-docs/transactions.html",
-              "title": "Distributed ACID Transactions"
-            },
-            {
-              "module": "concept-docs",
               "path": "understanding-views.adoc",
               "url": "/nodejs-sdk/4.1/concept-docs/understanding-views.html",
               "title": "MapReduce Views"
@@ -5284,16 +5266,6 @@
               "path": "subdocument-operations.adoc",
               "url": "/nodejs-sdk/4.1/howtos/subdocument-operations.html",
               "title": "Sub-Document Operations with the Node.js SDK"
-            },
-            {
-              "module": "howtos",
-              "path": "transactions-single-query.adoc",
-              "url": "/nodejs-sdk/4.1/howtos/transactions-single-query.html"
-            },
-            {
-              "module": "howtos",
-              "path": "transactions-tracing.adoc",
-              "url": "/nodejs-sdk/4.1/howtos/transactions-tracing.html"
             },
             {
               "module": "howtos",
@@ -5730,6 +5702,727 @@
               "path": "webui-cli-access.adoc",
               "url": "/nodejs-sdk/4.1/hello-world/webui-cli-access.html",
               "title": "Browser and CLI Access"
+            }
+          ]
+        },
+        {
+          "version": "3.2",
+          "url": "/nodejs-sdk/3.2/hello-world/overview.html",
+          "pages": [
+            {
+              "module": "concept-docs",
+              "path": "analytics-for-sdk-users.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/analytics-for-sdk-users.html",
+              "title": "Analytics"
+            },
+            {
+              "alias": true,
+              "module": "concept-docs",
+              "path": "analytics.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/analytics-for-sdk-users.html",
+              "title": "Analytics"
+            },
+            {
+              "module": "concept-docs",
+              "path": "buckets-and-clusters.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/buckets-and-clusters.html",
+              "title": "Buckets and Clusters"
+            },
+            {
+              "module": "concept-docs",
+              "path": "certificate-based-authentication.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/certificate-based-authentication.html"
+            },
+            {
+              "module": "concept-docs",
+              "path": "collections.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/collections.html",
+              "title": "Collections &amp; Scope"
+            },
+            {
+              "module": "concept-docs",
+              "path": "compression.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/compression.html",
+              "title": "Compression"
+            },
+            {
+              "module": "concept-docs",
+              "path": "concepts.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/concepts.html",
+              "title": "Concepts"
+            },
+            {
+              "module": "concept-docs",
+              "path": "data-model.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/data-model.html",
+              "title": "The Data Model"
+            },
+            {
+              "module": "concept-docs",
+              "path": "data-services.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/data-services.html"
+            },
+            {
+              "module": "concept-docs",
+              "path": "documents.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/documents.html",
+              "title": "Document"
+            },
+            {
+              "module": "concept-docs",
+              "path": "durability-replication-failure-considerations.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/durability-replication-failure-considerations.html",
+              "title": "Durability &amp; Failure"
+            },
+            {
+              "module": "concept-docs",
+              "path": "encryption.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/encryption.html"
+            },
+            {
+              "module": "concept-docs",
+              "path": "errors.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/errors.html",
+              "title": "Errors, Exceptions, and Diagnostics"
+            },
+            {
+              "module": "concept-docs",
+              "path": "full-text-search-overview.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/full-text-search-overview.html"
+            },
+            {
+              "module": "concept-docs",
+              "path": "health-check.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/health-check.html",
+              "title": "Health Check"
+            },
+            {
+              "alias": true,
+              "module": "concept-docs",
+              "path": "managing-clusters.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/buckets-and-clusters.html",
+              "title": "Buckets and Clusters"
+            },
+            {
+              "module": "concept-docs",
+              "path": "n1ql-query.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/n1ql-query.html",
+              "title": "Querying with N1QL"
+            },
+            {
+              "module": "concept-docs",
+              "path": "nonjson.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/nonjson.html",
+              "title": "Non-JSON Documents"
+            },
+            {
+              "module": "concept-docs",
+              "path": "rbac.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/rbac.html"
+            },
+            {
+              "module": "concept-docs",
+              "path": "response-time-observability.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/response-time-observability.html",
+              "title": "Request Tracing and Metrics"
+            },
+            {
+              "module": "concept-docs",
+              "path": "sdk-user-management-overview.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/sdk-user-management-overview.html"
+            },
+            {
+              "alias": true,
+              "module": "concept-docs",
+              "path": "sdk-xattr-overview.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/xattr.html",
+              "title": "Extended Attributes"
+            },
+            {
+              "module": "concept-docs",
+              "path": "subdocument-operations.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/subdocument-operations.html"
+            },
+            {
+              "module": "concept-docs",
+              "path": "understanding-views.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/understanding-views.html"
+            },
+            {
+              "module": "concept-docs",
+              "path": "xattr.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/xattr.html",
+              "title": "Extended Attributes"
+            },
+            {
+              "module": "hello-world",
+              "path": "overview.adoc",
+              "url": "/nodejs-sdk/3.2/hello-world/overview.html",
+              "title": "Couchbase Node.js SDK 3.2"
+            },
+            {
+              "module": "hello-world",
+              "path": "sample-application.adoc",
+              "url": "/nodejs-sdk/3.2/hello-world/sample-application.html",
+              "title": "Sample Application"
+            },
+            {
+              "alias": true,
+              "module": "hello-world",
+              "path": "sdk-authentication-overview.adoc",
+              "url": "/nodejs-sdk/3.2/hello-world/sdk-authentication.html"
+            },
+            {
+              "module": "hello-world",
+              "path": "sdk-authentication.adoc",
+              "url": "/nodejs-sdk/3.2/hello-world/sdk-authentication.html"
+            },
+            {
+              "module": "hello-world",
+              "path": "start-using-ottoman.adoc",
+              "url": "/nodejs-sdk/3.2/hello-world/start-using-ottoman.html",
+              "title": "Install and Start Using the Ottoman ODM with Couchbase Server"
+            },
+            {
+              "module": "hello-world",
+              "path": "start-using-sdk.adoc",
+              "url": "/nodejs-sdk/3.2/hello-world/start-using-sdk.html",
+              "title": "Install and Start Using the Node.js SDK with Couchbase Server"
+            },
+            {
+              "module": "hello-world",
+              "path": "webui-cli-access.adoc",
+              "url": "/nodejs-sdk/3.2/hello-world/webui-cli-access.html"
+            },
+            {
+              "module": "howtos",
+              "path": "advanced-analytics-querying.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/advanced-analytics-querying.html",
+              "title": "Advanced Analytics Querying"
+            },
+            {
+              "module": "howtos",
+              "path": "analytics-using-sdk.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/analytics-using-sdk.html",
+              "title": "Analytics using the Node.js SDK"
+            },
+            {
+              "module": "howtos",
+              "path": "collecting-information-and-logging.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/collecting-information-and-logging.html",
+              "title": "Collecting Information &amp; Logging"
+            },
+            {
+              "module": "howtos",
+              "path": "concurrent-async-apis.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/concurrent-async-apis.html",
+              "title": "Choosing an API"
+            },
+            {
+              "module": "howtos",
+              "path": "concurrent-document-mutations.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/concurrent-document-mutations.html",
+              "title": "Concurrent Document Mutations"
+            },
+            {
+              "module": "howtos",
+              "path": "distributed-acid-transactions-from-the-sdk.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/distributed-acid-transactions-from-the-sdk.html",
+              "title": "Distributed Transactions from the Node.js SDK"
+            },
+            {
+              "alias": true,
+              "module": "howtos",
+              "path": "document-operations.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/kv-operations.html",
+              "title": "Key Value Operations"
+            },
+            {
+              "module": "howtos",
+              "path": "durability-error-handling-from-the-sdk.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/durability-error-handling-from-the-sdk.html",
+              "title": "Durability in Action"
+            },
+            {
+              "module": "howtos",
+              "path": "encrypting-using-sdk.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/encrypting-using-sdk.html",
+              "title": "Field Level Encryption from the Node.js SDK"
+            },
+            {
+              "module": "howtos",
+              "path": "error-handling.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/error-handling.html",
+              "title": "Handling Errors"
+            },
+            {
+              "module": "howtos",
+              "path": "full-text-searching-with-sdk.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/full-text-searching-with-sdk.html",
+              "title": "Full Text Search (FTS) Using the Node.js SDK with Couchbase Server"
+            },
+            {
+              "module": "howtos",
+              "path": "health-check.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/health-check.html",
+              "title": "Diagnosing and preventing Network Problems with Health Check"
+            },
+            {
+              "module": "howtos",
+              "path": "json.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/json.html"
+            },
+            {
+              "module": "howtos",
+              "path": "kv-operations.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/kv-operations.html",
+              "title": "Key Value Operations"
+            },
+            {
+              "module": "howtos",
+              "path": "managing-connections.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/managing-connections.html",
+              "title": "Managing Connections using the Node.js SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "howtos",
+              "path": "multi-network.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/managing-connections.html",
+              "title": "Managing Connections using the Node.js SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "howtos",
+              "path": "multiple-apis.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/concurrent-async-apis.html",
+              "title": "Choosing an API"
+            },
+            {
+              "module": "howtos",
+              "path": "n1ql-queries-with-sdk.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/n1ql-queries-with-sdk.html",
+              "title": "N1QL Queries from the SDK"
+            },
+            {
+              "alias": true,
+              "module": "howtos",
+              "path": "n1ql-query.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/n1ql-queries-with-sdk.html",
+              "title": "N1QL Queries from the SDK"
+            },
+            {
+              "module": "howtos",
+              "path": "provisioning-cluster-resources.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/provisioning-cluster-resources.html",
+              "title": "Provisioning Cluster Resources"
+            },
+            {
+              "module": "howtos",
+              "path": "sdk-authentication.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/sdk-authentication.html",
+              "title": "Authenticating against Couchbase Server"
+            },
+            {
+              "module": "howtos",
+              "path": "sdk-user-management-example.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/sdk-user-management-example.html",
+              "title": "User Management"
+            },
+            {
+              "module": "howtos",
+              "path": "slow-operations-logging.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/slow-operations-logging.html",
+              "title": "Slow Operations Logging"
+            },
+            {
+              "module": "howtos",
+              "path": "subdocument-operations.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/subdocument-operations.html",
+              "title": "Sub-Document Operations with the Node.js SDK"
+            },
+            {
+              "module": "howtos",
+              "path": "transcoders-nonjson.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/transcoders-nonjson.html",
+              "title": "Transcoders &amp; Non-JSON Documents"
+            },
+            {
+              "module": "howtos",
+              "path": "troubleshooting-cloud-connections.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/troubleshooting-cloud-connections.html"
+            },
+            {
+              "module": "howtos",
+              "path": "view-queries-with-sdk.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/view-queries-with-sdk.html",
+              "title": "MapReduce Views Using the Node.js SDK with Couchbase Server"
+            },
+            {
+              "module": "howtos",
+              "path": "working-with-collections.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/working-with-collections.html"
+            },
+            {
+              "module": "project-docs",
+              "path": "3.0-pre-release-notes.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/3.0-pre-release-notes.html",
+              "title": "Pre-release Archive Release Notes"
+            },
+            {
+              "alias": true,
+              "module": "project-docs",
+              "path": "3.0αλφα-sdk-release-notes.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/3.0-pre-release-notes.html",
+              "title": "Pre-release Archive Release Notes"
+            },
+            {
+              "alias": true,
+              "module": "project-docs",
+              "path": "compatibility-versions-features.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/compatibility.html",
+              "title": "Compatibility of Couchbase Features, Couchbase Server Versions, and the Couchbase Node.js SDK"
+            },
+            {
+              "module": "project-docs",
+              "path": "compatibility.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/compatibility.html",
+              "title": "Compatibility of Couchbase Features, Couchbase Server Versions, and the Couchbase Node.js SDK"
+            },
+            {
+              "module": "project-docs",
+              "path": "get-involved.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/get-involved.html",
+              "title": "Get Involved"
+            },
+            {
+              "module": "project-docs",
+              "path": "metadoc-about-these-sdk-docs.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/metadoc-about-these-sdk-docs.html"
+            },
+            {
+              "module": "project-docs",
+              "path": "migrating-sdk-code-to-3.n.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/migrating-sdk-code-to-3.n.html",
+              "title": "Migrating from SDK2 to SDK3 API"
+            },
+            {
+              "module": "project-docs",
+              "path": "ottoman-release-notes.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/ottoman-release-notes.html",
+              "title": "Ottoman ODM Release Notes and Archives"
+            },
+            {
+              "module": "project-docs",
+              "path": "sdk-licenses.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/sdk-licenses.html",
+              "title": "SDK License"
+            },
+            {
+              "module": "project-docs",
+              "path": "sdk-release-notes.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/sdk-release-notes.html",
+              "title": "Couchbase Node.js Release Notes and Archives"
+            },
+            {
+              "module": "ref",
+              "path": "client-settings.adoc",
+              "url": "/nodejs-sdk/3.2/ref/client-settings.html",
+              "title": "Client Settings"
+            },
+            {
+              "module": "ref",
+              "path": "data-structures.adoc",
+              "url": "/nodejs-sdk/3.2/ref/data-structures.html"
+            },
+            {
+              "module": "ref",
+              "path": "error-codes.adoc",
+              "url": "/nodejs-sdk/3.2/ref/error-codes.html",
+              "title": "Errors &amp; Exceptions Reference"
+            },
+            {
+              "module": "ref",
+              "path": "glossary.adoc",
+              "url": "/nodejs-sdk/3.2/ref/glossary.html"
+            },
+            {
+              "module": "ref",
+              "path": "travel-app-data-model.adoc",
+              "url": "/nodejs-sdk/3.2/ref/travel-app-data-model.html"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "async-programming.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/concurrent-async-apis.html",
+              "title": "Choosing an API"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "batching-operations.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/concurrent-async-apis.html",
+              "title": "Choosing an API"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "client-settings.adoc",
+              "url": "/nodejs-sdk/3.2/ref/client-settings.html",
+              "title": "Client Settings"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "compatibility-versions-features.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/compatibility.html",
+              "title": "Compatibility of Couchbase Features, Couchbase Server Versions, and the Couchbase Node.js SDK"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "concurrent-document-mutations.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/concurrent-document-mutations.html",
+              "title": "Concurrent Document Mutations"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "connecting.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/managing-connections.html",
+              "title": "Managing Connections using the Node.js SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "connection-advanced.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/managing-connections.html",
+              "title": "Managing Connections using the Node.js SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "core-operations.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/data-model.html",
+              "title": "The Data Model"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "datastructures.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/data-model.html",
+              "title": "The Data Model"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "documents-atomic.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/documents.html",
+              "title": "Document"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "documents-basics.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/documents.html",
+              "title": "Document"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "documents.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/documents.html",
+              "title": "Document"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "encrypting-using-sdk.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/encrypting-using-sdk.html",
+              "title": "Field Level Encryption from the Node.js SDK"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "getting-started.adoc",
+              "url": "/nodejs-sdk/3.2/hello-world/start-using-sdk.html",
+              "title": "Install and Start Using the Node.js SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "handling-error-conditions.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/error-handling.html",
+              "title": "Handling Errors"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "health-check.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/health-check.html",
+              "title": "Health Check"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "hello-couchbase.adoc",
+              "url": "/nodejs-sdk/3.2/hello-world/start-using-sdk.html",
+              "title": "Install and Start Using the Node.js SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "index.adoc",
+              "url": "/nodejs-sdk/3.2/hello-world/overview.html",
+              "title": "Couchbase Node.js SDK 3.2"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "managing-clusters.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/provisioning-cluster-resources.html",
+              "title": "Provisioning Cluster Resources"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "managing-connections.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/managing-connections.html",
+              "title": "Managing Connections using the Node.js SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "migrate.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/migrating-sdk-code-to-3.n.html",
+              "title": "Migrating from SDK2 to SDK3 API"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "n1ql-query.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/n1ql-query.html",
+              "title": "Querying with N1QL"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "nonjson.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/nonjson.html",
+              "title": "Non-JSON Documents"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "overview.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/compatibility.html",
+              "title": "Compatibility of Couchbase Features, Couchbase Server Versions, and the Couchbase Node.js SDK"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "release-notes.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/sdk-release-notes.html",
+              "title": "Couchbase Node.js Release Notes and Archives"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "relnotes-nodejs-sdk.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/sdk-release-notes.html",
+              "title": "Couchbase Node.js Release Notes and Archives"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sample-app-backend.adoc",
+              "url": "/nodejs-sdk/3.2/hello-world/sample-application.html",
+              "title": "Sample Application"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sample-application.adoc",
+              "url": "/nodejs-sdk/3.2/hello-world/sample-application.html",
+              "title": "Sample Application"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-authentication-overview.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/sdk-authentication.html",
+              "title": "Authenticating against Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-licenses.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/sdk-licenses.html",
+              "title": "SDK License"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-release-notes.adoc",
+              "url": "/nodejs-sdk/3.2/project-docs/sdk-release-notes.html",
+              "title": "Couchbase Node.js Release Notes and Archives"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-user-management-example.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/sdk-user-management-example.html",
+              "title": "User Management"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-xattr-example.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/subdocument-operations.html",
+              "title": "Sub-Document Operations with the Node.js SDK"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-xattr-overview.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/xattr.html",
+              "title": "Extended Attributes"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "start-using-sdk.adoc",
+              "url": "/nodejs-sdk/3.2/hello-world/start-using-sdk.html",
+              "title": "Install and Start Using the Node.js SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "start-using.adoc",
+              "url": "/nodejs-sdk/3.2/hello-world/start-using-sdk.html",
+              "title": "Install and Start Using the Node.js SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "threshold-logging.adoc",
+              "url": "/nodejs-sdk/3.2/concept-docs/response-time-observability.html",
+              "title": "Request Tracing and Metrics"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "tutorial4.adoc",
+              "url": "/nodejs-sdk/3.2/hello-world/sample-application.html",
+              "title": "Sample Application"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "view-queries-with-sdk.adoc",
+              "url": "/nodejs-sdk/3.2/howtos/view-queries-with-sdk.html",
+              "title": "MapReduce Views Using the Node.js SDK with Couchbase Server"
             }
           ]
         }
@@ -6968,6 +7661,24 @@
             },
             {
               "module": "concept-docs",
+              "path": "transactions-cleanup.adoc",
+              "url": "/php-sdk/4.0/concept-docs/transactions-cleanup.html",
+              "title": "Cleanup"
+            },
+            {
+              "module": "concept-docs",
+              "path": "transactions-error-handling.adoc",
+              "url": "/php-sdk/4.0/concept-docs/transactions-error-handling.html",
+              "title": "Error Handling"
+            },
+            {
+              "module": "concept-docs",
+              "path": "transactions.adoc",
+              "url": "/php-sdk/4.0/concept-docs/transactions.html",
+              "title": "Distributed ACID Transactions"
+            },
+            {
+              "module": "concept-docs",
               "path": "understanding-views.adoc",
               "url": "/php-sdk/4.0/concept-docs/understanding-views.html",
               "title": "MapReduce Views"
@@ -7180,6 +7891,16 @@
               "path": "subdocument-operations.adoc",
               "url": "/php-sdk/4.0/howtos/subdocument-operations.html",
               "title": "Sub-Document Operations with the PHP SDK"
+            },
+            {
+              "module": "howtos",
+              "path": "transactions-single-query.adoc",
+              "url": "/php-sdk/4.0/howtos/transactions-single-query.html"
+            },
+            {
+              "module": "howtos",
+              "path": "transactions-tracing.adoc",
+              "url": "/php-sdk/4.0/howtos/transactions-tracing.html"
             },
             {
               "module": "howtos",

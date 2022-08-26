@@ -103,6 +103,12 @@
 <aside class="nav left-sidebar">
   <div class="nav-container">
     <a href="#" class="menu-expand-toggle"><span>Navigation</span><i class="fas fa-times-circle"></i><i class="fas fa-chevron-circle-left"></i></a>
+    <template id="page-versions" style="display: none">
+      <select class="version_list" data-component="nodejs-sdk">
+        <option value="4.1" data-url="error-handling.html" selected>4.1</option>
+        <option value="3.2" data-url="../../3.2/howtos/error-handling.html">3.2</option>
+      </select>
+    </template>
   </div>
 </aside>
 <aside class="toc sidebar"
@@ -111,7 +117,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/pages/error-handling.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="https://github.com/maria-robobug/docs-sdk-nodejs/edit/release/4.1/modules/howtos/pages/error-handling.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -205,7 +211,7 @@ Depending on the type of the exception you catch, there are a number of properti
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/error-handling.js#L21-L25">try {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/error-handling.js#L21-L25">try {
   var result = await collection.get(docKey);
 } catch (e) {
   // we can handle any exceptions thrown here.
@@ -226,7 +232,7 @@ Here we will cover some of the most common errors.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/error-handling.js#L29-L35">try {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/error-handling.js#L29-L35">try {
   var result = await collection.get("key-which-does-not-exist");
 } catch (e) {
   if (e instanceof couchbase.DocumentNotFoundError) {
@@ -240,7 +246,7 @@ Here we will cover some of the most common errors.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/error-handling.js#L41-L47">try {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/error-handling.js#L41-L47">try {
   var result = await collection.insert("key-which-exists", "hello");
 } catch (e) {
   if (e instanceof couchbase.DocumentExistsError) {
@@ -259,7 +265,7 @@ If it has, it returns <code>CasMismatchError</code>, and the most appropriate re
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/error-handling.js#L71-L92">  for (var retryNum = 0; retryNum &lt; 10; ++i) {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/error-handling.js#L71-L92">  for (var retryNum = 0; retryNum &lt; 10; ++i) {
     try {
       var result = await collection.get(docKey);
 
@@ -306,7 +312,7 @@ This similarly indicates that the operation may or may not have succeeded: thoug
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/error-handling.js#L99-L123">  for (var retryNum = 0; retryNum &lt; 10; ++i) {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/error-handling.js#L99-L123">  for (var retryNum = 0; retryNum &lt; 10; ++i) {
     try {
       var result = await collection.insert(docKey, "some value", {
         durabilityLevel: couchbase.DurabilityLevel.PersistToMajority,
@@ -366,7 +372,7 @@ For those that are not, such as a Sub-Document <code>arrayAppend</code> call, or
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/error-handling.js#L51-L67">  try {
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/error-handling.js#L51-L67">  try {
     var results = cluster.query("SELECT * FROM `travel-sample`");
   } catch (e) {
     if (e instanceof couchbase.IndexFailureError) {

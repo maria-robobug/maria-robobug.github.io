@@ -8,17 +8,10 @@
 <link rel="canonical" href="https://maria-robobug.github.io/nodejs-sdk/4.1/howtos/distributed-acid-transactions-from-the-sdk.html">
 <link rel="stylesheet" href="../../../_/css/site.css">
 <script src="../../../_/js/vendor/jquery.js"></script>
-<meta name="description" content="A practical guide on using Couchbase Distributed ACID transactions, via the Node.js API.">
+<meta name="description" content="A practical guide to using Couchbase’s distributed ACID transactions, via the Node.js API.">
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
-        <link rel="prev" href="view-queries-with-sdk.html">
-        <link rel="next" href="../concept-docs/transactions.html">
 
 
-
-
-                    <link rel="next" href="../concept-docs/transactions.html">
-
-        
 <meta name="dcterms.subject" content="nodejs-sdk">
 <meta name="dcterms.identifier" content="4.1">
 <meta name="page-url" content="/nodejs-sdk/4.1/howtos/distributed-acid-transactions-from-the-sdk.html">
@@ -110,6 +103,12 @@
 <aside class="nav left-sidebar">
   <div class="nav-container">
     <a href="#" class="menu-expand-toggle"><span>Navigation</span><i class="fas fa-times-circle"></i><i class="fas fa-chevron-circle-left"></i></a>
+    <template id="page-versions" style="display: none">
+      <select class="version_list" data-component="nodejs-sdk">
+        <option value="4.1" data-url="distributed-acid-transactions-from-the-sdk.html" selected>4.1</option>
+        <option value="3.2" data-url="../../3.2/howtos/distributed-acid-transactions-from-the-sdk.html">3.2</option>
+      </select>
+    </template>
   </div>
 </aside>
 <aside class="toc sidebar"
@@ -118,7 +117,7 @@
   <div class="sidebar-box">
     <div class="tools" role="navigation">
 <ul>
-<li class="tool edit"><a href="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/pages/distributed-acid-transactions-from-the-sdk.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
+<li class="tool edit"><a href="https://github.com/maria-robobug/docs-sdk-nodejs/edit/release/4.1/modules/howtos/pages/distributed-acid-transactions-from-the-sdk.adoc" title="Edit Page" target="_blank" rel="noopener" class="remove-ext-icon">Edit on GitHub</a></li>
 </ul>
 </div>
     <div class="toc-menu"></div>
@@ -177,8 +176,8 @@
 <nav class="crumbs" aria-label="breadcrumbs">
 <ul>
 <li class="crumb"><a href="../hello-world/overview.html">Node.js SDK</a></li>
-<li class="crumb">Transactions</li>
-<li class="crumb"><a href="distributed-acid-transactions-from-the-sdk.html">How-to Guide</a></li>
+<li class="crumb">Advanced Data Operations</li>
+<li class="crumb"><a href="distributed-acid-transactions-from-the-sdk.html">Distributed ACID Transactions</a></li>
 </ul>
 </nav>
 </div>
@@ -194,83 +193,31 @@
 <div class="sectionbody">
 <div class="quoteblock abstract">
 <blockquote>
-A practical guide on using Couchbase Distributed ACID transactions, via the Node.js API.
+A practical guide to using Couchbase’s distributed ACID transactions, via the Node.js API.
 </blockquote>
 </div>
 <div class="paragraph">
-<p>This guide will show you examples of how to perform multi-document ACID (atomic, consistent, isolated, and durable) database transactions within your application, using the Couchbase Node.js SDK.</p>
-</div>
-<div class="paragraph">
-<p>Refer to the <a href="../concept-docs/transactions.html" class="xref page">Distributed ACID Transactions</a> concept material for a high-level overview.</p>
+<p>Couchbase Distributed <a href="../../../server/7.1/learn/data/transactions.html#overview" class="xref page">ACID (atomic, consistent, isolated, and durable)</a> Transactions allow applications to perform a series of database operations as a single unit&#8201;&#8212;&#8201;meaning operations are either committed together or all undone.
+Transactions are distributed and work across multiple documents, buckets, scopes, and collections, which can reside on multiple nodes.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2>
+<h2 id="requirements"><a class="anchor" href="#requirements"></a>Requirements</h2>
 <div class="sectionbody">
-<div class="tabset is-loading">
-<div class="ulist tabs">
+<div class="ulist">
 <ul>
 <li>
-<p><a id="tabset1_couchbase-capella"></a>Couchbase Capella</p>
+<p>Couchbase Server 6.6.1 or above.</p>
 </li>
 <li>
-<p><a id="tabset1_couchbase-server"></a>Couchbase Server</p>
+<p>Couchbase Node.js SDK 4.0.0 or above.
+.Single Node Cluster</p>
 </li>
 </ul>
 </div>
+<div class="exampleblock">
 <div class="content">
-<div class="tab-pane" aria-labelledby="tabset1_couchbase-capella">
-<div class="ulist">
-<ul>
-<li>
-<p>Couchbase Capella account.</p>
-</li>
-<li>
-<p>You should know how to perform <a href="kv-operations.html" class="xref page">key-value</a> or <a href="n1ql-queries-with-sdk.html" class="xref page">query</a> operations with the SDK.</p>
-</li>
-<li>
-<p>Your application should have the relevant roles and permissions on the required buckets, scopes, and collections, to perform transactional operations.
-Refer to the <a href="../../../cloud/organizations/organization-projects-overview.html" class="xref page">Organizations &amp; Access</a> page for more details.</p>
-</li>
-<li>
-<p>If your application is using <a href="../concept-docs/xattr.html" class="xref page">extended attributes (XATTRs)</a>, you should avoid using the XATTR field <code>txn</code>&#8201;&#8212;&#8201;this is reserved for Couchbase use.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="tab-pane" aria-labelledby="tabset1_couchbase-server">
-<div class="ulist">
-<ul>
-<li>
-<p>Couchbase Server (6.6.1 or above).</p>
-</li>
-<li>
-<p>You should know how to perform <a href="kv-operations.html" class="xref page">key-value</a> or <a href="n1ql-queries-with-sdk.html" class="xref page">query</a> operations with the SDK.</p>
-</li>
-<li>
-<p>Your application should have the relevant roles and permissions on the required buckets, scopes, and collections, to perform transactional operations.
-Refer to the <a href="../../../server/7.1/learn/security/roles.html" class="xref page">Roles</a> page for more details.</p>
-</li>
-<li>
-<p>If your application is using <a href="../concept-docs/xattr.html" class="xref page">extended attributes (XATTRs)</a>, you should avoid using the XATTR field <code>txn</code>&#8201;&#8212;&#8201;this is reserved for Couchbase use.</p>
-</li>
-<li>
-<p>NTP should be configured so nodes of the Couchbase cluster are in sync with time.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-<div class="title">Single Node Cluster</div>
 <div class="paragraph">
 <p>When using a single node cluster (for example, during development), the default number of replicas for a newly created bucket is <strong>1</strong>.
 If left at this default, all key-value writes performed with durability will fail with a <code>DurabilityImpossibleError</code>.
@@ -293,27 +240,94 @@ This setting can be changed via:</p>
 <div class="paragraph">
 <p>If the bucket already exists, then the server needs to be rebalanced for the setting to take affect.</p>
 </div>
-</td>
-</tr>
-</table>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started"><a class="anchor" href="#getting-started"></a>Getting Started</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Simply <code>npm install</code> the most recent version of the SDK.
+<p>Couchbase transactions require no additional components or services to be configured.
+Simply <code>npm install</code> the most recent version of the SDK.
 You may, on occasion, need to import some enumerations for particular settings, but in basic cases nothing is needed.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="creating-a-transaction"><a class="anchor" href="#creating-a-transaction"></a>Creating a Transaction</h2>
+<h2 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To create a transaction, an application must supply its logic inside an <code>arrow function</code>, including any conditional logic required.
-Once the arrow function has successfully run to conclusion, the transaction will be automatically committed.
-If at any point an error occurs, the transaction will rollback and the arrow function may run again.</p>
+<p>Transactions can optionally be globally configured when configuring the <code>Cluster</code>.
+For example, if you want to change the level of durability which must be attained, this can be configured as part of the connect options:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/transactions-example.ts#L97-L142">const inventory = cluster.bucket('travel-sample').scope('inventory')
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L19-L25">const cluster: Cluster = await connect('couchbase://127.0.0.1', {
+  username: 'username',
+  password: 'password',
+  transactions: {
+    durabilityLevel: DurabilityLevel.PersistToMajority,
+  },
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default configuration will perform all writes with the durability setting <code>Majority</code>, ensuring that each write is available in-memory on the majority of replicas before the transaction continues.
+There are two higher durability settings available that will additionally wait for all mutations to be written to physical storage on either the active or the majority of replicas, before continuing.
+This further increases safety, at a cost of additional latency.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+A level of <code>None</code> is present but its use is discouraged and unsupported.
+If durability is set to <code>None</code>, then ACID semantics are not guaranteed.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To create a transaction, an application must supply its logic inside {intro-lambda}, including any conditional logic required.
+Once the {lambda} has successfully run to conclusion, the transaction will be automatically committed.
+If at any point an error occurs, the transaction will rollback and the {lambda} may run again.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L67-L82">try {
+  await cluster.transactions().run(async (ctx) =&gt; {
+    // 'ctx' is a TransactionAttemptContext which permits getting, inserting,
+    // removing and replacing documents, performing N1QL queries, etc.
+    // … Your transaction logic here …
+    // Committing is implicit at the end of the lambda.
+  })
+} catch (error) {
+  if (error instanceof TransactionFailedError) {
+    console.error('Transaction did not reach commit point', error)
+  }
+
+  if (error instanceof TransactionCommitAmbiguousError) {
+    console.error('Transaction possibly committed', error)
+  }
+}</code></pre>
+</div>
+</div>
+<div id="lambda-ops" class="paragraph">
+<p>The transaction {lambda} gets passed a <code>TransactionAttemptContext</code> object&#8201;&#8212;&#8201;generally referred to as <code>ctx</code> in these examples.
+Since the {lambda} could be rerun multiple times, it is important that it does not contain any side effects.
+In particular, you should never perform regular operations on a <code>Collection</code>, such as <code>collection.insert()</code>, inside the {lambda}.
+Such operations may be performed multiple times, and will not be performed transactionally.
+Instead, you should perform these operations through the <code>ctx</code> object, e.g. <code>ctx.insert()</code>.</p>
+</div>
+<div class="paragraph">
+<p>The result of a transaction is represented by a <code>TransactionResult</code> object, which can be used to expose debugging and logging information to help track what happened during a transaction.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L86-L131">const inventory = cluster.bucket('travel-sample').scope('inventory')
 
 try {
   await cluster.transactions().run(async (ctx) =&gt; {
@@ -361,137 +375,97 @@ try {
 }</code></pre>
 </div>
 </div>
-<div id="lambda-ops" class="paragraph">
-<p>The transaction arrow function gets passed a <code>TransactionAttemptContext</code> object&#8201;&#8212;&#8201;generally referred to as <code>ctx</code> in these examples.
-Since the arrow function could be rerun multiple times, it is important that it does not contain any side effects.
-In particular, you should never perform regular operations on a <code>Collection</code>, such as <code>collection.insert()</code>, inside the arrow function.
-Such operations may be performed multiple times, and will not be performed transactionally.
-Instead, you should perform these operations through the <code>ctx</code> object, e.g. <code>ctx.insert()</code>.</p>
+<div class="paragraph">
+<p>A core idea of Couchbase transactions is that an application supplies the logic for the transaction inside {intro-lambda}, including any conditional logic required, and the transaction is then automatically committed.
+If a transient error occurs, such as a temporary conflict with another transaction, then the transaction will rollback what has been done so far and run the {lambda} again.
+The application does not have to do these retries and error handling itself.</p>
 </div>
 <div class="paragraph">
-<p>The result of a transaction is represented by a <code>TransactionResult</code> object, which can be used to expose debugging and logging information to help track what happened during a transaction.</p>
+<p>Each run of the {lambda} is called an <code>attempt</code>, inside an overall <code>transaction</code>.</p>
 </div>
+<div class="sect2">
+<h3 id="active-transaction-record-entries"><a class="anchor" href="#active-transaction-record-entries"></a>Active Transaction Record Entries</h3>
 <div class="paragraph">
-<p>In the event that a transaction fails, your application could run into the following errors:</p>
+<p>The first mechanic is that each of these attempts adds an entry to a metadata document in the Couchbase cluster.
+These metadata documents:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>TransactionCommitAmbiguousError</code></p>
+<p>Are named Active Transaction Records, or ATRs.</p>
 </li>
 <li>
-<p><code>TransactionFailedError</code></p>
+<p>Are created and maintained automatically.</p>
+</li>
+<li>
+<p>Begin with <code>_txn:atr-</code>.</p>
+</li>
+<li>
+<p>Each contain entries for multiple attempts.</p>
+</li>
+<li>
+<p>Are viewable, and <em>should not be modified externally</em>.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Refer to <a href="../concept-docs/transactions-error-handling.html#transaction_errors" class="xref page">Error Handling</a> for more details on these.</p>
+<p>Each such ATR entry stores some metadata and, crucially, whether the attempt has committed or not.
+In this way, the entry acts as the single point of truth for the transaction, which is essential for providing an 'atomic commit' during reads.</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="anchor" href="#logging"></a>Logging</h3>
+<h3 id="staged-mutations"><a class="anchor" href="#staged-mutations"></a>Staged Mutations</h3>
 <div class="paragraph">
-<p>To aid troubleshooting, raise the log level on the SDK.</p>
+<p>The second mechanic is that mutating a document inside a transaction, does not directly change the body of the document.
+Instead, the post-transaction version of the document is staged alongside the document (technically in its <a href="../concept-docs/xattr.html" class="xref page">extended attributes (XATTRs)</a>).
+In this way, all changes are invisible to all parts of Couchbase until the commit point is reached.</p>
 </div>
 <div class="paragraph">
-<p>Please see the <a href="collecting-information-and-logging.html" class="xref page">Node.js SDK logging documentation</a> for details.</p>
+<p>These staged document changes effectively act as a lock against other transactions trying to modify the document, preventing write-write conflicts.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cleanup"><a class="anchor" href="#cleanup"></a>Cleanup</h3>
+<div class="paragraph">
+<p>There are safety mechanisms to ensure that leftover staged changes from a failed transaction cannot block live transactions indefinitely.
+These include an asynchronous cleanup process that is started with the first transaction, and scans for expired transactions created by any application, on the relevant collections.</p>
+</div>
+<div class="paragraph">
+<p>The cleanup process is detailed in the <a href="#concept-docs:transactions-cleanup.adoc" class="xref unresolved">concept-docs:transactions-cleanup.adoc</a> page.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="committing"><a class="anchor" href="#committing"></a>Committing</h3>
+<div class="paragraph">
+<p>Only once the {lambda} has successfully run to conclusion, will the attempt be committed.
+This updates the ATR entry, which is used as a signal by transactional actors to use the post-transaction version of a document from its XATTRs.
+Hence, updating the ATR entry is an 'atomic commit' switch for the transaction.</p>
+</div>
+<div class="paragraph">
+<p>After this commit point is reached, the individual documents will be committed (or "unstaged").
+This provides an eventually consistent commit for non-transactional actors.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="key-value-operations"><a class="anchor" href="#key-value-operations"></a>Key-Value Operations</h2>
+<h2 id="key-value-mutations"><a class="anchor" href="#key-value-mutations"></a>Key-Value Mutations</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>You can perform transactional database operations using familiar key-value CRUD methods:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>C</strong>reate - <code>insert()</code></p>
-</li>
-<li>
-<p><strong>R</strong>ead - <code>get()</code></p>
-</li>
-<li>
-<p><strong>U</strong>pdate - <code>replace()</code></p>
-</li>
-<li>
-<p><strong>D</strong>elete - <code>remove()</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>As mentioned <a href="#lambda-ops">previously</a>, make sure your application uses the transactional key-value operations inside the arrow function&#8201;&#8212;&#8201;such as <code>ctx.insert()</code>, rather than <code>collection.insert()</code>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="sect2">
-<h3 id="insert"><a class="anchor" href="#insert"></a>Insert</h3>
-<div class="paragraph">
-<p>To insert a document within a transaction arrow function, simply call <code>ctx.insert()</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/transactions-example.ts#L223-L225">cluster.transactions().run(async (ctx) =&gt; {
-  await ctx.insert(collection, 'docId', {})
-})</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="get"><a class="anchor" href="#get"></a>Get</h3>
-<div class="paragraph">
-<p>To retrieve a document from the database you can call <code>ctx.get()</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/transactions-example.ts#L233-L235">await cluster.transactions().run(async (ctx) =&gt; {
-  const aDoc: TransactionGetResult = await ctx.get(collection, 'a-doc')
-})</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>As you can see, <code>ctx.get()</code> will return a <code>TransactionGetResult</code> object, which is very similar to the <code>GetResult</code> you are used to.</p>
-</div>
-<div class="paragraph">
-<p>Gets will "Read Your Own Writes", e.g. this will succeed:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/transactions-example.ts#L244-L250">await cluster.transactions().run(async (ctx) =&gt; {
-  const docId: string = 'docId'
-
-  await ctx.insert(collection, docId, {})
-
-  const doc: TransactionGetResult = await ctx.get(collection, docId)
-})</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Of course, no other transaction will be able to read that inserted document, until this transaction reaches the commit point.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="replace"><a class="anchor" href="#replace"></a>Replace</h3>
+<h3 id="replacing"><a class="anchor" href="#replacing"></a>Replacing</h3>
 <div class="paragraph">
 <p>Replacing a document requires a <code>ctx.get()</code> call first.
-This is necessary so the SDK can check that the document is not involved in another transaction, and take appropriate action if so.</p>
+This is necessary so the transaction can check that the document is not involved in another transaction.
+If it is, then the transaction will handle this at the <code>ctx.replace()</code> point.
+Generally, this involves rolling back what has been done so far, and retrying the lambda.
+Handling errors should be done through try/catch as in the example above.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/transactions-example.ts#L196-L204">cluster.transactions().run(async ctx =&gt; {
-  const doc: TransactionGetResult = await ctx.get(collection, "doc-id")
-  const content: any = doc.content
-  const newContent: any = {
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L185-L193">cluster.transactions().run(async ctx =&gt; {
+  const doc = await ctx.get(collection, "doc-id")
+  const content = doc.content
+  const newContent = {
     transactions: "are awesome",
     ...content,
   }
@@ -501,15 +475,25 @@ This is necessary so the SDK can check that the document is not involved in anot
 </div>
 </div>
 <div class="sect2">
-<h3 id="remove"><a class="anchor" href="#remove"></a>Remove</h3>
+<h3 id="removing"><a class="anchor" href="#removing"></a>Removing</h3>
 <div class="paragraph">
 <p>As with replaces, removing a document requires a <code>ctx.get()</code> call first.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/transactions-example.ts#L212-L215">cluster.transactions().run(async (ctx) =&gt; {
-  const doc: TransactionGetResult = await ctx.get(collection, 'doc-id')
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L201-L204">cluster.transactions().run(async ctx =&gt; {
+  const doc = await ctx.get(collection, "doc-id")
   await ctx.remove(doc)
+})</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="inserting"><a class="anchor" href="#inserting"></a>Inserting</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L212-L214">cluster.transactions().run(async ctx =&gt; {
+  await ctx.insert(collection, "docId", {})
 })</code></pre>
 </div>
 </div>
@@ -517,34 +501,70 @@ This is necessary so the SDK can check that the document is not involved in anot
 </div>
 </div>
 <div class="sect1">
-<h2 id="sql-queries"><a class="anchor" href="#sql-queries"></a>SQL++ Queries</h2>
+<h2 id="key-value-reads"><a class="anchor" href="#key-value-reads"></a>Key-Value Reads</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you already use <a href="https://www.couchbase.com/products/n1ql">SQL++ (formerly N1QL)</a>, then its use in transactions is very similar.
-A query returns a <code>TransactionQueryResult</code> that is very similar to the <code>QueryResult</code> you are used to, and takes most of the same options.</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>As mentioned <a href="#lambda-ops">previously</a>, make sure your application uses the transactional query operations inside the arrow function&#8201;&#8212;&#8201;such as <code>ctx.query()</code>, rather than <code>cluster.query()</code> or <code>scope.query()</code>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Here is an example of selecting some rows from the <code>travel-sample</code> bucket:</p>
+<p>From a transaction context you may get a document:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/transactions-example.ts#L272-L281">cluster.transactions().run(async (ctx) =&gt; {
-  const st: string = 'SELECT * FROM hotel WHERE country = $1'
-  const qr: TransactionQueryResult = await ctx.query(st, {
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L222-L224">await cluster.transactions().run(async ctx =&gt; {
+  const aDoc = await ctx.get(collection, "a-doc")
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>get</code> will cause the transaction to fail with <code>TransactionFailedError</code> (after rolling back any changes, of course).
+It is provided as a convenience method so the developer does not have to check the <code>Optional</code> if the document must exist for the transaction to succeed.</p>
+</div>
+<div class="paragraph">
+<p>Gets will 'read your own writes', e.g. this will succeed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L233-L239">await cluster.transactions().run(async ctx =&gt; {
+  const docId = "docId"
+
+  await ctx.insert(collection, docId, {})
+
+  const doc = await ctx.get(collection, docId)
+})</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-n1ql"><a class="anchor" href="#using-n1ql"></a>Using N1QL</h3>
+<div class="paragraph">
+<p>If you already use N1QL from the Node.js SDK, then its use in transactions is very similar.
+It returns the same <code>QueryResult</code> you are used to, and takes most of the same options.</p>
+</div>
+<div class="paragraph">
+<p>You must take care to write <code>ctx.query()</code> inside the lambda however, rather than <code>cluster.query()</code> or <code>scope.query()</code>.</p>
+</div>
+<div class="paragraph">
+<p>An example of selecting some rows from the <code>travel-sample</code> bucket:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L249-L258">cluster.transactions().run(async (ctx) =&gt; {
+  const st =
+    'SELECT * FROM `travel-sample`.inventory.hotel WHERE country = $1'
+  const qr = await ctx.query(st, {
+    parameters: ['United Kingdom'],
+  })
+  for (let row in qr.rows) {
+    // do something
+  }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Rather than specifying the full "`travel-sample`.inventory.hotel" name each time, it is easier to pass a reference to the inventory <code>Scope</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L262-L271">cluster.transactions().run(async (ctx) =&gt; {
+  const st = 'SELECT * FROM hotel WHERE country = $1'
+  const qr = await ctx.query(st, {
     scope: inventory,
     parameters: ['United Kingdom'],
   })
@@ -555,14 +575,14 @@ A query returns a <code>TransactionQueryResult</code> that is very similar to th
 </div>
 </div>
 <div class="paragraph">
-<p>An example using a <code>Scope</code> for an <code>UPDATE</code>:</p>
+<p>An example using a <code>Scope</code> for an UPDATE:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/transactions-example.ts#L285-L298">const hotelChain: string = 'http://marriot%'
-const country: string = 'United States'
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L275-L288">const hotelChain = 'http://marriot%'
+const country = 'United States'
 cluster.transactions().run(async (ctx) =&gt; {
-  const qr: TransactionQueryResult = await ctx.query(
+  const qr = await ctx.query(
     'UPDATE hotel SET price = $1 WHERE url LIKE $2 AND country = $3',
     {
       scope: inventory,
@@ -576,13 +596,15 @@ cluster.transactions().run(async (ctx) =&gt; {
 </div>
 </div>
 <div class="paragraph">
-<p>And an example combining <code>SELECT</code> and an <code>UPDATE</code>.</p>
+<p>And an example combining SELECTs and UPDATEs.
+It&#8217;s possible to call regular Node.js functions from the lambda, as shown here, permitting complex logic to be performed.
+Just remember that since the lambda may be called multiple times, so may the method.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/transactions-example.ts#L302-L324">cluster.transactions().run(async (ctx) =&gt; {
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L292-L314">cluster.transactions().run(async (ctx) =&gt; {
   // Find all hotels of the chain
-  const qr: TransactionQueryResult = await ctx.query(
+  const qr = await ctx.query(
     'SELECT reviews FROM hotel WHERE url LIKE $1 AND country = $2',
     {
       parameters: [hotelChain, country],
@@ -605,20 +627,21 @@ cluster.transactions().run(async (ctx) =&gt; {
 })</code></pre>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="read-your-own-writes"><a class="anchor" href="#read-your-own-writes"></a>Read Your Own Writes</h3>
 <div class="paragraph">
-<p>As you can see from the snippet above, it is possible to call regular Node.js methods from the arrow function, permitting complex logic to be performed.
-Just remember that since the arrow function may be called multiple times, so may the method.</p>
+<p>As with Key-Value operations, N1QL queries support Read Your Own Writes.</p>
 </div>
 <div class="paragraph">
-<p>Like key-value operations, queries support "Read Your Own Writes".
-This example shows inserting a document and then selecting it again:</p>
+<p>This example shows inserting a document and then selecting it again.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/transactions-example.ts#L331-L335">cluster.transactions().run(async (ctx) =&gt; {
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L322-L326">cluster.transactions().run(async (ctx) =&gt; {
   ctx.query("INSERT INTO `default` VALUES ('doc', {'hello':'world'})") <i class="conum" data-value="1"></i><b>(1)</b>
-  const st: string = "SELECT `default`.* FROM `default` WHERE META().id = 'doc'" <i class="conum" data-value="2"></i><b>(2)</b>
-  const qr: TransactionQueryResult = await ctx.query(st)
+  const st = "SELECT `default`.* FROM `default` WHERE META().id = 'doc'" <i class="conum" data-value="2"></i><b>(2)</b>
+  const qr = await ctx.query(st)
 })</code></pre>
 </div>
 </div>
@@ -626,109 +649,29 @@ This example shows inserting a document and then selecting it again:</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The inserted document is only staged at this point. as the transaction has not yet committed.<br>
+<td>The inserted document is only staged at this point. as the transaction has not yet committed.
 Other transactions, and other non-transactional actors, will not be able to see this staged insert yet.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>But the <code>SELECT</code> can, as we are reading a mutation staged inside the same transaction.</td>
+<td>But the SELECT can, as we are reading a mutation staged inside the same transaction.</td>
 </tr>
 </table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="query-options"><a class="anchor" href="#query-options"></a>Query Options</h3>
+<h3 id="mixing-key-value-and-n1ql"><a class="anchor" href="#mixing-key-value-and-n1ql"></a>Mixing Key-Value and N1QL</h3>
 <div class="paragraph">
-<p>Query options can be provided via <code>TransactionQueryOptions</code>, which provides a subset of the options in the Node.js SDK&#8217;s <code>QueryOptions</code>.</p>
+<p>Key-Value operations and queries can be freely intermixed, and will interact with each other as you would expect.</p>
+</div>
+<div class="paragraph">
+<p>In this example we insert a document with Key-Value, and read it with a SELECT.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/transactions-example.ts#L362-L365">const txQo: TransactionQueryOptions = { profile: QueryProfileMode.Timings }
-cluster.transactions().run(async (ctx) =&gt; {
-  ctx.query("INSERT INTO `default` VALUES ('doc', {'hello':'world'})", txQo)
-})</code></pre>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Supported Transaction Query Options</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>parameters(any[])</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Allows to set positional arguments for a parameterized query.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>parameters({ [key: string]: any })</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Allows you to set named arguments for a parameterized query.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scanConsistency(QueryScanConsistency)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sets a different scan consistency for this query.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clientContextId(string)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sets a context ID returned by the service for debugging purposes.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scanWait(number)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Allows to specify a maximum scan wait time.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scanCap(number)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies a maximum cap on the query scan size.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pipelineBatch(number)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the batch size for the query pipeline.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pipelineCap(number)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the cap for the query pipeline.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>profile(QueryProfileMode)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Allows you to enable additional query profiling as part of the response.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>readOnly(boolean)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Tells the client and server that this query is readonly.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>adhoc(boolean)</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If set to false will prepare the query and later execute the prepared statement.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>raw({ [key: string]: any })</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Escape hatch to add arguments that are not covered by these options.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="mixing-key-value-and-sql"><a class="anchor" href="#mixing-key-value-and-sql"></a>Mixing Key-Value and SQL++</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Key-Value and SQL++ query operations can be freely intermixed, and will interact with each other as you would expect.
-In this example we insert a document with a key-value operation, and read it with a <code>SELECT</code> query.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/transactions-example.ts#L345-L355">cluster.transactions().run(async (ctx) =&gt; {
-  await ctx.insert(collection, 'doc', { hello: 'world' }) <i class="conum" data-value="1"></i><b>(1)</b>
-
-  // Performing a 'Read Your Own Write'
-  const qr = await ctx.query(
-    "SELECT `default`.* FROM `default` WHERE META().id = 'doc'" <i class="conum" data-value="2"></i><b>(2)</b>
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L341-L348">cluster.transactions().run(async (ctx) =&gt; {
+  const qr = await ctx.query("UPDATE inventory SET price = 99.00 WHERE name LIKE \"Marriott%\"",
+    { scope: inventory }
   )
   if (qr.meta.metrics?.resultCount != 1) {
     throw new Error('Mutation count not the expected amount.')
@@ -740,30 +683,487 @@ In this example we insert a document with a key-value operation, and read it wit
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The key-value insert operation is only staged, and so it is not visible to other transactions or non-transactional actors.</td>
+<td>As with the 'Read Your Own Writes' example, here the insert is only staged, and so it is not visible to other transactions or non-transactional actors.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>But the <code>SELECT</code> can view it, as the insert was in the same transaction.</td>
+<td>But the SELECT can view it, as the insert was in the same transaction.</td>
 </tr>
 </table>
 </div>
-<div class="admonitionblock important">
+</div>
+<div class="sect2">
+<h3 id="query-options"><a class="anchor" href="#query-options"></a>Query Options</h3>
+<div class="paragraph">
+<p>Query options can be provided via <code>TransactionQueryOptions</code>, which provides a subset of the options in the Node.js SDK&#8217;s <code>QueryOptions</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L356-L359">const txQo: TransactionQueryOptions = { profile: QueryProfileMode.Timings }
+cluster.transactions().run(async (ctx) =&gt; {
+  ctx.query("INSERT INTO `default` VALUES ('doc', {'hello':'world'})", txQo)
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The supported options are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>parameters</p>
+</li>
+<li>
+<p>scanConsistency</p>
+</li>
+<li>
+<p>clientContextId</p>
+</li>
+<li>
+<p>scanWait</p>
+</li>
+<li>
+<p>scanCap</p>
+</li>
+<li>
+<p>pipelineBatch</p>
+</li>
+<li>
+<p>pipelineCap</p>
+</li>
+<li>
+<p>profile</p>
+</li>
+<li>
+<p>readOnly</p>
+</li>
+<li>
+<p>adhoc</p>
+</li>
+<li>
+<p>raw</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/interfaces/TransactionQueryOptions.html">API reference</a> for more details on these.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L366-L388">let bulkLoadStatement: string // a bulk-loading N1QL statement not provided here
+try {
+  cluster.transactions().run(async (ctx) =&gt; {
+    ctx.query(bulkLoadStatement)
+  })
+} catch (error) {
+  if (error instanceof TransactionFailedError) {
+    // The operation failed. Both the monster and the player will be untouched.
+    //
+    // Situations that can cause this would include either the monster
+    // or player not existing (as get is used), or a persistent
+    // failure to be able to commit the transaction, for example on
+    // prolonged node failure.
+  }
+
+  if (error instanceof TransactionCommitAmbiguousError) {
+    // Indicates the state of a transaction ended as ambiguous and may or
+    // may not have committed successfully.
+    //
+    // Situations that may cause this would include a network or node failure
+    // after the transactions operations completed and committed, but before the
+    // commit result was returned to the client
+  }</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="committing-2"><a class="anchor" href="#committing-2"></a>Committing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Committing is automatic: if there is no explicit call to <code>ctx.commit()</code> at the end of the transaction logic callback, and no exception is thrown, it will be committed.
+Committing is automatic at the end of the code block with the transaction context.
+If no exception is thrown, it will be committed.
+If you want to rollback the transaction, simply throw an exception.
+Transactions may rollback from the transaction logic itself, various failure conditions, or from your application logic by throwing an exception.</p>
+</div>
+<div class="paragraph">
+<p>As soon as the transaction is committed, all its changes will be atomically visible to reads from other transactions.
+The changes will also be committed (or "unstaged") so they are visible to non-transactional actors, in an eventually consistent fashion.</p>
+</div>
+<div class="paragraph">
+<p>Commit is final: after the transaction is committed, it cannot be rolled back, and no further operations are allowed on it.</p>
+</div>
+<div class="paragraph">
+<p>An asynchronous cleanup process ensures that once the transaction reaches the commit point, it will be fully committed - even if the application crashes.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L435-L488">  async function playerHitsMonster(damage: number, playerId: string, monsterId: string) {
+    let cluster = await getCluster() // provide your cluster and collection reference appropriately
+    let collection = await getCollection()
+
+
+    try {
+      cluster.transactions().run(async (ctx) =&gt; {
+        let monsterDoc = (await ctx.get(collection, monsterId)).content
+        let playerDoc = (await ctx.get(collection, playerId)).content
+
+        let monsterHitpoints = monsterDoc.hitpoints
+        let monsterNewHitpoints = monsterHitpoints - damage
+
+        if (monsterNewHitpoints &lt;= 0) {
+          // Monster is killed. The remove is just for demoing, and a more realistic
+          // example would set a "dead" flag or similar.
+          ctx.remove(monsterDoc)
+
+          // The player earns experience for killing the monster
+          let experienceForKillingMonster = monsterDoc.experienceWhenKilled
+          let playerExperience = playerDoc.experience
+          let playerNewExperience =
+            playerExperience + experienceForKillingMonster
+          let playerNewLevel =
+            calculateLevelForExperience(playerNewExperience)
+
+          let playerContent = playerDoc.content
+
+          playerContent.put('experience', playerNewExperience)
+          playerContent.put('level', playerNewLevel)
+
+          ctx.replace(playerDoc, playerContent)
+        }
+      })
+    } catch (error) {
+      if (error instanceof TransactionFailedError) {
+        // The operation failed. Both the monster and the player will be untouched.
+        //
+        // Situations that can cause this would include either the monster
+        // or player not existing (as get is used), or a persistent
+        // failure to be able to commit the transaction, for example on
+        // prolonged node failure.
+      }
+
+      if (error instanceof TransactionCommitAmbiguousError) {
+        // Indicates the state of a transaction ended as ambiguous and may or
+        // may not have committed successfully.
+        //
+        // Situations that may cause this would include a network or node failure
+        // after the transactions operations completed and committed, but before the
+        // commit result was returned to the client
+      }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Couchbase transactions require a degree of co-operation from an application.
+Specifically, the application should ensure that non-transactional writes are never done concurrently with transactional writes, on the same document.</p>
+</div>
+<div class="paragraph">
+<p>This requirement is to ensure that the strong key-value performance of Couchbase was not compromised.
+A key philosophy of Couchbase transactions is that you 'pay only for what you use'.</p>
+</div>
+<div class="paragraph">
+<p>If two such writes <strong>do</strong> conflict then the behaviour is undefined: either write may 'win', overwriting the other.
+This still applies if the non-transactional write is using CAS.</p>
+</div>
+<div class="paragraph">
+<p>Note this only applies to <em>writes</em>.
+Any non-transactional <em>reads</em> concurrent with transactions are fine, and are at a Read Committed level.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rollback"><a class="anchor" href="#rollback"></a>Rollback</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If an exception is thrown, either by the application from the lambda, or by the transaction internally, then that attempt is rolled back.
+The transaction logic may or may not be retried, depending on the exception.</p>
+</div>
+<div class="paragraph">
+<p>If the transaction is not retried then it will throw an exception, and its <code>error</code> contains details on the failure.
+In Typescript, you may branch your error handling based on <code>instanceof</code> with one of <code>TransactionOperationFailedError</code>, <code>TransactionFailedError</code>, <code>TransactionExpiredError</code> or <code>TransactionCommitAmbiguousError</code>.</p>
+</div>
+<div class="paragraph">
+<p>The application can use this to signal why it triggered a rollback, as so:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L520-L538">
+try {
+  cluster.transactions().run(async (ctx) =&gt; {
+    const customer = await ctx.get(collection, 'customer-name')
+
+    if (customer.content.balance &lt; costOfItem) {
+      throw new InsufficientBalanceError()
+    }
+    // else continue transaction
+  })
+} catch (error) {
+  if (error instanceof TransactionCommitAmbiguousError) {
+    // This exception can only be thrown at the commit point, after the
+    // BalanceInsufficient logic has been passed, so there is no need to
+    // check the cause property here.
+  } else if (error instanceof InsufficientBalanceError) {
+    console.error('user had insufficient balance')
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After a transaction is rolled back, it cannot be committed, no further operations are allowed on it, and the system will not try to automatically commit it at the end of the code block.</p>
+</div>
+<div class="paragraph">
+<p>There can be situations where total failure is indicated to the application via errors.
+These situations include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Any error thrown by a transaction {lambda}, either deliberately or through an application logic bug.</p>
+</li>
+<li>
+<p>Attempting to insert a document that already exists.</p>
+</li>
+<li>
+<p>Calling <code>ctx.get()</code> on a document key that does not exist (if the resultant error is not caught).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Once one of these errors occurs, the current attempt is irrevocably failed (though the transaction may retry the {lambda} to make a new attempt).
+It is not possible for the application to catch the failure and continue (with the exception of <code>ctx.get()</code> raising an error).
+Once a failure has occurred, all other operations tried in this attempt (including commit) will instantly fail.</p>
+</div>
+<div class="paragraph">
+<p>Transactions, as they are multi-stage and multi-document, also have a concept of partial success or failure.
+This is signalled to the application through the <code>TransactionResult.unstagingComplete</code> property, described later.</p>
+</div>
+<div class="paragraph">
+<p>There are three errors that transactions can raise to an application:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TransactionFailedError</code></p>
+</li>
+<li>
+<p><code>TransactionExpiredError</code></p>
+</li>
+<li>
+<p><code>TransactionCommitAmbiguous</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are three errors that Couchbase transactions can raise to the application: <code>TransactionFailedError</code>, <code>TransactionExpiredError</code> and <code>TransactionCommitAmbiguousError</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="transactionfailederror-and-transactionexpirederror"><a class="anchor" href="#transactionfailederror-and-transactionexpirederror"></a>TransactionFailedError and TransactionExpiredError</h3>
+<div class="paragraph">
+<p>The transaction definitely did not reach the commit point.
+<code>TransactionFailedError</code> indicates a fast-failure whereas <code>TransactionExpiredError</code> indicates that retries were made until the timeout was reached, but this distinction is not normally important to an application and generally <code>TransactionExpiredError</code> does not need to be handled individually.</p>
+</div>
+<div class="paragraph">
+<p>Either way, an attempt will have been made to rollback all changes.
+This attempt may or may not have been successful, but the results of this will have no impact on the protocol or other actors.
+No changes from the transaction will be visible, both to transactional and non-transactional actors.</p>
+</div>
+<div class="sect3">
+<h4 id="handling"><a class="anchor" href="#handling"></a>Handling</h4>
+<div class="paragraph">
+<p>Generally, debugging exactly why a given transaction failed requires review of the logs, so it is suggested that the application log these on failure.
+The application may want to try the transaction again later.
+Alternatively, if transaction completion time is not a priority, then transaction timeouts (which default to 15 seconds) can be extended across the board through <code>TransactionsConfig</code>.</p>
+</div>
+<div class="paragraph">
+<p>This will allow the protocol more time to get past any transient failures (for example, those caused by a cluster rebalance).
+The tradeoff to consider with longer timeouts, is that documents that have been staged by a transaction are effectively locked from modification from other transactions, until the timeout has been reached.</p>
+</div>
+<div class="paragraph">
+<p>Note that the timeout is not guaranteed to be followed precisely.
+For example, if the application were to do a long blocking operation inside the {lambda} (which should be avoided), then timeout can only trigger after this finishes.
+Similarly, if the transaction attempts a key-value operation close to the timeout, and that key-value operation times out, then the transaction timeout may be exceeded.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="transactioncommitambiguous"><a class="anchor" href="#transactioncommitambiguous"></a>TransactionCommitAmbiguous</h3>
+<div class="paragraph">
+<p>Each transaction has a 'single point of truth' that is updated atomically to reflect whether it is committed.</p>
+</div>
+<div class="paragraph">
+<p>However, it is not always possible for the protocol to become 100% certain that the operation was successful, before the transaction expires.
+This potential ambiguity is unavoidable in any distributed system; a classic example is a network failure happening just after an operation was sent from a client to a server.
+The client will not get a response back and cannot know if the server received and executed the operation.</p>
+</div>
+<div class="paragraph">
+<p>The ambiguity is particularly important at the point of the atomic commit, as the transaction may or may not have reached the commit point.  Couchbase transactions will raise <code>TransactionCommitAmbiguous</code> to indicate this state.
+It should be rare to receive this error.</p>
+</div>
+<div class="paragraph">
+<p>If the transaction had in fact successfully reached the commit point, then the transaction will be fully completed ("unstaged") by the asynchronous cleanup process at some point in the future.
+With default settings this will usually be within a minute, but whatever underlying fault has caused the <code>TransactionCommitAmbiguous</code> may lead to it taking longer.</p>
+</div>
+<div class="paragraph">
+<p>If the transaction had not in fact reached the commit point, then the asynchronous cleanup process will instead attempt to roll it back at some point in the future.</p>
+</div>
+<div class="sect3">
+<h4 id="handling-2"><a class="anchor" href="#handling-2"></a>Handling</h4>
+<div class="paragraph">
+<p>This error can be challenging for an application to handle.
+As with <code>TransactionFailedError</code> it is recommended that it at least writes any logs from the transaction, for future debugging.
+It may wish to retry the transaction at a later point, or extend transactional timeouts (as detailed above) to give the protocol additional time to resolve the ambiguity.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="transactionresult-unstagingcomplete"><a class="anchor" href="#transactionresult-unstagingcomplete"></a>TransactionResult.unstagingComplete</h3>
+<div class="paragraph">
+<p>This boolean flag indicates whether all documents were able to be unstaged (committed).</p>
+</div>
+<div class="paragraph">
+<p>For most use-cases it is not an issue if it is false.
+All transactional actors will still read all the changes from this transaction, as though it had committed fully.
+The cleanup process is asynchronously working to complete the commit, so that it will be fully visible to non-transactional actors.</p>
+</div>
+<div class="paragraph">
+<p>The flag is provided for those rare use-cases where the application requires the commit to be fully visible to non-transactional actors, before it may continue.
+In this situation the application can raise an error here, or poll all documents involved until they reflect the mutations.</p>
+</div>
+<div class="paragraph">
+<p>If you regularly see this flag false, consider increasing the transaction timeout to reduce the possibility that the transaction times out during the commit.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="full-error-handling-example"><a class="anchor" href="#full-error-handling-example"></a>Full Error Handling Example</h3>
+<div class="paragraph">
+<p>Pulling all of the above together, this is the suggested best practice for error handling:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="https://github.com/maria-robobug/docs-sdk-nodejs/blob/648e7e518291a0be84d2bfcf9368dd33d2cfc2e9/modules/howtos/examples/transactions-example.ts#L547-L569">try {
+  const result = await cluster.transactions().run(async (ctx) =&gt; {
+    // ... transactional code here ...
+    });
+
+    // The transaction definitely reached the commit point. Unstaging
+    // the individual documents may or may not have completed
+
+    if (!result.unstagingComplete) {
+        // In rare cases, the application may require the commit to have
+        // completed.  (Recall that the asynchronous cleanup process is
+        // still working to complete the commit.)
+        // The next step is application-dependent.
+    }
+  } catch (error) {
+    if (error instanceof TransactionCommitAmbiguousError) {
+      // The transaction may or may not have reached commit point
+      console.error("Transaction returned TransactionCommitAmbiguous and may have succeeded.", error)
+    } else if (error instanceof TransactionFailedError) {
+      // The transaction definitely did not reach commit point
+      console.error("Transaction failed with TransactionFailed", error)
+    }
+  }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Transactions will try to clean up after themselves in the advent of failures.
+However, there are situations that inevitably created failed, or 'lost' transactions, such as an application crash.</p>
+</div>
+<div class="paragraph">
+<p>This requires an asynchronous cleanup task, described in this section.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="background-cleanup"><a class="anchor" href="#background-cleanup"></a>Background Cleanup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The first transaction triggered by an application will spawn a background cleanup task, whose job it is to periodically scan for expired transactions and clean them up.
+It does this by scanning a subset of the Active Transaction Record (ATR) transaction metadata documents, for each collection used by any transactions.</p>
+</div>
+<div class="paragraph">
+<p>The default settings are tuned to find expired transactions reasonably quickly, while creating negligible impact from the background reads required by the scanning process.
+To be exact, with default settings it will generally find expired transactions within 60 seconds, and use less than 20 reads per second, per collection of metadata documents being checked.
+This is unlikely to impact performance on any cluster, but the settings may be <a href="#tuning-cleanup">tuned</a> as desired.</p>
+</div>
+<div class="paragraph">
+<p>All applications connected to the same cluster and running transactions will share in the cleanup, via a low-touch communication protocol on the <code>_txn:client-record</code> metadata document that will be created in each collection in the cluster involved with transaction metadata.
+This document is visible and should not be modified externally as it is maintained automatically.
+All ATRs will be distributed between all cleanup clients, so increasing the number of applications will not increase the reads required for scanning.</p>
+</div>
+<div class="paragraph">
+<p>An application may cleanup transactions created by another application.</p>
+</div>
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="title">Query Mode</div>
-<div class="paragraph">
-<p>When a transaction executes a query statement, the transaction enters <strong>query mode</strong>, which means that the query is executed with the user&#8217;s query permissions.
-Any <strong>key-value</strong> operations which are executed by the transaction <em>after</em> the query statement are <em>also</em> executed with the user&#8217;s query permissions.
-These may or may not be different to the user&#8217;s data permissions; if they are different, you may get unexpected results.</p>
-</div>
+It is important to understand that if an application is not running, then cleanup is not running.
+This is particularly relevant to developers running unit tests or similar.
 </td>
 </tr>
 </table>
+</div>
+<div class="sect2">
+<h3 id="tuning-cleanup"><a class="anchor" href="#tuning-cleanup"></a>Configuring Cleanup</h3>
+<div class="paragraph">
+<p>The cleanup settings can be configured as so:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Setting</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cleanupWindow</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60 seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This determines how long a cleanup 'run' is; that is, how frequently this client will check its subset of ATR documents.  It is perfectly valid for the application to change this setting, which is at a conservative default.  Decreasing this will cause expiration transactions to be found more swiftly (generally, within this cleanup window), with the tradeoff of increasing the number of reads per second used for the scanning process.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>disableLostAttemptCleanup</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is the thread that takes part in the distributed cleanup process described above, that cleans up expired transactions created by any client.  It is strongly recommended that it is left enabled.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>disableClientAttemptCleanup</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This thread is for cleaning up transactions created just by this client.  The client will preferentially aim to send any transactions it creates to this thread, leaving transactions for the distributed cleanup process only when it is forced to (for example, on an application crash).  It is strongly recommended that it is left enabled.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="monitoring-cleanup"><a class="anchor" href="#monitoring-cleanup"></a>Monitoring Cleanup</h3>
+<div class="paragraph">
+<p>To monitor cleanup, increase the verbosity on the logging.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="logging"><a class="anchor" href="#logging"></a>Logging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To aid troubleshooting, raise the log level on the SDK.</p>
+</div>
+<div class="paragraph">
+<p>Please see the <a href="collecting-information-and-logging.html" class="xref page">Node.js SDK logging documentation</a> for details.</p>
 </div>
 </div>
 </div>
@@ -786,92 +1186,8 @@ This means the application must 'swallow' the error, but record that an error oc
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="title">Query Concurrency</div>
-Only one query statement will be performed by the Query service at a time.
-Non-blocking mechanisms can be used to perform multiple concurrent query statements, but this may result internally in some added network traffic due to retries, and is unlikely to provide any increased performance.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="non-transactional-writes"><a class="anchor" href="#non-transactional-writes"></a>Non-Transactional Writes</h3>
-<div class="paragraph">
-<p>To ensure key-value performance is not compromised, and to avoid conflicting writes, applications should <strong>never</strong> perform non-transactional <em>writes</em> concurrently with transactional ones, on the same document.</p>
-</div>
-<div class="paragraph">
-<p>See <a href="../concept-docs/transactions.html#concurrency-with-non-transactional-writes" class="xref page">Concurrency with Non-Transactional Writes</a> to learn more.</p>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The default configuration should be appropriate for most use-cases.
-Transactions can optionally be globally configured when configuring the <code>Cluster</code>.
-For example, if you want to change the level of durability which must be attained, this can be configured as part of the connect options:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript" data-source-url="file:///Users/mariashodunke/Couchbase/docs/docs-sdk-nodejs//modules/howtos/examples/transactions-example.ts#L21-L27">const cluster: Cluster = await connect('couchbase://127.0.0.1', {
-  username: 'username',
-  password: 'password',
-  transactions: {
-    durabilityLevel: DurabilityLevel.PersistToMajority,
-  },
-})</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The default configuration will perform all writes with the durability setting <code>Majority</code>, ensuring that each write is available in-memory on the majority of replicas before the transaction continues.
-There are two higher durability settings available that will additionally wait for all mutations to be written to physical storage on either the active or the majority of replicas, before continuing.
-This further increases safety, at a cost of additional latency.</p>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-A level of <code>None</code> is present but its use is discouraged and unsupported.
-If durability is set to <code>None</code>, then ACID semantics are not guaranteed.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="additional-resources"><a class="anchor" href="#additional-resources"></a>Additional Resources</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Learn more about <a href="../concept-docs/transactions.html" class="xref page">Distributed ACID Transactions</a>.</p>
-</li>
-<li>
-<p>Check out the SDK <a href="https://docs.couchbase.com/sdk-api/couchbase-node-client/index.html">API Reference</a>.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-
-        <nav class="pagination">
-
-                <span>&nbsp;</span>
-        
-                    <span class="next"><a href="../concept-docs/transactions.html">Key Concepts</a></span>
-
 </article>
 </main>
 </div>
