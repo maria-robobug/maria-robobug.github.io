@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generated": 1664970945372,
+  "generated": 1665047042000,
   "url": "https://maria-robobug.github.io",
   "components": [
     {
@@ -5703,517 +5703,6 @@
       ]
     },
     {
-      "name": "kotlin-sdk",
-      "title": "Kotlin SDK",
-      "latest": "1.1",
-      "versions": [
-        {
-          "version": "1.1",
-          "url": "/kotlin-sdk/1.1/hello-world/overview.html",
-          "pages": [
-            {
-              "module": "concept-docs",
-              "path": "analytics-for-sdk-users.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/analytics-for-sdk-users.html",
-              "title": "Analytics"
-            },
-            {
-              "alias": true,
-              "module": "concept-docs",
-              "path": "analytics.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/analytics-for-sdk-users.html",
-              "title": "Analytics"
-            },
-            {
-              "module": "concept-docs",
-              "path": "buckets-and-clusters.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/buckets-and-clusters.html",
-              "title": "Buckets and Clusters"
-            },
-            {
-              "module": "concept-docs",
-              "path": "certificate-based-authentication.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/certificate-based-authentication.html",
-              "title": "Certificate-Based Authentication"
-            },
-            {
-              "alias": true,
-              "module": "concept-docs",
-              "path": "choosing-the-right-service.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/data-services.html",
-              "title": "Services&#8201;&#8212;&#8201;Choosing the Right One"
-            },
-            {
-              "module": "concept-docs",
-              "path": "collections.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/collections.html",
-              "title": "Collections &amp; Scopes"
-            },
-            {
-              "module": "concept-docs",
-              "path": "compression.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/compression.html",
-              "title": "Compression"
-            },
-            {
-              "module": "concept-docs",
-              "path": "concepts.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/concepts.html",
-              "title": "Concepts Guides"
-            },
-            {
-              "module": "concept-docs",
-              "path": "data-model.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/data-model.html",
-              "title": "The Data Model"
-            },
-            {
-              "module": "concept-docs",
-              "path": "data-services.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/data-services.html",
-              "title": "Services&#8201;&#8212;&#8201;Choosing the Right One"
-            },
-            {
-              "module": "concept-docs",
-              "path": "documents.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/documents.html",
-              "title": "Document"
-            },
-            {
-              "module": "concept-docs",
-              "path": "durability-replication-failure-considerations.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/durability-replication-failure-considerations.html",
-              "title": "Durability &amp; Failure"
-            },
-            {
-              "module": "concept-docs",
-              "path": "encryption.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/encryption.html",
-              "title": "Field Level Encryption"
-            },
-            {
-              "module": "concept-docs",
-              "path": "errors.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/errors.html",
-              "title": "Errors, Exceptions, and Diagnostics"
-            },
-            {
-              "module": "concept-docs",
-              "path": "full-text-search-overview.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/full-text-search-overview.html",
-              "title": "Full Text Search Overview"
-            },
-            {
-              "alias": true,
-              "module": "concept-docs",
-              "path": "handling-error-conditions.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/errors.html",
-              "title": "Errors, Exceptions, and Diagnostics"
-            },
-            {
-              "module": "concept-docs",
-              "path": "health-check.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/health-check.html",
-              "title": "Health Check"
-            },
-            {
-              "alias": true,
-              "module": "concept-docs",
-              "path": "http-services.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/data-services.html",
-              "title": "Services&#8201;&#8212;&#8201;Choosing the Right One"
-            },
-            {
-              "alias": true,
-              "module": "concept-docs",
-              "path": "managing-clusters.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/buckets-and-clusters.html",
-              "title": "Buckets and Clusters"
-            },
-            {
-              "module": "concept-docs",
-              "path": "n1ql-query.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/n1ql-query.html",
-              "title": "Querying with N1QL"
-            },
-            {
-              "module": "concept-docs",
-              "path": "nonjson.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/nonjson.html",
-              "title": "Non-JSON Documents"
-            },
-            {
-              "module": "concept-docs",
-              "path": "rbac.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/rbac.html",
-              "title": "RBAC"
-            },
-            {
-              "module": "concept-docs",
-              "path": "response-time-observability.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/response-time-observability.html",
-              "title": "Request Tracing and Metrics"
-            },
-            {
-              "module": "concept-docs",
-              "path": "sdk-user-management-overview.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/sdk-user-management-overview.html",
-              "title": "User Management"
-            },
-            {
-              "alias": true,
-              "module": "concept-docs",
-              "path": "sdk-xattr-overview.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/xattr.html",
-              "title": "Extended Attributes"
-            },
-            {
-              "module": "concept-docs",
-              "path": "subdocument-operations.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/subdocument-operations.html",
-              "title": "Sub-Document API"
-            },
-            {
-              "module": "concept-docs",
-              "path": "understanding-views.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/understanding-views.html",
-              "title": "MapReduce Views"
-            },
-            {
-              "module": "concept-docs",
-              "path": "xattr.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/xattr.html",
-              "title": "Extended Attributes"
-            },
-            {
-              "module": "hello-world",
-              "path": "overview.adoc",
-              "url": "/kotlin-sdk/1.1/hello-world/overview.html",
-              "title": "Couchbase Kotlin SDK 1.1"
-            },
-            {
-              "module": "hello-world",
-              "path": "start-using-sdk.adoc",
-              "url": "/kotlin-sdk/1.1/hello-world/start-using-sdk.html",
-              "title": "Install and Start Using the Kotlin SDK with Couchbase Server"
-            },
-            {
-              "module": "howtos",
-              "path": "connecting.adoc",
-              "url": "/kotlin-sdk/1.1/howtos/connecting.html",
-              "title": "Connection Basics"
-            },
-            {
-              "module": "howtos",
-              "path": "document-expiry.adoc",
-              "url": "/kotlin-sdk/1.1/howtos/document-expiry.html",
-              "title": "Document Expiry"
-            },
-            {
-              "module": "howtos",
-              "path": "full-text-search.adoc",
-              "url": "/kotlin-sdk/1.1/howtos/full-text-search.html",
-              "title": "Full Text Search"
-            },
-            {
-              "module": "howtos",
-              "path": "json.adoc",
-              "url": "/kotlin-sdk/1.1/howtos/json.html",
-              "title": "Working with JSON"
-            },
-            {
-              "module": "howtos",
-              "path": "kv-operations.adoc",
-              "url": "/kotlin-sdk/1.1/howtos/kv-operations.html",
-              "title": "Key Value Operations"
-            },
-            {
-              "module": "howtos",
-              "path": "n1ql-queries.adoc",
-              "url": "/kotlin-sdk/1.1/howtos/n1ql-queries.html",
-              "title": "N1QL Queries from the SDK"
-            },
-            {
-              "module": "howtos",
-              "path": "organizing-documents.adoc",
-              "url": "/kotlin-sdk/1.1/howtos/organizing-documents.html",
-              "title": "Organizing Documents"
-            },
-            {
-              "module": "howtos",
-              "path": "secure-connections.adoc",
-              "url": "/kotlin-sdk/1.1/howtos/secure-connections.html",
-              "title": "Secure Connections with TLS"
-            },
-            {
-              "module": "project-docs",
-              "path": "compatibility.adoc",
-              "url": "/kotlin-sdk/1.1/project-docs/compatibility.html",
-              "title": "Compatibility of Couchbase Features, Couchbase Server Versions, and the Couchbase Kotlin SDK"
-            },
-            {
-              "module": "project-docs",
-              "path": "get-involved.adoc",
-              "url": "/kotlin-sdk/1.1/project-docs/get-involved.html",
-              "title": "Get Involved"
-            },
-            {
-              "module": "project-docs",
-              "path": "sdk-licenses.adoc",
-              "url": "/kotlin-sdk/1.1/project-docs/sdk-licenses.html",
-              "title": "SDK License"
-            },
-            {
-              "module": "project-docs",
-              "path": "sdk-release-notes.adoc",
-              "url": "/kotlin-sdk/1.1/project-docs/sdk-release-notes.html",
-              "title": "Couchbase Kotlin SDK Release Notes and Archives"
-            },
-            {
-              "module": "ref",
-              "path": "client-settings.adoc",
-              "url": "/kotlin-sdk/1.1/ref/client-settings.html",
-              "title": "Client Settings for the Java SDK"
-            },
-            {
-              "module": "ref",
-              "path": "data-structures.adoc",
-              "url": "/kotlin-sdk/1.1/ref/data-structures.html",
-              "title": "Data Structures Reference"
-            },
-            {
-              "module": "ref",
-              "path": "error-codes.adoc",
-              "url": "/kotlin-sdk/1.1/ref/error-codes.html",
-              "title": "Error Codes"
-            },
-            {
-              "module": "ref",
-              "path": "glossary.adoc",
-              "url": "/kotlin-sdk/1.1/ref/glossary.html",
-              "title": "Glossary of SDK-related Terms"
-            },
-            {
-              "module": "ref",
-              "path": "travel-app-data-model.adoc",
-              "url": "/kotlin-sdk/1.1/ref/travel-app-data-model.html",
-              "title": "Travel App Data Model"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "client-settings.adoc",
-              "url": "/kotlin-sdk/1.1/ref/client-settings.html",
-              "title": "Client Settings for the Java SDK"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "datastructures.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/data-model.html",
-              "title": "The Data Model"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "encryption.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/encryption.html",
-              "title": "Field Level Encryption"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "env-config.adoc",
-              "url": "/kotlin-sdk/1.1/ref/client-settings.html",
-              "title": "Client Settings for the Java SDK"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "full-text-search-overview.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/full-text-search-overview.html",
-              "title": "Full Text Search Overview"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "index.adoc",
-              "url": "/kotlin-sdk/1.1/hello-world/overview.html",
-              "title": "Couchbase Kotlin SDK 1.1"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "managing-views.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/understanding-views.html",
-              "title": "MapReduce Views"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "n1ql-query.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/n1ql-query.html",
-              "title": "Querying with N1QL"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "nonjson.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/nonjson.html",
-              "title": "Non-JSON Documents"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "prepared-statements.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/n1ql-query.html",
-              "title": "Querying with N1QL"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "querying-views.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/understanding-views.html",
-              "title": "MapReduce Views"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "querying.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/n1ql-query.html",
-              "title": "Querying with N1QL"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "sdk-licenses.adoc",
-              "url": "/kotlin-sdk/1.1/project-docs/sdk-licenses.html",
-              "title": "SDK License"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "sdk-user-management-overview.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/sdk-user-management-overview.html",
-              "title": "User Management"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "sdk-xattr-overview.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/xattr.html",
-              "title": "Extended Attributes"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "threshold-logging.adoc",
-              "url": "/kotlin-sdk/1.1/concept-docs/response-time-observability.html",
-              "title": "Request Tracing and Metrics"
-            }
-          ]
-        },
-        {
-          "version": "1.0",
-          "url": "/kotlin-sdk/1.0/hello-world/overview.html",
-          "pages": [
-            {
-              "module": "hello-world",
-              "path": "overview.adoc",
-              "url": "/kotlin-sdk/1.0/hello-world/overview.html",
-              "title": "Install and Start Using the Kotlin SDK with Couchbase Server"
-            },
-            {
-              "module": "howtos",
-              "path": "connecting.adoc",
-              "url": "/kotlin-sdk/1.0/howtos/connecting.html",
-              "title": "Connection Basics"
-            },
-            {
-              "module": "howtos",
-              "path": "document-expiry.adoc",
-              "url": "/kotlin-sdk/1.0/howtos/document-expiry.html",
-              "title": "Document Expiry"
-            },
-            {
-              "module": "howtos",
-              "path": "full-text-search.adoc",
-              "url": "/kotlin-sdk/1.0/howtos/full-text-search.html",
-              "title": "Full Text Search"
-            },
-            {
-              "module": "howtos",
-              "path": "json.adoc",
-              "url": "/kotlin-sdk/1.0/howtos/json.html",
-              "title": "Working with JSON"
-            },
-            {
-              "module": "howtos",
-              "path": "kv-operations.adoc",
-              "url": "/kotlin-sdk/1.0/howtos/kv-operations.html",
-              "title": "Key Value Operations"
-            },
-            {
-              "module": "howtos",
-              "path": "n1ql-queries.adoc",
-              "url": "/kotlin-sdk/1.0/howtos/n1ql-queries.html",
-              "title": "N1QL Queries from the SDK"
-            },
-            {
-              "module": "howtos",
-              "path": "organizing-documents.adoc",
-              "url": "/kotlin-sdk/1.0/howtos/organizing-documents.html",
-              "title": "Organizing Documents"
-            },
-            {
-              "module": "howtos",
-              "path": "secure-connections.adoc",
-              "url": "/kotlin-sdk/1.0/howtos/secure-connections.html",
-              "title": "Secure Connections with TLS"
-            },
-            {
-              "module": "project-docs",
-              "path": "compatibility.adoc",
-              "url": "/kotlin-sdk/1.0/project-docs/compatibility.html",
-              "title": "Compatibility of Couchbase Features, Couchbase Server Versions, and the Couchbase Kotlin SDK"
-            },
-            {
-              "module": "project-docs",
-              "path": "get-involved.adoc",
-              "url": "/kotlin-sdk/1.0/project-docs/get-involved.html",
-              "title": "Get Involved"
-            },
-            {
-              "module": "project-docs",
-              "path": "sdk-licenses.adoc",
-              "url": "/kotlin-sdk/1.0/project-docs/sdk-licenses.html",
-              "title": "SDK License"
-            },
-            {
-              "module": "project-docs",
-              "path": "sdk-release-notes.adoc",
-              "url": "/kotlin-sdk/1.0/project-docs/sdk-release-notes.html",
-              "title": "Couchbase Kotlin SDK Release Notes and Archives"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "index.adoc",
-              "url": "/kotlin-sdk/1.0/hello-world/overview.html",
-              "title": "Install and Start Using the Kotlin SDK with Couchbase Server"
-            },
-            {
-              "alias": true,
-              "module": "ROOT",
-              "path": "sdk-licenses.adoc",
-              "url": "/kotlin-sdk/1.0/project-docs/sdk-licenses.html",
-              "title": "SDK License"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "nodejs-sdk",
       "title": "Node.js SDK",
       "latest": "4.2",
@@ -7880,6 +7369,1653 @@
               "module": "ROOT",
               "path": "webui-cli-access.adoc",
               "url": "/nodejs-sdk/4.1/hello-world/webui-cli-access.html",
+              "title": "Browser and CLI Access"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "php-sdk",
+      "title": "PHP SDK",
+      "latest": "4.1",
+      "versions": [
+        {
+          "version": "4.1",
+          "url": "/php-sdk/4.1/hello-world/overview.html",
+          "pages": [
+            {
+              "module": "concept-docs",
+              "path": "analytics-for-sdk-users.adoc",
+              "url": "/php-sdk/4.1/concept-docs/analytics-for-sdk-users.html",
+              "title": "Analytics"
+            },
+            {
+              "alias": true,
+              "module": "concept-docs",
+              "path": "analytics.adoc",
+              "url": "/php-sdk/4.1/concept-docs/analytics-for-sdk-users.html",
+              "title": "Analytics"
+            },
+            {
+              "module": "concept-docs",
+              "path": "buckets-and-clusters.adoc",
+              "url": "/php-sdk/4.1/concept-docs/buckets-and-clusters.html",
+              "title": "Buckets and Clusters"
+            },
+            {
+              "module": "concept-docs",
+              "path": "certificate-based-authentication.adoc",
+              "url": "/php-sdk/4.1/concept-docs/certificate-based-authentication.html",
+              "title": "Certificate-Based Authentication"
+            },
+            {
+              "alias": true,
+              "module": "concept-docs",
+              "path": "choosing-the-right-service.adoc",
+              "url": "/php-sdk/4.1/concept-docs/data-services.html",
+              "title": "Service Selection"
+            },
+            {
+              "module": "concept-docs",
+              "path": "collections.adoc",
+              "url": "/php-sdk/4.1/concept-docs/collections.html",
+              "title": "Collections and Scopes"
+            },
+            {
+              "module": "concept-docs",
+              "path": "compression.adoc",
+              "url": "/php-sdk/4.1/concept-docs/compression.html",
+              "title": "Compression"
+            },
+            {
+              "module": "concept-docs",
+              "path": "concepts.adoc",
+              "url": "/php-sdk/4.1/concept-docs/concepts.html",
+              "title": "Overview"
+            },
+            {
+              "module": "concept-docs",
+              "path": "data-model.adoc",
+              "url": "/php-sdk/4.1/concept-docs/data-model.html",
+              "title": "Data Model"
+            },
+            {
+              "module": "concept-docs",
+              "path": "data-services.adoc",
+              "url": "/php-sdk/4.1/concept-docs/data-services.html",
+              "title": "Service Selection"
+            },
+            {
+              "module": "concept-docs",
+              "path": "documents.adoc",
+              "url": "/php-sdk/4.1/concept-docs/documents.html",
+              "title": "Documents"
+            },
+            {
+              "module": "concept-docs",
+              "path": "durability-replication-failure-considerations.adoc",
+              "url": "/php-sdk/4.1/concept-docs/durability-replication-failure-considerations.html",
+              "title": "Failure Considerations"
+            },
+            {
+              "module": "concept-docs",
+              "path": "encryption.adoc",
+              "url": "/php-sdk/4.1/concept-docs/encryption.html",
+              "title": "Field Level Encryption"
+            },
+            {
+              "module": "concept-docs",
+              "path": "errors.adoc",
+              "url": "/php-sdk/4.1/concept-docs/errors.html",
+              "title": "Errors and Diagnostics"
+            },
+            {
+              "module": "concept-docs",
+              "path": "full-text-search-overview.adoc",
+              "url": "/php-sdk/4.1/concept-docs/full-text-search-overview.html",
+              "title": "Search"
+            },
+            {
+              "module": "concept-docs",
+              "path": "health-check.adoc",
+              "url": "/php-sdk/4.1/concept-docs/health-check.html",
+              "title": "Health Check"
+            },
+            {
+              "alias": true,
+              "module": "concept-docs",
+              "path": "http-services.adoc",
+              "url": "/php-sdk/4.1/concept-docs/data-services.html",
+              "title": "Service Selection"
+            },
+            {
+              "alias": true,
+              "module": "concept-docs",
+              "path": "managing-clusters.adoc",
+              "url": "/php-sdk/4.1/concept-docs/buckets-and-clusters.html",
+              "title": "Buckets and Clusters"
+            },
+            {
+              "module": "concept-docs",
+              "path": "n1ql-query.adoc",
+              "url": "/php-sdk/4.1/concept-docs/n1ql-query.html",
+              "title": "Query"
+            },
+            {
+              "module": "concept-docs",
+              "path": "nonjson.adoc",
+              "url": "/php-sdk/4.1/concept-docs/nonjson.html",
+              "title": "Non-JSON Documents"
+            },
+            {
+              "module": "concept-docs",
+              "path": "rbac.adoc",
+              "url": "/php-sdk/4.1/concept-docs/rbac.html",
+              "title": "RBAC"
+            },
+            {
+              "module": "concept-docs",
+              "path": "response-time-observability.adoc",
+              "url": "/php-sdk/4.1/concept-docs/response-time-observability.html",
+              "title": "Tracing"
+            },
+            {
+              "module": "concept-docs",
+              "path": "sdk-user-management-overview.adoc",
+              "url": "/php-sdk/4.1/concept-docs/sdk-user-management-overview.html",
+              "title": "User Management"
+            },
+            {
+              "alias": true,
+              "module": "concept-docs",
+              "path": "sdk-xattr-overview.adoc",
+              "url": "/php-sdk/4.1/concept-docs/xattr.html",
+              "title": "XATTR and Virtual XATTR"
+            },
+            {
+              "module": "concept-docs",
+              "path": "subdocument-operations.adoc",
+              "url": "/php-sdk/4.1/concept-docs/subdocument-operations.html",
+              "title": "Sub-Documents"
+            },
+            {
+              "module": "concept-docs",
+              "path": "transactions-cleanup.adoc",
+              "url": "/php-sdk/4.1/concept-docs/transactions-cleanup.html",
+              "title": "Cleanup"
+            },
+            {
+              "module": "concept-docs",
+              "path": "transactions-error-handling.adoc",
+              "url": "/php-sdk/4.1/concept-docs/transactions-error-handling.html",
+              "title": "Error Handling"
+            },
+            {
+              "module": "concept-docs",
+              "path": "transactions.adoc",
+              "url": "/php-sdk/4.1/concept-docs/transactions.html",
+              "title": "Transaction Concepts"
+            },
+            {
+              "module": "concept-docs",
+              "path": "understanding-views.adoc",
+              "url": "/php-sdk/4.1/concept-docs/understanding-views.html",
+              "title": "MapReduce Views"
+            },
+            {
+              "module": "concept-docs",
+              "path": "xattr.adoc",
+              "url": "/php-sdk/4.1/concept-docs/xattr.html",
+              "title": "XATTR and Virtual XATTR"
+            },
+            {
+              "alias": true,
+              "module": "hello-world",
+              "path": "cbc.adoc",
+              "url": "/php-sdk/4.1/hello-world/webui-cli-access.html",
+              "title": "Browser and CLI Access"
+            },
+            {
+              "module": "hello-world",
+              "path": "overview.adoc",
+              "url": "/php-sdk/4.1/hello-world/overview.html",
+              "title": "Couchbase PHP SDK 4.1"
+            },
+            {
+              "module": "hello-world",
+              "path": "platform-help.adoc",
+              "url": "/php-sdk/4.1/hello-world/platform-help.html",
+              "title": "Platform Introduction"
+            },
+            {
+              "module": "hello-world",
+              "path": "sample-application.adoc",
+              "url": "/php-sdk/4.1/hello-world/sample-application.html",
+              "title": "Sample Application"
+            },
+            {
+              "alias": true,
+              "module": "hello-world",
+              "path": "sdk-authentication-overview.adoc",
+              "url": "/php-sdk/4.1/hello-world/sdk-authentication.html"
+            },
+            {
+              "module": "hello-world",
+              "path": "sdk-authentication.adoc",
+              "url": "/php-sdk/4.1/hello-world/sdk-authentication.html"
+            },
+            {
+              "module": "hello-world",
+              "path": "start-using-sdk.adoc",
+              "url": "/php-sdk/4.1/hello-world/start-using-sdk.html",
+              "title": "Start Using the PHP SDK"
+            },
+            {
+              "module": "hello-world",
+              "path": "webui-cli-access.adoc",
+              "url": "/php-sdk/4.1/hello-world/webui-cli-access.html",
+              "title": "Browser and CLI Access"
+            },
+            {
+              "module": "howtos",
+              "path": "advanced-analytics-querying.adoc",
+              "url": "/php-sdk/4.1/howtos/advanced-analytics-querying.html",
+              "title": "Advanced Analytics Querying"
+            },
+            {
+              "module": "howtos",
+              "path": "analytics-using-sdk.adoc",
+              "url": "/php-sdk/4.1/howtos/analytics-using-sdk.html",
+              "title": "Analytics"
+            },
+            {
+              "module": "howtos",
+              "path": "collecting-information-and-logging.adoc",
+              "url": "/php-sdk/4.1/howtos/collecting-information-and-logging.html",
+              "title": "Logging"
+            },
+            {
+              "module": "howtos",
+              "path": "concurrent-async-apis.adoc",
+              "url": "/php-sdk/4.1/howtos/concurrent-async-apis.html",
+              "title": "Batching"
+            },
+            {
+              "module": "howtos",
+              "path": "concurrent-document-mutations.adoc",
+              "url": "/php-sdk/4.1/howtos/concurrent-document-mutations.html",
+              "title": "Concurrent Document Mutations"
+            },
+            {
+              "module": "howtos",
+              "path": "distributed-acid-transactions-from-the-sdk.adoc",
+              "url": "/php-sdk/4.1/howtos/distributed-acid-transactions-from-the-sdk.html",
+              "title": "Using Couchbase Transactions"
+            },
+            {
+              "alias": true,
+              "module": "howtos",
+              "path": "document-operations.adoc",
+              "url": "/php-sdk/4.1/howtos/kv-operations.html",
+              "title": "Data Operations"
+            },
+            {
+              "module": "howtos",
+              "path": "durability-error-handling-from-the-sdk.adoc",
+              "url": "/php-sdk/4.1/howtos/durability-error-handling-from-the-sdk.html",
+              "title": "Durability in Action"
+            },
+            {
+              "module": "howtos",
+              "path": "encrypting-using-sdk.adoc",
+              "url": "/php-sdk/4.1/howtos/encrypting-using-sdk.html",
+              "title": "Field Level Encryption from the SDK"
+            },
+            {
+              "module": "howtos",
+              "path": "error-handling.adoc",
+              "url": "/php-sdk/4.1/howtos/error-handling.html",
+              "title": "Handling Errors"
+            },
+            {
+              "module": "howtos",
+              "path": "full-text-searching-with-sdk.adoc",
+              "url": "/php-sdk/4.1/howtos/full-text-searching-with-sdk.html",
+              "title": "Search"
+            },
+            {
+              "alias": true,
+              "module": "howtos",
+              "path": "handling-error-conditions.adoc",
+              "url": "/php-sdk/4.1/howtos/error-handling.html",
+              "title": "Handling Errors"
+            },
+            {
+              "module": "howtos",
+              "path": "health-check.adoc",
+              "url": "/php-sdk/4.1/howtos/health-check.html",
+              "title": "Diagnosing and preventing Network Problems with Health Check"
+            },
+            {
+              "module": "howtos",
+              "path": "json.adoc",
+              "url": "/php-sdk/4.1/howtos/json.html",
+              "title": "Choosing &amp; Using a JSON Library"
+            },
+            {
+              "module": "howtos",
+              "path": "kv-operations.adoc",
+              "url": "/php-sdk/4.1/howtos/kv-operations.html",
+              "title": "Data Operations"
+            },
+            {
+              "module": "howtos",
+              "path": "managing-connections.adoc",
+              "url": "/php-sdk/4.1/howtos/managing-connections.html",
+              "title": "Managing Connections"
+            },
+            {
+              "alias": true,
+              "module": "howtos",
+              "path": "multi-network.adoc",
+              "url": "/php-sdk/4.1/howtos/managing-connections.html",
+              "title": "Managing Connections"
+            },
+            {
+              "alias": true,
+              "module": "howtos",
+              "path": "multiple-apis.adoc",
+              "url": "/php-sdk/4.1/howtos/concurrent-async-apis.html",
+              "title": "Batching"
+            },
+            {
+              "module": "howtos",
+              "path": "n1ql-queries-with-sdk.adoc",
+              "url": "/php-sdk/4.1/howtos/n1ql-queries-with-sdk.html",
+              "title": "Query"
+            },
+            {
+              "alias": true,
+              "module": "howtos",
+              "path": "n1ql-query.adoc",
+              "url": "/php-sdk/4.1/howtos/n1ql-queries-with-sdk.html",
+              "title": "Query"
+            },
+            {
+              "module": "howtos",
+              "path": "provisioning-cluster-resources.adoc",
+              "url": "/php-sdk/4.1/howtos/provisioning-cluster-resources.html",
+              "title": "Provisioning Cluster Resources"
+            },
+            {
+              "module": "howtos",
+              "path": "sdk-authentication.adoc",
+              "url": "/php-sdk/4.1/howtos/sdk-authentication.html",
+              "title": "Authentication"
+            },
+            {
+              "module": "howtos",
+              "path": "sdk-user-management-example.adoc",
+              "url": "/php-sdk/4.1/howtos/sdk-user-management-example.html",
+              "title": "User Management"
+            },
+            {
+              "module": "howtos",
+              "path": "slow-operations-logging.adoc",
+              "url": "/php-sdk/4.1/howtos/slow-operations-logging.html",
+              "title": "Slow Operations Logging"
+            },
+            {
+              "module": "howtos",
+              "path": "subdocument-operations.adoc",
+              "url": "/php-sdk/4.1/howtos/subdocument-operations.html",
+              "title": "Sub-Document Operations"
+            },
+            {
+              "module": "howtos",
+              "path": "transactions-single-query.adoc",
+              "url": "/php-sdk/4.1/howtos/transactions-single-query.html"
+            },
+            {
+              "module": "howtos",
+              "path": "transactions-tracing.adoc",
+              "url": "/php-sdk/4.1/howtos/transactions-tracing.html"
+            },
+            {
+              "module": "howtos",
+              "path": "transcoders-nonjson.adoc",
+              "url": "/php-sdk/4.1/howtos/transcoders-nonjson.html",
+              "title": "Transcoders and Non-JSON Documents"
+            },
+            {
+              "module": "howtos",
+              "path": "troubleshooting-cloud-connections.adoc",
+              "url": "/php-sdk/4.1/howtos/troubleshooting-cloud-connections.html",
+              "title": "Troubleshooting Cloud Connections"
+            },
+            {
+              "module": "howtos",
+              "path": "view-queries-with-sdk.adoc",
+              "url": "/php-sdk/4.1/howtos/view-queries-with-sdk.html",
+              "title": "MapReduce Views"
+            },
+            {
+              "module": "howtos",
+              "path": "working-with-collections.adoc",
+              "url": "/php-sdk/4.1/howtos/working-with-collections.html",
+              "title": "Working with Collections"
+            },
+            {
+              "module": "project-docs",
+              "path": "3.0-pre-release-notes.adoc",
+              "url": "/php-sdk/4.1/project-docs/3.0-pre-release-notes.html",
+              "title": "Pre-release Archive Release Notes"
+            },
+            {
+              "alias": true,
+              "module": "project-docs",
+              "path": "3.0αλφα-sdk-release-notes.adoc",
+              "url": "/php-sdk/4.1/project-docs/3.0-pre-release-notes.html",
+              "title": "Pre-release Archive Release Notes"
+            },
+            {
+              "alias": true,
+              "module": "project-docs",
+              "path": "compatibility-versions-features.adoc",
+              "url": "/php-sdk/4.1/project-docs/compatibility.html",
+              "title": "Compatibility"
+            },
+            {
+              "module": "project-docs",
+              "path": "compatibility.adoc",
+              "url": "/php-sdk/4.1/project-docs/compatibility.html",
+              "title": "Compatibility"
+            },
+            {
+              "module": "project-docs",
+              "path": "get-involved.adoc",
+              "url": "/php-sdk/4.1/project-docs/get-involved.html",
+              "title": "Get Involved"
+            },
+            {
+              "module": "project-docs",
+              "path": "metadoc-about-these-sdk-docs.adoc",
+              "url": "/php-sdk/4.1/project-docs/metadoc-about-these-sdk-docs.html",
+              "title": "About These Docs"
+            },
+            {
+              "module": "project-docs",
+              "path": "migrating-sdk-code-to-3.n.adoc",
+              "url": "/php-sdk/4.1/project-docs/migrating-sdk-code-to-3.n.html",
+              "title": "Migrating to SDK 3 API"
+            },
+            {
+              "module": "project-docs",
+              "path": "sdk-full-installation.adoc",
+              "url": "/php-sdk/4.1/project-docs/sdk-full-installation.html",
+              "title": "Full Installation"
+            },
+            {
+              "module": "project-docs",
+              "path": "sdk-licenses.adoc",
+              "url": "/php-sdk/4.1/project-docs/sdk-licenses.html",
+              "title": "Licenses"
+            },
+            {
+              "module": "project-docs",
+              "path": "sdk-release-notes.adoc",
+              "url": "/php-sdk/4.1/project-docs/sdk-release-notes.html",
+              "title": "Release Notes"
+            },
+            {
+              "module": "ref",
+              "path": "client-settings.adoc",
+              "url": "/php-sdk/4.1/ref/client-settings.html",
+              "title": "Client Settings"
+            },
+            {
+              "module": "ref",
+              "path": "data-structures.adoc",
+              "url": "/php-sdk/4.1/ref/data-structures.html"
+            },
+            {
+              "module": "ref",
+              "path": "error-codes.adoc",
+              "url": "/php-sdk/4.1/ref/error-codes.html",
+              "title": "Error Messages"
+            },
+            {
+              "module": "ref",
+              "path": "glossary.adoc",
+              "url": "/php-sdk/4.1/ref/glossary.html",
+              "title": "Glossary"
+            },
+            {
+              "module": "ref",
+              "path": "travel-app-data-model.adoc",
+              "url": "/php-sdk/4.1/ref/travel-app-data-model.html",
+              "title": "Travel Sample Data Model"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "async-programming.adoc",
+              "url": "/php-sdk/4.1/howtos/concurrent-async-apis.html",
+              "title": "Batching"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "batching-operations.adoc",
+              "url": "/php-sdk/4.1/howtos/concurrent-async-apis.html",
+              "title": "Batching"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "client-settings.adoc",
+              "url": "/php-sdk/4.1/ref/client-settings.html",
+              "title": "Client Settings"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "compatibility-versions-features.adoc",
+              "url": "/php-sdk/4.1/project-docs/compatibility.html",
+              "title": "Compatibility"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "concurrent-document-mutations.adoc",
+              "url": "/php-sdk/4.1/howtos/concurrent-document-mutations.html",
+              "title": "Concurrent Document Mutations"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "connecting.adoc",
+              "url": "/php-sdk/4.1/howtos/managing-connections.html",
+              "title": "Managing Connections"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "connection-advanced.adoc",
+              "url": "/php-sdk/4.1/howtos/managing-connections.html",
+              "title": "Managing Connections"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "core-operations.adoc",
+              "url": "/php-sdk/4.1/concept-docs/data-model.html",
+              "title": "Data Model"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "datastructures.adoc",
+              "url": "/php-sdk/4.1/concept-docs/data-model.html",
+              "title": "Data Model"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "documents-atomic.adoc",
+              "url": "/php-sdk/4.1/concept-docs/documents.html",
+              "title": "Documents"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "documents-basics.adoc",
+              "url": "/php-sdk/4.1/concept-docs/documents.html",
+              "title": "Documents"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "documents.adoc",
+              "url": "/php-sdk/4.1/concept-docs/documents.html",
+              "title": "Documents"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "durability.adoc",
+              "url": "/php-sdk/4.1/concept-docs/durability-replication-failure-considerations.html",
+              "title": "Failure Considerations"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "encrypting-using-sdk.adoc",
+              "url": "/php-sdk/4.1/howtos/encrypting-using-sdk.html",
+              "title": "Field Level Encryption from the SDK"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "encryption.adoc",
+              "url": "/php-sdk/4.1/concept-docs/encryption.html",
+              "title": "Field Level Encryption"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "failure-considerations.adoc",
+              "url": "/php-sdk/4.1/concept-docs/durability-replication-failure-considerations.html",
+              "title": "Failure Considerations"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "full-text-search-overview.adoc",
+              "url": "/php-sdk/4.1/concept-docs/full-text-search-overview.html",
+              "title": "Search"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "getting-started.adoc",
+              "url": "/php-sdk/4.1/hello-world/start-using-sdk.html",
+              "title": "Start Using the PHP SDK"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "health-check.adoc",
+              "url": "/php-sdk/4.1/concept-docs/health-check.html",
+              "title": "Health Check"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "hello-couchbase.adoc",
+              "url": "/php-sdk/4.1/hello-world/start-using-sdk.html",
+              "title": "Start Using the PHP SDK"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "index.adoc",
+              "url": "/php-sdk/4.1/hello-world/overview.html",
+              "title": "Couchbase PHP SDK 4.1"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "managing-clusters.adoc",
+              "url": "/php-sdk/4.1/howtos/provisioning-cluster-resources.html",
+              "title": "Provisioning Cluster Resources"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "managing-connections.adoc",
+              "url": "/php-sdk/4.1/howtos/managing-connections.html",
+              "title": "Managing Connections"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "managing-views.adoc",
+              "url": "/php-sdk/4.1/concept-docs/understanding-views.html",
+              "title": "MapReduce Views"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "migrate.adoc",
+              "url": "/php-sdk/4.1/project-docs/migrating-sdk-code-to-3.n.html",
+              "title": "Migrating to SDK 3 API"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "n1ql-query.adoc",
+              "url": "/php-sdk/4.1/concept-docs/n1ql-query.html",
+              "title": "Query"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "nonjson.adoc",
+              "url": "/php-sdk/4.1/concept-docs/nonjson.html",
+              "title": "Non-JSON Documents"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "overview.adoc",
+              "url": "/php-sdk/4.1/project-docs/compatibility.html",
+              "title": "Compatibility"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "querying-views.adoc",
+              "url": "/php-sdk/4.1/concept-docs/understanding-views.html",
+              "title": "MapReduce Views"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "release-notes.adoc",
+              "url": "/php-sdk/4.1/project-docs/sdk-release-notes.html",
+              "title": "Release Notes"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "relnotes-php-sdk.adoc",
+              "url": "/php-sdk/4.1/project-docs/sdk-release-notes.html",
+              "title": "Release Notes"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sample-app-backend.adoc",
+              "url": "/php-sdk/4.1/hello-world/sample-application.html",
+              "title": "Sample Application"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sample-application.adoc",
+              "url": "/php-sdk/4.1/hello-world/sample-application.html",
+              "title": "Sample Application"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-authentication-overview.adoc",
+              "url": "/php-sdk/4.1/howtos/sdk-authentication.html",
+              "title": "Authentication"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-licenses.adoc",
+              "url": "/php-sdk/4.1/project-docs/sdk-licenses.html",
+              "title": "Licenses"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-release-notes.adoc",
+              "url": "/php-sdk/4.1/project-docs/sdk-release-notes.html",
+              "title": "Release Notes"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-user-management-overview.adoc",
+              "url": "/php-sdk/4.1/concept-docs/sdk-user-management-overview.html",
+              "title": "User Management"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-xattr-example.adoc",
+              "url": "/php-sdk/4.1/howtos/subdocument-operations.html",
+              "title": "Sub-Document Operations"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-xattr-overview.adoc",
+              "url": "/php-sdk/4.1/concept-docs/xattr.html",
+              "title": "XATTR and Virtual XATTR"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "start-using-sdk.adoc",
+              "url": "/php-sdk/4.1/hello-world/start-using-sdk.html",
+              "title": "Start Using the PHP SDK"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "start-using.adoc",
+              "url": "/php-sdk/4.1/hello-world/start-using-sdk.html",
+              "title": "Start Using the PHP SDK"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "threshold-logging.adoc",
+              "url": "/php-sdk/4.1/concept-docs/response-time-observability.html",
+              "title": "Tracing"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "tutorial4.adoc",
+              "url": "/php-sdk/4.1/hello-world/sample-application.html",
+              "title": "Sample Application"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "view-queries-with-sdk.adoc",
+              "url": "/php-sdk/4.1/howtos/view-queries-with-sdk.html",
+              "title": "MapReduce Views"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "webui-cli-access.adoc",
+              "url": "/php-sdk/4.1/hello-world/webui-cli-access.html",
+              "title": "Browser and CLI Access"
+            }
+          ]
+        },
+        {
+          "version": "4.0",
+          "url": "/php-sdk/4.0/hello-world/overview.html",
+          "pages": [
+            {
+              "module": "concept-docs",
+              "path": "analytics-for-sdk-users.adoc",
+              "url": "/php-sdk/4.0/concept-docs/analytics-for-sdk-users.html",
+              "title": "Analytics"
+            },
+            {
+              "alias": true,
+              "module": "concept-docs",
+              "path": "analytics.adoc",
+              "url": "/php-sdk/4.0/concept-docs/analytics-for-sdk-users.html",
+              "title": "Analytics"
+            },
+            {
+              "module": "concept-docs",
+              "path": "buckets-and-clusters.adoc",
+              "url": "/php-sdk/4.0/concept-docs/buckets-and-clusters.html",
+              "title": "Buckets and Clusters"
+            },
+            {
+              "module": "concept-docs",
+              "path": "certificate-based-authentication.adoc",
+              "url": "/php-sdk/4.0/concept-docs/certificate-based-authentication.html",
+              "title": "Certificate-Based Authentication"
+            },
+            {
+              "alias": true,
+              "module": "concept-docs",
+              "path": "choosing-the-right-service.adoc",
+              "url": "/php-sdk/4.0/concept-docs/data-services.html",
+              "title": "Services&#8201;&#8212;&#8201;Choosing the Right One"
+            },
+            {
+              "module": "concept-docs",
+              "path": "collections.adoc",
+              "url": "/php-sdk/4.0/concept-docs/collections.html",
+              "title": "Collections &amp; Scopes"
+            },
+            {
+              "module": "concept-docs",
+              "path": "compression.adoc",
+              "url": "/php-sdk/4.0/concept-docs/compression.html",
+              "title": "Compression"
+            },
+            {
+              "module": "concept-docs",
+              "path": "concepts.adoc",
+              "url": "/php-sdk/4.0/concept-docs/concepts.html",
+              "title": "Concepts"
+            },
+            {
+              "module": "concept-docs",
+              "path": "data-model.adoc",
+              "url": "/php-sdk/4.0/concept-docs/data-model.html",
+              "title": "The Data Model"
+            },
+            {
+              "module": "concept-docs",
+              "path": "data-services.adoc",
+              "url": "/php-sdk/4.0/concept-docs/data-services.html",
+              "title": "Services&#8201;&#8212;&#8201;Choosing the Right One"
+            },
+            {
+              "module": "concept-docs",
+              "path": "documents.adoc",
+              "url": "/php-sdk/4.0/concept-docs/documents.html",
+              "title": "Document"
+            },
+            {
+              "module": "concept-docs",
+              "path": "durability-replication-failure-considerations.adoc",
+              "url": "/php-sdk/4.0/concept-docs/durability-replication-failure-considerations.html",
+              "title": "Durability &amp; Failure"
+            },
+            {
+              "module": "concept-docs",
+              "path": "encryption.adoc",
+              "url": "/php-sdk/4.0/concept-docs/encryption.html",
+              "title": "Field Level Encryption"
+            },
+            {
+              "module": "concept-docs",
+              "path": "errors.adoc",
+              "url": "/php-sdk/4.0/concept-docs/errors.html",
+              "title": "Errors, Exceptions, and Diagnostics"
+            },
+            {
+              "module": "concept-docs",
+              "path": "full-text-search-overview.adoc",
+              "url": "/php-sdk/4.0/concept-docs/full-text-search-overview.html",
+              "title": "Full Text Search Overview"
+            },
+            {
+              "module": "concept-docs",
+              "path": "health-check.adoc",
+              "url": "/php-sdk/4.0/concept-docs/health-check.html",
+              "title": "Health Check"
+            },
+            {
+              "alias": true,
+              "module": "concept-docs",
+              "path": "http-services.adoc",
+              "url": "/php-sdk/4.0/concept-docs/data-services.html",
+              "title": "Services&#8201;&#8212;&#8201;Choosing the Right One"
+            },
+            {
+              "alias": true,
+              "module": "concept-docs",
+              "path": "managing-clusters.adoc",
+              "url": "/php-sdk/4.0/concept-docs/buckets-and-clusters.html",
+              "title": "Buckets and Clusters"
+            },
+            {
+              "module": "concept-docs",
+              "path": "n1ql-query.adoc",
+              "url": "/php-sdk/4.0/concept-docs/n1ql-query.html",
+              "title": "Querying with N1QL"
+            },
+            {
+              "module": "concept-docs",
+              "path": "nonjson.adoc",
+              "url": "/php-sdk/4.0/concept-docs/nonjson.html",
+              "title": "Non-JSON Documents"
+            },
+            {
+              "module": "concept-docs",
+              "path": "rbac.adoc",
+              "url": "/php-sdk/4.0/concept-docs/rbac.html",
+              "title": "RBAC"
+            },
+            {
+              "module": "concept-docs",
+              "path": "response-time-observability.adoc",
+              "url": "/php-sdk/4.0/concept-docs/response-time-observability.html",
+              "title": "Request Tracing and Metrics"
+            },
+            {
+              "module": "concept-docs",
+              "path": "sdk-user-management-overview.adoc",
+              "url": "/php-sdk/4.0/concept-docs/sdk-user-management-overview.html",
+              "title": "User Management"
+            },
+            {
+              "alias": true,
+              "module": "concept-docs",
+              "path": "sdk-xattr-overview.adoc",
+              "url": "/php-sdk/4.0/concept-docs/xattr.html",
+              "title": "Extended Attributes"
+            },
+            {
+              "module": "concept-docs",
+              "path": "subdocument-operations.adoc",
+              "url": "/php-sdk/4.0/concept-docs/subdocument-operations.html",
+              "title": "Sub-Document API"
+            },
+            {
+              "module": "concept-docs",
+              "path": "understanding-views.adoc",
+              "url": "/php-sdk/4.0/concept-docs/understanding-views.html",
+              "title": "MapReduce Views"
+            },
+            {
+              "module": "concept-docs",
+              "path": "xattr.adoc",
+              "url": "/php-sdk/4.0/concept-docs/xattr.html",
+              "title": "Extended Attributes"
+            },
+            {
+              "alias": true,
+              "module": "hello-world",
+              "path": "cbc.adoc",
+              "url": "/php-sdk/4.0/hello-world/webui-cli-access.html",
+              "title": "Browser and CLI Access"
+            },
+            {
+              "module": "hello-world",
+              "path": "overview.adoc",
+              "url": "/php-sdk/4.0/hello-world/overview.html",
+              "title": "Couchbase PHP SDK 4.0"
+            },
+            {
+              "module": "hello-world",
+              "path": "platform-help.adoc",
+              "url": "/php-sdk/4.0/hello-world/platform-help.html",
+              "title": "Setting Up Couchbase PHP SDK with VSCode"
+            },
+            {
+              "module": "hello-world",
+              "path": "sample-application.adoc",
+              "url": "/php-sdk/4.0/hello-world/sample-application.html",
+              "title": "Sample Application"
+            },
+            {
+              "alias": true,
+              "module": "hello-world",
+              "path": "sdk-authentication-overview.adoc",
+              "url": "/php-sdk/4.0/hello-world/sdk-authentication.html"
+            },
+            {
+              "module": "hello-world",
+              "path": "sdk-authentication.adoc",
+              "url": "/php-sdk/4.0/hello-world/sdk-authentication.html"
+            },
+            {
+              "module": "hello-world",
+              "path": "start-using-sdk.adoc",
+              "url": "/php-sdk/4.0/hello-world/start-using-sdk.html",
+              "title": "Install and Start Using the PHP SDK with Couchbase Server"
+            },
+            {
+              "module": "hello-world",
+              "path": "webui-cli-access.adoc",
+              "url": "/php-sdk/4.0/hello-world/webui-cli-access.html",
+              "title": "Browser and CLI Access"
+            },
+            {
+              "module": "howtos",
+              "path": "advanced-analytics-querying.adoc",
+              "url": "/php-sdk/4.0/howtos/advanced-analytics-querying.html",
+              "title": "Advanced Analytics Querying"
+            },
+            {
+              "module": "howtos",
+              "path": "analytics-using-sdk.adoc",
+              "url": "/php-sdk/4.0/howtos/analytics-using-sdk.html",
+              "title": "Analytics using the PHP SDK"
+            },
+            {
+              "module": "howtos",
+              "path": "collecting-information-and-logging.adoc",
+              "url": "/php-sdk/4.0/howtos/collecting-information-and-logging.html",
+              "title": "Collecting Information and Logging in the PHP SDK with Couchbase Server"
+            },
+            {
+              "module": "howtos",
+              "path": "concurrent-async-apis.adoc",
+              "url": "/php-sdk/4.0/howtos/concurrent-async-apis.html",
+              "title": "Choosing an API"
+            },
+            {
+              "module": "howtos",
+              "path": "concurrent-document-mutations.adoc",
+              "url": "/php-sdk/4.0/howtos/concurrent-document-mutations.html",
+              "title": "Concurrent Document Mutations"
+            },
+            {
+              "module": "howtos",
+              "path": "distributed-acid-transactions-from-the-sdk.adoc",
+              "url": "/php-sdk/4.0/howtos/distributed-acid-transactions-from-the-sdk.html",
+              "title": "Distributed Transactions from the PHP SDK"
+            },
+            {
+              "alias": true,
+              "module": "howtos",
+              "path": "document-operations.adoc",
+              "url": "/php-sdk/4.0/howtos/kv-operations.html",
+              "title": "Key Value Operations"
+            },
+            {
+              "module": "howtos",
+              "path": "durability-error-handling-from-the-sdk.adoc",
+              "url": "/php-sdk/4.0/howtos/durability-error-handling-from-the-sdk.html",
+              "title": "Durability in Action"
+            },
+            {
+              "module": "howtos",
+              "path": "encrypting-using-sdk.adoc",
+              "url": "/php-sdk/4.0/howtos/encrypting-using-sdk.html",
+              "title": "Field Level Encryption from the SDK"
+            },
+            {
+              "module": "howtos",
+              "path": "error-handling.adoc",
+              "url": "/php-sdk/4.0/howtos/error-handling.html",
+              "title": "Handling Errors"
+            },
+            {
+              "module": "howtos",
+              "path": "full-text-searching-with-sdk.adoc",
+              "url": "/php-sdk/4.0/howtos/full-text-searching-with-sdk.html",
+              "title": "Full Text Search from the SDK"
+            },
+            {
+              "alias": true,
+              "module": "howtos",
+              "path": "handling-error-conditions.adoc",
+              "url": "/php-sdk/4.0/howtos/error-handling.html",
+              "title": "Handling Errors"
+            },
+            {
+              "module": "howtos",
+              "path": "health-check.adoc",
+              "url": "/php-sdk/4.0/howtos/health-check.html",
+              "title": "Diagnosing and preventing Network Problems with Health Check"
+            },
+            {
+              "module": "howtos",
+              "path": "json.adoc",
+              "url": "/php-sdk/4.0/howtos/json.html",
+              "title": "Choosing &amp; Using a JSON Library"
+            },
+            {
+              "module": "howtos",
+              "path": "kv-operations.adoc",
+              "url": "/php-sdk/4.0/howtos/kv-operations.html",
+              "title": "Key Value Operations"
+            },
+            {
+              "module": "howtos",
+              "path": "managing-connections.adoc",
+              "url": "/php-sdk/4.0/howtos/managing-connections.html",
+              "title": "Managing Connections using the PHP SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "howtos",
+              "path": "multi-network.adoc",
+              "url": "/php-sdk/4.0/howtos/managing-connections.html",
+              "title": "Managing Connections using the PHP SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "howtos",
+              "path": "multiple-apis.adoc",
+              "url": "/php-sdk/4.0/howtos/concurrent-async-apis.html",
+              "title": "Choosing an API"
+            },
+            {
+              "module": "howtos",
+              "path": "n1ql-queries-with-sdk.adoc",
+              "url": "/php-sdk/4.0/howtos/n1ql-queries-with-sdk.html",
+              "title": "N1QL Queries from the SDK"
+            },
+            {
+              "alias": true,
+              "module": "howtos",
+              "path": "n1ql-query.adoc",
+              "url": "/php-sdk/4.0/howtos/n1ql-queries-with-sdk.html",
+              "title": "N1QL Queries from the SDK"
+            },
+            {
+              "module": "howtos",
+              "path": "provisioning-cluster-resources.adoc",
+              "url": "/php-sdk/4.0/howtos/provisioning-cluster-resources.html",
+              "title": "Provisioning Cluster Resources"
+            },
+            {
+              "module": "howtos",
+              "path": "sdk-authentication.adoc",
+              "url": "/php-sdk/4.0/howtos/sdk-authentication.html",
+              "title": "Authenticating against Couchbase Server"
+            },
+            {
+              "module": "howtos",
+              "path": "sdk-user-management-example.adoc",
+              "url": "/php-sdk/4.0/howtos/sdk-user-management-example.html",
+              "title": "User Management"
+            },
+            {
+              "module": "howtos",
+              "path": "slow-operations-logging.adoc",
+              "url": "/php-sdk/4.0/howtos/slow-operations-logging.html",
+              "title": "Slow Operations Logging"
+            },
+            {
+              "module": "howtos",
+              "path": "subdocument-operations.adoc",
+              "url": "/php-sdk/4.0/howtos/subdocument-operations.html",
+              "title": "Sub-Document Operations with the PHP SDK"
+            },
+            {
+              "module": "howtos",
+              "path": "transcoders-nonjson.adoc",
+              "url": "/php-sdk/4.0/howtos/transcoders-nonjson.html",
+              "title": "Transcoders &amp; Non-JSON Documents"
+            },
+            {
+              "module": "howtos",
+              "path": "troubleshooting-cloud-connections.adoc",
+              "url": "/php-sdk/4.0/howtos/troubleshooting-cloud-connections.html",
+              "title": "Troubleshooting Cloud Connections During Development"
+            },
+            {
+              "module": "howtos",
+              "path": "view-queries-with-sdk.adoc",
+              "url": "/php-sdk/4.0/howtos/view-queries-with-sdk.html",
+              "title": "MapReduce Views Using the PHP SDK with Couchbase Server"
+            },
+            {
+              "module": "howtos",
+              "path": "working-with-collections.adoc",
+              "url": "/php-sdk/4.0/howtos/working-with-collections.html",
+              "title": "Working with Collections"
+            },
+            {
+              "module": "project-docs",
+              "path": "3.0-pre-release-notes.adoc",
+              "url": "/php-sdk/4.0/project-docs/3.0-pre-release-notes.html",
+              "title": "Pre-release Archive Release Notes"
+            },
+            {
+              "alias": true,
+              "module": "project-docs",
+              "path": "3.0αλφα-sdk-release-notes.adoc",
+              "url": "/php-sdk/4.0/project-docs/3.0-pre-release-notes.html",
+              "title": "Pre-release Archive Release Notes"
+            },
+            {
+              "alias": true,
+              "module": "project-docs",
+              "path": "compatibility-versions-features.adoc",
+              "url": "/php-sdk/4.0/project-docs/compatibility.html",
+              "title": "Compatibility of Couchbase Features, Couchbase Server Versions, and the Couchbase PHP SDK"
+            },
+            {
+              "module": "project-docs",
+              "path": "compatibility.adoc",
+              "url": "/php-sdk/4.0/project-docs/compatibility.html",
+              "title": "Compatibility of Couchbase Features, Couchbase Server Versions, and the Couchbase PHP SDK"
+            },
+            {
+              "module": "project-docs",
+              "path": "get-involved.adoc",
+              "url": "/php-sdk/4.0/project-docs/get-involved.html",
+              "title": "Get Involved"
+            },
+            {
+              "module": "project-docs",
+              "path": "metadoc-about-these-sdk-docs.adoc",
+              "url": "/php-sdk/4.0/project-docs/metadoc-about-these-sdk-docs.html",
+              "title": "About the SDK Docs"
+            },
+            {
+              "module": "project-docs",
+              "path": "migrating-sdk-code-to-3.n.adoc",
+              "url": "/php-sdk/4.0/project-docs/migrating-sdk-code-to-3.n.html",
+              "title": "Migrating from SDK API 2 to SDK API 3"
+            },
+            {
+              "module": "project-docs",
+              "path": "sdk-full-installation.adoc",
+              "url": "/php-sdk/4.0/project-docs/sdk-full-installation.html",
+              "title": "Couchbase PHP Installation Instructions and Archives"
+            },
+            {
+              "module": "project-docs",
+              "path": "sdk-licenses.adoc",
+              "url": "/php-sdk/4.0/project-docs/sdk-licenses.html",
+              "title": "SDK License"
+            },
+            {
+              "module": "project-docs",
+              "path": "sdk-release-notes.adoc",
+              "url": "/php-sdk/4.0/project-docs/sdk-release-notes.html",
+              "title": "Couchbase PHP Release Notes"
+            },
+            {
+              "module": "ref",
+              "path": "client-settings.adoc",
+              "url": "/php-sdk/4.0/ref/client-settings.html",
+              "title": "Client Settings"
+            },
+            {
+              "module": "ref",
+              "path": "data-structures.adoc",
+              "url": "/php-sdk/4.0/ref/data-structures.html"
+            },
+            {
+              "module": "ref",
+              "path": "error-codes.adoc",
+              "url": "/php-sdk/4.0/ref/error-codes.html",
+              "title": "Errors &amp; Exceptions Reference"
+            },
+            {
+              "module": "ref",
+              "path": "glossary.adoc",
+              "url": "/php-sdk/4.0/ref/glossary.html",
+              "title": "Glossary of SDK-related Terms"
+            },
+            {
+              "module": "ref",
+              "path": "travel-app-data-model.adoc",
+              "url": "/php-sdk/4.0/ref/travel-app-data-model.html",
+              "title": "Travel App Data Model"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "async-programming.adoc",
+              "url": "/php-sdk/4.0/howtos/concurrent-async-apis.html",
+              "title": "Choosing an API"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "batching-operations.adoc",
+              "url": "/php-sdk/4.0/howtos/concurrent-async-apis.html",
+              "title": "Choosing an API"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "client-settings.adoc",
+              "url": "/php-sdk/4.0/ref/client-settings.html",
+              "title": "Client Settings"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "compatibility-versions-features.adoc",
+              "url": "/php-sdk/4.0/project-docs/compatibility.html",
+              "title": "Compatibility of Couchbase Features, Couchbase Server Versions, and the Couchbase PHP SDK"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "concurrent-document-mutations.adoc",
+              "url": "/php-sdk/4.0/howtos/concurrent-document-mutations.html",
+              "title": "Concurrent Document Mutations"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "connecting.adoc",
+              "url": "/php-sdk/4.0/howtos/managing-connections.html",
+              "title": "Managing Connections using the PHP SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "connection-advanced.adoc",
+              "url": "/php-sdk/4.0/howtos/managing-connections.html",
+              "title": "Managing Connections using the PHP SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "core-operations.adoc",
+              "url": "/php-sdk/4.0/concept-docs/data-model.html",
+              "title": "The Data Model"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "datastructures.adoc",
+              "url": "/php-sdk/4.0/concept-docs/data-model.html",
+              "title": "The Data Model"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "documents-atomic.adoc",
+              "url": "/php-sdk/4.0/concept-docs/documents.html",
+              "title": "Document"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "documents-basics.adoc",
+              "url": "/php-sdk/4.0/concept-docs/documents.html",
+              "title": "Document"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "documents.adoc",
+              "url": "/php-sdk/4.0/concept-docs/documents.html",
+              "title": "Document"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "durability.adoc",
+              "url": "/php-sdk/4.0/concept-docs/durability-replication-failure-considerations.html",
+              "title": "Durability &amp; Failure"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "encrypting-using-sdk.adoc",
+              "url": "/php-sdk/4.0/howtos/encrypting-using-sdk.html",
+              "title": "Field Level Encryption from the SDK"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "encryption.adoc",
+              "url": "/php-sdk/4.0/concept-docs/encryption.html",
+              "title": "Field Level Encryption"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "failure-considerations.adoc",
+              "url": "/php-sdk/4.0/concept-docs/durability-replication-failure-considerations.html",
+              "title": "Durability &amp; Failure"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "full-text-search-overview.adoc",
+              "url": "/php-sdk/4.0/concept-docs/full-text-search-overview.html",
+              "title": "Full Text Search Overview"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "getting-started.adoc",
+              "url": "/php-sdk/4.0/hello-world/start-using-sdk.html",
+              "title": "Install and Start Using the PHP SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "health-check.adoc",
+              "url": "/php-sdk/4.0/concept-docs/health-check.html",
+              "title": "Health Check"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "hello-couchbase.adoc",
+              "url": "/php-sdk/4.0/hello-world/start-using-sdk.html",
+              "title": "Install and Start Using the PHP SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "index.adoc",
+              "url": "/php-sdk/4.0/hello-world/overview.html",
+              "title": "Couchbase PHP SDK 4.0"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "managing-clusters.adoc",
+              "url": "/php-sdk/4.0/howtos/provisioning-cluster-resources.html",
+              "title": "Provisioning Cluster Resources"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "managing-connections.adoc",
+              "url": "/php-sdk/4.0/howtos/managing-connections.html",
+              "title": "Managing Connections using the PHP SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "managing-views.adoc",
+              "url": "/php-sdk/4.0/concept-docs/understanding-views.html",
+              "title": "MapReduce Views"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "migrate.adoc",
+              "url": "/php-sdk/4.0/project-docs/migrating-sdk-code-to-3.n.html",
+              "title": "Migrating from SDK API 2 to SDK API 3"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "n1ql-query.adoc",
+              "url": "/php-sdk/4.0/concept-docs/n1ql-query.html",
+              "title": "Querying with N1QL"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "nonjson.adoc",
+              "url": "/php-sdk/4.0/concept-docs/nonjson.html",
+              "title": "Non-JSON Documents"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "overview.adoc",
+              "url": "/php-sdk/4.0/project-docs/compatibility.html",
+              "title": "Compatibility of Couchbase Features, Couchbase Server Versions, and the Couchbase PHP SDK"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "querying-views.adoc",
+              "url": "/php-sdk/4.0/concept-docs/understanding-views.html",
+              "title": "MapReduce Views"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "release-notes.adoc",
+              "url": "/php-sdk/4.0/project-docs/sdk-release-notes.html",
+              "title": "Couchbase PHP Release Notes"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "relnotes-php-sdk.adoc",
+              "url": "/php-sdk/4.0/project-docs/sdk-release-notes.html",
+              "title": "Couchbase PHP Release Notes"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sample-app-backend.adoc",
+              "url": "/php-sdk/4.0/hello-world/sample-application.html",
+              "title": "Sample Application"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sample-application.adoc",
+              "url": "/php-sdk/4.0/hello-world/sample-application.html",
+              "title": "Sample Application"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-authentication-overview.adoc",
+              "url": "/php-sdk/4.0/howtos/sdk-authentication.html",
+              "title": "Authenticating against Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-licenses.adoc",
+              "url": "/php-sdk/4.0/project-docs/sdk-licenses.html",
+              "title": "SDK License"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-release-notes.adoc",
+              "url": "/php-sdk/4.0/project-docs/sdk-release-notes.html",
+              "title": "Couchbase PHP Release Notes"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-user-management-overview.adoc",
+              "url": "/php-sdk/4.0/concept-docs/sdk-user-management-overview.html",
+              "title": "User Management"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-xattr-example.adoc",
+              "url": "/php-sdk/4.0/howtos/subdocument-operations.html",
+              "title": "Sub-Document Operations with the PHP SDK"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "sdk-xattr-overview.adoc",
+              "url": "/php-sdk/4.0/concept-docs/xattr.html",
+              "title": "Extended Attributes"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "start-using-sdk.adoc",
+              "url": "/php-sdk/4.0/hello-world/start-using-sdk.html",
+              "title": "Install and Start Using the PHP SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "start-using.adoc",
+              "url": "/php-sdk/4.0/hello-world/start-using-sdk.html",
+              "title": "Install and Start Using the PHP SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "threshold-logging.adoc",
+              "url": "/php-sdk/4.0/concept-docs/response-time-observability.html",
+              "title": "Request Tracing and Metrics"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "tutorial4.adoc",
+              "url": "/php-sdk/4.0/hello-world/sample-application.html",
+              "title": "Sample Application"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "view-queries-with-sdk.adoc",
+              "url": "/php-sdk/4.0/howtos/view-queries-with-sdk.html",
+              "title": "MapReduce Views Using the PHP SDK with Couchbase Server"
+            },
+            {
+              "alias": true,
+              "module": "ROOT",
+              "path": "webui-cli-access.adoc",
+              "url": "/php-sdk/4.0/hello-world/webui-cli-access.html",
               "title": "Browser and CLI Access"
             }
           ]

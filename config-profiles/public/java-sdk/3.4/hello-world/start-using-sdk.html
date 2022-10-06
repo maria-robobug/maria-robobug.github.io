@@ -656,7 +656,19 @@ cluster = Cluster.connect(
 <div class="paragraph">
 <p>When accessing Capella from a different Wide Area Network or Availability Zone, you may experience latency issues with the default connection settings.
 SDK 3.4 introduces a <code>wan-development</code> Configuration Profile, which provides pre-configured timeout settings suitable for working in high latency environments.
-Its basic usage is shown in the example above, but if you want to learn more see <a href="../ref/client-settings.html#constrained-network-environments" class="xref page">Constrained Network Environments</a>.</p>
+Basic usage is shown in the example above, but if you want to learn more see <a href="../ref/client-settings.html#constrained-network-environments" class="xref page">Constrained Network Environments</a>.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+The Configuration Profiles feature is currently a <a href="../project-docs/compatibility.html#interface-stability" class="xref page">Volatile API</a> and may be subject to change.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="tab-pane" aria-labelledby="tabset5_local-couchbase-server">
@@ -919,7 +931,7 @@ If you&#8217;re running the SDK on your laptop against a Capella cluster, see fu
 </footer>
 <script src="../../../_/js/site-navigation-data.js"></script>
 <script id="page-navigation-group" type="application/json">
-{"title":"SDKs","components":["dotnet-sdk","go-sdk","java-sdk","kotlin-sdk","nodejs-sdk","ruby-sdk"],"url":"/home/sdk.html","latestVersions":{"dotnet-sdk":"3.4","go-sdk":"2.6","java-sdk":"3.4","kotlin-sdk":"1.1","nodejs-sdk":"4.2","ruby-sdk":"3.4"}}
+{"title":"SDKs","components":["dotnet-sdk","go-sdk","java-sdk","nodejs-sdk","php-sdk","ruby-sdk"],"url":"/home/sdk.html","latestVersions":{"dotnet-sdk":"3.4","go-sdk":"2.6","java-sdk":"3.4","nodejs-sdk":"4.2","php-sdk":"4.1","ruby-sdk":"3.4"}}
 </script>
 <template id="run-code-panel">
 <div class="action-panel">
